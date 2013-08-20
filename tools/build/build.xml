@@ -1,0 +1,270 @@
+<!--
+This build script is used to build, unit-test and publish an iOS project.
+The newest version of the build script can be downloaded from this location: 
+	https://svnmsq.epam.com/epmc-mob/Source%20Code/CI/iOS-buildScript
+-->
+<project name="iOS-Project">
+	
+	<!-- include other properties -->
+	<property environment="env"/>
+	<property file="build.properties" />	
+	<property file="default.properties" /> 
+
+	<!-- build log level -->
+	<property name="build.log.level" value="info" />
+	<record name="build.log" loglevel="${build.log.level}" />
+	
+	<!-- build & dist directory default locations -->
+	<property name="build.dir" location="/tmp/${xcode.workspace}/build" />
+	<property name="dist.dir" location="/tmp/${xcode.workspace}/dist" />
+    
+	<!-- xconfig file name. this file will be generated. -->
+	<property name="xcconfig.file" value="buildsettings.xcconfig" />
+
+	<!-- set the app.name with using xcodebuild to find the product name -->
+	<exec executable="sh" failonerror="true" failifexecutionfails="true" outputproperty="app.name">
+		<arg line="-c 'xcodebuild -showBuildSettings -workspace ${xcode.workspacepath}/${xcode.workspace}.xcworkspace -scheme ${xcode.scheme} | grep FULL_PRODUCT_NAME | grep .app | cut -d = -f 2 | tr -d [:blank:] | cut -d . -f 1'" />
+	</exec>
+
+	<!-- find the bundle version of the application -->
+	<exec executable="/usr/libexec/PlistBuddy" failonerror="true" failifexecutionfails="true" outputproperty="app.bundleVersion">
+		<arg value="-c" />
+		<arg value="Print :CFBundleVersion" />
+		<arg value="./${plist.location}" />
+	</exec>
+
+	<!-- find the bundle id of the application -->
+	<exec executable="/usr/libexec/PlistBuddy" failonerror="true" failifexecutionfails="true" outputproperty="temp.bundleIdWithProductPlaceholder">
+		<arg value="-c" />
+		<arg value="Print :CFBundleIdentifier" />
+		<arg value="./${plist.location}" />
+	</exec>
+	<!-- but make sure we cut the last element and append the property product name -->
+	<exec executable="sed" inputstring="${temp.bundleIdWithProductPlaceholder}" outputproperty="app.bundleId">
+		<arg value="s/\${.*}/${app.name}/" />
+	</exec>
+	
+	<!-- Set the default build tags to include the xcode configuration -->
+    <property name="build.tags" value="-${xcode.configuration}" />	
+
+	<!-- Print out all the variables so we know what we are doing -->
+	<echo message="App.Name = ${app.name}" />
+	<echo message="App.BundleId = ${app.bundleId}" />
+	<echo message="App.BundleVersion = ${app.bundleVersion}" />
+	<echo message="" />
+	<echo message="Xcode.workspace = ${xcode.workspace}" />
+	<echo message="Xcode.scheme = ${xcode.scheme}" />
+	<echo message="Xcode.unittestscheme = ${xcode.unittestscheme}" />
+	<echo message="Xcode.configuration = ${xcode.configuration}" />
+	<echo message="" />
+	<echo message="Build folder = ${build.dir}" />
+	<echo message="Dist folder = ${dist.dir}" />
+	<echo message="xcconfig file = ${build.dir}/${xcconfig.file}" />
+	<echo message="User home = ${env.HOME}" />
+    <echo message="Additional EMTB tags = ${build.tags}" />	
+	
+	<!-- This is the default build target, first a cleanup, then building the specified configuration for simulator. -->
+	<target name="build" depends="clean, make"/>
+	<target name="test" depends="build, unittest" />
+
+	<!-- The clean target deletes the build and dist folders -->
+	<target name="clean">
+		<delete dir="${build.dir}" failonerror="false"/>
+		<delete dir="${dist.dir}" failonerror="false"/>		
+		<delete file="${build.dir}/${xcconfig.file}" failonerror="false" />
+
+		<!-- Delete all files and directories in the derived data folder for this project -->		
+		<delete includeemptydirs="true" failonerror="false" verbose="true">
+			<fileset dir="${env.HOME}/Library/Developer/Xcode/DerivedData/" includes="${xcode.workspace}-**/**" />
+		</delete>
+		<delete includeemptydirs="true" failonerror="false" verbose="true">
+			<dirset dir="${env.HOME}/Library/Developer/Xcode/DerivedData/" includes="${xcode.workspace}-**" />
+		</delete>
+	</target>
+	
+	<!-- Invokes xcodebuild -->
+	<target name="make">
+        
+        <echo file="${build.dir}/${xcconfig.file}" message="GCC_PREPROCESSOR_DEFINITIONS=${xcode.definitions}${line.separator}" />
+
+        <xcodebuild>
+            <arg value="-xcconfig" />
+            <arg value="${build.dir}/${xcconfig.file}" />
+            <arg value="build"/>
+        </xcodebuild>
+	</target>
+
+	<!-- The deploy target creates an ipa file in the dist directory. -->
+	<!-- This step requires that a specific code sign identity and provisioning profile is set up 
+	on the build server for the build user. The code signing certificate can be placed in the System 
+	keychain to always allow the access to it. -->
+	<target name="deploy">
+		<mkdir dir ="${build.dir}"/>
+		<mkdir dir ="${dist.dir}"/>		
+		
+		<!-- make sure we create a buildsettings.xcconfig file to redirect the build output -->
+		<echo file="${build.dir}/${xcconfig.file}" message="OBJROOT=${build.dir}${line.separator}SYMROOT=${dist.dir}${line.separator}GCC_PREPROCESSOR_DEFINITIONS=${xcode.definitions}${line.separator}" />
+		
+		<!-- build a version of the application -->
+		<xcodebuild configuration="${xcode.configuration}" sdk="iphoneos">
+			<arg value="-xcconfig" />
+			<arg value="${build.dir}/${xcconfig.file}" />
+			<arg value="clean" />
+			<arg value="build" />
+		</xcodebuild>
+		
+		<!-- finally package the application into an .ipa -->
+		<package />
+	</target>
+
+	<target name="publish" depends="deploy">
+			
+		<echo file="${dist.dir}/${app.name}.plist">
+		<![CDATA[
+			<?xml version="1.0" encoding="UTF-8"?>
+			<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+			<plist version="1.0">
+			<dict>
+				<key>items</key>
+				<array>
+					<dict>
+						<key>assets</key>
+						<array>
+							<dict>
+								<key>kind</key>
+								<string>software-package</string>
+								<key>url</key>
+								<string>[APP_NAME].ipa</string>
+							</dict>
+						</array>
+						<key>metadata</key>
+						<dict>
+							<key>bundle-identifier</key>
+							<string>[BUNDLE_ID]</string>
+							<key>bundle-version</key>
+							<string>[BUNDLE_VERSION]</string>
+							<key>kind</key>
+							<string>software</string>
+							<key>title</key>
+							<string>[APP_TITLE]</string>
+						</dict>
+					</dict>
+				</array>
+			</dict>
+			</plist>
+		]]>
+		</echo>
+		
+		<!-- Replace the template variables in the plist file with real values -->
+		<replace file="${dist.dir}/${app.name}.plist" token="[APP_NAME]" value="${app.name}" />
+		<replace file="${dist.dir}/${app.name}.plist" token="[APP_TITLE]" value="${app.name}" />
+		<replace file="${dist.dir}/${app.name}.plist" token="[BUNDLE_ID]" value="${app.bundleId}" />
+		<replace file="${dist.dir}/${app.name}.plist" token="[BUNDLE_VERSION]" value="${app.bundleVersion}" />
+
+		<!-- zip the DSYM file that has to be uploaded -->
+		<zip destfile="${dist.dir}/${app.name}.dsym.zip">
+			<zipfileset dir="${dist.dir}/${xcode.configuration}-iphoneos/${app.name}.app.dSYM" prefix="${app.name}.app.dSYM" />
+		</zip>
+
+		<EMTBPublish />
+	</target>
+	
+	<!-- Runs the unit tests in the provided scheme -->
+	<target name="unittest" >
+	
+		<!-- make sure we create a buildsettings.xcconfig file to redirect the build output -->
+		<echo file="${build.dir}/${xcconfig.file}" message="TEST_AFTER_BUILD=YES" />
+	
+		<xcodebuild scheme="${xcode.unittestscheme}">
+			<arg value="-xcconfig" />
+			<arg value="${build.dir}/${xcconfig.file}" />
+			
+			<arg value="build"/>
+		</xcodebuild>
+	</target>
+
+	<macrodef name="EMTBPublish">
+		 <attribute name="dir" default="."/>
+		 <attribute name="failonerror" default="true"/>
+ 
+		<sequential>
+			<exec executable="curl" dir="@{dir}" failonerror="@{failonerror}" failifexecutionfails="@{failonerror}">
+				<arg value="-k" />
+				<arg value="-u" />
+				<arg value="${PMC.Username}:${PMC.Password}" />
+				<arg value="-F" />
+				<arg value="upload=@${dist.dir}/${app.name}.ipa" />
+				<arg value="-F" />
+				<arg value="upload=@${dist.dir}/${app.name}.dsym.zip" />
+<!--			If you would like to upload the .plist file as well, uncomment these lines
+				<arg value="-F" />
+					<arg value="upload=@${dist.dir}/${app.name}.plist" /> -->
+				<arg value="-F" />
+				<arg value="tags=${app.name}${build.tags}" />
+				<arg value="http://173-252-173-197.useast1.nat.cloudngen.com/${EPAM.ProjectID}/Build/Upload" />
+			</exec>
+		</sequential>
+	</macrodef>
+
+	<!-- Macro definition to easily run xcodebuild -->
+	<macrodef name="xcodebuild">	
+		 <attribute name="dir" default="."/>
+		 <attribute name="failonerror" default="true"/>
+		 
+		 <attribute name="sdk" default="iphonesimulator"/>
+		 <attribute name="configuration" default="${xcode.configuration}"/>
+		 <attribute name="workspace" default="${xcode.workspace}" />
+		 <attribute name="scheme" default="${xcode.scheme}" />
+		
+		 <element name="args" optional="true" implicit="true" />
+		 
+		 <sequential>
+		  <exec executable="xcodebuild" dir="@{dir}" failonerror="@{failonerror}" failifexecutionfails="@{failonerror}">
+			 <arg value="-workspace" />
+			 <arg value="${xcode.workspacepath}/@{workspace}.xcworkspace"/>
+			 
+			 <arg value="-scheme"/>
+			 <arg value="@{scheme}"/>
+			 
+			 <arg value="-sdk"/>
+			 <arg value="@{sdk}"/>
+			 
+			 <arg value="-configuration"/>
+			 <arg value="@{configuration}"/>
+			 
+			 <args />
+		  </exec>
+		 </sequential>
+	</macrodef>
+	
+	<!-- Macro definition to easily run the PackageApplication script -->
+	<macrodef name="package">	
+		 <attribute name="dir" default="."/>
+		 <attribute name="failonerror" default="true"/>
+		 
+		 <attribute name="sdk" default="iphoneos"/>
+		
+		 <element name="args" optional="true" implicit="true" />
+		 
+		 <sequential>
+		  <exec executable="xcrun" dir="@{dir}" failonerror="@{failonerror}" failifexecutionfails="@{failonerror}">
+			 <arg value="-sdk"/>
+			 <arg value="@{sdk}"/>
+			 
+			 <arg value="PackageApplication" /> <!-- xcrun will run this app, the next arguments belong to the PackageApplication script -->
+			 
+			 <!-- path to the app to package -->
+			 <arg value="${dist.dir}/${xcode.configuration}-iphoneos/${app.name}.app" />
+			 
+			 <!-- output directory -->
+			 <arg value="-o" />
+			 <arg value="${dist.dir}/${app.name}.ipa" />
+
+			 <arg value="-s"/>
+			 <arg value="${xcode.codesignidentity}"/>
+						 
+			 <arg value="-v" />
+		  </exec>
+		 </sequential>
+	</macrodef> 
+</project>
