@@ -1,6 +1,6 @@
 //
-//  NSObject+ESDAttributes.h
-//  AttributesPrototype
+//  Header.h
+//  SFAttributes
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,33 +27,11 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Foundation/Foundation.h>
+#ifndef SparkAttributesSupport_Header_h
+#define SparkAttributesSupport_Header_h
 
-@interface NSObject (ESDAttributes)
+#define SF_ATTRIBUTE(AttrObject, ...)
 
-#pragma mark - Attributes API
+#endif
 
-+ (NSInvocation *)invocationForSelector:(SEL)selector;
-+ (NSMutableDictionary *)mutableAttributesFactoriesFrom:(NSDictionary *)attributesFactories;
-
-+ (NSArray *)attributesForInstanceMethod:(NSString *)nameOf withType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForProperty:(NSString *)nameOf withType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForClassMethod:(NSString *)nameOf withType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForField:(NSString *)nameOf withType:(Class)requiredClassOfAttribute;
-
-
-#pragma mark - Attributes API stubs
-
-//will be overridden by annotated class
-
-+ (NSDictionary *)attributesFactoriesForInstanceMethods;
-+ (NSDictionary *)attributesFactoriesForProperties;
-+ (NSDictionary *)attributesFactoriesForClassMethods;
-+ (NSDictionary *)attributesFactoriesForClassProperties;
-+ (NSDictionary *)attributesFactoriesForFields;
-+ (NSArray *)attributesForClass;
-
-#pragma mark -
-
-
-@end
+#import "NSObject+SFAttributes.h"

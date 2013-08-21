@@ -33,13 +33,13 @@
 
 @interface DataItem : NSObject
 
-ESD_ATTRIBUTE(IncrementValueESDAttribute, intValue = 1)
+SF_ATTRIBUTE(IncrementValueESDAttribute, intValue = 1)
 @property (assign, nonatomic) int intProperty1;
 
-ESD_ATTRIBUTE(IncrementValueESDAttribute, intValue = 3)
+SF_ATTRIBUTE(IncrementValueESDAttribute, intValue = 3)
 @property (assign, nonatomic) int intProperty2;
 
-ESD_ATTRIBUTE(IncrementValueESDAttribute, intValue = 2)
+SF_ATTRIBUTE(IncrementValueESDAttribute, intValue = 2)
 @property (assign, nonatomic) int intProperty3;
 
 

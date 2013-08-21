@@ -33,4 +33,16 @@
 
 @implementation AnnotatedElementModel
 
+- (id)init
+{
+    self = [super init];
+    if (self == nil) {
+        return nil;
+    }
+    
+    self.attributeModels = [NSMutableArray array];
+    
+    return self;
+}
+
 @end

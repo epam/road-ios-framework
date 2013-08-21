@@ -32,8 +32,8 @@
 #import "CustomESDAttribute.h"
 
 ///Testing of class with attributes
-ESD_ATTRIBUTE(ESDAttribute)
-ESD_ATTRIBUTE(CustomESDAttribute,
+SF_ATTRIBUTE(ESDAttribute)
+SF_ATTRIBUTE(CustomESDAttribute,
               property1 = @"Text1",
               dictionaryProperty = @{
                 @"key1" : @"[value1",
@@ -57,28 +57,28 @@ ESD_ATTRIBUTE(CustomESDAttribute,
         @interface
         AnnotatedClass : NSObject <NSCopy, SomeOtherProto>{
     ///Testing of field with attributes
-            ESD_ATTRIBUTE(ESDAttribute)
+            SF_ATTRIBUTE(ESDAttribute)
             NSObject* _someField;NSObject* _someField2;
-            ESD_ATTRIBUTE(ESDAttribute)
+            SF_ATTRIBUTE(ESDAttribute)
             NSObject* _someField3;
         }
         /*@interface
         AnnotatedClass(SomeCategory)*/
 
 ///Testing of method with attributes
-ESD_ATTRIBUTE(ESDAttribute)
-ESD_ATTRIBUTE(CustomESDAttribute, property1 = @"Text1", /*Another /* comment*/ property2 = @"Text2//")
+SF_ATTRIBUTE(ESDAttribute)
+SF_ATTRIBUTE(CustomESDAttribute, property1 = @"Text1", /*Another /* comment*/ property2 = @"Text2//")
 //Noise comment
         - (void)viewDidLoad;
 
 ///Testing of method with attributes
 ///@param param1 Some parameter
-ESD_ATTRIBUTE(ESDAttribute)
-ESD_ATTRIBUTE(CustomESDAttribute, property1 = @"Text1", property2 = @"/*") - (void)viewDidLoad:(BOOL)param1;
+SF_ATTRIBUTE(ESDAttribute)
+SF_ATTRIBUTE(CustomESDAttribute, property1 = @"Text1", property2 = @"/*") - (void)viewDidLoad:(BOOL)param1;
 
 ///Testing of property with attributes
-ESD_ATTRIBUTE(ESDAttribute)
-ESD_ATTRIBUTE(CustomESDAttribute, property2 = @"*/", intProperty = (2+2)*2) //Some other comment
+SF_ATTRIBUTE(ESDAttribute)
+SF_ATTRIBUTE(CustomESDAttribute, property2 = @"*/", intProperty = (2+2)*2) //Some other comment
     @property
         (strong, nonatomic)
             UIWindow *window;
@@ -88,24 +88,24 @@ ESD_ATTRIBUTE(CustomESDAttribute, property2 = @"*/", intProperty = (2+2)*2) //So
         @interface
         AnnotatedClass(ExpandCat) {
     ///Testing of field with attributes
-            ESD_ATTRIBUTE(ESDAttribute)
+            SF_ATTRIBUTE(ESDAttribute)
             NSObject* _someField4;
         }
 
 ///Testing of method with attributes
-ESD_ATTRIBUTE(ESDAttribute)
-ESD_ATTRIBUTE(CustomESDAttribute, property1 = @"Text1", /*Another /* comment*/ property2 = @"Text2//")
+SF_ATTRIBUTE(ESDAttribute)
+SF_ATTRIBUTE(CustomESDAttribute, property1 = @"Text1", /*Another /* comment*/ property2 = @"Text2//")
 //Noise comment
         - (void)viewDidLoad;
 
 ///Testing of method with attributes
 ///@param param1 Some parameter
-ESD_ATTRIBUTE(ESDAttribute)
-ESD_ATTRIBUTE(CustomESDAttribute, property1 = @"Text1", property2 = @"/*") - (void)viewDidLoad:(BOOL)param1;
+SF_ATTRIBUTE(ESDAttribute)
+SF_ATTRIBUTE(CustomESDAttribute, property1 = @"Text1", property2 = @"/*") - (void)viewDidLoad:(BOOL)param1;
 
 ///Testing of property with attributes
-ESD_ATTRIBUTE(ESDAttribute)
-ESD_ATTRIBUTE(CustomESDAttribute, property2 = @"*/", intProperty = (2+2)*2) //Some other comment
+SF_ATTRIBUTE(ESDAttribute)
+SF_ATTRIBUTE(CustomESDAttribute, property2 = @"*/", intProperty = (2+2)*2) //Some other comment
     @property
         (strong, nonatomic)
             UIWindow *window2;

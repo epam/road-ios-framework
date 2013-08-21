@@ -69,11 +69,11 @@
     }
     
     [categoryDefinitionHeader appendLine:@" "];
-    [categoryDefinitionHeader appendFormat:@"@interface %@(ESDAttribute)\n", classModel.name];
+    [categoryDefinitionHeader appendFormat:@"@interface %@(SFAttribute)\n", classModel.name];
     [categoryDefinitionHeader appendLine:@" "];
     [categoryDefinitionHeader appendLine:@"@end"];
     [categoryDefinitionHeader appendLine:@" "];
-    [categoryDefinitionHeader appendFormat:@"@implementation %@(ESDAttribute)\n", classModel.name];
+    [categoryDefinitionHeader appendFormat:@"@implementation %@(SFAttribute)\n", classModel.name];
     [categoryDefinitionHeader appendLine:@" "];
 
     [result insertString:categoryDefinitionHeader atIndex:0];
