@@ -32,8 +32,8 @@
 #import "CustomESDAttribute.h"
 
 ///Testing of class with attributes
-ESD_ATTRIBUTE(ESDAttribute)
-ESD_ATTRIBUTE(CustomESDAttribute,
+SF_ATTRIBUTE(ESDAttribute)
+SF_ATTRIBUTE(CustomESDAttribute,
               property1 = @"Text1",
               dictionaryProperty = @{
                 @"key1" : @"[value1",
@@ -57,22 +57,22 @@ ESD_ATTRIBUTE(CustomESDAttribute,
         @interface
         AnnotatedClass : NSObject {
     ///Testing of field with attributes
-            ESD_ATTRIBUTE(ESDAttribute)
+            SF_ATTRIBUTE(ESDAttribute)
             NSObject* _someField;
         }
 
 ///Testing of method with attributes
-ESD_ATTRIBUTE(ESDAttribute)
-ESD_ATTRIBUTE(CustomESDAttribute, property1 = @"Text1", property2 = @"Text2")
+SF_ATTRIBUTE(ESDAttribute)
+SF_ATTRIBUTE(CustomESDAttribute, property1 = @"Text1", property2 = @"Text2")
         - (void)viewDidLoad;
 
 ///Testing of method with attributes
 ///@param param1 Some parameter
-ESD_ATTRIBUTE(ESDAttribute) - (void)viewDidLoad:(BOOL)param1;
+SF_ATTRIBUTE(ESDAttribute) - (void)viewDidLoad:(BOOL)param1;
 
 ///Testing of property with attributes
-ESD_ATTRIBUTE(ESDAttribute)
-ESD_ATTRIBUTE(CustomESDAttribute, property2 = @"Text2", intProperty = (2+2)*2)
+SF_ATTRIBUTE(ESDAttribute)
+SF_ATTRIBUTE(CustomESDAttribute, property2 = @"Text2", intProperty = (2+2)*2)
     @property
         (strong, nonatomic)
             UIWindow *window;

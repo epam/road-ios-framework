@@ -35,7 +35,7 @@
 
 #import "ClassAttributesCodeGenerator.h"
 
-NSString *k_generatedFileNameSuffix = @"+ESDAttributes.m";
+NSString *k_generatedFileNameSuffix = @"+SFAttributes.m";
 NSString *k_collectorFileName = @"SparkGeneratedAttribute.m";
 
 @implementation MainAttributesCodeGenerator

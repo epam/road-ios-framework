@@ -1,3 +1,3 @@
-#import "DataItem+ESDAttributes.m"
-#import "AnnotatedClass+ESDAttributes.m"
-#import "SecondAnnotatedClass+ESDAttributes.m"
+#import "DataItem+SFAttributes.m"
+#import "AnnotatedClass+SFAttributes.m"
+#import "SecondAnnotatedClass+SFAttributes.m"

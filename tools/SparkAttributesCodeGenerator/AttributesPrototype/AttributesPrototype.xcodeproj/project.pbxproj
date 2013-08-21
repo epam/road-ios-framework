@@ -28,8 +28,6 @@
 		8D5E2E2D1786969C00FD5551 /* ESDAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E2B1786969C00FD5551 /* ESDAttribute.m */; };
 		8D5E2E30178697CB00FD5551 /* CustomESDAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E2F178697CB00FD5551 /* CustomESDAttribute.m */; };
 		8D5E2E31178697CB00FD5551 /* CustomESDAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E2F178697CB00FD5551 /* CustomESDAttribute.m */; };
-		8D5E2E381786A63000FD5551 /* NSObject+ESDAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E371786A63000FD5551 /* NSObject+ESDAttributes.m */; };
-		8D5E2E391786A63000FD5551 /* NSObject+ESDAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E371786A63000FD5551 /* NSObject+ESDAttributes.m */; };
 		8D5E2E3C178743C900FD5551 /* AnnotatedClassTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E3B178743C900FD5551 /* AnnotatedClassTest.m */; };
 		8D5E2E3F1787FB2A00FD5551 /* SecondAnnotatedClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E3E1787FB2A00FD5551 /* SecondAnnotatedClass.m */; };
 		8D5E2E401787FB2A00FD5551 /* SecondAnnotatedClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E3E1787FB2A00FD5551 /* SecondAnnotatedClass.m */; };
@@ -41,6 +39,8 @@
 		8D6E8650178BBA97004402F8 /* DataItemProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6E864E178BBA97004402F8 /* DataItemProcessor.m */; };
 		8DA5913117AB28F900DA9532 /* SparkGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA5913017AB28F900DA9532 /* SparkGeneratedAttribute.m */; };
 		8DA5913217AB28F900DA9532 /* SparkGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA5913017AB28F900DA9532 /* SparkGeneratedAttribute.m */; };
+		8DF6C8DB17C4766B00F829E8 /* NSObject+SFAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF6C8D917C4766B00F829E8 /* NSObject+SFAttributes.m */; };
+		8DF6C8DC17C4766B00F829E8 /* NSObject+SFAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF6C8D917C4766B00F829E8 /* NSObject+SFAttributes.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,15 +74,12 @@
 		8D0CB6C1178408F6002558CD /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		8D0CB6C9178408F6002558CD /* AttributesPrototypeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AttributesPrototypeTests-Info.plist"; sourceTree = "<group>"; };
 		8D0CB6CB178408F6002558CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		8D5E2E25178693F000FD5551 /* AnnotatedClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnotatedClass.h; sourceTree = "<group>"; };
+		8D5E2E25178693F000FD5551 /* AnnotatedClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AnnotatedClass.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		8D5E2E26178693F000FD5551 /* AnnotatedClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotatedClass.m; sourceTree = "<group>"; };
-		8D5E2E291786942D00FD5551 /* ESDAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDAttributes.h; sourceTree = "<group>"; };
 		8D5E2E2A1786969C00FD5551 /* ESDAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDAttribute.h; sourceTree = "<group>"; };
 		8D5E2E2B1786969C00FD5551 /* ESDAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDAttribute.m; sourceTree = "<group>"; };
 		8D5E2E2E178697CB00FD5551 /* CustomESDAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomESDAttribute.h; sourceTree = "<group>"; };
 		8D5E2E2F178697CB00FD5551 /* CustomESDAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomESDAttribute.m; sourceTree = "<group>"; };
-		8D5E2E361786A63000FD5551 /* NSObject+ESDAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ESDAttributes.h"; sourceTree = "<group>"; };
-		8D5E2E371786A63000FD5551 /* NSObject+ESDAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ESDAttributes.m"; sourceTree = "<group>"; };
 		8D5E2E3A178743C900FD5551 /* AnnotatedClassTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnotatedClassTest.h; sourceTree = "<group>"; };
 		8D5E2E3B178743C900FD5551 /* AnnotatedClassTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotatedClassTest.m; sourceTree = "<group>"; };
 		8D5E2E3D1787FB2A00FD5551 /* SecondAnnotatedClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondAnnotatedClass.h; sourceTree = "<group>"; };
@@ -94,6 +91,9 @@
 		8D6E864D178BBA97004402F8 /* DataItemProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataItemProcessor.h; sourceTree = "<group>"; };
 		8D6E864E178BBA97004402F8 /* DataItemProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataItemProcessor.m; sourceTree = "<group>"; };
 		8DA5913017AB28F900DA9532 /* SparkGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparkGeneratedAttribute.m; path = SparkGeneratedAttributes/SparkGeneratedAttribute.m; sourceTree = "<group>"; };
+		8DF6C8D817C4766B00F829E8 /* NSObject+SFAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SFAttributes.h"; sourceTree = "<group>"; };
+		8DF6C8D917C4766B00F829E8 /* NSObject+SFAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SFAttributes.m"; sourceTree = "<group>"; };
+		8DF6C8DA17C4766B00F829E8 /* SparkAttributesSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparkAttributesSupport.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,11 +199,11 @@
 		8D5E2E23178693F000FD5551 /* AttributesSupport */ = {
 			isa = PBXGroup;
 			children = (
-				8D5E2E291786942D00FD5551 /* ESDAttributes.h */,
+				8DF6C8D817C4766B00F829E8 /* NSObject+SFAttributes.h */,
+				8DF6C8D917C4766B00F829E8 /* NSObject+SFAttributes.m */,
+				8DF6C8DA17C4766B00F829E8 /* SparkAttributesSupport.h */,
 				8D5E2E2A1786969C00FD5551 /* ESDAttribute.h */,
 				8D5E2E2B1786969C00FD5551 /* ESDAttribute.m */,
-				8D5E2E361786A63000FD5551 /* NSObject+ESDAttributes.h */,
-				8D5E2E371786A63000FD5551 /* NSObject+ESDAttributes.m */,
 			);
 			path = AttributesSupport;
 			sourceTree = "<group>";
@@ -377,12 +377,12 @@
 				8D5E2E27178693F000FD5551 /* AnnotatedClass.m in Sources */,
 				8D5E2E2C1786969C00FD5551 /* ESDAttribute.m in Sources */,
 				8D5E2E30178697CB00FD5551 /* CustomESDAttribute.m in Sources */,
-				8D5E2E381786A63000FD5551 /* NSObject+ESDAttributes.m in Sources */,
 				8D5E2E3F1787FB2A00FD5551 /* SecondAnnotatedClass.m in Sources */,
 				8D6E8647178BB562004402F8 /* DataItem.m in Sources */,
 				8D6E864B178BB603004402F8 /* IncrementValueESDAttribute.m in Sources */,
 				8D6E864F178BBA97004402F8 /* DataItemProcessor.m in Sources */,
 				8DA5913117AB28F900DA9532 /* SparkGeneratedAttribute.m in Sources */,
+				8DF6C8DB17C4766B00F829E8 /* NSObject+SFAttributes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,13 +393,13 @@
 				8D5E2E28178693F000FD5551 /* AnnotatedClass.m in Sources */,
 				8D5E2E2D1786969C00FD5551 /* ESDAttribute.m in Sources */,
 				8D5E2E31178697CB00FD5551 /* CustomESDAttribute.m in Sources */,
-				8D5E2E391786A63000FD5551 /* NSObject+ESDAttributes.m in Sources */,
 				8D5E2E3C178743C900FD5551 /* AnnotatedClassTest.m in Sources */,
 				8D5E2E401787FB2A00FD5551 /* SecondAnnotatedClass.m in Sources */,
 				8D6E8648178BB562004402F8 /* DataItem.m in Sources */,
 				8D6E864C178BB603004402F8 /* IncrementValueESDAttribute.m in Sources */,
 				8D6E8650178BBA97004402F8 /* DataItemProcessor.m in Sources */,
 				8DA5913217AB28F900DA9532 /* SparkGeneratedAttribute.m in Sources */,
+				8DF6C8DC17C4766B00F829E8 /* NSObject+SFAttributes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

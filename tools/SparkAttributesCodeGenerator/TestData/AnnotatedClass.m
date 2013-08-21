@@ -30,7 +30,7 @@
 #import "AnnotatedClass.h"
 
 @interface AnnotatedClass() {
-	ESD_ATTRIBUTE(CustomESDAttribute, property1 = @"PropStore1Text", /*Another /* comment*/ property2 = @"PropStore1Text2//")
+	SF_ATTRIBUTE(CustomESDAttribute, property1 = @"PropStore1Text", /*Another /* comment*/ property2 = @"PropStore1Text2//")
     NSString *_testPropStore1;
 }
 
