@@ -1,5 +1,5 @@
 //
-//  NSObject+ESDAttributes.m
+//  NSObject+SFAttributes.m
 //  AttributesPrototype
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -27,9 +27,9 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "NSObject+ESDAttributes.h"
+#import "NSObject+SFAttributes.h"
 
-@implementation NSObject (ESDAttributes)
+@implementation NSObject (SFAttributes)
 
 #pragma mark - Attributes API stubs
 
@@ -37,7 +37,6 @@
 
 + (NSDictionary *)attributesFactoriesForInstanceMethods { return nil; }
 + (NSDictionary *)attributesFactoriesForProperties { return nil; }
-+ (NSDictionary *)attributesFactoriesForClassMethods { return nil; }
 + (NSDictionary *)attributesFactoriesForClassProperties { return nil; }
 + (NSDictionary *)attributesFactoriesForFields { return nil; }
 + (NSArray *)attributesForClass { return nil; }
@@ -131,10 +130,6 @@
 
 + (NSArray *)attributesForProperty:(NSString *)nameOf withType:(Class)requiredClassOfAttribute {
     return [self attributesFor:nameOf inAttributeCreatorsDictionary:[self attributesFactoriesForProperties] withType:requiredClassOfAttribute];
-}
-
-+ (NSArray *)attributesForClassMethod:(NSString *)nameOf withType:(Class)requiredClassOfAttribute {
-    return [self attributesFor:nameOf inAttributeCreatorsDictionary:[self attributesFactoriesForClassMethods] withType:requiredClassOfAttribute];
 }
 
 + (NSArray *)attributesForField:(NSString *)nameOf withType:(Class)requiredClassOfAttribute {

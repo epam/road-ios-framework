@@ -78,7 +78,7 @@ NSRegularExpression *keyWordRegex = nil;
 }
 
 + (void)processKeyWord:(NSString *)keyWord withCodeParseState:(CodeParseState *)parseState {
-    if ([keyWord isEqualToString:@"ESD_ATTRIBUTE"]) {
+    if ([keyWord isEqualToString:@"SF_ATTRIBUTE"]) {
         [self processAttributeWithCodeParseState:parseState];
         return;
     }
@@ -137,7 +137,7 @@ NSRegularExpression *keyWordRegex = nil;
     [parsedClass.filesToImport addObjectsFromArray:parseState.currentImportFilesList];
     parseState.currentImportFilesList = [NSMutableArray array];
     
-    parseState.currentClass = parsedClass;
+    parseState.currentClass = parsedClass;    
 }
 
 + (void)processClassImplementationBeginWithCodeParseState:(CodeParseState *)parseState {
@@ -153,7 +153,7 @@ NSRegularExpression *keyWordRegex = nil;
     if (parseState.currentClass == nil) {
         return;
     }
-    
+
     [parseState.foundClassesList addClassModel:parseState.currentClass];
     parseState.currentClass = nil;
 }

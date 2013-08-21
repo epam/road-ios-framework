@@ -123,7 +123,7 @@
 }
 
 + (NSString *)listHolderName:(AnnotatedElementModel *)model {
-    NSString *result = [NSString stringWithFormat:@"esd_attributes_list_%@_%@_%@", [self modelHolderName:model], [self elementType], [self elementName:model]];
+    NSString *result = [NSString stringWithFormat:@"sf_attributes_list_%@_%@_%@", [self modelHolderName:model], [self elementType], [self elementName:model]];
     return result;
 }
 
@@ -134,7 +134,7 @@
 }
 
 + (NSString *)listCreatorName:(AnnotatedElementModel *)model {
-    NSString *result = [NSString stringWithFormat:@"esd_attributes_%@_%@_%@", [self modelHolderName:model], [self elementType], [self elementName:model]];
+    NSString *result = [NSString stringWithFormat:@"sf_attributes_%@_%@_%@", [self modelHolderName:model], [self elementType], [self elementName:model]];
     return result;
 }
 

@@ -1,6 +1,6 @@
 //
 //  Header.h
-//  ESDAttributes
+//  SFAttributes
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,11 +27,11 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef ESDAttributes_Header_h
-#define ESDAttributes_Header_h
+#ifndef SparkAttributesSupport_Header_h
+#define SparkAttributesSupport_Header_h
 
-#define ESD_ATTRIBUTE(AttrObject, ...)
+#define SF_ATTRIBUTE(AttrObject, ...)
 
 #endif
 
-#import "NSObject+ESDAttributes.h"
+#import "NSObject+SFAttributes.h"

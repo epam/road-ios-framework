@@ -1,5 +1,5 @@
 //
-//  AnnotatedClass.h
+//  NSObject+SFAttributes.h
 //  AttributesPrototype
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -28,31 +28,29 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <Foundation/Foundation.h>
-#import "ESDAttribute.h"
-#import "CustomESDAttribute.h"
 
-///Testing of class with attributes
-SF_ATTRIBUTE(ESDAttribute)
-SF_ATTRIBUTE(CustomESDAttribute, property1 = @"Text1")
-@interface SecondAnnotatedClass : NSObject {
-    ///Testing of field with attributes
-    SF_ATTRIBUTE(ESDAttribute)
-    NSObject* _someField;
-}
+@interface NSObject (SFAttributes)
 
-///Testing of method with attributes
-SF_ATTRIBUTE(ESDAttribute)
-SF_ATTRIBUTE(CustomESDAttribute, property1 = @"Text1", property2 = @"Text2")
-- (void)viewDidLoad;
+#pragma mark - Attributes API
 
-///Testing of method with attributes
-///@param param1 Some parameter
-SF_ATTRIBUTE(ESDAttribute)
-- (void)viewDidLoad:(BOOL)param1;
++ (NSInvocation *)invocationForSelector:(SEL)selector;
++ (NSMutableDictionary *)mutableAttributesFactoriesFrom:(NSDictionary *)attributesFactories;
 
-///Testing of property with attributes
-SF_ATTRIBUTE(ESDAttribute)
-SF_ATTRIBUTE(CustomESDAttribute, property2 = @"Text2", intProperty = (2+2)*2)
-@property (strong, nonatomic) UIWindow *window;
++ (NSArray *)attributesForInstanceMethod:(NSString *)nameOf withType:(Class)requiredClassOfAttribute;
++ (NSArray *)attributesForProperty:(NSString *)nameOf withType:(Class)requiredClassOfAttribute;
++ (NSArray *)attributesForField:(NSString *)nameOf withType:(Class)requiredClassOfAttribute;
++ (NSArray *)attributesForClass;
+
+#pragma mark - Attributes API stubs
+
+//will be overridden by annotated class
+
++ (NSDictionary *)attributesFactoriesForInstanceMethods;
++ (NSDictionary *)attributesFactoriesForProperties;
++ (NSDictionary *)attributesFactoriesForClassProperties;
++ (NSDictionary *)attributesFactoriesForFields;
+
+#pragma mark -
+
 
 @end
