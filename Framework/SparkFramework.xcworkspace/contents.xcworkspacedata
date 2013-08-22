@@ -4,4 +4,7 @@
    <FileRef
       location = "group:SparkAttribute/SparkAttribute.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:SparkLogger/SparkLogger.xcodeproj">
+   </FileRef>
 </Workspace>
