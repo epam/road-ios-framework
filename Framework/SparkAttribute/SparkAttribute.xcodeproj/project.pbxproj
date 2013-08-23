@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		5AD1FC48176603AC00E67BC4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD1FC47176603AC00E67BC4 /* Cocoa.framework */; };
 		78DDB7CE1647FF0200E7E92F /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78DDB7CD1647FF0200E7E92F /* SenTestingKit.framework */; };
-		8DE377EA17C76B2200F30026 /* AnnotatedClassTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE377E617C76B2200F30026 /* AnnotatedClassTest.m */; };
+		8DE377EA17C76B2200F30026 /* AttributesAPITest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE377E617C76B2200F30026 /* AttributesAPITest.m */; };
 		8DE377F617C76CAA00F30026 /* libSparkAttribute.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 789669DA15CBD1CD003D4AFC /* libSparkAttribute.a */; };
 		8DE3780817C76ED500F30026 /* AnnotatedClass+SFAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE377FE17C76ED500F30026 /* AnnotatedClass+SFAttributes.m */; };
 		8DE3780917C76ED500F30026 /* AnnotatedClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3780017C76ED500F30026 /* AnnotatedClass.m */; };
@@ -56,8 +56,8 @@
 		78DDB7CD1647FF0200E7E92F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		78DDB7D51647FF0200E7E92F /* SparkAttributeTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SparkAttributeTest-Info.plist"; sourceTree = "<group>"; };
 		78DDB7DC1647FF0200E7E92F /* SparkAttributeTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SparkAttributeTest-Prefix.pch"; sourceTree = "<group>"; };
-		8DE377E517C76B2200F30026 /* AnnotatedClassTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnnotatedClassTest.h; path = SparkAttributeTest/AnnotatedClassTest.h; sourceTree = SOURCE_ROOT; };
-		8DE377E617C76B2200F30026 /* AnnotatedClassTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnnotatedClassTest.m; path = SparkAttributeTest/AnnotatedClassTest.m; sourceTree = SOURCE_ROOT; };
+		8DE377E517C76B2200F30026 /* AttributesAPITest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttributesAPITest.h; path = SparkAttributeTest/AttributesAPITest.h; sourceTree = SOURCE_ROOT; };
+		8DE377E617C76B2200F30026 /* AttributesAPITest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttributesAPITest.m; path = SparkAttributeTest/AttributesAPITest.m; sourceTree = SOURCE_ROOT; };
 		8DE377FE17C76ED500F30026 /* AnnotatedClass+SFAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AnnotatedClass+SFAttributes.m"; sourceTree = "<group>"; };
 		8DE377FF17C76ED500F30026 /* AnnotatedClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnotatedClass.h; sourceTree = "<group>"; };
 		8DE3780017C76ED500F30026 /* AnnotatedClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotatedClass.m; sourceTree = "<group>"; };
@@ -197,8 +197,8 @@
 			isa = PBXGroup;
 			children = (
 				8DE377FD17C76ED500F30026 /* TestData */,
-				8DE377E517C76B2200F30026 /* AnnotatedClassTest.h */,
-				8DE377E617C76B2200F30026 /* AnnotatedClassTest.m */,
+				8DE377E517C76B2200F30026 /* AttributesAPITest.h */,
+				8DE377E617C76B2200F30026 /* AttributesAPITest.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -392,7 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DF6C8D217C474AD00F829E8 /* NSObject+SFAttributes.m in Sources */,
-				8DE377EA17C76B2200F30026 /* AnnotatedClassTest.m in Sources */,
+				8DE377EA17C76B2200F30026 /* AttributesAPITest.m in Sources */,
 				8DE3780817C76ED500F30026 /* AnnotatedClass+SFAttributes.m in Sources */,
 				8DE3780917C76ED500F30026 /* AnnotatedClass.m in Sources */,
 				8DE3780A17C76ED500F30026 /* CustomSFTestAttribute.m in Sources */,

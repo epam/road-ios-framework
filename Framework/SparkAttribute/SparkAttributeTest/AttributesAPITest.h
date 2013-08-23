@@ -29,6 +29,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface AnnotatedClassTest : SenTestCase
+@interface AttributesAPITest : SenTestCase
 
 @end

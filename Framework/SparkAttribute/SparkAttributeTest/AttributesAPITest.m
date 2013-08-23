@@ -27,17 +27,17 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "AnnotatedClassTest.h"
+#import "AttributesAPITest.h"
 #import "AnnotatedClass.h"
 #import "SecondAnnotatedClass.h"
 
-@interface AnnotatedClassTest() {
+@interface AttributesAPITest() {
     AnnotatedClass *_testObject;
 }
 
 @end
 
-@implementation AnnotatedClassTest
+@implementation AttributesAPITest
 
 - (void)setUp
 {
