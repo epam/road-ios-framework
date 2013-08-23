@@ -1,6 +1,6 @@
 //
-//  NSObject+SFAttributes.h
-//  AttributesPrototype
+//  SparkSingletonDefinition.h
+//  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,30 +27,44 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Foundation/Foundation.h>
+#define SPARK_DECLARE_SINGLETON_FOR_CLASS_WITH_ACCESSOR(classname, accessorMethodName) \
++ (classname *)accessorMethodName;\
+\
++(id) alloc __attribute__((unavailable("call mainDataSource instead")));\
++(id) new __attribute__((unavailable("call mainDataSource instead")));\
 
-@interface NSObject (SFAttributes)
-
-#pragma mark - Attributes API
-
-+ (NSInvocation *)invocationForSelector:(SEL)selector;
-+ (NSMutableDictionary *)mutableAttributesFactoriesFrom:(NSDictionary *)attributesFactories;
-
-+ (NSArray *)attributesForInstanceMethod:(NSString *)instanceMethodName withType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForProperty:(NSString *)propertyName withType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForField:(NSString *)fieldName withType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForClass;
-
-#pragma mark - Attributes API stubs
-
-//will be overridden by annotated class
-
-+ (NSDictionary *)attributesFactoriesForInstanceMethods;
-+ (NSDictionary *)attributesFactoriesForProperties;
-+ (NSDictionary *)attributesFactoriesForClassProperties;
-+ (NSDictionary *)attributesFactoriesForFields;
-
-#pragma mark -
-
-
-@end
+#define SPARK_SYNTHESIZE_SINGLETON_FOR_CLASS_WITH_ACCESSOR(classname, accessorMethodName, block) \
+\
+static classname *accessorMethodName##Instance = nil; \
+\
++ (classname *)accessorMethodName { \
+    static dispatch_once_t onceToken;\
+    dispatch_once(&onceToken, ^{\
+        accessorMethodName##Instance = [[super allocWithZone:nil] init];\
+    });\
+    return accessorMethodName##Instance;\
+}\
+\
+- (id)init {\
+    __block id result = self;\
+    static dispatch_once_t onceToken;\
+    dispatch_once(&onceToken, ^{\
+        result = [super init];\
+        if (self) {\
+            void(^initBlock)(id object) = block;\
+            if (initBlock != nil) {\
+                initBlock(self);\
+            }\
+        }\
+    });\
+    self = result;\
+    return self;\
+}\
+\
++ (id)allocWithZone:(NSZone *)zone { \
+    return [self accessorMethodName]; \
+} \
+\
+- (id)copyWithZone:(NSZone *)zone { \
+    return self; \
+} \

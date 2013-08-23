@@ -1,6 +1,6 @@
 //
-//  NSObject+SFAttributes.h
-//  AttributesPrototype
+//  NSInvocation+SparkExtension.m
+//  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,30 +27,21 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Foundation/Foundation.h>
+#import "NSInvocation+SparkExtension.h"
 
-@interface NSObject (SFAttributes)
+@implementation NSInvocation (SparkExtension)
 
-#pragma mark - Attributes API
-
-+ (NSInvocation *)invocationForSelector:(SEL)selector;
-+ (NSMutableDictionary *)mutableAttributesFactoriesFrom:(NSDictionary *)attributesFactories;
-
-+ (NSArray *)attributesForInstanceMethod:(NSString *)instanceMethodName withType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForProperty:(NSString *)propertyName withType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForField:(NSString *)fieldName withType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForClass;
-
-#pragma mark - Attributes API stubs
-
-//will be overridden by annotated class
-
-+ (NSDictionary *)attributesFactoriesForInstanceMethods;
-+ (NSDictionary *)attributesFactoriesForProperties;
-+ (NSDictionary *)attributesFactoriesForClassProperties;
-+ (NSDictionary *)attributesFactoriesForFields;
-
-#pragma mark -
-
++ (NSInvocation *)invocationForSelector:(SEL)selector target:(id)target  {
+    NSMethodSignature *methodSig = [target methodSignatureForSelector:selector];
+    if (methodSig == nil) {
+        return nil;
+    }
+    
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSig];
+    [invocation setSelector:selector];
+    [invocation setTarget:target];
+    
+    return invocation;
+}
 
 @end
