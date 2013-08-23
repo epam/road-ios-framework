@@ -16,6 +16,8 @@
 		8DF6C8D117C474AD00F829E8 /* NSObject+SFAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF6C8CE17C474AD00F829E8 /* NSObject+SFAttributes.m */; };
 		8DF6C8D217C474AD00F829E8 /* NSObject+SFAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF6C8CE17C474AD00F829E8 /* NSObject+SFAttributes.m */; };
 		9FA9F50E15F63D6B00FDE9E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FA9F50C15F63D6B00FDE9E0 /* InfoPlist.strings */; };
+		D7D587AE17C634C60081EC7C /* SparkAttributesSupport.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8DF6C8CB17C474A100F829E8 /* SparkAttributesSupport.h */; };
+		D7D587AF17C634D10081EC7C /* NSObject+SFAttributes.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8DF6C8CD17C474AD00F829E8 /* NSObject+SFAttributes.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,8 @@
 			dstPath = include/Spark;
 			dstSubfolderSpec = 16;
 			files = (
+				D7D587AF17C634D10081EC7C /* NSObject+SFAttributes.h in Copy Files */,
+				D7D587AE17C634C60081EC7C /* SparkAttributesSupport.h in Copy Files */,
 			);
 			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
