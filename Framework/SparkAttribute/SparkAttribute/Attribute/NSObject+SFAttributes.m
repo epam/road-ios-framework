@@ -74,7 +74,7 @@
 }
 
 + (NSArray *)attributesFor:(NSString *)annotatedElementName inAttributeCreatorsDictionary:(NSDictionary *)attributeCreatorsDictionary withType:(Class)requiredClassOfAttribute {
-    assert(annotatedElementName != nil && [annotatedElementName length] > 0);
+    assert([annotatedElementName length] > 0);
     
     if (attributeCreatorsDictionary == nil) {
         return nil;
@@ -88,7 +88,11 @@
     NSArray *result = nil;
     
     [attributeCreatorValueInvocation invoke];
-    [attributeCreatorValueInvocation getReturnValue:&result];   
+    
+    //doesn't increment retains counter of object of result. (using of weak references decreases performance 40 times.)
+    [attributeCreatorValueInvocation getReturnValue:&result];
+    
+    //so we need to increment retains counter manually
     CFBridgingRetain(result);
     
     return [self attributesWithType:requiredClassOfAttribute from:result];
