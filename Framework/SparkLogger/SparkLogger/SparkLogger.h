@@ -30,43 +30,43 @@
 #ifndef SparkLogger_SparkLogger_h
 #define SparkLogger_SparkLogger_h
 
-#import "ESDLogging.h"
-#import "ESDLogger.h"
-#import "ESDLogMessage.h"
-#import "ESDLogWriter.h"
-#import "ESDConsoleLogWriter.h"
-#import "ESDFileLogWriter.h"
-#import "ESDNetLogWriter.h"
-#import "ESDLogFormatter.h"
-#import "ESDLogBlockFormatter.h"
-#import "ESDLogPlainFormatter.h"
-#import "ESDLogFilter.h"
-#import "ESDLoggerWebServicePath.h"
-#import "ESDLogMessageWrapper.h"
+#import "SFLogging.h"
+#import "SFLogger.h"
+#import "SFLogMessage.h"
+#import "SFLogWriter.h"
+#import "SFConsoleLogWriter.h"
+#import "SFFileLogWriter.h"
+#import "SFNetLogWriter.h"
+#import "SFLogFormatter.h"
+#import "SFLogBlockFormatter.h"
+#import "SFLogPlainFormatter.h"
+#import "SFLogFilter.h"
+#import "SFLoggerWebServicePath.h"
+#import "SFLogMessageWrapper.h"
 
 
 #warning all macroses should be uncommented after fix for https://jira.epam.com/jira/browse/IOSAA-292
 
-#define ESDLogInternalError(...) \
-    [[[ESDServiceProvider sharedProvider] logger] logInternalErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
+#define SFLogInternalError(...) \
+    [[[SFServiceProvider sharedProvider] logger] logInternalErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
 
 
-#define ESDLogInfo(...) \
-        [[[ESDServiceProvider sharedProvider] logger] logInfoMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]];
-#define ESDLogDebug(...) \
-        [[[ESDServiceProvider sharedProvider] logger] logDebugMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
-#define ESDLogWarning(...) \
-        [[[ESDServiceProvider sharedProvider] logger] logWarningMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
-#define ESDLogError(...) \
-        [[[ESDServiceProvider sharedProvider] logger] logErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
+#define SFLogInfo(...) \
+        [[[SFServiceProvider sharedProvider] logger] logInfoMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]];
+#define SFLogDebug(...) \
+        [[[SFServiceProvider sharedProvider] logger] logDebugMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
+#define SFLogWarning(...) \
+        [[[SFServiceProvider sharedProvider] logger] logWarningMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
+#define SFLogError(...) \
+        [[[SFServiceProvider sharedProvider] logger] logErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
 
-#define ESDLogTypedInfo(__type__, ...) \
-        [[[ESDServiceProvider sharedProvider] logger] logInfoMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
-#define ESDLogTypedDebug(__type__, ...) \
-        [[[ESDServiceProvider sharedProvider] logger] logDebugMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
-#define ESDLogTypedWarning(__type__, ...) \
-        [[[ESDServiceProvider sharedProvider] logger] logWarningMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
-#define ESDLogTypedError(__type__, ...) \
-        [[[ESDServiceProvider sharedProvider] logger] logErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
+#define SFLogTypedInfo(__type__, ...) \
+        [[[SFServiceProvider sharedProvider] logger] logInfoMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
+#define SFLogTypedDebug(__type__, ...) \
+        [[[SFServiceProvider sharedProvider] logger] logDebugMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
+#define SFLogTypedWarning(__type__, ...) \
+        [[[SFServiceProvider sharedProvider] logger] logWarningMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
+#define SFLogTypedError(__type__, ...) \
+        [[[SFServiceProvider sharedProvider] logger] logErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
 
 #endif

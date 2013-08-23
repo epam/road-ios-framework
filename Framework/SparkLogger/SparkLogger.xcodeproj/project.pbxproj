@@ -7,39 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7837BF2816C4E4EA0063A026 /* ESDLogMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7837BF2716C4E4EA0063A026 /* ESDLogMessage.m */; };
-		7837BF3216C4EA920063A026 /* ESDLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 7837BF3116C4EA920063A026 /* ESDLogger.m */; };
-		7837BF3516C4ED140063A026 /* ESDLogWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7837BF3416C4ED140063A026 /* ESDLogWriter.m */; };
-		7837BF3816C4ED980063A026 /* ESDLogFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7837BF3716C4ED980063A026 /* ESDLogFilter.m */; };
-		7837BF3B16C4EDA30063A026 /* ESDLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7837BF3A16C4EDA30063A026 /* ESDLogFormatter.m */; };
-		7837BF3E16C4F1390063A026 /* ESDLogBlockFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7837BF3D16C4F1390063A026 /* ESDLogBlockFormatter.m */; };
-		7837BF4116C4F2BD0063A026 /* ESDLogPlainFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7837BF4016C4F2BD0063A026 /* ESDLogPlainFormatter.m */; };
-		7837BF4416C4F5040063A026 /* ESDConsoleLogWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7837BF4316C4F5040063A026 /* ESDConsoleLogWriter.m */; };
-		7837BF4716C4F9CB0063A026 /* ESDFileLogWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7837BF4616C4F9CB0063A026 /* ESDFileLogWriter.m */; };
+		7837BF2816C4E4EA0063A026 /* SFLogMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7837BF2716C4E4EA0063A026 /* SFLogMessage.m */; };
+		7837BF3216C4EA920063A026 /* SFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 7837BF3116C4EA920063A026 /* SFLogger.m */; };
+		7837BF3516C4ED140063A026 /* SFLogWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7837BF3416C4ED140063A026 /* SFLogWriter.m */; };
+		7837BF3816C4ED980063A026 /* SFLogFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7837BF3716C4ED980063A026 /* SFLogFilter.m */; };
+		7837BF3B16C4EDA30063A026 /* SFLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7837BF3A16C4EDA30063A026 /* SFLogFormatter.m */; };
+		7837BF3E16C4F1390063A026 /* SFLogBlockFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7837BF3D16C4F1390063A026 /* SFLogBlockFormatter.m */; };
+		7837BF4116C4F2BD0063A026 /* SFLogPlainFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7837BF4016C4F2BD0063A026 /* SFLogPlainFormatter.m */; };
+		7837BF4416C4F5040063A026 /* SFConsoleLogWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7837BF4316C4F5040063A026 /* SFConsoleLogWriter.m */; };
+		7837BF4716C4F9CB0063A026 /* SFFileLogWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7837BF4616C4F9CB0063A026 /* SFFileLogWriter.m */; };
 		789AAE4816C4E43900FF7FB0 /* SparkLogger.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 789AAE4716C4E43100FF7FB0 /* SparkLogger.h */; };
-		78B1BE9516E7711A009AD4EF /* ESDNetLogWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B1BE9416E7711A009AD4EF /* ESDNetLogWriter.m */; };
-		78B1BEA016E7721A009AD4EF /* ESDConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B1BE9816E7721A009AD4EF /* ESDConnection.m */; };
-		78B1BEA116E7721A009AD4EF /* ESDLogMessageWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B1BE9B16E7721A009AD4EF /* ESDLogMessageWrapper.m */; };
-		78B1BEA216E7721A009AD4EF /* ESDStreamDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B1BE9D16E7721A009AD4EF /* ESDStreamDelegate.m */; };
-		78B1BEA316E7721A009AD4EF /* ESDStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B1BE9F16E7721A009AD4EF /* ESDStreamWriter.m */; };
-		838844EE1760DDFA0052973D /* ESDLoggerWebServicePath.m in Sources */ = {isa = PBXBuildFile; fileRef = 838844ED1760DDFA0052973D /* ESDLoggerWebServicePath.m */; };
-		8388451C176210910052973D /* ESDLoggerWebServicePath.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 838844EC1760DDFA0052973D /* ESDLoggerWebServicePath.h */; };
-		CD4E844F16F7663F00618316 /* ESDConnection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B1BE9716E7721A009AD4EF /* ESDConnection.h */; };
-		CD4E845016F7663F00618316 /* ESDConnectionDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B1BE9916E7721A009AD4EF /* ESDConnectionDelegate.h */; };
-		CD4E845116F7663F00618316 /* ESDLogMessageWrapper.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B1BE9A16E7721A009AD4EF /* ESDLogMessageWrapper.h */; };
-		CD4E845216F7663F00618316 /* ESDStreamDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B1BE9C16E7721A009AD4EF /* ESDStreamDelegate.h */; };
-		CD4E845316F7663F00618316 /* ESDStreamWriter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B1BE9E16E7721A009AD4EF /* ESDStreamWriter.h */; };
-		CD4E845416F7663F00618316 /* ESDLogFilter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7837BF3616C4ED980063A026 /* ESDLogFilter.h */; };
-		CD4E845516F7663F00618316 /* ESDLogFormatter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7837BF3916C4EDA30063A026 /* ESDLogFormatter.h */; };
-		CD4E845616F7663F00618316 /* ESDLogBlockFormatter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7837BF3C16C4F1390063A026 /* ESDLogBlockFormatter.h */; };
-		CD4E845716F7663F00618316 /* ESDLogPlainFormatter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7837BF3F16C4F2BD0063A026 /* ESDLogPlainFormatter.h */; };
-		CD4E845816F7663F00618316 /* ESDLogWriter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7837BF3316C4ED140063A026 /* ESDLogWriter.h */; };
-		CD4E845916F7663F00618316 /* ESDConsoleLogWriter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7837BF4216C4F5030063A026 /* ESDConsoleLogWriter.h */; };
-		CD4E845A16F7663F00618316 /* ESDFileLogWriter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7837BF4516C4F9CB0063A026 /* ESDFileLogWriter.h */; };
-		CD4E845B16F7663F00618316 /* ESDNetLogWriter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B1BE9316E7711A009AD4EF /* ESDNetLogWriter.h */; };
-		CD4E845D16F7663F00618316 /* ESDLogger.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7837BF3016C4EA920063A026 /* ESDLogger.h */; };
-		CD4E845E16F7663F00618316 /* ESDLogging.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7837BF2516C4E4870063A026 /* ESDLogging.h */; };
-		CD4E845F16F7663F00618316 /* ESDLogMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7837BF2616C4E4EA0063A026 /* ESDLogMessage.h */; };
+		78B1BE9516E7711A009AD4EF /* SFNetLogWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B1BE9416E7711A009AD4EF /* SFNetLogWriter.m */; };
+		78B1BEA016E7721A009AD4EF /* SFConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B1BE9816E7721A009AD4EF /* SFConnection.m */; };
+		78B1BEA116E7721A009AD4EF /* SFLogMessageWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B1BE9B16E7721A009AD4EF /* SFLogMessageWrapper.m */; };
+		78B1BEA216E7721A009AD4EF /* SFStreamDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B1BE9D16E7721A009AD4EF /* SFStreamDelegate.m */; };
+		78B1BEA316E7721A009AD4EF /* SFStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B1BE9F16E7721A009AD4EF /* SFStreamWriter.m */; };
+		838844EE1760DDFA0052973D /* SFLoggerWebServicePath.m in Sources */ = {isa = PBXBuildFile; fileRef = 838844ED1760DDFA0052973D /* SFLoggerWebServicePath.m */; };
+		8388451C176210910052973D /* SFLoggerWebServicePath.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 838844EC1760DDFA0052973D /* SFLoggerWebServicePath.h */; };
+		CD4E844F16F7663F00618316 /* SFConnection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B1BE9716E7721A009AD4EF /* SFConnection.h */; };
+		CD4E845016F7663F00618316 /* SFConnectionDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B1BE9916E7721A009AD4EF /* SFConnectionDelegate.h */; };
+		CD4E845116F7663F00618316 /* SFLogMessageWrapper.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B1BE9A16E7721A009AD4EF /* SFLogMessageWrapper.h */; };
+		CD4E845216F7663F00618316 /* SFStreamDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B1BE9C16E7721A009AD4EF /* SFStreamDelegate.h */; };
+		CD4E845316F7663F00618316 /* SFStreamWriter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B1BE9E16E7721A009AD4EF /* SFStreamWriter.h */; };
+		CD4E845416F7663F00618316 /* SFLogFilter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7837BF3616C4ED980063A026 /* SFLogFilter.h */; };
+		CD4E845516F7663F00618316 /* SFLogFormatter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7837BF3916C4EDA30063A026 /* SFLogFormatter.h */; };
+		CD4E845616F7663F00618316 /* SFLogBlockFormatter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7837BF3C16C4F1390063A026 /* SFLogBlockFormatter.h */; };
+		CD4E845716F7663F00618316 /* SFLogPlainFormatter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7837BF3F16C4F2BD0063A026 /* SFLogPlainFormatter.h */; };
+		CD4E845816F7663F00618316 /* SFLogWriter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7837BF3316C4ED140063A026 /* SFLogWriter.h */; };
+		CD4E845916F7663F00618316 /* SFConsoleLogWriter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7837BF4216C4F5030063A026 /* SFConsoleLogWriter.h */; };
+		CD4E845A16F7663F00618316 /* SFFileLogWriter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7837BF4516C4F9CB0063A026 /* SFFileLogWriter.h */; };
+		CD4E845B16F7663F00618316 /* SFNetLogWriter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B1BE9316E7711A009AD4EF /* SFNetLogWriter.h */; };
+		CD4E845D16F7663F00618316 /* SFLogger.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7837BF3016C4EA920063A026 /* SFLogger.h */; };
+		CD4E845E16F7663F00618316 /* SFLogging.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7837BF2516C4E4870063A026 /* SFLogging.h */; };
+		CD4E845F16F7663F00618316 /* SFLogMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7837BF2616C4E4EA0063A026 /* SFLogMessage.h */; };
 		D7D587AD17C6341C0081EC7C /* SparkGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D587AC17C6341C0081EC7C /* SparkGeneratedAttribute.m */; };
 /* End PBXBuildFile section */
 
@@ -81,23 +81,23 @@
 			dstPath = include/Spark;
 			dstSubfolderSpec = 16;
 			files = (
-				8388451C176210910052973D /* ESDLoggerWebServicePath.h in CopyFiles */,
-				CD4E844F16F7663F00618316 /* ESDConnection.h in CopyFiles */,
-				CD4E845016F7663F00618316 /* ESDConnectionDelegate.h in CopyFiles */,
-				CD4E845116F7663F00618316 /* ESDLogMessageWrapper.h in CopyFiles */,
-				CD4E845216F7663F00618316 /* ESDStreamDelegate.h in CopyFiles */,
-				CD4E845316F7663F00618316 /* ESDStreamWriter.h in CopyFiles */,
-				CD4E845416F7663F00618316 /* ESDLogFilter.h in CopyFiles */,
-				CD4E845516F7663F00618316 /* ESDLogFormatter.h in CopyFiles */,
-				CD4E845616F7663F00618316 /* ESDLogBlockFormatter.h in CopyFiles */,
-				CD4E845716F7663F00618316 /* ESDLogPlainFormatter.h in CopyFiles */,
-				CD4E845816F7663F00618316 /* ESDLogWriter.h in CopyFiles */,
-				CD4E845916F7663F00618316 /* ESDConsoleLogWriter.h in CopyFiles */,
-				CD4E845A16F7663F00618316 /* ESDFileLogWriter.h in CopyFiles */,
-				CD4E845B16F7663F00618316 /* ESDNetLogWriter.h in CopyFiles */,
-				CD4E845D16F7663F00618316 /* ESDLogger.h in CopyFiles */,
-				CD4E845E16F7663F00618316 /* ESDLogging.h in CopyFiles */,
-				CD4E845F16F7663F00618316 /* ESDLogMessage.h in CopyFiles */,
+				8388451C176210910052973D /* SFLoggerWebServicePath.h in CopyFiles */,
+				CD4E844F16F7663F00618316 /* SFConnection.h in CopyFiles */,
+				CD4E845016F7663F00618316 /* SFConnectionDelegate.h in CopyFiles */,
+				CD4E845116F7663F00618316 /* SFLogMessageWrapper.h in CopyFiles */,
+				CD4E845216F7663F00618316 /* SFStreamDelegate.h in CopyFiles */,
+				CD4E845316F7663F00618316 /* SFStreamWriter.h in CopyFiles */,
+				CD4E845416F7663F00618316 /* SFLogFilter.h in CopyFiles */,
+				CD4E845516F7663F00618316 /* SFLogFormatter.h in CopyFiles */,
+				CD4E845616F7663F00618316 /* SFLogBlockFormatter.h in CopyFiles */,
+				CD4E845716F7663F00618316 /* SFLogPlainFormatter.h in CopyFiles */,
+				CD4E845816F7663F00618316 /* SFLogWriter.h in CopyFiles */,
+				CD4E845916F7663F00618316 /* SFConsoleLogWriter.h in CopyFiles */,
+				CD4E845A16F7663F00618316 /* SFFileLogWriter.h in CopyFiles */,
+				CD4E845B16F7663F00618316 /* SFNetLogWriter.h in CopyFiles */,
+				CD4E845D16F7663F00618316 /* SFLogger.h in CopyFiles */,
+				CD4E845E16F7663F00618316 /* SFLogging.h in CopyFiles */,
+				CD4E845F16F7663F00618316 /* SFLogMessage.h in CopyFiles */,
 				789AAE4816C4E43900FF7FB0 /* SparkLogger.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,44 +105,44 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7837BF2516C4E4870063A026 /* ESDLogging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESDLogging.h; sourceTree = "<group>"; };
-		7837BF2616C4E4EA0063A026 /* ESDLogMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDLogMessage.h; sourceTree = "<group>"; };
-		7837BF2716C4E4EA0063A026 /* ESDLogMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDLogMessage.m; sourceTree = "<group>"; };
-		7837BF3016C4EA920063A026 /* ESDLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDLogger.h; sourceTree = "<group>"; };
-		7837BF3116C4EA920063A026 /* ESDLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDLogger.m; sourceTree = "<group>"; };
-		7837BF3316C4ED140063A026 /* ESDLogWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDLogWriter.h; sourceTree = "<group>"; };
-		7837BF3416C4ED140063A026 /* ESDLogWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDLogWriter.m; sourceTree = "<group>"; };
-		7837BF3616C4ED980063A026 /* ESDLogFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDLogFilter.h; sourceTree = "<group>"; };
-		7837BF3716C4ED980063A026 /* ESDLogFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDLogFilter.m; sourceTree = "<group>"; };
-		7837BF3916C4EDA30063A026 /* ESDLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDLogFormatter.h; sourceTree = "<group>"; };
-		7837BF3A16C4EDA30063A026 /* ESDLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDLogFormatter.m; sourceTree = "<group>"; };
-		7837BF3C16C4F1390063A026 /* ESDLogBlockFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDLogBlockFormatter.h; sourceTree = "<group>"; };
-		7837BF3D16C4F1390063A026 /* ESDLogBlockFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDLogBlockFormatter.m; sourceTree = "<group>"; };
-		7837BF3F16C4F2BD0063A026 /* ESDLogPlainFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDLogPlainFormatter.h; sourceTree = "<group>"; };
-		7837BF4016C4F2BD0063A026 /* ESDLogPlainFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDLogPlainFormatter.m; sourceTree = "<group>"; };
-		7837BF4216C4F5030063A026 /* ESDConsoleLogWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDConsoleLogWriter.h; sourceTree = "<group>"; };
-		7837BF4316C4F5040063A026 /* ESDConsoleLogWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDConsoleLogWriter.m; sourceTree = "<group>"; };
-		7837BF4516C4F9CB0063A026 /* ESDFileLogWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDFileLogWriter.h; sourceTree = "<group>"; };
-		7837BF4616C4F9CB0063A026 /* ESDFileLogWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDFileLogWriter.m; sourceTree = "<group>"; };
+		7837BF2516C4E4870063A026 /* SFLogging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFLogging.h; sourceTree = "<group>"; };
+		7837BF2616C4E4EA0063A026 /* SFLogMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLogMessage.h; sourceTree = "<group>"; };
+		7837BF2716C4E4EA0063A026 /* SFLogMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLogMessage.m; sourceTree = "<group>"; };
+		7837BF3016C4EA920063A026 /* SFLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLogger.h; sourceTree = "<group>"; };
+		7837BF3116C4EA920063A026 /* SFLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLogger.m; sourceTree = "<group>"; };
+		7837BF3316C4ED140063A026 /* SFLogWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLogWriter.h; sourceTree = "<group>"; };
+		7837BF3416C4ED140063A026 /* SFLogWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLogWriter.m; sourceTree = "<group>"; };
+		7837BF3616C4ED980063A026 /* SFLogFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLogFilter.h; sourceTree = "<group>"; };
+		7837BF3716C4ED980063A026 /* SFLogFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLogFilter.m; sourceTree = "<group>"; };
+		7837BF3916C4EDA30063A026 /* SFLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLogFormatter.h; sourceTree = "<group>"; };
+		7837BF3A16C4EDA30063A026 /* SFLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLogFormatter.m; sourceTree = "<group>"; };
+		7837BF3C16C4F1390063A026 /* SFLogBlockFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLogBlockFormatter.h; sourceTree = "<group>"; };
+		7837BF3D16C4F1390063A026 /* SFLogBlockFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLogBlockFormatter.m; sourceTree = "<group>"; };
+		7837BF3F16C4F2BD0063A026 /* SFLogPlainFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLogPlainFormatter.h; sourceTree = "<group>"; };
+		7837BF4016C4F2BD0063A026 /* SFLogPlainFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLogPlainFormatter.m; sourceTree = "<group>"; };
+		7837BF4216C4F5030063A026 /* SFConsoleLogWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFConsoleLogWriter.h; sourceTree = "<group>"; };
+		7837BF4316C4F5040063A026 /* SFConsoleLogWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFConsoleLogWriter.m; sourceTree = "<group>"; };
+		7837BF4516C4F9CB0063A026 /* SFFileLogWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFFileLogWriter.h; sourceTree = "<group>"; };
+		7837BF4616C4F9CB0063A026 /* SFFileLogWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFFileLogWriter.m; sourceTree = "<group>"; };
 		789AAE3216C4E3FA00FF7FB0 /* libSparkLogger.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSparkLogger.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		789AAE3516C4E3FA00FF7FB0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		789AAE3916C4E3FA00FF7FB0 /* SparkLogger-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SparkLogger-Prefix.pch"; sourceTree = "<group>"; };
 		789AAE4716C4E43100FF7FB0 /* SparkLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SparkLogger.h; sourceTree = "<group>"; };
-		78B1BE9316E7711A009AD4EF /* ESDNetLogWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDNetLogWriter.h; sourceTree = "<group>"; };
-		78B1BE9416E7711A009AD4EF /* ESDNetLogWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDNetLogWriter.m; sourceTree = "<group>"; };
-		78B1BE9716E7721A009AD4EF /* ESDConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDConnection.h; sourceTree = "<group>"; };
-		78B1BE9816E7721A009AD4EF /* ESDConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDConnection.m; sourceTree = "<group>"; };
-		78B1BE9916E7721A009AD4EF /* ESDConnectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDConnectionDelegate.h; sourceTree = "<group>"; };
-		78B1BE9A16E7721A009AD4EF /* ESDLogMessageWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDLogMessageWrapper.h; sourceTree = "<group>"; };
-		78B1BE9B16E7721A009AD4EF /* ESDLogMessageWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDLogMessageWrapper.m; sourceTree = "<group>"; };
-		78B1BE9C16E7721A009AD4EF /* ESDStreamDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDStreamDelegate.h; sourceTree = "<group>"; };
-		78B1BE9D16E7721A009AD4EF /* ESDStreamDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDStreamDelegate.m; sourceTree = "<group>"; };
-		78B1BE9E16E7721A009AD4EF /* ESDStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDStreamWriter.h; sourceTree = "<group>"; };
-		78B1BE9F16E7721A009AD4EF /* ESDStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDStreamWriter.m; sourceTree = "<group>"; };
+		78B1BE9316E7711A009AD4EF /* SFNetLogWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFNetLogWriter.h; sourceTree = "<group>"; };
+		78B1BE9416E7711A009AD4EF /* SFNetLogWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFNetLogWriter.m; sourceTree = "<group>"; };
+		78B1BE9716E7721A009AD4EF /* SFConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFConnection.h; sourceTree = "<group>"; };
+		78B1BE9816E7721A009AD4EF /* SFConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFConnection.m; sourceTree = "<group>"; };
+		78B1BE9916E7721A009AD4EF /* SFConnectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFConnectionDelegate.h; sourceTree = "<group>"; };
+		78B1BE9A16E7721A009AD4EF /* SFLogMessageWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLogMessageWrapper.h; sourceTree = "<group>"; };
+		78B1BE9B16E7721A009AD4EF /* SFLogMessageWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLogMessageWrapper.m; sourceTree = "<group>"; };
+		78B1BE9C16E7721A009AD4EF /* SFStreamDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFStreamDelegate.h; sourceTree = "<group>"; };
+		78B1BE9D16E7721A009AD4EF /* SFStreamDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFStreamDelegate.m; sourceTree = "<group>"; };
+		78B1BE9E16E7721A009AD4EF /* SFStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFStreamWriter.h; sourceTree = "<group>"; };
+		78B1BE9F16E7721A009AD4EF /* SFStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFStreamWriter.m; sourceTree = "<group>"; };
 		78BCFF8C16D24ED600D23908 /* SparkAttribute.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkAttribute.xcodeproj; path = ../SparkAttribute/SparkAttribute.xcodeproj; sourceTree = "<group>"; };
 		78F95AFB16E9F1CF00E58C3B /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		838844EC1760DDFA0052973D /* ESDLoggerWebServicePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDLoggerWebServicePath.h; sourceTree = "<group>"; };
-		838844ED1760DDFA0052973D /* ESDLoggerWebServicePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDLoggerWebServicePath.m; sourceTree = "<group>"; };
+		838844EC1760DDFA0052973D /* SFLoggerWebServicePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLoggerWebServicePath.h; sourceTree = "<group>"; };
+		838844ED1760DDFA0052973D /* SFLoggerWebServicePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLoggerWebServicePath.m; sourceTree = "<group>"; };
 		D7D587AC17C6341C0081EC7C /* SparkGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparkGeneratedAttribute.m; path = SparkGeneratedAttributes/SparkGeneratedAttribute.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -170,8 +170,8 @@
 		7837BF2916C4E9E30063A026 /* LogFilters */ = {
 			isa = PBXGroup;
 			children = (
-				7837BF3616C4ED980063A026 /* ESDLogFilter.h */,
-				7837BF3716C4ED980063A026 /* ESDLogFilter.m */,
+				7837BF3616C4ED980063A026 /* SFLogFilter.h */,
+				7837BF3716C4ED980063A026 /* SFLogFilter.m */,
 			);
 			path = LogFilters;
 			sourceTree = "<group>";
@@ -179,12 +179,12 @@
 		7837BF2A16C4E9E30063A026 /* LogFormatters */ = {
 			isa = PBXGroup;
 			children = (
-				7837BF3916C4EDA30063A026 /* ESDLogFormatter.h */,
-				7837BF3A16C4EDA30063A026 /* ESDLogFormatter.m */,
-				7837BF3C16C4F1390063A026 /* ESDLogBlockFormatter.h */,
-				7837BF3D16C4F1390063A026 /* ESDLogBlockFormatter.m */,
-				7837BF3F16C4F2BD0063A026 /* ESDLogPlainFormatter.h */,
-				7837BF4016C4F2BD0063A026 /* ESDLogPlainFormatter.m */,
+				7837BF3916C4EDA30063A026 /* SFLogFormatter.h */,
+				7837BF3A16C4EDA30063A026 /* SFLogFormatter.m */,
+				7837BF3C16C4F1390063A026 /* SFLogBlockFormatter.h */,
+				7837BF3D16C4F1390063A026 /* SFLogBlockFormatter.m */,
+				7837BF3F16C4F2BD0063A026 /* SFLogPlainFormatter.h */,
+				7837BF4016C4F2BD0063A026 /* SFLogPlainFormatter.m */,
 			);
 			path = LogFormatters;
 			sourceTree = "<group>";
@@ -192,8 +192,8 @@
 		7837BF2B16C4E9E30063A026 /* LogService */ = {
 			isa = PBXGroup;
 			children = (
-				7837BF3016C4EA920063A026 /* ESDLogger.h */,
-				7837BF3116C4EA920063A026 /* ESDLogger.m */,
+				7837BF3016C4EA920063A026 /* SFLogger.h */,
+				7837BF3116C4EA920063A026 /* SFLogger.m */,
 			);
 			path = LogService;
 			sourceTree = "<group>";
@@ -204,14 +204,14 @@
 				78B1BE9616E7721A009AD4EF /* NetworkLogging */,
 				7837BF2916C4E9E30063A026 /* LogFilters */,
 				7837BF2A16C4E9E30063A026 /* LogFormatters */,
-				7837BF3316C4ED140063A026 /* ESDLogWriter.h */,
-				7837BF3416C4ED140063A026 /* ESDLogWriter.m */,
-				7837BF4216C4F5030063A026 /* ESDConsoleLogWriter.h */,
-				7837BF4316C4F5040063A026 /* ESDConsoleLogWriter.m */,
-				7837BF4516C4F9CB0063A026 /* ESDFileLogWriter.h */,
-				7837BF4616C4F9CB0063A026 /* ESDFileLogWriter.m */,
-				78B1BE9316E7711A009AD4EF /* ESDNetLogWriter.h */,
-				78B1BE9416E7711A009AD4EF /* ESDNetLogWriter.m */,
+				7837BF3316C4ED140063A026 /* SFLogWriter.h */,
+				7837BF3416C4ED140063A026 /* SFLogWriter.m */,
+				7837BF4216C4F5030063A026 /* SFConsoleLogWriter.h */,
+				7837BF4316C4F5040063A026 /* SFConsoleLogWriter.m */,
+				7837BF4516C4F9CB0063A026 /* SFFileLogWriter.h */,
+				7837BF4616C4F9CB0063A026 /* SFFileLogWriter.m */,
+				78B1BE9316E7711A009AD4EF /* SFNetLogWriter.h */,
+				78B1BE9416E7711A009AD4EF /* SFNetLogWriter.m */,
 			);
 			path = LogWriters;
 			sourceTree = "<group>";
@@ -268,9 +268,9 @@
 				838844EB1760DCF10052973D /* Attributes */,
 				7837BF2C16C4E9E30063A026 /* LogWriters */,
 				7837BF2B16C4E9E30063A026 /* LogService */,
-				7837BF2516C4E4870063A026 /* ESDLogging.h */,
-				7837BF2616C4E4EA0063A026 /* ESDLogMessage.h */,
-				7837BF2716C4E4EA0063A026 /* ESDLogMessage.m */,
+				7837BF2516C4E4870063A026 /* SFLogging.h */,
+				7837BF2616C4E4EA0063A026 /* SFLogMessage.h */,
+				7837BF2716C4E4EA0063A026 /* SFLogMessage.m */,
 			);
 			path = Logger;
 			sourceTree = "<group>";
@@ -278,15 +278,15 @@
 		78B1BE9616E7721A009AD4EF /* NetworkLogging */ = {
 			isa = PBXGroup;
 			children = (
-				78B1BE9716E7721A009AD4EF /* ESDConnection.h */,
-				78B1BE9816E7721A009AD4EF /* ESDConnection.m */,
-				78B1BE9916E7721A009AD4EF /* ESDConnectionDelegate.h */,
-				78B1BE9A16E7721A009AD4EF /* ESDLogMessageWrapper.h */,
-				78B1BE9B16E7721A009AD4EF /* ESDLogMessageWrapper.m */,
-				78B1BE9C16E7721A009AD4EF /* ESDStreamDelegate.h */,
-				78B1BE9D16E7721A009AD4EF /* ESDStreamDelegate.m */,
-				78B1BE9E16E7721A009AD4EF /* ESDStreamWriter.h */,
-				78B1BE9F16E7721A009AD4EF /* ESDStreamWriter.m */,
+				78B1BE9716E7721A009AD4EF /* SFConnection.h */,
+				78B1BE9816E7721A009AD4EF /* SFConnection.m */,
+				78B1BE9916E7721A009AD4EF /* SFConnectionDelegate.h */,
+				78B1BE9A16E7721A009AD4EF /* SFLogMessageWrapper.h */,
+				78B1BE9B16E7721A009AD4EF /* SFLogMessageWrapper.m */,
+				78B1BE9C16E7721A009AD4EF /* SFStreamDelegate.h */,
+				78B1BE9D16E7721A009AD4EF /* SFStreamDelegate.m */,
+				78B1BE9E16E7721A009AD4EF /* SFStreamWriter.h */,
+				78B1BE9F16E7721A009AD4EF /* SFStreamWriter.m */,
 			);
 			path = NetworkLogging;
 			sourceTree = "<group>";
@@ -294,8 +294,8 @@
 		838844EB1760DCF10052973D /* Attributes */ = {
 			isa = PBXGroup;
 			children = (
-				838844EC1760DDFA0052973D /* ESDLoggerWebServicePath.h */,
-				838844ED1760DDFA0052973D /* ESDLoggerWebServicePath.m */,
+				838844EC1760DDFA0052973D /* SFLoggerWebServicePath.h */,
+				838844ED1760DDFA0052973D /* SFLoggerWebServicePath.m */,
 			);
 			path = Attributes;
 			sourceTree = "<group>";
@@ -399,21 +399,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7837BF2816C4E4EA0063A026 /* ESDLogMessage.m in Sources */,
-				7837BF3216C4EA920063A026 /* ESDLogger.m in Sources */,
-				7837BF3516C4ED140063A026 /* ESDLogWriter.m in Sources */,
-				7837BF3816C4ED980063A026 /* ESDLogFilter.m in Sources */,
-				7837BF3B16C4EDA30063A026 /* ESDLogFormatter.m in Sources */,
-				7837BF3E16C4F1390063A026 /* ESDLogBlockFormatter.m in Sources */,
-				7837BF4116C4F2BD0063A026 /* ESDLogPlainFormatter.m in Sources */,
-				7837BF4416C4F5040063A026 /* ESDConsoleLogWriter.m in Sources */,
-				7837BF4716C4F9CB0063A026 /* ESDFileLogWriter.m in Sources */,
-				78B1BE9516E7711A009AD4EF /* ESDNetLogWriter.m in Sources */,
-				78B1BEA016E7721A009AD4EF /* ESDConnection.m in Sources */,
-				78B1BEA116E7721A009AD4EF /* ESDLogMessageWrapper.m in Sources */,
-				78B1BEA216E7721A009AD4EF /* ESDStreamDelegate.m in Sources */,
-				78B1BEA316E7721A009AD4EF /* ESDStreamWriter.m in Sources */,
-				838844EE1760DDFA0052973D /* ESDLoggerWebServicePath.m in Sources */,
+				7837BF2816C4E4EA0063A026 /* SFLogMessage.m in Sources */,
+				7837BF3216C4EA920063A026 /* SFLogger.m in Sources */,
+				7837BF3516C4ED140063A026 /* SFLogWriter.m in Sources */,
+				7837BF3816C4ED980063A026 /* SFLogFilter.m in Sources */,
+				7837BF3B16C4EDA30063A026 /* SFLogFormatter.m in Sources */,
+				7837BF3E16C4F1390063A026 /* SFLogBlockFormatter.m in Sources */,
+				7837BF4116C4F2BD0063A026 /* SFLogPlainFormatter.m in Sources */,
+				7837BF4416C4F5040063A026 /* SFConsoleLogWriter.m in Sources */,
+				7837BF4716C4F9CB0063A026 /* SFFileLogWriter.m in Sources */,
+				78B1BE9516E7711A009AD4EF /* SFNetLogWriter.m in Sources */,
+				78B1BEA016E7721A009AD4EF /* SFConnection.m in Sources */,
+				78B1BEA116E7721A009AD4EF /* SFLogMessageWrapper.m in Sources */,
+				78B1BEA216E7721A009AD4EF /* SFStreamDelegate.m in Sources */,
+				78B1BEA316E7721A009AD4EF /* SFStreamWriter.m in Sources */,
+				838844EE1760DDFA0052973D /* SFLoggerWebServicePath.m in Sources */,
 				D7D587AD17C6341C0081EC7C /* SparkGeneratedAttribute.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
