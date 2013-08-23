@@ -144,7 +144,6 @@
 			children = (
 				8DF6C8CB17C474A100F829E8 /* SparkAttributesSupport.h */,
 				78B13C4C169F223000869F3C /* Attribute */,
-				78B13C53169F223000869F3C /* Categories */,
 				789669E015CBD1CD003D4AFC /* Supporting Files */,
 			);
 			path = SparkAttribute;
@@ -165,13 +164,6 @@
 				8DF6C8CE17C474AD00F829E8 /* NSObject+SFAttributes.m */,
 			);
 			path = Attribute;
-			sourceTree = "<group>";
-		};
-		78B13C53169F223000869F3C /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Categories;
 			sourceTree = "<group>";
 		};
 		78DDB7D31647FF0200E7E92F /* SparkAttributeTest */ = {
