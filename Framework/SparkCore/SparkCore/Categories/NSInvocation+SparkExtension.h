@@ -10,4 +10,6 @@
 
 @interface NSInvocation (SparkExtension)
 
++ (NSInvocation *)invocationForSelector:(SEL)selector target:(id)target;
+
 @end

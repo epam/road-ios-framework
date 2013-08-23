@@ -10,4 +10,17 @@
 
 @implementation NSInvocation (SparkExtension)
 
++ (NSInvocation *)invocationForSelector:(SEL)selector target:(id)target  {
+    NSMethodSignature *methodSig = [target methodSignatureForSelector:selector];
+    if (methodSig == nil) {
+        return nil;
+    }
+    
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSig];
+    [invocation setSelector:selector];
+    [invocation setTarget:target];
+    
+    return invocation;
+}
+
 @end

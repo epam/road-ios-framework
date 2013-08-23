@@ -82,6 +82,7 @@
 		78CBA91C16C3D36D00DAC9BB /* SparkReflection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78CBA91216C3D33A00DAC9BB /* SparkReflection.framework */; };
 		8DE3785217C784D000F30026 /* NSInvocation+SparkExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3785117C784D000F30026 /* NSInvocation+SparkExtension.m */; };
 		8DE3785317C784D000F30026 /* NSInvocation+SparkExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3785117C784D000F30026 /* NSInvocation+SparkExtension.m */; };
+		8DE3785D17C7869600F30026 /* NSInvocation+SparkExtension.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DE3785017C784D000F30026 /* NSInvocation+SparkExtension.h */; };
 		E513EA2D179022BC0058F2EA /* SparkSingletonDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = E513EA2C179022BC0058F2EA /* SparkSingletonDefinition.h */; };
 		E5DED7B51790234900AB0250 /* SparkSingletonDefinition.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E513EA2C179022BC0058F2EA /* SparkSingletonDefinition.h */; };
 /* End PBXBuildFile section */
@@ -138,6 +139,7 @@
 			dstPath = include/Spark;
 			dstSubfolderSpec = 16;
 			files = (
+				8DE3785D17C7869600F30026 /* NSInvocation+SparkExtension.h in CopyFiles */,
 				E5DED7B51790234900AB0250 /* SparkSingletonDefinition.h in CopyFiles */,
 				78180F0816C3D0A300B4AA31 /* SparkCore.h in CopyFiles */,
 				78180F0916C3D0A800B4AA31 /* NSArray+EmptyArrayChecks.h in CopyFiles */,

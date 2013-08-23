@@ -28,6 +28,7 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "NSObject+SFAttributes.h"
+#import <Spark/NSInvocation+SparkExtension.h>
 
 @implementation NSObject (SFAttributes)
 
@@ -43,6 +44,10 @@
 
 #pragma mark - Attributes API
 
++ (NSInvocation *)invocationForSelector:(SEL)selector {
+    return [NSInvocation invocationForSelector:selector target:self];
+}
+
 + (NSMutableDictionary *)mutableAttributesFactoriesFrom:(NSDictionary *)attributesFactories {
     
     if (attributesFactories == nil) {
@@ -54,19 +59,6 @@
     }
     
     return [NSMutableDictionary dictionaryWithDictionary:(NSDictionary *)attributesFactories];
-}
-
-+ (NSInvocation *)invocationForSelector:(SEL)selector {
-    NSMethodSignature *methodSig = [self methodSignatureForSelector:selector];
-    if (methodSig == nil) {
-        return nil;
-    }
-    
-    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSig];
-    [invocation setSelector:selector];
-    [invocation setTarget:self];
-    
-    return invocation;
 }
 
 + (NSArray *)attributesFor:(NSString *)annotatedElementName inAttributeCreatorsDictionary:(NSDictionary *)attributeCreatorsDictionary {   
