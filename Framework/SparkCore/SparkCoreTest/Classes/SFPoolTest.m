@@ -1,6 +1,6 @@
 //
-//  NSObject+MemberVariableReflection.h
-//  SparkReflection
+//  SFPoolTest.m
+//  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -28,39 +28,42 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-#import <Foundation/Foundation.h>
+#import "SFPoolTest.h"
+#import "SFObjectPool.h"
+#import "SFPoolObject.h"
 
-@class SFIvarInfo;
+@implementation SFPoolTest {
+    SFObjectPool *pool;
+}
 
-/**
- Category to retrieve member variable info objects from either a class or an instance of a class.
- */
-@interface NSObject (MemberVariableReflection)
+- (void)setUp {
+    pool = [[SFObjectPool alloc] init];
+    [pool registerClassNamed:@"SFPoolObject" forIdentifier:@"id1"];
+    [pool registerClassNamed:@"SFPoolObject" forIdentifier:@"id2"];
+}
 
-/**
- Returns the info object corresponding to the instance variable of the given name.
- @param name The name of the ivar.
- @result The info object.
- */
-+ (SFIvarInfo *)ivarNamed:(NSString *)name;
+- (void)tearDown {
+    pool = nil;
+}
 
-/**
- Returns all info objects corresponding to the instance variable of the given name.
- @result The ivar info objects.
- */
-+ (NSArray *)ivars;
+- (void)testObjectPoolAllocation {
+    id const object = [pool objectForIdentifier:@"id1"];
+    id const nonObject = [pool objectForIdentifier:@"id3"];
+    
+    STAssertTrue(object != nil, @"Assertion: registered classes get instantiated property");
+    STAssertTrue(nonObject == nil, @"Assertion: unregistered identifiers are not recognized");
+}
 
-/**
- Returns the info object corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @param name The name of the ivar.
- @result The info object.
- */
-- (SFIvarInfo *)ivarNamed:(NSString *)name;
-
-/**
- Returns all info objects corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @result The ivar info objects.
- */
-- (NSArray *)ivars;
+- (void)testReuse {
+    id const object = [pool objectForIdentifier:@"id2"];
+    [object repool];
+    id const reusedObject = [pool objectForIdentifier:@"id2"];
+    
+    STAssertTrue([object isEqual:reusedObject], @"Assertion: repooled objects are available for reusing.");
+    
+    id const newObject = [pool objectForIdentifier:@"id2"];
+    
+    STAssertTrue(![newObject isEqual:reusedObject], @"Assertion: requested objects are removed from the pool.");
+}
 
 @end

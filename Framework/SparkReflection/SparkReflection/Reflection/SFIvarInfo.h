@@ -1,5 +1,5 @@
 //
-//  NSObject+MemberVariableReflection.h
+//  SFIvarInfo.h
 //  SparkReflection
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -28,39 +28,44 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-#import <Foundation/Foundation.h>
-
-@class SFIvarInfo;
-
 /**
- Category to retrieve member variable info objects from either a class or an instance of a class.
+ Represents an ivar in any given class.
  */
-@interface NSObject (MemberVariableReflection)
+@interface SFIvarInfo : NSObject
 
 /**
- Returns the info object corresponding to the instance variable of the given name.
- @param name The name of the ivar.
+ The name of the ivar.
+ */
+@property (copy, nonatomic) NSString *name;
+
+/**
+ The name of the type of the variable.
+ */
+@property (assign, nonatomic) NSString *variableTypeName;
+
+/**
+ Boolean value telling whether the ivar was of primitive (value) type or not.
+ */
+@property (assign, nonatomic, getter = isPrimitive) BOOL primitive;
+
+/**
+ The name of the class to which the ivar belongs to.
+ */
+@property (copy, nonatomic) NSString *className;
+
+/**
+ Returns an array of info objects.
+ @param aClass The class to return the list of infos to.
+ @result An array of info objects.
+ */
++ (NSArray *)ivarsOfClass:(__unsafe_unretained Class const)aClass;
+
+/**
+ Returns an info objects for the given ivar name.
+ @param ivarName The name of the ivar.
+ @param aClass The class to which the ivar belongs to.
  @result The info object.
  */
-+ (SFIvarInfo *)ivarNamed:(NSString *)name;
-
-/**
- Returns all info objects corresponding to the instance variable of the given name.
- @result The ivar info objects.
- */
-+ (NSArray *)ivars;
-
-/**
- Returns the info object corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @param name The name of the ivar.
- @result The info object.
- */
-- (SFIvarInfo *)ivarNamed:(NSString *)name;
-
-/**
- Returns all info objects corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @result The ivar info objects.
- */
-- (NSArray *)ivars;
++ (SFIvarInfo *)ivarNamed:(NSString * const)ivarName ofClass:(__unsafe_unretained Class const)aClass;
 
 @end

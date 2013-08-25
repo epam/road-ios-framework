@@ -1,5 +1,5 @@
 //
-//  NSObject+MemberVariableReflection.h
+//  SFPropertyInfoTest.h
 //  SparkReflection
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -28,39 +28,15 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-#import <Foundation/Foundation.h>
+#import <SenTestingKit/SenTestingKit.h>
 
-@class SFIvarInfo;
+@interface SFPropertyInfoTest : SenTestCase
 
-/**
- Category to retrieve member variable info objects from either a class or an instance of a class.
- */
-@interface NSObject (MemberVariableReflection)
-
-/**
- Returns the info object corresponding to the instance variable of the given name.
- @param name The name of the ivar.
- @result The info object.
- */
-+ (SFIvarInfo *)ivarNamed:(NSString *)name;
-
-/**
- Returns all info objects corresponding to the instance variable of the given name.
- @result The ivar info objects.
- */
-+ (NSArray *)ivars;
-
-/**
- Returns the info object corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @param name The name of the ivar.
- @result The info object.
- */
-- (SFIvarInfo *)ivarNamed:(NSString *)name;
-
-/**
- Returns all info objects corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @result The ivar info objects.
- */
-- (NSArray *)ivars;
+@property (strong, nonatomic) NSString *strong;
+@property (weak, nonatomic) NSString *weak;
+@property (assign, nonatomic) NSString *assign;
+@property (copy, nonatomic) NSString *copy;
+@property (assign, nonatomic, getter = isValid, setter = setToValid:, readwrite) BOOL valid;
+@property (readonly) int readonly;
 
 @end

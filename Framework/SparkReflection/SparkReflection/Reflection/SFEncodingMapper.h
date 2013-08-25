@@ -1,5 +1,5 @@
 //
-//  NSObject+MemberVariableReflection.h
+//  SFEncodingMapper.h
 //  SparkReflection
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,37 +30,16 @@
 
 #import <Foundation/Foundation.h>
 
-@class SFIvarInfo;
+/**
+ A simple mapper class to return the type encoding name from an encoding.
+ */
+@interface SFEncodingMapper : NSObject
 
 /**
- Category to retrieve member variable info objects from either a class or an instance of a class.
+ Returns the attribute name from the type encoding.
+ @param encoding The type encoding in NSString.
+ @result The name of the type encoding.
  */
-@interface NSObject (MemberVariableReflection)
-
-/**
- Returns the info object corresponding to the instance variable of the given name.
- @param name The name of the ivar.
- @result The info object.
- */
-+ (SFIvarInfo *)ivarNamed:(NSString *)name;
-
-/**
- Returns all info objects corresponding to the instance variable of the given name.
- @result The ivar info objects.
- */
-+ (NSArray *)ivars;
-
-/**
- Returns the info object corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @param name The name of the ivar.
- @result The info object.
- */
-- (SFIvarInfo *)ivarNamed:(NSString *)name;
-
-/**
- Returns all info objects corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @result The ivar info objects.
- */
-- (NSArray *)ivars;
++ (NSString *)nameFromTypeEncoding:(NSString *)encoding;
 
 @end

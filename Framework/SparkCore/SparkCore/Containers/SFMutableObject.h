@@ -1,6 +1,6 @@
 //
-//  NSObject+MemberVariableReflection.h
-//  SparkReflection
+//  SFMutableObject.h
+//  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -29,38 +29,17 @@
 
 
 #import <Foundation/Foundation.h>
-
-@class SFIvarInfo;
-
-/**
- Category to retrieve member variable info objects from either a class or an instance of a class.
- */
-@interface NSObject (MemberVariableReflection)
+#import "SFObject.h"
 
 /**
- Returns the info object corresponding to the instance variable of the given name.
- @param name The name of the ivar.
- @result The info object.
+ A generic container object, prepared to accept all kind of values through KVC's valueForUndefinedKey: and setValue:forUndefinedKey: methods. Also supports dynamic method resolution for properties accessing these values
+ using the property's name as the key. One has to use the @dynamic compiler directive to mark properties inside this class or its subclasses to acquire this functionality.
  */
-+ (SFIvarInfo *)ivarNamed:(NSString *)name;
+@interface SFMutableObject : SFObject
 
 /**
- Returns all info objects corresponding to the instance variable of the given name.
- @result The ivar info objects.
+ The dictionary containing the dynamically allocated properties.
  */
-+ (NSArray *)ivars;
-
-/**
- Returns the info object corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @param name The name of the ivar.
- @result The info object.
- */
-- (SFIvarInfo *)ivarNamed:(NSString *)name;
-
-/**
- Returns all info objects corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @result The ivar info objects.
- */
-- (NSArray *)ivars;
+@property (strong, nonatomic) NSMutableDictionary *dynamicPropertyValues;
 
 @end

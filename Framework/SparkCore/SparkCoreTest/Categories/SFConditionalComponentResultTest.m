@@ -1,6 +1,6 @@
 //
-//  NSObject+MethodReflection.m
-//  SparkReflection
+//  SFConditionalComponentResultTest.m
+//  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -28,34 +28,46 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-#import "NSObject+MethodReflection.h"
-#import "SFMethodInfo.h"
+#import "SFConditionalComponentResultTest.h"
+#import "NSArray+EmptyArrayChecks.h"
 
-@implementation NSObject (MethodReflection)
+@implementation SFConditionalComponentResultTest
 
-- (SFMethodInfo *)classMethodForName:(NSString *)methodName {
-    return [SFMethodInfo classMethodNamed:methodName forClass:[self class]];
+- (void)testConditionalLastObjectNotExisting {
+    NSArray * const array = @[];
+    id lastObject = [array lastElementIfNotEmpty];
+    
+    STAssertTrue(lastObject == nil, @"Assertion: empty array's last object is nil with this method.");
 }
 
-- (SFMethodInfo *)instanceMethodForName:(NSString *)methodName {
-    return [SFMethodInfo instanceMethodNamed:methodName forClass:[self class]];
+- (void)testConditionalLastObjectExisting {
+    NSArray * const array = @[@"first", @"second"];
+    id lastObject = [array lastElementIfNotEmpty];
+    
+    STAssertTrue([lastObject isEqual:[array lastObject]], @"Assertion: lastObject method returns the same as the conditional version.");
 }
 
-- (NSArray *)methods {
-    return [SFMethodInfo methodsOfClass:[self class]];
+- (void)testConditionalObjectAtIndexNotExisting {
+    NSArray * const array = @[];
+    id object = [array elementAtIndexIfInRange:[array count]];
+    
+    STAssertTrue(object == nil, @"Assertion: conditional returns nil for invalid index");
 }
 
-+ (SFMethodInfo *)classMethodForName:(NSString *)methodName {
-    return [SFMethodInfo classMethodNamed:methodName forClass:self];
+- (void)testConditionalObjectAtIndexExisting {
+    NSArray * const array = @[@"first", @"second"];
+    id object = [array elementAtIndexIfInRange:0];
+    
+    STAssertTrue([object isEqual:[array objectAtIndex:0]], @"Assertion: objectAtIndex method returns the same as the conditional version.");
 }
 
-+ (SFMethodInfo *)instanceMethodForName:(NSString *)methodName {
-    return [SFMethodInfo instanceMethodNamed:methodName forClass:self];
+- (void)testObjectMatching {
+    NSArray * const array = @[@"first", @"second"];
+    id object = [array elementWithPredicateBlock:^BOOL(NSString *evaluatedObject) {
+        return [evaluatedObject isEqualToString:@"first"];
+    }];
+    
+    STAssertTrue(object != nil, @"Assertion: matching returns valid result.");
 }
-
-+ (NSArray *)methods {
-    return [SFMethodInfo methodsOfClass:self];
-}
-
 
 @end

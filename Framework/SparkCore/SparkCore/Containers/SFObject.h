@@ -1,6 +1,6 @@
 //
-//  NSObject+MemberVariableReflection.h
-//  SparkReflection
+//  SFObject.h
+//  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,37 +30,14 @@
 
 #import <Foundation/Foundation.h>
 
-@class SFIvarInfo;
+/**
+ Generic root class for the Epam Spark framework. Contains convenience methods and solutions for object initialization.
+ */
+@interface SFObject : NSObject
 
 /**
- Category to retrieve member variable info objects from either a class or an instance of a class.
+ Method invoked when the -init method of this class is executed. Call super in subclasses if you indend to use this shorter form of initialization.
  */
-@interface NSObject (MemberVariableReflection)
-
-/**
- Returns the info object corresponding to the instance variable of the given name.
- @param name The name of the ivar.
- @result The info object.
- */
-+ (SFIvarInfo *)ivarNamed:(NSString *)name;
-
-/**
- Returns all info objects corresponding to the instance variable of the given name.
- @result The ivar info objects.
- */
-+ (NSArray *)ivars;
-
-/**
- Returns the info object corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @param name The name of the ivar.
- @result The info object.
- */
-- (SFIvarInfo *)ivarNamed:(NSString *)name;
-
-/**
- Returns all info objects corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @result The ivar info objects.
- */
-- (NSArray *)ivars;
+- (void)initialize;
 
 @end

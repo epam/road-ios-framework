@@ -1,5 +1,5 @@
 //
-//  NSObject+MemberVariableReflection.h
+//  SFIvarInfo.m
 //  SparkReflection
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -28,39 +28,43 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-#import <Foundation/Foundation.h>
+#import "SFIvarInfo.h"
+#import "SFEncodingMapper.h"
+#import <objc/runtime.h>
 
-@class SFIvarInfo;
+@implementation SFIvarInfo
 
-/**
- Category to retrieve member variable info objects from either a class or an instance of a class.
- */
-@interface NSObject (MemberVariableReflection)
++ (NSArray *)ivarsOfClass:(__unsafe_unretained Class const)aClass {
+    unsigned int memberCount;
+    Ivar * const ivarList = class_copyIvarList(aClass, &memberCount);
+    NSMutableArray *array = [NSMutableArray array];
+    SFIvarInfo *descriptor;
+    
+    for (unsigned int index = 0; index < memberCount; index++) {
+        descriptor = [self infoFromIvar:ivarList[index]];
+        descriptor.className = NSStringFromClass(aClass);
+        [array addObject:descriptor];
+    }
+    
+    free(ivarList);
+    return array;
+}
 
-/**
- Returns the info object corresponding to the instance variable of the given name.
- @param name The name of the ivar.
- @result The info object.
- */
-+ (SFIvarInfo *)ivarNamed:(NSString *)name;
++ (SFIvarInfo *)ivarNamed:(NSString *const)ivarName ofClass:(__unsafe_unretained Class const)aClass {
+    Ivar anIvar = class_getInstanceVariable(aClass, [ivarName cStringUsingEncoding:NSUTF8StringEncoding]);
+    SFIvarInfo *descriptor = [self infoFromIvar:anIvar];
+    descriptor.className = NSStringFromClass(aClass);
+    return descriptor;
+}
 
-/**
- Returns all info objects corresponding to the instance variable of the given name.
- @result The ivar info objects.
- */
-+ (NSArray *)ivars;
++ (SFIvarInfo *)infoFromIvar:(Ivar)anIvar {
+    SFIvarInfo * const info = [[SFIvarInfo alloc] init];
+    NSString * const encoding = [NSString stringWithCString:ivar_getTypeEncoding(anIvar) encoding:NSUTF8StringEncoding];
+    info.name = [NSString stringWithCString:ivar_getName(anIvar) encoding:NSUTF8StringEncoding];
+    info.variableTypeName = [SFEncodingMapper nameFromTypeEncoding:encoding];
+    info.primitive = ![encoding hasPrefix:@"@"];
+    return info;
+}
 
-/**
- Returns the info object corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @param name The name of the ivar.
- @result The info object.
- */
-- (SFIvarInfo *)ivarNamed:(NSString *)name;
-
-/**
- Returns all info objects corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @result The ivar info objects.
- */
-- (NSArray *)ivars;
 
 @end

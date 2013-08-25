@@ -1,6 +1,6 @@
 //
-//  NSObject+MemberVariableReflection.h
-//  SparkReflection
+//  SFTemplateParsingTest.m
+//  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -28,39 +28,44 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-#import <Foundation/Foundation.h>
+#import "SFTemplateParsingTest.h"
+#import "NSMutableString+SFStringFormatter.h"
 
-@class SFIvarInfo;
+@implementation SFTemplateParsingTest {
+    NSMutableString *template;
+    NSString *escape;
+    NSDictionary *values;
+}
 
-/**
- Category to retrieve member variable info objects from either a class or an instance of a class.
- */
-@interface NSObject (MemberVariableReflection)
+- (void)setUp {
+    template = [NSMutableString stringWithString:@"someExample:%%key1%% withOtherValue:%%key2%% andThirdValue:%%key3%%"];
+    escape = @"%%";
+    values = @{ @"key1" : @"value1", @"key2" : @"value2", @"key3" : @"value3" };
+    
+    [super setUp];
+}
 
-/**
- Returns the info object corresponding to the instance variable of the given name.
- @param name The name of the ivar.
- @result The info object.
- */
-+ (SFIvarInfo *)ivarNamed:(NSString *)name;
+- (void)tearDown {
+    template = nil;
+    escape = nil;
+    values = nil;
+    
+    [super tearDown];
+}
 
-/**
- Returns all info objects corresponding to the instance variable of the given name.
- @result The ivar info objects.
- */
-+ (NSArray *)ivars;
-
-/**
- Returns the info object corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @param name The name of the ivar.
- @result The info object.
- */
-- (SFIvarInfo *)ivarNamed:(NSString *)name;
-
-/**
- Returns all info objects corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @result The ivar info objects.
- */
-- (NSArray *)ivars;
+- (void)testTemplateParsing {
+    [template formatStringUsingValues:values withEscape:escape];
+    NSRange rangeOfKey = [template rangeOfString:@"key"];
+    NSRange rangeOfEscape = [template rangeOfString:escape];
+    NSRange rangeOfValue1 = [template rangeOfString:@"value1"];
+    NSRange rangeOfValue2 = [template rangeOfString:@"value2"];
+    NSRange rangeOfValue3 = [template rangeOfString:@"value3"];
+    
+    STAssertTrue(rangeOfKey.location == NSNotFound, @"Assertion: no key is in the template.");
+    STAssertTrue(rangeOfEscape.location == NSNotFound, @"Assertion: escape is no longer in the template.");
+    STAssertTrue(rangeOfValue1.location != NSNotFound, @"Assertion: value1 is in the template.");
+    STAssertTrue(rangeOfValue2.location != NSNotFound, @"Assertion: value2 is in the template.");
+    STAssertTrue(rangeOfValue3.location != NSNotFound, @"Assertion: value3 is in the template.");
+}
 
 @end

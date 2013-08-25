@@ -1,6 +1,6 @@
 //
-//  NSObject+MemberVariableReflection.h
-//  SparkReflection
+//  SFPooledObject.h
+//  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,37 +30,33 @@
 
 #import <Foundation/Foundation.h>
 
-@class SFIvarInfo;
+@class SFObjectPool;
 
 /**
- Category to retrieve member variable info objects from either a class or an instance of a class.
+ Protocol to implement for pooled object.
  */
-@interface NSObject (MemberVariableReflection)
+@protocol SFPooledObject <NSObject>
 
 /**
- Returns the info object corresponding to the instance variable of the given name.
- @param name The name of the ivar.
- @result The info object.
+ The resuse identifier of the object. Managed by the SFObjectPool class.
  */
-+ (SFIvarInfo *)ivarNamed:(NSString *)name;
+@property (copy, nonatomic) NSString *poolReuseIdentifier;
 
 /**
- Returns all info objects corresponding to the instance variable of the given name.
- @result The ivar info objects.
+ The object pool the implementing object is bound to. Convenience weak reference used in conjunction with the repool method, to invoke the pool's -repoolObject: method.
+ If this method can be invoked with a different solution, then using this property is optional. Setting this property is the responsibility of the object pool itself.
  */
-+ (NSArray *)ivars;
+@property (weak, nonatomic) SFObjectPool *pool;
 
 /**
- Returns the info object corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @param name The name of the ivar.
- @result The info object.
+ Invoke this method when you are done with the object and allow the pool to reclaim this instance.
  */
-- (SFIvarInfo *)ivarNamed:(NSString *)name;
+- (oneway void)repool;
 
+@optional
 /**
- Returns all info objects corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @result The ivar info objects.
+ Invoked by the object pool when the object is about to be reused by the pool. Optional method.
  */
-- (NSArray *)ivars;
+- (void)prepareForReuse;
 
 @end

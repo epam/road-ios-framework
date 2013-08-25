@@ -1,6 +1,6 @@
 //
-//  NSObject+MemberVariableReflection.h
-//  SparkReflection
+//  NSMutableString+SFStringFormatter.h
+//  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,37 +30,16 @@
 
 #import <Foundation/Foundation.h>
 
-@class SFIvarInfo;
+/**
+ Category enabling to substitude values into an url expression using key-value pairs.
+ */
+@interface NSMutableString (SFStringFormatter)
 
 /**
- Category to retrieve member variable info objects from either a class or an instance of a class.
+ Fills a specified string with the values specified, substituding the values for the keys in the receiver. The assumption is the keys in the dictionary bracketed by the escapeString on both sides are the values to be replaced, while the corresponding value from the dictionary is to be substituted. If a key is not found in the dictionary its entire string part is removed from the result.
+ @param valueDictionary The key-values representing the keys to be replaced by values in the template string.
+ @param escapeString The escape string marking the spot of a replacement.
  */
-@interface NSObject (MemberVariableReflection)
-
-/**
- Returns the info object corresponding to the instance variable of the given name.
- @param name The name of the ivar.
- @result The info object.
- */
-+ (SFIvarInfo *)ivarNamed:(NSString *)name;
-
-/**
- Returns all info objects corresponding to the instance variable of the given name.
- @result The ivar info objects.
- */
-+ (NSArray *)ivars;
-
-/**
- Returns the info object corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @param name The name of the ivar.
- @result The info object.
- */
-- (SFIvarInfo *)ivarNamed:(NSString *)name;
-
-/**
- Returns all info objects corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @result The ivar info objects.
- */
-- (NSArray *)ivars;
+- (void)formatStringUsingValues:(NSDictionary * const)valueDictionary withEscape:(NSString * const)escapeString;
 
 @end

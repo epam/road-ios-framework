@@ -34,19 +34,19 @@
 @implementation NSObject (PropertyReflection)
 
 - (NSArray * const)properties {
-    return [ESDPropertyInfo propertiesForClass:[self class]];
+    return [SFPropertyInfo propertiesForClass:[self class]];
 }
 
-- (ESDPropertyInfo *)propertyNamed:(NSString *)name {
-    return [ESDPropertyInfo propertyNamed:name forClass:[self class]];
+- (SFPropertyInfo *)propertyNamed:(NSString *)name {
+    return [SFPropertyInfo propertyNamed:name forClass:[self class]];
 }
 
 + (NSArray * const)properties {
-    return [ESDPropertyInfo propertiesForClass:self];
+    return [SFPropertyInfo propertiesForClass:self];
 }
 
-+ (ESDPropertyInfo *)propertyNamed:(NSString *)name {
-    return [ESDPropertyInfo propertyNamed:name forClass:self];
++ (SFPropertyInfo *)propertyNamed:(NSString *)name {
+    return [SFPropertyInfo propertyNamed:name forClass:self];
 }
 
 @end

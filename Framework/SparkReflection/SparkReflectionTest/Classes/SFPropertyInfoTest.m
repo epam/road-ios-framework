@@ -1,5 +1,5 @@
 //
-//  NSObject+MemberVariableReflection.h
+//  SFPropertyInfoTest.m
 //  SparkReflection
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -28,39 +28,46 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-#import <Foundation/Foundation.h>
+#import "SFPropertyInfoTest.h"
+#import "SFPropertyInfo.h"
+#import "NSObject+PropertyReflection.h"
 
-@class SFIvarInfo;
+@implementation SFPropertyInfoTest {
+    SFPropertyInfo *desc;
+}
 
-/**
- Category to retrieve member variable info objects from either a class or an instance of a class.
- */
-@interface NSObject (MemberVariableReflection)
+@dynamic copy;
 
-/**
- Returns the info object corresponding to the instance variable of the given name.
- @param name The name of the ivar.
- @result The info object.
- */
-+ (SFIvarInfo *)ivarNamed:(NSString *)name;
+- (void)tearDown {
+    desc = nil;
+    [super tearDown];
+}
 
-/**
- Returns all info objects corresponding to the instance variable of the given name.
- @result The ivar info objects.
- */
-+ (NSArray *)ivars;
+- (void)testStrong {
+    desc = [self propertyNamed:@"strong"];
+    STAssertTrue([desc isWeak] == NO && [desc isCopied] == NO && [desc isDynamic] == NO, @"Assertion: property is strong.");
+}
 
-/**
- Returns the info object corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @param name The name of the ivar.
- @result The info object.
- */
-- (SFIvarInfo *)ivarNamed:(NSString *)name;
+- (void)testWeak {
+    desc = [self propertyNamed:@"weak"];
+    STAssertTrue([desc isWeak] && [desc isCopied] == NO && [desc isDynamic] == NO, @"Assertion: property is weak");
+}
 
-/**
- Returns all info objects corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @result The ivar info objects.
- */
-- (NSArray *)ivars;
+- (void)testCopyDynamic {
+    desc = [self propertyNamed:@"copy"];
+    STAssertTrue([desc isCopied] && [desc isDynamic] && [desc isWeak] == NO, @"Assertion: property is declared copy, and is dynamically implemented.");
+}
+
+- (void)testBoolAssign {
+    desc = [self propertyNamed:@"valid"];
+    STAssertTrue([desc isCopied] == NO && [desc isDynamic] == NO && [desc isWeak] == NO && [desc isNonatomic], @"Assertion: property is assigned and nonatomic");
+    STAssertTrue([[desc getterName] isEqualToString:@"isValid"], @"Assertion: custom getter name (isValid) is correct (%@)", [desc getterName]);
+    STAssertTrue([[desc setterName] isEqualToString:@"setToValid:"], @"Assertion: custom setter name (setToValid:) is correct (%@)", [desc setterName]);
+}
+
+- (void)testReadonlyAssignAtomic {
+    desc = [self propertyNamed:@"readonly"];
+    STAssertTrue([desc isNonatomic] == NO && [desc isReadonly], @"Assertion: property is atomic and readonly.");
+}
 
 @end

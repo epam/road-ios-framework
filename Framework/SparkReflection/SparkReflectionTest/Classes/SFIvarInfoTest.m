@@ -1,5 +1,5 @@
 //
-//  NSObject+MemberVariableReflection.h
+//  SFIvarInfoTest.m
 //  SparkReflection
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -28,39 +28,38 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-#import <Foundation/Foundation.h>
+#import "SFIvarInfo.h"
+#import "SFIvarInfoTest.h"
+#import "NSObject+MemberVariableReflection.h"
+#import <objc/runtime.h>
 
-@class SFIvarInfo;
+@implementation SFIvarInfoTest {
+    SFIvarInfo *integerDescriptor;
+    SFIvarInfo *stringDescriptor;
+}
 
-/**
- Category to retrieve member variable info objects from either a class or an instance of a class.
- */
-@interface NSObject (MemberVariableReflection)
+- (void)setUp {
+    integer = 3;
+    string = @"value";
+    integerDescriptor = [self ivarNamed:@"integer"];
+    stringDescriptor = [self ivarNamed:@"string"];
+}
 
-/**
- Returns the info object corresponding to the instance variable of the given name.
- @param name The name of the ivar.
- @result The info object.
- */
-+ (SFIvarInfo *)ivarNamed:(NSString *)name;
+- (void)tearDown {
+    string = nil;
+    integerDescriptor = nil;
+    stringDescriptor = nil;
+}
 
-/**
- Returns all info objects corresponding to the instance variable of the given name.
- @result The ivar info objects.
- */
-+ (NSArray *)ivars;
-
-/**
- Returns the info object corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @param name The name of the ivar.
- @result The info object.
- */
-- (SFIvarInfo *)ivarNamed:(NSString *)name;
-
-/**
- Returns all info objects corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @result The ivar info objects.
- */
-- (NSArray *)ivars;
+- (void)testDescriptorProperties {
+    STAssertTrue([[integerDescriptor name] isEqualToString:@"integer"], @"Assertion: ivar name is correct.");
+    STAssertTrue([[stringDescriptor name] isEqualToString:@"string"], @"Assertion: ivar name is correct.");
+    STAssertTrue([integerDescriptor isPrimitive] == YES, @"Assertion: integer descriptor returns primitive == YES");
+    STAssertTrue([stringDescriptor isPrimitive] == NO, @"Assertion: string descriptor returns primitive == NO");
+    STAssertTrue([[stringDescriptor className] isEqualToString:NSStringFromClass([self class])], @"Assertion: classname is correct.");
+    
+    STAssertTrue([[stringDescriptor variableTypeName] hasPrefix:@"NSString"], @"Assertion: variable type name for string is NSString.");
+    STAssertTrue([[integerDescriptor variableTypeName] isEqualToString:@"int"], @"Assertion: variable type name for omteger is int.");
+}
 
 @end

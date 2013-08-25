@@ -1,5 +1,5 @@
 //
-//  NSObject+MemberVariableReflection.h
+//  SFMethodInfoTest.m
 //  SparkReflection
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -28,39 +28,27 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-#import <Foundation/Foundation.h>
+#import "SFMethodInfoTest.h"
+#import "SFMethodInfo.h"
+#import "NSObject+MethodReflection.h"
 
-@class SFIvarInfo;
+@implementation SFMethodInfoTest
 
-/**
- Category to retrieve member variable info objects from either a class or an instance of a class.
- */
-@interface NSObject (MemberVariableReflection)
+- (void)instanceMethod {
+}
 
-/**
- Returns the info object corresponding to the instance variable of the given name.
- @param name The name of the ivar.
- @result The info object.
- */
-+ (SFIvarInfo *)ivarNamed:(NSString *)name;
++ (void)classMethod {
+}
 
-/**
- Returns all info objects corresponding to the instance variable of the given name.
- @result The ivar info objects.
- */
-+ (NSArray *)ivars;
+- (void)testInstanceMethodDescriptor {
+    SFMethodInfo *desc = [self instanceMethodForName:@"instanceMethod"];
+    STAssertTrue([[desc className] isEqualToString:NSStringFromClass([self class])],@"Assertion: classname is correct for method descriptor.");
+    STAssertTrue([desc isClassMethod] == NO, @"Assertion: method is instance method.");
+}
 
-/**
- Returns the info object corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @param name The name of the ivar.
- @result The info object.
- */
-- (SFIvarInfo *)ivarNamed:(NSString *)name;
-
-/**
- Returns all info objects corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @result The ivar info objects.
- */
-- (NSArray *)ivars;
+- (void)testClassMethodDescriptor {
+    SFMethodInfo *desc = [self classMethodForName:@"classMethod"];
+    STAssertTrue([desc isClassMethod] == YES, @"Assertion: method is class method");
+}
 
 @end

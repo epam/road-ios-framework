@@ -29,24 +29,24 @@
 
 
 #import "NSObject+MemberVariableReflection.h"
-#import "ESDIvarInfo.h"
+#import "SFIvarInfo.h"
 
 @implementation NSObject (MemberVariableReflection)
 
-- (ESDIvarInfo *)ivarNamed:(NSString *)name {
-    return [ESDIvarInfo ivarNamed:name ofClass:[self class]];
+- (SFIvarInfo *)ivarNamed:(NSString *)name {
+    return [SFIvarInfo ivarNamed:name ofClass:[self class]];
 }
 
 - (NSArray *)ivars {
-    return [ESDIvarInfo ivarsOfClass:[self class]];
+    return [SFIvarInfo ivarsOfClass:[self class]];
 }
 
-+ (ESDIvarInfo *)ivarNamed:(NSString *)name {
-    return [ESDIvarInfo ivarNamed:name ofClass:self];
++ (SFIvarInfo *)ivarNamed:(NSString *)name {
+    return [SFIvarInfo ivarNamed:name ofClass:self];
 }
 
 + (NSArray *)ivars {
-    return [ESDIvarInfo ivarsOfClass:self];
+    return [SFIvarInfo ivarsOfClass:self];
 }
 
 @end
