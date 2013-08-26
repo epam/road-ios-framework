@@ -1,0 +1,729 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5AD1FC411766038500E67BC4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD1FC401766038500E67BC4 /* Cocoa.framework */; };
+		78289DF71647C2200036BEFE /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78289DF61647C2200036BEFE /* SenTestingKit.framework */; };
+		78289E011647C2200036BEFE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 78289DFF1647C2200036BEFE /* InfoPlist.strings */; };
+		782B6DE216C3E8730057DF2C /* NSCharacterSet+EncodingCharacterSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 78C242D216C3D17E000D777F /* NSCharacterSet+EncodingCharacterSet.m */; };
+		782B6DE316C3E8780057DF2C /* NSCharacterSet+EncodingCharacterSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 78C242D216C3D17E000D777F /* NSCharacterSet+EncodingCharacterSet.m */; };
+		7859A0D2169F2020000FDE12 /* NSObject+MemberVariableReflection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7877067D169F1481009D14C2 /* NSObject+MemberVariableReflection.h */; };
+		7859A0D3169F2020000FDE12 /* NSObject+MethodReflection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7877067F169F1481009D14C2 /* NSObject+MethodReflection.h */; };
+		7859A0D4169F2020000FDE12 /* NSObject+PropertyReflection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78770681169F1481009D14C2 /* NSObject+PropertyReflection.h */; };
+		7859A0D9169F2040000FDE12 /* SFIvarInfo.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7877068E169F1481009D14C2 /* SFIvarInfo.h */; };
+		7859A0DA169F2040000FDE12 /* SFMethodInfo.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78770690169F1481009D14C2 /* SFMethodInfo.h */; };
+		7859A0DD169F2040000FDE12 /* SFPropertyInfo.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78770696169F1481009D14C2 /* SFPropertyInfo.h */; };
+		785FEE8516C91E5200A0AF69 /* SFEncodingMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 785FEE8316C91E5200A0AF69 /* SFEncodingMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		785FEE8616C91E5200A0AF69 /* SFEncodingMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 785FEE8416C91E5200A0AF69 /* SFEncodingMapper.m */; };
+		785FEE8716C91E5200A0AF69 /* SFEncodingMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 785FEE8416C91E5200A0AF69 /* SFEncodingMapper.m */; };
+		785FEE8816C91E5200A0AF69 /* SFEncodingMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 785FEE8416C91E5200A0AF69 /* SFEncodingMapper.m */; };
+		785FEEB816C93F4100A0AF69 /* SFEncodingMapper.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 785FEE8316C91E5200A0AF69 /* SFEncodingMapper.h */; };
+		785FEEB916C93F6100A0AF69 /* SFEncoding.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7877068D169F1481009D14C2 /* SFEncoding.plist */; };
+		787706A6169F1481009D14C2 /* NSObject+MemberVariableReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7877067E169F1481009D14C2 /* NSObject+MemberVariableReflection.m */; };
+		787706A7169F1481009D14C2 /* NSObject+MemberVariableReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7877067E169F1481009D14C2 /* NSObject+MemberVariableReflection.m */; };
+		787706A8169F1481009D14C2 /* NSObject+MethodReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 78770680169F1481009D14C2 /* NSObject+MethodReflection.m */; };
+		787706A9169F1481009D14C2 /* NSObject+MethodReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 78770680169F1481009D14C2 /* NSObject+MethodReflection.m */; };
+		787706AA169F1481009D14C2 /* NSObject+PropertyReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 78770682169F1481009D14C2 /* NSObject+PropertyReflection.m */; };
+		787706AB169F1481009D14C2 /* NSObject+PropertyReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 78770682169F1481009D14C2 /* NSObject+PropertyReflection.m */; };
+		787706B4169F1481009D14C2 /* SFEncoding.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7877068D169F1481009D14C2 /* SFEncoding.plist */; };
+		787706B5169F1481009D14C2 /* SFIvarInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7877068F169F1481009D14C2 /* SFIvarInfo.m */; };
+		787706B6169F1481009D14C2 /* SFIvarInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7877068F169F1481009D14C2 /* SFIvarInfo.m */; };
+		787706B7169F1481009D14C2 /* SFMethodInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 78770691169F1481009D14C2 /* SFMethodInfo.m */; };
+		787706B8169F1481009D14C2 /* SFMethodInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 78770691169F1481009D14C2 /* SFMethodInfo.m */; };
+		787706BD169F1481009D14C2 /* SFPropertyInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 78770697169F1481009D14C2 /* SFPropertyInfo.m */; };
+		787706BE169F1481009D14C2 /* SFPropertyInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 78770697169F1481009D14C2 /* SFPropertyInfo.m */; };
+		78A8F88D16A027B400F1C33D /* NSObject+MemberVariableReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7877067E169F1481009D14C2 /* NSObject+MemberVariableReflection.m */; };
+		78A8F88E16A027B400F1C33D /* NSObject+MethodReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 78770680169F1481009D14C2 /* NSObject+MethodReflection.m */; };
+		78A8F88F16A027B400F1C33D /* NSObject+PropertyReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 78770682169F1481009D14C2 /* NSObject+PropertyReflection.m */; };
+		78A8F89416A027C700F1C33D /* SFIvarInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7877068F169F1481009D14C2 /* SFIvarInfo.m */; };
+		78A8F89516A027C700F1C33D /* SFMethodInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 78770691169F1481009D14C2 /* SFMethodInfo.m */; };
+		78A8F89816A027C700F1C33D /* SFPropertyInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 78770697169F1481009D14C2 /* SFPropertyInfo.m */; };
+		78A8F89916A027CA00F1C33D /* SFEncoding.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7877068D169F1481009D14C2 /* SFEncoding.plist */; };
+		78B13C8116A0101600869F3C /* SparkReflection.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F80CD5715F64D4F0031BA24 /* SparkReflection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78B13E3716A0238800869F3C /* NSObject+MemberVariableReflection.h in Headers */ = {isa = PBXBuildFile; fileRef = 7877067D169F1481009D14C2 /* NSObject+MemberVariableReflection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78B13E3816A0238800869F3C /* NSObject+MethodReflection.h in Headers */ = {isa = PBXBuildFile; fileRef = 7877067F169F1481009D14C2 /* NSObject+MethodReflection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78B13E3916A0238800869F3C /* NSObject+PropertyReflection.h in Headers */ = {isa = PBXBuildFile; fileRef = 78770681169F1481009D14C2 /* NSObject+PropertyReflection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78B13E3E16A023AA00869F3C /* SFIvarInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 7877068E169F1481009D14C2 /* SFIvarInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78B13E3F16A023AA00869F3C /* SFMethodInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 78770690169F1481009D14C2 /* SFMethodInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78B13E4216A023AA00869F3C /* SFPropertyInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 78770696169F1481009D14C2 /* SFPropertyInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78C242D316C3D17E000D777F /* NSCharacterSet+EncodingCharacterSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 78C242D116C3D17E000D777F /* NSCharacterSet+EncodingCharacterSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78C242D416C3D17E000D777F /* NSCharacterSet+EncodingCharacterSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 78C242D216C3D17E000D777F /* NSCharacterSet+EncodingCharacterSet.m */; };
+		78C242D616C3D1A3000D777F /* NSCharacterSet+EncodingCharacterSet.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78C242D116C3D17E000D777F /* NSCharacterSet+EncodingCharacterSet.h */; };
+		78DDB7EE1647FF9900E7E92F /* SFIvarInfoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DDB7E71647FF9900E7E92F /* SFIvarInfoTest.m */; };
+		78DDB7EF1647FF9900E7E92F /* SFMethodInfoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DDB7E91647FF9900E7E92F /* SFMethodInfoTest.m */; };
+		78DDB7F11647FF9900E7E92F /* SFPropertyInfoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DDB7ED1647FF9900E7E92F /* SFPropertyInfoTest.m */; };
+		9F80CD5A15F64D8B0031BA24 /* SparkReflection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9F80CD5715F64D4F0031BA24 /* SparkReflection.h */; };
+		9FA9F4B515F6359700FDE9E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FA9F4B315F6359700FDE9E0 /* InfoPlist.strings */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		78CD6F9715CA8AB800F6C2F9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = include/Spark;
+			dstSubfolderSpec = 16;
+			files = (
+				9F80CD5A15F64D8B0031BA24 /* SparkReflection.h in CopyFiles */,
+				7859A0D2169F2020000FDE12 /* NSObject+MemberVariableReflection.h in CopyFiles */,
+				7859A0D3169F2020000FDE12 /* NSObject+MethodReflection.h in CopyFiles */,
+				7859A0D4169F2020000FDE12 /* NSObject+PropertyReflection.h in CopyFiles */,
+				7859A0D9169F2040000FDE12 /* SFIvarInfo.h in CopyFiles */,
+				785FEEB816C93F4100A0AF69 /* SFEncodingMapper.h in CopyFiles */,
+				7859A0DA169F2040000FDE12 /* SFMethodInfo.h in CopyFiles */,
+				78C242D616C3D1A3000D777F /* NSCharacterSet+EncodingCharacterSet.h in CopyFiles */,
+				7859A0DD169F2040000FDE12 /* SFPropertyInfo.h in CopyFiles */,
+				785FEEB916C93F6100A0AF69 /* SFEncoding.plist in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		5AD1FC401766038500E67BC4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = ../../../../System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		78289DF51647C2200036BEFE /* SparkReflectionTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SparkReflectionTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		78289DF61647C2200036BEFE /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		78289DFE1647C2200036BEFE /* SparkReflectionTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SparkReflectionTest-Info.plist"; sourceTree = "<group>"; };
+		78289E001647C2200036BEFE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		78289E051647C2200036BEFE /* SparkReflectionTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SparkReflectionTest-Prefix.pch"; sourceTree = "<group>"; };
+		785FEE8316C91E5200A0AF69 /* SFEncodingMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFEncodingMapper.h; sourceTree = "<group>"; };
+		785FEE8416C91E5200A0AF69 /* SFEncodingMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFEncodingMapper.m; sourceTree = "<group>"; };
+		7877067D169F1481009D14C2 /* NSObject+MemberVariableReflection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MemberVariableReflection.h"; sourceTree = "<group>"; };
+		7877067E169F1481009D14C2 /* NSObject+MemberVariableReflection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MemberVariableReflection.m"; sourceTree = "<group>"; };
+		7877067F169F1481009D14C2 /* NSObject+MethodReflection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MethodReflection.h"; sourceTree = "<group>"; };
+		78770680169F1481009D14C2 /* NSObject+MethodReflection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MethodReflection.m"; sourceTree = "<group>"; };
+		78770681169F1481009D14C2 /* NSObject+PropertyReflection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+PropertyReflection.h"; sourceTree = "<group>"; };
+		78770682169F1481009D14C2 /* NSObject+PropertyReflection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+PropertyReflection.m"; sourceTree = "<group>"; };
+		7877068D169F1481009D14C2 /* SFEncoding.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SFEncoding.plist; sourceTree = "<group>"; };
+		7877068E169F1481009D14C2 /* SFIvarInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFIvarInfo.h; sourceTree = "<group>"; };
+		7877068F169F1481009D14C2 /* SFIvarInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFIvarInfo.m; sourceTree = "<group>"; };
+		78770690169F1481009D14C2 /* SFMethodInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMethodInfo.h; sourceTree = "<group>"; };
+		78770691169F1481009D14C2 /* SFMethodInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMethodInfo.m; sourceTree = "<group>"; };
+		78770696169F1481009D14C2 /* SFPropertyInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPropertyInfo.h; sourceTree = "<group>"; };
+		78770697169F1481009D14C2 /* SFPropertyInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPropertyInfo.m; sourceTree = "<group>"; };
+		78C242D116C3D17E000D777F /* NSCharacterSet+EncodingCharacterSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCharacterSet+EncodingCharacterSet.h"; sourceTree = "<group>"; };
+		78C242D216C3D17E000D777F /* NSCharacterSet+EncodingCharacterSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCharacterSet+EncodingCharacterSet.m"; sourceTree = "<group>"; };
+		78CD6F9915CA8AB800F6C2F9 /* libSparkReflection.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSparkReflection.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		78CD6FAD15CA8B5000F6C2F9 /* SparkReflection-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SparkReflection-Prefix.pch"; sourceTree = "<group>"; };
+		78DDB7E61647FF9900E7E92F /* SFIvarInfoTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFIvarInfoTest.h; sourceTree = "<group>"; };
+		78DDB7E71647FF9900E7E92F /* SFIvarInfoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFIvarInfoTest.m; sourceTree = "<group>"; };
+		78DDB7E81647FF9900E7E92F /* SFMethodInfoTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMethodInfoTest.h; sourceTree = "<group>"; };
+		78DDB7E91647FF9900E7E92F /* SFMethodInfoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMethodInfoTest.m; sourceTree = "<group>"; };
+		78DDB7EC1647FF9900E7E92F /* SFPropertyInfoTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPropertyInfoTest.h; sourceTree = "<group>"; };
+		78DDB7ED1647FF9900E7E92F /* SFPropertyInfoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPropertyInfoTest.m; sourceTree = "<group>"; };
+		78F95A9B16E9EE3300E58C3B /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		9F80CD5715F64D4F0031BA24 /* SparkReflection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SparkReflection.h; path = ../SparkReflection.h; sourceTree = "<group>"; };
+		9FA9F4A915F6359700FDE9E0 /* SparkReflection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SparkReflection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FA9F4B215F6359700FDE9E0 /* SparkReflectionMac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SparkReflectionMac-Info.plist"; sourceTree = "<group>"; };
+		9FA9F4B415F6359700FDE9E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9FA9F4B615F6359700FDE9E0 /* SparkReflectionMac-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SparkReflectionMac-Prefix.pch"; sourceTree = "<group>"; };
+		CDB87E6816EA0C0F003D9081 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		78289DF11647C2200036BEFE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78289DF71647C2200036BEFE /* SenTestingKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78CD6F9615CA8AB800F6C2F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FA9F4A515F6359700FDE9E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AD1FC411766038500E67BC4 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		78289DFC1647C2200036BEFE /* SparkReflectionTest */ = {
+			isa = PBXGroup;
+			children = (
+				78DDB7E51647FF9800E7E92F /* Classes */,
+				78289DFD1647C2200036BEFE /* Supporting Files */,
+			);
+			path = SparkReflectionTest;
+			sourceTree = "<group>";
+		};
+		78289DFD1647C2200036BEFE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				78289DFE1647C2200036BEFE /* SparkReflectionTest-Info.plist */,
+				78289DFF1647C2200036BEFE /* InfoPlist.strings */,
+				78289E051647C2200036BEFE /* SparkReflectionTest-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7877066E169F1481009D14C2 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				78C242D116C3D17E000D777F /* NSCharacterSet+EncodingCharacterSet.h */,
+				78C242D216C3D17E000D777F /* NSCharacterSet+EncodingCharacterSet.m */,
+				7877067D169F1481009D14C2 /* NSObject+MemberVariableReflection.h */,
+				7877067E169F1481009D14C2 /* NSObject+MemberVariableReflection.m */,
+				7877067F169F1481009D14C2 /* NSObject+MethodReflection.h */,
+				78770680169F1481009D14C2 /* NSObject+MethodReflection.m */,
+				78770681169F1481009D14C2 /* NSObject+PropertyReflection.h */,
+				78770682169F1481009D14C2 /* NSObject+PropertyReflection.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		7877068C169F1481009D14C2 /* Reflection */ = {
+			isa = PBXGroup;
+			children = (
+				7877068E169F1481009D14C2 /* SFIvarInfo.h */,
+				7877068F169F1481009D14C2 /* SFIvarInfo.m */,
+				78770690169F1481009D14C2 /* SFMethodInfo.h */,
+				78770691169F1481009D14C2 /* SFMethodInfo.m */,
+				78770696169F1481009D14C2 /* SFPropertyInfo.h */,
+				78770697169F1481009D14C2 /* SFPropertyInfo.m */,
+				785FEE8316C91E5200A0AF69 /* SFEncodingMapper.h */,
+				785FEE8416C91E5200A0AF69 /* SFEncodingMapper.m */,
+				7877068D169F1481009D14C2 /* SFEncoding.plist */,
+			);
+			path = Reflection;
+			sourceTree = "<group>";
+		};
+		78CD6F6115CA8A7300F6C2F9 = {
+			isa = PBXGroup;
+			children = (
+				78CD6F6F15CA8A7300F6C2F9 /* Frameworks */,
+				78CD6F6D15CA8A7300F6C2F9 /* Products */,
+				78CD6F7615CA8A7300F6C2F9 /* SparkReflection */,
+				9FA9F4B015F6359700FDE9E0 /* SparkReflectionMac */,
+				78289DFC1647C2200036BEFE /* SparkReflectionTest */,
+			);
+			sourceTree = "<group>";
+		};
+		78CD6F6D15CA8A7300F6C2F9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				78CD6F9915CA8AB800F6C2F9 /* libSparkReflection.a */,
+				9FA9F4A915F6359700FDE9E0 /* SparkReflection.framework */,
+				78289DF51647C2200036BEFE /* SparkReflectionTest.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		78CD6F6F15CA8A7300F6C2F9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5AD1FC401766038500E67BC4 /* Cocoa.framework */,
+				CDB87E6816EA0C0F003D9081 /* Foundation.framework */,
+				78289DF61647C2200036BEFE /* SenTestingKit.framework */,
+				78F95A9B16E9EE3300E58C3B /* CoreFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		78CD6F7615CA8A7300F6C2F9 /* SparkReflection */ = {
+			isa = PBXGroup;
+			children = (
+				9F80CD5715F64D4F0031BA24 /* SparkReflection.h */,
+				7877066E169F1481009D14C2 /* Categories */,
+				7877068C169F1481009D14C2 /* Reflection */,
+				78CD6F7715CA8A7300F6C2F9 /* Supporting Files */,
+			);
+			path = SparkReflection;
+			sourceTree = "<group>";
+		};
+		78CD6F7715CA8A7300F6C2F9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				78CD6FAD15CA8B5000F6C2F9 /* SparkReflection-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		78DDB7E51647FF9800E7E92F /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				78DDB7E61647FF9900E7E92F /* SFIvarInfoTest.h */,
+				78DDB7E71647FF9900E7E92F /* SFIvarInfoTest.m */,
+				78DDB7E81647FF9900E7E92F /* SFMethodInfoTest.h */,
+				78DDB7E91647FF9900E7E92F /* SFMethodInfoTest.m */,
+				78DDB7EC1647FF9900E7E92F /* SFPropertyInfoTest.h */,
+				78DDB7ED1647FF9900E7E92F /* SFPropertyInfoTest.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		9FA9F4B015F6359700FDE9E0 /* SparkReflectionMac */ = {
+			isa = PBXGroup;
+			children = (
+				9FA9F4B115F6359700FDE9E0 /* Supporting Files */,
+			);
+			path = SparkReflectionMac;
+			sourceTree = "<group>";
+		};
+		9FA9F4B115F6359700FDE9E0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9FA9F4B215F6359700FDE9E0 /* SparkReflectionMac-Info.plist */,
+				9FA9F4B315F6359700FDE9E0 /* InfoPlist.strings */,
+				9FA9F4B615F6359700FDE9E0 /* SparkReflectionMac-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		9FA9F4A615F6359700FDE9E0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78B13C8116A0101600869F3C /* SparkReflection.h in Headers */,
+				78B13E3716A0238800869F3C /* NSObject+MemberVariableReflection.h in Headers */,
+				78B13E3816A0238800869F3C /* NSObject+MethodReflection.h in Headers */,
+				78B13E3916A0238800869F3C /* NSObject+PropertyReflection.h in Headers */,
+				78B13E3E16A023AA00869F3C /* SFIvarInfo.h in Headers */,
+				78B13E3F16A023AA00869F3C /* SFMethodInfo.h in Headers */,
+				78C242D316C3D17E000D777F /* NSCharacterSet+EncodingCharacterSet.h in Headers */,
+				785FEE8516C91E5200A0AF69 /* SFEncodingMapper.h in Headers */,
+				78B13E4216A023AA00869F3C /* SFPropertyInfo.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		78289DF41647C2200036BEFE /* SparkReflectionTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 78289E061647C2200036BEFE /* Build configuration list for PBXNativeTarget "SparkReflectionTest" */;
+			buildPhases = (
+				78289DF01647C2200036BEFE /* Sources */,
+				78289DF11647C2200036BEFE /* Frameworks */,
+				78289DF21647C2200036BEFE /* Resources */,
+				78289DF31647C2200036BEFE /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SparkReflectionTest;
+			productName = SecondSightUtilityTest;
+			productReference = 78289DF51647C2200036BEFE /* SparkReflectionTest.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+		78CD6F9815CA8AB800F6C2F9 /* SparkReflection */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 78CD6FA215CA8AB800F6C2F9 /* Build configuration list for PBXNativeTarget "SparkReflection" */;
+			buildPhases = (
+				78CD6F9515CA8AB800F6C2F9 /* Sources */,
+				78CD6F9615CA8AB800F6C2F9 /* Frameworks */,
+				78CD6F9715CA8AB800F6C2F9 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SparkReflection;
+			productName = SecondSightUtility;
+			productReference = 78CD6F9915CA8AB800F6C2F9 /* libSparkReflection.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		9FA9F4A815F6359700FDE9E0 /* SparkReflectionMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9FA9F4BC15F6359700FDE9E0 /* Build configuration list for PBXNativeTarget "SparkReflectionMac" */;
+			buildPhases = (
+				9FA9F4A415F6359700FDE9E0 /* Sources */,
+				9FA9F4A515F6359700FDE9E0 /* Frameworks */,
+				9FA9F4A615F6359700FDE9E0 /* Headers */,
+				9FA9F4A715F6359700FDE9E0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SparkReflectionMac;
+			productName = SecondSightUtilityMac;
+			productReference = 9FA9F4A915F6359700FDE9E0 /* SparkReflection.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		78CD6F6315CA8A7300F6C2F9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SF;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Epam Systems";
+			};
+			buildConfigurationList = 78CD6F6615CA8A7300F6C2F9 /* Build configuration list for PBXProject "SparkReflection" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 78CD6F6115CA8A7300F6C2F9;
+			productRefGroup = 78CD6F6D15CA8A7300F6C2F9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				78CD6F9815CA8AB800F6C2F9 /* SparkReflection */,
+				9FA9F4A815F6359700FDE9E0 /* SparkReflectionMac */,
+				78289DF41647C2200036BEFE /* SparkReflectionTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		78289DF21647C2200036BEFE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78289E011647C2200036BEFE /* InfoPlist.strings in Resources */,
+				787706B4169F1481009D14C2 /* SFEncoding.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FA9F4A715F6359700FDE9E0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FA9F4B515F6359700FDE9E0 /* InfoPlist.strings in Resources */,
+				78A8F89916A027CA00F1C33D /* SFEncoding.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		78289DF31647C2200036BEFE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		78289DF01647C2200036BEFE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78DDB7EE1647FF9900E7E92F /* SFIvarInfoTest.m in Sources */,
+				78DDB7EF1647FF9900E7E92F /* SFMethodInfoTest.m in Sources */,
+				78DDB7F11647FF9900E7E92F /* SFPropertyInfoTest.m in Sources */,
+				787706A7169F1481009D14C2 /* NSObject+MemberVariableReflection.m in Sources */,
+				787706A9169F1481009D14C2 /* NSObject+MethodReflection.m in Sources */,
+				787706AB169F1481009D14C2 /* NSObject+PropertyReflection.m in Sources */,
+				787706B6169F1481009D14C2 /* SFIvarInfo.m in Sources */,
+				787706B8169F1481009D14C2 /* SFMethodInfo.m in Sources */,
+				782B6DE216C3E8730057DF2C /* NSCharacterSet+EncodingCharacterSet.m in Sources */,
+				787706BE169F1481009D14C2 /* SFPropertyInfo.m in Sources */,
+				785FEE8816C91E5200A0AF69 /* SFEncodingMapper.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78CD6F9515CA8AB800F6C2F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				787706A6169F1481009D14C2 /* NSObject+MemberVariableReflection.m in Sources */,
+				787706A8169F1481009D14C2 /* NSObject+MethodReflection.m in Sources */,
+				787706AA169F1481009D14C2 /* NSObject+PropertyReflection.m in Sources */,
+				787706B5169F1481009D14C2 /* SFIvarInfo.m in Sources */,
+				787706B7169F1481009D14C2 /* SFMethodInfo.m in Sources */,
+				782B6DE316C3E8780057DF2C /* NSCharacterSet+EncodingCharacterSet.m in Sources */,
+				787706BD169F1481009D14C2 /* SFPropertyInfo.m in Sources */,
+				785FEE8616C91E5200A0AF69 /* SFEncodingMapper.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FA9F4A415F6359700FDE9E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78A8F88D16A027B400F1C33D /* NSObject+MemberVariableReflection.m in Sources */,
+				78A8F88E16A027B400F1C33D /* NSObject+MethodReflection.m in Sources */,
+				78A8F88F16A027B400F1C33D /* NSObject+PropertyReflection.m in Sources */,
+				78A8F89416A027C700F1C33D /* SFIvarInfo.m in Sources */,
+				78A8F89516A027C700F1C33D /* SFMethodInfo.m in Sources */,
+				78A8F89816A027C700F1C33D /* SFPropertyInfo.m in Sources */,
+				78C242D416C3D17E000D777F /* NSCharacterSet+EncodingCharacterSet.m in Sources */,
+				785FEE8716C91E5200A0AF69 /* SFEncodingMapper.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		78289DFF1647C2200036BEFE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				78289E001647C2200036BEFE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9FA9F4B315F6359700FDE9E0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9FA9F4B415F6359700FDE9E0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		78289E071647C2200036BEFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SparkReflectionTest/SparkReflectionTest-Prefix.pch";
+				INFOPLIST_FILE = "SparkReflectionTest/SparkReflectionTest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-objC",
+					"-all_load",
+				);
+				PRODUCT_NAME = SparkReflectionTest;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		78289E081647C2200036BEFE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SparkReflectionTest/SparkReflectionTest-Prefix.pch";
+				INFOPLIST_FILE = "SparkReflectionTest/SparkReflectionTest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = (
+					"-objC",
+					"-all_load",
+				);
+				PRODUCT_NAME = SparkReflectionTest;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+		78CD6F8215CA8A7300F6C2F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		78CD6F8315CA8A7300F6C2F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		78CD6FA315CA8AB800F6C2F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/SparkReflection.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Desktop\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SparkReflection/SparkReflection-Prefix.pch";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = SparkReflection;
+				PUBLIC_HEADERS_FOLDER_PATH = ../usr/local/include;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		78CD6FA415CA8AB800F6C2F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/SparkReflection.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Desktop\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SparkReflection/SparkReflection-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = SparkReflection;
+				PUBLIC_HEADERS_FOLDER_PATH = ../usr/local/include;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		9FA9F4BA15F6359700FDE9E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
+				FRAMEWORK_VERSION = A;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SparkReflectionMac/SparkReflectionMac-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "SparkReflectionMac/SparkReflectionMac-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = SparkReflection;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		9FA9F4BB15F6359700FDE9E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
+				FRAMEWORK_VERSION = A;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SparkReflectionMac/SparkReflectionMac-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "SparkReflectionMac/SparkReflectionMac-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = SparkReflection;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		78289E061647C2200036BEFE /* Build configuration list for PBXNativeTarget "SparkReflectionTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				78289E071647C2200036BEFE /* Debug */,
+				78289E081647C2200036BEFE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		78CD6F6615CA8A7300F6C2F9 /* Build configuration list for PBXProject "SparkReflection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				78CD6F8215CA8A7300F6C2F9 /* Debug */,
+				78CD6F8315CA8A7300F6C2F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		78CD6FA215CA8AB800F6C2F9 /* Build configuration list for PBXNativeTarget "SparkReflection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				78CD6FA315CA8AB800F6C2F9 /* Debug */,
+				78CD6FA415CA8AB800F6C2F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9FA9F4BC15F6359700FDE9E0 /* Build configuration list for PBXNativeTarget "SparkReflectionMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FA9F4BA15F6359700FDE9E0 /* Debug */,
+				9FA9F4BB15F6359700FDE9E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 78CD6F6315CA8A7300F6C2F9 /* Project object */;
+}

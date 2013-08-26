@@ -28,16 +28,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "78DDB7CB1647FF0200E7E92F"
-               BuildableName = "SparkAttributeTest.octest"
-               BlueprintName = "SparkAttributeTest"
-               ReferencedContainer = "container:SparkAttribute.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

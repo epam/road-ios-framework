@@ -36,9 +36,9 @@
 + (NSInvocation *)invocationForSelector:(SEL)selector;
 + (NSMutableDictionary *)mutableAttributesFactoriesFrom:(NSDictionary *)attributesFactories;
 
-+ (NSArray *)attributesForInstanceMethod:(NSString *)nameOf withType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForProperty:(NSString *)nameOf withType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForField:(NSString *)nameOf withType:(Class)requiredClassOfAttribute;
++ (NSArray *)attributesForInstanceMethod:(NSString *)instanceMethodName withType:(Class)requiredClassOfAttribute;
++ (NSArray *)attributesForProperty:(NSString *)propertyName withType:(Class)requiredClassOfAttribute;
++ (NSArray *)attributesForField:(NSString *)fieldName withType:(Class)requiredClassOfAttribute;
 + (NSArray *)attributesForClass;
 
 #pragma mark - Attributes API stubs

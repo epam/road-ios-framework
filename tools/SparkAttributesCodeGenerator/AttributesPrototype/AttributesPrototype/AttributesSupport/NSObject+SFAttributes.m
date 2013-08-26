@@ -69,20 +69,18 @@
     return invocation;
 }
 
-+ (NSArray *)attributesFor:(NSString *)nameOf inAttributeCreatorsDictionary:(NSDictionary *)attributeCreatorsDictionary {   
-    return [self attributesFor:nameOf inAttributeCreatorsDictionary:attributeCreatorsDictionary withType:nil];
++ (NSArray *)attributesFor:(NSString *)annotatedElementName inAttributeCreatorsDictionary:(NSDictionary *)attributeCreatorsDictionary {   
+    return [self attributesFor:annotatedElementName inAttributeCreatorsDictionary:attributeCreatorsDictionary withType:nil];
 }
 
-+ (NSArray *)attributesFor:(NSString *)nameOf inAttributeCreatorsDictionary:(NSDictionary *)attributeCreatorsDictionary withType:(Class)requiredClassOfAttribute {
-    if (nameOf == nil) {
-        return nil;
-    }
++ (NSArray *)attributesFor:(NSString *)annotatedElementName inAttributeCreatorsDictionary:(NSDictionary *)attributeCreatorsDictionary withType:(Class)requiredClassOfAttribute {
+    assert([annotatedElementName length] > 0);
     
     if (attributeCreatorsDictionary == nil) {
         return nil;
     }
     
-    NSInvocation *attributeCreatorValueInvocation = [attributeCreatorsDictionary objectForKey:nameOf];
+    NSInvocation *attributeCreatorValueInvocation = [attributeCreatorsDictionary objectForKey:annotatedElementName];
     if (attributeCreatorValueInvocation== nil) {
         return nil;
     }
@@ -90,11 +88,11 @@
     NSArray *result = nil;
     
     [attributeCreatorValueInvocation invoke];
-    [attributeCreatorValueInvocation getReturnValue:&result];
-    if (result == nil) {
-        return nil;
-    }
     
+    //doesn't increment retains counter of object of result. (using of weak references decreases performance 40 times.)
+    [attributeCreatorValueInvocation getReturnValue:&result];
+    
+    //so we need to increment retains counter manually
     CFBridgingRetain(result);
     
     return [self attributesWithType:requiredClassOfAttribute from:result];
@@ -124,16 +122,16 @@
     return result;
 }
 
-+ (NSArray *)attributesForInstanceMethod:(NSString *)nameOf withType:(Class)requiredClassOfAttribute {
-    return [self attributesFor:nameOf inAttributeCreatorsDictionary:[self attributesFactoriesForInstanceMethods] withType:requiredClassOfAttribute];
++ (NSArray *)attributesForInstanceMethod:(NSString *)instanceMethodName withType:(Class)requiredClassOfAttribute {
+    return [self attributesFor:instanceMethodName inAttributeCreatorsDictionary:self.attributesFactoriesForInstanceMethods withType:requiredClassOfAttribute];
 }
 
-+ (NSArray *)attributesForProperty:(NSString *)nameOf withType:(Class)requiredClassOfAttribute {
-    return [self attributesFor:nameOf inAttributeCreatorsDictionary:[self attributesFactoriesForProperties] withType:requiredClassOfAttribute];
++ (NSArray *)attributesForProperty:(NSString *)propertyName withType:(Class)requiredClassOfAttribute {
+    return [self attributesFor:propertyName inAttributeCreatorsDictionary:self.attributesFactoriesForProperties withType:requiredClassOfAttribute];
 }
 
-+ (NSArray *)attributesForField:(NSString *)nameOf withType:(Class)requiredClassOfAttribute {
-    return [self attributesFor:nameOf inAttributeCreatorsDictionary:[self attributesFactoriesForFields] withType:requiredClassOfAttribute];
++ (NSArray *)attributesForField:(NSString *)fieldName withType:(Class)requiredClassOfAttribute {
+    return [self attributesFor:fieldName inAttributeCreatorsDictionary:self.attributesFactoriesForFields withType:requiredClassOfAttribute];
 }
 
 #pragma mark -

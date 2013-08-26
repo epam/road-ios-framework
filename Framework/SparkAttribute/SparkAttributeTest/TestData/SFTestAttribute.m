@@ -1,5 +1,5 @@
 //
-//  NSObject+SFAttributes.h
+//  SFTestAttribute.m
 //  AttributesPrototype
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -27,30 +27,8 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Foundation/Foundation.h>
+#import "SFTestAttribute.h"
 
-@interface NSObject (SFAttributes)
-
-#pragma mark - Attributes API
-
-+ (NSInvocation *)invocationForSelector:(SEL)selector;
-+ (NSMutableDictionary *)mutableAttributesFactoriesFrom:(NSDictionary *)attributesFactories;
-
-+ (NSArray *)attributesForInstanceMethod:(NSString *)instanceMethodName withType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForProperty:(NSString *)propertyName withType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForField:(NSString *)fieldName withType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForClass;
-
-#pragma mark - Attributes API stubs
-
-//will be overridden by annotated class
-
-+ (NSDictionary *)attributesFactoriesForInstanceMethods;
-+ (NSDictionary *)attributesFactoriesForProperties;
-+ (NSDictionary *)attributesFactoriesForClassProperties;
-+ (NSDictionary *)attributesFactoriesForFields;
-
-#pragma mark -
-
+@implementation SFTestAttribute
 
 @end

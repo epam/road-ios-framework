@@ -1,5 +1,5 @@
 //
-//  NSObject+SFAttributes.h
+//  AnnotatedClass.h
 //  AttributesPrototype
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -28,29 +28,18 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <Foundation/Foundation.h>
+#import "SFTestAttribute.h"
+#import "CustomSFTestAttribute.h"
 
-@interface NSObject (SFAttributes)
+///Testing of class with attributes
+@interface SecondAnnotatedClass : NSObject {
+    ///Testing of field with attributes
+    NSObject* _someField;
+}
 
-#pragma mark - Attributes API
+- (void)viewDidLoad;
+- (void)viewDidLoad:(BOOL)param1;
 
-+ (NSInvocation *)invocationForSelector:(SEL)selector;
-+ (NSMutableDictionary *)mutableAttributesFactoriesFrom:(NSDictionary *)attributesFactories;
-
-+ (NSArray *)attributesForInstanceMethod:(NSString *)instanceMethodName withType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForProperty:(NSString *)propertyName withType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForField:(NSString *)fieldName withType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForClass;
-
-#pragma mark - Attributes API stubs
-
-//will be overridden by annotated class
-
-+ (NSDictionary *)attributesFactoriesForInstanceMethods;
-+ (NSDictionary *)attributesFactoriesForProperties;
-+ (NSDictionary *)attributesFactoriesForClassProperties;
-+ (NSDictionary *)attributesFactoriesForFields;
-
-#pragma mark -
-
+@property (strong, nonatomic) NSString *window;
 
 @end

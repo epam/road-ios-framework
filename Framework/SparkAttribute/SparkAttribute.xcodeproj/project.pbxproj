@@ -9,16 +9,61 @@
 /* Begin PBXBuildFile section */
 		5AD1FC48176603AC00E67BC4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD1FC47176603AC00E67BC4 /* Cocoa.framework */; };
 		78DDB7CE1647FF0200E7E92F /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78DDB7CD1647FF0200E7E92F /* SenTestingKit.framework */; };
-		78DDB7D81647FF0200E7E92F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 78DDB7D61647FF0200E7E92F /* InfoPlist.strings */; };
+		8DE377EA17C76B2200F30026 /* AttributesAPITest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE377E617C76B2200F30026 /* AttributesAPITest.m */; };
+		8DE377F617C76CAA00F30026 /* libSparkAttribute.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 789669DA15CBD1CD003D4AFC /* libSparkAttribute.a */; };
+		8DE3780817C76ED500F30026 /* AnnotatedClass+SFAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE377FE17C76ED500F30026 /* AnnotatedClass+SFAttributes.m */; };
+		8DE3780917C76ED500F30026 /* AnnotatedClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3780017C76ED500F30026 /* AnnotatedClass.m */; };
+		8DE3780A17C76ED500F30026 /* CustomSFTestAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3780217C76ED500F30026 /* CustomSFTestAttribute.m */; };
+		8DE3780B17C76ED500F30026 /* SecondAnnotatedClass+SFAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3780317C76ED500F30026 /* SecondAnnotatedClass+SFAttributes.m */; };
+		8DE3780C17C76ED500F30026 /* SecondAnnotatedClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3780517C76ED500F30026 /* SecondAnnotatedClass.m */; };
+		8DE3780D17C76ED500F30026 /* SFTestAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3780717C76ED500F30026 /* SFTestAttribute.m */; };
+		8DE3786D17C7872100F30026 /* libSparkReflection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE3786C17C7872100F30026 /* libSparkReflection.a */; };
+		8DE3786E17C7872500F30026 /* libSparkCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE3786517C786FF00F30026 /* libSparkCore.a */; };
 		8DF6C8CC17C474A100F829E8 /* SparkAttributesSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DF6C8CB17C474A100F829E8 /* SparkAttributesSupport.h */; };
 		8DF6C8CF17C474AD00F829E8 /* NSObject+SFAttributes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DF6C8CD17C474AD00F829E8 /* NSObject+SFAttributes.h */; };
 		8DF6C8D017C474AD00F829E8 /* NSObject+SFAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF6C8CE17C474AD00F829E8 /* NSObject+SFAttributes.m */; };
 		8DF6C8D117C474AD00F829E8 /* NSObject+SFAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF6C8CE17C474AD00F829E8 /* NSObject+SFAttributes.m */; };
 		8DF6C8D217C474AD00F829E8 /* NSObject+SFAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF6C8CE17C474AD00F829E8 /* NSObject+SFAttributes.m */; };
 		9FA9F50E15F63D6B00FDE9E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FA9F50C15F63D6B00FDE9E0 /* InfoPlist.strings */; };
-		D7D587AE17C634C60081EC7C /* SparkAttributesSupport.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8DF6C8CB17C474A100F829E8 /* SparkAttributesSupport.h */; };
-		D7D587AF17C634D10081EC7C /* NSObject+SFAttributes.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8DF6C8CD17C474AD00F829E8 /* NSObject+SFAttributes.h */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8DE377F417C76CA300F30026 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 789669D115CBD1CD003D4AFC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 789669D915CBD1CD003D4AFC;
+			remoteInfo = SparkAttribute;
+		};
+		8DE3786417C786FF00F30026 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DE3785E17C786FE00F30026 /* SparkCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 78B8E68E16C3CC3E0049E36B;
+			remoteInfo = SparkCore;
+		};
+		8DE3786617C786FF00F30026 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DE3785E17C786FE00F30026 /* SparkCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 78B8E6A616C3CCA50049E36B;
+			remoteInfo = SparkCoreMac;
+		};
+		8DE3786817C786FF00F30026 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DE3785E17C786FE00F30026 /* SparkCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 78B8E6BF16C3CCC00049E36B;
+			remoteInfo = SparkCoreTest;
+		};
+		8DE3786A17C7871000F30026 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DE3785E17C786FE00F30026 /* SparkCore.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 78B8E68D16C3CC3E0049E36B;
+			remoteInfo = SparkCore;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		789669D815CBD1CD003D4AFC /* Copy Files */ = {
@@ -27,8 +72,6 @@
 			dstPath = include/Spark;
 			dstSubfolderSpec = 16;
 			files = (
-				D7D587AF17C634D10081EC7C /* NSObject+SFAttributes.h in Copy Files */,
-				D7D587AE17C634C60081EC7C /* SparkAttributesSupport.h in Copy Files */,
 			);
 			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -42,8 +85,21 @@
 		78DDB7CC1647FF0200E7E92F /* SparkAttributeTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SparkAttributeTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		78DDB7CD1647FF0200E7E92F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		78DDB7D51647FF0200E7E92F /* SparkAttributeTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SparkAttributeTest-Info.plist"; sourceTree = "<group>"; };
-		78DDB7D71647FF0200E7E92F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		78DDB7DC1647FF0200E7E92F /* SparkAttributeTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SparkAttributeTest-Prefix.pch"; sourceTree = "<group>"; };
+		8DE377E517C76B2200F30026 /* AttributesAPITest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttributesAPITest.h; path = SparkAttributeTest/AttributesAPITest.h; sourceTree = SOURCE_ROOT; };
+		8DE377E617C76B2200F30026 /* AttributesAPITest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttributesAPITest.m; path = SparkAttributeTest/AttributesAPITest.m; sourceTree = SOURCE_ROOT; };
+		8DE377FE17C76ED500F30026 /* AnnotatedClass+SFAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AnnotatedClass+SFAttributes.m"; sourceTree = "<group>"; };
+		8DE377FF17C76ED500F30026 /* AnnotatedClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnotatedClass.h; sourceTree = "<group>"; };
+		8DE3780017C76ED500F30026 /* AnnotatedClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotatedClass.m; sourceTree = "<group>"; };
+		8DE3780117C76ED500F30026 /* CustomSFTestAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSFTestAttribute.h; sourceTree = "<group>"; };
+		8DE3780217C76ED500F30026 /* CustomSFTestAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSFTestAttribute.m; sourceTree = "<group>"; };
+		8DE3780317C76ED500F30026 /* SecondAnnotatedClass+SFAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SecondAnnotatedClass+SFAttributes.m"; sourceTree = "<group>"; };
+		8DE3780417C76ED500F30026 /* SecondAnnotatedClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondAnnotatedClass.h; sourceTree = "<group>"; };
+		8DE3780517C76ED500F30026 /* SecondAnnotatedClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondAnnotatedClass.m; sourceTree = "<group>"; };
+		8DE3780617C76ED500F30026 /* SFTestAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTestAttribute.h; sourceTree = "<group>"; };
+		8DE3780717C76ED500F30026 /* SFTestAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTestAttribute.m; sourceTree = "<group>"; };
+		8DE3785E17C786FE00F30026 /* SparkCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkCore.xcodeproj; path = ../SparkCore/SparkCore.xcodeproj; sourceTree = "<group>"; };
+		8DE3786C17C7872100F30026 /* libSparkReflection.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libSparkReflection.a; path = "../SparkReflection/build/Release-iphoneos/libSparkReflection.a"; sourceTree = "<group>"; };
 		8DF6C8CB17C474A100F829E8 /* SparkAttributesSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparkAttributesSupport.h; sourceTree = "<group>"; };
 		8DF6C8CD17C474AD00F829E8 /* NSObject+SFAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SFAttributes.h"; sourceTree = "<group>"; };
 		8DF6C8CE17C474AD00F829E8 /* NSObject+SFAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SFAttributes.m"; sourceTree = "<group>"; };
@@ -67,6 +123,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DE3786E17C7872500F30026 /* libSparkCore.a in Frameworks */,
+				8DE3786D17C7872100F30026 /* libSparkReflection.a in Frameworks */,
+				8DE377F617C76CAA00F30026 /* libSparkAttribute.a in Frameworks */,
 				78DDB7CE1647FF0200E7E92F /* SenTestingKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,6 +165,8 @@
 		789669DC15CBD1CD003D4AFC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8DE3786C17C7872100F30026 /* libSparkReflection.a */,
+				8DE3785E17C786FE00F30026 /* SparkCore.xcodeproj */,
 				5AD1FC47176603AC00E67BC4 /* Cocoa.framework */,
 				CDB87EE316EA0EB7003D9081 /* Foundation.framework */,
 				78DDB7CD1647FF0200E7E92F /* SenTestingKit.framework */,
@@ -119,7 +180,6 @@
 			children = (
 				8DF6C8CB17C474A100F829E8 /* SparkAttributesSupport.h */,
 				78B13C4C169F223000869F3C /* Attribute */,
-				78B13C53169F223000869F3C /* Categories */,
 				789669E015CBD1CD003D4AFC /* Supporting Files */,
 			);
 			path = SparkAttribute;
@@ -142,13 +202,6 @@
 			path = Attribute;
 			sourceTree = "<group>";
 		};
-		78B13C53169F223000869F3C /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Categories;
-			sourceTree = "<group>";
-		};
 		78DDB7D31647FF0200E7E92F /* SparkAttributeTest */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,7 +216,6 @@
 			isa = PBXGroup;
 			children = (
 				78DDB7D51647FF0200E7E92F /* SparkAttributeTest-Info.plist */,
-				78DDB7D61647FF0200E7E92F /* InfoPlist.strings */,
 				78DDB7DC1647FF0200E7E92F /* SparkAttributeTest-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -172,6 +224,9 @@
 		78DDB7F21647FFC300E7E92F /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				8DE377FD17C76ED500F30026 /* TestData */,
+				8DE377E517C76B2200F30026 /* AttributesAPITest.h */,
+				8DE377E617C76B2200F30026 /* AttributesAPITest.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -181,6 +236,34 @@
 			children = (
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		8DE377FD17C76ED500F30026 /* TestData */ = {
+			isa = PBXGroup;
+			children = (
+				8DE377FE17C76ED500F30026 /* AnnotatedClass+SFAttributes.m */,
+				8DE377FF17C76ED500F30026 /* AnnotatedClass.h */,
+				8DE3780017C76ED500F30026 /* AnnotatedClass.m */,
+				8DE3780117C76ED500F30026 /* CustomSFTestAttribute.h */,
+				8DE3780217C76ED500F30026 /* CustomSFTestAttribute.m */,
+				8DE3780317C76ED500F30026 /* SecondAnnotatedClass+SFAttributes.m */,
+				8DE3780417C76ED500F30026 /* SecondAnnotatedClass.h */,
+				8DE3780517C76ED500F30026 /* SecondAnnotatedClass.m */,
+				8DE3780617C76ED500F30026 /* SFTestAttribute.h */,
+				8DE3780717C76ED500F30026 /* SFTestAttribute.m */,
+			);
+			name = TestData;
+			path = SparkAttributeTest/TestData;
+			sourceTree = SOURCE_ROOT;
+		};
+		8DE3785F17C786FE00F30026 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DE3786517C786FF00F30026 /* libSparkCore.a */,
+				8DE3786717C786FF00F30026 /* SparkCore.framework */,
+				8DE3786917C786FF00F30026 /* SparkCoreTest.octest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		9FA9F50915F63D6B00FDE9E0 /* SparkAttributeMac */ = {
@@ -227,6 +310,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				8DE3786B17C7871000F30026 /* PBXTargetDependency */,
 			);
 			name = SparkAttribute;
 			productName = SecondSightAnnotation;
@@ -239,13 +323,13 @@
 			buildPhases = (
 				78DDB7C71647FF0200E7E92F /* Sources */,
 				78DDB7C81647FF0200E7E92F /* Frameworks */,
-				78DDB7FB1648008200E7E92F /* ShellScript */,
 				78DDB7C91647FF0200E7E92F /* Resources */,
 				78DDB7CA1647FF0200E7E92F /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8DE377F517C76CA300F30026 /* PBXTargetDependency */,
 			);
 			name = SparkAttributeTest;
 			productName = SecondSightAnnotationTest;
@@ -276,7 +360,7 @@
 		789669D115CBD1CD003D4AFC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = ESD;
+				CLASSPREFIX = SF;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Epam Systems";
 			};
@@ -290,6 +374,12 @@
 			mainGroup = 789669CF15CBD1CD003D4AFC;
 			productRefGroup = 789669DB15CBD1CD003D4AFC /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 8DE3785F17C786FE00F30026 /* Products */;
+					ProjectRef = 8DE3785E17C786FE00F30026 /* SparkCore.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				789669D915CBD1CD003D4AFC /* SparkAttribute */,
@@ -299,12 +389,35 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		8DE3786517C786FF00F30026 /* libSparkCore.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSparkCore.a;
+			remoteRef = 8DE3786417C786FF00F30026 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8DE3786717C786FF00F30026 /* SparkCore.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SparkCore.framework;
+			remoteRef = 8DE3786617C786FF00F30026 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8DE3786917C786FF00F30026 /* SparkCoreTest.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SparkCoreTest.octest;
+			remoteRef = 8DE3786817C786FF00F30026 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		78DDB7C91647FF0200E7E92F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78DDB7D81647FF0200E7E92F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,19 +445,6 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
-		78DDB7FB1648008200E7E92F /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/../../../../tools/binaries/PreprocessorAttributeParser -o=${SRCROOT}/SparkAttributeTest/Resources/TempAttributes";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -361,6 +461,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DF6C8D217C474AD00F829E8 /* NSObject+SFAttributes.m in Sources */,
+				8DE377EA17C76B2200F30026 /* AttributesAPITest.m in Sources */,
+				8DE3780817C76ED500F30026 /* AnnotatedClass+SFAttributes.m in Sources */,
+				8DE3780917C76ED500F30026 /* AnnotatedClass.m in Sources */,
+				8DE3780A17C76ED500F30026 /* CustomSFTestAttribute.m in Sources */,
+				8DE3780B17C76ED500F30026 /* SecondAnnotatedClass+SFAttributes.m in Sources */,
+				8DE3780C17C76ED500F30026 /* SecondAnnotatedClass.m in Sources */,
+				8DE3780D17C76ED500F30026 /* SFTestAttribute.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,15 +481,20 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		78DDB7D61647FF0200E7E92F /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				78DDB7D71647FF0200E7E92F /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
+/* Begin PBXTargetDependency section */
+		8DE377F517C76CA300F30026 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 789669D915CBD1CD003D4AFC /* SparkAttribute */;
+			targetProxy = 8DE377F417C76CA300F30026 /* PBXContainerItemProxy */;
 		};
+		8DE3786B17C7871000F30026 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SparkCore;
+			targetProxy = 8DE3786A17C7871000F30026 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
 		9FA9F50C15F63D6B00FDE9E0 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -397,7 +509,7 @@
 		789669E615CBD1CD003D4AFC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -427,7 +539,7 @@
 		789669E715CBD1CD003D4AFC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;

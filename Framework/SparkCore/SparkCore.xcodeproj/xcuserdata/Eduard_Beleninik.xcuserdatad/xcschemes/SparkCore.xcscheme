@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "789669D915CBD1CD003D4AFC"
-               BuildableName = "libSparkAttribute.a"
-               BlueprintName = "SparkAttribute"
-               ReferencedContainer = "container:SparkAttribute.xcodeproj">
+               BlueprintIdentifier = "78B8E68D16C3CC3E0049E36B"
+               BuildableName = "libSparkCore.a"
+               BlueprintName = "SparkCore"
+               ReferencedContainer = "container:SparkCore.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,16 +28,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "78DDB7CB1647FF0200E7E92F"
-               BuildableName = "SparkAttributeTest.octest"
-               BlueprintName = "SparkAttributeTest"
-               ReferencedContainer = "container:SparkAttribute.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

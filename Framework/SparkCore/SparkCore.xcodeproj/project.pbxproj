@@ -1,0 +1,935 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5AD1FC431766038E00E67BC4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD1FC421766038E00E67BC4 /* Cocoa.framework */; };
+		78180F0816C3D0A300B4AA31 /* SparkCore.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E72216C3CD4A0049E36B /* SparkCore.h */; };
+		78180F0916C3D0A800B4AA31 /* NSArray+EmptyArrayChecks.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6F816C3CD320049E36B /* NSArray+EmptyArrayChecks.h */; };
+		78180F0A16C3D0A800B4AA31 /* NSDictionary+KeyedSubscript.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E70016C3CD320049E36B /* NSDictionary+KeyedSubscript.h */; };
+		78180F0B16C3D0A800B4AA31 /* NSMutableDictionary+KeyedSubscript.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E70216C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.h */; };
+		78180F0C16C3D0BD00B4AA31 /* NSBundle+ParameterList.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6FA16C3CD320049E36B /* NSBundle+ParameterList.h */; };
+		78180F0D16C3D0BD00B4AA31 /* NSObject+AttachedCollections.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6FC16C3CD320049E36B /* NSObject+AttachedCollections.h */; };
+		78180F0F16C3D0BD00B4AA31 /* NSMutableString+SFStringFormatter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E70416C3CD320049E36B /* NSMutableString+SFStringFormatter.h */; };
+		78180F1116C3D0BD00B4AA31 /* SFMutableObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D216C3CCE60049E36B /* SFMutableObject.h */; };
+		78180F1216C3D0BD00B4AA31 /* SFObjectPool.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D416C3CCE60049E36B /* SFObjectPool.h */; };
+		78180F1316C3D0BD00B4AA31 /* SFPooledObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D616C3CCE60049E36B /* SFPooledObject.h */; };
+		78180F1416C3D0BD00B4AA31 /* SFPoolObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D716C3CCE60049E36B /* SFPoolObject.h */; };
+		78180F1516C3D0BD00B4AA31 /* SFObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D916C3CCE60049E36B /* SFObject.h */; };
+		782B6DAD16C3D5960057DF2C /* SparkCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E72216C3CD4A0049E36B /* SparkCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		782B6DAE16C3D5B50057DF2C /* NSString+AccessorUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E6EC16C3CD070049E36B /* NSString+AccessorUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		782B6DE116C3E74D0057DF2C /* NSString+AccessorUtilities.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6EC16C3CD070049E36B /* NSString+AccessorUtilities.h */; };
+		782B6DE416C3E8D80057DF2C /* NSString+AccessorUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6ED16C3CD070049E36B /* NSString+AccessorUtilities.m */; };
+		782B6DE516C3E8E40057DF2C /* NSString+AccessorUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6ED16C3CD070049E36B /* NSString+AccessorUtilities.m */; };
+		782B6DE816C3E9B00057DF2C /* libSparkReflection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78CBA91016C3D33A00DAC9BB /* libSparkReflection.a */; };
+		78B8E6B216C3CCA50049E36B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 78B8E6B016C3CCA50049E36B /* InfoPlist.strings */; };
+		78B8E6C116C3CCC00049E36B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B8E6C016C3CCC00049E36B /* SenTestingKit.framework */; };
+		78B8E6C416C3CCC00049E36B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B8E69116C3CC3E0049E36B /* Foundation.framework */; };
+		78B8E6CA16C3CCC00049E36B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 78B8E6C816C3CCC00049E36B /* InfoPlist.strings */; };
+		78B8E6DB16C3CCE60049E36B /* SFMutableObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E6D216C3CCE60049E36B /* SFMutableObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78B8E6DC16C3CCE60049E36B /* SFMutableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D316C3CCE60049E36B /* SFMutableObject.m */; };
+		78B8E6DD16C3CCE60049E36B /* SFMutableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D316C3CCE60049E36B /* SFMutableObject.m */; };
+		78B8E6DE16C3CCE60049E36B /* SFMutableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D316C3CCE60049E36B /* SFMutableObject.m */; };
+		78B8E6DF16C3CCE60049E36B /* SFObjectPool.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E6D416C3CCE60049E36B /* SFObjectPool.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78B8E6E016C3CCE60049E36B /* SFObjectPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D516C3CCE60049E36B /* SFObjectPool.m */; };
+		78B8E6E116C3CCE60049E36B /* SFObjectPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D516C3CCE60049E36B /* SFObjectPool.m */; };
+		78B8E6E216C3CCE60049E36B /* SFObjectPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D516C3CCE60049E36B /* SFObjectPool.m */; };
+		78B8E6E316C3CCE60049E36B /* SFPooledObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E6D616C3CCE60049E36B /* SFPooledObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78B8E6E416C3CCE60049E36B /* SFPoolObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E6D716C3CCE60049E36B /* SFPoolObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78B8E6E516C3CCE60049E36B /* SFPoolObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D816C3CCE60049E36B /* SFPoolObject.m */; };
+		78B8E6E616C3CCE60049E36B /* SFPoolObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D816C3CCE60049E36B /* SFPoolObject.m */; };
+		78B8E6E716C3CCE60049E36B /* SFPoolObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D816C3CCE60049E36B /* SFPoolObject.m */; };
+		78B8E6E816C3CCE60049E36B /* SFObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E6D916C3CCE60049E36B /* SFObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78B8E6E916C3CCE60049E36B /* SFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6DA16C3CCE60049E36B /* SFObject.m */; };
+		78B8E6EA16C3CCE60049E36B /* SFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6DA16C3CCE60049E36B /* SFObject.m */; };
+		78B8E6EB16C3CCE60049E36B /* SFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6DA16C3CCE60049E36B /* SFObject.m */; };
+		78B8E6F016C3CD070049E36B /* NSString+AccessorUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6ED16C3CD070049E36B /* NSString+AccessorUtilities.m */; };
+		78B8E70616C3CD320049E36B /* NSArray+EmptyArrayChecks.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E6F816C3CD320049E36B /* NSArray+EmptyArrayChecks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78B8E70716C3CD320049E36B /* NSArray+EmptyArrayChecks.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6F916C3CD320049E36B /* NSArray+EmptyArrayChecks.m */; };
+		78B8E70816C3CD320049E36B /* NSArray+EmptyArrayChecks.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6F916C3CD320049E36B /* NSArray+EmptyArrayChecks.m */; };
+		78B8E70916C3CD320049E36B /* NSArray+EmptyArrayChecks.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6F916C3CD320049E36B /* NSArray+EmptyArrayChecks.m */; };
+		78B8E70A16C3CD320049E36B /* NSBundle+ParameterList.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E6FA16C3CD320049E36B /* NSBundle+ParameterList.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78B8E70B16C3CD320049E36B /* NSBundle+ParameterList.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6FB16C3CD320049E36B /* NSBundle+ParameterList.m */; };
+		78B8E70C16C3CD320049E36B /* NSBundle+ParameterList.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6FB16C3CD320049E36B /* NSBundle+ParameterList.m */; };
+		78B8E70D16C3CD320049E36B /* NSBundle+ParameterList.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6FB16C3CD320049E36B /* NSBundle+ParameterList.m */; };
+		78B8E70E16C3CD320049E36B /* NSObject+AttachedCollections.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E6FC16C3CD320049E36B /* NSObject+AttachedCollections.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78B8E70F16C3CD320049E36B /* NSObject+AttachedCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6FD16C3CD320049E36B /* NSObject+AttachedCollections.m */; };
+		78B8E71016C3CD320049E36B /* NSObject+AttachedCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6FD16C3CD320049E36B /* NSObject+AttachedCollections.m */; };
+		78B8E71116C3CD320049E36B /* NSObject+AttachedCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6FD16C3CD320049E36B /* NSObject+AttachedCollections.m */; };
+		78B8E71616C3CD320049E36B /* NSDictionary+KeyedSubscript.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E70016C3CD320049E36B /* NSDictionary+KeyedSubscript.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78B8E71716C3CD320049E36B /* NSDictionary+KeyedSubscript.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70116C3CD320049E36B /* NSDictionary+KeyedSubscript.m */; };
+		78B8E71816C3CD320049E36B /* NSDictionary+KeyedSubscript.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70116C3CD320049E36B /* NSDictionary+KeyedSubscript.m */; };
+		78B8E71916C3CD320049E36B /* NSDictionary+KeyedSubscript.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70116C3CD320049E36B /* NSDictionary+KeyedSubscript.m */; };
+		78B8E71A16C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E70216C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78B8E71B16C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70316C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.m */; };
+		78B8E71C16C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70316C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.m */; };
+		78B8E71D16C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70316C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.m */; };
+		78B8E71E16C3CD320049E36B /* NSMutableString+SFStringFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E70416C3CD320049E36B /* NSMutableString+SFStringFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78B8E71F16C3CD320049E36B /* NSMutableString+SFStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70516C3CD320049E36B /* NSMutableString+SFStringFormatter.m */; };
+		78B8E72016C3CD320049E36B /* NSMutableString+SFStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70516C3CD320049E36B /* NSMutableString+SFStringFormatter.m */; };
+		78B8E72116C3CD320049E36B /* NSMutableString+SFStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70516C3CD320049E36B /* NSMutableString+SFStringFormatter.m */; };
+		78B8E73016C3CDD90049E36B /* SFTemplateParsingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E72916C3CDD90049E36B /* SFTemplateParsingTest.m */; };
+		78B8E73116C3CDD90049E36B /* SFConditionalComponentResultTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E72B16C3CDD90049E36B /* SFConditionalComponentResultTest.m */; };
+		78B8E73216C3CDD90049E36B /* SFPropertyNameMethodTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E72D16C3CDD90049E36B /* SFPropertyNameMethodTest.m */; };
+		78B8E73916C3CDFD0049E36B /* SFMutableObjectTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E73616C3CDFD0049E36B /* SFMutableObjectTest.m */; };
+		78B8E73A16C3CDFD0049E36B /* SFPoolTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E73816C3CDFD0049E36B /* SFPoolTest.m */; };
+		78C2432416C3D314000D777F /* SparkReflection.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 78C2432316C3D314000D777F /* SparkReflection.xcodeproj */; };
+		78C2432516C3D314000D777F /* SparkReflection.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 78C2432316C3D314000D777F /* SparkReflection.xcodeproj */; };
+		78CBA91C16C3D36D00DAC9BB /* SparkReflection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78CBA91216C3D33A00DAC9BB /* SparkReflection.framework */; };
+		8DE3785217C784D000F30026 /* NSInvocation+SparkExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3785117C784D000F30026 /* NSInvocation+SparkExtension.m */; };
+		8DE3785317C784D000F30026 /* NSInvocation+SparkExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3785117C784D000F30026 /* NSInvocation+SparkExtension.m */; };
+		8DE3785D17C7869600F30026 /* NSInvocation+SparkExtension.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DE3785017C784D000F30026 /* NSInvocation+SparkExtension.h */; };
+		E513EA2D179022BC0058F2EA /* SparkSingletonDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = E513EA2C179022BC0058F2EA /* SparkSingletonDefinition.h */; };
+		E5DED7B51790234900AB0250 /* SparkSingletonDefinition.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E513EA2C179022BC0058F2EA /* SparkSingletonDefinition.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		782B6DE616C3E9A70057DF2C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78C2432316C3D314000D777F /* SparkReflection.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 78CD6F9815CA8AB800F6C2F9;
+			remoteInfo = SparkReflection;
+		};
+		78CBA90F16C3D33A00DAC9BB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78C2432316C3D314000D777F /* SparkReflection.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 78CD6F9915CA8AB800F6C2F9;
+			remoteInfo = SparkReflection;
+		};
+		78CBA91116C3D33A00DAC9BB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78C2432316C3D314000D777F /* SparkReflection.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9FA9F4A915F6359700FDE9E0;
+			remoteInfo = SparkReflectionMac;
+		};
+		78CBA91316C3D33A00DAC9BB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78C2432316C3D314000D777F /* SparkReflection.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 78289DF51647C2200036BEFE;
+			remoteInfo = SparkReflectionTest;
+		};
+		78CBA91516C3D35A00DAC9BB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78C2432316C3D314000D777F /* SparkReflection.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 78CD6F9815CA8AB800F6C2F9;
+			remoteInfo = SparkReflection;
+		};
+		78CBA91716C3D35F00DAC9BB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78C2432316C3D314000D777F /* SparkReflection.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9FA9F4A815F6359700FDE9E0;
+			remoteInfo = SparkReflectionMac;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		78B8E68C16C3CC3E0049E36B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = include/Spark;
+			dstSubfolderSpec = 16;
+			files = (
+				8DE3785D17C7869600F30026 /* NSInvocation+SparkExtension.h in CopyFiles */,
+				E5DED7B51790234900AB0250 /* SparkSingletonDefinition.h in CopyFiles */,
+				78180F0816C3D0A300B4AA31 /* SparkCore.h in CopyFiles */,
+				78180F0916C3D0A800B4AA31 /* NSArray+EmptyArrayChecks.h in CopyFiles */,
+				78180F0A16C3D0A800B4AA31 /* NSDictionary+KeyedSubscript.h in CopyFiles */,
+				78180F0B16C3D0A800B4AA31 /* NSMutableDictionary+KeyedSubscript.h in CopyFiles */,
+				78180F0C16C3D0BD00B4AA31 /* NSBundle+ParameterList.h in CopyFiles */,
+				78180F0D16C3D0BD00B4AA31 /* NSObject+AttachedCollections.h in CopyFiles */,
+				78180F0F16C3D0BD00B4AA31 /* NSMutableString+SFStringFormatter.h in CopyFiles */,
+				78180F1116C3D0BD00B4AA31 /* SFMutableObject.h in CopyFiles */,
+				782B6DE116C3E74D0057DF2C /* NSString+AccessorUtilities.h in CopyFiles */,
+				78180F1216C3D0BD00B4AA31 /* SFObjectPool.h in CopyFiles */,
+				78180F1316C3D0BD00B4AA31 /* SFPooledObject.h in CopyFiles */,
+				78180F1416C3D0BD00B4AA31 /* SFPoolObject.h in CopyFiles */,
+				78180F1516C3D0BD00B4AA31 /* SFObject.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		5AD1FC421766038E00E67BC4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = ../../../../System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		78B8E68E16C3CC3E0049E36B /* libSparkCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSparkCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		78B8E69116C3CC3E0049E36B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		78B8E69516C3CC3E0049E36B /* SparkCore-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SparkCore-Prefix.pch"; sourceTree = "<group>"; };
+		78B8E6A616C3CCA50049E36B /* SparkCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SparkCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		78B8E6AF16C3CCA50049E36B /* SparkCoreMac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SparkCoreMac-Info.plist"; sourceTree = "<group>"; };
+		78B8E6B116C3CCA50049E36B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		78B8E6B316C3CCA50049E36B /* SparkCoreMac-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SparkCoreMac-Prefix.pch"; sourceTree = "<group>"; };
+		78B8E6BF16C3CCC00049E36B /* SparkCoreTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SparkCoreTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		78B8E6C016C3CCC00049E36B /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		78B8E6C716C3CCC00049E36B /* SparkCoreTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SparkCoreTest-Info.plist"; sourceTree = "<group>"; };
+		78B8E6C916C3CCC00049E36B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		78B8E6CE16C3CCC10049E36B /* SparkCoreTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SparkCoreTest-Prefix.pch"; sourceTree = "<group>"; };
+		78B8E6D216C3CCE60049E36B /* SFMutableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMutableObject.h; sourceTree = "<group>"; };
+		78B8E6D316C3CCE60049E36B /* SFMutableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMutableObject.m; sourceTree = "<group>"; };
+		78B8E6D416C3CCE60049E36B /* SFObjectPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFObjectPool.h; sourceTree = "<group>"; };
+		78B8E6D516C3CCE60049E36B /* SFObjectPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFObjectPool.m; sourceTree = "<group>"; };
+		78B8E6D616C3CCE60049E36B /* SFPooledObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPooledObject.h; sourceTree = "<group>"; };
+		78B8E6D716C3CCE60049E36B /* SFPoolObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPoolObject.h; sourceTree = "<group>"; };
+		78B8E6D816C3CCE60049E36B /* SFPoolObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPoolObject.m; sourceTree = "<group>"; };
+		78B8E6D916C3CCE60049E36B /* SFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFObject.h; sourceTree = "<group>"; };
+		78B8E6DA16C3CCE60049E36B /* SFObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFObject.m; sourceTree = "<group>"; };
+		78B8E6EC16C3CD070049E36B /* NSString+AccessorUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AccessorUtilities.h"; sourceTree = "<group>"; };
+		78B8E6ED16C3CD070049E36B /* NSString+AccessorUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AccessorUtilities.m"; sourceTree = "<group>"; };
+		78B8E6F816C3CD320049E36B /* NSArray+EmptyArrayChecks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+EmptyArrayChecks.h"; sourceTree = "<group>"; };
+		78B8E6F916C3CD320049E36B /* NSArray+EmptyArrayChecks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+EmptyArrayChecks.m"; sourceTree = "<group>"; };
+		78B8E6FA16C3CD320049E36B /* NSBundle+ParameterList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+ParameterList.h"; sourceTree = "<group>"; };
+		78B8E6FB16C3CD320049E36B /* NSBundle+ParameterList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+ParameterList.m"; sourceTree = "<group>"; };
+		78B8E6FC16C3CD320049E36B /* NSObject+AttachedCollections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AttachedCollections.h"; sourceTree = "<group>"; };
+		78B8E6FD16C3CD320049E36B /* NSObject+AttachedCollections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AttachedCollections.m"; sourceTree = "<group>"; };
+		78B8E70016C3CD320049E36B /* NSDictionary+KeyedSubscript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+KeyedSubscript.h"; sourceTree = "<group>"; };
+		78B8E70116C3CD320049E36B /* NSDictionary+KeyedSubscript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+KeyedSubscript.m"; sourceTree = "<group>"; };
+		78B8E70216C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+KeyedSubscript.h"; sourceTree = "<group>"; };
+		78B8E70316C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+KeyedSubscript.m"; sourceTree = "<group>"; };
+		78B8E70416C3CD320049E36B /* NSMutableString+SFStringFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+SFStringFormatter.h"; sourceTree = "<group>"; };
+		78B8E70516C3CD320049E36B /* NSMutableString+SFStringFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+SFStringFormatter.m"; sourceTree = "<group>"; };
+		78B8E72216C3CD4A0049E36B /* SparkCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SparkCore.h; sourceTree = "<group>"; };
+		78B8E72816C3CDD90049E36B /* SFTemplateParsingTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTemplateParsingTest.h; sourceTree = "<group>"; };
+		78B8E72916C3CDD90049E36B /* SFTemplateParsingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTemplateParsingTest.m; sourceTree = "<group>"; };
+		78B8E72A16C3CDD90049E36B /* SFConditionalComponentResultTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFConditionalComponentResultTest.h; sourceTree = "<group>"; };
+		78B8E72B16C3CDD90049E36B /* SFConditionalComponentResultTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFConditionalComponentResultTest.m; sourceTree = "<group>"; };
+		78B8E72C16C3CDD90049E36B /* SFPropertyNameMethodTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPropertyNameMethodTest.h; sourceTree = "<group>"; };
+		78B8E72D16C3CDD90049E36B /* SFPropertyNameMethodTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPropertyNameMethodTest.m; sourceTree = "<group>"; };
+		78B8E73516C3CDFD0049E36B /* SFMutableObjectTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMutableObjectTest.h; sourceTree = "<group>"; };
+		78B8E73616C3CDFD0049E36B /* SFMutableObjectTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFMutableObjectTest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		78B8E73716C3CDFD0049E36B /* SFPoolTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPoolTest.h; sourceTree = "<group>"; };
+		78B8E73816C3CDFD0049E36B /* SFPoolTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPoolTest.m; sourceTree = "<group>"; };
+		78C2432316C3D314000D777F /* SparkReflection.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkReflection.xcodeproj; path = ../SparkReflection/SparkReflection.xcodeproj; sourceTree = "<group>"; };
+		8DE3785017C784D000F30026 /* NSInvocation+SparkExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+SparkExtension.h"; sourceTree = "<group>"; };
+		8DE3785117C784D000F30026 /* NSInvocation+SparkExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+SparkExtension.m"; sourceTree = "<group>"; };
+		CDA9F5AC16E9F098000A50CC /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		E513EA2C179022BC0058F2EA /* SparkSingletonDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparkSingletonDefinition.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		78B8E68B16C3CC3E0049E36B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78B8E6A216C3CCA50049E36B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78CBA91C16C3D36D00DAC9BB /* SparkReflection.framework in Frameworks */,
+				5AD1FC431766038E00E67BC4 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78B8E6BB16C3CCC00049E36B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				782B6DE816C3E9B00057DF2C /* libSparkReflection.a in Frameworks */,
+				78B8E6C116C3CCC00049E36B /* SenTestingKit.framework in Frameworks */,
+				78B8E6C416C3CCC00049E36B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		78B8E68516C3CC3E0049E36B = {
+			isa = PBXGroup;
+			children = (
+				78B8E69316C3CC3E0049E36B /* SparkCore */,
+				78B8E6AD16C3CCA50049E36B /* SparkCoreMac */,
+				78B8E6C516C3CCC00049E36B /* SparkCoreTest */,
+				78B8E69016C3CC3E0049E36B /* Frameworks */,
+				78B8E68F16C3CC3E0049E36B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		78B8E68F16C3CC3E0049E36B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				78B8E68E16C3CC3E0049E36B /* libSparkCore.a */,
+				78B8E6A616C3CCA50049E36B /* SparkCore.framework */,
+				78B8E6BF16C3CCC00049E36B /* SparkCoreTest.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		78B8E69016C3CC3E0049E36B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				78C2432316C3D314000D777F /* SparkReflection.xcodeproj */,
+				78B8E69116C3CC3E0049E36B /* Foundation.framework */,
+				5AD1FC421766038E00E67BC4 /* Cocoa.framework */,
+				78B8E6C016C3CCC00049E36B /* SenTestingKit.framework */,
+				CDA9F5AC16E9F098000A50CC /* CoreFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		78B8E69316C3CC3E0049E36B /* SparkCore */ = {
+			isa = PBXGroup;
+			children = (
+				78B8E72216C3CD4A0049E36B /* SparkCore.h */,
+				E513EA2C179022BC0058F2EA /* SparkSingletonDefinition.h */,
+				78B8E69F16C3CC880049E36B /* Categories */,
+				78B8E6A016C3CC880049E36B /* Containers */,
+				78B8E69416C3CC3E0049E36B /* Supporting Files */,
+			);
+			path = SparkCore;
+			sourceTree = "<group>";
+		};
+		78B8E69416C3CC3E0049E36B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				78B8E69516C3CC3E0049E36B /* SparkCore-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		78B8E69F16C3CC880049E36B /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				78B8E72316C3CD7F0049E36B /* CollectionCategories */,
+				78B8E72516C3CD9F0049E36B /* BundleCategories */,
+				78B8E72616C3CDAA0049E36B /* TextualCategories */,
+				78B8E72416C3CD900049E36B /* InvocationCategories */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		78B8E6A016C3CC880049E36B /* Containers */ = {
+			isa = PBXGroup;
+			children = (
+				78B8E6D216C3CCE60049E36B /* SFMutableObject.h */,
+				78B8E6D316C3CCE60049E36B /* SFMutableObject.m */,
+				78B8E6D416C3CCE60049E36B /* SFObjectPool.h */,
+				78B8E6D516C3CCE60049E36B /* SFObjectPool.m */,
+				78B8E6D616C3CCE60049E36B /* SFPooledObject.h */,
+				78B8E6D716C3CCE60049E36B /* SFPoolObject.h */,
+				78B8E6D816C3CCE60049E36B /* SFPoolObject.m */,
+				78B8E6D916C3CCE60049E36B /* SFObject.h */,
+				78B8E6DA16C3CCE60049E36B /* SFObject.m */,
+			);
+			path = Containers;
+			sourceTree = "<group>";
+		};
+		78B8E6AD16C3CCA50049E36B /* SparkCoreMac */ = {
+			isa = PBXGroup;
+			children = (
+				78B8E6AE16C3CCA50049E36B /* Supporting Files */,
+			);
+			path = SparkCoreMac;
+			sourceTree = "<group>";
+		};
+		78B8E6AE16C3CCA50049E36B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				78B8E6AF16C3CCA50049E36B /* SparkCoreMac-Info.plist */,
+				78B8E6B016C3CCA50049E36B /* InfoPlist.strings */,
+				78B8E6B316C3CCA50049E36B /* SparkCoreMac-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		78B8E6C516C3CCC00049E36B /* SparkCoreTest */ = {
+			isa = PBXGroup;
+			children = (
+				78B8E73416C3CDF90049E36B /* Classes */,
+				78B8E72716C3CDCF0049E36B /* Categories */,
+				78B8E6C616C3CCC00049E36B /* Supporting Files */,
+			);
+			path = SparkCoreTest;
+			sourceTree = "<group>";
+		};
+		78B8E6C616C3CCC00049E36B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				78B8E6C716C3CCC00049E36B /* SparkCoreTest-Info.plist */,
+				78B8E6C816C3CCC00049E36B /* InfoPlist.strings */,
+				78B8E6CE16C3CCC10049E36B /* SparkCoreTest-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		78B8E72316C3CD7F0049E36B /* CollectionCategories */ = {
+			isa = PBXGroup;
+			children = (
+				78B8E6F816C3CD320049E36B /* NSArray+EmptyArrayChecks.h */,
+				78B8E6F916C3CD320049E36B /* NSArray+EmptyArrayChecks.m */,
+				78B8E70016C3CD320049E36B /* NSDictionary+KeyedSubscript.h */,
+				78B8E70116C3CD320049E36B /* NSDictionary+KeyedSubscript.m */,
+				78B8E70216C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.h */,
+				78B8E70316C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.m */,
+			);
+			name = CollectionCategories;
+			sourceTree = "<group>";
+		};
+		78B8E72416C3CD900049E36B /* InvocationCategories */ = {
+			isa = PBXGroup;
+			children = (
+				78B8E6EC16C3CD070049E36B /* NSString+AccessorUtilities.h */,
+				78B8E6ED16C3CD070049E36B /* NSString+AccessorUtilities.m */,
+				8DE3785017C784D000F30026 /* NSInvocation+SparkExtension.h */,
+				8DE3785117C784D000F30026 /* NSInvocation+SparkExtension.m */,
+			);
+			name = InvocationCategories;
+			sourceTree = "<group>";
+		};
+		78B8E72516C3CD9F0049E36B /* BundleCategories */ = {
+			isa = PBXGroup;
+			children = (
+				78B8E6FA16C3CD320049E36B /* NSBundle+ParameterList.h */,
+				78B8E6FB16C3CD320049E36B /* NSBundle+ParameterList.m */,
+				78B8E6FC16C3CD320049E36B /* NSObject+AttachedCollections.h */,
+				78B8E6FD16C3CD320049E36B /* NSObject+AttachedCollections.m */,
+			);
+			name = BundleCategories;
+			sourceTree = "<group>";
+		};
+		78B8E72616C3CDAA0049E36B /* TextualCategories */ = {
+			isa = PBXGroup;
+			children = (
+				78B8E70416C3CD320049E36B /* NSMutableString+SFStringFormatter.h */,
+				78B8E70516C3CD320049E36B /* NSMutableString+SFStringFormatter.m */,
+			);
+			name = TextualCategories;
+			sourceTree = "<group>";
+		};
+		78B8E72716C3CDCF0049E36B /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				78B8E72816C3CDD90049E36B /* SFTemplateParsingTest.h */,
+				78B8E72916C3CDD90049E36B /* SFTemplateParsingTest.m */,
+				78B8E72A16C3CDD90049E36B /* SFConditionalComponentResultTest.h */,
+				78B8E72B16C3CDD90049E36B /* SFConditionalComponentResultTest.m */,
+				78B8E72C16C3CDD90049E36B /* SFPropertyNameMethodTest.h */,
+				78B8E72D16C3CDD90049E36B /* SFPropertyNameMethodTest.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		78B8E73416C3CDF90049E36B /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				78B8E73516C3CDFD0049E36B /* SFMutableObjectTest.h */,
+				78B8E73616C3CDFD0049E36B /* SFMutableObjectTest.m */,
+				78B8E73716C3CDFD0049E36B /* SFPoolTest.h */,
+				78B8E73816C3CDFD0049E36B /* SFPoolTest.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		78CBA90A16C3D33A00DAC9BB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				78CBA91016C3D33A00DAC9BB /* libSparkReflection.a */,
+				78CBA91216C3D33A00DAC9BB /* SparkReflection.framework */,
+				78CBA91416C3D33A00DAC9BB /* SparkReflectionTest.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		78B8E6A316C3CCA50049E36B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				782B6DAD16C3D5960057DF2C /* SparkCore.h in Headers */,
+				78B8E6DB16C3CCE60049E36B /* SFMutableObject.h in Headers */,
+				78B8E6DF16C3CCE60049E36B /* SFObjectPool.h in Headers */,
+				78B8E6E316C3CCE60049E36B /* SFPooledObject.h in Headers */,
+				78B8E6E416C3CCE60049E36B /* SFPoolObject.h in Headers */,
+				78B8E6E816C3CCE60049E36B /* SFObject.h in Headers */,
+				78B8E70616C3CD320049E36B /* NSArray+EmptyArrayChecks.h in Headers */,
+				78B8E70A16C3CD320049E36B /* NSBundle+ParameterList.h in Headers */,
+				78B8E70E16C3CD320049E36B /* NSObject+AttachedCollections.h in Headers */,
+				78B8E71616C3CD320049E36B /* NSDictionary+KeyedSubscript.h in Headers */,
+				78B8E71A16C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.h in Headers */,
+				78B8E71E16C3CD320049E36B /* NSMutableString+SFStringFormatter.h in Headers */,
+				782B6DAE16C3D5B50057DF2C /* NSString+AccessorUtilities.h in Headers */,
+				E513EA2D179022BC0058F2EA /* SparkSingletonDefinition.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		78B8E68D16C3CC3E0049E36B /* SparkCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 78B8E69C16C3CC3E0049E36B /* Build configuration list for PBXNativeTarget "SparkCore" */;
+			buildPhases = (
+				78B8E68A16C3CC3E0049E36B /* Sources */,
+				78B8E68B16C3CC3E0049E36B /* Frameworks */,
+				78B8E68C16C3CC3E0049E36B /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				78CBA91616C3D35A00DAC9BB /* PBXTargetDependency */,
+			);
+			name = SparkCore;
+			productName = SparkCore;
+			productReference = 78B8E68E16C3CC3E0049E36B /* libSparkCore.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		78B8E6A516C3CCA50049E36B /* SparkCoreMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 78B8E6B716C3CCA50049E36B /* Build configuration list for PBXNativeTarget "SparkCoreMac" */;
+			buildPhases = (
+				78B8E6A116C3CCA50049E36B /* Sources */,
+				78B8E6A216C3CCA50049E36B /* Frameworks */,
+				78B8E6A316C3CCA50049E36B /* Headers */,
+				78B8E6A416C3CCA50049E36B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				78CBA91816C3D35F00DAC9BB /* PBXTargetDependency */,
+			);
+			name = SparkCoreMac;
+			productName = SparkCoreMac;
+			productReference = 78B8E6A616C3CCA50049E36B /* SparkCore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		78B8E6BE16C3CCC00049E36B /* SparkCoreTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 78B8E6CF16C3CCC10049E36B /* Build configuration list for PBXNativeTarget "SparkCoreTest" */;
+			buildPhases = (
+				78B8E6BA16C3CCC00049E36B /* Sources */,
+				78B8E6BB16C3CCC00049E36B /* Frameworks */,
+				78B8E6BC16C3CCC00049E36B /* Resources */,
+				78B8E6BD16C3CCC00049E36B /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				782B6DE716C3E9A70057DF2C /* PBXTargetDependency */,
+			);
+			name = SparkCoreTest;
+			productName = SparkCoreTest;
+			productReference = 78B8E6BF16C3CCC00049E36B /* SparkCoreTest.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		78B8E68616C3CC3E0049E36B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Epam Systems";
+			};
+			buildConfigurationList = 78B8E68916C3CC3E0049E36B /* Build configuration list for PBXProject "SparkCore" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 78B8E68516C3CC3E0049E36B;
+			productRefGroup = 78B8E68F16C3CC3E0049E36B /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 78CBA90A16C3D33A00DAC9BB /* Products */;
+					ProjectRef = 78C2432316C3D314000D777F /* SparkReflection.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				78B8E68D16C3CC3E0049E36B /* SparkCore */,
+				78B8E6A516C3CCA50049E36B /* SparkCoreMac */,
+				78B8E6BE16C3CCC00049E36B /* SparkCoreTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		78CBA91016C3D33A00DAC9BB /* libSparkReflection.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSparkReflection.a;
+			remoteRef = 78CBA90F16C3D33A00DAC9BB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		78CBA91216C3D33A00DAC9BB /* SparkReflection.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SparkReflection.framework;
+			remoteRef = 78CBA91116C3D33A00DAC9BB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		78CBA91416C3D33A00DAC9BB /* SparkReflectionTest.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SparkReflectionTest.octest;
+			remoteRef = 78CBA91316C3D33A00DAC9BB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		78B8E6A416C3CCA50049E36B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78B8E6B216C3CCA50049E36B /* InfoPlist.strings in Resources */,
+				78C2432416C3D314000D777F /* SparkReflection.xcodeproj in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78B8E6BC16C3CCC00049E36B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78B8E6CA16C3CCC00049E36B /* InfoPlist.strings in Resources */,
+				78C2432516C3D314000D777F /* SparkReflection.xcodeproj in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		78B8E6BD16C3CCC00049E36B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		78B8E68A16C3CC3E0049E36B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78B8E6DC16C3CCE60049E36B /* SFMutableObject.m in Sources */,
+				78B8E6E016C3CCE60049E36B /* SFObjectPool.m in Sources */,
+				78B8E6E516C3CCE60049E36B /* SFPoolObject.m in Sources */,
+				78B8E6E916C3CCE60049E36B /* SFObject.m in Sources */,
+				78B8E70716C3CD320049E36B /* NSArray+EmptyArrayChecks.m in Sources */,
+				78B8E70B16C3CD320049E36B /* NSBundle+ParameterList.m in Sources */,
+				78B8E70F16C3CD320049E36B /* NSObject+AttachedCollections.m in Sources */,
+				78B8E71716C3CD320049E36B /* NSDictionary+KeyedSubscript.m in Sources */,
+				78B8E6F016C3CD070049E36B /* NSString+AccessorUtilities.m in Sources */,
+				78B8E71B16C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.m in Sources */,
+				78B8E71F16C3CD320049E36B /* NSMutableString+SFStringFormatter.m in Sources */,
+				8DE3785217C784D000F30026 /* NSInvocation+SparkExtension.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78B8E6A116C3CCA50049E36B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78B8E6DD16C3CCE60049E36B /* SFMutableObject.m in Sources */,
+				78B8E6E116C3CCE60049E36B /* SFObjectPool.m in Sources */,
+				78B8E6E616C3CCE60049E36B /* SFPoolObject.m in Sources */,
+				78B8E6EA16C3CCE60049E36B /* SFObject.m in Sources */,
+				78B8E70816C3CD320049E36B /* NSArray+EmptyArrayChecks.m in Sources */,
+				78B8E70C16C3CD320049E36B /* NSBundle+ParameterList.m in Sources */,
+				78B8E71016C3CD320049E36B /* NSObject+AttachedCollections.m in Sources */,
+				78B8E71816C3CD320049E36B /* NSDictionary+KeyedSubscript.m in Sources */,
+				78B8E71C16C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.m in Sources */,
+				782B6DE516C3E8E40057DF2C /* NSString+AccessorUtilities.m in Sources */,
+				78B8E72016C3CD320049E36B /* NSMutableString+SFStringFormatter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78B8E6BA16C3CCC00049E36B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78B8E6DE16C3CCE60049E36B /* SFMutableObject.m in Sources */,
+				78B8E6E216C3CCE60049E36B /* SFObjectPool.m in Sources */,
+				78B8E6E716C3CCE60049E36B /* SFPoolObject.m in Sources */,
+				78B8E6EB16C3CCE60049E36B /* SFObject.m in Sources */,
+				78B8E70916C3CD320049E36B /* NSArray+EmptyArrayChecks.m in Sources */,
+				78B8E70D16C3CD320049E36B /* NSBundle+ParameterList.m in Sources */,
+				78B8E71116C3CD320049E36B /* NSObject+AttachedCollections.m in Sources */,
+				78B8E71916C3CD320049E36B /* NSDictionary+KeyedSubscript.m in Sources */,
+				78B8E71D16C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.m in Sources */,
+				78B8E72116C3CD320049E36B /* NSMutableString+SFStringFormatter.m in Sources */,
+				78B8E73016C3CDD90049E36B /* SFTemplateParsingTest.m in Sources */,
+				78B8E73116C3CDD90049E36B /* SFConditionalComponentResultTest.m in Sources */,
+				78B8E73216C3CDD90049E36B /* SFPropertyNameMethodTest.m in Sources */,
+				78B8E73916C3CDFD0049E36B /* SFMutableObjectTest.m in Sources */,
+				782B6DE416C3E8D80057DF2C /* NSString+AccessorUtilities.m in Sources */,
+				78B8E73A16C3CDFD0049E36B /* SFPoolTest.m in Sources */,
+				8DE3785317C784D000F30026 /* NSInvocation+SparkExtension.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		782B6DE716C3E9A70057DF2C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SparkReflection;
+			targetProxy = 782B6DE616C3E9A70057DF2C /* PBXContainerItemProxy */;
+		};
+		78CBA91616C3D35A00DAC9BB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SparkReflection;
+			targetProxy = 78CBA91516C3D35A00DAC9BB /* PBXContainerItemProxy */;
+		};
+		78CBA91816C3D35F00DAC9BB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SparkReflectionMac;
+			targetProxy = 78CBA91716C3D35F00DAC9BB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		78B8E6B016C3CCA50049E36B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				78B8E6B116C3CCA50049E36B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		78B8E6C816C3CCC00049E36B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				78B8E6C916C3CCC00049E36B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		78B8E69A16C3CC3E0049E36B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		78B8E69B16C3CC3E0049E36B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		78B8E69D16C3CC3E0049E36B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/SparkCore.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SparkCore/SparkCore-Prefix.pch";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = SparkCore;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		78B8E69E16C3CC3E0049E36B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/SparkCore.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SparkCore/SparkCore-Prefix.pch";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = SparkCore;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		78B8E6B816C3CCA50049E36B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
+				FRAMEWORK_VERSION = A;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SparkCoreMac/SparkCoreMac-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "SparkCoreMac/SparkCoreMac-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = SparkCore;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		78B8E6B916C3CCA50049E36B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
+				FRAMEWORK_VERSION = A;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SparkCoreMac/SparkCoreMac-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "SparkCoreMac/SparkCoreMac-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = SparkCore;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		78B8E6D016C3CCC10049E36B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SparkCoreTest/SparkCoreTest-Prefix.pch";
+				INFOPLIST_FILE = "SparkCoreTest/SparkCoreTest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-objC",
+				);
+				PRODUCT_NAME = SparkCoreTest;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		78B8E6D116C3CCC10049E36B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SparkCoreTest/SparkCoreTest-Prefix.pch";
+				INFOPLIST_FILE = "SparkCoreTest/SparkCoreTest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-objC",
+				);
+				PRODUCT_NAME = SparkCoreTest;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		78B8E68916C3CC3E0049E36B /* Build configuration list for PBXProject "SparkCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				78B8E69A16C3CC3E0049E36B /* Debug */,
+				78B8E69B16C3CC3E0049E36B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		78B8E69C16C3CC3E0049E36B /* Build configuration list for PBXNativeTarget "SparkCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				78B8E69D16C3CC3E0049E36B /* Debug */,
+				78B8E69E16C3CC3E0049E36B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		78B8E6B716C3CCA50049E36B /* Build configuration list for PBXNativeTarget "SparkCoreMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				78B8E6B816C3CCA50049E36B /* Debug */,
+				78B8E6B916C3CCA50049E36B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		78B8E6CF16C3CCC10049E36B /* Build configuration list for PBXNativeTarget "SparkCoreTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				78B8E6D016C3CCC10049E36B /* Debug */,
+				78B8E6D116C3CCC10049E36B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 78B8E68616C3CC3E0049E36B /* Project object */;
+}
