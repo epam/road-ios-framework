@@ -31,7 +31,6 @@
 
 @interface SFService : NSObject
 
-SF_ATTRIBUTE(SFService, serviceClass = [SFService class])
-@property (nonatomic, strong) id serviceClass;
+@property (nonatomic, assign) Class serviceClass;
 
 @end

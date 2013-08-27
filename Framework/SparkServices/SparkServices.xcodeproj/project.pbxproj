@@ -32,6 +32,8 @@
 		7869950216AEC0CF00B28760 /* SFServiceProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 7869946616AEBFA000B28760 /* SFServiceProvider.m */; };
 		78CBA92616C3D40300DAC9BB /* SparkCore.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 78CBA92416C3D40300DAC9BB /* SparkCore.xcodeproj */; };
 		78CBA92716C3D40300DAC9BB /* SparkReflection.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 78CBA92516C3D40300DAC9BB /* SparkReflection.xcodeproj */; };
+		D757829017CCBA5B00BD85DA /* libSparkAttribute.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D765D73317CB80B2004D35E7 /* libSparkAttribute.a */; };
+		D757829317CCC6C200BD85DA /* SFServiceProvider+SFTestService.m in Sources */ = {isa = PBXBuildFile; fileRef = D757829217CCC6C200BD85DA /* SFServiceProvider+SFTestService.m */; };
 		D75DE0E817CB752800CAEDC2 /* SparkGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = D75DE0E717CB752700CAEDC2 /* SparkGeneratedAttribute.m */; };
 		D75DE0E917CB752800CAEDC2 /* SparkGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = D75DE0E717CB752700CAEDC2 /* SparkGeneratedAttribute.m */; };
 /* End PBXBuildFile section */
@@ -106,6 +108,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 9FA9F4A815F6359700FDE9E0;
 			remoteInfo = SparkReflectionMac;
+		};
+		D757828917CCBA2800BD85DA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D765D72C17CB80B1004D35E7 /* SparkAttribute.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 789669D915CBD1CD003D4AFC;
+			remoteInfo = SparkAttribute;
 		};
 		D75DE0B417CB70A500CAEDC2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -196,6 +205,7 @@
 		78CBA92416C3D40300DAC9BB /* SparkCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkCore.xcodeproj; path = ../SparkCore/SparkCore.xcodeproj; sourceTree = "<group>"; };
 		78CBA92516C3D40300DAC9BB /* SparkReflection.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkReflection.xcodeproj; path = ../SparkReflection/SparkReflection.xcodeproj; sourceTree = "<group>"; };
 		78F95ADD16E9F16600E58C3B /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		D757829217CCC6C200BD85DA /* SFServiceProvider+SFTestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SFServiceProvider+SFTestService.m"; path = "TestService/SFServiceProvider+SFTestService.m"; sourceTree = "<group>"; };
 		D75DE0E717CB752700CAEDC2 /* SparkGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparkGeneratedAttribute.m; path = SparkGeneratedAttributes/SparkGeneratedAttribute.m; sourceTree = SOURCE_ROOT; };
 		D765D72C17CB80B1004D35E7 /* SparkAttribute.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkAttribute.xcodeproj; path = ../SparkAttribute/SparkAttribute.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -205,6 +215,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D757829017CCBA5B00BD85DA /* libSparkAttribute.a in Frameworks */,
 				5ACD2188174124EA00CC61AC /* SenTestingKit.framework in Frameworks */,
 				5ACD217A17411E6A00CC61AC /* libSparkCore.a in Frameworks */,
 				5ACD217B17411E6A00CC61AC /* libSparkReflection.a in Frameworks */,
@@ -259,6 +270,7 @@
 				5ACD21631741190600CC61AC /* SFTestService.h */,
 				5ACD21641741190600CC61AC /* SFTestService.m */,
 				5ACD2166174119FC00CC61AC /* SFServiceProvider+SFTestService.h */,
+				D757829217CCC6C200BD85DA /* SFServiceProvider+SFTestService.m */,
 			);
 			name = TestService;
 			sourceTree = "<group>";
@@ -404,8 +416,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5ACD215F1741179500CC61AC /* Build configuration list for PBXNativeTarget "SparkServicesTest" */;
 			buildPhases = (
+				D757829117CCC62200BD85DA /* ShellScript */,
 				5ACD214A1741179500CC61AC /* Sources */,
-				5ACD216F17411BEE00CC61AC /* ShellScript */,
 				5ACD218117411F6F00CC61AC /* CopyFiles */,
 				5ACD214B1741179500CC61AC /* Frameworks */,
 				5ACD214C1741179500CC61AC /* Resources */,
@@ -414,6 +426,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D757828A17CCBA2800BD85DA /* PBXTargetDependency */,
 				5ACD216C17411B8E00CC61AC /* PBXTargetDependency */,
 				5ACD216E17411B8E00CC61AC /* PBXTargetDependency */,
 			);
@@ -605,7 +618,7 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
-		5ACD216F17411BEE00CC61AC /* ShellScript */ = {
+		D757829117CCC62200BD85DA /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -616,7 +629,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/../../../../tools/binaries/PreprocessorAttributeParser -o=${SRCROOT}/SparkServicesTest/Resources/TempAttributes";
+			shellScript = "${SRCROOT}/../../tools/binaries/SparkAttributesCodeGenerator -src=${SRCROOT}/ -dst=${SRCROOT}/SparkGeneratedAttributes/";
 		};
 		D75DE0B117CB704F00CAEDC2 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -643,6 +656,7 @@
 				5ACD215D1741179500CC61AC /* SFSparkServicesTest.m in Sources */,
 				5ACD21651741190600CC61AC /* SFTestService.m in Sources */,
 				D75DE0E917CB752800CAEDC2 /* SparkGeneratedAttribute.m in Sources */,
+				D757829317CCC6C200BD85DA /* SFServiceProvider+SFTestService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -687,6 +701,11 @@
 			isa = PBXTargetDependency;
 			name = SparkReflectionMac;
 			targetProxy = 782B6D5216C3D4960057DF2C /* PBXContainerItemProxy */;
+		};
+		D757828A17CCBA2800BD85DA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SparkAttribute;
+			targetProxy = D757828917CCBA2800BD85DA /* PBXContainerItemProxy */;
 		};
 		D75DE0B517CB70A500CAEDC2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

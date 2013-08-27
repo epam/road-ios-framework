@@ -40,6 +40,11 @@
 		CD4E845D16F7663F00618316 /* SFLogger.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7837BF3016C4EA920063A026 /* SFLogger.h */; };
 		CD4E845E16F7663F00618316 /* SFLogging.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7837BF2516C4E4870063A026 /* SFLogging.h */; };
 		CD4E845F16F7663F00618316 /* SFLogMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7837BF2616C4E4EA0063A026 /* SFLogMessage.h */; };
+		D757824B17CCB91000BD85DA /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D757824A17CCB91000BD85DA /* SenTestingKit.framework */; };
+		D757824D17CCB91000BD85DA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D757824C17CCB91000BD85DA /* UIKit.framework */; };
+		D757824E17CCB91000BD85DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 789AAE3516C4E3FA00FF7FB0 /* Foundation.framework */; };
+		D757825417CCB91000BD85DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D757825217CCB91000BD85DA /* InfoPlist.strings */; };
+		D757825717CCB91000BD85DA /* SparkLoggerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D757825617CCB91000BD85DA /* SparkLoggerTest.m */; };
 		D7D587AD17C6341C0081EC7C /* SparkGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D587AC17C6341C0081EC7C /* SparkGeneratedAttribute.m */; };
 /* End PBXBuildFile section */
 
@@ -143,6 +148,14 @@
 		78F95AFB16E9F1CF00E58C3B /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		838844EC1760DDFA0052973D /* SFLoggerWebServicePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLoggerWebServicePath.h; sourceTree = "<group>"; };
 		838844ED1760DDFA0052973D /* SFLoggerWebServicePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLoggerWebServicePath.m; sourceTree = "<group>"; };
+		D757824917CCB91000BD85DA /* SparkLoggerTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SparkLoggerTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D757824A17CCB91000BD85DA /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		D757824C17CCB91000BD85DA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		D757825117CCB91000BD85DA /* SparkLoggerTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SparkLoggerTest-Info.plist"; sourceTree = "<group>"; };
+		D757825317CCB91000BD85DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D757825517CCB91000BD85DA /* SparkLoggerTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SparkLoggerTest.h; sourceTree = "<group>"; };
+		D757825617CCB91000BD85DA /* SparkLoggerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SparkLoggerTest.m; sourceTree = "<group>"; };
+		D757825817CCB91000BD85DA /* SparkLoggerTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SparkLoggerTest-Prefix.pch"; sourceTree = "<group>"; };
 		D7D587AC17C6341C0081EC7C /* SparkGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparkGeneratedAttribute.m; path = SparkGeneratedAttributes/SparkGeneratedAttribute.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -151,6 +164,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D757824517CCB91000BD85DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D757824B17CCB91000BD85DA /* SenTestingKit.framework in Frameworks */,
+				D757824D17CCB91000BD85DA /* UIKit.framework in Frameworks */,
+				D757824E17CCB91000BD85DA /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				789AAE3716C4E3FA00FF7FB0 /* SparkLogger */,
+				D757824F17CCB91000BD85DA /* SparkLoggerTest */,
 				789AAE3416C4E3FA00FF7FB0 /* Frameworks */,
 				789AAE3316C4E3FA00FF7FB0 /* Products */,
 			);
@@ -229,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				789AAE3216C4E3FA00FF7FB0 /* libSparkLogger.a */,
+				D757824917CCB91000BD85DA /* SparkLoggerTest.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -239,6 +264,8 @@
 				78BCFF8C16D24ED600D23908 /* SparkAttribute.xcodeproj */,
 				789AAE3516C4E3FA00FF7FB0 /* Foundation.framework */,
 				78F95AFB16E9F1CF00E58C3B /* CoreFoundation.framework */,
+				D757824A17CCB91000BD85DA /* SenTestingKit.framework */,
+				D757824C17CCB91000BD85DA /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -300,6 +327,26 @@
 			path = Attributes;
 			sourceTree = "<group>";
 		};
+		D757824F17CCB91000BD85DA /* SparkLoggerTest */ = {
+			isa = PBXGroup;
+			children = (
+				D757825517CCB91000BD85DA /* SparkLoggerTest.h */,
+				D757825617CCB91000BD85DA /* SparkLoggerTest.m */,
+				D757825017CCB91000BD85DA /* Supporting Files */,
+			);
+			path = SparkLoggerTest;
+			sourceTree = "<group>";
+		};
+		D757825017CCB91000BD85DA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D757825117CCB91000BD85DA /* SparkLoggerTest-Info.plist */,
+				D757825217CCB91000BD85DA /* InfoPlist.strings */,
+				D757825817CCB91000BD85DA /* SparkLoggerTest-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -321,6 +368,24 @@
 			productName = SparkLogger;
 			productReference = 789AAE3216C4E3FA00FF7FB0 /* libSparkLogger.a */;
 			productType = "com.apple.product-type.library.static";
+		};
+		D757824817CCB91000BD85DA /* SparkLoggerTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D757825D17CCB91000BD85DA /* Build configuration list for PBXNativeTarget "SparkLoggerTest" */;
+			buildPhases = (
+				D757824417CCB91000BD85DA /* Sources */,
+				D757824517CCB91000BD85DA /* Frameworks */,
+				D757824617CCB91000BD85DA /* Resources */,
+				D757824717CCB91000BD85DA /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SparkLoggerTest;
+			productName = SparkLoggerTest;
+			productReference = D757824917CCB91000BD85DA /* SparkLoggerTest.octest */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -350,6 +415,7 @@
 			projectRoot = "";
 			targets = (
 				789AAE3116C4E3FA00FF7FB0 /* SparkLogger */,
+				D757824817CCB91000BD85DA /* SparkLoggerTest */,
 			);
 		};
 /* End PBXProject section */
@@ -378,6 +444,17 @@
 		};
 /* End PBXReferenceProxy section */
 
+/* Begin PBXResourcesBuildPhase section */
+		D757824617CCB91000BD85DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D757825417CCB91000BD85DA /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXShellScriptBuildPhase section */
 		83C544E2174B7A53000C8BCD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -391,6 +468,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "${SRCROOT}/../../tools/binaries/SparkAttributesCodeGenerator -src=${SRCROOT}/ -dst=${SRCROOT}/SparkGeneratedAttributes/";
+		};
+		D757824717CCB91000BD85DA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -418,6 +508,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D757824417CCB91000BD85DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D757825717CCB91000BD85DA /* SparkLoggerTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -427,6 +525,17 @@
 			targetProxy = D7D587B017C635000081EC7C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D757825217CCB91000BD85DA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D757825317CCB91000BD85DA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		789AAE3E16C4E3FA00FF7FB0 /* Debug */ = {
@@ -507,6 +616,38 @@
 			};
 			name = Release;
 		};
+		D757825917CCB91000BD85DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SparkLoggerTest/SparkLoggerTest-Prefix.pch";
+				INFOPLIST_FILE = "SparkLoggerTest/SparkLoggerTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		D757825A17CCB91000BD85DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SparkLoggerTest/SparkLoggerTest-Prefix.pch";
+				INFOPLIST_FILE = "SparkLoggerTest/SparkLoggerTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -527,6 +668,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		D757825D17CCB91000BD85DA /* Build configuration list for PBXNativeTarget "SparkLoggerTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D757825917CCB91000BD85DA /* Debug */,
+				D757825A17CCB91000BD85DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

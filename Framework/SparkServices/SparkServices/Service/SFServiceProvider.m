@@ -48,8 +48,8 @@ SPARK_SYNTHESIZE_SINGLETON_FOR_CLASS_WITH_ACCESSOR(SFServiceProvider, sharedProv
 
 + (BOOL)resolveInstanceMethod:(SEL)sel {
     BOOL result;
-    NSString * const selectorName = NSStringFromSelector(sel);
-    SFService * const serviceAttribute = [[SFService attributesForInstanceMethod:selectorName withType:[SFService class]] objectAtIndex:0];
+    NSString *selectorName = NSStringFromSelector(sel);
+    SFService *serviceAttribute = [[SFServiceProvider attributesForInstanceMethod:selectorName withType:nil] objectAtIndex:0];
 
     
     if (serviceAttribute != nil) {
@@ -69,9 +69,9 @@ SPARK_SYNTHESIZE_SINGLETON_FOR_CLASS_WITH_ACCESSOR(SFServiceProvider, sharedProv
     id theService = services[serviceName];
     
     if (theService == nil) {
-        SFService * const serviceAnnotation = [[SFService attributesForInstanceMethod:serviceName withType:[SFService class]] objectAtIndex:0];
+        SFService * const serviceAnnotation = [[SFServiceProvider attributesForInstanceMethod:serviceName withType:[SFService class]] objectAtIndex:0];
         __unsafe_unretained Class const serviceClass = serviceAnnotation.serviceClass;
-        theService = [[(id)serviceClass new] init];
+        theService = [(id)serviceClass new];
         [self registerService:theService forServiceName:serviceName];
     }
     

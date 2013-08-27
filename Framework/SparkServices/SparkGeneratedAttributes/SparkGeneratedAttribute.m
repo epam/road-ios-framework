@@ -1,1 +1,1 @@
-#import "SFService+SFAttributes.m"
+#import "SFServiceProvider+SFAttributes.m"
