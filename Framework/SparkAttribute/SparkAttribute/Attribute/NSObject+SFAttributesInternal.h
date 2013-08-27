@@ -1,5 +1,5 @@
 //
-//  NSObject+SFAttributes.h
+//  NSObject+SFAttributesInternal.h
 //  AttributesPrototype
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -28,14 +28,22 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <Foundation/Foundation.h>
-#import "NSObject+SFAttributesInternal.h"
+#import <Spark/NSInvocation+SparkExtension.h>
 
-@interface NSObject (SFAttributes)
+@interface NSObject (SFAttributesInternal)
 
-+ (NSArray *)attributesForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForClassWithAttributeType:(Class)requiredClassOfAttribute;
+#pragma mark Internal API
 
++ (NSInvocation *)invocationForSelector:(SEL)selector;
++ (NSMutableDictionary *)mutableAttributesFactoriesFrom:(NSDictionary *)attributesFactories;
+
+#pragma mark Will be overridden by annotated class
+
++ (NSDictionary *)attributesFactoriesForMethods;
++ (NSDictionary *)attributesFactoriesForProperties;
++ (NSDictionary *)attributesFactoriesForIvars;
++ (NSArray *)attributesForClass;
+
+#pragma mark -
 
 @end

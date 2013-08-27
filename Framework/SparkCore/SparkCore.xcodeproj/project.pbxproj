@@ -280,8 +280,8 @@
 		78B8E69316C3CC3E0049E36B /* SparkCore */ = {
 			isa = PBXGroup;
 			children = (
-				E513EA2C179022BC0058F2EA /* SparkSingletonDefinition.h */,
 				78B8E72216C3CD4A0049E36B /* SparkCore.h */,
+				E513EA2C179022BC0058F2EA /* SparkSingletonDefinition.h */,
 				78B8E69F16C3CC880049E36B /* Categories */,
 				78B8E6A016C3CC880049E36B /* Containers */,
 				78B8E69416C3CC3E0049E36B /* Supporting Files */,
