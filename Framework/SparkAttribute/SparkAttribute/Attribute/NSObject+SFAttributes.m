@@ -31,6 +31,7 @@
 
 @interface NSObject ()
 + (NSArray *)attributesWithType:(Class)requiredClassOfAttribute from:(NSArray *)attributes;
++ (NSArray *)attributesFor:(NSString *)annotatedElementName inAttributeCreatorsDictionary:(NSDictionary *)attributeCreatorsDictionary withAttributeType:(Class)requiredClassOfAttribute;
 @end
 
 
