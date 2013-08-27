@@ -1,5 +1,5 @@
 //
-//  AnnotatedClass.h
+//  SFAttribute.m
 //  AttributesPrototype
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -27,54 +27,8 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Foundation/Foundation.h>
 #import "SFAttribute.h"
-#import "CustomSFAttribute.h"
 
-///Testing of class with attributes
-SF_ATTRIBUTE(SFAttribute)
-SF_ATTRIBUTE(CustomSFAttribute,
-              property1 = @"Text1",
-              dictionaryProperty = @{
-                @"key1" : @"[value1",
-                @"key2" : @"value2]"
-              },
-              arrayProperty = @[@'a',@'b',@'[',@'[', @']', @'{', @'{', @'}', @'"', @'d', @'"'],
-              blockProperty = ^(NSString* sInfo, int *result) {
-                  if (sInfo == nil) {
-                      *result = 1;
-                      return;
-                  }
-                  
-                  if ([sInfo length] == 0) {
-                      *result = 2;
-                      return;
-                  }
-                  
-                  *result = 0;
-              }
-)
-        @interface
-        AnnotatedClass : NSObject {
-    ///Testing of field with attributes
-            SF_ATTRIBUTE(SFAttribute)
-            NSObject* _someField;
-        }
-
-///Testing of method with attributes
-SF_ATTRIBUTE(SFAttribute)
-SF_ATTRIBUTE(CustomSFAttribute, property1 = @"Text1", property2 = @"Text2")
-        - (void)viewDidLoad;
-
-///Testing of method with attributes
-///@param param1 Some parameter
-SF_ATTRIBUTE(SFAttribute) - (void)viewDidLoad:(BOOL)param1;
-
-///Testing of property with attributes
-SF_ATTRIBUTE(SFAttribute)
-SF_ATTRIBUTE(CustomSFAttribute, property2 = @"Text2", intProperty = (2+2)*2)
-    @property
-        (strong, nonatomic)
-            UIWindow *window;
+@implementation SFAttribute
 
 @end

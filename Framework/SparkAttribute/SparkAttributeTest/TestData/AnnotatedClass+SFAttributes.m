@@ -6,13 +6,13 @@
  
 @implementation AnnotatedClass(SFAttribute)
  
-#pragma mark - Fill Attributes generated code (Fields section)
+#pragma mark - Fill Attributes generated code (Ivars section)
 
-static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_field__someField = nil;
+static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_ivar__someField = nil;
 
-+ (NSArray *)sf_attributes_AnnotatedClass_field__someField {
-    if (sf_attributes_list_AnnotatedClass_field__someField != nil) {
-        return sf_attributes_list_AnnotatedClass_field__someField;
++ (NSArray *)sf_attributes_AnnotatedClass_ivar__someField {
+    if (sf_attributes_list_AnnotatedClass_ivar__someField != nil) {
+        return sf_attributes_list_AnnotatedClass_ivar__someField;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
@@ -20,24 +20,24 @@ static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_field__someField
     SFTestAttribute *attr1 = [[SFTestAttribute alloc] init];
     [attributesArray addObject:attr1];
 
-    sf_attributes_list_AnnotatedClass_field__someField = attributesArray;
+    sf_attributes_list_AnnotatedClass_ivar__someField = attributesArray;
     
-    return sf_attributes_list_AnnotatedClass_field__someField;
+    return sf_attributes_list_AnnotatedClass_ivar__someField;
 }
 
-static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForFieldsDict = nil;
+static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForIvarsDict = nil;
     
-+ (NSDictionary *)attributesFactoriesForFields {
-    if (attributesAnnotatedClassFactoriesForFieldsDict != nil) {
-        return attributesAnnotatedClassFactoriesForFieldsDict;
++ (NSDictionary *)attributesFactoriesForIvars {
+    if (attributesAnnotatedClassFactoriesForIvarsDict != nil) {
+        return attributesAnnotatedClassFactoriesForIvarsDict;
     }
     
-    NSMutableDictionary *dictionaryHolder = [self mutableAttributesFactoriesFrom:[super attributesFactoriesForFields]];
+    NSMutableDictionary *dictionaryHolder = [self mutableAttributesFactoriesFrom:[super attributesFactoriesForIvars]];
     
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_AnnotatedClass_field__someField)] forKey:@"_someField"];
-    attributesAnnotatedClassFactoriesForFieldsDict = dictionaryHolder;  
+    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_AnnotatedClass_ivar__someField)] forKey:@"_someField"];
+    attributesAnnotatedClassFactoriesForIvarsDict = dictionaryHolder;  
     
-    return attributesAnnotatedClassFactoriesForFieldsDict;
+    return attributesAnnotatedClassFactoriesForIvarsDict;
 }
 
 
@@ -126,20 +126,20 @@ static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_method_viewDidLo
     return sf_attributes_list_AnnotatedClass_method_viewDidLoad_p1;
 }
 
-static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForInstanceMethodsDict = nil;
+static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForMethodsDict = nil;
     
-+ (NSDictionary *)attributesFactoriesForInstanceMethods {
-    if (attributesAnnotatedClassFactoriesForInstanceMethodsDict != nil) {
-        return attributesAnnotatedClassFactoriesForInstanceMethodsDict;
++ (NSDictionary *)attributesFactoriesForMethods {
+    if (attributesAnnotatedClassFactoriesForMethodsDict != nil) {
+        return attributesAnnotatedClassFactoriesForMethodsDict;
     }
     
-    NSMutableDictionary *dictionaryHolder = [self mutableAttributesFactoriesFrom:[super attributesFactoriesForInstanceMethods]];
+    NSMutableDictionary *dictionaryHolder = [self mutableAttributesFactoriesFrom:[super attributesFactoriesForMethods]];
     
     [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_AnnotatedClass_method_viewDidLoad_p0)] forKey:@"viewDidLoad"];
     [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_AnnotatedClass_method_viewDidLoad_p1)] forKey:@"viewDidLoad:"];
-    attributesAnnotatedClassFactoriesForInstanceMethodsDict = dictionaryHolder;  
+    attributesAnnotatedClassFactoriesForMethodsDict = dictionaryHolder;  
     
-    return attributesAnnotatedClassFactoriesForInstanceMethodsDict;
+    return attributesAnnotatedClassFactoriesForMethodsDict;
 }
 
 

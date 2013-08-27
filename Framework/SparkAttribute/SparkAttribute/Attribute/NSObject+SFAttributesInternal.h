@@ -1,5 +1,5 @@
 //
-//  AnnotatedClass.h
+//  NSObject+SFAttributesInternal.h
 //  AttributesPrototype
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -28,53 +28,22 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <Foundation/Foundation.h>
-#import "SFAttribute.h"
-#import "CustomSFAttribute.h"
+#import <Spark/NSInvocation+SparkExtension.h>
 
-///Testing of class with attributes
-SF_ATTRIBUTE(SFAttribute)
-SF_ATTRIBUTE(CustomSFAttribute,
-              property1 = @"Text1",
-              dictionaryProperty = @{
-                @"key1" : @"[value1",
-                @"key2" : @"value2]"
-              },
-              arrayProperty = @[@'a',@'b',@'[',@'[', @']', @'{', @'{', @'}', @'"', @'d', @'"'],
-              blockProperty = ^(NSString* sInfo, int *result) {
-                  if (sInfo == nil) {
-                      *result = 1;
-                      return;
-                  }
-                  
-                  if ([sInfo length] == 0) {
-                      *result = 2;
-                      return;
-                  }
-                  
-                  *result = 0;
-              }
-)
-        @interface
-        AnnotatedClass : NSObject {
-    ///Testing of field with attributes
-            SF_ATTRIBUTE(SFAttribute)
-            NSObject* _someField;
-        }
+@interface NSObject (SFAttributesInternal)
 
-///Testing of method with attributes
-SF_ATTRIBUTE(SFAttribute)
-SF_ATTRIBUTE(CustomSFAttribute, property1 = @"Text1", property2 = @"Text2")
-        - (void)viewDidLoad;
+#pragma mark Internal API
 
-///Testing of method with attributes
-///@param param1 Some parameter
-SF_ATTRIBUTE(SFAttribute) - (void)viewDidLoad:(BOOL)param1;
++ (NSInvocation *)invocationForSelector:(SEL)selector;
++ (NSMutableDictionary *)mutableAttributesFactoriesFrom:(NSDictionary *)attributesFactories;
 
-///Testing of property with attributes
-SF_ATTRIBUTE(SFAttribute)
-SF_ATTRIBUTE(CustomSFAttribute, property2 = @"Text2", intProperty = (2+2)*2)
-    @property
-        (strong, nonatomic)
-            UIWindow *window;
+#pragma mark Will be overridden by annotated class
+
++ (NSDictionary *)attributesFactoriesForMethods;
++ (NSDictionary *)attributesFactoriesForProperties;
++ (NSDictionary *)attributesFactoriesForIvars;
++ (NSArray *)attributesForClass;
+
+#pragma mark -
 
 @end

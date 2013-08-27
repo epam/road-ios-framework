@@ -55,10 +55,10 @@
     //so we need to increment retains counter manually
     CFBridgingRetain(result);
     
-    return [self attributesWithAttributeType:requiredClassOfAttribute from:result];
+    return [self attributesWithType:requiredClassOfAttribute from:result];
 }
 
-+ (NSArray *)attributesWithAttributeType:(Class)requiredClassOfAttribute from:(NSArray *)attributes {
++ (NSArray *)attributesWithType:(Class)requiredClassOfAttribute from:(NSArray *)attributes {
     if (attributes == nil || [attributes count] == 0) {
         return nil;
     }
@@ -95,7 +95,7 @@
 }
 
 + (NSArray *)attributesForClassWithAttributeType:(Class)requiredClassOfAttribute {
-    return [self attributesWithAttributeType:requiredClassOfAttribute from:self.attributesForClass];
+    return [self attributesWithType:requiredClassOfAttribute from:self.attributesForClass];
 }
 
 #pragma mark -

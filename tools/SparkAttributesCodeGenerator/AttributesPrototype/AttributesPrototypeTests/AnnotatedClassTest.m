@@ -60,7 +60,7 @@
     STAssertTrue(attributesList != nil, @"attributesList must be contain values");
     STAssertTrue([attributesList count] == 2, @"attributesList must be contain 2 items");
     
-    CustomESDAttribute *testAttribute = [attributesList lastObject];
+    CustomSFAttribute *testAttribute = [attributesList lastObject];
     STAssertTrue(testAttribute != nil, @"testAttribute must not be nil");
     STAssertEquals(testAttribute.property1, @"Text1", @"testAttribute doesn't contains appropriate value");
 }
@@ -111,7 +111,7 @@
     STAssertTrue(attributesList != nil, @"attributesList must be contain values");
     STAssertTrue([attributesList count] == 2, @"attributesList must be contain 2 items");
     
-    CustomESDAttribute *testAttribute = [attributesList lastObject];
+    CustomSFAttribute *testAttribute = [attributesList lastObject];
     STAssertTrue(testAttribute != nil, @"testAttribute must not be nil");
     STAssertEquals(testAttribute.property2, @"Text2", @"testAttribute doesn't contains appropriate value");
 }
@@ -162,7 +162,7 @@
     STAssertTrue(attributesList != nil, @"attributesList must be contain values");
     STAssertTrue([attributesList count] == 1, @"attributesList must be contain 2 items");
     
-    CustomESDAttribute *testAttribute = [attributesList lastObject];
+    CustomSFAttribute *testAttribute = [attributesList lastObject];
     STAssertTrue(testAttribute != nil, @"testAttribute must not be nil");
 }
 
@@ -208,7 +208,7 @@
     STAssertTrue(attributesList != nil, @"attributesList must be contain values");
     STAssertTrue([attributesList count] == 2, @"attributesList must be contain 2 items");
     
-    attributesList = [[_testObject class] attributesForClassWithAttributeType:[CustomESDAttribute class]];
+    attributesList = [[_testObject class] attributesForClassWithAttributeType:[CustomSFAttribute class]];
 
     STAssertTrue(attributesList != nil, @"attributesList must be contain values");
     STAssertTrue([attributesList count] == 1, @"attributesList must be contain 2 items");

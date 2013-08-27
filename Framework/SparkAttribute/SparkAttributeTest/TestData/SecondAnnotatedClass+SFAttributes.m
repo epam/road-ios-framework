@@ -6,13 +6,13 @@
  
 @implementation SecondAnnotatedClass(SFAttribute)
  
-#pragma mark - Fill Attributes generated code (Fields section)
+#pragma mark - Fill Attributes generated code (Ivars section)
 
-static NSMutableArray __weak *sf_attributes_list_SecondAnnotatedClass_field__someField = nil;
+static NSMutableArray __weak *sf_attributes_list_SecondAnnotatedClass_ivar__someField = nil;
 
-+ (NSArray *)sf_attributes_SecondAnnotatedClass_field__someField {
-    if (sf_attributes_list_SecondAnnotatedClass_field__someField != nil) {
-        return sf_attributes_list_SecondAnnotatedClass_field__someField;
++ (NSArray *)sf_attributes_SecondAnnotatedClass_ivar__someField {
+    if (sf_attributes_list_SecondAnnotatedClass_ivar__someField != nil) {
+        return sf_attributes_list_SecondAnnotatedClass_ivar__someField;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
@@ -20,24 +20,24 @@ static NSMutableArray __weak *sf_attributes_list_SecondAnnotatedClass_field__som
     SFTestAttribute *attr1 = [[SFTestAttribute alloc] init];
     [attributesArray addObject:attr1];
 
-    sf_attributes_list_SecondAnnotatedClass_field__someField = attributesArray;
+    sf_attributes_list_SecondAnnotatedClass_ivar__someField = attributesArray;
     
-    return sf_attributes_list_SecondAnnotatedClass_field__someField;
+    return sf_attributes_list_SecondAnnotatedClass_ivar__someField;
 }
 
-static NSMutableDictionary __weak *attributesSecondAnnotatedClassFactoriesForFieldsDict = nil;
+static NSMutableDictionary __weak *attributesSecondAnnotatedClassFactoriesForIvarsDict = nil;
     
-+ (NSDictionary *)attributesFactoriesForFields {
-    if (attributesSecondAnnotatedClassFactoriesForFieldsDict != nil) {
-        return attributesSecondAnnotatedClassFactoriesForFieldsDict;
++ (NSDictionary *)attributesFactoriesForIvars {
+    if (attributesSecondAnnotatedClassFactoriesForIvarsDict != nil) {
+        return attributesSecondAnnotatedClassFactoriesForIvarsDict;
     }
     
-    NSMutableDictionary *dictionaryHolder = [self mutableAttributesFactoriesFrom:[super attributesFactoriesForFields]];
+    NSMutableDictionary *dictionaryHolder = [self mutableAttributesFactoriesFrom:[super attributesFactoriesForIvars]];
     
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_SecondAnnotatedClass_field__someField)] forKey:@"_someField"];
-    attributesSecondAnnotatedClassFactoriesForFieldsDict = dictionaryHolder;  
+    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_SecondAnnotatedClass_ivar__someField)] forKey:@"_someField"];
+    attributesSecondAnnotatedClassFactoriesForIvarsDict = dictionaryHolder;  
     
-    return attributesSecondAnnotatedClassFactoriesForFieldsDict;
+    return attributesSecondAnnotatedClassFactoriesForIvarsDict;
 }
 
 
@@ -126,20 +126,20 @@ static NSMutableArray __weak *sf_attributes_list_SecondAnnotatedClass_method_vie
     return sf_attributes_list_SecondAnnotatedClass_method_viewDidLoad_p1;
 }
 
-static NSMutableDictionary __weak *attributesSecondAnnotatedClassFactoriesForInstanceMethodsDict = nil;
+static NSMutableDictionary __weak *attributesSecondAnnotatedClassFactoriesForMethodsDict = nil;
     
-+ (NSDictionary *)attributesFactoriesForInstanceMethods {
-    if (attributesSecondAnnotatedClassFactoriesForInstanceMethodsDict != nil) {
-        return attributesSecondAnnotatedClassFactoriesForInstanceMethodsDict;
++ (NSDictionary *)attributesFactoriesForMethods {
+    if (attributesSecondAnnotatedClassFactoriesForMethodsDict != nil) {
+        return attributesSecondAnnotatedClassFactoriesForMethodsDict;
     }
     
-    NSMutableDictionary *dictionaryHolder = [self mutableAttributesFactoriesFrom:[super attributesFactoriesForInstanceMethods]];
+    NSMutableDictionary *dictionaryHolder = [self mutableAttributesFactoriesFrom:[super attributesFactoriesForMethods]];
     
     [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_SecondAnnotatedClass_method_viewDidLoad_p0)] forKey:@"viewDidLoad"];
     [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_SecondAnnotatedClass_method_viewDidLoad_p1)] forKey:@"viewDidLoad:"];
-    attributesSecondAnnotatedClassFactoriesForInstanceMethodsDict = dictionaryHolder;  
+    attributesSecondAnnotatedClassFactoriesForMethodsDict = dictionaryHolder;  
     
-    return attributesSecondAnnotatedClassFactoriesForInstanceMethodsDict;
+    return attributesSecondAnnotatedClassFactoriesForMethodsDict;
 }
 
 

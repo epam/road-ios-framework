@@ -1,5 +1,5 @@
 //
-//  CustomESDAttribute.m
+//  CustomSFAttribute.m
 //  AttributesPrototype
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -27,8 +27,8 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "CustomESDAttribute.h"
+#import "CustomSFAttribute.h"
 
-@implementation CustomESDAttribute
+@implementation CustomSFAttribute
 
 @end

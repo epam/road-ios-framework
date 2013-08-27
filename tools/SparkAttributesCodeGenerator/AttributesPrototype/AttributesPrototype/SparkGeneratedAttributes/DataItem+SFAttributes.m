@@ -17,7 +17,7 @@ static NSMutableArray __weak *sf_attributes_list_DataItem_property_intProperty1 
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
     
-    IncrementValueESDAttribute *attr1 = [[IncrementValueESDAttribute alloc] init];
+    IncrementValueSFAttribute *attr1 = [[IncrementValueSFAttribute alloc] init];
     attr1.intValue = 1;
     [attributesArray addObject:attr1];
 
@@ -35,7 +35,7 @@ static NSMutableArray __weak *sf_attributes_list_DataItem_property_intProperty2 
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
     
-    IncrementValueESDAttribute *attr1 = [[IncrementValueESDAttribute alloc] init];
+    IncrementValueSFAttribute *attr1 = [[IncrementValueSFAttribute alloc] init];
     attr1.intValue = 3;
     [attributesArray addObject:attr1];
 
@@ -53,7 +53,7 @@ static NSMutableArray __weak *sf_attributes_list_DataItem_property_intProperty3 
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
     
-    IncrementValueESDAttribute *attr1 = [[IncrementValueESDAttribute alloc] init];
+    IncrementValueSFAttribute *attr1 = [[IncrementValueSFAttribute alloc] init];
     attr1.intValue = 2;
     [attributesArray addObject:attr1];
 

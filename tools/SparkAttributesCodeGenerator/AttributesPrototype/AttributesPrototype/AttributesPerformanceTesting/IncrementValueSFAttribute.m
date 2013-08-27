@@ -1,5 +1,5 @@
 //
-//  IncrementValueESDAttribute.h
+//  IncrementValueSFAttribute.m
 //  AttributesPrototype
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -27,10 +27,8 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "ESDAttribute.h"
+#import "IncrementValueSFAttribute.h"
 
-@interface IncrementValueESDAttribute : ESDAttribute
-
-@property (assign, nonatomic) int intValue;
+@implementation IncrementValueSFAttribute
 
 @end

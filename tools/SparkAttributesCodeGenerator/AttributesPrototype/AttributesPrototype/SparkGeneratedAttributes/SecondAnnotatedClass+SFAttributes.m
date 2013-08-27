@@ -17,7 +17,7 @@ static NSMutableArray __weak *sf_attributes_list_SecondAnnotatedClass_ivar__some
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
     
-    ESDAttribute *attr1 = [[ESDAttribute alloc] init];
+    SFAttribute *attr1 = [[SFAttribute alloc] init];
     [attributesArray addObject:attr1];
 
     sf_attributes_list_SecondAnnotatedClass_ivar__someField = attributesArray;
@@ -54,10 +54,10 @@ static NSMutableArray __weak *sf_attributes_list_SecondAnnotatedClass_property_w
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:2];
     
-    ESDAttribute *attr1 = [[ESDAttribute alloc] init];
+    SFAttribute *attr1 = [[SFAttribute alloc] init];
     [attributesArray addObject:attr1];
 
-    CustomESDAttribute *attr2 = [[CustomESDAttribute alloc] init];
+    CustomSFAttribute *attr2 = [[CustomSFAttribute alloc] init];
     attr2.property2 = @"Text2";
     attr2.intProperty = (2+2)*2;
     [attributesArray addObject:attr2];
@@ -96,10 +96,10 @@ static NSMutableArray __weak *sf_attributes_list_SecondAnnotatedClass_method_vie
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:2];
     
-    ESDAttribute *attr1 = [[ESDAttribute alloc] init];
+    SFAttribute *attr1 = [[SFAttribute alloc] init];
     [attributesArray addObject:attr1];
 
-    CustomESDAttribute *attr2 = [[CustomESDAttribute alloc] init];
+    CustomSFAttribute *attr2 = [[CustomSFAttribute alloc] init];
     attr2.property1 = @"Text1";
     attr2.property2 = @"Text2";
     [attributesArray addObject:attr2];
@@ -118,7 +118,7 @@ static NSMutableArray __weak *sf_attributes_list_SecondAnnotatedClass_method_vie
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
     
-    ESDAttribute *attr1 = [[ESDAttribute alloc] init];
+    SFAttribute *attr1 = [[SFAttribute alloc] init];
     [attributesArray addObject:attr1];
 
     sf_attributes_list_SecondAnnotatedClass_method_viewDidLoad_p1 = attributesArray;
@@ -156,10 +156,10 @@ static NSMutableArray __weak *sf_attributes_list__class_SecondAnnotatedClass = n
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:2];
     
-    ESDAttribute *attr1 = [[ESDAttribute alloc] init];
+    SFAttribute *attr1 = [[SFAttribute alloc] init];
     [attributesArray addObject:attr1];
 
-    CustomESDAttribute *attr2 = [[CustomESDAttribute alloc] init];
+    CustomSFAttribute *attr2 = [[CustomSFAttribute alloc] init];
     attr2.property1 = @"Text1";
     [attributesArray addObject:attr2];
 

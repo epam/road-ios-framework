@@ -28,29 +28,14 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <Foundation/Foundation.h>
+#import "NSObject+SFAttributesInternal.h"
 
 @interface NSObject (SFAttributes)
 
-#pragma mark - Attributes API
-
-+ (NSInvocation *)invocationForSelector:(SEL)selector;
-+ (NSMutableDictionary *)mutableAttributesFactoriesFrom:(NSDictionary *)attributesFactories;
-
-+ (NSArray *)attributesForInstanceMethod:(NSString *)instanceMethodName withType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForProperty:(NSString *)propertyName withType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForField:(NSString *)fieldName withType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForClass;
-
-#pragma mark - Attributes API stubs
-
-//will be overridden by annotated class
-
-+ (NSDictionary *)attributesFactoriesForInstanceMethods;
-+ (NSDictionary *)attributesFactoriesForProperties;
-+ (NSDictionary *)attributesFactoriesForClassProperties;
-+ (NSDictionary *)attributesFactoriesForFields;
-
-#pragma mark -
++ (NSArray *)attributesForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute;
++ (NSArray *)attributesForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute;
++ (NSArray *)attributesForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
++ (NSArray *)attributesForClassWithAttributeType:(Class)requiredClassOfAttribute;
 
 
 @end

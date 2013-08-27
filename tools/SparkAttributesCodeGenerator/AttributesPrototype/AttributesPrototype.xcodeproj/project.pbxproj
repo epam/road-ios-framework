@@ -24,17 +24,17 @@
 		8D0CB6CC178408F6002558CD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D0CB6CA178408F6002558CD /* InfoPlist.strings */; };
 		8D5E2E27178693F000FD5551 /* AnnotatedClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E26178693F000FD5551 /* AnnotatedClass.m */; };
 		8D5E2E28178693F000FD5551 /* AnnotatedClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E26178693F000FD5551 /* AnnotatedClass.m */; };
-		8D5E2E2C1786969C00FD5551 /* ESDAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E2B1786969C00FD5551 /* ESDAttribute.m */; };
-		8D5E2E2D1786969C00FD5551 /* ESDAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E2B1786969C00FD5551 /* ESDAttribute.m */; };
-		8D5E2E30178697CB00FD5551 /* CustomESDAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E2F178697CB00FD5551 /* CustomESDAttribute.m */; };
-		8D5E2E31178697CB00FD5551 /* CustomESDAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E2F178697CB00FD5551 /* CustomESDAttribute.m */; };
+		8D5E2E2C1786969C00FD5551 /* SFAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E2B1786969C00FD5551 /* SFAttribute.m */; };
+		8D5E2E2D1786969C00FD5551 /* SFAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E2B1786969C00FD5551 /* SFAttribute.m */; };
+		8D5E2E30178697CB00FD5551 /* CustomSFAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E2F178697CB00FD5551 /* CustomSFAttribute.m */; };
+		8D5E2E31178697CB00FD5551 /* CustomSFAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E2F178697CB00FD5551 /* CustomSFAttribute.m */; };
 		8D5E2E3C178743C900FD5551 /* AnnotatedClassTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E3B178743C900FD5551 /* AnnotatedClassTest.m */; };
 		8D5E2E3F1787FB2A00FD5551 /* SecondAnnotatedClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E3E1787FB2A00FD5551 /* SecondAnnotatedClass.m */; };
 		8D5E2E401787FB2A00FD5551 /* SecondAnnotatedClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E3E1787FB2A00FD5551 /* SecondAnnotatedClass.m */; };
 		8D6E8647178BB562004402F8 /* DataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6E8646178BB562004402F8 /* DataItem.m */; };
 		8D6E8648178BB562004402F8 /* DataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6E8646178BB562004402F8 /* DataItem.m */; };
-		8D6E864B178BB603004402F8 /* IncrementValueESDAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6E864A178BB603004402F8 /* IncrementValueESDAttribute.m */; };
-		8D6E864C178BB603004402F8 /* IncrementValueESDAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6E864A178BB603004402F8 /* IncrementValueESDAttribute.m */; };
+		8D6E864B178BB603004402F8 /* IncrementValueSFAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6E864A178BB603004402F8 /* IncrementValueSFAttribute.m */; };
+		8D6E864C178BB603004402F8 /* IncrementValueSFAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6E864A178BB603004402F8 /* IncrementValueSFAttribute.m */; };
 		8D6E864F178BBA97004402F8 /* DataItemProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6E864E178BBA97004402F8 /* DataItemProcessor.m */; };
 		8D6E8650178BBA97004402F8 /* DataItemProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6E864E178BBA97004402F8 /* DataItemProcessor.m */; };
 		8D99708517CC935300184507 /* NSObject+SFAttributesInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D99708417CC935300184507 /* NSObject+SFAttributesInternal.m */; };
@@ -78,18 +78,18 @@
 		8D0CB6CB178408F6002558CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8D5E2E25178693F000FD5551 /* AnnotatedClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AnnotatedClass.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		8D5E2E26178693F000FD5551 /* AnnotatedClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotatedClass.m; sourceTree = "<group>"; };
-		8D5E2E2A1786969C00FD5551 /* ESDAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDAttribute.h; sourceTree = "<group>"; };
-		8D5E2E2B1786969C00FD5551 /* ESDAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDAttribute.m; sourceTree = "<group>"; };
-		8D5E2E2E178697CB00FD5551 /* CustomESDAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomESDAttribute.h; sourceTree = "<group>"; };
-		8D5E2E2F178697CB00FD5551 /* CustomESDAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomESDAttribute.m; sourceTree = "<group>"; };
+		8D5E2E2A1786969C00FD5551 /* SFAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAttribute.h; sourceTree = "<group>"; };
+		8D5E2E2B1786969C00FD5551 /* SFAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAttribute.m; sourceTree = "<group>"; };
+		8D5E2E2E178697CB00FD5551 /* CustomSFAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSFAttribute.h; sourceTree = "<group>"; };
+		8D5E2E2F178697CB00FD5551 /* CustomSFAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSFAttribute.m; sourceTree = "<group>"; };
 		8D5E2E3A178743C900FD5551 /* AnnotatedClassTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnotatedClassTest.h; sourceTree = "<group>"; };
 		8D5E2E3B178743C900FD5551 /* AnnotatedClassTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AnnotatedClassTest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8D5E2E3D1787FB2A00FD5551 /* SecondAnnotatedClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondAnnotatedClass.h; sourceTree = "<group>"; };
 		8D5E2E3E1787FB2A00FD5551 /* SecondAnnotatedClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondAnnotatedClass.m; sourceTree = "<group>"; };
 		8D6E8645178BB562004402F8 /* DataItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataItem.h; sourceTree = "<group>"; };
 		8D6E8646178BB562004402F8 /* DataItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataItem.m; sourceTree = "<group>"; };
-		8D6E8649178BB603004402F8 /* IncrementValueESDAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncrementValueESDAttribute.h; sourceTree = "<group>"; };
-		8D6E864A178BB603004402F8 /* IncrementValueESDAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncrementValueESDAttribute.m; sourceTree = "<group>"; };
+		8D6E8649178BB603004402F8 /* IncrementValueSFAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncrementValueSFAttribute.h; sourceTree = "<group>"; };
+		8D6E864A178BB603004402F8 /* IncrementValueSFAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncrementValueSFAttribute.m; sourceTree = "<group>"; };
 		8D6E864D178BBA97004402F8 /* DataItemProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataItemProcessor.h; sourceTree = "<group>"; };
 		8D6E864E178BBA97004402F8 /* DataItemProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataItemProcessor.m; sourceTree = "<group>"; };
 		8D99708317CC935300184507 /* NSObject+SFAttributesInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SFAttributesInternal.h"; sourceTree = "<group>"; };
@@ -206,8 +206,8 @@
 				8DF6C8D817C4766B00F829E8 /* NSObject+SFAttributes.h */,
 				8DF6C8D917C4766B00F829E8 /* NSObject+SFAttributes.m */,
 				8DF6C8DA17C4766B00F829E8 /* SparkAttributesSupport.h */,
-				8D5E2E2A1786969C00FD5551 /* ESDAttribute.h */,
-				8D5E2E2B1786969C00FD5551 /* ESDAttribute.m */,
+				8D5E2E2A1786969C00FD5551 /* SFAttribute.h */,
+				8D5E2E2B1786969C00FD5551 /* SFAttribute.m */,
 				8D99708317CC935300184507 /* NSObject+SFAttributesInternal.h */,
 				8D99708417CC935300184507 /* NSObject+SFAttributesInternal.m */,
 			);
@@ -221,8 +221,8 @@
 				8D5E2E3E1787FB2A00FD5551 /* SecondAnnotatedClass.m */,
 				8D5E2E25178693F000FD5551 /* AnnotatedClass.h */,
 				8D5E2E26178693F000FD5551 /* AnnotatedClass.m */,
-				8D5E2E2E178697CB00FD5551 /* CustomESDAttribute.h */,
-				8D5E2E2F178697CB00FD5551 /* CustomESDAttribute.m */,
+				8D5E2E2E178697CB00FD5551 /* CustomSFAttribute.h */,
+				8D5E2E2F178697CB00FD5551 /* CustomSFAttribute.m */,
 			);
 			path = AttributesTesting;
 			sourceTree = "<group>";
@@ -230,8 +230,8 @@
 		8D6E8644178BB535004402F8 /* AttributesPerformanceTesting */ = {
 			isa = PBXGroup;
 			children = (
-				8D6E8649178BB603004402F8 /* IncrementValueESDAttribute.h */,
-				8D6E864A178BB603004402F8 /* IncrementValueESDAttribute.m */,
+				8D6E8649178BB603004402F8 /* IncrementValueSFAttribute.h */,
+				8D6E864A178BB603004402F8 /* IncrementValueSFAttribute.m */,
 				8D6E8645178BB562004402F8 /* DataItem.h */,
 				8D6E8646178BB562004402F8 /* DataItem.m */,
 				8D6E864D178BBA97004402F8 /* DataItemProcessor.h */,
@@ -381,11 +381,11 @@
 				8D0CB6AE178408F6002558CD /* AppDelegate.m in Sources */,
 				8D0CB6BA178408F6002558CD /* ViewController.m in Sources */,
 				8D5E2E27178693F000FD5551 /* AnnotatedClass.m in Sources */,
-				8D5E2E2C1786969C00FD5551 /* ESDAttribute.m in Sources */,
-				8D5E2E30178697CB00FD5551 /* CustomESDAttribute.m in Sources */,
+				8D5E2E2C1786969C00FD5551 /* SFAttribute.m in Sources */,
+				8D5E2E30178697CB00FD5551 /* CustomSFAttribute.m in Sources */,
 				8D5E2E3F1787FB2A00FD5551 /* SecondAnnotatedClass.m in Sources */,
 				8D6E8647178BB562004402F8 /* DataItem.m in Sources */,
-				8D6E864B178BB603004402F8 /* IncrementValueESDAttribute.m in Sources */,
+				8D6E864B178BB603004402F8 /* IncrementValueSFAttribute.m in Sources */,
 				8D6E864F178BBA97004402F8 /* DataItemProcessor.m in Sources */,
 				8DA5913117AB28F900DA9532 /* SparkGeneratedAttribute.m in Sources */,
 				8DF6C8DB17C4766B00F829E8 /* NSObject+SFAttributes.m in Sources */,
@@ -398,12 +398,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D5E2E28178693F000FD5551 /* AnnotatedClass.m in Sources */,
-				8D5E2E2D1786969C00FD5551 /* ESDAttribute.m in Sources */,
-				8D5E2E31178697CB00FD5551 /* CustomESDAttribute.m in Sources */,
+				8D5E2E2D1786969C00FD5551 /* SFAttribute.m in Sources */,
+				8D5E2E31178697CB00FD5551 /* CustomSFAttribute.m in Sources */,
 				8D5E2E3C178743C900FD5551 /* AnnotatedClassTest.m in Sources */,
 				8D5E2E401787FB2A00FD5551 /* SecondAnnotatedClass.m in Sources */,
 				8D6E8648178BB562004402F8 /* DataItem.m in Sources */,
-				8D6E864C178BB603004402F8 /* IncrementValueESDAttribute.m in Sources */,
+				8D6E864C178BB603004402F8 /* IncrementValueSFAttribute.m in Sources */,
 				8D6E8650178BBA97004402F8 /* DataItemProcessor.m in Sources */,
 				8DA5913217AB28F900DA9532 /* SparkGeneratedAttribute.m in Sources */,
 				8DF6C8DC17C4766B00F829E8 /* NSObject+SFAttributes.m in Sources */,
