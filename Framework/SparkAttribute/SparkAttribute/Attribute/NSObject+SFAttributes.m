@@ -29,6 +29,11 @@
 
 #import "NSObject+SFAttributes.h"
 
+@interface NSObject ()
++ (NSArray *)attributesWithType:(Class)requiredClassOfAttribute from:(NSArray *)attributes;
+@end
+
+
 @implementation NSObject (SFAttributes)
 
 #pragma mark - Attributes API
