@@ -34,15 +34,15 @@
 @implementation FieldsAttributesCodeGenerator
 
 + (NSString *)elementType {
-    return @"field";
+    return @"ivar";
 }
 
 + (NSString *)sectionType {
-    return @"Fields";
+    return @"Ivars";
 }
 
 + (NSString *)factoryName {
-    return @"FactoriesForFields";
+    return @"FactoriesForIvars";
 }
 
 @end

@@ -55,7 +55,7 @@
 - (void)processDateItem:(DataItem *)dataItem {
     IncrementValueESDAttribute *incrementValueAttr = nil;
     
-    NSArray *propertyAttributes = [[DataItem class] attributesForProperty:@"intProperty1" withType:[IncrementValueESDAttribute class]];
+    NSArray *propertyAttributes = [[DataItem class] attributesForProperty:@"intProperty1" withAttributeType:[IncrementValueESDAttribute class]];
     
     if ([propertyAttributes count] == 1) {
         
@@ -70,7 +70,7 @@
     }
     
     
-    propertyAttributes = [[DataItem class] attributesForProperty:@"intProperty2" withType:[IncrementValueESDAttribute class]];
+    propertyAttributes = [[DataItem class] attributesForProperty:@"intProperty2" withAttributeType:[IncrementValueESDAttribute class]];
     
     if ([propertyAttributes count] == 1) {
         
@@ -84,7 +84,7 @@
         return;
     }
     
-    propertyAttributes = [[DataItem class] attributesForProperty:@"intProperty3" withType:[IncrementValueESDAttribute class]];
+    propertyAttributes = [[DataItem class] attributesForProperty:@"intProperty3" withAttributeType:[IncrementValueESDAttribute class]];
     
     if ([propertyAttributes count] == 1) {
         

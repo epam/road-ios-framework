@@ -31,49 +31,9 @@
 
 @implementation NSObject (SFAttributes)
 
-#pragma mark - Attributes API stubs
-
-//will be overridden by annotated class
-
-+ (NSDictionary *)attributesFactoriesForInstanceMethods { return nil; }
-+ (NSDictionary *)attributesFactoriesForProperties { return nil; }
-+ (NSDictionary *)attributesFactoriesForClassProperties { return nil; }
-+ (NSDictionary *)attributesFactoriesForFields { return nil; }
-+ (NSArray *)attributesForClass { return nil; }
-
 #pragma mark - Attributes API
 
-+ (NSMutableDictionary *)mutableAttributesFactoriesFrom:(NSDictionary *)attributesFactories {
-    
-    if (attributesFactories == nil) {
-        return [NSMutableDictionary dictionary];
-    }
-    
-    if ([attributesFactories isKindOfClass:[NSMutableDictionary class]]) {
-        return (NSMutableDictionary *)attributesFactories;
-    }
-    
-    return [NSMutableDictionary dictionaryWithDictionary:(NSDictionary *)attributesFactories];
-}
-
-+ (NSInvocation *)invocationForSelector:(SEL)selector {
-    NSMethodSignature *methodSig = [self methodSignatureForSelector:selector];
-    if (methodSig == nil) {
-        return nil;
-    }
-    
-    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSig];
-    [invocation setSelector:selector];
-    [invocation setTarget:self];
-    
-    return invocation;
-}
-
-+ (NSArray *)attributesFor:(NSString *)annotatedElementName inAttributeCreatorsDictionary:(NSDictionary *)attributeCreatorsDictionary {   
-    return [self attributesFor:annotatedElementName inAttributeCreatorsDictionary:attributeCreatorsDictionary withType:nil];
-}
-
-+ (NSArray *)attributesFor:(NSString *)annotatedElementName inAttributeCreatorsDictionary:(NSDictionary *)attributeCreatorsDictionary withType:(Class)requiredClassOfAttribute {
++ (NSArray *)attributesFor:(NSString *)annotatedElementName inAttributeCreatorsDictionary:(NSDictionary *)attributeCreatorsDictionary withAttributeType:(Class)requiredClassOfAttribute {
     assert([annotatedElementName length] > 0);
     
     if (attributeCreatorsDictionary == nil) {
@@ -95,25 +55,25 @@
     //so we need to increment retains counter manually
     CFBridgingRetain(result);
     
-    return [self attributesWithType:requiredClassOfAttribute from:result];
+    return [self attributesWithAttributeType:requiredClassOfAttribute from:result];
 }
 
-+ (NSArray *)attributesWithType:(Class)requiredClassOfAttribute from:(NSArray *)attributesList {
-    if (attributesList == nil || [attributesList count] == 0) {
++ (NSArray *)attributesWithAttributeType:(Class)requiredClassOfAttribute from:(NSArray *)attributes {
+    if (attributes == nil || [attributes count] == 0) {
         return nil;
     }
     
     if (requiredClassOfAttribute == nil) {
-        return attributesList;
+        return attributes;
     }
     
-    if ([attributesList count] == 1 && [[attributesList lastObject] isKindOfClass:requiredClassOfAttribute]) {
-        return attributesList;
+    if ([attributes count] == 1 && [[attributes lastObject] isKindOfClass:requiredClassOfAttribute]) {
+        return attributes;
     }
     
     NSMutableArray *result = [NSMutableArray array];
     
-    for (NSObject *attribute in attributesList) {
+    for (NSObject *attribute in attributes) {
         if ([attribute isKindOfClass:requiredClassOfAttribute]) {
             [result addObject:attribute];
         }
@@ -122,16 +82,20 @@
     return result;
 }
 
-+ (NSArray *)attributesForInstanceMethod:(NSString *)instanceMethodName withType:(Class)requiredClassOfAttribute {
-    return [self attributesFor:instanceMethodName inAttributeCreatorsDictionary:self.attributesFactoriesForInstanceMethods withType:requiredClassOfAttribute];
++ (NSArray *)attributesForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute {
+    return [self attributesFor:methodName inAttributeCreatorsDictionary:self.attributesFactoriesForMethods withAttributeType:requiredClassOfAttribute];
 }
 
-+ (NSArray *)attributesForProperty:(NSString *)propertyName withType:(Class)requiredClassOfAttribute {
-    return [self attributesFor:propertyName inAttributeCreatorsDictionary:self.attributesFactoriesForProperties withType:requiredClassOfAttribute];
++ (NSArray *)attributesForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute {
+    return [self attributesFor:propertyName inAttributeCreatorsDictionary:self.attributesFactoriesForProperties withAttributeType:requiredClassOfAttribute];
 }
 
-+ (NSArray *)attributesForField:(NSString *)fieldName withType:(Class)requiredClassOfAttribute {
-    return [self attributesFor:fieldName inAttributeCreatorsDictionary:self.attributesFactoriesForFields withType:requiredClassOfAttribute];
++ (NSArray *)attributesForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute {
+    return [self attributesFor:ivarName inAttributeCreatorsDictionary:self.attributesFactoriesForIvars withAttributeType:requiredClassOfAttribute];
+}
+
++ (NSArray *)attributesForClassWithAttributeType:(Class)requiredClassOfAttribute {
+    return [self attributesWithAttributeType:requiredClassOfAttribute from:self.attributesForClass];
 }
 
 #pragma mark -

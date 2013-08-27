@@ -56,7 +56,7 @@
 #pragma mark - Test Attributes generated code (Methods section)
 
 - (void)test_attributesForInstanceMethod {
-    NSArray *attributesList = [[_testObject class] attributesForInstanceMethod:@"viewDidLoad" withType:nil];
+    NSArray *attributesList = [[_testObject class] attributesForMethod:@"viewDidLoad" withAttributeType:nil];
     STAssertTrue(attributesList != nil, @"attributesList must be contain values");
     STAssertTrue([attributesList count] == 2, @"attributesList must be contain 2 items");
     
@@ -66,10 +66,10 @@
 }
 
 - (void)test_attributesForInstanceMethodCaching {
-    NSArray *attributesList1 = [[_testObject class] attributesForInstanceMethod:@"viewDidLoad" withType:nil];
+    NSArray *attributesList1 = [[_testObject class] attributesForMethod:@"viewDidLoad" withAttributeType:nil];
     STAssertTrue(attributesList1 != nil, @"attributesList1 must be contain values");
 
-    NSArray *attributesList2 = [[_testObject class] attributesForInstanceMethod:@"viewDidLoad" withType:nil];
+    NSArray *attributesList2 = [[_testObject class] attributesForMethod:@"viewDidLoad" withAttributeType:nil];
     STAssertTrue(attributesList2 != nil, @"attributesList2 must be contain values");
     
     STAssertTrue(attributesList1 == attributesList2, @"attributesList1 and attributesList2 must point at the same array");    
@@ -79,11 +79,11 @@
     NSArray __weak *attributesList1 = nil;
     
     @autoreleasepool {
-        attributesList1 = [[_testObject class] attributesForInstanceMethod:@"viewDidLoad" withType:nil];
+        attributesList1 = [[_testObject class] attributesForMethod:@"viewDidLoad" withAttributeType:nil];
         STAssertTrue(attributesList1 != nil, @"attributesList1 must be contain values");
     }
         
-    NSArray *attributesList2 = [[_testObject class] attributesForInstanceMethod:@"viewDidLoad" withType:nil];
+    NSArray *attributesList2 = [[_testObject class] attributesForMethod:@"viewDidLoad" withAttributeType:nil];
     STAssertTrue(attributesList2 != nil, @"attributesList2 must be contain values");
     
     STAssertTrue(attributesList1 != attributesList2, @"it seems here is memory leak");
@@ -93,10 +93,10 @@
     AnnotatedClass *_testObject1 = [AnnotatedClass new];
     SecondAnnotatedClass *_testObject2 = [SecondAnnotatedClass new];
     
-    NSArray *attributesList1 = [[_testObject1 class] attributesForInstanceMethod:@"viewDidLoad" withType:nil];
+    NSArray *attributesList1 = [[_testObject1 class] attributesForMethod:@"viewDidLoad" withAttributeType:nil];
     STAssertTrue(attributesList1 != nil, @"attributesList1 must be contain values");
     
-    NSArray *attributesList2 = [[_testObject2 class] attributesForInstanceMethod:@"viewDidLoad" withType:nil];
+    NSArray *attributesList2 = [[_testObject2 class] attributesForMethod:@"viewDidLoad" withAttributeType:nil];
     STAssertTrue(attributesList2 != nil, @"attributesList2 must be contain values");
     
     STAssertTrue(attributesList1 != attributesList2, @"attributesList1 and attributesList2 must not point at the same array");
@@ -107,7 +107,7 @@
 #pragma mark - Test Attributes generated code (Properties section)
 
 - (void)test_attributesForProperty {
-    NSArray *attributesList = [[_testObject class] attributesForProperty:@"window" withType:nil];
+    NSArray *attributesList = [[_testObject class] attributesForProperty:@"window" withAttributeType:nil];
     STAssertTrue(attributesList != nil, @"attributesList must be contain values");
     STAssertTrue([attributesList count] == 2, @"attributesList must be contain 2 items");
     
@@ -117,10 +117,10 @@
 }
 
 - (void)test_attributesForPropertyCaching {
-    NSArray *attributesList1 = [[_testObject class] attributesForProperty:@"window" withType:nil];
+    NSArray *attributesList1 = [[_testObject class] attributesForProperty:@"window" withAttributeType:nil];
     STAssertTrue(attributesList1 != nil, @"attributesList1 must be contain values");
     
-    NSArray *attributesList2 = [[_testObject class] attributesForProperty:@"window" withType:nil];
+    NSArray *attributesList2 = [[_testObject class] attributesForProperty:@"window" withAttributeType:nil];
     STAssertTrue(attributesList2 != nil, @"attributesList2 must be contain values");
     
     STAssertTrue(attributesList1 == attributesList2, @"attributesList1 and attributesList2 must point at the same array");
@@ -130,11 +130,11 @@
     NSArray __weak *attributesList1 = nil;
     
     @autoreleasepool {
-        attributesList1 = [[_testObject class] attributesForProperty:@"window" withType:nil];
+        attributesList1 = [[_testObject class] attributesForProperty:@"window" withAttributeType:nil];
         STAssertTrue(attributesList1 != nil, @"attributesList1 must be contain values");
     }
     
-    NSArray *attributesList2 = [[_testObject class] attributesForProperty:@"window" withType:nil];
+    NSArray *attributesList2 = [[_testObject class] attributesForProperty:@"window" withAttributeType:nil];
     STAssertTrue(attributesList2 != nil, @"attributesList2 must be contain values");
     
     STAssertTrue(attributesList1 != attributesList2, @"it seems here is memory leak");
@@ -144,10 +144,10 @@
     AnnotatedClass *_testObject1 = [AnnotatedClass new];
     SecondAnnotatedClass *_testObject2 = [SecondAnnotatedClass new];
     
-    NSArray *attributesList1 = [[_testObject1 class] attributesForProperty:@"window" withType:nil];
+    NSArray *attributesList1 = [[_testObject1 class] attributesForProperty:@"window" withAttributeType:nil];
     STAssertTrue(attributesList1 != nil, @"attributesList1 must be contain values");
     
-    NSArray *attributesList2 = [[_testObject2 class] attributesForProperty:@"window" withType:nil];
+    NSArray *attributesList2 = [[_testObject2 class] attributesForProperty:@"window" withAttributeType:nil];
     STAssertTrue(attributesList2 != nil, @"attributesList2 must be contain values");
     
     STAssertTrue(attributesList1 != attributesList2, @"attributesList1 and attributesList2 must not point at the same array");
@@ -157,8 +157,8 @@
 
 #pragma mark - Test Attributes generated code (Fields section)
 
-- (void)test_attributesForField {
-    NSArray *attributesList = [[_testObject class] attributesForField:@"_someField" withType:nil];
+- (void)test_attributesForIvar {
+    NSArray *attributesList = [[_testObject class] attributesForIvar:@"_someField" withAttributeType:nil];
     STAssertTrue(attributesList != nil, @"attributesList must be contain values");
     STAssertTrue([attributesList count] == 1, @"attributesList must be contain 2 items");
     
@@ -166,25 +166,25 @@
     STAssertTrue(testAttribute != nil, @"testAttribute must not be nil");
 }
 
-- (void)test_attributesForFieldCaching {
-    NSArray *attributesList1 = [[_testObject class] attributesForField:@"_someField" withType:nil];
+- (void)test_attributesForIvarCaching {
+    NSArray *attributesList1 = [[_testObject class] attributesForIvar:@"_someField" withAttributeType:nil];
     STAssertTrue(attributesList1 != nil, @"attributesList1 must be contain values");
     
-    NSArray *attributesList2 = [[_testObject class] attributesForField:@"_someField" withType:nil];
+    NSArray *attributesList2 = [[_testObject class] attributesForIvar:@"_someField" withAttributeType:nil];
     STAssertTrue(attributesList2 != nil, @"attributesList2 must be contain values");
     
     STAssertTrue(attributesList1 == attributesList2, @"attributesList1 and attributesList2 must point at the same array");
 }
 
-- (void)test_attributesForFieldCachingAfterAutoreleasePool {
+- (void)test_attributesForIvarCachingAfterAutoreleasePool {
     NSArray __weak *attributesList1 = nil;
     
     @autoreleasepool {
-        attributesList1 = [[_testObject class] attributesForField:@"_someField" withType:nil];
+        attributesList1 = [[_testObject class] attributesForIvar:@"_someField" withAttributeType:nil];
         STAssertTrue(attributesList1 != nil, @"attributesList1 must be contain values");
     }
     
-    NSArray *attributesList2 = [[_testObject class] attributesForField:@"_someField" withType:nil];
+    NSArray *attributesList2 = [[_testObject class] attributesForIvar:@"_someField" withAttributeType:nil];
     STAssertTrue(attributesList2 != nil, @"attributesList2 must be contain values");
     
     STAssertTrue(attributesList1 != attributesList2, @"it seems here is memory leak");
@@ -194,13 +194,24 @@
     AnnotatedClass *_testObject1 = [AnnotatedClass new];
     SecondAnnotatedClass *_testObject2 = [SecondAnnotatedClass new];
     
-    NSArray *attributesList1 = [[_testObject1 class] attributesForField:@"_someField" withType:nil];
+    NSArray *attributesList1 = [[_testObject1 class] attributesForIvar:@"_someField" withAttributeType:nil];
     STAssertTrue(attributesList1 != nil, @"attributesList1 must be contain values");
     
-    NSArray *attributesList2 = [[_testObject2 class] attributesForField:@"_someField" withType:nil];
+    NSArray *attributesList2 = [[_testObject2 class] attributesForIvar:@"_someField" withAttributeType:nil];
     STAssertTrue(attributesList2 != nil, @"attributesList2 must be contain values");
     
     STAssertTrue(attributesList1 != attributesList2, @"attributesList1 and attributesList2 must not point at the same array");
+}
+
+- (void)test_attributesForClass {
+    NSArray *attributesList = [[_testObject class] attributesForClassWithAttributeType:nil];
+    STAssertTrue(attributesList != nil, @"attributesList must be contain values");
+    STAssertTrue([attributesList count] == 2, @"attributesList must be contain 2 items");
+    
+    attributesList = [[_testObject class] attributesForClassWithAttributeType:[CustomESDAttribute class]];
+
+    STAssertTrue(attributesList != nil, @"attributesList must be contain values");
+    STAssertTrue([attributesList count] == 1, @"attributesList must be contain 2 items");
 }
 
 #pragma mark -
