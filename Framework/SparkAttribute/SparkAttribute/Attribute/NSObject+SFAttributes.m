@@ -28,6 +28,7 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "NSObject+SFAttributes.h"
+#import "NSObject+SFAttributesInternal.h"
 
 @interface NSObject ()
 + (NSArray *)attributesWithType:(Class)requiredClassOfAttribute from:(NSArray *)attributes;

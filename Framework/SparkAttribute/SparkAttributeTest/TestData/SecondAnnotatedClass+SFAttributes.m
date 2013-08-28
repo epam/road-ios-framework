@@ -1,4 +1,5 @@
 #import "SecondAnnotatedClass.h"
+#import "NSObject+SFAttributesInternal.h"
  
 @interface SecondAnnotatedClass(SFAttribute)
  
