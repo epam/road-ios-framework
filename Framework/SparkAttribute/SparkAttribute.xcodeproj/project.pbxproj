@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		5AD1FC48176603AC00E67BC4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD1FC47176603AC00E67BC4 /* Cocoa.framework */; };
 		78DDB7CE1647FF0200E7E92F /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78DDB7CD1647FF0200E7E92F /* SenTestingKit.framework */; };
+		8D7C108F17CDBD1C0010C418 /* SparkAttributesSupport.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8DF6C8CB17C474A100F829E8 /* SparkAttributesSupport.h */; };
+		8D7C109217CDBD210010C418 /* NSObject+SFAttributesInternal.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8D99708717CCB90600184507 /* NSObject+SFAttributesInternal.h */; };
+		8D7C109317CDBD240010C418 /* NSObject+SFAttributes.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8DF6C8CD17C474AD00F829E8 /* NSObject+SFAttributes.h */; };
 		8D99708917CCB90600184507 /* NSObject+SFAttributesInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D99708717CCB90600184507 /* NSObject+SFAttributesInternal.h */; };
 		8D99708A17CCB90600184507 /* NSObject+SFAttributesInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D99708817CCB90600184507 /* NSObject+SFAttributesInternal.m */; };
 		8D99708B17CCB90600184507 /* NSObject+SFAttributesInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D99708817CCB90600184507 /* NSObject+SFAttributesInternal.m */; };
@@ -76,6 +79,9 @@
 			dstPath = include/Spark;
 			dstSubfolderSpec = 16;
 			files = (
+				8D7C109317CDBD240010C418 /* NSObject+SFAttributes.h in Copy Files */,
+				8D7C109217CDBD210010C418 /* NSObject+SFAttributesInternal.h in Copy Files */,
+				8D7C108F17CDBD1C0010C418 /* SparkAttributesSupport.h in Copy Files */,
 			);
 			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
