@@ -87,7 +87,7 @@
             
             if ([rootObjectClass hasAttributesForClassWithAttributeType:[SFSerializable class]]) {
                 properties = [[rootObjectClass properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(SFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
-                    return ![evaluatedObject.attributeClass hasAttributesForProperty:evaluatedObject.propertyName withAttributeType:[SFDerived class]];
+                    return ![evaluatedObject.hostClass hasAttributesForProperty:evaluatedObject.propertyName withAttributeType:[SFDerived class]];
                 }]];
             }
             else {
@@ -117,7 +117,7 @@
     id encodedValue = nil;
     
     if ([value isKindOfClass:[NSDate class]]) {
-        SFSerializableDate *serializableDateAttribute = (SFSerializableDate *)[propertyInfo.attributeClass lastAttributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializableDate class]];
+        SFSerializableDate *serializableDateAttribute = (SFSerializableDate *)[propertyInfo.hostClass lastAttributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializableDate class]];
         
         if (serializableDateAttribute.unixTimestamp) {
             NSDate *date = value;

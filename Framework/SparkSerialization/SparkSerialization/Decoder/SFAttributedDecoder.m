@@ -124,7 +124,7 @@
     @autoreleasepool {
         if ([rootObjectClass hasAttributesForClassWithAttributeType:[SFSerializable class]]) {
             properties = [[rootObjectClass properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(SFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
-                return ![evaluatedObject.attributeClass hasAttributesForProperty:evaluatedObject.propertyName withAttributeType:[SFDerived class]];
+                return ![evaluatedObject.hostClass hasAttributesForProperty:evaluatedObject.propertyName withAttributeType:[SFDerived class]];
             }]];
         }
         else {
@@ -157,7 +157,7 @@
             value = [self decodeDictionary:value forProperty:aDesc];
         }
     }
-    else if ([aDesc.attributeClass hasAttributesForProperty:aDesc.propertyName withAttributeType:[SFSerializableDate class]]
+    else if ([aDesc.hostClass hasAttributesForProperty:aDesc.propertyName withAttributeType:[SFSerializableDate class]]
              || [[self class] hasAttributesForClassWithAttributeType:[SFSerializableDate class]]) {
         value = [self decodeDateString:aValue forProperty:aDesc];
     }
@@ -211,7 +211,7 @@
 - (id)decodeDateString:(id const)value forProperty:(SFPropertyInfo * const)propertyInfo {
     id decodedValue = nil;
 
-    SFSerializableDate *serializableDateAttribute = (SFSerializableDate *)[propertyInfo.attributeClass lastAttributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializableDate class]];
+    SFSerializableDate *serializableDateAttribute = (SFSerializableDate *)[propertyInfo.hostClass lastAttributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializableDate class]];
 
     if (serializableDateAttribute.unixTimestamp) {
         NSNumber *interval = value;
