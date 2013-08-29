@@ -29,10 +29,10 @@
 
 
 #import <Foundation/Foundation.h>
-@class ESDMethodInfo;
+@class SFMethodInfo;
 
 /**
- Convenience methods to fetch ESDMethodDescriptors for the current object.
+ Convenience methods to fetch SFMethodDescriptors for the current object.
  */
 @interface NSObject (MethodReflection)
 
@@ -40,13 +40,13 @@
  Returns a specific descriptor of the given name matching class methods for the current object.
  @param methodName The name of the method.
  */
-- (ESDMethodInfo *)classMethodForName:(NSString *)methodName;
+- (SFMethodInfo *)classMethodForName:(NSString *)methodName;
 
 /**
  Returns a specific descriptor of the given name matching instance methods for the current object.
  @param methodName The name of the method.
  */
-- (ESDMethodInfo *)instanceMethodForName:(NSString *)methodName;
+- (SFMethodInfo *)instanceMethodForName:(NSString *)methodName;
 
 /**
  Returns all method descriptor for the current object.
@@ -57,7 +57,7 @@
  Returns a specific descriptor of the given name matching class methods for the current class.
   @param methodName The name of the method.
  */
-+ (ESDMethodInfo *)classMethodForName:(NSString *)methodName;
++ (SFMethodInfo *)classMethodForName:(NSString *)methodName;
 
 /**
  Returns all method descriptor for the current class.
@@ -68,6 +68,6 @@
  Returns a specific descriptor of the given name matching instance methods for the current class.
   @param methodName The name of the method.
  */
-+ (ESDMethodInfo *)instanceMethodForName:(NSString *)methodName;
++ (SFMethodInfo *)instanceMethodForName:(NSString *)methodName;
 
 @end

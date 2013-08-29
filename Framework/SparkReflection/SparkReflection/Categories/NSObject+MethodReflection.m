@@ -29,32 +29,32 @@
 
 
 #import "NSObject+MethodReflection.h"
-#import "ESDMethodInfo.h"
+#import "SFMethodInfo.h"
 
 @implementation NSObject (MethodReflection)
 
-- (ESDMethodInfo *)classMethodForName:(NSString *)methodName {
-    return [ESDMethodInfo classMethodNamed:methodName forClass:[self class]];
+- (SFMethodInfo *)classMethodForName:(NSString *)methodName {
+    return [SFMethodInfo classMethodNamed:methodName forClass:[self class]];
 }
 
-- (ESDMethodInfo *)instanceMethodForName:(NSString *)methodName {
-    return [ESDMethodInfo instanceMethodNamed:methodName forClass:[self class]];
+- (SFMethodInfo *)instanceMethodForName:(NSString *)methodName {
+    return [SFMethodInfo instanceMethodNamed:methodName forClass:[self class]];
 }
 
 - (NSArray *)methods {
-    return [ESDMethodInfo methodsOfClass:[self class]];
+    return [SFMethodInfo methodsOfClass:[self class]];
 }
 
-+ (ESDMethodInfo *)classMethodForName:(NSString *)methodName {
-    return [ESDMethodInfo classMethodNamed:methodName forClass:self];
++ (SFMethodInfo *)classMethodForName:(NSString *)methodName {
+    return [SFMethodInfo classMethodNamed:methodName forClass:self];
 }
 
-+ (ESDMethodInfo *)instanceMethodForName:(NSString *)methodName {
-    return [ESDMethodInfo instanceMethodNamed:methodName forClass:self];
++ (SFMethodInfo *)instanceMethodForName:(NSString *)methodName {
+    return [SFMethodInfo instanceMethodNamed:methodName forClass:self];
 }
 
 + (NSArray *)methods {
-    return [ESDMethodInfo methodsOfClass:self];
+    return [SFMethodInfo methodsOfClass:self];
 }
 
 

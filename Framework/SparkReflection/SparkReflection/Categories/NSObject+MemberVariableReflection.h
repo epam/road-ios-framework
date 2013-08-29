@@ -30,7 +30,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class ESDIvarInfo;
+@class SFIvarInfo;
 
 /**
  Category to retrieve member variable info objects from either a class or an instance of a class.
@@ -42,7 +42,7 @@
  @param name The name of the ivar.
  @result The info object.
  */
-+ (ESDIvarInfo *)ivarNamed:(NSString *)name;
++ (SFIvarInfo *)ivarNamed:(NSString *)name;
 
 /**
  Returns all info objects corresponding to the instance variable of the given name.
@@ -55,7 +55,7 @@
  @param name The name of the ivar.
  @result The info object.
  */
-- (ESDIvarInfo *)ivarNamed:(NSString *)name;
+- (SFIvarInfo *)ivarNamed:(NSString *)name;
 
 /**
  Returns all info objects corresponding to the instance variable of the given name. Invoked on an instance of a class.

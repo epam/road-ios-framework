@@ -31,9 +31,9 @@
 #ifndef SparkReflection_SparkReflection_h
 #define SparkReflection_SparkReflection_h
 
-#import "ESDIvarInfo.h"
-#import "ESDMethodInfo.h"
-#import "ESDPropertyInfo.h"
+#import "SFIvarInfo.h"
+#import "SFMethodInfo.h"
+#import "SFPropertyInfo.h"
 #import "NSObject+PropertyReflection.h"
 #import "NSObject+MemberVariableReflection.h"
 #import "NSObject+MethodReflection.h"

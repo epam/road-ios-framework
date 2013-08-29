@@ -28,7 +28,7 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-#import "ESDPropertyInfo.h"
+#import "SFPropertyInfo.h"
 
 /**
  Convenience methods to return property descriptors for objects.
@@ -46,7 +46,7 @@
  @param name The name of the property to fetch the info for.
  @result The info object.
  */
-- (ESDPropertyInfo *)propertyNamed:(NSString *)name;
+- (SFPropertyInfo *)propertyNamed:(NSString *)name;
 
 /**
  Returns an array of property info objects. Does not list superclass properties.
@@ -59,6 +59,6 @@
  @param name The name of the property to fetch the info for.
  @result The info object.
  */
-+ (ESDPropertyInfo *)propertyNamed:(NSString *)name;
++ (SFPropertyInfo *)propertyNamed:(NSString *)name;
 
 @end

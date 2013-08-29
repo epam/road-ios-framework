@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D0A623A17CE249A006A6927 /* libSparkAttribute.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D0A621317CE1D5F006A6927 /* libSparkAttribute.a */; };
+		8D0A623C17CE249D006A6927 /* libSparkCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D0A623B17CE249D006A6927 /* libSparkCore.a */; };
+		8D0A623E17CE24A1006A6927 /* libSparkReflection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D0A623D17CE24A1006A6927 /* libSparkReflection.a */; };
+		8D0A623F17CE24BC006A6927 /* libSparkAttribute.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D0A621317CE1D5F006A6927 /* libSparkAttribute.a */; };
+		8D0A624117CE24C0006A6927 /* libSparkCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D0A624017CE24C0006A6927 /* libSparkCore.a */; };
+		8D0A624317CE24C4006A6927 /* libSparkReflection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D0A624217CE24C4006A6927 /* libSparkReflection.a */; };
 		8D0CB69E178408F6002558CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D0CB69D178408F6002558CD /* UIKit.framework */; };
 		8D0CB6A0178408F6002558CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D0CB69F178408F6002558CD /* Foundation.framework */; };
 		8D0CB6A2178408F6002558CD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D0CB6A1178408F6002558CD /* CoreGraphics.framework */; };
@@ -24,26 +30,52 @@
 		8D0CB6CC178408F6002558CD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D0CB6CA178408F6002558CD /* InfoPlist.strings */; };
 		8D5E2E27178693F000FD5551 /* AnnotatedClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E26178693F000FD5551 /* AnnotatedClass.m */; };
 		8D5E2E28178693F000FD5551 /* AnnotatedClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E26178693F000FD5551 /* AnnotatedClass.m */; };
-		8D5E2E2C1786969C00FD5551 /* ESDAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E2B1786969C00FD5551 /* ESDAttribute.m */; };
-		8D5E2E2D1786969C00FD5551 /* ESDAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E2B1786969C00FD5551 /* ESDAttribute.m */; };
-		8D5E2E30178697CB00FD5551 /* CustomESDAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E2F178697CB00FD5551 /* CustomESDAttribute.m */; };
-		8D5E2E31178697CB00FD5551 /* CustomESDAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E2F178697CB00FD5551 /* CustomESDAttribute.m */; };
+		8D5E2E2C1786969C00FD5551 /* SFAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E2B1786969C00FD5551 /* SFAttribute.m */; };
+		8D5E2E2D1786969C00FD5551 /* SFAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E2B1786969C00FD5551 /* SFAttribute.m */; };
+		8D5E2E30178697CB00FD5551 /* CustomSFAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E2F178697CB00FD5551 /* CustomSFAttribute.m */; };
+		8D5E2E31178697CB00FD5551 /* CustomSFAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E2F178697CB00FD5551 /* CustomSFAttribute.m */; };
 		8D5E2E3C178743C900FD5551 /* AnnotatedClassTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E3B178743C900FD5551 /* AnnotatedClassTest.m */; };
 		8D5E2E3F1787FB2A00FD5551 /* SecondAnnotatedClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E3E1787FB2A00FD5551 /* SecondAnnotatedClass.m */; };
 		8D5E2E401787FB2A00FD5551 /* SecondAnnotatedClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5E2E3E1787FB2A00FD5551 /* SecondAnnotatedClass.m */; };
 		8D6E8647178BB562004402F8 /* DataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6E8646178BB562004402F8 /* DataItem.m */; };
 		8D6E8648178BB562004402F8 /* DataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6E8646178BB562004402F8 /* DataItem.m */; };
-		8D6E864B178BB603004402F8 /* IncrementValueESDAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6E864A178BB603004402F8 /* IncrementValueESDAttribute.m */; };
-		8D6E864C178BB603004402F8 /* IncrementValueESDAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6E864A178BB603004402F8 /* IncrementValueESDAttribute.m */; };
+		8D6E864B178BB603004402F8 /* IncrementValueSFAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6E864A178BB603004402F8 /* IncrementValueSFAttribute.m */; };
+		8D6E864C178BB603004402F8 /* IncrementValueSFAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6E864A178BB603004402F8 /* IncrementValueSFAttribute.m */; };
 		8D6E864F178BBA97004402F8 /* DataItemProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6E864E178BBA97004402F8 /* DataItemProcessor.m */; };
 		8D6E8650178BBA97004402F8 /* DataItemProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6E864E178BBA97004402F8 /* DataItemProcessor.m */; };
 		8DA5913117AB28F900DA9532 /* SparkGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA5913017AB28F900DA9532 /* SparkGeneratedAttribute.m */; };
 		8DA5913217AB28F900DA9532 /* SparkGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA5913017AB28F900DA9532 /* SparkGeneratedAttribute.m */; };
-		8DF6C8DB17C4766B00F829E8 /* NSObject+SFAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF6C8D917C4766B00F829E8 /* NSObject+SFAttributes.m */; };
-		8DF6C8DC17C4766B00F829E8 /* NSObject+SFAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF6C8D917C4766B00F829E8 /* NSObject+SFAttributes.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8D0A621217CE1D5F006A6927 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D0A620A17CE1D5F006A6927 /* SparkAttribute.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 789669DA15CBD1CD003D4AFC;
+			remoteInfo = SparkAttribute;
+		};
+		8D0A621417CE1D5F006A6927 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D0A620A17CE1D5F006A6927 /* SparkAttribute.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9FA9F50215F63D6B00FDE9E0;
+			remoteInfo = SparkAttributeMac;
+		};
+		8D0A621617CE1D5F006A6927 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D0A620A17CE1D5F006A6927 /* SparkAttribute.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 78DDB7CC1647FF0200E7E92F;
+			remoteInfo = SparkAttributeTest;
+		};
+		8D0A621817CE1D71006A6927 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D0A620A17CE1D5F006A6927 /* SparkAttribute.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 789669D915CBD1CD003D4AFC;
+			remoteInfo = SparkAttribute;
+		};
 		8D0CB6C5178408F6002558CD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8D0CB692178408F6002558CD /* Project object */;
@@ -54,6 +86,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8D0A620A17CE1D5F006A6927 /* SparkAttribute.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkAttribute.xcodeproj; path = ../../../Framework/SparkAttribute/SparkAttribute.xcodeproj; sourceTree = "<group>"; };
+		8D0A623B17CE249D006A6927 /* libSparkCore.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libSparkCore.a; path = "../../../Framework/SparkCore/build/Release-iphoneos/libSparkCore.a"; sourceTree = "<group>"; };
+		8D0A623D17CE24A1006A6927 /* libSparkReflection.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libSparkReflection.a; path = "../../../Framework/SparkReflection/build/Release-iphoneos/libSparkReflection.a"; sourceTree = "<group>"; };
+		8D0A624017CE24C0006A6927 /* libSparkCore.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libSparkCore.a; path = "../../../Framework/SparkCore/build/Release-iphoneos/libSparkCore.a"; sourceTree = "<group>"; };
+		8D0A624217CE24C4006A6927 /* libSparkReflection.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libSparkReflection.a; path = "../../../Framework/SparkReflection/build/Release-iphoneos/libSparkReflection.a"; sourceTree = "<group>"; };
 		8D0CB69A178408F6002558CD /* AttributesPrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AttributesPrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D0CB69D178408F6002558CD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8D0CB69F178408F6002558CD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -76,24 +113,21 @@
 		8D0CB6CB178408F6002558CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8D5E2E25178693F000FD5551 /* AnnotatedClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AnnotatedClass.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		8D5E2E26178693F000FD5551 /* AnnotatedClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotatedClass.m; sourceTree = "<group>"; };
-		8D5E2E2A1786969C00FD5551 /* ESDAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDAttribute.h; sourceTree = "<group>"; };
-		8D5E2E2B1786969C00FD5551 /* ESDAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDAttribute.m; sourceTree = "<group>"; };
-		8D5E2E2E178697CB00FD5551 /* CustomESDAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomESDAttribute.h; sourceTree = "<group>"; };
-		8D5E2E2F178697CB00FD5551 /* CustomESDAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomESDAttribute.m; sourceTree = "<group>"; };
+		8D5E2E2A1786969C00FD5551 /* SFAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAttribute.h; sourceTree = "<group>"; };
+		8D5E2E2B1786969C00FD5551 /* SFAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAttribute.m; sourceTree = "<group>"; };
+		8D5E2E2E178697CB00FD5551 /* CustomSFAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSFAttribute.h; sourceTree = "<group>"; };
+		8D5E2E2F178697CB00FD5551 /* CustomSFAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSFAttribute.m; sourceTree = "<group>"; };
 		8D5E2E3A178743C900FD5551 /* AnnotatedClassTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnotatedClassTest.h; sourceTree = "<group>"; };
-		8D5E2E3B178743C900FD5551 /* AnnotatedClassTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotatedClassTest.m; sourceTree = "<group>"; };
+		8D5E2E3B178743C900FD5551 /* AnnotatedClassTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AnnotatedClassTest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8D5E2E3D1787FB2A00FD5551 /* SecondAnnotatedClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondAnnotatedClass.h; sourceTree = "<group>"; };
 		8D5E2E3E1787FB2A00FD5551 /* SecondAnnotatedClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondAnnotatedClass.m; sourceTree = "<group>"; };
 		8D6E8645178BB562004402F8 /* DataItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataItem.h; sourceTree = "<group>"; };
 		8D6E8646178BB562004402F8 /* DataItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataItem.m; sourceTree = "<group>"; };
-		8D6E8649178BB603004402F8 /* IncrementValueESDAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncrementValueESDAttribute.h; sourceTree = "<group>"; };
-		8D6E864A178BB603004402F8 /* IncrementValueESDAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncrementValueESDAttribute.m; sourceTree = "<group>"; };
+		8D6E8649178BB603004402F8 /* IncrementValueSFAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncrementValueSFAttribute.h; sourceTree = "<group>"; };
+		8D6E864A178BB603004402F8 /* IncrementValueSFAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncrementValueSFAttribute.m; sourceTree = "<group>"; };
 		8D6E864D178BBA97004402F8 /* DataItemProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataItemProcessor.h; sourceTree = "<group>"; };
 		8D6E864E178BBA97004402F8 /* DataItemProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataItemProcessor.m; sourceTree = "<group>"; };
 		8DA5913017AB28F900DA9532 /* SparkGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparkGeneratedAttribute.m; path = SparkGeneratedAttributes/SparkGeneratedAttribute.m; sourceTree = "<group>"; };
-		8DF6C8D817C4766B00F829E8 /* NSObject+SFAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SFAttributes.h"; sourceTree = "<group>"; };
-		8DF6C8D917C4766B00F829E8 /* NSObject+SFAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SFAttributes.m"; sourceTree = "<group>"; };
-		8DF6C8DA17C4766B00F829E8 /* SparkAttributesSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparkAttributesSupport.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +135,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D0A623E17CE24A1006A6927 /* libSparkReflection.a in Frameworks */,
+				8D0A623C17CE249D006A6927 /* libSparkCore.a in Frameworks */,
+				8D0A623A17CE249A006A6927 /* libSparkAttribute.a in Frameworks */,
 				8D0CB69E178408F6002558CD /* UIKit.framework in Frameworks */,
 				8D0CB6A0178408F6002558CD /* Foundation.framework in Frameworks */,
 				8D0CB6A2178408F6002558CD /* CoreGraphics.framework in Frameworks */,
@@ -111,6 +148,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D0A624317CE24C4006A6927 /* libSparkReflection.a in Frameworks */,
+				8D0A624117CE24C0006A6927 /* libSparkCore.a in Frameworks */,
+				8D0A623F17CE24BC006A6927 /* libSparkAttribute.a in Frameworks */,
 				8D0CB6C2178408F6002558CD /* SenTestingKit.framework in Frameworks */,
 				8D0CB6C3178408F6002558CD /* UIKit.framework in Frameworks */,
 				8D0CB6C4178408F6002558CD /* Foundation.framework in Frameworks */,
@@ -120,6 +160,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D0A620B17CE1D5F006A6927 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D0A621317CE1D5F006A6927 /* libSparkAttribute.a */,
+				8D0A621517CE1D5F006A6927 /* SparkAttribute.framework */,
+				8D0A621717CE1D5F006A6927 /* SparkAttributeTest.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		8D0CB691178408F6002558CD = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +192,11 @@
 		8D0CB69C178408F6002558CD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8D0A624217CE24C4006A6927 /* libSparkReflection.a */,
+				8D0A624017CE24C0006A6927 /* libSparkCore.a */,
+				8D0A623D17CE24A1006A6927 /* libSparkReflection.a */,
+				8D0A623B17CE249D006A6927 /* libSparkCore.a */,
+				8D0A620A17CE1D5F006A6927 /* SparkAttribute.xcodeproj */,
 				8D0CB69D178408F6002558CD /* UIKit.framework */,
 				8D0CB69F178408F6002558CD /* Foundation.framework */,
 				8D0CB6A1178408F6002558CD /* CoreGraphics.framework */,
@@ -199,11 +254,8 @@
 		8D5E2E23178693F000FD5551 /* AttributesSupport */ = {
 			isa = PBXGroup;
 			children = (
-				8DF6C8D817C4766B00F829E8 /* NSObject+SFAttributes.h */,
-				8DF6C8D917C4766B00F829E8 /* NSObject+SFAttributes.m */,
-				8DF6C8DA17C4766B00F829E8 /* SparkAttributesSupport.h */,
-				8D5E2E2A1786969C00FD5551 /* ESDAttribute.h */,
-				8D5E2E2B1786969C00FD5551 /* ESDAttribute.m */,
+				8D5E2E2A1786969C00FD5551 /* SFAttribute.h */,
+				8D5E2E2B1786969C00FD5551 /* SFAttribute.m */,
 			);
 			path = AttributesSupport;
 			sourceTree = "<group>";
@@ -215,8 +267,8 @@
 				8D5E2E3E1787FB2A00FD5551 /* SecondAnnotatedClass.m */,
 				8D5E2E25178693F000FD5551 /* AnnotatedClass.h */,
 				8D5E2E26178693F000FD5551 /* AnnotatedClass.m */,
-				8D5E2E2E178697CB00FD5551 /* CustomESDAttribute.h */,
-				8D5E2E2F178697CB00FD5551 /* CustomESDAttribute.m */,
+				8D5E2E2E178697CB00FD5551 /* CustomSFAttribute.h */,
+				8D5E2E2F178697CB00FD5551 /* CustomSFAttribute.m */,
 			);
 			path = AttributesTesting;
 			sourceTree = "<group>";
@@ -224,8 +276,8 @@
 		8D6E8644178BB535004402F8 /* AttributesPerformanceTesting */ = {
 			isa = PBXGroup;
 			children = (
-				8D6E8649178BB603004402F8 /* IncrementValueESDAttribute.h */,
-				8D6E864A178BB603004402F8 /* IncrementValueESDAttribute.m */,
+				8D6E8649178BB603004402F8 /* IncrementValueSFAttribute.h */,
+				8D6E864A178BB603004402F8 /* IncrementValueSFAttribute.m */,
 				8D6E8645178BB562004402F8 /* DataItem.h */,
 				8D6E8646178BB562004402F8 /* DataItem.m */,
 				8D6E864D178BBA97004402F8 /* DataItemProcessor.h */,
@@ -261,6 +313,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				8D0A621917CE1D71006A6927 /* PBXTargetDependency */,
 			);
 			name = AttributesPrototype;
 			productName = AttributesPrototype;
@@ -305,6 +358,12 @@
 			mainGroup = 8D0CB691178408F6002558CD;
 			productRefGroup = 8D0CB69B178408F6002558CD /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 8D0A620B17CE1D5F006A6927 /* Products */;
+					ProjectRef = 8D0A620A17CE1D5F006A6927 /* SparkAttribute.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8D0CB699178408F6002558CD /* AttributesPrototype */,
@@ -312,6 +371,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		8D0A621317CE1D5F006A6927 /* libSparkAttribute.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSparkAttribute.a;
+			remoteRef = 8D0A621217CE1D5F006A6927 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8D0A621517CE1D5F006A6927 /* SparkAttribute.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SparkAttribute.framework;
+			remoteRef = 8D0A621417CE1D5F006A6927 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8D0A621717CE1D5F006A6927 /* SparkAttributeTest.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SparkAttributeTest.octest;
+			remoteRef = 8D0A621617CE1D5F006A6927 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8D0CB698178408F6002558CD /* Resources */ = {
@@ -375,14 +458,13 @@
 				8D0CB6AE178408F6002558CD /* AppDelegate.m in Sources */,
 				8D0CB6BA178408F6002558CD /* ViewController.m in Sources */,
 				8D5E2E27178693F000FD5551 /* AnnotatedClass.m in Sources */,
-				8D5E2E2C1786969C00FD5551 /* ESDAttribute.m in Sources */,
-				8D5E2E30178697CB00FD5551 /* CustomESDAttribute.m in Sources */,
+				8D5E2E2C1786969C00FD5551 /* SFAttribute.m in Sources */,
+				8D5E2E30178697CB00FD5551 /* CustomSFAttribute.m in Sources */,
 				8D5E2E3F1787FB2A00FD5551 /* SecondAnnotatedClass.m in Sources */,
 				8D6E8647178BB562004402F8 /* DataItem.m in Sources */,
-				8D6E864B178BB603004402F8 /* IncrementValueESDAttribute.m in Sources */,
+				8D6E864B178BB603004402F8 /* IncrementValueSFAttribute.m in Sources */,
 				8D6E864F178BBA97004402F8 /* DataItemProcessor.m in Sources */,
 				8DA5913117AB28F900DA9532 /* SparkGeneratedAttribute.m in Sources */,
-				8DF6C8DB17C4766B00F829E8 /* NSObject+SFAttributes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,21 +473,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D5E2E28178693F000FD5551 /* AnnotatedClass.m in Sources */,
-				8D5E2E2D1786969C00FD5551 /* ESDAttribute.m in Sources */,
-				8D5E2E31178697CB00FD5551 /* CustomESDAttribute.m in Sources */,
+				8D5E2E2D1786969C00FD5551 /* SFAttribute.m in Sources */,
+				8D5E2E31178697CB00FD5551 /* CustomSFAttribute.m in Sources */,
 				8D5E2E3C178743C900FD5551 /* AnnotatedClassTest.m in Sources */,
 				8D5E2E401787FB2A00FD5551 /* SecondAnnotatedClass.m in Sources */,
 				8D6E8648178BB562004402F8 /* DataItem.m in Sources */,
-				8D6E864C178BB603004402F8 /* IncrementValueESDAttribute.m in Sources */,
+				8D6E864C178BB603004402F8 /* IncrementValueSFAttribute.m in Sources */,
 				8D6E8650178BBA97004402F8 /* DataItemProcessor.m in Sources */,
 				8DA5913217AB28F900DA9532 /* SparkGeneratedAttribute.m in Sources */,
-				8DF6C8DC17C4766B00F829E8 /* NSObject+SFAttributes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		8D0A621917CE1D71006A6927 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SparkAttribute;
+			targetProxy = 8D0A621817CE1D71006A6927 /* PBXContainerItemProxy */;
+		};
 		8D0CB6C6178408F6002558CD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8D0CB699178408F6002558CD /* AttributesPrototype */;
@@ -444,7 +530,7 @@
 		8D0CB6D0178408F6002558CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -468,6 +554,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -475,7 +565,7 @@
 		8D0CB6D1178408F6002558CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -492,6 +582,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -500,9 +594,16 @@
 		8D0CB6D3178408F6002558CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEAD_CODE_STRIPPING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AttributesPrototype/AttributesPrototype-Prefix.pch";
+				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = YES;
+				GCC_WARN_PEDANTIC = NO;
+				GCC_WARN_STRICT_SELECTOR_MATCH = NO;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GENERATE_MASTER_OBJECT_FILE = NO;
 				INFOPLIST_FILE = "AttributesPrototype/AttributesPrototype-Info.plist";
+				LD_GENERATE_MAP_FILE = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -511,9 +612,16 @@
 		8D0CB6D4178408F6002558CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEAD_CODE_STRIPPING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AttributesPrototype/AttributesPrototype-Prefix.pch";
+				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = YES;
+				GCC_WARN_PEDANTIC = NO;
+				GCC_WARN_STRICT_SELECTOR_MATCH = NO;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GENERATE_MASTER_OBJECT_FILE = NO;
 				INFOPLIST_FILE = "AttributesPrototype/AttributesPrototype-Info.plist";
+				LD_GENERATE_MAP_FILE = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

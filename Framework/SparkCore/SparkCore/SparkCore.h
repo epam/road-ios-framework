@@ -30,15 +30,15 @@
 #ifndef SparkCore_SparkCore_h
 #define SparkCore_SparkCore_h
 
-#import "NSMutableString+ESDStringFormatter.h"
+#import "NSMutableString+SFStringFormatter.h"
 #import "NSString+AccessorUtilities.h"
 #import "NSObject+AttachedCollections.h"
 #import "NSArray+EmptyArrayChecks.h"
 #import "NSBundle+ParameterList.h"
-#import "ESDMutableObject.h"
-#import "ESDPooledObject.h"
-#import "ESDPoolObject.h"
-#import "ESDObjectPool.h"
-#import "ESDObject.h"
+#import "SFMutableObject.h"
+#import "SFPooledObject.h"
+#import "SFPoolObject.h"
+#import "SFObjectPool.h"
+#import "SFObject.h"
 #import "SparkSingletonDefinition.h"
 #endif

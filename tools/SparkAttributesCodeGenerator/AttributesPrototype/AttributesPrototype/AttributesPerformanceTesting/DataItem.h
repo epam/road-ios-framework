@@ -29,17 +29,17 @@
 
 
 #import <Foundation/Foundation.h>
-#import "IncrementValueESDAttribute.h"
+#import "IncrementValueSFAttribute.h"
 
 @interface DataItem : NSObject
 
-SF_ATTRIBUTE(IncrementValueESDAttribute, intValue = 1)
+SF_ATTRIBUTE(IncrementValueSFAttribute, intValue = 1)
 @property (assign, nonatomic) int intProperty1;
 
-SF_ATTRIBUTE(IncrementValueESDAttribute, intValue = 3)
+SF_ATTRIBUTE(IncrementValueSFAttribute, intValue = 3)
 @property (assign, nonatomic) int intProperty2;
 
-SF_ATTRIBUTE(IncrementValueESDAttribute, intValue = 2)
+SF_ATTRIBUTE(IncrementValueSFAttribute, intValue = 2)
 @property (assign, nonatomic) int intProperty3;
 
 
