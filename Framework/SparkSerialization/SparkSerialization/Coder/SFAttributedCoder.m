@@ -29,6 +29,8 @@
 
 
 #import "SFAttributedCoder.h"
+#import <Spark/SparkReflection.h>
+#import "SFSerializationAssistant.h"
 //#import <Spark/SparkLogger.h>
 #import "SFSerializable.h"
 #import "SFDerived.h"
@@ -64,10 +66,10 @@
 }
 
 + (id)encodeRootObjectToSerializableObject:(id const)rootObject {
-    SFLogInfo(@"Coder(%@ %p) started processing object(%@)", self, self, rootObject);
+    //SFLogInfo(@"Coder(%@ %p) started processing object(%@)", self, self, rootObject);
     id decoder = [[self alloc] init];
     [decoder encodeRootObject:rootObject];
-    SFLogInfo(@"Coder(%@ %p) ended processing", self, self);
+    //SFLogInfo(@"Coder(%@ %p) ended processing", self, self);
     return [decoder archive];
 }
 
@@ -80,26 +82,26 @@
     else {
         [self.archive setObject:NSStringFromClass([rootObject class]) forKey:SFSerializedObjectClassName];
         NSArray *properties;
-        @autoreleasepool {
-            if ([[rootObject class] hasAttribute:[SFSerializable attribute]]) {
-                properties = [[[rootObject class] properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(SFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
-                    return ![evaluatedObject hasAttribute:[SFDerived attribute]];
+        @autoreleasepool {            
+            Class rootObjectClass = [rootObject class];
+            
+            if ([rootObjectClass hasAttributesForClassWithAttributeType:[SFSerializable class]]) {
+                properties = [[rootObjectClass properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(SFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
+                    return ![evaluatedObject.attributeClass hasAttributesForProperty:evaluatedObject.propertyName withAttributeType:[SFDerived class]];
                 }]];
             }
             else {
-                properties = [rootObject propertiesWithAttribute:[SFSerializable attribute]];
+                properties = [rootObjectClass propertiesWithAttributeType:[SFSerializable class]];
             }
+            
+            
         }        
         @autoreleasepool {
             for (SFPropertyInfo * const aDesc in properties) {
                 id value = [rootObject valueForKey:[aDesc propertyName]];
                 value = [self encodeValue:value forProperty:aDesc];
                 
-                NSString *key = [[aDesc attributeNamed:[SFSerializable attribute]] defaultValue];
-                
-                if ([key length] == 0) {
-                    key = aDesc.propertyName;
-                }
+                NSString *key = [SFSerializationAssistant serializationKeyForProperty:aDesc];
                 
                 if (value != nil) {
                     [self.archive setObject:value forKey:key];
@@ -115,17 +117,14 @@
     id encodedValue = nil;
     
     if ([value isKindOfClass:[NSDate class]]) {
-        SFSerializableDate *serializableDateAttribute = nil;
-        if ([propertyInfo hasAttribute:[SFSerializableDate attribute]]) {
-            serializableDateAttribute = [propertyInfo attributeNamed:[SFSerializableDate attribute]];
-        }
+        SFSerializableDate *serializableDateAttribute = (SFSerializableDate *)[propertyInfo.attributeClass lastAttributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializableDate class]];
         
         if (serializableDateAttribute.unixTimestamp) {
             NSDate *date = value;
             encodedValue = [NSString stringWithFormat:@"%.0f", [date timeIntervalSince1970]];
         }
         else {
-            NSString *dateFormat = serializableDateAttribute.encodingFormat ? : serializableDateAttribute.defaultValue;
+            NSString *dateFormat = ([serializableDateAttribute.encodingFormat length] == 0) ? serializableDateAttribute.format: serializableDateAttribute.encodingFormat;
             NSAssert(dateFormat, @"SFSerializableDate must have either defaultValue or encodingFormat specified");
             
             NSDateFormatter *dateFormatter = [self dataFormatterWithFormatString:dateFormat];
@@ -142,7 +141,7 @@
 - (id)encodeValue:(id const)aValue {
     id value = aValue;
     
-    if ([[value class] hasAttribute:[SFSerializable attribute]] || [[value propertiesWithAttribute:[SFSerializable attribute]] count] > 0) {
+    if ([[value class] hasAttributesForClassWithAttributeType:[SFSerializable class]] || [[[value class] propertiesWithAttributeType:[SFSerializable class]] count] > 0) {
         value = [[self class] encodeRootObjectToSerializableObject:value];
     }
     else if ([value isKindOfClass:[NSArray class]]) {

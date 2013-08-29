@@ -15,14 +15,9 @@
 		782B6D6916C3D4C10057DF2C /* SparkReflection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782B6D3A16C3D46A0057DF2C /* SparkReflection.framework */; };
 		782B6D6E16C3D4CF0057DF2C /* libSparkCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 782B6CDF16C3D46A0057DF2C /* libSparkCore.a */; };
 		782B6D6F16C3D4CF0057DF2C /* libSparkReflection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 782B6D3816C3D46A0057DF2C /* libSparkReflection.a */; };
-		7837BB3E1648106700BA598B /* SFAttributedDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7895728B16380F73009D7417 /* SFAttributedDecoder.m */; };
-		7837BB3F1648106B00BA598B /* SFAttributedCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7895727F163808BB009D7417 /* SFAttributedCoder.m */; };
-		7837BB411648107600BA598B /* SFSerializable.m in Sources */ = {isa = PBXBuildFile; fileRef = 7895728616380A33009D7417 /* SFSerializable.m */; };
-		7837BB421648107900BA598B /* SFDerived.m in Sources */ = {isa = PBXBuildFile; fileRef = 78957290163828E1009D7417 /* SFDerived.m */; };
 		7841617F16480C1D0089FDE9 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7841617E16480C1D0089FDE9 /* SenTestingKit.framework */; };
 		7841618916480C1E0089FDE9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7841618716480C1E0089FDE9 /* InfoPlist.strings */; };
 		784161AC16480CC40089FDE9 /* SFJSONStringHandlingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 784161AB16480CC40089FDE9 /* SFJSONStringHandlingTest.m */; };
-		784161AD16480CC70089FDE9 /* NSJSONSerialization+JSONStringHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = 786535571639648E00E86841 /* NSJSONSerialization+JSONStringHandling.m */; };
 		78513E6D164921BF0049549A /* SFSerializationTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78513E6C164921BF0049549A /* SFSerializationTestObject.m */; };
 		78513E701649220C0049549A /* SFAnnotatedCoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 78513E6F1649220C0049549A /* SFAnnotatedCoderTest.m */; };
 		786535581639648E00E86841 /* NSJSONSerialization+JSONStringHandling.h in Headers */ = {isa = PBXBuildFile; fileRef = 786535561639648E00E86841 /* NSJSONSerialization+JSONStringHandling.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -35,13 +30,10 @@
 		7869966116AED4C800B28760 /* SFXMLSpecificParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 7869965F16AED4C800B28760 /* SFXMLSpecificParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7869966216AED4C800B28760 /* SFXMLSpecificParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7869966016AED4C800B28760 /* SFXMLSpecificParser.m */; };
 		7869966316AED4C800B28760 /* SFXMLSpecificParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7869966016AED4C800B28760 /* SFXMLSpecificParser.m */; };
-		7869966416AED4C800B28760 /* SFXMLSpecificParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7869966016AED4C800B28760 /* SFXMLSpecificParser.m */; };
 		7869967216AEE3A800B28760 /* SFXMLElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 7869967016AEE3A800B28760 /* SFXMLElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7869967316AEE3A800B28760 /* SFXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 7869967116AEE3A800B28760 /* SFXMLElement.m */; };
 		7869967416AEE3A800B28760 /* SFXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 7869967116AEE3A800B28760 /* SFXMLElement.m */; };
-		7869967516AEE3A800B28760 /* SFXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 7869967116AEE3A800B28760 /* SFXMLElement.m */; };
 		786996B816AFF27900B28760 /* SFXMLParsingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 786996B716AFF27900B28760 /* SFXMLParsingTest.m */; };
-		786996B916B0078700B28760 /* SFXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 786995EA16AEC29000B28760 /* SFXMLParser.m */; };
 		786996BA16B0078800B28760 /* SFXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 786995EA16AEC29000B28760 /* SFXMLParser.m */; };
 		78957280163808BB009D7417 /* SFAttributedCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7895727E163808BB009D7417 /* SFAttributedCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78957281163808BB009D7417 /* SFAttributedCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7895727F163808BB009D7417 /* SFAttributedCoder.m */; };
@@ -78,54 +70,45 @@
 		78DD732B164A6305009B334C /* SFSerializableCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 78DD7329164A6305009B334C /* SFSerializableCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78DD732C164A6305009B334C /* SFSerializableCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DD732A164A6305009B334C /* SFSerializableCollection.m */; };
 		78DD732D164A6305009B334C /* SFSerializableCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DD732A164A6305009B334C /* SFSerializableCollection.m */; };
-		78DD732E164A6305009B334C /* SFSerializableCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DD732A164A6305009B334C /* SFSerializableCollection.m */; };
 		78DD732F164A6553009B334C /* SFSerializableCollection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78DD7329164A6305009B334C /* SFSerializableCollection.h */; };
 		835B6C71175628D50072765C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 835B6C70175628D50072765C /* libz.dylib */; };
 		83A36B2F1798205000449C0C /* SFSerializableDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A36B2E1798205000449C0C /* SFSerializableDate.m */; };
 		83A36B3517982A0B00449C0C /* SFSerializableDate.h in Headers */ = {isa = PBXBuildFile; fileRef = 83A36B2D1798205000449C0C /* SFSerializableDate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		83A36B3617982A1600449C0C /* SFSerializableDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A36B2E1798205000449C0C /* SFSerializableDate.m */; };
-		83A36B3717982A1600449C0C /* SFSerializableDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A36B2E1798205000449C0C /* SFSerializableDate.m */; };
 		83A36B3817982C1E00449C0C /* SFSerializableDate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83A36B2D1798205000449C0C /* SFSerializableDate.h */; };
 		83BEEF711744EAB50095BD53 /* DeserialisationTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 83BEEF701744EAB50095BD53 /* DeserialisationTest.json */; };
+		8D1239BC17CFAED300094213 /* SFSerializationAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1239BB17CFAED300094213 /* SFSerializationAssistant.m */; };
+		8D900EBD17CF9B580018D336 /* libSparkSerialization.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F0A8AB415C299340044A782 /* libSparkSerialization.a */; };
 		9F80CD5C15F64EEE0031BA24 /* SparkSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F80CD5B15F64EEE0031BA24 /* SparkSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F80CD8215F64F500031BA24 /* SparkSerialization.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9F80CD5B15F64EEE0031BA24 /* SparkSerialization.h */; };
 		9FA9F4E015F636C500FDE9E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FA9F4DE15F636C500FDE9E0 /* InfoPlist.strings */; };
 		B915ADD216B5A77700EB8D01 /* SFViewElement.h in Headers */ = {isa = PBXBuildFile; fileRef = B915ADD016B5A77700EB8D01 /* SFViewElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B915ADD316B5A77700EB8D01 /* SFViewElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B915ADD116B5A77700EB8D01 /* SFViewElement.m */; };
 		B915ADD416B5A77700EB8D01 /* SFViewElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B915ADD116B5A77700EB8D01 /* SFViewElement.m */; };
-		B915ADD516B5A77700EB8D01 /* SFViewElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B915ADD116B5A77700EB8D01 /* SFViewElement.m */; };
 		B97578DA16B3DC7C00AE855D /* SFEntityElement.h in Headers */ = {isa = PBXBuildFile; fileRef = B97578CB16B3DC7C00AE855D /* SFEntityElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B97578DB16B3DC7C00AE855D /* SFEntityElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578CC16B3DC7C00AE855D /* SFEntityElement.m */; };
 		B97578DC16B3DC7C00AE855D /* SFEntityElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578CC16B3DC7C00AE855D /* SFEntityElement.m */; };
-		B97578DD16B3DC7C00AE855D /* SFEntityElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578CC16B3DC7C00AE855D /* SFEntityElement.m */; };
 		B97578DE16B3DC7C00AE855D /* SFPropertyElement.h in Headers */ = {isa = PBXBuildFile; fileRef = B97578CD16B3DC7C00AE855D /* SFPropertyElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B97578DF16B3DC7C00AE855D /* SFPropertyElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578CE16B3DC7C00AE855D /* SFPropertyElement.m */; };
 		B97578E016B3DC7C00AE855D /* SFPropertyElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578CE16B3DC7C00AE855D /* SFPropertyElement.m */; };
-		B97578E116B3DC7C00AE855D /* SFPropertyElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578CE16B3DC7C00AE855D /* SFPropertyElement.m */; };
 		B97578E216B3DC7C00AE855D /* SFRelationshipElement.h in Headers */ = {isa = PBXBuildFile; fileRef = B97578CF16B3DC7C00AE855D /* SFRelationshipElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B97578E316B3DC7C00AE855D /* SFRelationshipElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578D016B3DC7C00AE855D /* SFRelationshipElement.m */; };
 		B97578E416B3DC7C00AE855D /* SFRelationshipElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578D016B3DC7C00AE855D /* SFRelationshipElement.m */; };
-		B97578E516B3DC7C00AE855D /* SFRelationshipElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578D016B3DC7C00AE855D /* SFRelationshipElement.m */; };
 		B97578E616B3DC7C00AE855D /* SFXMLEntityParser.h in Headers */ = {isa = PBXBuildFile; fileRef = B97578D216B3DC7C00AE855D /* SFXMLEntityParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B97578E716B3DC7C00AE855D /* SFXMLEntityParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578D316B3DC7C00AE855D /* SFXMLEntityParser.m */; };
 		B97578E816B3DC7C00AE855D /* SFXMLEntityParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578D316B3DC7C00AE855D /* SFXMLEntityParser.m */; };
-		B97578E916B3DC7C00AE855D /* SFXMLEntityParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578D316B3DC7C00AE855D /* SFXMLEntityParser.m */; };
 		B97578EA16B3DC7C00AE855D /* SFXMLRelationshipParser.h in Headers */ = {isa = PBXBuildFile; fileRef = B97578D416B3DC7C00AE855D /* SFXMLRelationshipParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B97578EB16B3DC7C00AE855D /* SFXMLRelationshipParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578D516B3DC7C00AE855D /* SFXMLRelationshipParser.m */; };
 		B97578EC16B3DC7C00AE855D /* SFXMLRelationshipParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578D516B3DC7C00AE855D /* SFXMLRelationshipParser.m */; };
-		B97578ED16B3DC7C00AE855D /* SFXMLRelationshipParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578D516B3DC7C00AE855D /* SFXMLRelationshipParser.m */; };
 		B97578EE16B3DC7C00AE855D /* SFXMLRelationshipPropertyParser.h in Headers */ = {isa = PBXBuildFile; fileRef = B97578D616B3DC7C00AE855D /* SFXMLRelationshipPropertyParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B97578EF16B3DC7C00AE855D /* SFXMLRelationshipPropertyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578D716B3DC7C00AE855D /* SFXMLRelationshipPropertyParser.m */; };
 		B97578F016B3DC7C00AE855D /* SFXMLRelationshipPropertyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578D716B3DC7C00AE855D /* SFXMLRelationshipPropertyParser.m */; };
-		B97578F116B3DC7C00AE855D /* SFXMLRelationshipPropertyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578D716B3DC7C00AE855D /* SFXMLRelationshipPropertyParser.m */; };
 		B97578F216B3DC7C00AE855D /* SFXMLModelParser.h in Headers */ = {isa = PBXBuildFile; fileRef = B97578D816B3DC7C00AE855D /* SFXMLModelParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B97578F316B3DC7C00AE855D /* SFXMLModelParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578D916B3DC7C00AE855D /* SFXMLModelParser.m */; };
 		B97578F416B3DC7C00AE855D /* SFXMLModelParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578D916B3DC7C00AE855D /* SFXMLModelParser.m */; };
-		B97578F516B3DC7C00AE855D /* SFXMLModelParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578D916B3DC7C00AE855D /* SFXMLModelParser.m */; };
 		B97578FB16B3DE1B00AE855D /* SFXMLParser+ParseDelegation.h in Headers */ = {isa = PBXBuildFile; fileRef = B97578F916B3DE1B00AE855D /* SFXMLParser+ParseDelegation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B97578FC16B3DE1B00AE855D /* SFXMLParser+ParseDelegation.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578FA16B3DE1B00AE855D /* SFXMLParser+ParseDelegation.m */; };
 		B97578FD16B3DE1B00AE855D /* SFXMLParser+ParseDelegation.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578FA16B3DE1B00AE855D /* SFXMLParser+ParseDelegation.m */; };
-		B97578FE16B3DE1B00AE855D /* SFXMLParser+ParseDelegation.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578FA16B3DE1B00AE855D /* SFXMLParser+ParseDelegation.m */; };
 		B975790216B3FE9300AE855D /* SFXMLModelParser.plist in Resources */ = {isa = PBXBuildFile; fileRef = B975790116B3FE9300AE855D /* SFXMLModelParser.plist */; };
 		B975790316B3FE9300AE855D /* SFXMLModelParser.plist in Resources */ = {isa = PBXBuildFile; fileRef = B975790116B3FE9300AE855D /* SFXMLModelParser.plist */; };
 /* End PBXBuildFile section */
@@ -229,13 +212,6 @@
 			remoteGlobalIDString = 789669D915CBD1CD003D4AFC;
 			remoteInfo = SparkAttribute;
 		};
-		78B2476716D24ABB00AFFDEE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7810087D16D24A8600BFDB8D /* SparkAttribute.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 789669D915CBD1CD003D4AFC;
-			remoteInfo = SparkAttribute;
-		};
 		78B2476A16D24AC500AFFDEE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7810087D16D24A8600BFDB8D /* SparkAttribute.xcodeproj */;
@@ -243,19 +219,12 @@
 			remoteGlobalIDString = 9FA9F50115F63D6B00FDE9E0;
 			remoteInfo = SparkAttributeMac;
 		};
-		8DFE9F9D175F10C400E7BE04 /* PBXContainerItemProxy */ = {
+		8D900EBB17CF9B220018D336 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 78CBA92A16C3D41800DAC9BB /* SparkReflection.xcodeproj */;
+			containerPortal = 7846754E15C16C20000E02DA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 78CD6F9815CA8AB800F6C2F9;
-			remoteInfo = SparkReflection;
-		};
-		8DFE9FA5175F10C800E7BE04 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 78CBA92916C3D41800DAC9BB /* SparkCore.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 78B8E68D16C3CC3E0049E36B;
-			remoteInfo = SparkCore;
+			remoteGlobalIDString = 9F0A8AB315C299340044A782;
+			remoteInfo = SparkSerialization;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -334,6 +303,8 @@
 		83A36B2D1798205000449C0C /* SFSerializableDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SFSerializableDate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		83A36B2E1798205000449C0C /* SFSerializableDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSerializableDate.m; sourceTree = "<group>"; };
 		83BEEF701744EAB50095BD53 /* DeserialisationTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; lineEnding = 0; path = DeserialisationTest.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.javascript; };
+		8D1239BA17CFAED300094213 /* SFSerializationAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSerializationAssistant.h; sourceTree = "<group>"; };
+		8D1239BB17CFAED300094213 /* SFSerializationAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSerializationAssistant.m; sourceTree = "<group>"; };
 		9F0A8AB415C299340044A782 /* libSparkSerialization.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSparkSerialization.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F0A8AB815C299340044A782 /* SparkSerialization-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SparkSerialization-Prefix.pch"; sourceTree = "<group>"; };
 		9F80CD5B15F64EEE0031BA24 /* SparkSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparkSerialization.h; sourceTree = "<group>"; };
@@ -369,6 +340,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D900EBD17CF9B580018D336 /* libSparkSerialization.a in Frameworks */,
 				782B6D6E16C3D4CF0057DF2C /* libSparkCore.a in Frameworks */,
 				78B2476916D24AC000AFFDEE /* libSparkAttribute.a in Frameworks */,
 				7841617F16480C1D0089FDE9 /* SenTestingKit.framework in Frameworks */,
@@ -574,9 +546,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		8D1239B617CFAE9300094213 /* Assistants */ = {
+			isa = PBXGroup;
+			children = (
+				8D1239BA17CFAED300094213 /* SFSerializationAssistant.h */,
+				8D1239BB17CFAED300094213 /* SFSerializationAssistant.m */,
+			);
+			path = Assistants;
+			sourceTree = "<group>";
+		};
 		9F0A8AB615C299340044A782 /* SparkSerialization */ = {
 			isa = PBXGroup;
 			children = (
+				8D1239B617CFAE9300094213 /* Assistants */,
 				9F80CD5B15F64EEE0031BA24 /* SparkSerialization.h */,
 				786995E516AEC27100B28760 /* XMLParser */,
 				78957284163809A0009D7417 /* Attributes */,
@@ -743,9 +725,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				8DFE9FA6175F10C800E7BE04 /* PBXTargetDependency */,
-				78B2476816D24ABB00AFFDEE /* PBXTargetDependency */,
-				8DFE9F9E175F10C400E7BE04 /* PBXTargetDependency */,
+				8D900EBC17CF9B220018D336 /* PBXTargetDependency */,
 			);
 			name = SparkSerializationTest;
 			productName = SecondSightSerializationTest;
@@ -976,28 +956,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				784161AC16480CC40089FDE9 /* SFJSONStringHandlingTest.m in Sources */,
-				784161AD16480CC70089FDE9 /* NSJSONSerialization+JSONStringHandling.m in Sources */,
-				7837BB3E1648106700BA598B /* SFAttributedDecoder.m in Sources */,
-				7837BB3F1648106B00BA598B /* SFAttributedCoder.m in Sources */,
-				7837BB411648107600BA598B /* SFSerializable.m in Sources */,
-				7837BB421648107900BA598B /* SFDerived.m in Sources */,
 				78513E6D164921BF0049549A /* SFSerializationTestObject.m in Sources */,
 				78513E701649220C0049549A /* SFAnnotatedCoderTest.m in Sources */,
-				78DD732E164A6305009B334C /* SFSerializableCollection.m in Sources */,
-				7869966416AED4C800B28760 /* SFXMLSpecificParser.m in Sources */,
-				7869967516AEE3A800B28760 /* SFXMLElement.m in Sources */,
 				786996B816AFF27900B28760 /* SFXMLParsingTest.m in Sources */,
-				786996B916B0078700B28760 /* SFXMLParser.m in Sources */,
-				B97578DD16B3DC7C00AE855D /* SFEntityElement.m in Sources */,
-				B97578E116B3DC7C00AE855D /* SFPropertyElement.m in Sources */,
-				B97578E516B3DC7C00AE855D /* SFRelationshipElement.m in Sources */,
-				B97578E916B3DC7C00AE855D /* SFXMLEntityParser.m in Sources */,
-				B97578ED16B3DC7C00AE855D /* SFXMLRelationshipParser.m in Sources */,
-				B97578F116B3DC7C00AE855D /* SFXMLRelationshipPropertyParser.m in Sources */,
-				B97578F516B3DC7C00AE855D /* SFXMLModelParser.m in Sources */,
-				B97578FE16B3DE1B00AE855D /* SFXMLParser+ParseDelegation.m in Sources */,
-				B915ADD516B5A77700EB8D01 /* SFViewElement.m in Sources */,
-				83A36B3717982A1600449C0C /* SFSerializableDate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1024,6 +985,7 @@
 				B97578FC16B3DE1B00AE855D /* SFXMLParser+ParseDelegation.m in Sources */,
 				B915ADD316B5A77700EB8D01 /* SFViewElement.m in Sources */,
 				83A36B2F1798205000449C0C /* SFSerializableDate.m in Sources */,
+				8D1239BC17CFAED300094213 /* SFSerializationAssistant.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1081,25 +1043,15 @@
 			name = SparkAttribute;
 			targetProxy = 78B2476516D24AB600AFFDEE /* PBXContainerItemProxy */;
 		};
-		78B2476816D24ABB00AFFDEE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SparkAttribute;
-			targetProxy = 78B2476716D24ABB00AFFDEE /* PBXContainerItemProxy */;
-		};
 		78B2476B16D24AC500AFFDEE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SparkAttributeMac;
 			targetProxy = 78B2476A16D24AC500AFFDEE /* PBXContainerItemProxy */;
 		};
-		8DFE9F9E175F10C400E7BE04 /* PBXTargetDependency */ = {
+		8D900EBC17CF9B220018D336 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = SparkReflection;
-			targetProxy = 8DFE9F9D175F10C400E7BE04 /* PBXContainerItemProxy */;
-		};
-		8DFE9FA6175F10C800E7BE04 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SparkCore;
-			targetProxy = 8DFE9FA5175F10C800E7BE04 /* PBXContainerItemProxy */;
+			target = 9F0A8AB315C299340044A782 /* SparkSerialization */;
+			targetProxy = 8D900EBB17CF9B220018D336 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

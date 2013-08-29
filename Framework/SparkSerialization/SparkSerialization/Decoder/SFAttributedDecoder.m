@@ -29,6 +29,8 @@
 
 
 #import "SFAttributedDecoder.h"
+#import <Spark/SparkReflection.h>
+#import "SFSerializationAssistant.h"
 //#import <Spark/SparkLogger.h>
 
 #import "SFSerializable.h"
@@ -120,27 +122,23 @@
     _rootObject = [[rootObjectClass alloc] init];
     NSArray *properties;
     @autoreleasepool {
-        if ([rootObjectClass hasAttribute:[SFSerializable attribute]]) {
+        if ([rootObjectClass hasAttributesForClassWithAttributeType:[SFSerializable class]]) {
             properties = [[rootObjectClass properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(SFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
-                return ![evaluatedObject hasAttribute:[SFDerived attribute]];
+                return ![evaluatedObject.attributeClass hasAttributesForProperty:evaluatedObject.propertyName withAttributeType:[SFDerived class]];
             }]];
         }
         else {
-            properties = [rootObjectClass propertiesWithAttribute:[SFSerializable attribute]];
+            properties = [rootObjectClass propertiesWithAttributeType:[SFSerializable class]];
         }
     }
 
     NSString *aKey;
     @autoreleasepool {
         for (SFPropertyInfo * const aDesc in properties) {
-                aKey = aDesc.propertyName;
-                
-                if ([aDesc hasAttribute:[SFSerializable attribute]]) {
-                    aKey = [[aDesc attributeNamed:[SFSerializable attribute]] defaultValue];
-                }
-                
-                id result = [self decodeValue:jsonDict[aKey] forProperty:aDesc];
-                [_rootObject setValue:result forKey:[aDesc propertyName]];    
+            aKey = [SFSerializationAssistant serializationKeyForProperty:aDesc];
+            
+            id result = [self decodeValue:jsonDict[aKey] forProperty:aDesc];
+            [_rootObject setValue:result forKey:[aDesc propertyName]];
         }
     }
 }
@@ -159,8 +157,8 @@
             value = [self decodeDictionary:value forProperty:aDesc];
         }
     }
-    else if ([aDesc hasAttribute:[SFSerializableDate attribute]]
-             || [[self class] hasAttribute:[SFSerializableDate attribute]]) {
+    else if ([aDesc.attributeClass hasAttributesForProperty:aDesc.propertyName withAttributeType:[SFSerializableDate class]]
+             || [[self class] hasAttributesForClassWithAttributeType:[SFSerializableDate class]]) {
         value = [self decodeDateString:aValue forProperty:aDesc];
     }
     return value;
@@ -194,7 +192,7 @@
         value = [subArray copy];
     }
     else if ([aValue isKindOfClass:[NSDictionary class]]) {
-        NSString *decodeClassName = [[aDesc attributeNamed:[SFSerializableCollection attribute]] defaultValue];
+        NSString *decodeClassName = [SFSerializationAssistant collectionItemClassNameForProperty:aDesc];
         
         if (decodeClassName == nil) {
             decodeClassName = aValue[SFSerializedObjectClassName];
@@ -213,20 +211,17 @@
 - (id)decodeDateString:(id const)value forProperty:(SFPropertyInfo * const)propertyInfo {
     id decodedValue = nil;
 
-    SFSerializableDate *serializableDateAttribute = nil;
-    if ([propertyInfo hasAttribute:[SFSerializableDate attribute]]) {
-        serializableDateAttribute = [propertyInfo attributeNamed:[SFSerializableDate attribute]];
-    }
+    SFSerializableDate *serializableDateAttribute = (SFSerializableDate *)[propertyInfo.attributeClass lastAttributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializableDate class]];
 
     if (serializableDateAttribute.unixTimestamp) {
         NSNumber *interval = value;
         decodedValue = [NSDate dateWithTimeIntervalSince1970:[interval intValue]];
     }
     else {
-        NSString *dateFormat = serializableDateAttribute.decodingFormat ? : serializableDateAttribute.defaultValue;
-        NSAssert(dateFormat, @"SFSerializableDate must have either defaultValue or encodingFormat specified");
+        NSString *dateFormat = ([serializableDateAttribute.decodingFormat length] == 0) ? serializableDateAttribute.format: serializableDateAttribute.decodingFormat;
+        NSAssert(dateFormat, @"SFSerializableDate must have either format or encodingFormat specified");
         
-        NSDateFormatter *dateFormatter = [self dataFormatterWithFormatString:dateFormat];
+        NSDateFormatter *dateFormatter = [self dateFormatterWithFormatString:dateFormat];
         decodedValue = [dateFormatter dateFromString:value];
     }
     
@@ -236,7 +231,7 @@
 
 #pragma mark - Support methods
 
-- (NSDateFormatter *)dataFormatterWithFormatString:(NSString *)formatString {
+- (NSDateFormatter *)dateFormatterWithFormatString:(NSString *)formatString {
     if (!_dateFormatter) {
         _dateFormatter = [[NSDateFormatter alloc] init];
     }
@@ -271,7 +266,7 @@
             || ([nestedJsonObject isKindOfClass:[NSArray class]] && [nestedJsonObject count] == 1 && nestedJsonObject[0] == [NSNull null])) {
             nestedJsonObject = nil;
             
-            SFLogWarning(@"Serialization failed because part ( %@ ) of serialization root ( %@ ) is not founded or equal nil", currentKeyPath, keyPath);
+            //SFLogWarning(@"Serialization failed because part ( %@ ) of serialization root ( %@ ) is not founded or equal nil", currentKeyPath, keyPath);
             break;
         }
         else {

@@ -13,9 +13,11 @@
  */
 @interface SFSerializableDate : NSObject
 
-@property NSString *decodingFormat;
-@property NSString *encodingFormat;
+@property(nonatomic, strong) NSString *format;
 
-@property BOOL unixTimestamp;
+@property(nonatomic, strong) NSString *decodingFormat;
+@property(nonatomic, strong) NSString *encodingFormat;
+
+@property(nonatomic, assign) BOOL unixTimestamp;
 
 @end

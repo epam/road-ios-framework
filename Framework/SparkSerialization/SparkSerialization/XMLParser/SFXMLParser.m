@@ -29,7 +29,7 @@
 
 
 #import "SFXMLParser.h"
-#import <Spark/SparkLogger.h>
+//#import <Spark/SparkLogger.h>
 
 #import "SFXMLParsing.h"
 #import "SFXMLElement.h"
