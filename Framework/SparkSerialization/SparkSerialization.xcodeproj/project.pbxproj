@@ -1082,7 +1082,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#${SRCROOT}/../../tools/binaries/SparkAttributesCodeGenerator -src=${SRCROOT}/SparkSerializationTest/ -dst=${SRCROOT}/SparkSerializationTest/SparkGeneratedAttributes/";
+			shellScript = "${SRCROOT}/../../tools/binaries/SparkAttributesCodeGenerator -src=${SRCROOT}/SparkSerializationTest/ -dst=${SRCROOT}/SparkSerializationTest/SparkGeneratedAttributes/";
 		};
 /* End PBXShellScriptBuildPhase section */
 
