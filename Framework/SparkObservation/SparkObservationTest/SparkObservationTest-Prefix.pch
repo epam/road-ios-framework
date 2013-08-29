@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'SparkObservationTest' target in the 'SparkObservationTest' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif

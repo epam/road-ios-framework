@@ -1,5 +1,5 @@
 //
-//  ESDAttribute.h
+//  NSObject+SFAttributesInternal.m
 //  AttributesPrototype
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -27,9 +27,37 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Foundation/Foundation.h>
-#import "SparkAttributesSupport.h"
+#import "NSObject+SFAttributesInternal.h"
 
-@interface ESDAttribute : NSObject
+@implementation NSObject (SFAttributesInternal)
+
+#pragma mark Will be overridden by annotated class
+
++ (NSDictionary *)attributesFactoriesForMethods { return nil; }
++ (NSDictionary *)attributesFactoriesForProperties { return nil; }
++ (NSDictionary *)attributesFactoriesForIvars { return nil; }
++ (NSArray *)attributesForClass { return nil; }
+
+#pragma mark Internal API
+
++ (NSMutableDictionary *)mutableAttributesFactoriesFrom:(NSDictionary *)attributesFactories {
+    
+    if (attributesFactories == nil) {
+        return [NSMutableDictionary dictionary];
+    }
+    
+    if ([attributesFactories isKindOfClass:[NSMutableDictionary class]]) {
+        return (NSMutableDictionary *)attributesFactories;
+    }
+    
+    return [NSMutableDictionary dictionaryWithDictionary:(NSDictionary *)attributesFactories];
+}
+
++ (NSInvocation *)invocationForSelector:(SEL)selector {
+    return [NSInvocation invocationForSelector:selector target:self];
+}
+
+
+#pragma mark -
 
 @end

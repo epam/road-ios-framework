@@ -1,5 +1,5 @@
 //
-//  NSObject+SFAttributes.h
+//  CustomSFAttribute.h
 //  AttributesPrototype
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -27,30 +27,20 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Foundation/Foundation.h>
+#import "SFAttribute.h"
 
-@interface NSObject (SFAttributes)
+typedef void (^AttributesSomeBlock)(NSString* sInfo, int *result);
 
-#pragma mark - Attributes API
+@interface CustomSFAttribute : SFAttribute
 
-+ (NSInvocation *)invocationForSelector:(SEL)selector;
-+ (NSMutableDictionary *)mutableAttributesFactoriesFrom:(NSDictionary *)attributesFactories;
+@property (strong, nonatomic) NSString* property1;
+@property (strong, nonatomic) NSString* property2;
 
-+ (NSArray *)attributesForInstanceMethod:(NSString *)instanceMethodName withType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForProperty:(NSString *)propertyName withType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForField:(NSString *)fieldName withType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForClass;
+@property (assign, nonatomic) int intProperty;
 
-#pragma mark - Attributes API stubs
+@property (strong, nonatomic) NSArray* arrayProperty;
+@property (strong, nonatomic) NSDictionary* dictionaryProperty;
 
-//will be overridden by annotated class
-
-+ (NSDictionary *)attributesFactoriesForInstanceMethods;
-+ (NSDictionary *)attributesFactoriesForProperties;
-+ (NSDictionary *)attributesFactoriesForClassProperties;
-+ (NSDictionary *)attributesFactoriesForFields;
-
-#pragma mark -
-
+@property (strong, nonatomic) AttributesSomeBlock blockProperty;
 
 @end

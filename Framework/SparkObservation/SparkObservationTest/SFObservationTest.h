@@ -1,8 +1,7 @@
 //
-//  MethodsAttributesCodeGenerator.m
-//  AttributesResearchLab
+//  SFObservationTest.h
+//  SparkObservation
 //
-//  
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without 
@@ -27,43 +26,12 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-//
 
-#import "MethodsAttributesCodeGenerator.h"
-#import "MethodModel.h"
 
-@implementation MethodsAttributesCodeGenerator
+#import <SenTestingKit/SenTestingKit.h>
 
-+ (NSString *)elementName:(AnnotatedElementModel *)model {
-    MethodModel *methodModel = (MethodModel *)model;
- 
-    NSString *result = [NSString stringWithFormat:@"%@_p%ld", methodModel.name, (unsigned long)methodModel.parametersCount];
-    return result;
-}
+@interface SFObservationTest : SenTestCase
 
-+ (NSString *)elementType {
-    return @"method";
-}
-
-+ (NSString *)sectionType {
-    return @"Methods";
-}
-
-+ (NSString *)factoryKeyName:(AnnotatedElementModel *)model {
-    MethodModel *methodModel = (MethodModel *)model;
-    
-    NSMutableString *result = [NSMutableString new];
-    [result appendString:methodModel.name];
-    
-    for (NSUInteger paramCount = 0; paramCount < methodModel.parametersCount; paramCount ++) {
-        [result appendString:@":"];
-    }
-    
-    return result;
-}
-
-+ (NSString *)factoryName {
-    return @"FactoriesForMethods";
-}
+@property (copy, nonatomic) NSString *string;
 
 @end

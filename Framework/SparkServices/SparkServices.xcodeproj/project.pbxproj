@@ -34,8 +34,8 @@
 		78CBA92716C3D40300DAC9BB /* SparkReflection.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 78CBA92516C3D40300DAC9BB /* SparkReflection.xcodeproj */; };
 		D757829017CCBA5B00BD85DA /* libSparkAttribute.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D765D73317CB80B2004D35E7 /* libSparkAttribute.a */; };
 		D757829317CCC6C200BD85DA /* SFServiceProvider+SFTestService.m in Sources */ = {isa = PBXBuildFile; fileRef = D757829217CCC6C200BD85DA /* SFServiceProvider+SFTestService.m */; };
-		D75DE0E817CB752800CAEDC2 /* SparkGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = D75DE0E717CB752700CAEDC2 /* SparkGeneratedAttribute.m */; };
-		D75DE0E917CB752800CAEDC2 /* SparkGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = D75DE0E717CB752700CAEDC2 /* SparkGeneratedAttribute.m */; };
+		D771947517CF41A60011047F /* SparkGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = D771947417CF41A60011047F /* SparkGeneratedAttribute.m */; };
+		D771947717CF41BC0011047F /* SparkGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = D771947617CF41BC0011047F /* SparkGeneratedAttribute.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -206,8 +206,9 @@
 		78CBA92516C3D40300DAC9BB /* SparkReflection.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkReflection.xcodeproj; path = ../SparkReflection/SparkReflection.xcodeproj; sourceTree = "<group>"; };
 		78F95ADD16E9F16600E58C3B /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		D757829217CCC6C200BD85DA /* SFServiceProvider+SFTestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SFServiceProvider+SFTestService.m"; path = "TestService/SFServiceProvider+SFTestService.m"; sourceTree = "<group>"; };
-		D75DE0E717CB752700CAEDC2 /* SparkGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparkGeneratedAttribute.m; path = SparkGeneratedAttributes/SparkGeneratedAttribute.m; sourceTree = SOURCE_ROOT; };
 		D765D72C17CB80B1004D35E7 /* SparkAttribute.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkAttribute.xcodeproj; path = ../SparkAttribute/SparkAttribute.xcodeproj; sourceTree = "<group>"; };
+		D771947417CF41A60011047F /* SparkGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparkGeneratedAttribute.m; path = SparkGeneratedAttributes/SparkGeneratedAttribute.m; sourceTree = "<group>"; };
+		D771947617CF41BC0011047F /* SparkGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparkGeneratedAttribute.m; path = SparkGeneratedAttributes/SparkGeneratedAttribute.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,6 +247,7 @@
 		5ACD21551741179500CC61AC /* SparkServicesTest */ = {
 			isa = PBXGroup;
 			children = (
+				D771947617CF41BC0011047F /* SparkGeneratedAttribute.m */,
 				5ACD21621741187600CC61AC /* TestService */,
 				5ACD215B1741179500CC61AC /* SFSparkServicesTest.h */,
 				5ACD215C1741179500CC61AC /* SFSparkServicesTest.m */,
@@ -333,7 +335,7 @@
 		7869945216AEBF3E00B28760 /* SparkServices */ = {
 			isa = PBXGroup;
 			children = (
-				D75DE0E717CB752700CAEDC2 /* SparkGeneratedAttribute.m */,
+				D771947417CF41A60011047F /* SparkGeneratedAttribute.m */,
 				7869946A16AEBFC400B28760 /* SparkServices.h */,
 				7869946016AEBF8F00B28760 /* Attributes */,
 				7869946116AEBF8F00B28760 /* Service */,
@@ -629,7 +631,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/../../tools/binaries/SparkAttributesCodeGenerator -src=${SRCROOT}/ -dst=${SRCROOT}/SparkGeneratedAttributes/";
+			shellScript = "${SRCROOT}/../../tools/binaries/SparkAttributesCodeGenerator -src=${SRCROOT}/ -dst=${SRCROOT}/SparkServicesTest/SparkGeneratedAttributes/";
 		};
 		D75DE0B117CB704F00CAEDC2 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -642,7 +644,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/../../tools/binaries/SparkAttributesCodeGenerator -src=${SRCROOT}/ -dst=${SRCROOT}/SparkGeneratedAttributes/";
+			shellScript = "${SRCROOT}/../../tools/binaries/SparkAttributesCodeGenerator -src=${SRCROOT}/ -dst=${SRCROOT}/SparkServices/SparkGeneratedAttributes/";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -655,8 +657,8 @@
 				5ACD217817411E0400CC61AC /* SFServiceProvider.m in Sources */,
 				5ACD215D1741179500CC61AC /* SFSparkServicesTest.m in Sources */,
 				5ACD21651741190600CC61AC /* SFTestService.m in Sources */,
-				D75DE0E917CB752800CAEDC2 /* SparkGeneratedAttribute.m in Sources */,
 				D757829317CCC6C200BD85DA /* SFServiceProvider+SFTestService.m in Sources */,
+				D771947717CF41BC0011047F /* SparkGeneratedAttribute.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -666,7 +668,7 @@
 			files = (
 				7869946416AEBF9A00B28760 /* SFService.m in Sources */,
 				7869946716AEBFA000B28760 /* SFServiceProvider.m in Sources */,
-				D75DE0E817CB752800CAEDC2 /* SparkGeneratedAttribute.m in Sources */,
+				D771947517CF41A60011047F /* SparkGeneratedAttribute.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

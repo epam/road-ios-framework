@@ -2,18 +2,18 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:SparkAttribute/SparkAttribute.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:SparkReflection/SparkReflection.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SparkLogger/../SparkCore/SparkCore.xcodeproj">
+      location = "group:SparkCore/SparkCore.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SparkAttribute/SparkAttribute.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SparkObservation/SparkObservation.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:SparkServices/SparkServices.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:SparkLogger/SparkLogger.xcodeproj">
    </FileRef>
 </Workspace>

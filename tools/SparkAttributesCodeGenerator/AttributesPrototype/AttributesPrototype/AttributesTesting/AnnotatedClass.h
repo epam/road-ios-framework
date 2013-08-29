@@ -28,12 +28,12 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <Foundation/Foundation.h>
-#import "ESDAttribute.h"
-#import "CustomESDAttribute.h"
+#import "SFAttribute.h"
+#import "CustomSFAttribute.h"
 
 ///Testing of class with attributes
-SF_ATTRIBUTE(ESDAttribute)
-SF_ATTRIBUTE(CustomESDAttribute,
+SF_ATTRIBUTE(SFAttribute)
+SF_ATTRIBUTE(CustomSFAttribute,
               property1 = @"Text1",
               dictionaryProperty = @{
                 @"key1" : @"[value1",
@@ -57,22 +57,22 @@ SF_ATTRIBUTE(CustomESDAttribute,
         @interface
         AnnotatedClass : NSObject {
     ///Testing of field with attributes
-            SF_ATTRIBUTE(ESDAttribute)
+            SF_ATTRIBUTE(SFAttribute)
             NSObject* _someField;
         }
 
 ///Testing of method with attributes
-SF_ATTRIBUTE(ESDAttribute)
-SF_ATTRIBUTE(CustomESDAttribute, property1 = @"Text1", property2 = @"Text2")
+SF_ATTRIBUTE(SFAttribute)
+SF_ATTRIBUTE(CustomSFAttribute, property1 = @"Text1", property2 = @"Text2")
         - (void)viewDidLoad;
 
 ///Testing of method with attributes
 ///@param param1 Some parameter
-SF_ATTRIBUTE(ESDAttribute) - (void)viewDidLoad:(BOOL)param1;
+SF_ATTRIBUTE(SFAttribute) - (void)viewDidLoad:(BOOL)param1;
 
 ///Testing of property with attributes
-SF_ATTRIBUTE(ESDAttribute)
-SF_ATTRIBUTE(CustomESDAttribute, property2 = @"Text2", intProperty = (2+2)*2)
+SF_ATTRIBUTE(SFAttribute)
+SF_ATTRIBUTE(CustomSFAttribute, property2 = @"Text2", intProperty = (2+2)*2)
     @property
         (strong, nonatomic)
             UIWindow *window;

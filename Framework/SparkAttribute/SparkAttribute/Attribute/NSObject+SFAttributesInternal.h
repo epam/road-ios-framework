@@ -1,5 +1,5 @@
 //
-//  CustomESDAttribute.m
+//  NSObject+SFAttributesInternal.h
 //  AttributesPrototype
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -27,8 +27,23 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "CustomESDAttribute.h"
+#import <Foundation/Foundation.h>
+#import <Spark/NSInvocation+SparkExtension.h>
 
-@implementation CustomESDAttribute
+@interface NSObject (SFAttributesInternal)
+
+#pragma mark Internal API
+
++ (NSInvocation *)invocationForSelector:(SEL)selector;
++ (NSMutableDictionary *)mutableAttributesFactoriesFrom:(NSDictionary *)attributesFactories;
+
+#pragma mark Will be overridden by annotated class
+
++ (NSDictionary *)attributesFactoriesForMethods;
++ (NSDictionary *)attributesFactoriesForProperties;
++ (NSDictionary *)attributesFactoriesForIvars;
++ (NSArray *)attributesForClass;
+
+#pragma mark -
 
 @end

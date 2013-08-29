@@ -1,8 +1,7 @@
 //
-//  MethodsAttributesCodeGenerator.m
-//  AttributesResearchLab
+//  SFObservationTest.m
+//  SparkObservation
 //
-//  
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without 
@@ -27,43 +26,49 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-//
 
-#import "MethodsAttributesCodeGenerator.h"
-#import "MethodModel.h"
 
-@implementation MethodsAttributesCodeGenerator
+#import "SFObservationTest.h"
+#import "SFObserver.h"
 
-+ (NSString *)elementName:(AnnotatedElementModel *)model {
-    MethodModel *methodModel = (MethodModel *)model;
- 
-    NSString *result = [NSString stringWithFormat:@"%@_p%ld", methodModel.name, (unsigned long)methodModel.parametersCount];
-    return result;
+@implementation SFObservationTest {
+    SFObserver *observer;
+    NSString *old;
+    NSString *new;
 }
 
-+ (NSString *)elementType {
-    return @"method";
+- (void)setUp {
+    observer = [[SFObserver alloc] initWithTarget:self keyPath:@"string" handler:^(id oldValue, id newValue) {
+        old = [oldValue copy];
+        new = [newValue copy];
+    }];
 }
 
-+ (NSString *)sectionType {
-    return @"Methods";
+- (void)tearDown {
+    observer = nil;
 }
 
-+ (NSString *)factoryKeyName:(AnnotatedElementModel *)model {
-    MethodModel *methodModel = (MethodModel *)model;
+- (void)testObservation {
+    old = nil;
+    new = nil;
     
-    NSMutableString *result = [NSMutableString new];
-    [result appendString:methodModel.name];
+    self.string = @"value";
+    STAssertTrue([new isEqualToString:@"value"], @"Assertion: observation did execute block. Result: %@", new);
     
-    for (NSUInteger paramCount = 0; paramCount < methodModel.parametersCount; paramCount ++) {
-        [result appendString:@":"];
-    }
-    
-    return result;
+    self.string = @"new value";
+    STAssertTrue([old isEqualToString:@"value"], @"Assertion: observation did conserv old value. Result: %@", old);
+    STAssertTrue([new isEqualToString:@"new value"], @"Assertion: observation did update to new value. Result: %@", new);
 }
 
-+ (NSString *)factoryName {
-    return @"FactoriesForMethods";
+- (void)testTargetChange {
+    old = nil;
+    new = nil;
+    
+    self.string = @"value";
+    observer.observationTarget = self;
+    self.string = @"new value";
+    
+    STAssertTrue([new isEqualToString:@"new value"] && [old isEqualToString:@"value"], @"Assertion: observer did update to new target and did update value change.");
 }
 
 @end

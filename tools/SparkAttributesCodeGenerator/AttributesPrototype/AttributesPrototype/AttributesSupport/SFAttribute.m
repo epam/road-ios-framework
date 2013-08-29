@@ -1,5 +1,5 @@
 //
-//  CustomESDAttribute.h
+//  SFAttribute.m
 //  AttributesPrototype
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -27,20 +27,8 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "ESDAttribute.h"
+#import "SFAttribute.h"
 
-typedef void (^AttributesSomeBlock)(NSString* sInfo, int *result);
-
-@interface CustomESDAttribute : ESDAttribute
-
-@property (strong, nonatomic) NSString* property1;
-@property (strong, nonatomic) NSString* property2;
-
-@property (assign, nonatomic) int intProperty;
-
-@property (strong, nonatomic) NSArray* arrayProperty;
-@property (strong, nonatomic) NSDictionary* dictionaryProperty;
-
-@property (strong, nonatomic) AttributesSomeBlock blockProperty;
+@implementation SFAttribute
 
 @end
