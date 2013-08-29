@@ -29,6 +29,10 @@
 
 #import "NSObject+SFAttributes.h"
 #import "NSObject+SFAttributesInternal.h"
+#import <Spark/NSObject+PropertyReflection.h>
+#import <Spark/NSObject+MethodReflection.h>
+#import <Spark/NSObject+MemberVariableReflection.h>
+
 
 @interface NSObject ()
 + (NSArray *)attributesWithType:(Class)requiredClassOfAttribute from:(NSArray *)attributes;
@@ -119,6 +123,42 @@
 
 + (BOOL)hasAttributesForClassWithAttributeType:(Class)requiredClassOfAttribute {
     return [[self attributesForClassWithAttributeType:requiredClassOfAttribute] count] > 0;
+}
+
++ (NSArray *)propertiesWithAttributeType:(Class)requiredClassOfAttribute {
+    NSMutableArray *result = [NSMutableArray array];
+    
+    for (SFPropertyInfo *currentPropertyInfo in [self properties]) {
+        if ([self hasAttributesForProperty:currentPropertyInfo.propertyName withAttributeType:requiredClassOfAttribute]) {
+            [result addObject:currentPropertyInfo];
+        }
+    }
+    
+    return result;
+}
+
++ (NSArray *)ivarsWithAttributeType:(Class)requiredClassOfAttribute {
+    NSMutableArray *result = [NSMutableArray array];
+    
+    for (SFIvarInfo *currentIvarInfo in [self ivars]) {
+        if ([self hasAttributesForIvar:currentIvarInfo.name withAttributeType:requiredClassOfAttribute]) {
+            [result addObject:currentIvarInfo];
+        }
+    }
+    
+    return result;
+}
+
++ (NSArray *)methodsWithAttributeType:(Class)requiredClassOfAttribute {
+    NSMutableArray *result = [NSMutableArray array];
+    
+    for (SFMethodInfo *currentMethodInfo in [self methods]) {
+        if ([self hasAttributesForMethod:currentMethodInfo.name withAttributeType:requiredClassOfAttribute]) {
+            [result addObject:currentMethodInfo];
+        }
+    }
+    
+    return result;
 }
 
 #pragma mark -

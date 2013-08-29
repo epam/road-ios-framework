@@ -28,6 +28,9 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <Foundation/Foundation.h>
+#import <Spark/SFPropertyInfo.h>
+#import <Spark/SFMethodInfo.h>
+#import <Spark/SFIvarInfo.h>
 
 @interface NSObject (SFAttributes)
 
@@ -40,5 +43,9 @@
 + (BOOL)hasAttributesForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute;
 + (BOOL)hasAttributesForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
 + (BOOL)hasAttributesForClassWithAttributeType:(Class)requiredClassOfAttribute;
+
++ (NSArray *)propertiesWithAttributeType:(Class)requiredClassOfAttribute;
++ (NSArray *)ivarsWithAttributeType:(Class)requiredClassOfAttribute;
++ (NSArray *)methodsWithAttributeType:(Class)requiredClassOfAttribute;
 
 @end

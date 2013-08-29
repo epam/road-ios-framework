@@ -29,7 +29,6 @@
 
 
 #import "NSObject+MethodReflection.h"
-#import "SFMethodInfo.h"
 
 @implementation NSObject (MethodReflection)
 
