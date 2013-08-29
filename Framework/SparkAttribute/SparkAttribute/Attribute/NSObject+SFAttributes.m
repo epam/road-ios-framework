@@ -105,6 +105,22 @@
     return [self attributesWithType:requiredClassOfAttribute from:self.attributesForClass];
 }
 
++ (BOOL)hasAttributesForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute {
+    return [[self attributesForMethod:methodName withAttributeType:requiredClassOfAttribute] count] > 0;
+}
+
++ (BOOL)hasAttributesForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute {
+    return [[self attributesForProperty:propertyName withAttributeType:requiredClassOfAttribute] count] > 0;
+}
+
++ (BOOL)hasAttributesForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute {
+    return [[self attributesForIvar:ivarName withAttributeType:requiredClassOfAttribute] count] > 0;
+}
+
++ (BOOL)hasAttributesForClassWithAttributeType:(Class)requiredClassOfAttribute {
+    return [[self attributesForClassWithAttributeType:requiredClassOfAttribute] count] > 0;
+}
+
 #pragma mark -
 
 @end

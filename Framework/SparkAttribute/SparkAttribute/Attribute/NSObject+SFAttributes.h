@@ -36,5 +36,9 @@
 + (NSArray *)attributesForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
 + (NSArray *)attributesForClassWithAttributeType:(Class)requiredClassOfAttribute;
 
++ (BOOL)hasAttributesForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute;
++ (BOOL)hasAttributesForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute;
++ (BOOL)hasAttributesForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
++ (BOOL)hasAttributesForClassWithAttributeType:(Class)requiredClassOfAttribute;
 
 @end

@@ -185,6 +185,28 @@
     STAssertTrue([attributesList count] == 1, @"attributesList must be contain 2 items");
 }
 
+- (void)test_hasAttributesForMethod {
+    STAssertTrue([AnnotatedClass hasAttributesForMethod:@"viewDidLoad" withAttributeType:nil], @"please check function");
+    STAssertTrue([AnnotatedClass hasAttributesForMethod:@"viewDidLoad" withAttributeType:[CustomSFTestAttribute class]], @"please check function");
+    STAssertTrue(![AnnotatedClass hasAttributesForMethod:@"viewDidLoad" withAttributeType:[AnnotatedClass class]], @"please check function");
+}
+
+- (void)test_hasAttributesForProperty {
+    STAssertTrue([AnnotatedClass hasAttributesForProperty:@"window" withAttributeType:nil], @"please check function");
+    STAssertTrue([AnnotatedClass hasAttributesForProperty:@"window" withAttributeType:[CustomSFTestAttribute class]], @"please check function");
+    STAssertTrue(![AnnotatedClass hasAttributesForProperty:@"window" withAttributeType:[AnnotatedClass class]], @"please check function");
+}
+
+- (void)test_hasAttributesForIvar {
+    STAssertTrue([AnnotatedClass hasAttributesForIvar:@"_someField" withAttributeType:nil], @"please check function");
+}
+
+- (void)test_hasAttributesForClassWithAttributeType {
+    STAssertTrue([AnnotatedClass hasAttributesForClassWithAttributeType:nil], @"please check function");
+    STAssertTrue([AnnotatedClass hasAttributesForClassWithAttributeType:[CustomSFTestAttribute class]], @"please check function");
+    STAssertTrue(![AnnotatedClass hasAttributesForClassWithAttributeType:[AnnotatedClass class]], @"please check function");
+}
+
 
 #pragma mark -
 
