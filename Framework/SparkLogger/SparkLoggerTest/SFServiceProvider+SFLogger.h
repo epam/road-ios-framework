@@ -1,6 +1,6 @@
 //
-//  SFServiceProvider+SFTestService.h
-//  SparkServices
+//  SFServiceProvider+SFLogger.h
+//  SparkLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,15 +27,13 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <SparkServices/SparkServices.h>
-#import "SFTestService.h"
+#import <Spark/SparkServices.h>
+#import "SFLogger.h"
 
-@interface SFServiceProvider (SFTestService)
+@interface SFServiceProvider (SFLogger)
 
-/**
- The method to return the service instance. The attribute indicates this method returns a service, and which class to use in case the service is not yet initialized.
- */
-SF_ATTRIBUTE(SFService, serviceClass = [SFTestService class])
-- (SFTestService *)serviceInstance;
+SF_ATTRIBUTE(SFService, serviceClass = [SFLogger class])
+- (SFLogger *)logger;
+
 
 @end

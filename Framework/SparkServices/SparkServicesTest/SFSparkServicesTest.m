@@ -29,9 +29,9 @@
 
 
 #import "SFSparkServicesTest.h"
+#import "SparkServices.h"
 #import "SFTestService.h"
 #import "SFServiceProvider+SFTestService.h"
-#import "SparkServices.h"
 
 @implementation SFSparkServicesTest
 

@@ -1,5 +1,5 @@
 //
-//  SFServiceProvider+SFTestService.h
+//  SFServiceProvider+SFTestService.m
 //  SparkServices
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.

@@ -1,6 +1,6 @@
 //
-//  SparkLoggerTest.h
-//  SparkLoggerTest
+//  SFServiceProvider+SFTestService.h
+//  SparkServices
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,8 +27,16 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <SenTestingKit/SenTestingKit.h>
+#import "SFServiceProvider.h"
+#import "SFTestService.h"
+#import "SFService.h"
 
-@interface SparkLoggerTest : SenTestCase
+@interface SFServiceProvider (SFTestService)
+
+/**
+ The method to return the service instance. The attribute indicates this method returns a service, and which class to use in case the service is not yet initialized.
+ */
+SF_ATTRIBUTE(SFService, serviceClass = [SFTestService class])
+- (SFTestService *)serviceInstance;
 
 @end
