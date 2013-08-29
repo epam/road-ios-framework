@@ -30,52 +30,52 @@
 
 #import "NSCharacterSet+EncodingCharacterSet.h"
 
-static NSString * const kESDObjectTypeEncoding = @"@\"";
-static NSString * const kESDArrayEncoding = @"[]";
-static NSString * const kESDBitFieldEncoding = @"b";
-static NSString * const kESDStructEncoding = @"{}";
-static NSString * const kESDUnionEncoding = @"()";
-static NSString * const kESDAssignmentOperator = @"=";
-static NSString * const kESDPointerToTypeEncoding = @"^";
-static NSString * const kESDDereferenceOperator = @"*";
+static NSString * const kSFObjectTypeEncoding = @"@\"";
+static NSString * const kSFArrayEncoding = @"[]";
+static NSString * const kSFBitFieldEncoding = @"b";
+static NSString * const kSFStructEncoding = @"{}";
+static NSString * const kSFUnionEncoding = @"()";
+static NSString * const kSFAssignmentOperator = @"=";
+static NSString * const kSFPointerToTypeEncoding = @"^";
+static NSString * const kSFDereferenceOperator = @"*";
 
 @implementation NSCharacterSet (EncodingCharacterSet)
 
 + (NSCharacterSet *)pointerCharacterSet {
     NSMutableCharacterSet * const set = [NSMutableCharacterSet whitespaceAndNewlineCharacterSet];
-    [set addCharactersInString:kESDDereferenceOperator];
+    [set addCharactersInString:kSFDereferenceOperator];
     return set;
 }
 
 + (NSCharacterSet *)objectTypeEncodingCharacterSet {
     NSMutableCharacterSet * const set = [NSMutableCharacterSet whitespaceAndNewlineCharacterSet];
-    [set addCharactersInString:kESDObjectTypeEncoding];
+    [set addCharactersInString:kSFObjectTypeEncoding];
     return set;
 }
 
 + (NSCharacterSet *)valueTypePointerEncodingCharacterSet {
-    return [NSCharacterSet characterSetWithCharactersInString:kESDPointerToTypeEncoding];
+    return [NSCharacterSet characterSetWithCharactersInString:kSFPointerToTypeEncoding];
 }
 
 + (NSCharacterSet *)structEncodingCharacterSet {
-    return [NSCharacterSet characterSetWithCharactersInString:kESDStructEncoding];
+    return [NSCharacterSet characterSetWithCharactersInString:kSFStructEncoding];
 }
 
 + (NSCharacterSet *)unionEncodingCharacterSet {
-    return [NSCharacterSet characterSetWithCharactersInString:kESDUnionEncoding];
+    return [NSCharacterSet characterSetWithCharactersInString:kSFUnionEncoding];
 }
 
 + (NSCharacterSet *)bitFieldEncodingCharacterSet {
-    return [NSCharacterSet characterSetWithCharactersInString:kESDBitFieldEncoding];
+    return [NSCharacterSet characterSetWithCharactersInString:kSFBitFieldEncoding];
 }
 
 + (NSCharacterSet *)arrayEncodingCharacterSet {
-    return [NSCharacterSet characterSetWithCharactersInString:kESDArrayEncoding];
+    return [NSCharacterSet characterSetWithCharactersInString:kSFArrayEncoding];
 }
 
 + (NSCharacterSet *)fixedArrayEncodingCharacterSet {
     NSMutableCharacterSet * const set = [NSMutableCharacterSet decimalDigitCharacterSet];
-    [set addCharactersInString:kESDPointerToTypeEncoding];
+    [set addCharactersInString:kSFPointerToTypeEncoding];
     return set;
 }
 

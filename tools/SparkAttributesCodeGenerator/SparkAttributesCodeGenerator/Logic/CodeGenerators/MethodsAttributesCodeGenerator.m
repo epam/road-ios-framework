@@ -63,7 +63,7 @@
 }
 
 + (NSString *)factoryName {
-    return @"FactoriesForInstanceMethods";
+    return @"FactoriesForMethods";
 }
 
 @end

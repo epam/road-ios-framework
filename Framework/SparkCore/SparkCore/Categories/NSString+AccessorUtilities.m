@@ -30,25 +30,25 @@
 
 #import "NSString+AccessorUtilities.h"
 
-static NSString * const kESDSetterNameFormat = @"set%@:";
-static NSString * const kESDSetterPrefix = @"set";
-static NSString * const kESDBooleanGetterPrefix = @"is";
-static NSString * const kESDCaseTransformationFormat = @"%@%@%@";
+static NSString * const kSFSetterNameFormat = @"set%@:";
+static NSString * const kSFSetterPrefix = @"set";
+static NSString * const kSFBooleanGetterPrefix = @"is";
+static NSString * const kSFCaseTransformationFormat = @"%@%@%@";
 
 @implementation NSString (AccessorUtilities)
 
 - (NSString *)stringByTransformingToSetterAccessor {
-    return [NSString stringWithFormat:kESDSetterNameFormat, [self stringWithUpperCaseFirstCharacter]];
+    return [NSString stringWithFormat:kSFSetterNameFormat, [self stringWithUpperCaseFirstCharacter]];
 }
 
 - (NSString *)stringByTransformingToGetterAccessor {
     NSString *result;
     
-    if ([self hasPrefix:kESDSetterPrefix]) {
-        result = [[self substringWithRange:NSMakeRange([kESDSetterPrefix length], [self length]-([kESDSetterPrefix length] + 1))] stringWithLowerCaseFirstCharacter];
+    if ([self hasPrefix:kSFSetterPrefix]) {
+        result = [[self substringWithRange:NSMakeRange([kSFSetterPrefix length], [self length]-([kSFSetterPrefix length] + 1))] stringWithLowerCaseFirstCharacter];
     }
-    else if ([self hasPrefix:kESDBooleanGetterPrefix]) {
-        result = [[self substringWithRange:NSMakeRange([kESDBooleanGetterPrefix length], [self length]-([kESDBooleanGetterPrefix length] + 1))] stringWithLowerCaseFirstCharacter];
+    else if ([self hasPrefix:kSFBooleanGetterPrefix]) {
+        result = [[self substringWithRange:NSMakeRange([kSFBooleanGetterPrefix length], [self length]-([kSFBooleanGetterPrefix length] + 1))] stringWithLowerCaseFirstCharacter];
     }
     return result;
 }
@@ -60,7 +60,7 @@ static NSString * const kESDCaseTransformationFormat = @"%@%@%@";
     NSString * const firstPart = [self substringToIndex:range.location];
     NSString * const lastPart = [self substringFromIndex:range.location + range.length];
     
-    NSString * const result = [NSString stringWithFormat:kESDCaseTransformationFormat, firstPart, subString, lastPart];
+    NSString * const result = [NSString stringWithFormat:kSFCaseTransformationFormat, firstPart, subString, lastPart];
     return result;
 }
 
@@ -71,7 +71,7 @@ static NSString * const kESDCaseTransformationFormat = @"%@%@%@";
     NSString * const firstPart = [self substringToIndex:range.location];
     NSString * const lastPart = [self substringFromIndex:range.location + range.length];
     
-    NSString * const result = [NSString stringWithFormat:kESDCaseTransformationFormat, firstPart, subString, lastPart];
+    NSString * const result = [NSString stringWithFormat:kSFCaseTransformationFormat, firstPart, subString, lastPart];
     return result;
 }
 
