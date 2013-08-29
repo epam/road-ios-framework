@@ -78,6 +78,7 @@
 		83A36B3817982C1E00449C0C /* SFSerializableDate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83A36B2D1798205000449C0C /* SFSerializableDate.h */; };
 		83BEEF711744EAB50095BD53 /* DeserialisationTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 83BEEF701744EAB50095BD53 /* DeserialisationTest.json */; };
 		8D1239BC17CFAED300094213 /* SFSerializationAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1239BB17CFAED300094213 /* SFSerializationAssistant.m */; };
+		8D1239C317CFF78E00094213 /* SparkGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1239C217CFF78E00094213 /* SparkGeneratedAttribute.m */; };
 		8D900EBD17CF9B580018D336 /* libSparkSerialization.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F0A8AB415C299340044A782 /* libSparkSerialization.a */; };
 		9F80CD5C15F64EEE0031BA24 /* SparkSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F80CD5B15F64EEE0031BA24 /* SparkSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F80CD8215F64F500031BA24 /* SparkSerialization.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9F80CD5B15F64EEE0031BA24 /* SparkSerialization.h */; };
@@ -305,6 +306,7 @@
 		83BEEF701744EAB50095BD53 /* DeserialisationTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; lineEnding = 0; path = DeserialisationTest.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.javascript; };
 		8D1239BA17CFAED300094213 /* SFSerializationAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSerializationAssistant.h; sourceTree = "<group>"; };
 		8D1239BB17CFAED300094213 /* SFSerializationAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSerializationAssistant.m; sourceTree = "<group>"; };
+		8D1239C217CFF78E00094213 /* SparkGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparkGeneratedAttribute.m; path = SparkGeneratedAttributes/SparkGeneratedAttribute.m; sourceTree = "<group>"; };
 		9F0A8AB415C299340044A782 /* libSparkSerialization.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSparkSerialization.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F0A8AB815C299340044A782 /* SparkSerialization-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SparkSerialization-Prefix.pch"; sourceTree = "<group>"; };
 		9F80CD5B15F64EEE0031BA24 /* SparkSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparkSerialization.h; sourceTree = "<group>"; };
@@ -393,6 +395,7 @@
 		7841618416480C1E0089FDE9 /* SparkSerializationTest */ = {
 			isa = PBXGroup;
 			children = (
+				8D1239C217CFF78E00094213 /* SparkGeneratedAttribute.m */,
 				784161A416480C670089FDE9 /* Categories */,
 				784161A516480C670089FDE9 /* Classes */,
 				786996B516AFF26900B28760 /* XMLSerialization */,
@@ -959,6 +962,7 @@
 				78513E6D164921BF0049549A /* SFSerializationTestObject.m in Sources */,
 				78513E701649220C0049549A /* SFAnnotatedCoderTest.m in Sources */,
 				786996B816AFF27900B28760 /* SFXMLParsingTest.m in Sources */,
+				8D1239C317CFF78E00094213 /* SparkGeneratedAttribute.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
