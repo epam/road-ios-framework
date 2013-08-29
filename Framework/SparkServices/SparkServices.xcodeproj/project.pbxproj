@@ -10,7 +10,6 @@
 		5ACD21541741179500CC61AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7869945016AEBF3E00B28760 /* Foundation.framework */; };
 		5ACD215A1741179500CC61AC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5ACD21581741179500CC61AC /* InfoPlist.strings */; };
 		5ACD215D1741179500CC61AC /* SFSparkServicesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACD215C1741179500CC61AC /* SFSparkServicesTest.m */; };
-		5ACD217717411E0400CC61AC /* SFService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7869946316AEBF9A00B28760 /* SFService.m */; };
 		5ACD2188174124EA00CC61AC /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ACD2186174124B500CC61AC /* SenTestingKit.framework */; };
 		5AD1FC4D1766040600E67BC4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD1FC4C1766040600E67BC4 /* Cocoa.framework */; };
 		782B6D5416C3D49B0057DF2C /* SparkCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782B6CEB16C3D46A0057DF2C /* SparkCore.framework */; };
@@ -28,15 +27,12 @@
 		D771947717CF41BC0011047F /* SparkGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = D771947617CF41BC0011047F /* SparkGeneratedAttribute.m */; };
 		D7AF13E817CF541500A92C31 /* SFServiceProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AF13E617CF541500A92C31 /* SFServiceProvider.m */; };
 		D7AF13EB17CF558B00A92C31 /* SFServiceProvider.h in Copy Files */ = {isa = PBXBuildFile; fileRef = D7AF13E717CF541500A92C31 /* SFServiceProvider.h */; };
-		D7AF13F417CF600E00A92C31 /* libSparkAttribute.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D765D73317CB80B2004D35E7 /* libSparkAttribute.a */; };
-		D7AF13F517CF600E00A92C31 /* libSparkCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 782B6CE916C3D46A0057DF2C /* libSparkCore.a */; };
-		D7AF13F617CF600E00A92C31 /* libSparkReflection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 782B6D4116C3D46A0057DF2C /* libSparkReflection.a */; };
-		D7AF140717CF616200A92C31 /* libSparkAttribute.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D765D73317CB80B2004D35E7 /* libSparkAttribute.a */; };
-		D7AF140817CF616200A92C31 /* libSparkCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 782B6CE916C3D46A0057DF2C /* libSparkCore.a */; };
-		D7AF140917CF616200A92C31 /* libSparkReflection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 782B6D4116C3D46A0057DF2C /* libSparkReflection.a */; };
-		D7AF140A17CF61C100A92C31 /* SFServiceProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AF13E617CF541500A92C31 /* SFServiceProvider.m */; };
 		D7AF141817CF642500A92C31 /* SFServiceProvider+SFTestService.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AF141717CF642500A92C31 /* SFServiceProvider+SFTestService.m */; };
 		D7AF141B17CF64B700A92C31 /* SFTestService.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AF141A17CF64B700A92C31 /* SFTestService.m */; };
+		D7AF149817CF8FD100A92C31 /* libSparkServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7869944D16AEBF3E00B28760 /* libSparkServices.a */; };
+		D7AF149917CF8FDB00A92C31 /* libSparkAttribute.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D765D73317CB80B2004D35E7 /* libSparkAttribute.a */; };
+		D7AF149A17CF8FDB00A92C31 /* libSparkCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 782B6CE916C3D46A0057DF2C /* libSparkCore.a */; };
+		D7AF149B17CF8FDB00A92C31 /* libSparkReflection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 782B6D4116C3D46A0057DF2C /* libSparkReflection.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +134,13 @@
 			remoteGlobalIDString = 789669D915CBD1CD003D4AFC;
 			remoteInfo = SparkAttribute;
 		};
+		D7AF149617CF8FBE00A92C31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7869944416AEBF3E00B28760 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7869944C16AEBF3E00B28760;
+			remoteInfo = SparkServices;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -203,9 +206,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7AF140717CF616200A92C31 /* libSparkAttribute.a in Frameworks */,
-				D7AF140817CF616200A92C31 /* libSparkCore.a in Frameworks */,
-				D7AF140917CF616200A92C31 /* libSparkReflection.a in Frameworks */,
+				D7AF149917CF8FDB00A92C31 /* libSparkAttribute.a in Frameworks */,
+				D7AF149A17CF8FDB00A92C31 /* libSparkCore.a in Frameworks */,
+				D7AF149B17CF8FDB00A92C31 /* libSparkReflection.a in Frameworks */,
+				D7AF149817CF8FD100A92C31 /* libSparkServices.a in Frameworks */,
 				5ACD2188174124EA00CC61AC /* SenTestingKit.framework in Frameworks */,
 				5ACD21541741179500CC61AC /* Foundation.framework in Frameworks */,
 			);
@@ -215,9 +219,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7AF13F417CF600E00A92C31 /* libSparkAttribute.a in Frameworks */,
-				D7AF13F517CF600E00A92C31 /* libSparkCore.a in Frameworks */,
-				D7AF13F617CF600E00A92C31 /* libSparkReflection.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +418,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D7AF149717CF8FBE00A92C31 /* PBXTargetDependency */,
 			);
 			name = SparkServicesTest;
 			productName = SparkServicesTest;
@@ -618,7 +620,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/../../tools/binaries/SparkAttributesCodeGenerator -src=${SRCROOT}/ -dst=${SRCROOT}/SparkServicesTest/SparkGeneratedAttributes/";
+			shellScript = "${SRCROOT}/../../tools/binaries/SparkAttributesCodeGenerator -src=${SRCROOT}/SparkServicesTest/ -dst=${SRCROOT}/SparkServicesTest/SparkGeneratedAttributes/";
 		};
 		D75DE0B117CB704F00CAEDC2 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -631,7 +633,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/../../tools/binaries/SparkAttributesCodeGenerator -src=${SRCROOT}/ -dst=${SRCROOT}/SparkServices/SparkGeneratedAttributes/";
+			shellScript = "${SRCROOT}/../../tools/binaries/SparkAttributesCodeGenerator -src=${SRCROOT}/SparkServices/ -dst=${SRCROOT}/SparkServices/SparkGeneratedAttributes/";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -640,8 +642,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7AF140A17CF61C100A92C31 /* SFServiceProvider.m in Sources */,
-				5ACD217717411E0400CC61AC /* SFService.m in Sources */,
 				5ACD215D1741179500CC61AC /* SFSparkServicesTest.m in Sources */,
 				D771947717CF41BC0011047F /* SparkGeneratedAttribute.m in Sources */,
 				D7AF141817CF642500A92C31 /* SFServiceProvider+SFTestService.m in Sources */,
@@ -694,6 +694,11 @@
 			isa = PBXTargetDependency;
 			name = SparkAttribute;
 			targetProxy = D7AF13E917CF556000A92C31 /* PBXContainerItemProxy */;
+		};
+		D7AF149717CF8FBE00A92C31 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7869944C16AEBF3E00B28760 /* SparkServices */;
+			targetProxy = D7AF149617CF8FBE00A92C31 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

@@ -586,7 +586,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SparkAttribute/SparkAttribute-Prefix.pch";
 				HEADER_SEARCH_PATHS = "";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include;
 				PRODUCT_NAME = SparkAttribute;
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include;
@@ -602,7 +605,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SparkAttribute/SparkAttribute-Prefix.pch";
 				HEADER_SEARCH_PATHS = "";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include;
 				PRODUCT_NAME = SparkAttribute;
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include;

@@ -45,7 +45,16 @@
 		D771948C17CF4DED0011047F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 789AAE3516C4E3FA00FF7FB0 /* Foundation.framework */; };
 		D771949217CF4DED0011047F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D771949017CF4DED0011047F /* InfoPlist.strings */; };
 		D771949517CF4DED0011047F /* SparkLoggerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D771949417CF4DED0011047F /* SparkLoggerTest.m */; };
-		D7AF136317CF4F6500A92C31 /* SparkGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AF136217CF4F6500A92C31 /* SparkGeneratedAttribute.m */; };
+		D7AF145517CF745000A92C31 /* libSparkServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF135A17CF4F1D00A92C31 /* libSparkServices.a */; };
+		D7AF145617CF745B00A92C31 /* libSparkAttribute.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7805B19416D2501200B84B33 /* libSparkAttribute.a */; };
+		D7AF145717CF745B00A92C31 /* libSparkObservation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF136B17CF502E00A92C31 /* libSparkObservation.a */; };
+		D7AF146517CF757900A92C31 /* SFServiceProvider+SFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AF146417CF757900A92C31 /* SFServiceProvider+SFLogger.m */; };
+		D7AF147717CF7C4A00A92C31 /* SparkGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AF147617CF7C4A00A92C31 /* SparkGeneratedAttribute.m */; };
+		D7AF149517CF8E1B00A92C31 /* libSparkLogger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 789AAE3216C4E3FA00FF7FB0 /* libSparkLogger.a */; };
+		D7AF14C717CF910A00A92C31 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF14C617CF910A00A92C31 /* UIKit.framework */; };
+		D7AF14C917CF914200A92C31 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF14C817CF914200A92C31 /* libz.dylib */; };
+		D7AF14CB17CF917800A92C31 /* libSparkCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF14CA17CF917800A92C31 /* libSparkCore.a */; };
+		D7AF14CD17CF918700A92C31 /* libSparkReflection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF14CC17CF918700A92C31 /* libSparkReflection.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,13 +79,6 @@
 			remoteGlobalIDString = 78DDB7CC1647FF0200E7E92F;
 			remoteInfo = SparkAttributeTest;
 		};
-		D7AF135117CF4F0900A92C31 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 78BCFF8C16D24ED600D23908 /* SparkAttribute.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 789669D915CBD1CD003D4AFC;
-			remoteInfo = SparkAttribute;
-		};
 		D7AF135917CF4F1D00A92C31 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D7AF135317CF4F1D00A92C31 /* SparkServices.xcodeproj */;
@@ -97,13 +99,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 5ACD214F1741179500CC61AC;
 			remoteInfo = SparkServicesTest;
-		};
-		D7AF135F17CF4F2400A92C31 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D7AF135317CF4F1D00A92C31 /* SparkServices.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 7869944C16AEBF3E00B28760;
-			remoteInfo = SparkServices;
 		};
 		D7AF136A17CF502E00A92C31 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -126,12 +121,26 @@
 			remoteGlobalIDString = 7867EB7F16C3C91B00A93194;
 			remoteInfo = SparkObservationTest;
 		};
-		D7AF138A17CF504A00A92C31 /* PBXContainerItemProxy */ = {
+		D7AF141C17CF663100A92C31 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D7AF136417CF502E00A92C31 /* SparkObservation.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 7867EB4116C3C81600A93194;
 			remoteInfo = SparkObservation;
+		};
+		D7AF145817CF746500A92C31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D7AF135317CF4F1D00A92C31 /* SparkServices.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7869944C16AEBF3E00B28760;
+			remoteInfo = SparkServices;
+		};
+		D7AF149317CF8E1300A92C31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 789AAE2A16C4E3FA00FF7FB0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 789AAE3116C4E3FA00FF7FB0;
+			remoteInfo = SparkLogger;
 		};
 		D7D587B017C635000081EC7C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -219,10 +228,15 @@
 		D771949317CF4DED0011047F /* SparkLoggerTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SparkLoggerTest.h; sourceTree = "<group>"; };
 		D771949417CF4DED0011047F /* SparkLoggerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SparkLoggerTest.m; sourceTree = "<group>"; };
 		D771949617CF4DED0011047F /* SparkLoggerTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SparkLoggerTest-Prefix.pch"; sourceTree = "<group>"; };
-		D7AF134E17CF4ECA00A92C31 /* SFServiceProvider+SFLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFServiceProvider+SFLogger.h"; sourceTree = "<group>"; };
 		D7AF135317CF4F1D00A92C31 /* SparkServices.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkServices.xcodeproj; path = ../SparkServices/SparkServices.xcodeproj; sourceTree = "<group>"; };
-		D7AF136217CF4F6500A92C31 /* SparkGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparkGeneratedAttribute.m; path = SparkGeneratedAttributes/SparkGeneratedAttribute.m; sourceTree = "<group>"; };
 		D7AF136417CF502E00A92C31 /* SparkObservation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkObservation.xcodeproj; path = ../SparkObservation/SparkObservation.xcodeproj; sourceTree = "<group>"; };
+		D7AF146317CF757900A92C31 /* SFServiceProvider+SFLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFServiceProvider+SFLogger.h"; sourceTree = "<group>"; };
+		D7AF146417CF757900A92C31 /* SFServiceProvider+SFLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SFServiceProvider+SFLogger.m"; sourceTree = "<group>"; };
+		D7AF147617CF7C4A00A92C31 /* SparkGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparkGeneratedAttribute.m; path = SparkGeneratedAttributes/SparkGeneratedAttribute.m; sourceTree = "<group>"; };
+		D7AF14C617CF910A00A92C31 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D7AF14C817CF914200A92C31 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		D7AF14CA17CF917800A92C31 /* libSparkCore.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libSparkCore.a; path = "../SparkCore/build/Release-iphoneos/libSparkCore.a"; sourceTree = "<group>"; };
+		D7AF14CC17CF918700A92C31 /* libSparkReflection.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libSparkReflection.a; path = "../SparkReflection/build/Release-iphoneos/libSparkReflection.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +251,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7AF14CD17CF918700A92C31 /* libSparkReflection.a in Frameworks */,
+				D7AF14CB17CF917800A92C31 /* libSparkCore.a in Frameworks */,
+				D7AF14C917CF914200A92C31 /* libz.dylib in Frameworks */,
+				D7AF14C717CF910A00A92C31 /* UIKit.framework in Frameworks */,
+				D7AF149517CF8E1B00A92C31 /* libSparkLogger.a in Frameworks */,
+				D7AF145617CF745B00A92C31 /* libSparkAttribute.a in Frameworks */,
+				D7AF145717CF745B00A92C31 /* libSparkObservation.a in Frameworks */,
+				D7AF145517CF745000A92C31 /* libSparkServices.a in Frameworks */,
 				D771948A17CF4DED0011047F /* SenTestingKit.framework in Frameworks */,
 				D771948C17CF4DED0011047F /* Foundation.framework in Frameworks */,
 			);
@@ -326,6 +348,10 @@
 		789AAE3416C4E3FA00FF7FB0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D7AF14CC17CF918700A92C31 /* libSparkReflection.a */,
+				D7AF14CA17CF917800A92C31 /* libSparkCore.a */,
+				D7AF14C817CF914200A92C31 /* libz.dylib */,
+				D7AF14C617CF910A00A92C31 /* UIKit.framework */,
 				D7AF136417CF502E00A92C31 /* SparkObservation.xcodeproj */,
 				D7AF135317CF4F1D00A92C31 /* SparkServices.xcodeproj */,
 				78BCFF8C16D24ED600D23908 /* SparkAttribute.xcodeproj */,
@@ -396,8 +422,9 @@
 		D771948D17CF4DED0011047F /* SparkLoggerTest */ = {
 			isa = PBXGroup;
 			children = (
-				D7AF136217CF4F6500A92C31 /* SparkGeneratedAttribute.m */,
-				D7AF134E17CF4ECA00A92C31 /* SFServiceProvider+SFLogger.h */,
+				D7AF147617CF7C4A00A92C31 /* SparkGeneratedAttribute.m */,
+				D7AF146317CF757900A92C31 /* SFServiceProvider+SFLogger.h */,
+				D7AF146417CF757900A92C31 /* SFServiceProvider+SFLogger.m */,
 				D771949317CF4DED0011047F /* SparkLoggerTest.h */,
 				D771949417CF4DED0011047F /* SparkLoggerTest.m */,
 				D771948E17CF4DED0011047F /* Supporting Files */,
@@ -451,6 +478,8 @@
 			);
 			dependencies = (
 				D7D587B117C635000081EC7C /* PBXTargetDependency */,
+				D7AF141D17CF663100A92C31 /* PBXTargetDependency */,
+				D7AF145917CF746500A92C31 /* PBXTargetDependency */,
 			);
 			name = SparkLogger;
 			productName = SparkLogger;
@@ -470,9 +499,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				D7AF138B17CF504A00A92C31 /* PBXTargetDependency */,
-				D7AF136017CF4F2400A92C31 /* PBXTargetDependency */,
-				D7AF135217CF4F0900A92C31 /* PBXTargetDependency */,
+				D7AF149417CF8E1300A92C31 /* PBXTargetDependency */,
 			);
 			name = SparkLoggerTest;
 			productName = SparkLoggerTest;
@@ -668,27 +695,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				D771949517CF4DED0011047F /* SparkLoggerTest.m in Sources */,
-				D7AF136317CF4F6500A92C31 /* SparkGeneratedAttribute.m in Sources */,
+				D7AF146517CF757900A92C31 /* SFServiceProvider+SFLogger.m in Sources */,
+				D7AF147717CF7C4A00A92C31 /* SparkGeneratedAttribute.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D7AF135217CF4F0900A92C31 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SparkAttribute;
-			targetProxy = D7AF135117CF4F0900A92C31 /* PBXContainerItemProxy */;
-		};
-		D7AF136017CF4F2400A92C31 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SparkServices;
-			targetProxy = D7AF135F17CF4F2400A92C31 /* PBXContainerItemProxy */;
-		};
-		D7AF138B17CF504A00A92C31 /* PBXTargetDependency */ = {
+		D7AF141D17CF663100A92C31 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SparkObservation;
-			targetProxy = D7AF138A17CF504A00A92C31 /* PBXContainerItemProxy */;
+			targetProxy = D7AF141C17CF663100A92C31 /* PBXContainerItemProxy */;
+		};
+		D7AF145917CF746500A92C31 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SparkServices;
+			targetProxy = D7AF145817CF746500A92C31 /* PBXContainerItemProxy */;
+		};
+		D7AF149417CF8E1300A92C31 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 789AAE3116C4E3FA00FF7FB0 /* SparkLogger */;
+			targetProxy = D7AF149317CF8E1300A92C31 /* PBXContainerItemProxy */;
 		};
 		D7D587B117C635000081EC7C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

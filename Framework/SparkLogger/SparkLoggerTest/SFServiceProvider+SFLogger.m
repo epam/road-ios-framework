@@ -1,5 +1,5 @@
 //
-//  SFServiceProvider+SFLogger.h
+//  SFServiceProvider+SFLogger.m
 //  SparkLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -27,12 +27,8 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Spark/SparkServices.h>
-#import "SFLogger.h"
+#import "SFServiceProvider+SFLogger.h"
 
-@interface SFServiceProvider (SFLogger)
-
-SF_ATTRIBUTE(SFService, serviceClass = [SFLogger class])
-- (SFLogger *)logger;
+@implementation SFServiceProvider (SFLogger)
 
 @end
