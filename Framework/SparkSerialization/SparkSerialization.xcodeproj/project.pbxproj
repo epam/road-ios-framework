@@ -78,7 +78,10 @@
 		83A36B3817982C1E00449C0C /* SFSerializableDate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83A36B2D1798205000449C0C /* SFSerializableDate.h */; };
 		83BEEF711744EAB50095BD53 /* DeserialisationTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 83BEEF701744EAB50095BD53 /* DeserialisationTest.json */; };
 		8D1239BC17CFAED300094213 /* SFSerializationAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1239BB17CFAED300094213 /* SFSerializationAssistant.m */; };
-		8D1239C317CFF78E00094213 /* SparkGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1239C217CFF78E00094213 /* SparkGeneratedAttribute.m */; };
+		8D60078317CFFF2C0095E17D /* libSparkLogger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D60077E17CFFECC0095E17D /* libSparkLogger.a */; };
+		8D60078617CFFF7D0095E17D /* SparkGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D60078517CFFF7D0095E17D /* SparkGeneratedAttribute.m */; };
+		8D60079517D0002D0095E17D /* libSparkServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D60078E17D000120095E17D /* libSparkServices.a */; };
+		8D60079817D004340095E17D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D60079717D004340095E17D /* UIKit.framework */; };
 		8D900EBD17CF9B580018D336 /* libSparkSerialization.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F0A8AB415C299340044A782 /* libSparkSerialization.a */; };
 		9F80CD5C15F64EEE0031BA24 /* SparkSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F80CD5B15F64EEE0031BA24 /* SparkSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F80CD8215F64F500031BA24 /* SparkSerialization.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9F80CD5B15F64EEE0031BA24 /* SparkSerialization.h */; };
@@ -220,6 +223,55 @@
 			remoteGlobalIDString = 9FA9F50115F63D6B00FDE9E0;
 			remoteInfo = SparkAttributeMac;
 		};
+		8D60077D17CFFECC0095E17D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D60077817CFFECC0095E17D /* SparkLogger.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 789AAE3216C4E3FA00FF7FB0;
+			remoteInfo = SparkLogger;
+		};
+		8D60077F17CFFECC0095E17D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D60077817CFFECC0095E17D /* SparkLogger.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D771948917CF4DED0011047F;
+			remoteInfo = SparkLoggerTest;
+		};
+		8D60078117CFFED90095E17D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D60077817CFFECC0095E17D /* SparkLogger.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 789AAE3116C4E3FA00FF7FB0;
+			remoteInfo = SparkLogger;
+		};
+		8D60078D17D000120095E17D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D60078717D000120095E17D /* SparkServices.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7869944D16AEBF3E00B28760;
+			remoteInfo = SparkServices;
+		};
+		8D60078F17D000120095E17D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D60078717D000120095E17D /* SparkServices.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 786994E416AEC09E00B28760;
+			remoteInfo = SparkServicesMac;
+		};
+		8D60079117D000120095E17D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D60078717D000120095E17D /* SparkServices.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5ACD214F1741179500CC61AC;
+			remoteInfo = SparkServicesTest;
+		};
+		8D60079317D000210095E17D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D60078717D000120095E17D /* SparkServices.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7869944C16AEBF3E00B28760;
+			remoteInfo = SparkServices;
+		};
 		8D900EBB17CF9B220018D336 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7846754E15C16C20000E02DA /* Project object */;
@@ -282,7 +334,7 @@
 		786995EA16AEC29000B28760 /* SFXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFXMLParser.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		786995EB16AEC29000B28760 /* SFXMLParsing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFXMLParsing.h; sourceTree = "<group>"; };
 		7869965F16AED4C800B28760 /* SFXMLSpecificParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFXMLSpecificParser.h; sourceTree = "<group>"; };
-		7869966016AED4C800B28760 /* SFXMLSpecificParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFXMLSpecificParser.m; sourceTree = "<group>"; };
+		7869966016AED4C800B28760 /* SFXMLSpecificParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFXMLSpecificParser.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7869967016AEE3A800B28760 /* SFXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFXMLElement.h; sourceTree = "<group>"; };
 		7869967116AEE3A800B28760 /* SFXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFXMLElement.m; sourceTree = "<group>"; };
 		786996B616AFF27900B28760 /* SFXMLParsingTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFXMLParsingTest.h; sourceTree = "<group>"; };
@@ -306,7 +358,10 @@
 		83BEEF701744EAB50095BD53 /* DeserialisationTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; lineEnding = 0; path = DeserialisationTest.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.javascript; };
 		8D1239BA17CFAED300094213 /* SFSerializationAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSerializationAssistant.h; sourceTree = "<group>"; };
 		8D1239BB17CFAED300094213 /* SFSerializationAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSerializationAssistant.m; sourceTree = "<group>"; };
-		8D1239C217CFF78E00094213 /* SparkGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparkGeneratedAttribute.m; path = SparkGeneratedAttributes/SparkGeneratedAttribute.m; sourceTree = "<group>"; };
+		8D60077817CFFECC0095E17D /* SparkLogger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkLogger.xcodeproj; path = ../SparkLogger/SparkLogger.xcodeproj; sourceTree = "<group>"; };
+		8D60078517CFFF7D0095E17D /* SparkGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparkGeneratedAttribute.m; sourceTree = "<group>"; };
+		8D60078717D000120095E17D /* SparkServices.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkServices.xcodeproj; path = ../SparkServices/SparkServices.xcodeproj; sourceTree = "<group>"; };
+		8D60079717D004340095E17D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9F0A8AB415C299340044A782 /* libSparkSerialization.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSparkSerialization.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F0A8AB815C299340044A782 /* SparkSerialization-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SparkSerialization-Prefix.pch"; sourceTree = "<group>"; };
 		9F80CD5B15F64EEE0031BA24 /* SparkSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparkSerialization.h; sourceTree = "<group>"; };
@@ -342,6 +397,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D60079817D004340095E17D /* UIKit.framework in Frameworks */,
+				8D60079517D0002D0095E17D /* libSparkServices.a in Frameworks */,
+				8D60078317CFFF2C0095E17D /* libSparkLogger.a in Frameworks */,
 				8D900EBD17CF9B580018D336 /* libSparkSerialization.a in Frameworks */,
 				782B6D6E16C3D4CF0057DF2C /* libSparkCore.a in Frameworks */,
 				78B2476916D24AC000AFFDEE /* libSparkAttribute.a in Frameworks */,
@@ -395,7 +453,7 @@
 		7841618416480C1E0089FDE9 /* SparkSerializationTest */ = {
 			isa = PBXGroup;
 			children = (
-				8D1239C217CFF78E00094213 /* SparkGeneratedAttribute.m */,
+				8D60078417CFFF7D0095E17D /* SparkGeneratedAttributes */,
 				784161A416480C670089FDE9 /* Categories */,
 				784161A516480C670089FDE9 /* Classes */,
 				786996B516AFF26900B28760 /* XMLSerialization */,
@@ -447,6 +505,7 @@
 		7846754C15C16C20000E02DA = {
 			isa = PBXGroup;
 			children = (
+				8D60079717D004340095E17D /* UIKit.framework */,
 				9F0A8AB615C299340044A782 /* SparkSerialization */,
 				9FA9F4DB15F636C500FDE9E0 /* SparkSerializationMac */,
 				7841618416480C1E0089FDE9 /* SparkSerializationTest */,
@@ -468,6 +527,8 @@
 		7846755A15C16C21000E02DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8D60078717D000120095E17D /* SparkServices.xcodeproj */,
+				8D60077817CFFECC0095E17D /* SparkLogger.xcodeproj */,
 				7810087D16D24A8600BFDB8D /* SparkAttribute.xcodeproj */,
 				78CBA92916C3D41800DAC9BB /* SparkCore.xcodeproj */,
 				78CBA92A16C3D41800DAC9BB /* SparkReflection.xcodeproj */,
@@ -556,6 +617,33 @@
 				8D1239BB17CFAED300094213 /* SFSerializationAssistant.m */,
 			);
 			path = Assistants;
+			sourceTree = "<group>";
+		};
+		8D60077917CFFECC0095E17D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D60077E17CFFECC0095E17D /* libSparkLogger.a */,
+				8D60078017CFFECC0095E17D /* SparkLoggerTest.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8D60078417CFFF7D0095E17D /* SparkGeneratedAttributes */ = {
+			isa = PBXGroup;
+			children = (
+				8D60078517CFFF7D0095E17D /* SparkGeneratedAttribute.m */,
+			);
+			path = SparkGeneratedAttributes;
+			sourceTree = "<group>";
+		};
+		8D60078817D000120095E17D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D60078E17D000120095E17D /* libSparkServices.a */,
+				8D60079017D000120095E17D /* SparkServices.framework */,
+				8D60079217D000120095E17D /* SparkServicesTest.octest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		9F0A8AB615C299340044A782 /* SparkSerialization */ = {
@@ -718,9 +806,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7841619616480C1E0089FDE9 /* Build configuration list for PBXNativeTarget "SparkSerializationTest" */;
 			buildPhases = (
+				8D60079617D003DE0095E17D /* ShellScript */,
 				7841617816480C1D0089FDE9 /* Sources */,
 				7841617916480C1D0089FDE9 /* Frameworks */,
-				784161A916480C7A0089FDE9 /* ShellScript */,
 				7841617A16480C1D0089FDE9 /* Resources */,
 				5A1CC60B176F282A00A6C154 /* ShellScript */,
 				7841617B16480C1D0089FDE9 /* ShellScript */,
@@ -746,6 +834,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				8D60079417D000210095E17D /* PBXTargetDependency */,
+				8D60078217CFFED90095E17D /* PBXTargetDependency */,
 				78B2476616D24AB600AFFDEE /* PBXTargetDependency */,
 				782B6D6116C3D4B70057DF2C /* PBXTargetDependency */,
 				782B6D6316C3D4B70057DF2C /* PBXTargetDependency */,
@@ -806,8 +896,16 @@
 					ProjectRef = 78CBA92916C3D41800DAC9BB /* SparkCore.xcodeproj */;
 				},
 				{
+					ProductGroup = 8D60077917CFFECC0095E17D /* Products */;
+					ProjectRef = 8D60077817CFFECC0095E17D /* SparkLogger.xcodeproj */;
+				},
+				{
 					ProductGroup = 782B6CFA16C3D46A0057DF2C /* Products */;
 					ProjectRef = 78CBA92A16C3D41800DAC9BB /* SparkReflection.xcodeproj */;
+				},
+				{
+					ProductGroup = 8D60078817D000120095E17D /* Products */;
+					ProjectRef = 8D60078717D000120095E17D /* SparkServices.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -883,6 +981,41 @@
 			remoteRef = 78B2476116D24AA100AFFDEE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		8D60077E17CFFECC0095E17D /* libSparkLogger.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSparkLogger.a;
+			remoteRef = 8D60077D17CFFECC0095E17D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8D60078017CFFECC0095E17D /* SparkLoggerTest.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SparkLoggerTest.octest;
+			remoteRef = 8D60077F17CFFECC0095E17D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8D60078E17D000120095E17D /* libSparkServices.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSparkServices.a;
+			remoteRef = 8D60078D17D000120095E17D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8D60079017D000120095E17D /* SparkServices.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SparkServices.framework;
+			remoteRef = 8D60078F17D000120095E17D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8D60079217D000120095E17D /* SparkServicesTest.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SparkServicesTest.octest;
+			remoteRef = 8D60079117D000120095E17D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -938,7 +1071,7 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
-		784161A916480C7A0089FDE9 /* ShellScript */ = {
+		8D60079617D003DE0095E17D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -949,7 +1082,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../../../../tools/binaries/PreprocessorAttributeParser\" -o=\"${SRCROOT}/SparkSerializationTest/Resources/TempAttributes\"";
+			shellScript = "#${SRCROOT}/../../tools/binaries/SparkAttributesCodeGenerator -src=${SRCROOT}/SparkSerializationTest/ -dst=${SRCROOT}/SparkSerializationTest/SparkGeneratedAttributes/";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -962,7 +1095,7 @@
 				78513E6D164921BF0049549A /* SFSerializationTestObject.m in Sources */,
 				78513E701649220C0049549A /* SFAnnotatedCoderTest.m in Sources */,
 				786996B816AFF27900B28760 /* SFXMLParsingTest.m in Sources */,
-				8D1239C317CFF78E00094213 /* SparkGeneratedAttribute.m in Sources */,
+				8D60078617CFFF7D0095E17D /* SparkGeneratedAttribute.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1051,6 +1184,16 @@
 			isa = PBXTargetDependency;
 			name = SparkAttributeMac;
 			targetProxy = 78B2476A16D24AC500AFFDEE /* PBXContainerItemProxy */;
+		};
+		8D60078217CFFED90095E17D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SparkLogger;
+			targetProxy = 8D60078117CFFED90095E17D /* PBXContainerItemProxy */;
+		};
+		8D60079417D000210095E17D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SparkServices;
+			targetProxy = 8D60079317D000210095E17D /* PBXContainerItemProxy */;
 		};
 		8D900EBC17CF9B220018D336 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1193,7 +1336,10 @@
 				DSTROOT = /tmp/SecondSightSerialization.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SparkSerialization/SparkSerialization-Prefix.pch";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = SparkSerialization;
 				SKIP_INSTALL = YES;
 			};
@@ -1205,7 +1351,10 @@
 				DSTROOT = /tmp/SecondSightSerialization.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SparkSerialization/SparkSerialization-Prefix.pch";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = SparkSerialization;
 				SKIP_INSTALL = YES;
 			};

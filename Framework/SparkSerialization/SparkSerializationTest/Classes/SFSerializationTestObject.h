@@ -29,31 +29,49 @@
 
 
 #import <Foundation/Foundation.h>
+#import "SFSerializable.h"
+#import "SFSerializableDate.h"
+#import "SFSerializableCollection.h"
+#import "SFDerived.h"
 
 //[SFSerializable]
+SF_ATTRIBUTE(SFSerializable)
 @interface SFSerializationTestObject : NSObject
 
 @property (strong, nonatomic) NSString *string1;
 
 //[SFDerived]
+SF_ATTRIBUTE(SFDerived)
 @property (copy, nonatomic) NSString *string2;
 
 @property (assign, nonatomic) BOOL boolean;
+
 @property (strong, nonatomic) NSArray *strings;
+
 //[SFSerializableDate(defaultValue : dd/MM/yyyy HH:mm:ss Z, encodingFormat : MM.dd.yyyy HH:mm:ss.AAA Z)]
+SF_ATTRIBUTE(SFSerializableDate, format = @"dd/MM/yyyy HH:mm:ss Z", encodingFormat = @"MM.dd.yyyy HH:mm:ss.AAA Z")
 @property (strong, nonatomic) NSDate *date1;
+
 //[SFSerializableDate(defaultValue : MM.dd.yyyy HH:mm, decodingFormat : MM.dd.yyyy HH:mm:ss)]
+SF_ATTRIBUTE(SFSerializableDate, format = @"MM.dd.yyyy HH:mm", decodingFormat = @"MM.dd.yyyy HH:mm:ss")
 @property (strong, nonatomic) NSDate *date2;
+
 //[SFSerializableDate(unixTimestamp : yes)]
+SF_ATTRIBUTE(SFSerializableDate, unixTimestamp = YES)
 @property (strong, nonatomic) NSDate *unixTimestamp;
+
 @property (strong, nonatomic) SFSerializationTestObject *child;
 
 //[SFSerializableCollection(SFSerializationTestObject)]
+SF_ATTRIBUTE(SFSerializableCollection, classOfItem = [SFSerializationTestObject class])
 @property (strong, nonatomic) NSArray *subObjects;
 
 //[SFSerializableCollection(SFSerializationTestObject)]
+SF_ATTRIBUTE(SFSerializableCollection, classOfItem = [SFSerializationTestObject class])
 @property (strong, nonatomic) NSDictionary *subDictionary;
+
 @property (nonatomic) int integer;
+
 @property (nonatomic) NSNumber *number;
 
 @end

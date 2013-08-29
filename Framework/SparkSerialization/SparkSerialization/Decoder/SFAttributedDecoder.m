@@ -31,7 +31,7 @@
 #import "SFAttributedDecoder.h"
 #import <Spark/SparkReflection.h>
 #import "SFSerializationAssistant.h"
-//#import <Spark/SparkLogger.h>
+#import <Spark/SparkLogger.h>
 
 #import "SFSerializable.h"
 #import "SFDerived.h"
@@ -79,7 +79,7 @@
     if (rootClassName == nil) {
         result = jsonObject;
     } else {
-        //SFLogDebug(@"Decoder(%@ %p) started processing object(%@)", self, self, jsonObject);
+        SFLogDebug(@"Decoder(%@ %p) started processing object(%@)", self, self, jsonObject);
 
         if ([jsonObject isKindOfClass:[NSArray class]]) {
             result = [NSMutableArray array];
@@ -91,7 +91,7 @@
         else if ([jsonObject isKindOfClass:[NSDictionary class]]) {
             result = [self decodeJSONDictionary:jsonObject withRootClassNamed:rootClassName];
         }
-        //SFLogDebug(@"Decoder(%@ %p) ended processing", self, self);
+        SFLogDebug(@"Decoder(%@ %p) ended processing", self, self);
     }
     
     return result;
@@ -266,7 +266,7 @@
             || ([nestedJsonObject isKindOfClass:[NSArray class]] && [nestedJsonObject count] == 1 && nestedJsonObject[0] == [NSNull null])) {
             nestedJsonObject = nil;
             
-            //SFLogWarning(@"Serialization failed because part ( %@ ) of serialization root ( %@ ) is not founded or equal nil", currentKeyPath, keyPath);
+            SFLogWarning(@"Serialization failed because part ( %@ ) of serialization root ( %@ ) is not founded or equal nil", currentKeyPath, keyPath);
             break;
         }
         else {

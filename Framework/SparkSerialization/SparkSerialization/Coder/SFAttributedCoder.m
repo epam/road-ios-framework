@@ -31,7 +31,7 @@
 #import "SFAttributedCoder.h"
 #import <Spark/SparkReflection.h>
 #import "SFSerializationAssistant.h"
-//#import <Spark/SparkLogger.h>
+#import <Spark/SparkLogger.h>
 #import "SFSerializable.h"
 #import "SFDerived.h"
 #import "SFSerializableDate.h"
@@ -66,10 +66,10 @@
 }
 
 + (id)encodeRootObjectToSerializableObject:(id const)rootObject {
-    //SFLogInfo(@"Coder(%@ %p) started processing object(%@)", self, self, rootObject);
+    SFLogInfo(@"Coder(%@ %p) started processing object(%@)", self, self, rootObject);
     id decoder = [[self alloc] init];
     [decoder encodeRootObject:rootObject];
-    //SFLogInfo(@"Coder(%@ %p) ended processing", self, self);
+    SFLogInfo(@"Coder(%@ %p) ended processing", self, self);
     return [decoder archive];
 }
 

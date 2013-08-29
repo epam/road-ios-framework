@@ -29,7 +29,7 @@
 
 
 #import "SFXMLParser.h"
-//#import <Spark/SparkLogger.h>
+#import <Spark/SparkLogger.h>
 
 #import "SFXMLParsing.h"
 #import "SFXMLElement.h"
@@ -61,7 +61,7 @@
 }
 
 - (void)registerParserClassNamed:(NSString * const)aParserClassName forElementName:(NSString * const)elementName {
-    //SFLogDebug(@"Parser(%@) are registered on element with name: %@", aParserClassName, elementName);
+    SFLogDebug(@"Parser(%@) are registered on element with name: %@", aParserClassName, elementName);
     [pool registerClassNamed:aParserClassName forIdentifier:elementName];
 }
 

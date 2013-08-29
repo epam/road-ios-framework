@@ -1,1 +1,3 @@
-#import "AnnotatedClass+SFAttributes.m"
+#import <Spark/NSObject+SFAttributesInternal.h>
+
+#import "SFSerializationTestObject+SFAttributes.m"

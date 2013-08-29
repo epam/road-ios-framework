@@ -31,7 +31,7 @@
 #import "SFXMLSpecificParser.h"
 #import "SFXMLElement.h"
 #import <Spark/SparkReflection.h>
-//#import <Spark/SparkLogger.h>
+#import <Spark/SparkLogger.h>
 
 static NSString * const kSFElementName = @"element";
 
@@ -56,7 +56,7 @@ static NSString * const kSFElementName = @"element";
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     [self allocateElement];
-    //SFLogInfo(@"Parser(%p) found element with name: %@", parser, elementName);
+    SFLogInfo(@"Parser(%p) found element with name: %@", parser, elementName);
     _element.name = elementName;
     NSMutableDictionary * const attributeMutableDictionary = [[NSMutableDictionary alloc] init];
 

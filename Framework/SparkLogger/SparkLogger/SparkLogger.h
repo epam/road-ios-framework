@@ -44,29 +44,38 @@
 #import "SFLoggerWebServicePath.h"
 #import "SFLogMessageWrapper.h"
 
+#pragma warning Need to be restored after completion of migration
 
-#warning all macroses should be uncommented after fix for https://jira.epam.com/jira/browse/IOSAA-292
+#define SFLogInternalError(...)
+#define SFLogInfo(...)
+#define SFLogDebug(...)
+#define SFLogWarning(...)
+#define SFLogError(...)
+#define SFLogTypedInfo(__type__, ...)
+#define SFLogTypedDebug(__type__, ...)
+#define SFLogTypedWarning(__type__, ...)
+#define SFLogTypedError(__type__, ...)
 
-#define SFLogInternalError(...) \
-    [[[SFServiceProvider sharedProvider] logger] logInternalErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
-
-
-#define SFLogInfo(...) \
-        [[[SFServiceProvider sharedProvider] logger] logInfoMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]];
-#define SFLogDebug(...) \
-        [[[SFServiceProvider sharedProvider] logger] logDebugMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
-#define SFLogWarning(...) \
-        [[[SFServiceProvider sharedProvider] logger] logWarningMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
-#define SFLogError(...) \
-        [[[SFServiceProvider sharedProvider] logger] logErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
-
-#define SFLogTypedInfo(__type__, ...) \
-        [[[SFServiceProvider sharedProvider] logger] logInfoMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
-#define SFLogTypedDebug(__type__, ...) \
-        [[[SFServiceProvider sharedProvider] logger] logDebugMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
-#define SFLogTypedWarning(__type__, ...) \
-        [[[SFServiceProvider sharedProvider] logger] logWarningMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
-#define SFLogTypedError(__type__, ...) \
-        [[[SFServiceProvider sharedProvider] logger] logErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
+//#define SFLogInternalError(...) \
+//    [[[SFServiceProvider sharedProvider] logger] logInternalErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
+//
+//
+//#define SFLogInfo(...) \
+//        [[[SFServiceProvider sharedProvider] logger] logInfoMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]];
+//#define SFLogDebug(...) \
+//        [[[SFServiceProvider sharedProvider] logger] logDebugMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
+//#define SFLogWarning(...) \
+//        [[[SFServiceProvider sharedProvider] logger] logWarningMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
+//#define SFLogError(...) \
+//        [[[SFServiceProvider sharedProvider] logger] logErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
+//
+//#define SFLogTypedInfo(__type__, ...) \
+//        [[[SFServiceProvider sharedProvider] logger] logInfoMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
+//#define SFLogTypedDebug(__type__, ...) \
+//        [[[SFServiceProvider sharedProvider] logger] logDebugMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
+//#define SFLogTypedWarning(__type__, ...) \
+//        [[[SFServiceProvider sharedProvider] logger] logWarningMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
+//#define SFLogTypedError(__type__, ...) \
+//        [[[SFServiceProvider sharedProvider] logger] logErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
 
 #endif
