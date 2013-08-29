@@ -24,6 +24,8 @@
 		78B1BEA316E7721A009AD4EF /* SFStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B1BE9F16E7721A009AD4EF /* SFStreamWriter.m */; };
 		838844EE1760DDFA0052973D /* SFLoggerWebServicePath.m in Sources */ = {isa = PBXBuildFile; fileRef = 838844ED1760DDFA0052973D /* SFLoggerWebServicePath.m */; };
 		8388451C176210910052973D /* SFLoggerWebServicePath.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 838844EC1760DDFA0052973D /* SFLoggerWebServicePath.h */; };
+		8D6007DA17D014A00095E17D /* SFServiceProvider+LoggingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6007D917D014A00095E17D /* SFServiceProvider+LoggingService.m */; };
+		8D6007DC17D016890095E17D /* SFServiceProvider+LoggingService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D6007D817D014A00095E17D /* SFServiceProvider+LoggingService.h */; };
 		CD4E844F16F7663F00618316 /* SFConnection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B1BE9716E7721A009AD4EF /* SFConnection.h */; };
 		CD4E845016F7663F00618316 /* SFConnectionDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B1BE9916E7721A009AD4EF /* SFConnectionDelegate.h */; };
 		CD4E845116F7663F00618316 /* SFLogMessageWrapper.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B1BE9A16E7721A009AD4EF /* SFLogMessageWrapper.h */; };
@@ -158,6 +160,7 @@
 			dstPath = include/Spark;
 			dstSubfolderSpec = 16;
 			files = (
+				8D6007DC17D016890095E17D /* SFServiceProvider+LoggingService.h in CopyFiles */,
 				8388451C176210910052973D /* SFLoggerWebServicePath.h in CopyFiles */,
 				CD4E844F16F7663F00618316 /* SFConnection.h in CopyFiles */,
 				CD4E845016F7663F00618316 /* SFConnectionDelegate.h in CopyFiles */,
@@ -220,6 +223,8 @@
 		78F95AFB16E9F1CF00E58C3B /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		838844EC1760DDFA0052973D /* SFLoggerWebServicePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLoggerWebServicePath.h; sourceTree = "<group>"; };
 		838844ED1760DDFA0052973D /* SFLoggerWebServicePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLoggerWebServicePath.m; sourceTree = "<group>"; };
+		8D6007D817D014A00095E17D /* SFServiceProvider+LoggingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFServiceProvider+LoggingService.h"; sourceTree = "<group>"; };
+		8D6007D917D014A00095E17D /* SFServiceProvider+LoggingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SFServiceProvider+LoggingService.m"; sourceTree = "<group>"; };
 		D757824A17CCB91000BD85DA /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		D771947C17CF43630011047F /* SparkGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparkGeneratedAttribute.m; path = SparkGeneratedAttributes/SparkGeneratedAttribute.m; sourceTree = "<group>"; };
 		D771948917CF4DED0011047F /* SparkLoggerTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SparkLoggerTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -235,8 +240,8 @@
 		D7AF147617CF7C4A00A92C31 /* SparkGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparkGeneratedAttribute.m; path = SparkGeneratedAttributes/SparkGeneratedAttribute.m; sourceTree = "<group>"; };
 		D7AF14C617CF910A00A92C31 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D7AF14C817CF914200A92C31 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		D7AF14CA17CF917800A92C31 /* libSparkCore.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libSparkCore.a; path = "../SparkCore/build/Release-iphoneos/libSparkCore.a"; sourceTree = "<group>"; };
-		D7AF14CC17CF918700A92C31 /* libSparkReflection.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libSparkReflection.a; path = "../SparkReflection/build/Release-iphoneos/libSparkReflection.a"; sourceTree = "<group>"; };
+		D7AF14CA17CF917800A92C31 /* libSparkCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSparkCore.a; path = "../SparkCore/build/Release-iphoneos/libSparkCore.a"; sourceTree = "<group>"; };
+		D7AF14CC17CF918700A92C31 /* libSparkReflection.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSparkReflection.a; path = "../SparkReflection/build/Release-iphoneos/libSparkReflection.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +309,8 @@
 			children = (
 				7837BF3016C4EA920063A026 /* SFLogger.h */,
 				7837BF3116C4EA920063A026 /* SFLogger.m */,
+				8D6007D817D014A00095E17D /* SFServiceProvider+LoggingService.h */,
+				8D6007D917D014A00095E17D /* SFServiceProvider+LoggingService.m */,
 			);
 			path = LogService;
 			sourceTree = "<group>";
@@ -687,6 +694,7 @@
 				78B1BEA316E7721A009AD4EF /* SFStreamWriter.m in Sources */,
 				838844EE1760DDFA0052973D /* SFLoggerWebServicePath.m in Sources */,
 				D771947D17CF43630011047F /* SparkGeneratedAttribute.m in Sources */,
+				8D6007DA17D014A00095E17D /* SFServiceProvider+LoggingService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
