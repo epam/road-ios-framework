@@ -550,6 +550,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -573,6 +577,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -631,8 +639,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
-					"-objC",
 					"-all_load",
+					"-ObjC",
 				);
 				PRODUCT_NAME = SparkAttributeTest;
 				WRAPPER_EXTENSION = octest;
@@ -653,8 +661,8 @@
 				INFOPLIST_FILE = "SparkAttributeTest/SparkAttributeTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
-					"-objC",
 					"-all_load",
+					"-ObjC",
 				);
 				PRODUCT_NAME = SparkAttributeTest;
 				WRAPPER_EXTENSION = octest;

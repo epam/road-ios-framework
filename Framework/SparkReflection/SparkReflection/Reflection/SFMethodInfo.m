@@ -71,6 +71,7 @@ static NSUInteger const kSFMethodArgumentOffset = 2;
 + (SFMethodInfo *)methodInfo:(Method const)aMethod forClass:(__unsafe_unretained Class const)aClass {
     SFMethodInfo * const info = [[SFMethodInfo alloc] init];
     info.className = NSStringFromClass(aClass);
+    info.hostClass = aClass;
     info.name = NSStringFromSelector(method_getName(aMethod));
     info.numberOfArguments = (NSUInteger)method_getNumberOfArguments(aMethod) - kSFMethodArgumentOffset;
     info->argumentTypes = [self mapArgumentTypeEncodingForMethod:aMethod numberOfArguments:info.numberOfArguments];

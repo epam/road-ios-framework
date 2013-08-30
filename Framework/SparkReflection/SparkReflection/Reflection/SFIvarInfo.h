@@ -54,6 +54,11 @@
 @property (copy, nonatomic) NSString *className;
 
 /**
+ The type of the host class.
+ */
+@property (assign, nonatomic) Class hostClass;
+
+/**
  Returns an array of info objects.
  @param aClass The class to return the list of infos to.
  @result An array of info objects.

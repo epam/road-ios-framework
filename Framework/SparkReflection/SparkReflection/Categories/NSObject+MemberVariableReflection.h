@@ -29,8 +29,7 @@
 
 
 #import <Foundation/Foundation.h>
-
-@class SFIvarInfo;
+#import "SFIvarInfo.h"
 
 /**
  Category to retrieve member variable info objects from either a class or an instance of a class.
