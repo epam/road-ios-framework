@@ -77,6 +77,10 @@
     [result appendLine:@"    "];
     
     for (AnnotatedElementModel *currentModel in modelsList) {
+        if ([currentModel.attributeModels count] == 0) {
+            continue;
+        }
+        
         [result appendFormat:@"    [dictionaryHolder setObject:[self invocationForSelector:@selector(%@)] forKey:@\"%@\"];\n", [self listCreatorName:currentModel], [self factoryKeyName:currentModel]];
     }
     

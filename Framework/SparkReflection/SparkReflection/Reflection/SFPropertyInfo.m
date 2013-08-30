@@ -78,6 +78,7 @@
     info.attributeClass = NSClassFromString([info.attributeClassName stringByTrimmingCharactersInSet:[NSCharacterSet pointerCharacterSet]]);
     info.object = [attributeName hasPrefix:@"@"];
     info.className = NSStringFromClass(class);
+    info.hostClass = class;
     info.getterName = getterName;
     info.setterName = setterName;
     info.dynamic = [self property:property containsSpecifier:"D"];

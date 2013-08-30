@@ -29,7 +29,7 @@
 
 
 #import <Foundation/Foundation.h>
-@class SFMethodInfo;
+#import "SFMethodInfo.h"
 
 /**
  Convenience methods to fetch SFMethodDescriptors for the current object.

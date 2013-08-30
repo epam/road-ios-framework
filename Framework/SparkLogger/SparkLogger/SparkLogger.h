@@ -43,9 +43,7 @@
 #import "SFLogFilter.h"
 #import "SFLoggerWebServicePath.h"
 #import "SFLogMessageWrapper.h"
-
-
-#warning all macroses should be uncommented after fix for https://jira.epam.com/jira/browse/IOSAA-292
+#import "SFServiceProvider+LoggingService.h"
 
 #define SFLogInternalError(...) \
     [[[SFServiceProvider sharedProvider] logger] logInternalErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]

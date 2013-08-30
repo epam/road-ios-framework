@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>relationship</key>
+	<string>SFXMLRelationshipParser</string>
+	<key>source</key>
+	<string>SFXMLRelationshipPropertyParser</string>
+	<key>destination</key>
+	<string>SFXMLRelationshipPropertyParser</string>
+	<key>entity</key>
+	<string>SFXMLEntityParser</string>
+</dict>
+</plist>
