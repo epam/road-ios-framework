@@ -29,7 +29,6 @@
 
 
 #import "NSObject+MemberVariableReflection.h"
-#import "SFIvarInfo.h"
 
 @implementation NSObject (MemberVariableReflection)
 

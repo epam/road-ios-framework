@@ -44,6 +44,11 @@
 @property (copy, nonatomic) NSString *className;
 
 /**
+ The type of the host class.
+ */
+@property (assign, nonatomic) Class hostClass;
+
+/**
  The name of the class or variable type of the property declaration.
  */
 @property (copy, nonatomic) NSString *attributeClassName;

@@ -42,6 +42,10 @@
  The name of the class the method was declared to be a member of.
  */
 @property (copy, nonatomic) NSString *className;
+/**
+ The type of the host class.
+ */
+@property (assign, nonatomic) Class hostClass;
 
 /**
  The number of arguments for the method.

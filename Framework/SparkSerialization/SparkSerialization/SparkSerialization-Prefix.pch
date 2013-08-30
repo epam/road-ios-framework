@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'SparkSerialization' target in the 'SparkSerialization' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif

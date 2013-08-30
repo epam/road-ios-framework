@@ -28,6 +28,9 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <Foundation/Foundation.h>
+#import <Spark/SFPropertyInfo.h>
+#import <Spark/SFMethodInfo.h>
+#import <Spark/SFIvarInfo.h>
 
 @interface NSObject (SFAttributes)
 
@@ -36,5 +39,18 @@
 + (NSArray *)attributesForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
 + (NSArray *)attributesForClassWithAttributeType:(Class)requiredClassOfAttribute;
 
++ (NSObject *)lastAttributeForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute;
++ (NSObject *)lastAttributeForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute;
++ (NSObject *)lastAttributeForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
++ (NSObject *)lastAttributeForClassWithAttributeType:(Class)requiredClassOfAttribute;
+
++ (BOOL)hasAttributesForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute;
++ (BOOL)hasAttributesForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute;
++ (BOOL)hasAttributesForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
++ (BOOL)hasAttributesForClassWithAttributeType:(Class)requiredClassOfAttribute;
+
++ (NSArray *)propertiesWithAttributeType:(Class)requiredClassOfAttribute;
++ (NSArray *)ivarsWithAttributeType:(Class)requiredClassOfAttribute;
++ (NSArray *)methodsWithAttributeType:(Class)requiredClassOfAttribute;
 
 @end

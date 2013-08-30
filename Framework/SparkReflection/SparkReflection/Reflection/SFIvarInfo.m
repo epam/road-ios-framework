@@ -43,6 +43,7 @@
     for (unsigned int index = 0; index < memberCount; index++) {
         descriptor = [self infoFromIvar:ivarList[index]];
         descriptor.className = NSStringFromClass(aClass);
+        descriptor.hostClass = aClass;
         [array addObject:descriptor];
     }
     
@@ -54,6 +55,7 @@
     Ivar anIvar = class_getInstanceVariable(aClass, [ivarName cStringUsingEncoding:NSUTF8StringEncoding]);
     SFIvarInfo *descriptor = [self infoFromIvar:anIvar];
     descriptor.className = NSStringFromClass(aClass);
+    descriptor.hostClass = aClass;
     return descriptor;
 }
 
