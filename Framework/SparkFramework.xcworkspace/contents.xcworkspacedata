@@ -13,4 +13,7 @@
    <FileRef
       location = "group:SparkObservation/SparkObservation.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:SparkObservation/../SparkWebService/SparkWebservice.xcodeproj">
+   </FileRef>
 </Workspace>
