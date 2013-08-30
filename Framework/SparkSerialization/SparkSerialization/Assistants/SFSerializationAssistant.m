@@ -21,16 +21,16 @@
     
     SFSerializable *propertySerializableAttribute = [propertySerializableAttributes lastObject];
     
-    if ([propertySerializableAttribute.serializedName length] == 0) {
+    if ([propertySerializableAttribute.serializationKey length] == 0) {
         return propertyInfo.propertyName;
     }
     
-    return propertySerializableAttribute.serializedName;
+    return propertySerializableAttribute.serializationKey;
 }
 
 + (NSString *)collectionItemClassNameForProperty:(SFPropertyInfo *)propertyInfo {
     SFSerializableCollection *collectionAttribute = (SFSerializableCollection *)[propertyInfo.hostClass lastAttributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializableCollection class]];
-    return (collectionAttribute == nil || collectionAttribute.classOfItem == nil) ? nil : NSStringFromClass(collectionAttribute.classOfItem);
+    return (collectionAttribute == nil || collectionAttribute.collectionClass == nil) ? nil : NSStringFromClass(collectionAttribute.collectionClass);
 }
 
 @end

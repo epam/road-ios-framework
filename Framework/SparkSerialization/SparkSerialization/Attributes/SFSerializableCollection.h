@@ -34,6 +34,6 @@
 */
 @interface SFSerializableCollection : NSObject
 
-@property(nonatomic, assign) Class classOfItem;
+@property(nonatomic, assign) Class collectionClass;
 
 @end

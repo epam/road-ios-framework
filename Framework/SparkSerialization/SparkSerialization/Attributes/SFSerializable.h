@@ -36,6 +36,6 @@ extern NSString * const SFSerializedObjectClassName;
  */
 @interface SFSerializable : NSObject
 
-@property (nonatomic, strong) NSString *serializedName;
+@property (nonatomic, strong) NSString *serializationKey;
 
 @end

@@ -91,7 +91,7 @@ static NSMutableArray __weak *sf_attributes_list_SFSerializationTestObject_prope
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
     
     SFSerializableCollection *attr1 = [[SFSerializableCollection alloc] init];
-    attr1.classOfItem = [SFSerializationTestObject class];
+    attr1.collectionClass = [SFSerializationTestObject class];
     [attributesArray addObject:attr1];
 
     sf_attributes_list_SFSerializationTestObject_property_subObjects = attributesArray;
@@ -109,7 +109,7 @@ static NSMutableArray __weak *sf_attributes_list_SFSerializationTestObject_prope
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
     
     SFSerializableCollection *attr1 = [[SFSerializableCollection alloc] init];
-    attr1.classOfItem = [SFSerializationTestObject class];
+    attr1.collectionClass = [SFSerializationTestObject class];
     [attributesArray addObject:attr1];
 
     sf_attributes_list_SFSerializationTestObject_property_subDictionary = attributesArray;

@@ -32,7 +32,6 @@
 
 @interface SFServiceProvider (LoggingService)
 
-//[ESDService(ESDLogger)]
 SF_ATTRIBUTE(SFService, serviceClass = [SFLogger class])
 - (id<SFLogging>)logger;
 

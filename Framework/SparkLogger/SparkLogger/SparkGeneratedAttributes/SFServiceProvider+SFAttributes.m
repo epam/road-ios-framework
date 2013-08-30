@@ -1,4 +1,3 @@
-#import "SFServiceProvider+LoggingService.h"
 #import "SFServiceProvider+SFLogger.h"
  
 @interface SFServiceProvider(SFAttribute)

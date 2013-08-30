@@ -29,10 +29,3 @@
 
 #import "SFServiceProvider+LoggingService.h"
 
-@implementation SFServiceProvider (LoggingService)
-
-- (id<SFLogging>)logger {
-    return nil;
-}
-
-@end
