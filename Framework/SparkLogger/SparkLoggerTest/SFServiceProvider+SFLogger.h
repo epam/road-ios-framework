@@ -33,6 +33,6 @@
 @interface SFServiceProvider (SFLogger)
 
 SF_ATTRIBUTE(SFService, serviceClass = [SFLogger class])
-- (SFLogger *)logger;
+- (id<SFLogging>)logger;
 
 @end
