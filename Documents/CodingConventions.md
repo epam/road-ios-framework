@@ -8,6 +8,7 @@ Most of these guidelines match Apple's documentation and community-accepted best
 
 1. [Naming](#1naming)
 2. [Project](#2project)
+    1. [Third Party Sources](#21third-party-sources)
 3. [Files](#3files)
     1. [Compiler Directives](#31compiler-directives)
         1. [Import](#311import)
@@ -23,9 +24,8 @@ Most of these guidelines match Apple's documentation and community-accepted best
     2. [Conditionals](#62conditionals)
         1. [Booleans](#621booleans)
         2. [Ternary Operator](#622ternary-operator)
-    3. [Logging](#63logging)
-    4. [Error Handling](#64error-handling)
-    5. [Assertion](#65assertion)
+    4. [Error Handling](#63error-handling)
+    5. [Assertion](#64assertion)
 7. [Properties](#7properties)
     1. [Dot-Notation Syntax](#71dot-notation-syntax)
     2. [Private Properties](#72private-properties)
@@ -44,12 +44,18 @@ Most of these guidelines match Apple's documentation and community-accepted best
 
 1. Apple's [Coding Guidelines for Cocoa](https://developer.apple.com/library/ios/#documentation/Cocoa/Conceptual/CodingGuidelines/) covers most of the naming rules that need to be followed.
 2. Naming conventions related to [Memory Management Rules](https://developer.apple.com/library/mac/documentation/cocoa/conceptual/MemoryMgmt/Articles/mmRules.html) should also be followed.
-3. `SF` prefix should always be used for class names and constants, however may be omitted for Core Data entity names. This prefix stands for "Spark Framework".
+3. `SF` prefix should always be used for class names and constants. This prefix stands for "Spark Framework".
 
 ## 2.Project
 
 1. The physical files should be kept in sync with the Xcode project files in order to avoid file sprawl. Any Xcode groups created should be reflected by folders in the filesystem. Code should be grouped not only by type, but also by feature for greater clarity.
-2. When possible, always turn on "Treat Warnings as Errors" in the target's Build Settings and enable as many [additional warnings](http://boredzo.org/blog/archives/2009-11-07/warnings) as possible. If you need to ignore a specific warning, use [Clang's pragma feature](http://clang.llvm.org/docs/UsersManual.html#controlling-diagnostics-via-pragmas).
+2. Always turn on "Treat Warnings as Errors" in the target's Build Settings and enable as many [additional warnings](http://boredzo.org/blog/archives/2009-11-07/warnings) as possible. If you need to ignore a specific warning, use [Clang's pragma feature](http://clang.llvm.org/docs/UsersManual.html#controlling-diagnostics-via-pragmas).
+
+### 2.1.Third Party Sources
+1. It is recommended to put 3rd party source files into a separate folder with a distinct name like "ThirdParty", so that 3rd party code do not mix up with the rest of the source files.
+2. It is forbidden to delete or modify any license related comments from 3rd party code.
+3. It is recommended to avoid any modifications in 3rd party code and keep it intact. If you absolutely need to modify some 3rd party code then add a comment to explain your changes.
+4. If you insert some third-party code snippet or method into you source file then add THIRDPARTY_START, THIRDPARTY_END or THIRDPARTY comments (see [Comment Types](#321comment-types) section).
 
 ## 3.Files
 1. There is no restriction on code line length. Xcode built-in support for wrapping lines works best for all resolutions. So you should not manually wrap long lines.
@@ -80,8 +86,8 @@ Most of these guidelines match Apple's documentation and community-accepted best
 	#import "OtherClass.h"
 	```
 
-2. Use class/protocol forward declarations instead if imports in header files whenever possible to reduce compilation time.
-3. `#import` Objective-C/Objective-C++ headers, and `#include` C/C++ headers. Objective-C headers usually do not have `#define` guards, and expect to be included only by `#import`. Standard C and C++ headers without any Objective-C in them can expect to be included by ordinary C and C++ files. Since there is no `#import` in standard C or C++, such files will be included by `#include` in those cases. Using `#include` for them in Objective-C source files as well means that these headers will always be included with the same semantics.
+2. Use class/protocol forward declarations instead of imports in header files whenever possible to reduce compilation time.
+3. `#import` Objective-C/Objective-C++ headers, and `#include` C/C++ headers. Objective-C headers should not have `#define` guards as they are already encapsulated in `#import`. Standard C and C++ headers without any Objective-C in them can expect to be included by ordinary C and C++ files. Since there is no `#import` in standard C or C++, such files will be included by `#include` in those cases. Using `#include` for them in Objective-C source files as well means that these headers will always be included with the same semantics.
 
 #### 3.1.2.Pragma
 1. Use `#pragma mark` declarations in implementation file to categorize methods into functional groupings and protocol implementations.
@@ -105,18 +111,19 @@ The format that is used for code comments can be found here: [appledoc](http://g
 8. Use neutral language. Do not write `this simple code` or `this small component` - but instead write a neutral sentence like `the component is used in ...` and do not speak unfavorably about development tools, competitors, employers or working conditions
 9. **Do** explain the code, but don't repeat what it does.
 10. **Do** answer the <u>**why**</u> of the code rather than the **how**.
-11. **Do** comment <u>surprise</u> code, or <u>workarounds</u> to known bugs.  
+11. Add information that the best comment to a workaround or some strange bug-fix is an issue to link in issue tracking system or some place where this issue were found (stack overflow etc).  
 12. As a rule of thumb your comment should never be shorter than a sentence. So two or three words will not do. It would be even better for class or method comments to be a full-blown paragraph.
 13. Use only English for code comments.
 14. Use 3rd person (declarative descriptive) not 2nd person (imperative prescriptive): `Formats the paragraph`, not `Format the paragraph`
 15. Method descriptions begin with a verb phrase: `Formats the text of this paragraph`, not `This method is formatting the text of this paragraph`
 16. Use `this` instead of `the` when referring to an object created from the current class: `Uses the toolkit for this component to …`, not `Uses the toolkit for the component to …`.
-17. There should be no commented out code. Or at least there should be `TODO` comment or `#pragma warning` directive that explains why is this code left commented out.
+17. Source repository capabilities should be leveraged for storing source-code branches, so commented-out code is not allowed. If there is a real need to keep code as comments it should be clearly stated.
 
 #### 3.2.1.Comment Types
-***TBD***
-* TODO(date,author)
-* DESNOTE(date,author)
+Every comment that you add should be either appledoc in header files or should start with a comment type description mark. Here is the list of possible comment type description marks:
+1. TODO(date_added,author) - todo item, describes something that needs to be done.
+2. DESNOTE(date_added,author) - designers note, explain workaround, unexpected code, design decisions, etc.
+3. THIRDPARTY_START(date_added,who_added,license_name_or_link,taken_from_link) and THIRDPARTY_END - delimits copy-pasted code snippet. Or use THIRDPARTY(date_added,who_added,license_name_or_link,taken_from_link) - to mark copy-pasted function.
 
 #### 3.2.2.Pre and Postconditions
 ***TBD***
@@ -133,8 +140,10 @@ The format that is used for code comments can be found here: [appledoc](http://g
 2. Omit the empty set of braces on interfaces that do not declare any instance variables.
 
 ## 5.Categories
-1. Category file name should follow the next pattern: `ClassName+CategoryName.h` and `ClassName+CategoryName.m`
-2. Categories should be named for the sort of functionality they provide. Don't create umbrella categories.
+1. Category file name should follow the next pattern: `ClassName+CategoryName.h` and `ClassName+CategoryName.m`.
+2. If you add a category to a class without `SF` prefix then the category name should have `SF` prefix. If the class name already has `SF` prefix the category name should not have `SF` prefix. ***For example*** `NSObject+SFAttributes`, but `SFServiceProvider+Logging`.
+3. If you add a category to a class without `SF` prefix then the category method should have `sf` prefix to avoid method name collisions.
+4. Categories should be named for the sort of functionality they provide. Don't create umbrella categories.
 
 ## 6.Methods
 
@@ -145,7 +154,7 @@ The format that is used for code comments can be found here: [appledoc](http://g
 ```
 
 2. Interface methods could only have maximum four parameters. Long parameter list are hard to understand and difficult to use. Therefore long list of parameters should usually be replaced with one parameter object with appropriate properties.
-3. Interface methods should only have maximum one block type parameter and it must be the last one. Invocation of a method with more than one block parameter may look very complex.
+3. It is recommended for interface methods to only have one block type parameter (the last one). Invocation of a method with more than one block parameter may look very complex.
 4. There should be one newline before and after block statements (if, for, while, etc.) and also method and function calls that ends with a block parameter type.
 5. There should be one space around arithmetic operators, boolean operators, comparison operators and assignments.
 6. There should be no spaces after "(" and "[", and before ")" and "]".
@@ -158,6 +167,7 @@ The format that is used for code comments can be found here: [appledoc](http://g
 1. Comment and clearly identify your designated initializer. It is important for those who might be subclassing your class that the designated initializer be clearly identified. That way, they only need to subclass a single initializer (of potentially several) to guarantee their subclass' initializer is called. It also helps those debugging your class in the future understand the flow of initialization code if they need to step through it.
 2. `init` methods should be placed at the top of the implementation, directly after the `@synthesize` and `@dynamic` statements.
 3. `init` methods should be structured like this:
+
 ```objc
 - (instancetype)init {
     self = [super init]; // or call the designated initalizer
@@ -168,6 +178,7 @@ The format that is used for code comments can be found here: [appledoc](http://g
     return self;
 }
 ```
+
 4. Don't initialize variables to `0` or `nil` in the init method, it's redundant. All memory for a newly allocated object is initialized to `0` (except for isa), so don't clutter up the init method by re-initializing variables to `0` or `nil`.
 5. Do not invoke the `NSObject` class method `new`, nor override it in a subclass. Instead, use `alloc` and `init` methods to instantiate retained objects. Modern Objective-C code explicitly calls `alloc` and an `init` method to create and retain an object. As the `new` class method is rarely used, it makes reviewing code for correct memory management more difficult.
 6. `dealloc` method should be placed directly below the `init` methods of a class.
@@ -192,7 +203,7 @@ if (!error)
 if (!error) return success;
 ```
 
-2. `else` and `if else` should appear in the same line as closing brace.
+2. `else` and `else if` should appear in the same line as closing brace.
 **For example:**
 ```objc
 if (user.isHappy) {
@@ -203,11 +214,11 @@ if (user.isHappy) {
 ```
 
 3. There should be no assignment operator in if conditions.
-4. Use `nil` checks for logic flow of the application, not for crash prevention. Sending a message to a `nil` object is handled by the Objective-C runtime.
+4. Do not use `nil` checks for crash prevention, only use it for logic flow of the application. Sending a message to a `nil` object is handled by the Objective-C runtime.
 
 #### 6.2.1.Booleans
 
-1. Since `nil` resolves to `NO` it is unnecessary to compare it in conditions.
+1. Never compare something directly to `nil`, since `nil` resolves to `NO` it is unnecessary to compare it in conditions.
 **For example:**
 ```objc
 if (!someObject) {
@@ -245,14 +256,11 @@ result = a > b ? x : y;
 result = a > b ? x = c > d ? c : d : y;
 ```
 
-### 6.3.Logging
-1. There should be no log statements in the code. We only use log statements for debugging.
-
-### 6.4.Error Handling
+### 6.3.Error Handling
 1. To indicate errors, use an `NSError **` method argument.
 2. Don't use exceptions for flow control, use exceptions only to indicate programmer error.
 
-### 6.5.Assertion
+### 6.4.Assertion
 ***TBD***
 
 ## 7.Properties
@@ -299,8 +307,9 @@ UIApplication.sharedApplication.delegate;
 ## 8.Variables
 
 1. Variables should be named as descriptively as possible. This will result in self-documented easy to understand code. Single letter variable names should be avoided except in `for()` loops.
-2. There should be no instance variable declarations in header files. Instance variables belong to implementation details and should therefore be declared in implementation file.
-3. Asterisks indicating pointers belong with the variable, e.g., `NSString *text` not `NSString* text` or `NSString * text`, except in the case of constant pointers.
+2. The variable that you return from a method should also be named descriptively, its name should explain what the method return. Generic variable names like `result`, `retVal` should be avoided.
+3. There should be no instance variable declarations in header files. Instance variables belong to implementation details and should therefore be declared in class extension (anonymous categories) in implementation file.
+4. Asterisks indicating pointers belong with the variable, e.g., `NSString *text` not `NSString* text` or `NSString * text`, except in the case of constant pointers.
 
 ### 8.1.Literals
 
@@ -347,10 +356,11 @@ static NSString * const SFNetLogServiceType = @"_appalocalnetwork._tcp.";
 ## 10.Resources
 ### 10.1.Image Naming
 
-1. Image names should be named consistently to preserve organization and developer sanity. They should be named as one camel case string with a description of their purpose, followed by the un-prefixed name of the class or property they are customizing (if there is one), followed by a further description of colour and/or placement, and finally their state.
+1. It is recommended to put all resources in asset catalogs.
+2. Image names should be named consistently to preserve organization and developer sanity. They should be named as one camel case string with a description of their purpose, followed by the un-prefixed name of the class or property they are customizing (if there is one), followed by a further description of colour and/or placement, and finally their state.
 **For example:**
-2. `RefreshBarButtonItem` / `RefreshBarButtonItem@2x` and `RefreshBarButtonItemSelected` / `RefreshBarButtonItemSelected@2x`
-3. `ArticleNavigationBarWhite` / `ArticleNavigationBarWhite@2x` and `ArticleNavigationBarBlackSelected` / `ArticleNavigationBarBlackSelected@2x`.
+3. `RefreshBarButtonItem` / `RefreshBarButtonItem@2x` and `RefreshBarButtonItemSelected` / `RefreshBarButtonItemSelected@2x`
+4. `ArticleNavigationBarWhite` / `ArticleNavigationBarWhite@2x` and `ArticleNavigationBarBlackSelected` / `ArticleNavigationBarBlackSelected@2x`.
 
 ## 11.C Language
 ### 11.1.Functions
