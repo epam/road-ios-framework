@@ -70,8 +70,14 @@ NSRegularExpression *methodParametersRegex = nil;
 }
 
 + (NSString *)onlyParameterNamesFrom:(NSString *)methodParameters {
-    NSString *result = [NSRegularExpression stringByReplacingRegex:@"\\([^()]+\\)[ ]*[^ ]+" withTemplate:@"" inString:methodParameters];
-    result = [NSRegularExpression stringByReplacingRegex:@"[^A-Za-z0-9_:]" withTemplate:@"" inString:result];
+    NSMutableString *result = [NSMutableString stringWithString:methodParameters];
+    
+    while ([NSRegularExpression numberOfMatchesToRegex:@"\\(" inString:result] > 0) {
+        [NSRegularExpression replaceRegex:@"\\([^()]+\\)" withTemplate:@"" inString:result];
+    }
+    
+    [NSRegularExpression replaceRegex:@":[^ ]*" withTemplate:@":" inString:result];
+    [NSRegularExpression replaceRegex:@"[^A-Za-z0-9_:]" withTemplate:@"" inString:result];
     return result;
 }
 
