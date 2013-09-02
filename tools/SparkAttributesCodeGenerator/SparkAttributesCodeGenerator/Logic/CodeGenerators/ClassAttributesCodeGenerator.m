@@ -84,11 +84,6 @@
     return @"attributesForClass";
 }
 
-+ (NSString *)elementName:(AnnotatedElementModel *)model {
-    ClassModel *classModel = (ClassModel *)model;
-    return classModel.name;
-}
-
 + (NSString *)elementType {
     return @"class";
 }
