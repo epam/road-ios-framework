@@ -39,10 +39,11 @@
 + (MethodModel *)parseFrom:(CodeParseState *)parseState forKeyWord:(NSString *)keyWord {
     MethodModel *result = [MethodModel new];
     
-    result.name = [self extractMethodNameFromBuffer:[NSMutableString stringWithString:keyWord]];
-    
-    NSString *methodDeclaration = [self extractMethodDeclarationFromBuffer:parseState.workCodeBuffer];
-    result.parametersCount = [self parametersCountInMethodDeclaration:methodDeclaration];
+    NSString *methodName = [self extractMethodNameFromBuffer:[NSMutableString stringWithString:keyWord]];
+    NSString *methodParameters = [self extractMethodParametersFromBuffer:parseState.workCodeBuffer];
+
+    result.name = [NSString stringWithFormat:@"%@%@", methodName, methodParameters];
+    result.parametersCount = [self parametersCountInMethodParameters:methodParameters];
     
     return result;
 }
@@ -57,22 +58,29 @@ NSRegularExpression *methodNameRegex = nil;
     return result;
 }
 
-NSRegularExpression *methodDeclarationRegex = nil;
-+ (NSString *)extractMethodDeclarationFromBuffer:(NSMutableString *)workCodeBuffer {
-    if (methodDeclarationRegex == nil) {
-        methodDeclarationRegex = [NSRegularExpression regexFromString:@"^[^;%]*[;%]"];
+NSRegularExpression *methodParametersRegex = nil;
++ (NSString *)extractMethodParametersFromBuffer:(NSMutableString *)workCodeBuffer {
+    if (methodParametersRegex == nil) {
+        methodParametersRegex = [NSRegularExpression regexFromString:@"^[^;%]*[;%]"];
     }
     
-    NSString *result = [SourceCodeHelper extractElement:methodDeclarationRegex fromBuffer:workCodeBuffer];
+    NSString *result = [SourceCodeHelper extractElement:methodParametersRegex fromBuffer:workCodeBuffer];
+    result = [self onlyParameterNamesFrom:result];
     return result;
 }
 
-+ (NSUInteger)parametersCountInMethodDeclaration:(NSString *)methodDeclaration {
-    if ([NSString isNilOrEmpty:methodDeclaration]) {
++ (NSString *)onlyParameterNamesFrom:(NSString *)methodParameters {
+    NSString *result = [NSRegularExpression stringByReplacingRegex:@"\\([^()]+\\)[ ]*[^ ]+" withTemplate:@"" inString:methodParameters];
+    result = [NSRegularExpression stringByReplacingRegex:@"[^A-Za-z0-9_:]" withTemplate:@"" inString:result];
+    return result;
+}
+
++ (NSUInteger)parametersCountInMethodParameters:(NSString *)methodParameters {
+    if ([NSString isNilOrEmpty:methodParameters]) {
         return 0;
     }
     
-    NSMutableString *buffer = [NSMutableString stringWithString:methodDeclaration];
+    NSMutableString *buffer = [NSMutableString stringWithString:methodParameters];
     NSUInteger result = [buffer replaceOccurrencesOfString:@":" withString:@"+" options:0 range:NSMakeRange(0, [buffer length])];
     
     return result;
