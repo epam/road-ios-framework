@@ -49,10 +49,10 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testInstanceFakeService
 {
     SFTestService *databaseManager = [[SFServiceProvider sharedProvider] serviceInstance];
-    STAssertTrue(databaseManager != nil, @"Service has not been initialised.");
+    STAssertNotNil(databaseManager, @"Service has not been initialised.");
 }
 
 @end
