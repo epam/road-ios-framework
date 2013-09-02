@@ -15,11 +15,15 @@ static NSMutableArray __weak *sf_attributes_list_SFServiceProvider_method_logger
         return sf_attributes_list_SFServiceProvider_method_logger_p0;
     }
     
-    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
+    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:2];
     
     SFService *attr1 = [[SFService alloc] init];
     attr1.serviceClass = [SFLogger class];
     [attributesArray addObject:attr1];
+
+    SFService *attr2 = [[SFService alloc] init];
+    attr2.serviceClass = [SFLogger class];
+    [attributesArray addObject:attr2];
 
     sf_attributes_list_SFServiceProvider_method_logger_p0 = attributesArray;
     
