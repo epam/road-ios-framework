@@ -81,7 +81,7 @@
             continue;
         }
         
-        [result appendFormat:@"    [dictionaryHolder setObject:[self invocationForSelector:@selector(%@)] forKey:@\"%@\"];\n", [self listCreatorName:currentModel], [self factoryKeyName:currentModel]];
+        [result appendFormat:@"    [dictionaryHolder setObject:[self invocationForSelector:@selector(%@)] forKey:@\"%@\"];\n", [self listCreatorName:currentModel], currentModel.name];
     }
     
     [result appendFormat:@"    %@ = dictionaryHolder;  \n", factoryDictionaryHolderName];
@@ -140,10 +140,6 @@
 + (NSString *)listCreatorName:(AnnotatedElementModel *)model {
     NSString *result = [NSString stringWithFormat:@"sf_attributes_%@_%@_%@", [self modelHolderName:model], [self elementType], [self elementName:model]];
     return result;
-}
-
-+ (NSString *)factoryKeyName:(AnnotatedElementModel *)model {
-    return model.name;
 }
 
 + (NSString *)elementName:(AnnotatedElementModel *)model {

@@ -49,11 +49,6 @@
     return @"Methods";
 }
 
-+ (NSString *)factoryKeyName:(AnnotatedElementModel *)model {
-    MethodModel *methodModel = (MethodModel *)model;
-    return methodModel.name;
-}
-
 + (NSString *)factoryName {
     return @"FactoriesForMethods";
 }
