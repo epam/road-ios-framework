@@ -37,7 +37,7 @@
 @implementation MethodParser
 
 + (MethodModel *)parseFrom:(CodeParseState *)parseState forKeyWord:(NSString *)keyWord {
-    MethodModel *result = [MethodModel new];
+    MethodModel *result = [[MethodModel alloc] init];
     
     NSString *methodName = [self extractMethodNameFromBuffer:[NSMutableString stringWithString:keyWord]];
     NSString *methodParameters = [self extractMethodParametersFromBuffer:parseState.workCodeBuffer];
