@@ -29,29 +29,100 @@
 
 #import "SparkLoggerTest.h"
 #import <Spark/SparkServices.h>
-#import "SFLogger.h"
+#import "SparkLogger.h"
 #import "SFServiceProvider+SFLogger.h"
 
 @implementation SparkLoggerTest
 
-- (void)setUp
-{
+- (void)setUp {
     [super setUp];
-    
     // Set-up code here.
 }
 
-- (void)tearDown
-{
+- (void)tearDown {
     // Tear-down code here.
-    
     [super tearDown];
 }
 
-- (void)testExample
-{
-    SFLogger *logger = [[SFServiceProvider sharedProvider] logger];
-    STAssertTrue(logger != nil, @"Logger has not been initialised.");
+- (void)testInstanceAsService {
+    
+    id <SFLogging> logger = [[SFServiceProvider sharedProvider] logger];
+    STAssertNotNil(logger, @"Logger as service has not been initialised.");
+}
+
+- (void)testInstanceWriters {
+    // reset queue of writers
+    [[[SFServiceProvider sharedProvider] logger] setWriters:@[]];
+    
+    [[[SFServiceProvider sharedProvider] logger] addWriter:[SFConsoleLogWriter new]];
+    [[[SFServiceProvider sharedProvider] logger] addWriter:[SFConsoleLogWriter infoConsoleWriter]];
+    [[[SFServiceProvider sharedProvider] logger] addWriter:[SFConsoleLogWriter debugConsoleWriter]];
+    
+    STAssertTrue([[[[SFServiceProvider sharedProvider] logger] writers] count] == 3, @"The number of the writers (added) doesn't coincide");
+}
+
+- (void)testFilters {
+    
+    // reset queue of writers
+    [[[SFServiceProvider sharedProvider] logger] setWriters:@[]];
+    
+    // add writer (by information messages)
+    SFLogWriter *infoWriter = [SFConsoleLogWriter infoConsoleWriter];
+    [[[SFServiceProvider sharedProvider] logger] addWriter:infoWriter];
+    // trying to add information message
+    SFLogDebug(@"text message text message text message");
+    STAssertTrue([infoWriter.messageQueue count] == 0, @"The queue contains unacceptable message");
+    // add valid message
+    SFLogInfo(@"text message text message text message");
+    STAssertTrue([infoWriter.messageQueue count] > 0, @"The queue of messages is empty");
+    
+    BOOL isFinished = NO;
+    while (!isFinished) {
+        [[NSRunLoop mainRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
+        isFinished = YES;
+    }
+}
+
+- (void)testSimpleSendInfoMessage {
+    // reset queue of writers
+    [[[SFServiceProvider sharedProvider] logger] setWriters:@[]];
+
+    SFLogWriter *writer = [SFConsoleLogWriter new];
+    // add console writer
+    [[[SFServiceProvider sharedProvider] logger] addWriter:writer];
+    
+    NSString *simpleMessage = @"Simple test message";
+    
+    [[[SFServiceProvider sharedProvider] logger] logInfoMessage:simpleMessage];
+    
+    STAssertFalse([[writer messageQueue] count] == 0, @"The queue of messages is empty");
+    STAssertEquals(simpleMessage, [[[writer messageQueue] objectAtIndex:0] message], @"Values are not equals");
+    
+    BOOL isFinished = NO;
+    while (!isFinished) {
+        [[NSRunLoop mainRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
+        isFinished = YES;
+        STAssertTrue([[writer messageQueue] count] == 0, @"The queue of messages is not empty");
+    }
+}
+
+- (void)testCustomFormatter {
+    
+    NSString *message1 = @"It's right";
+    NSString *message2 = @"It's not right";
+    NSString *symbol = @"not ";
+
+    SFLogWriter *writer = [SFConsoleLogWriter new];
+    writer.formatter = [SFLogFormatter formatterWithBlock:^NSString *(SFLogMessage *const message) {
+        
+        if ([message.message rangeOfString:symbol].location == NSNotFound) {
+            return message.message;
+        } else {
+            return [message.message stringByReplacingOccurrencesOfString:symbol withString:@""];
+        }
+    }];
+    
+    STAssertTrue([[writer formattedMessage:[SFLogMessage infoMessage:message2]] isEqualToString:message1] , @"Values are not equals");
 }
 
 @end
