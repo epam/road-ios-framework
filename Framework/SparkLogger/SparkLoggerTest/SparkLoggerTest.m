@@ -96,7 +96,7 @@
     [[[SFServiceProvider sharedProvider] logger] logInfoMessage:simpleMessage];
     
     STAssertFalse([[writer messageQueue] count] == 0, @"The queue of messages is empty");
-    STAssertEquals(simpleMessage, [[[writer messageQueue] objectAtIndex:0] message], @"Messages is not equals");
+    STAssertEquals(simpleMessage, [[[writer messageQueue] objectAtIndex:0] message], @"Values are not equals");
     
     BOOL isFinished = NO;
     while (!isFinished) {
@@ -122,7 +122,7 @@
         }
     }];
     
-    STAssertTrue([[writer formattedMessage:[SFLogMessage infoMessage:message2]] isEqualToString:message1] , @"Messages is not equals");
+    STAssertTrue([[writer formattedMessage:[SFLogMessage infoMessage:message2]] isEqualToString:message1] , @"Values are not equals");
 }
 
 @end
