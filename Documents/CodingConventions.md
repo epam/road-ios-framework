@@ -15,8 +15,6 @@ Most of these guidelines match Apple's documentation and community-accepted best
         2. [Pragma](#312pragma)
     2. [Comments](#32comments)
         1. [Comment Types](#321comment-types)
-        2. [Pre and Postconditions](#322pre-and-postconditions)
-        3. [Thread Safety](#323thread-safety)
 4. [Classes](#4classes)
 5. [Categories](#5categories)
 6. [Methods](#6methods)
@@ -24,8 +22,9 @@ Most of these guidelines match Apple's documentation and community-accepted best
     2. [Conditionals](#62conditionals)
         1. [Booleans](#621booleans)
         2. [Ternary Operator](#622ternary-operator)
-    4. [Error Handling](#63error-handling)
-    5. [Assertion](#64assertion)
+    3. [Logging](#63logging)
+    4. [Error Handling](#64error-handling)
+    5. [Assertion](#65assertion)
 7. [Properties](#7properties)
     1. [Dot-Notation Syntax](#71dot-notation-syntax)
     2. [Private Properties](#72private-properties)
@@ -92,9 +91,8 @@ Most of these guidelines match Apple's documentation and community-accepted best
 #### 3.1.2.Pragma
 1. Use `#pragma mark` declarations in implementation file to categorize methods into functional groupings and protocol implementations.
 **For example:**
-```objc #pragma mark - Pool delegate methods```
-
-2. There should be two newlines before and after pragma marks.
+`#pragma mark - Pool delegate methods`
+2. There should be one newline before and after pragma marks.
 
 
 ### 3.2.Comments
@@ -103,21 +101,19 @@ The format that is used for code comments can be found here: [appledoc](http://g
 
 1. All class, protocol, method and property declarations should be documented using appledoc's format. Only header files must be commented using appledoc's format. The reason behind this is that the documentation generator script - which issues build warning for undocumented members - checks only the header files.
 2. Any implementation file should start with copyright comment.
-3. When commenting methods outside of the method (eg. at the top of the method) always write complete sentences beginning with a capital letter, and ending the sentence with a dot. 
-4. When writing comments inside a method's body start with a lower case letter and do not end the comment with a dot, and always leave a space after `//`.
-5. Leave an empty line before a comment block.
-6. Always write comments before the line that is commented, do not add a comment to the end of the line.
-7. Xcode uses text-wrapping by default. Code comments look best on different monitors when they do not have line breaks. Please consider writing comments that are not broke into a fix width column but is allowed to flow in the entire width of the IDE's (eg. when the window is resized Xcode automatically wraps the long lines).
-8. Use neutral language. Do not write `this simple code` or `this small component` - but instead write a neutral sentence like `the component is used in ...` and do not speak unfavorably about development tools, competitors, employers or working conditions
-9. **Do** explain the code, but don't repeat what it does.
-10. **Do** answer the <u>**why**</u> of the code rather than the **how**.
-11. Add information that the best comment to a workaround or some strange bug-fix is an issue to link in issue tracking system or some place where this issue were found (stack overflow etc).  
-12. As a rule of thumb your comment should never be shorter than a sentence. So two or three words will not do. It would be even better for class or method comments to be a full-blown paragraph.
-13. Use only English for code comments.
-14. Use 3rd person (declarative descriptive) not 2nd person (imperative prescriptive): `Formats the paragraph`, not `Format the paragraph`
-15. Method descriptions begin with a verb phrase: `Formats the text of this paragraph`, not `This method is formatting the text of this paragraph`
-16. Use `this` instead of `the` when referring to an object created from the current class: `Uses the toolkit for this component to …`, not `Uses the toolkit for the component to …`.
-17. Source repository capabilities should be leveraged for storing source-code branches, so commented-out code is not allowed. If there is a real need to keep code as comments it should be clearly stated.
+3. Leave an empty line before a comment block. Leave one space after `//`.
+4. Always write comments before the line that is commented, do not add a comment to the end of the line.
+5. Xcode uses text-wrapping by default. Code comments look best on different monitors when they do not have line breaks. Please consider writing comments that are not broke into a fix width column but is allowed to flow in the entire width of the IDE's (eg. when the window is resized Xcode automatically wraps the long lines).
+6. Use neutral language. Do not write `this simple code` or `this small component` - but instead write a neutral sentence like `the component is used in ...` and do not speak unfavorably about development tools, competitors, employers or working conditions
+7. **Do** explain the code, but don't repeat what it does.
+8. **Do** answer the <u>**why**</u> of the code rather than the **how**.
+9. Add information that the best comment to a workaround or some strange bug-fix is an issue to link in issue tracking system or some place where this issue were found (stack overflow etc).  
+10. Your comment should never be shorter than a sentence, so two or three words will not do. Comments should start with a capital letter, and end the sentence with a dot. It would be even better for class or method comments to be a full-blown paragraph.
+11. Use only English for code comments.
+12. Use 3rd person (declarative descriptive) not 2nd person (imperative prescriptive): `Formats the paragraph`, not `Format the paragraph`
+13. Method descriptions begin with a verb phrase: `Formats the text of this paragraph`, not `This method is formatting the text of this paragraph`
+14. Use `this` instead of `the` when referring to an object created from the current class: `Uses the toolkit for this component to …`, not `Uses the toolkit for the component to …`.
+15. Source repository capabilities should be leveraged for storing source-code branches, so commented-out code is not allowed. If there is a real need to keep code as comments it should be clearly stated.
 
 #### 3.2.1.Comment Types
 Every comment that you add should be either appledoc in header files or should start with a comment type description mark. Here is the list of possible comment type description marks:
@@ -125,19 +121,13 @@ Every comment that you add should be either appledoc in header files or should s
 2. DESNOTE(date_added,author) - designers note, explain workaround, unexpected code, design decisions, etc.
 3. THIRDPARTY_START(date_added,who_added,license_name_or_link,taken_from_link) and THIRDPARTY_END - delimits copy-pasted code snippet. Or use THIRDPARTY(date_added,who_added,license_name_or_link,taken_from_link) - to mark copy-pasted function.
 
-#### 3.2.2.Pre and Postconditions
-***TBD***
-
-#### 3.2.3.Thread Safety
-***TBD***
-
 ## 4.Classes
 1. Interface declaration follows the below example:
 
 	```Objective-C
 	@interface NSString : NSObject <NSCopying, NSMutableCopying, NSCoding>
 	```
-2. Omit the empty set of braces on interfaces that do not declare any instance variables.
+2. Omit the empty set of curly braces on interfaces that do not declare any instance variables.
 
 ## 5.Categories
 1. Category file name should follow the next pattern: `ClassName+CategoryName.h` and `ClassName+CategoryName.m`.
@@ -159,17 +149,21 @@ Every comment that you add should be either appledoc in header files or should s
 5. There should be one space around arithmetic operators, boolean operators, comparison operators and assignments.
 6. There should be no spaces after "(" and "[", and before ")" and "]".
 7. Use exactly one blank line within a method to separate functionality where necessary. However usually it is better to create another method for this purpose.
-8. Avoid multiple `return` statements in one method. Multiple return statements might make it hard to understand execution flow of a method. 
+8. It is recommended to avoid multiple `return` statements in one method. Multiple return statements might make it hard to understand execution flow of a method. However you may use guard conditions at the beginning of a method to return early.
 9. Method length should be no longer than 40 lines. It is preferable to keep method length below 30 lines. If a method becomes very long it is hard to understand. Therefore long methods should usually be refactored into several individual methods that focus on a specific task.
 
 ### 6.1.Initialization and Deallocation
 
 1. Comment and clearly identify your designated initializer. It is important for those who might be subclassing your class that the designated initializer be clearly identified. That way, they only need to subclass a single initializer (of potentially several) to guarantee their subclass' initializer is called. It also helps those debugging your class in the future understand the flow of initialization code if they need to step through it.
 2. `init` methods should be placed at the top of the implementation, directly after the `@synthesize` and `@dynamic` statements.
-3. `init` methods should be structured like this:
+3. Don't initialize variables to `0` or `nil` in the init method, it's redundant. All memory for a newly allocated object is initialized to `0` (except for isa), so don't clutter up the init method by re-initializing variables to `0` or `nil`.
+4. Do not invoke the `NSObject` class method `new`, nor override it in a subclass. Instead, use `alloc` and `init` methods to instantiate retained objects. Modern Objective-C code explicitly calls `alloc` and `init` methods to create and retain an object. `new` is a legacy method that comes from NeXT days and it is kept only for backward compatibility. As the `new` class method is rarely used, it makes searching for object allocation points and reviewing code for correct memory management more difficult.
+5. `dealloc` method should be placed directly below the `init` methods of a class.
+6. `dealloc` should process instance variables in the same order the they were declared, so it is easier for a reviewer to verify.
+7. `init` methods should be structured like this:
 
 ```objc
-- (instancetype)init {
+- (id)init {
     self = [super init]; // or call the designated initalizer
     if (self) {
         // Custom initialization
@@ -178,11 +172,6 @@ Every comment that you add should be either appledoc in header files or should s
     return self;
 }
 ```
-
-4. Don't initialize variables to `0` or `nil` in the init method, it's redundant. All memory for a newly allocated object is initialized to `0` (except for isa), so don't clutter up the init method by re-initializing variables to `0` or `nil`.
-5. Do not invoke the `NSObject` class method `new`, nor override it in a subclass. Instead, use `alloc` and `init` methods to instantiate retained objects. Modern Objective-C code explicitly calls `alloc` and an `init` method to create and retain an object. As the `new` class method is rarely used, it makes reviewing code for correct memory management more difficult.
-6. `dealloc` method should be placed directly below the `init` methods of a class.
-7. `dealloc` should process instance variables in the same order the they were declared, so it is easier for a reviewer to verify.
 
 ### 6.2.Conditionals
 
@@ -245,57 +234,58 @@ if (isAwesome == YES) // Never do this.
 3. Prefer positive comparisons to negative since it improves code clarity.
 
 #### 6.2.2.Ternary Operator
-
-1. The Ternary operator, ? , should be used when it increases clarity or code neatness. A single condition is usually all that should be evaluated. Evaluating multiple conditions is usually more understandable as an if statement, or refactored into instance variables.
+1. The Ternary operator, ? , should be used when it increases clarity or code neatness. A single condition is usually all that should be evaluated. Evaluating multiple conditions is usually more understandable as an if statement, or refactored into boolean variables.
 **For example:**
-```objc
-result = a > b ? x : y;
-```
+`result = a > b ? x : y;`
 **Not:**
-```objc
-result = a > b ? x = c > d ? c : d : y;
-```
+`result = a > b ? x = c > d ? c : d : y;`
 
-### 6.3.Error Handling
+### 6.3.Logging
+1. Choose an appropriate logging level (`info`, `debug`, `warning`, `error`) to reflect the severity of the log message.
+2. Specify a distict log message type appropriate for your component (for instance `SparkCore`), so that your messages can be easily filtered out from a user's logs.
+
+### 6.4.Error Handling
 1. To indicate errors, use an `NSError **` method argument.
-2. Don't use exceptions for flow control, use exceptions only to indicate programmer error.
+2. Don't use exceptions for flow control, use exceptions only to indicate programmer error such as out-of-bounds collection access, attempts to mutate immutable objects, sending an invalid message, etc. These sorts of errors should be taken care of when an application is being developed, rather than in production.
 
-### 6.4.Assertion
-***TBD***
+### 6.5.Assertion
+1. Use NSAssert, not assert(), for consistency and since it does not require to include any header file.
+2. Always provide error message parameter describing the failure condition.
+3. Do not call functions with side effects in the condition parameter of NSAssert because the condition parameter is not evaluated when assertions are disabled.
+4. Assertions should be used to verify internal implementation invariants, like internal state before or after execution of some method, etc. If assertion fails it really means the logic of the program is broken and you can't recover from this.
 
 ## 7.Properties
-1. Properties should be camel-case with the leading word being lowercase. Use of automatically synthesized instance variables is preferred. Otherwise, in order to be consistent, the backing instance variables for these properties should be camel-case with the leading word being lowercase and a leading underscore. This is the same format as Xcode's default synthesis.
-2. Order of property specifiers follow the below example:
+1. Properties should be camel-case with the leading word being lowercase. Order of property specifiers follow the below example:
 
 	```Objective-C
 	@property (strong, nonatomic, readonly) NSArray *array;
 	```
 	
-3. Always declare memory-management semantics even on readonly properties.
-4. Declare properties readonly if they are only set once in `init` method.
-5. Declare properties `copy` if they return immutable objects and aren't ever mutated in the implementation.
-6. `@synthesize` and `@dynamic` should each be declared on new lines in the implementation.
-7. Property definitions should be used in place of naked instance variables whenever possible to promote encapsulation.
-8. Prefer exposing an immutable type for a property to promote encapsulation.
-9. When using properties, instance variables should always be accessed and mutated using `self.`. This means that all properties will be visually distinct, as they will all be prefaced with `self.`. Direct instance variable access should be avoided except in initializer methods (`init`, `initWithCoder:`, etc…), `dealloc` methods and within custom setters and getters. For more information on using Accessor Methods in Initializer Methods and dealloc, see [here](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/mmPractical.html#//apple_ref/doc/uid/TP40004447-SW6).
+2. Always declare memory-management semantics even on readonly properties.
+3. Declare properties readonly if they are only set once in `init` method.
+4. Declare properties `copy` if they return immutable objects and aren't ever mutated in the implementation.
+5. Synthesize should not be used if it is not redefining default synthesize behavior. `@synthesize` and `@dynamic` should each be declared on new lines in the implementation.
+6. Prefer exposing an immutable type for a property to promote encapsulation.
+7. Avoid `self.` to access class' own properties unless you have implemented custom setter or getter. You should access class' instance variables directly instead.
 
 ### 7.1.Dot-Notation Syntax
+1. Use dot-notation for accessing and mutating properties. But do not use dot notation in a call path that contains a method call in it, since it may result in complex syntax.
 
-1. Dot-notation should be used for accessing and mutating properties. Bracket notation is preferred in all other instances.
 **For example:**
 ```objc
 view.backgroundColor = [UIColor orangeColor];
-[UIApplication sharedApplication].delegate;
+[[UIApplication sharedApplication] delegate];
 ```
 **Not:**
 ```objc
 [view setBackgroundColor:[UIColor orangeColor]];
-UIApplication.sharedApplication.delegate;
+[UIApplication sharedApplication].delegate;
 ```
 
 ### 7.2.Private Properties
+1. Prefer to create and use instance variable directly instead of private property if you are not implementing custom setter/getter.
+2. Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `SFTPrivate` or `private`) should never be used unless extending another class.
 
-1. Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `SFTPrivate` or `private`) should never be used unless extending another class.
 **For example:**
 ```objc
 @interface ESDXMLParser ()
@@ -306,15 +296,17 @@ UIApplication.sharedApplication.delegate;
 
 ## 8.Variables
 
-1. Variables should be named as descriptively as possible. This will result in self-documented easy to understand code. Single letter variable names should be avoided except in `for()` loops.
+1. Variables should be named as descriptively as possible. This will result in self-documented easy to understand code. Single letter variable names should be avoided except for counters in loops.
 2. The variable that you return from a method should also be named descriptively, its name should explain what the method return. Generic variable names like `result`, `retVal` should be avoided.
 3. There should be no instance variable declarations in header files. Instance variables belong to implementation details and should therefore be declared in class extension (anonymous categories) in implementation file.
-4. Asterisks indicating pointers belong with the variable, e.g., `NSString *text` not `NSString* text` or `NSString * text`, except in the case of constant pointers.
+4. Instance variable name should be camel-case with the leading word being lowercase and a leading underscore.
+5. Asterisks indicating pointers belong with the variable, e.g., `NSString *text` not `NSString* text` or `NSString * text`.
 
 ### 8.1.Literals
 
 1. Avoid making numbers a specific type unless necessary (for example, prefer `5` to `5.0`, and `5.3` to `5.3f`).
 2. `NSString`, `NSDictionary`, `NSArray`, and `NSNumber` literals should be used whenever creating immutable instances of those objects. Pay special care that `nil` values not be passed into `NSArray` and `NSDictionary` literals, as this will cause a crash.
+
 **For example:**
 ```objc
 NSArray *names = @[@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul"];
@@ -332,13 +324,15 @@ NSNumber *buildingZIPCode = [NSNumber numberWithInteger:10018];
 
 ### 8.2.Constants
 
-1. Constants are preferred over in-line string literals or numbers, as they allow for easy reproduction of commonly used variables and can be quickly changed without the need for find and replace. Constants should be declared as `static` constants and not `#define`s unless explicitly being used as a macro.
+1. Constants are preferred over in-line string literals or numbers, as they allow for easy reproduction of commonly used variables and can be quickly changed without the need for find and replace. Constants should be declared as `static` constants and not `#define`s, since it may appear that defined macro does not represent a constant (you never know untill you look at macro itself).
 **For example:**
 ```objc
-static NSString * const SFNetLogServiceType = @"_appalocalnetwork._tcp.";
+static NSString *const SFNetLogServiceType = @"_appalocalnetwork._tcp.";
 ```
 **Not:**
-```objc #define SFNetLogServiceType @"_appalocalnetwork._tcp."```
+```objc
+#define SFNetLogServiceType @"_appalocalnetwork._tcp."
+```
 
 2. Scope / lifetime specifiers should always stand before const specifier. 
 
@@ -352,6 +346,7 @@ static NSString * const SFNetLogServiceType = @"_appalocalnetwork._tcp.";
 
 ## 9.Blocks
 1. If the block is large, e.g. more than 15 lines, it is recommended to move it out-of-line into a local variable.
+2. [Avoid strong reference cycles when capturing self](https://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/WorkingwithBlocks/WorkingwithBlocks.html#//apple_ref/doc/uid/TP40011210-CH8-SW16).
 
 ## 10.Resources
 ### 10.1.Image Naming
