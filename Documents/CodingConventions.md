@@ -92,8 +92,7 @@ Most of these guidelines match Apple's documentation and community-accepted best
 #### 3.1.2.Pragma
 1. Use `#pragma mark` declarations in implementation file to categorize methods into functional groupings and protocol implementations.
 **For example:**
-```objc #pragma mark - Pool delegate methods```
-
+`#pragma mark - Pool delegate methods`
 2. There should be two newlines before and after pragma marks.
 
 
@@ -248,13 +247,9 @@ if (isAwesome == YES) // Never do this.
 
 1. The Ternary operator, ? , should be used when it increases clarity or code neatness. A single condition is usually all that should be evaluated. Evaluating multiple conditions is usually more understandable as an if statement, or refactored into instance variables.
 **For example:**
-```objc
-result = a > b ? x : y;
-```
+`result = a > b ? x : y;`
 **Not:**
-```objc
-result = a > b ? x = c > d ? c : d : y;
-```
+`result = a > b ? x = c > d ? c : d : y;`
 
 ### 6.3.Error Handling
 1. To indicate errors, use an `NSError **` method argument.
@@ -280,8 +275,8 @@ result = a > b ? x = c > d ? c : d : y;
 9. When using properties, instance variables should always be accessed and mutated using `self.`. This means that all properties will be visually distinct, as they will all be prefaced with `self.`. Direct instance variable access should be avoided except in initializer methods (`init`, `initWithCoder:`, etc…), `dealloc` methods and within custom setters and getters. For more information on using Accessor Methods in Initializer Methods and dealloc, see [here](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/mmPractical.html#//apple_ref/doc/uid/TP40004447-SW6).
 
 ### 7.1.Dot-Notation Syntax
-
 1. Dot-notation should be used for accessing and mutating properties. Bracket notation is preferred in all other instances.
+
 **For example:**
 ```objc
 view.backgroundColor = [UIColor orangeColor];
@@ -296,6 +291,7 @@ UIApplication.sharedApplication.delegate;
 ### 7.2.Private Properties
 
 1. Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `SFTPrivate` or `private`) should never be used unless extending another class.
+
 **For example:**
 ```objc
 @interface ESDXMLParser ()
@@ -315,6 +311,7 @@ UIApplication.sharedApplication.delegate;
 
 1. Avoid making numbers a specific type unless necessary (for example, prefer `5` to `5.0`, and `5.3` to `5.3f`).
 2. `NSString`, `NSDictionary`, `NSArray`, and `NSNumber` literals should be used whenever creating immutable instances of those objects. Pay special care that `nil` values not be passed into `NSArray` and `NSDictionary` literals, as this will cause a crash.
+
 **For example:**
 ```objc
 NSArray *names = @[@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul"];
@@ -338,7 +335,9 @@ NSNumber *buildingZIPCode = [NSNumber numberWithInteger:10018];
 static NSString * const SFNetLogServiceType = @"_appalocalnetwork._tcp.";
 ```
 **Not:**
-```objc #define SFNetLogServiceType @"_appalocalnetwork._tcp."```
+```objc
+#define SFNetLogServiceType @"_appalocalnetwork._tcp."
+```
 
 2. Scope / lifetime specifiers should always stand before const specifier. 
 
