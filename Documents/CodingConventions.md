@@ -305,7 +305,7 @@ view.backgroundColor = [UIColor orangeColor];
 2. The variable that you return from a method should also be named descriptively, its name should explain what the method return. Generic variable names like `result`, `retVal` should be avoided.
 3. There should be no instance variable declarations in header files. Instance variables belong to implementation details and should therefore be declared in class extension (anonymous categories) in implementation file.
 4. Instance variable name should be camel-case with the leading word being lowercase and a leading underscore.
-5. Asterisks indicating pointers belong with the variable, e.g., `NSString *text` not `NSString* text` or `NSString * text`, except in the case of constant pointers.
+5. Asterisks indicating pointers belong with the variable, e.g., `NSString *text` not `NSString* text` or `NSString * text`.
 
 ### 8.1.Literals
 
@@ -332,7 +332,7 @@ NSNumber *buildingZIPCode = [NSNumber numberWithInteger:10018];
 1. Constants are preferred over in-line string literals or numbers, as they allow for easy reproduction of commonly used variables and can be quickly changed without the need for find and replace. Constants should be declared as `static` constants and not `#define`s, since it may appear that defined macro does not represent a constant (you never know untill you look at macro itself).
 **For example:**
 ```objc
-static NSString * const SFNetLogServiceType = @"_appalocalnetwork._tcp.";
+static NSString *const SFNetLogServiceType = @"_appalocalnetwork._tcp.";
 ```
 **Not:**
 ```objc
