@@ -1,6 +1,6 @@
 //
-//  AnnotatedElementModel.h
-//  AttributesCodeGeneratorLogic
+//  AttributeModelsContainer.m
+//  AttributesResearchLab
 //
 //  
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -29,14 +29,58 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import <Foundation/Foundation.h>
 #import "AttributeModelsContainer.h"
 
-@interface AnnotatedElementModel : NSObject {}
+@interface AttributeModelsContainer(){
+    NSMutableArray *_attributeModels;
+}
 
-@property(nonatomic, strong) NSString *name;
-@property(nonatomic, strong) AttributeModelsContainer *attributeModels;
+- (AttributeModel *)attributeModelWithClassType:(NSString *)classType;
 
-@property(nonatomic, weak) NSObject *holder;
+@end
+
+@implementation AttributeModelsContainer
+
+@synthesize attributeModels = _attributeModels;
+
+- (id)init {
+    self = [super init];
+    if (self == nil) {
+        return nil;
+    }
+    
+    _attributeModels = [NSMutableArray array];
+    
+    return self;
+}
+
+- (void)addAttributeModelsFromContainer:(AttributeModelsContainer *)attributeModelsContainer {
+    for (AttributeModel *currentAttributeModel in attributeModelsContainer.attributeModels) {
+        [self addAttributeModel:currentAttributeModel];
+    }
+}
+
+- (void)addAttributeModel:(AttributeModel *)attributeModel {
+    AttributeModel *existingAttributeModel = [self attributeModelWithClassType:attributeModel.classType];
+    
+    if (existingAttributeModel) {
+        [existingAttributeModel.objectCustomizers addObjectsFromArray:attributeModel.objectCustomizers];
+    } else {
+        [_attributeModels addObject:attributeModel];
+    }
+}
+
+- (AttributeModel *)attributeModelWithClassType:(NSString *)classType {
+    AttributeModel *result = nil;
+    
+    for (AttributeModel *currentAttributeModel in _attributeModels) {
+        if ([currentAttributeModel.classType isEqualToString:classType]) {
+            result = currentAttributeModel;
+            break;
+        }
+    }
+    
+    return result;
+}
 
 @end

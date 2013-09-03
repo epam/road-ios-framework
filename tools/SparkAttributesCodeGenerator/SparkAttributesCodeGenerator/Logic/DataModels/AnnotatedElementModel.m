@@ -40,7 +40,7 @@
         return nil;
     }
     
-    self.attributeModels = [NSMutableArray array];
+    self.attributeModels = [[AttributeModelsContainer alloc] init];
     
     return self;
 }

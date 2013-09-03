@@ -1,6 +1,6 @@
 //
-//  AnnotatedElementModel.h
-//  AttributesCodeGeneratorLogic
+//  AttributeModelsContainer.h
+//  AttributesResearchLab
 //
 //  
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,13 +30,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AttributeModelsContainer.h"
+#import "AttributeModel.h"
 
-@interface AnnotatedElementModel : NSObject {}
+@interface AttributeModelsContainer : NSObject
 
-@property(nonatomic, strong) NSString *name;
-@property(nonatomic, strong) AttributeModelsContainer *attributeModels;
+@property(nonatomic, readonly) NSArray *attributeModels;
 
-@property(nonatomic, weak) NSObject *holder;
+- (void)addAttributeModel:(AttributeModel *)aAttributeModel;
+- (void)addAttributeModelsFromContainer:(AttributeModelsContainer *)attributeModelsContainer;
 
 @end

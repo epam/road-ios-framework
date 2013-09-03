@@ -45,7 +45,7 @@
     [result appendLine:[PropertiesAttributesCodeGenerator generateCodeForModelsList:classModel.propertiesList]];
     [result appendLine:[MethodsAttributesCodeGenerator generateCodeForModelsList:classModel.methodsList]];
     
-    if ([classModel.attributeModels count] > 0) {
+    if ([classModel.attributeModels.attributeModels count] > 0) {
         NSMutableString *classAttrCode = [self generateCodeForModel:classModel];
         
         if ([classAttrCode length] > 0) {
