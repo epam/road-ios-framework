@@ -171,7 +171,7 @@ Every comment that you add should be either appledoc in header files or should s
 7. `init` methods should be structured like this:
 
 ```objc
-- (instancetype)init {
+- (id)init {
     self = [super init]; // or call the designated initalizer
     if (self) {
         // Custom initialization
