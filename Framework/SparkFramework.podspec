@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/epam/spark-ios-framework.git", :tag => "0.0.1" }
   
   s.subspec 'SparkCore' do |core|
-    core.source_files = 'Framework/SparkCore/**/*.{h,m}'
+    core.source_files = 'SparkCore/**/*.{h,m}'
   end
 
 end
