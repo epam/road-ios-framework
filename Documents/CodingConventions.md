@@ -94,7 +94,7 @@ Most of these guidelines match Apple's documentation and community-accepted best
 1. Use `#pragma mark` declarations in implementation file to categorize methods into functional groupings and protocol implementations.
 **For example:**
 `#pragma mark - Pool delegate methods`
-2. There should be two newlines before and after pragma marks.
+2. There should be one newline before and after pragma marks.
 
 
 ### 3.2.Comments
