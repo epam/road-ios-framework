@@ -135,7 +135,7 @@ Every comment that you add should be either appledoc in header files or should s
 	```Objective-C
 	@interface NSString : NSObject <NSCopying, NSMutableCopying, NSCoding>
 	```
-2. Omit the empty set of braces on interfaces that do not declare any instance variables.
+2. Omit the empty set of curly braces on interfaces that do not declare any instance variables.
 
 ## 5.Categories
 1. Category file name should follow the next pattern: `ClassName+CategoryName.h` and `ClassName+CategoryName.m`.
@@ -242,7 +242,7 @@ if (isAwesome == YES) // Never do this.
 3. Prefer positive comparisons to negative since it improves code clarity.
 
 #### 6.2.2.Ternary Operator
-1. The Ternary operator, ? , should be used when it increases clarity or code neatness. A single condition is usually all that should be evaluated. Evaluating multiple conditions is usually more understandable as an if statement, or refactored into instance variables.
+1. The Ternary operator, ? , should be used when it increases clarity or code neatness. A single condition is usually all that should be evaluated. Evaluating multiple conditions is usually more understandable as an if statement, or refactored into boolean variables.
 **For example:**
 `result = a > b ? x : y;`
 **Not:**
@@ -260,38 +260,36 @@ if (isAwesome == YES) // Never do this.
 ***TBD***
 
 ## 7.Properties
-1. Properties should be camel-case with the leading word being lowercase. Use of automatically synthesized instance variables is preferred. Otherwise, in order to be consistent, the backing instance variables for these properties should be camel-case with the leading word being lowercase and a leading underscore. This is the same format as Xcode's default synthesis.
-2. Order of property specifiers follow the below example:
+1. Properties should be camel-case with the leading word being lowercase. Order of property specifiers follow the below example:
 
 	```Objective-C
 	@property (strong, nonatomic, readonly) NSArray *array;
 	```
 	
-3. Always declare memory-management semantics even on readonly properties.
-4. Declare properties readonly if they are only set once in `init` method.
-5. Declare properties `copy` if they return immutable objects and aren't ever mutated in the implementation.
-6. `@synthesize` and `@dynamic` should each be declared on new lines in the implementation.
-7. Property definitions should be used in place of naked instance variables whenever possible to promote encapsulation.
-8. Prefer exposing an immutable type for a property to promote encapsulation.
-9. When using properties, instance variables should always be accessed and mutated using `self.`. This means that all properties will be visually distinct, as they will all be prefaced with `self.`. Direct instance variable access should be avoided except in initializer methods (`init`, `initWithCoder:`, etc…), `dealloc` methods and within custom setters and getters. For more information on using Accessor Methods in Initializer Methods and dealloc, see [here](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/mmPractical.html#//apple_ref/doc/uid/TP40004447-SW6).
+2. Always declare memory-management semantics even on readonly properties.
+3. Declare properties readonly if they are only set once in `init` method.
+4. Declare properties `copy` if they return immutable objects and aren't ever mutated in the implementation.
+5. Synthesize should not be used if it is not redefining default synthesize behavior. `@synthesize` and `@dynamic` should each be declared on new lines in the implementation.
+6. Prefer exposing an immutable type for a property to promote encapsulation.
+7. For public properties, instance variables should always be accessed and mutated using `self.`. Direct instance variable access for public property should be avoided except in initializer methods (`init`, `initWithCoder:`, etc…), `dealloc` methods and within custom setters and getters. For more information on using Accessor Methods in Initializer Methods and dealloc, see [here](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/mmPractical.html#//apple_ref/doc/uid/TP40004447-SW6).
 
 ### 7.1.Dot-Notation Syntax
-1. Dot-notation should be used for accessing and mutating properties. Bracket notation is preferred in all other instances.
+1. Use dot-notation for accessing and mutating properties. But do not use dot notation in a call path that contains a method call in it, since it may result in complex syntax.
 
 **For example:**
 ```objc
 view.backgroundColor = [UIColor orangeColor];
-[UIApplication sharedApplication].delegate;
+[[UIApplication sharedApplication] delegate];
 ```
 **Not:**
 ```objc
 [view setBackgroundColor:[UIColor orangeColor]];
-UIApplication.sharedApplication.delegate;
+[UIApplication sharedApplication].delegate;
 ```
 
 ### 7.2.Private Properties
-
-1. Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `SFTPrivate` or `private`) should never be used unless extending another class.
+1. Prefer to create and use instance variable directly instead of private property if you are not implementing custom setter/getter.
+2. Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `SFTPrivate` or `private`) should never be used unless extending another class.
 
 **For example:**
 ```objc
@@ -306,7 +304,8 @@ UIApplication.sharedApplication.delegate;
 1. Variables should be named as descriptively as possible. This will result in self-documented easy to understand code. Single letter variable names should be avoided except in `for()` loops.
 2. The variable that you return from a method should also be named descriptively, its name should explain what the method return. Generic variable names like `result`, `retVal` should be avoided.
 3. There should be no instance variable declarations in header files. Instance variables belong to implementation details and should therefore be declared in class extension (anonymous categories) in implementation file.
-4. Asterisks indicating pointers belong with the variable, e.g., `NSString *text` not `NSString* text` or `NSString * text`, except in the case of constant pointers.
+4. Instance variable name should be camel-case with the leading word being lowercase and a leading underscore.
+5. Asterisks indicating pointers belong with the variable, e.g., `NSString *text` not `NSString* text` or `NSString * text`, except in the case of constant pointers.
 
 ### 8.1.Literals
 
@@ -352,6 +351,7 @@ static NSString * const SFNetLogServiceType = @"_appalocalnetwork._tcp.";
 
 ## 9.Blocks
 1. If the block is large, e.g. more than 15 lines, it is recommended to move it out-of-line into a local variable.
+2. [Avoid strong reference cycles when capturing self](https://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/WorkingwithBlocks/WorkingwithBlocks.html#//apple_ref/doc/uid/TP40011210-CH8-SW16).
 
 ## 10.Resources
 ### 10.1.Image Naming
