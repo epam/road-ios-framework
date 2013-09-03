@@ -1,7 +1,8 @@
 //
-//  SparkCore.h
-//  SparkCore
+//  AttributeModelsContainer.m
+//  AttributesResearchLab
 //
+//  
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without 
@@ -26,20 +27,60 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
 
-#ifndef SparkCore_SparkCore_h
-#define SparkCore_SparkCore_h
+#import "AttributeModelsContainer.h"
 
-#import "NSMutableString+SFStringFormatter.h"
-#import "NSString+AccessorUtilities.h"
-#import "NSObject+AttachedCollections.h"
-#import "NSArray+EmptyArrayChecks.h"
-#import "NSBundle+ParameterList.h"
-#import "SFMutableObject.h"
-#import "SFPooledObject.h"
-#import "SFPoolObject.h"
-#import "SFObjectPool.h"
-#import "SFObject.h"
-#import "SparkSingletonDefinition.h"
-#import "NSRegularExpression+SparkExtension.h"
-#endif
+@interface AttributeModelsContainer(){
+    NSMutableArray *_attributeModels;
+}
+
+- (AttributeModel *)attributeModelWithClassType:(NSString *)classType;
+
+@end
+
+@implementation AttributeModelsContainer
+
+@synthesize attributeModels = _attributeModels;
+
+- (id)init {
+    self = [super init];
+    if (self == nil) {
+        return nil;
+    }
+    
+    _attributeModels = [NSMutableArray array];
+    
+    return self;
+}
+
+- (void)addAttributeModelsFromContainer:(AttributeModelsContainer *)attributeModelsContainer {
+    for (AttributeModel *currentAttributeModel in attributeModelsContainer.attributeModels) {
+        [self addAttributeModel:currentAttributeModel];
+    }
+}
+
+- (void)addAttributeModel:(AttributeModel *)attributeModel {
+    AttributeModel *existingAttributeModel = [self attributeModelWithClassType:attributeModel.classType];
+    
+    if (existingAttributeModel) {
+        [existingAttributeModel.objectCustomizers addObjectsFromArray:attributeModel.objectCustomizers];
+    } else {
+        [_attributeModels addObject:attributeModel];
+    }
+}
+
+- (AttributeModel *)attributeModelWithClassType:(NSString *)classType {
+    AttributeModel *result = nil;
+    
+    for (AttributeModel *currentAttributeModel in _attributeModels) {
+        if ([currentAttributeModel.classType isEqualToString:classType]) {
+            result = currentAttributeModel;
+            break;
+        }
+    }
+    
+    return result;
+}
+
+@end

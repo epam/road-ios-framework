@@ -1,7 +1,8 @@
 //
-//  SparkCore.h
-//  SparkCore
+//  AttributeModelsContainer.h
+//  AttributesResearchLab
 //
+//  
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without 
@@ -26,20 +27,16 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
 
-#ifndef SparkCore_SparkCore_h
-#define SparkCore_SparkCore_h
+#import <Foundation/Foundation.h>
+#import "AttributeModel.h"
 
-#import "NSMutableString+SFStringFormatter.h"
-#import "NSString+AccessorUtilities.h"
-#import "NSObject+AttachedCollections.h"
-#import "NSArray+EmptyArrayChecks.h"
-#import "NSBundle+ParameterList.h"
-#import "SFMutableObject.h"
-#import "SFPooledObject.h"
-#import "SFPoolObject.h"
-#import "SFObjectPool.h"
-#import "SFObject.h"
-#import "SparkSingletonDefinition.h"
-#import "NSRegularExpression+SparkExtension.h"
-#endif
+@interface AttributeModelsContainer : NSObject
+
+@property(nonatomic, readonly) NSArray *attributeModels;
+
+- (void)addAttributeModel:(AttributeModel *)aAttributeModel;
+- (void)addAttributeModelsFromContainer:(AttributeModelsContainer *)attributeModelsContainer;
+
+@end
