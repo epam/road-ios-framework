@@ -271,7 +271,7 @@ if (isAwesome == YES) // Never do this.
 4. Declare properties `copy` if they return immutable objects and aren't ever mutated in the implementation.
 5. Synthesize should not be used if it is not redefining default synthesize behavior. `@synthesize` and `@dynamic` should each be declared on new lines in the implementation.
 6. Prefer exposing an immutable type for a property to promote encapsulation.
-7. For public properties, instance variables should always be accessed and mutated using `self.`. Direct instance variable access for public property should be avoided except in initializer methods (`init`, `initWithCoder:`, etc…), `dealloc` methods and within custom setters and getters. For more information on using Accessor Methods in Initializer Methods and dealloc, see [here](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/mmPractical.html#//apple_ref/doc/uid/TP40004447-SW6).
+7. Avoid `self.` to access class' own properties unless you have implemented custom setter or getter. You should access class' instance variables directly instead.
 
 ### 7.1.Dot-Notation Syntax
 1. Use dot-notation for accessing and mutating properties. But do not use dot notation in a call path that contains a method call in it, since it may result in complex syntax.
