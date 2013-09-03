@@ -15,8 +15,6 @@ Most of these guidelines match Apple's documentation and community-accepted best
         2. [Pragma](#312pragma)
     2. [Comments](#32comments)
         1. [Comment Types](#321comment-types)
-        2. [Pre and Postconditions](#322pre-and-postconditions)
-        3. [Thread Safety](#323thread-safety)
 4. [Classes](#4classes)
 5. [Categories](#5categories)
 6. [Methods](#6methods)
@@ -122,12 +120,6 @@ Every comment that you add should be either appledoc in header files or should s
 1. TODO(date_added,author) - todo item, describes something that needs to be done.
 2. DESNOTE(date_added,author) - designers note, explain workaround, unexpected code, design decisions, etc.
 3. THIRDPARTY_START(date_added,who_added,license_name_or_link,taken_from_link) and THIRDPARTY_END - delimits copy-pasted code snippet. Or use THIRDPARTY(date_added,who_added,license_name_or_link,taken_from_link) - to mark copy-pasted function.
-
-#### 3.2.2.Pre and Postconditions
-***TBD***
-
-#### 3.2.3.Thread Safety
-***TBD***
 
 ## 4.Classes
 1. Interface declaration follows the below example:
@@ -257,7 +249,10 @@ if (isAwesome == YES) // Never do this.
 2. Don't use exceptions for flow control, use exceptions only to indicate programmer error such as out-of-bounds collection access, attempts to mutate immutable objects, sending an invalid message, etc. These sorts of errors should be taken care of when an application is being developed, rather than in production.
 
 ### 6.5.Assertion
-***TBD***
+1. Use NSAssert, not assert(), for consistency and since it does not require to include any header file.
+2. Always provide error message parameter describing the failure condition.
+3. Do not call functions with side effects in the condition parameter of NSAssert because the condition parameter is not evaluated when assertions are disabled.
+4. Assertions should be used to verify internal implementation invariants, like internal state before or after execution of some method, etc. If assertion fails it really means the logic of the program is broken and you can't recover from this.
 
 ## 7.Properties
 1. Properties should be camel-case with the leading word being lowercase. Order of property specifiers follow the below example:
