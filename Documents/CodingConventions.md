@@ -102,21 +102,19 @@ The format that is used for code comments can be found here: [appledoc](http://g
 
 1. All class, protocol, method and property declarations should be documented using appledoc's format. Only header files must be commented using appledoc's format. The reason behind this is that the documentation generator script - which issues build warning for undocumented members - checks only the header files.
 2. Any implementation file should start with copyright comment.
-3. When commenting methods outside of the method (eg. at the top of the method) always write complete sentences beginning with a capital letter, and ending the sentence with a dot. 
-4. When writing comments inside a method's body start with a lower case letter and do not end the comment with a dot, and always leave a space after `//`.
-5. Leave an empty line before a comment block.
-6. Always write comments before the line that is commented, do not add a comment to the end of the line.
-7. Xcode uses text-wrapping by default. Code comments look best on different monitors when they do not have line breaks. Please consider writing comments that are not broke into a fix width column but is allowed to flow in the entire width of the IDE's (eg. when the window is resized Xcode automatically wraps the long lines).
-8. Use neutral language. Do not write `this simple code` or `this small component` - but instead write a neutral sentence like `the component is used in ...` and do not speak unfavorably about development tools, competitors, employers or working conditions
-9. **Do** explain the code, but don't repeat what it does.
-10. **Do** answer the <u>**why**</u> of the code rather than the **how**.
-11. Add information that the best comment to a workaround or some strange bug-fix is an issue to link in issue tracking system or some place where this issue were found (stack overflow etc).  
-12. As a rule of thumb your comment should never be shorter than a sentence. So two or three words will not do. It would be even better for class or method comments to be a full-blown paragraph.
-13. Use only English for code comments.
-14. Use 3rd person (declarative descriptive) not 2nd person (imperative prescriptive): `Formats the paragraph`, not `Format the paragraph`
-15. Method descriptions begin with a verb phrase: `Formats the text of this paragraph`, not `This method is formatting the text of this paragraph`
-16. Use `this` instead of `the` when referring to an object created from the current class: `Uses the toolkit for this component to …`, not `Uses the toolkit for the component to …`.
-17. Source repository capabilities should be leveraged for storing source-code branches, so commented-out code is not allowed. If there is a real need to keep code as comments it should be clearly stated.
+3. Leave an empty line before a comment block. Leave one space after `//`.
+4. Always write comments before the line that is commented, do not add a comment to the end of the line.
+5. Xcode uses text-wrapping by default. Code comments look best on different monitors when they do not have line breaks. Please consider writing comments that are not broke into a fix width column but is allowed to flow in the entire width of the IDE's (eg. when the window is resized Xcode automatically wraps the long lines).
+6. Use neutral language. Do not write `this simple code` or `this small component` - but instead write a neutral sentence like `the component is used in ...` and do not speak unfavorably about development tools, competitors, employers or working conditions
+7. **Do** explain the code, but don't repeat what it does.
+8. **Do** answer the <u>**why**</u> of the code rather than the **how**.
+9. Add information that the best comment to a workaround or some strange bug-fix is an issue to link in issue tracking system or some place where this issue were found (stack overflow etc).  
+10. Your comment should never be shorter than a sentence, so two or three words will not do. Comments should start with a capital letter, and end the sentence with a dot. It would be even better for class or method comments to be a full-blown paragraph.
+11. Use only English for code comments.
+12. Use 3rd person (declarative descriptive) not 2nd person (imperative prescriptive): `Formats the paragraph`, not `Format the paragraph`
+13. Method descriptions begin with a verb phrase: `Formats the text of this paragraph`, not `This method is formatting the text of this paragraph`
+14. Use `this` instead of `the` when referring to an object created from the current class: `Uses the toolkit for this component to …`, not `Uses the toolkit for the component to …`.
+15. Source repository capabilities should be leveraged for storing source-code branches, so commented-out code is not allowed. If there is a real need to keep code as comments it should be clearly stated.
 
 #### 3.2.1.Comment Types
 Every comment that you add should be either appledoc in header files or should start with a comment type description mark. Here is the list of possible comment type description marks:
