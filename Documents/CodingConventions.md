@@ -165,7 +165,11 @@ Every comment that you add should be either appledoc in header files or should s
 
 1. Comment and clearly identify your designated initializer. It is important for those who might be subclassing your class that the designated initializer be clearly identified. That way, they only need to subclass a single initializer (of potentially several) to guarantee their subclass' initializer is called. It also helps those debugging your class in the future understand the flow of initialization code if they need to step through it.
 2. `init` methods should be placed at the top of the implementation, directly after the `@synthesize` and `@dynamic` statements.
-3. `init` methods should be structured like this:
+3. Don't initialize variables to `0` or `nil` in the init method, it's redundant. All memory for a newly allocated object is initialized to `0` (except for isa), so don't clutter up the init method by re-initializing variables to `0` or `nil`.
+4. Do not invoke the `NSObject` class method `new`, nor override it in a subclass. Instead, use `alloc` and `init` methods to instantiate retained objects. Modern Objective-C code explicitly calls `alloc` and an `init` method to create and retain an object. As the `new` class method is rarely used, it makes reviewing code for correct memory management more difficult.
+5. `dealloc` method should be placed directly below the `init` methods of a class.
+6. `dealloc` should process instance variables in the same order the they were declared, so it is easier for a reviewer to verify.
+7. `init` methods should be structured like this:
 
 ```objc
 - (instancetype)init {
@@ -177,11 +181,6 @@ Every comment that you add should be either appledoc in header files or should s
     return self;
 }
 ```
-
-4. Don't initialize variables to `0` or `nil` in the init method, it's redundant. All memory for a newly allocated object is initialized to `0` (except for isa), so don't clutter up the init method by re-initializing variables to `0` or `nil`.
-5. Do not invoke the `NSObject` class method `new`, nor override it in a subclass. Instead, use `alloc` and `init` methods to instantiate retained objects. Modern Objective-C code explicitly calls `alloc` and an `init` method to create and retain an object. As the `new` class method is rarely used, it makes reviewing code for correct memory management more difficult.
-6. `dealloc` method should be placed directly below the `init` methods of a class.
-7. `dealloc` should process instance variables in the same order the they were declared, so it is easier for a reviewer to verify.
 
 ### 6.2.Conditionals
 
