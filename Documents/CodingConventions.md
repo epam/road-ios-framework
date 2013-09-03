@@ -329,7 +329,7 @@ NSNumber *buildingZIPCode = [NSNumber numberWithInteger:10018];
 
 ### 8.2.Constants
 
-1. Constants are preferred over in-line string literals or numbers, as they allow for easy reproduction of commonly used variables and can be quickly changed without the need for find and replace. Constants should be declared as `static` constants and not `#define`s unless explicitly being used as a macro.
+1. Constants are preferred over in-line string literals or numbers, as they allow for easy reproduction of commonly used variables and can be quickly changed without the need for find and replace. Constants should be declared as `static` constants and not `#define`s, since it may appear that defined macro does not represent a constant (you never know untill you look at macro itself).
 **For example:**
 ```objc
 static NSString * const SFNetLogServiceType = @"_appalocalnetwork._tcp.";
