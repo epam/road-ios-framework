@@ -142,7 +142,7 @@ Every comment that you add should be either appledoc in header files or should s
 ## 5.Categories
 1. Category file name should follow the next pattern: `ClassName+CategoryName.h` and `ClassName+CategoryName.m`.
 2. If you add a category to a class without `SF` prefix then the category name should have `SF` prefix. If the class name already has `SF` prefix the category name should not have `SF` prefix. ***For example*** `NSObject+SFAttributes`, but `SFServiceProvider+Logging`.
-3. If you add a category to a class without `SF` prefix then the category method should have `sf` prefix to avoid method name collisions.
+3. If you add a category to a class without `SF` prefix then the category method should have `SF` prefix to avoid method name collisions.
 4. Categories should be named for the sort of functionality they provide. Don't create umbrella categories.
 
 ## 6.Methods
