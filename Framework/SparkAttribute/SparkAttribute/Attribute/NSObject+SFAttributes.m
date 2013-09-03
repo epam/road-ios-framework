@@ -136,22 +136,26 @@
     return [self attributesWithType:requiredClassOfAttribute from:self.attributesForClass];
 }
 
-+ (NSObject *)lastAttributeForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute {
++ (id)attributeForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute {
+    assert(requiredClassOfAttribute);
     NSArray *attributes = [self attributesForMethod:methodName withAttributeType:requiredClassOfAttribute];
     return ([attributes count] == 0) ? nil : [attributes lastObject];
 }
 
-+ (NSObject *)lastAttributeForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute {
++ (id)attributeForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute {
+    assert(requiredClassOfAttribute);
     NSArray *attributes = [self attributesForProperty:propertyName withAttributeType:requiredClassOfAttribute];
     return ([attributes count] == 0) ? nil : [attributes lastObject];
 }
 
-+ (NSObject *)lastAttributeForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute {
++ (id)attributeForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute {
+    assert(requiredClassOfAttribute);
     NSArray *attributes = [self attributesForIvar:ivarName withAttributeType:requiredClassOfAttribute];
     return ([attributes count] == 0) ? nil : [attributes lastObject];
 }
 
-+ (NSObject *)lastAttributeForClassWithAttributeType:(Class)requiredClassOfAttribute {
++ (id)attributeForClassWithAttributeType:(Class)requiredClassOfAttribute {
+    assert(requiredClassOfAttribute);
     NSArray *attributes = [self attributesForClassWithAttributeType:requiredClassOfAttribute];
     return ([attributes count] == 0) ? nil : [attributes lastObject];
 }
