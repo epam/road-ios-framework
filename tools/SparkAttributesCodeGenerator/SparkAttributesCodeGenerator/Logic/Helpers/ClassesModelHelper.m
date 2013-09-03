@@ -61,7 +61,7 @@
         return;
     }
     
-    [currentClassModel1.attributeModels addObjectsFromArray:classModelToMerge.attributeModels];
+    [currentClassModel1.attributeModels addAttributeModelsFromContainer:classModelToMerge.attributeModels];
     [currentClassModel1.filesToImport addObjectsFromArray:classModelToMerge.filesToImport];
     
     [self mergeFieldsToClassModel:currentClassModel1 fromClassModel:classModelToMerge];
@@ -93,7 +93,7 @@
             continue;
         }
         
-        [currentMethodModel1.attributeModels addObjectsFromArray:currentMethodModel2.attributeModels];
+        [currentMethodModel1.attributeModels addAttributeModelsFromContainer:currentMethodModel2.attributeModels];
     }
 }
 
@@ -125,7 +125,7 @@
             continue;
         }
         
-        [currentFieldModel1.attributeModels addObjectsFromArray:currentFieldModel2.attributeModels];
+        [currentFieldModel1.attributeModels addAttributeModelsFromContainer:currentFieldModel2.attributeModels];
     }
 }
 
@@ -153,7 +153,7 @@
             continue;
         }
         
-        [currentPropertyModel1.attributeModels addObjectsFromArray:currentPropertyModel2.attributeModels];
+        [currentPropertyModel1.attributeModels addAttributeModelsFromContainer:currentPropertyModel2.attributeModels];
     }
 }
 

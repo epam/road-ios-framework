@@ -34,6 +34,6 @@
 @interface AttributeModel : NSObject {}
 
 @property(nonatomic, strong) NSString *classType;
-@property(nonatomic, strong) NSArray *objectCustomizers;
+@property(nonatomic, strong) NSMutableArray *objectCustomizers;
 
 @end

@@ -261,20 +261,20 @@
     STAssertTrue([methods count] == 0, @"methods must not contain values");
 }
 
-- (void)test_lastAttributeForMethod {
-    STAssertTrue([AnnotatedClass lastAttributeForMethod:@"viewDidLoad" withAttributeType:[CustomSFTestAttribute class]] != nil, @"please check function");
+- (void)test_attributeForMethod {
+    STAssertTrue([AnnotatedClass attributeForMethod:@"viewDidLoad" withAttributeType:[CustomSFTestAttribute class]] != nil, @"please check function");
 }
 
-- (void)test_lastAttributeForProperty {
-    STAssertTrue([AnnotatedClass lastAttributeForProperty:@"window" withAttributeType:[CustomSFTestAttribute class]] != nil, @"please check function");
+- (void)test_attributeForProperty {
+    STAssertTrue([AnnotatedClass attributeForProperty:@"window" withAttributeType:[CustomSFTestAttribute class]] != nil, @"please check function");
 }
 
-- (void)test_lastAttributeForIvar {
-    STAssertTrue([AnnotatedClass lastAttributeForIvar:@"_someField" withAttributeType:[SFTestAttribute class]] != nil, @"please check function");
+- (void)test_attributeForIvar {
+    STAssertTrue([AnnotatedClass attributeForIvar:@"_someField" withAttributeType:[SFTestAttribute class]] != nil, @"please check function");
 }
 
-- (void)test_lastAttributeForClassWithAttributeType {
-    STAssertTrue([AnnotatedClass lastAttributeForClassWithAttributeType:[CustomSFTestAttribute class]] != nil, @"please check function");
+- (void)test_attributeForClassWithAttributeType {
+    STAssertTrue([AnnotatedClass attributeForClassWithAttributeType:[CustomSFTestAttribute class]] != nil, @"please check function");
 }
 
 #pragma mark -

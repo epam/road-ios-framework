@@ -39,9 +39,9 @@
 
 #pragma mark Will be overridden by annotated class
 
-+ (NSDictionary *)attributesFactoriesForMethods;
-+ (NSDictionary *)attributesFactoriesForProperties;
-+ (NSDictionary *)attributesFactoriesForIvars;
++ (NSMutableDictionary *)attributesFactoriesForMethods;
++ (NSMutableDictionary *)attributesFactoriesForProperties;
++ (NSMutableDictionary *)attributesFactoriesForIvars;
 + (NSArray *)attributesForClass;
 
 #pragma mark -

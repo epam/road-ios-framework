@@ -33,4 +33,13 @@
 
 @implementation AttributeModel
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        self.objectCustomizers = [NSMutableArray array];
+    }
+    return self;
+}
+
 @end

@@ -30,11 +30,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AttributeModelsContainer.h"
 
 @interface AnnotatedElementModel : NSObject {}
 
 @property(nonatomic, strong) NSString *name;
-@property(nonatomic, strong) NSMutableArray *attributeModels;
+@property(nonatomic, strong) AttributeModelsContainer *attributeModels;
 
 @property(nonatomic, weak) NSObject *holder;
 

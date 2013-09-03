@@ -77,7 +77,7 @@
     [result appendLine:@"    "];
     
     for (AnnotatedElementModel *currentModel in modelsList) {
-        if ([currentModel.attributeModels count] == 0) {
+        if ([currentModel.attributeModels.attributeModels count] == 0) {
             continue;
         }
         
@@ -96,7 +96,7 @@
 + (NSMutableString *)generateCodeForModel:(AnnotatedElementModel *)model {
     NSMutableString *result = [NSMutableString new];
     
-    NSUInteger countOfAttributes = [model.attributeModels count];
+    NSUInteger countOfAttributes = [model.attributeModels.attributeModels count];
     
     if (countOfAttributes == 0) {
         return result;
@@ -117,7 +117,7 @@
     [result appendFormat:@"        return %@;\n", listHolderName];
     [result appendLine:@"    }"];
     [result appendLine:@"    "];
-    [result appendFormat:@"    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:%ld];\n", (unsigned long)[model.attributeModels count]];
+    [result appendFormat:@"    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:%ld];\n", (unsigned long)[model.attributeModels.attributeModels count]];
     [result appendLine:@"    "];
     [result appendString:[self generateAttributesCreatingBodyForModels:model.attributeModels]];
     [result appendFormat:@"    %@ = attributesArray;\n", listHolderName];
@@ -158,12 +158,12 @@
     return @"";
 }
 
-+ (NSString *)generateAttributesCreatingBodyForModels:(NSArray *)attributeModels {
++ (NSString *)generateAttributesCreatingBodyForModels:(AttributeModelsContainer *)attributeModels {
     NSMutableString *result = [NSMutableString new];
     
     NSUInteger attributeIndex = 1;
     
-    for (AttributeModel *currentModel in attributeModels) {
+    for (AttributeModel *currentModel in attributeModels.attributeModels) {
         NSString *attributeVariable = [NSString stringWithFormat:@"attr%ld", (unsigned long)attributeIndex];
         
         [result appendFormat:@"    %@ *%@ = [[%@ alloc] init];\n", currentModel.classType, attributeVariable, currentModel.classType];

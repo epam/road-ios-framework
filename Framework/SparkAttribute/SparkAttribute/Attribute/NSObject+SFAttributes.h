@@ -39,10 +39,10 @@
 + (NSArray *)attributesForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
 + (NSArray *)attributesForClassWithAttributeType:(Class)requiredClassOfAttribute;
 
-+ (NSObject *)lastAttributeForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute;
-+ (NSObject *)lastAttributeForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute;
-+ (NSObject *)lastAttributeForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
-+ (NSObject *)lastAttributeForClassWithAttributeType:(Class)requiredClassOfAttribute;
++ (id)attributeForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute;
++ (id)attributeForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute;
++ (id)attributeForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
++ (id)attributeForClassWithAttributeType:(Class)requiredClassOfAttribute;
 
 + (BOOL)hasAttributesForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute;
 + (BOOL)hasAttributesForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute;
