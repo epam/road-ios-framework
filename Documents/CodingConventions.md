@@ -301,7 +301,7 @@ view.backgroundColor = [UIColor orangeColor];
 
 ## 8.Variables
 
-1. Variables should be named as descriptively as possible. This will result in self-documented easy to understand code. Single letter variable names should be avoided except in `for()` loops.
+1. Variables should be named as descriptively as possible. This will result in self-documented easy to understand code. Single letter variable names should be avoided except for counters in loops.
 2. The variable that you return from a method should also be named descriptively, its name should explain what the method return. Generic variable names like `result`, `retVal` should be avoided.
 3. There should be no instance variable declarations in header files. Instance variables belong to implementation details and should therefore be declared in class extension (anonymous categories) in implementation file.
 4. Instance variable name should be camel-case with the leading word being lowercase and a leading underscore.
