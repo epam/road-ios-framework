@@ -24,8 +24,9 @@ Most of these guidelines match Apple's documentation and community-accepted best
     2. [Conditionals](#62conditionals)
         1. [Booleans](#621booleans)
         2. [Ternary Operator](#622ternary-operator)
-    4. [Error Handling](#63error-handling)
-    5. [Assertion](#64assertion)
+    3. [Logging](#63logging)
+    4. [Error Handling](#64error-handling)
+    5. [Assertion](#65assertion)
 7. [Properties](#7properties)
     1. [Dot-Notation Syntax](#71dot-notation-syntax)
     2. [Private Properties](#72private-properties)
@@ -241,18 +242,21 @@ if (isAwesome == YES) // Never do this.
 3. Prefer positive comparisons to negative since it improves code clarity.
 
 #### 6.2.2.Ternary Operator
-
 1. The Ternary operator, ? , should be used when it increases clarity or code neatness. A single condition is usually all that should be evaluated. Evaluating multiple conditions is usually more understandable as an if statement, or refactored into instance variables.
 **For example:**
 `result = a > b ? x : y;`
 **Not:**
 `result = a > b ? x = c > d ? c : d : y;`
 
-### 6.3.Error Handling
+### 6.3.Logging
+1. Choose an appropriate logging level (`info`, `debug`, `warning`, `error`) to reflect the severity of the log message.
+2. Specify a distict log message type appropriate for your component (for instance `SparkCore`), so that your messages can be easily filtered out from a user's logs.
+
+### 6.4.Error Handling
 1. To indicate errors, use an `NSError **` method argument.
 2. Don't use exceptions for flow control, use exceptions only to indicate programmer error.
 
-### 6.4.Assertion
+### 6.5.Assertion
 ***TBD***
 
 ## 7.Properties
