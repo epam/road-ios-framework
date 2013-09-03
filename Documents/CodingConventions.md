@@ -254,7 +254,7 @@ if (isAwesome == YES) // Never do this.
 
 ### 6.4.Error Handling
 1. To indicate errors, use an `NSError **` method argument.
-2. Don't use exceptions for flow control, use exceptions only to indicate programmer error.
+2. Don't use exceptions for flow control, use exceptions only to indicate programmer error such as out-of-bounds collection access, attempts to mutate immutable objects, sending an invalid message, etc. These sorts of errors should be taken care of when an application is being developed, rather than in production.
 
 ### 6.5.Assertion
 ***TBD***
