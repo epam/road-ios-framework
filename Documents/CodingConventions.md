@@ -151,6 +151,7 @@ Every comment that you add should be either appledoc in header files or should s
 7. Use exactly one blank line within a method to separate functionality where necessary. However usually it is better to create another method for this purpose.
 8. It is recommended to avoid multiple `return` statements in one method. Multiple return statements might make it hard to understand execution flow of a method. However you may use guard conditions at the beginning of a method to return early.
 9. Method length should be no longer than 40 lines. It is preferable to keep method length below 30 lines. If a method becomes very long it is hard to understand. Therefore long methods should usually be refactored into several individual methods that focus on a specific task.
+10. Do not declare private methods in class extension (anonymous category) or anywhere else. Only provide private method definition without any separate declaration.
 
 ### 6.1.Initialization and Deallocation
 
