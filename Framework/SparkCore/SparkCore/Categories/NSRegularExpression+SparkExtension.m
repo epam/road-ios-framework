@@ -1,5 +1,5 @@
 //
-//  MethodsAttributesCodeGenerator.m
+//  NSRegularExpression+SparkExtension.m
 //  AttributesResearchLab
 //
 //  
@@ -29,28 +29,35 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "MethodsAttributesCodeGenerator.h"
-#import "MethodModel.h"
-#import "NSRegularExpression+ExtendedAPI.h"
+#import "NSRegularExpression+SparkExtension.h"
 
-@implementation MethodsAttributesCodeGenerator
+@implementation NSRegularExpression (SparkExtension)
 
-+ (NSString *)elementName:(AnnotatedElementModel *)model {
-    MethodModel *methodModel = (MethodModel *)model;
-    NSString *methodModelName = [NSRegularExpression stringByReplacingRegex:@":.*" withTemplate:@"" inString:methodModel.name];
-    return [NSString stringWithFormat:@"%@_p%ld", methodModelName, (unsigned long)methodModel.parametersCount];
++ (NSRegularExpression *)regexFromString:(NSString *)regexString {
+    NSError *error = NULL;
+    NSRegularExpression *result = [NSRegularExpression regularExpressionWithPattern:regexString options:0 error:&error];
+    
+    return result;
 }
 
-+ (NSString *)elementType {
-    return @"method";
++ (NSString *)stringByReplacingRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSString *)sourceString {
+    NSRegularExpression *regex = [NSRegularExpression regexFromString:regexString];
+    
+    NSString *result = [regex stringByReplacingMatchesInString:sourceString options:0 range:NSMakeRange(0, [sourceString length]) withTemplate:template];
+    return result;
 }
 
-+ (NSString *)sectionType {
-    return @"Methods";
++ (void)replaceRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSMutableString *)sourceString {
+    NSRegularExpression *regex = [NSRegularExpression regexFromString:regexString];
+    
+    [regex replaceMatchesInString:sourceString options:0 range:NSMakeRange(0, [sourceString length]) withTemplate:template];
 }
 
-+ (NSString *)factoryName {
-    return @"FactoriesForMethods";
++ (NSUInteger)numberOfMatchesToRegex:(NSString *)regexString inString:(NSString *)sourceString {
+    NSRegularExpression *regex = [NSRegularExpression regexFromString:regexString];
+    NSUInteger result = [regex numberOfMatchesInString:sourceString options:0 range:NSMakeRange(0, [sourceString length])];
+    
+    return result;
 }
 
 @end

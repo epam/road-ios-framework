@@ -54,17 +54,12 @@
     NSArray *filesToProcess = [SourceFileHelper sourceCodeFilesFromPath:sourcesPath];
 
     for (NSString *fileToProcess in filesToProcess) {
-        [self gatherClassInfoFromSourceFile:fileToProcess into:classesInfoContainer];
+         [self gatherClassInfoFromFile:fileToProcess into:classesInfoContainer skipImports:NO];
     }
 }
 
 + (void)generateAttributeFactoriesIntoPath:(NSString *)targetPath fromClassModels:(ClassModelsContainer *)classesInfoContainer {
     [MainAttributesCodeGenerator generateFilesForModel:classesInfoContainer.classModels inDirectory:targetPath];
-}
-
-+ (void)gatherClassInfoFromSourceFile:(NSString *)sourcesPath into:(ClassModelsContainer *)classesInfoContainer {
-    [self gatherClassInfoFromFile:sourcesPath into:classesInfoContainer skipImports:NO];
-    [self gatherClassInfoFromFile:[SourceFileHelper headerFileNameForSourceFile:sourcesPath] into:classesInfoContainer skipImports:YES];
 }
 
 + (void)gatherClassInfoFromFile:(NSString *)sourcesPath into:(ClassModelsContainer *)classesInfoContainer skipImports:(BOOL)skipImports {

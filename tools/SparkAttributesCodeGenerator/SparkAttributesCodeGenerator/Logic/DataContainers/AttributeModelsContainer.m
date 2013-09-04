@@ -1,5 +1,5 @@
 //
-//  MethodsAttributesCodeGenerator.m
+//  AttributeModelsContainer.m
 //  AttributesResearchLab
 //
 //  
@@ -29,28 +29,58 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "MethodsAttributesCodeGenerator.h"
-#import "MethodModel.h"
-#import "NSRegularExpression+ExtendedAPI.h"
+#import "AttributeModelsContainer.h"
 
-@implementation MethodsAttributesCodeGenerator
-
-+ (NSString *)elementName:(AnnotatedElementModel *)model {
-    MethodModel *methodModel = (MethodModel *)model;
-    NSString *methodModelName = [NSRegularExpression stringByReplacingRegex:@":.*" withTemplate:@"" inString:methodModel.name];
-    return [NSString stringWithFormat:@"%@_p%ld", methodModelName, (unsigned long)methodModel.parametersCount];
+@interface AttributeModelsContainer(){
+    NSMutableArray *_attributeModels;
 }
 
-+ (NSString *)elementType {
-    return @"method";
+- (AttributeModel *)attributeModelWithClassType:(NSString *)classType;
+
+@end
+
+@implementation AttributeModelsContainer
+
+@synthesize attributeModels = _attributeModels;
+
+- (id)init {
+    self = [super init];
+    if (self == nil) {
+        return nil;
+    }
+    
+    _attributeModels = [NSMutableArray array];
+    
+    return self;
 }
 
-+ (NSString *)sectionType {
-    return @"Methods";
+- (void)addAttributeModelsFromContainer:(AttributeModelsContainer *)attributeModelsContainer {
+    for (AttributeModel *currentAttributeModel in attributeModelsContainer.attributeModels) {
+        [self addAttributeModel:currentAttributeModel];
+    }
 }
 
-+ (NSString *)factoryName {
-    return @"FactoriesForMethods";
+- (void)addAttributeModel:(AttributeModel *)attributeModel {
+    AttributeModel *existingAttributeModel = [self attributeModelWithClassType:attributeModel.classType];
+    
+    if (existingAttributeModel) {
+        [existingAttributeModel.objectCustomizers addObjectsFromArray:attributeModel.objectCustomizers];
+    } else {
+        [_attributeModels addObject:attributeModel];
+    }
+}
+
+- (AttributeModel *)attributeModelWithClassType:(NSString *)classType {
+    AttributeModel *result = nil;
+    
+    for (AttributeModel *currentAttributeModel in _attributeModels) {
+        if ([currentAttributeModel.classType isEqualToString:classType]) {
+            result = currentAttributeModel;
+            break;
+        }
+    }
+    
+    return result;
 }
 
 @end

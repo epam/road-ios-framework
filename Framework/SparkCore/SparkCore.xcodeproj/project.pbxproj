@@ -83,6 +83,8 @@
 		8DE3785217C784D000F30026 /* NSInvocation+SparkExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3785117C784D000F30026 /* NSInvocation+SparkExtension.m */; };
 		8DE3785317C784D000F30026 /* NSInvocation+SparkExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3785117C784D000F30026 /* NSInvocation+SparkExtension.m */; };
 		8DE3785D17C7869600F30026 /* NSInvocation+SparkExtension.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DE3785017C784D000F30026 /* NSInvocation+SparkExtension.h */; };
+		8DFAE16817D5F65D002687B8 /* NSRegularExpression+SparkExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DFAE16717D5F65D002687B8 /* NSRegularExpression+SparkExtension.m */; };
+		8DFAE16A17D5F681002687B8 /* NSRegularExpression+SparkExtension.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DFAE16617D5F65D002687B8 /* NSRegularExpression+SparkExtension.h */; };
 		E513EA2D179022BC0058F2EA /* SparkSingletonDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = E513EA2C179022BC0058F2EA /* SparkSingletonDefinition.h */; };
 		E5DED7B51790234900AB0250 /* SparkSingletonDefinition.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E513EA2C179022BC0058F2EA /* SparkSingletonDefinition.h */; };
 /* End PBXBuildFile section */
@@ -139,6 +141,7 @@
 			dstPath = include/Spark;
 			dstSubfolderSpec = 16;
 			files = (
+				8DFAE16A17D5F681002687B8 /* NSRegularExpression+SparkExtension.h in CopyFiles */,
 				8DE3785D17C7869600F30026 /* NSInvocation+SparkExtension.h in CopyFiles */,
 				E5DED7B51790234900AB0250 /* SparkSingletonDefinition.h in CopyFiles */,
 				78180F0816C3D0A300B4AA31 /* SparkCore.h in CopyFiles */,
@@ -210,6 +213,8 @@
 		78C2432316C3D314000D777F /* SparkReflection.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkReflection.xcodeproj; path = ../SparkReflection/SparkReflection.xcodeproj; sourceTree = "<group>"; };
 		8DE3785017C784D000F30026 /* NSInvocation+SparkExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+SparkExtension.h"; sourceTree = "<group>"; };
 		8DE3785117C784D000F30026 /* NSInvocation+SparkExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+SparkExtension.m"; sourceTree = "<group>"; };
+		8DFAE16617D5F65D002687B8 /* NSRegularExpression+SparkExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRegularExpression+SparkExtension.h"; sourceTree = "<group>"; };
+		8DFAE16717D5F65D002687B8 /* NSRegularExpression+SparkExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRegularExpression+SparkExtension.m"; sourceTree = "<group>"; };
 		CDA9F5AC16E9F098000A50CC /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		E513EA2C179022BC0058F2EA /* SparkSingletonDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparkSingletonDefinition.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -300,6 +305,8 @@
 		78B8E69F16C3CC880049E36B /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				8DFAE16617D5F65D002687B8 /* NSRegularExpression+SparkExtension.h */,
+				8DFAE16717D5F65D002687B8 /* NSRegularExpression+SparkExtension.m */,
 				78B8E72316C3CD7F0049E36B /* CollectionCategories */,
 				78B8E72516C3CD9F0049E36B /* BundleCategories */,
 				78B8E72616C3CDAA0049E36B /* TextualCategories */,
@@ -635,6 +642,7 @@
 				78B8E71B16C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.m in Sources */,
 				78B8E71F16C3CD320049E36B /* NSMutableString+SFStringFormatter.m in Sources */,
 				8DE3785217C784D000F30026 /* NSInvocation+SparkExtension.m in Sources */,
+				8DFAE16817D5F65D002687B8 /* NSRegularExpression+SparkExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

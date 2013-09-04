@@ -1,5 +1,5 @@
 //
-//  MethodsAttributesCodeGenerator.m
+//  NSRegularExpression+SparkExtension.h
 //  AttributesResearchLab
 //
 //  
@@ -29,28 +29,13 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "MethodsAttributesCodeGenerator.h"
-#import "MethodModel.h"
-#import "NSRegularExpression+ExtendedAPI.h"
+#import <Foundation/Foundation.h>
 
-@implementation MethodsAttributesCodeGenerator
+@interface NSRegularExpression (SparkExtension)
 
-+ (NSString *)elementName:(AnnotatedElementModel *)model {
-    MethodModel *methodModel = (MethodModel *)model;
-    NSString *methodModelName = [NSRegularExpression stringByReplacingRegex:@":.*" withTemplate:@"" inString:methodModel.name];
-    return [NSString stringWithFormat:@"%@_p%ld", methodModelName, (unsigned long)methodModel.parametersCount];
-}
-
-+ (NSString *)elementType {
-    return @"method";
-}
-
-+ (NSString *)sectionType {
-    return @"Methods";
-}
-
-+ (NSString *)factoryName {
-    return @"FactoriesForMethods";
-}
++ (NSRegularExpression *)regexFromString:(NSString *)regexString;
++ (NSString *)stringByReplacingRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSString *)sourceString;
++ (void)replaceRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSMutableString *)sourceString;
++ (NSUInteger)numberOfMatchesToRegex:(NSString *)regexString inString:(NSString *)sourceString;
 
 @end

@@ -47,37 +47,31 @@ extern NSString * const kSFLogMessageTypeNoLogging;
 /**
  The log message encapsulation object.
  */
-//[SFSerializable]
 @interface SFLogMessage : NSObject <NSCoding, NSCopying>
 
 /**
  The actual log message string.
  */
-//[SFSerializable]
 @property (copy, nonatomic) NSString *message;
 
 /**
  The type of the log message, string.
  */
-//[SFSerializable]
 @property (copy, nonatomic) NSString *type;
 
 /**
  The date and time the log message was generated.
  */
-//[SFSerializable]
 @property (strong, nonatomic) NSDate *timeStamp;
 
 /**
  The userinfo dictionary of the log message. Can be used to attach extra information into the log message.
  */
-//[SFSerializable]
 @property (strong, nonatomic) NSDictionary *userInfo;
 
 /**
  The level of the log - info, debug, warning, or error.
  */
-//[SFSerializable]
 @property (assign, nonatomic) SFLogLevel level;
 
 /**

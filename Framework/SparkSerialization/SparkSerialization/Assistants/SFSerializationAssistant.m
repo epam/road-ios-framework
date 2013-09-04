@@ -29,7 +29,7 @@
 }
 
 + (NSString *)collectionItemClassNameForProperty:(SFPropertyInfo *)propertyInfo {
-    SFSerializableCollection *collectionAttribute = (SFSerializableCollection *)[propertyInfo.hostClass lastAttributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializableCollection class]];
+    SFSerializableCollection *collectionAttribute = [propertyInfo.hostClass attributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializableCollection class]];
     return (collectionAttribute == nil || collectionAttribute.collectionClass == nil) ? nil : NSStringFromClass(collectionAttribute.collectionClass);
 }
 

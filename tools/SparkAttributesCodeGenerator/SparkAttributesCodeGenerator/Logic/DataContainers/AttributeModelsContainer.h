@@ -1,5 +1,5 @@
 //
-//  MethodsAttributesCodeGenerator.m
+//  AttributeModelsContainer.h
 //  AttributesResearchLab
 //
 //  
@@ -29,28 +29,14 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "MethodsAttributesCodeGenerator.h"
-#import "MethodModel.h"
-#import "NSRegularExpression+ExtendedAPI.h"
+#import <Foundation/Foundation.h>
+#import "AttributeModel.h"
 
-@implementation MethodsAttributesCodeGenerator
+@interface AttributeModelsContainer : NSObject
 
-+ (NSString *)elementName:(AnnotatedElementModel *)model {
-    MethodModel *methodModel = (MethodModel *)model;
-    NSString *methodModelName = [NSRegularExpression stringByReplacingRegex:@":.*" withTemplate:@"" inString:methodModel.name];
-    return [NSString stringWithFormat:@"%@_p%ld", methodModelName, (unsigned long)methodModel.parametersCount];
-}
+@property(nonatomic, readonly) NSArray *attributeModels;
 
-+ (NSString *)elementType {
-    return @"method";
-}
-
-+ (NSString *)sectionType {
-    return @"Methods";
-}
-
-+ (NSString *)factoryName {
-    return @"FactoriesForMethods";
-}
+- (void)addAttributeModel:(AttributeModel *)aAttributeModel;
+- (void)addAttributeModelsFromContainer:(AttributeModelsContainer *)attributeModelsContainer;
 
 @end
