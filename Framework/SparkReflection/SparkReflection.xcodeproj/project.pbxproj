@@ -65,7 +65,7 @@
 		78CD6F9715CA8AB800F6C2F9 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = include/SparkFramework;
+			dstPath = include/Spark;
 			dstSubfolderSpec = 16;
 			files = (
 				9F80CD5A15F64D8B0031BA24 /* SparkReflection.h in CopyFiles */,

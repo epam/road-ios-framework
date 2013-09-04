@@ -31,7 +31,7 @@
 #import "SFMutableObject.h"
 #import "NSString+AccessorUtilities.h"
 #import <objc/runtime.h>
-#import <SparkFramework/SparkReflection.h>
+#import <Spark/SparkReflection.h>
 
 const char *SFMutableObjectSetterEncoding = "v@:@";
 const char *SFMutableObjectGetterEncoding = "@@:";
