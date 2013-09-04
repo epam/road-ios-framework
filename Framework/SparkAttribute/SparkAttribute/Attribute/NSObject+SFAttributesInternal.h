@@ -35,7 +35,6 @@
 #pragma mark Internal API
 
 + (NSInvocation *)invocationForSelector:(SEL)selector;
-+ (NSMutableDictionary *)mutableAttributesFactoriesFrom:(NSDictionary *)attributesFactories;
 
 #pragma mark Will be overridden by annotated class
 

@@ -40,19 +40,6 @@
 
 #pragma mark Internal API
 
-+ (NSMutableDictionary *)mutableAttributesFactoriesFrom:(NSDictionary *)attributesFactories {
-    
-    if (attributesFactories == nil) {
-        return [NSMutableDictionary dictionary];
-    }
-    
-    if ([attributesFactories isKindOfClass:[NSMutableDictionary class]]) {
-        return (NSMutableDictionary *)attributesFactories;
-    }
-    
-    return [NSMutableDictionary dictionaryWithDictionary:(NSDictionary *)attributesFactories];
-}
-
 + (NSInvocation *)invocationForSelector:(SEL)selector {
     return [NSInvocation invocationForSelector:selector target:self];
 }

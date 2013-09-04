@@ -30,6 +30,7 @@
 #import "AttributesAPITest.h"
 #import "AnnotatedClass.h"
 #import "SecondAnnotatedClass.h"
+#import <Spark/SparkReflection.h>
 
 @implementation AttributesAPITest
 

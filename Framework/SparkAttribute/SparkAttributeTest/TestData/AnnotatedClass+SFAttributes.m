@@ -33,7 +33,11 @@ static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForIvarsDict
         return attributesAnnotatedClassFactoriesForIvarsDict;
     }
     
-    NSMutableDictionary *dictionaryHolder = [self mutableAttributesFactoriesFrom:[super attributesFactoriesForIvars]];
+    NSMutableDictionary *dictionaryHolder = [super attributesFactoriesForIvars];
+    
+    if (!dictionaryHolder) {
+        dictionaryHolder = [NSMutableDictionary dictionary];
+    }
     
     [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_AnnotatedClass_ivar__someField)] forKey:@"_someField"];
     attributesAnnotatedClassFactoriesForIvarsDict = dictionaryHolder;  
@@ -75,7 +79,11 @@ static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForPropertie
         return attributesAnnotatedClassFactoriesForPropertiesDict;
     }
     
-    NSMutableDictionary *dictionaryHolder = [self mutableAttributesFactoriesFrom:[super attributesFactoriesForProperties]];
+    NSMutableDictionary *dictionaryHolder = [super attributesFactoriesForProperties];
+    
+    if (!dictionaryHolder) {
+        dictionaryHolder = [NSMutableDictionary dictionary];
+    }
     
     [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_AnnotatedClass_property_window)] forKey:@"window"];
     attributesAnnotatedClassFactoriesForPropertiesDict = dictionaryHolder;  
@@ -134,8 +142,12 @@ static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForMethodsDi
         return attributesAnnotatedClassFactoriesForMethodsDict;
     }
     
-    NSMutableDictionary *dictionaryHolder = [self mutableAttributesFactoriesFrom:[super attributesFactoriesForMethods]];
+    NSMutableDictionary *dictionaryHolder = [super attributesFactoriesForMethods];
     
+    if (!dictionaryHolder) {
+        dictionaryHolder = [NSMutableDictionary dictionary];
+    }
+        
     [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_AnnotatedClass_method_viewDidLoad_p0)] forKey:@"viewDidLoad"];
     [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_AnnotatedClass_method_viewDidLoad_p1)] forKey:@"viewDidLoad:"];
     attributesAnnotatedClassFactoriesForMethodsDict = dictionaryHolder;  

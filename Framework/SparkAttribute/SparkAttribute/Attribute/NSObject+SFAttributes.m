@@ -103,7 +103,7 @@
 }
 
 + (NSArray *)attributesForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute {
-    NSInvocation *attributeCreatorInvocation = [self attributeCreatorInvocationForElement:methodName cachedCreatorsDictionary:[self mutableAttributesFactoriesFrom:self.attributesFactoriesForMethods] creatorSelectorNameFormatter:^NSString *(NSString *methodName) {
+    NSInvocation *attributeCreatorInvocation = [self attributeCreatorInvocationForElement:methodName cachedCreatorsDictionary:self.attributesFactoriesForMethods creatorSelectorNameFormatter:^NSString *(NSString *methodName) {
         NSUInteger parametersCount = [NSRegularExpression numberOfMatchesToRegex:@":" inString:methodName];
         NSString *methodNameWithoutParameters = [NSRegularExpression stringByReplacingRegex:@":.*" withTemplate:@"" inString:methodName];
         return [NSString stringWithFormat:@"sf_attributes_%@_method_%@_p%d", NSStringFromClass(self), methodNameWithoutParameters, parametersCount];
@@ -112,14 +112,14 @@
 }
 
 + (NSArray *)attributesForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute {
-    NSInvocation *attributeCreatorInvocation = [self attributeCreatorInvocationForElement:propertyName cachedCreatorsDictionary:[self mutableAttributesFactoriesFrom:self.attributesFactoriesForProperties] creatorSelectorNameFormatter:^NSString *(NSString *propertyName) {
+    NSInvocation *attributeCreatorInvocation = [self attributeCreatorInvocationForElement:propertyName cachedCreatorsDictionary:self.attributesFactoriesForProperties creatorSelectorNameFormatter:^NSString *(NSString *propertyName) {
         return [NSString stringWithFormat:@"sf_attributes_%@_property_%@", NSStringFromClass(self), propertyName];
     }];
     return [self attributesFromCreatorInvocation:attributeCreatorInvocation withAttributeType:requiredClassOfAttribute];
 }
 
 + (NSArray *)attributesForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute {
-    NSInvocation *attributeCreatorInvocation = [self attributeCreatorInvocationForElement:ivarName cachedCreatorsDictionary:[self mutableAttributesFactoriesFrom:self.attributesFactoriesForIvars] creatorSelectorNameFormatter:^NSString *(NSString *ivarName) {
+    NSInvocation *attributeCreatorInvocation = [self attributeCreatorInvocationForElement:ivarName cachedCreatorsDictionary:self.attributesFactoriesForIvars creatorSelectorNameFormatter:^NSString *(NSString *ivarName) {
         return [NSString stringWithFormat:@"sf_attributes_%@_ivar_%@", NSStringFromClass(self), ivarName];
     }];
     return [self attributesFromCreatorInvocation:attributeCreatorInvocation withAttributeType:requiredClassOfAttribute];
