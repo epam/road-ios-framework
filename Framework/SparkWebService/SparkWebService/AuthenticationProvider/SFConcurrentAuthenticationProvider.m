@@ -1,6 +1,6 @@
 //
-//  SFSerializableDate.h
-//  SparkSerialization
+//  SFSafeAuthenticationProvider.m
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,18 +27,29 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Spark/SparkAttributesSupport.h>
+#import "SFConcurrentAuthenticationProvider.h"
+#import <objc/runtime.h>
 
-/**
- Serialization attribute. Can be used either as a class attribute to set date format for all properties of a class. Can be used as individual property attribute to specify format date for this property or to override general format of date for whole class. Default value specify both encoding and decoding format, for specifying format for concrete direction set this format string to decodingFormat or encodingFormat.
- */
-@interface SFSerializableDate : NSObject
+@implementation SFConcurrentAuthenticationProvider
 
-@property(nonatomic, strong) NSString *format;
+- (id)init {
+    self = [super init];
+    if (self) {
+        _queue = dispatch_queue_create(NULL, DISPATCH_QUEUE_SERIAL);
+    }
+    return self;
+}
 
-@property(nonatomic, strong) NSString *decodingFormat;
-@property(nonatomic, strong) NSString *encodingFormat;
+-(void)authenticate {
+    dispatch_async(_queue, ^{
+        [self concurrentAuthenticate];
+    });
+}
 
-@property(nonatomic, assign) BOOL unixTimestamp;
+- (void)concurrentAuthenticate {
+    @throw [NSException exceptionWithName:@"AbstractMethodInvocationException"
+                                   reason:@"Override method in subclasses, invoke this method on concrete subclasses."
+                                 userInfo:nil];
+}
 
 @end

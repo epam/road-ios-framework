@@ -1,6 +1,6 @@
 //
-//  SFSerializableDate.h
-//  SparkSerialization
+//  NSSortDescriptor+SFOData.m
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,18 +27,31 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#import "NSSortDescriptor+SFOData.h"
 #import <Spark/SparkAttributesSupport.h>
+#import <Spark/SparkSerialization.h>
 
-/**
- Serialization attribute. Can be used either as a class attribute to set date format for all properties of a class. Can be used as individual property attribute to specify format date for this property or to override general format of date for whole class. Default value specify both encoding and decoding format, for specifying format for concrete direction set this format string to decodingFormat or encodingFormat.
- */
-@interface SFSerializableDate : NSObject
+#import "SFODataProperty.h"
 
-@property(nonatomic, strong) NSString *format;
+@implementation NSSortDescriptor (SFOData)
 
-@property(nonatomic, strong) NSString *decodingFormat;
-@property(nonatomic, strong) NSString *encodingFormat;
-
-@property(nonatomic, assign) BOOL unixTimestamp;
+- (id)initWithProperty:(SFPropertyInfo *)propertyInfo ascending:(BOOL)ascending {
+    NSString *propertyAttributeName;
+    if ([NSClassFromString(propertyInfo.className) hasAttributesForProperty:propertyInfo.propertyName withAttributeType:[SFODataProperty class]]) {
+        SFODataProperty *propertyAttribute = [NSClassFromString(propertyInfo.className) lastAttributeForProperty:propertyInfo.propertyName withAttributeType:[SFODataProperty class]];
+        propertyAttributeName = [propertyAttribute serializationKey];
+    }
+    else if ([NSClassFromString(propertyInfo.className) hasAttributesForProperty:propertyInfo.propertyName withAttributeType:[SFSerializable class]]) {
+        SFSerializable *propertyAttribute = [NSClassFromString(propertyInfo.className) lastAttributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializable class]];
+        propertyAttributeName = [propertyAttribute serializationKey];
+    }
+    if (!propertyAttributeName) {
+        propertyAttributeName = [propertyInfo getterName];
+    }
+    
+    self = [self initWithKey:propertyAttributeName ascending:ascending];
+    
+    return self;
+}
 
 @end

@@ -1,6 +1,6 @@
 //
-//  SFSerializableDate.h
-//  SparkSerialization
+//  SparkWebservice.h
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,18 +27,22 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Spark/SparkAttributesSupport.h>
 
-/**
- Serialization attribute. Can be used either as a class attribute to set date format for all properties of a class. Can be used as individual property attribute to specify format date for this property or to override general format of date for whole class. Default value specify both encoding and decoding format, for specifying format for concrete direction set this format string to decodingFormat or encodingFormat.
- */
-@interface SFSerializableDate : NSObject
+#ifndef SparkWebservice_SparkWebservice_h
+#define SparkWebservice_SparkWebservice_h
 
-@property(nonatomic, strong) NSString *format;
+#include "SparkWebServiceAnnotations.h"
+#import "SFWebserviceClient.h"
+#import "SFWebServiceCancellable.h"
+#import "SFSerializationDelegate.h"
+#import "SFWebServiceLogWriter.h"
+#import "SFBasicAuthenticationProvider.h"
+#import "SFAuthenticationProvider.h"
+#import "SFAuthenticating.h"
+#import "SFConcurrentAuthenticationProvider.h"
+#import "SFWebServiceURLBuilding.h"
+#import "SFWebServiceURLBuilder.h"
 
-@property(nonatomic, strong) NSString *decodingFormat;
-@property(nonatomic, strong) NSString *encodingFormat;
+#import "SFWebServiceOData.h"
 
-@property(nonatomic, assign) BOOL unixTimestamp;
-
-@end
+#endif

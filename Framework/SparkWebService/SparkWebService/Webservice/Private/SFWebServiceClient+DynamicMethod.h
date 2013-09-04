@@ -1,6 +1,6 @@
 //
-//  SFSerializableDate.h
-//  SparkSerialization
+//  SFWebserviceClient+DynamicMethod.h
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,18 +27,20 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Spark/SparkAttributesSupport.h>
 
+#import "SFWebServiceClient.h"
+
+@class SFDownloader;
+
+@interface SFWebServiceClient (DynamicMethod)
 /**
- Serialization attribute. Can be used either as a class attribute to set date format for all properties of a class. Can be used as individual property attribute to specify format date for this property or to override general format of date for whole class. Default value specify both encoding and decoding format, for specifying format for concrete direction set this format string to decodingFormat or encodingFormat.
+ Performs the api call for selector, using the values dictionary to replace variables in the url string template and optionally providing an http body. The method is equivalent to call the -apiCall:values:body:startImmediately: method with a shouldStartImmediately argument set to YES and disregarding.
+ @param selector The selector name.
+ @param values The values of the request.
+ @param httpBody The body data.
+ @param request The SFWebServiceRequest to represent url request.
+ @param processingQueue The queue where the call should start.
+ @param prepareForSendRequestBlock The block that will be executed before request sending.
  */
-@interface SFSerializableDate : NSObject
-
-@property(nonatomic, strong) NSString *format;
-
-@property(nonatomic, strong) NSString *decodingFormat;
-@property(nonatomic, strong) NSString *encodingFormat;
-
-@property(nonatomic, assign) BOOL unixTimestamp;
-
+- (void)performCall:(SEL)selector values:(NSDictionary *const)values body:(NSData *const)httpBody request:(SFDownloader *)request processingQueue:(dispatch_queue_t)processingQueue prepareForSendRequestBlock:(SFWebServiceClientPrepareForSendRequestBlock)prepareForSendRequestBlock;
 @end

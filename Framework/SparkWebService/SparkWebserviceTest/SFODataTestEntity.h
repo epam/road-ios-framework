@@ -1,6 +1,6 @@
 //
-//  SFSerializableDate.h
-//  SparkSerialization
+//  SFODataTestEntity.h
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,18 +27,20 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Spark/SparkAttributesSupport.h>
+#import "SFODataAbstractEntity.h"
+#import "SFODataEntity.h"
+#import "SFODataProperty.h"
 
-/**
- Serialization attribute. Can be used either as a class attribute to set date format for all properties of a class. Can be used as individual property attribute to specify format date for this property or to override general format of date for whole class. Default value specify both encoding and decoding format, for specifying format for concrete direction set this format string to decodingFormat or encodingFormat.
- */
-@interface SFSerializableDate : NSObject
+SF_ATTRIBUTE(SFODataEntity, entityName = @"TestEntity")
+@interface SFODataTestEntity : SFODataAbstractEntity
 
-@property(nonatomic, strong) NSString *format;
-
-@property(nonatomic, strong) NSString *decodingFormat;
-@property(nonatomic, strong) NSString *encodingFormat;
-
-@property(nonatomic, assign) BOOL unixTimestamp;
+SF_ATTRIBUTE(SFODataProperty, serializationKey = @"Name")
+@property (nonatomic, strong) NSString *name;
+SF_ATTRIBUTE(SFODataProperty, serializationKey = @"Date")
+@property (nonatomic, strong) NSDate *date;
+SF_ATTRIBUTE(SFODataProperty, serializationKey = @"Cost")
+@property (nonatomic, strong) NSNumber *cost;
+SF_ATTRIBUTE(SFODataProperty, serializationKey = @"TotalCost")
+@property (nonatomic, strong) NSNumber *total;
 
 @end
