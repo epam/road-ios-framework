@@ -29,10 +29,8 @@
 
 #import "NSObject+SFAttributes.h"
 #import "NSObject+SFAttributesInternal.h"
-#import <Spark/NSObject+PropertyReflection.h>
-#import <Spark/NSObject+MethodReflection.h>
-#import <Spark/NSObject+MemberVariableReflection.h>
 #import <Spark/NSRegularExpression+SparkExtension.h>
+#import <Spark/SparkReflection.h>
 
 @interface NSObject ()
 + (NSArray *)attributesFromCreatorInvocation:(NSInvocation *)attributeCreatorValueInvocation withAttributeType:(Class)requiredClassOfAttribute;
@@ -45,34 +43,29 @@
 #pragma mark - Attributes API
 
 + (NSArray *)attributesFromCreatorInvocation:(NSInvocation *)attributeCreatorValueInvocation withAttributeType:(Class)requiredClassOfAttribute {
-    if (attributeCreatorValueInvocation== nil) {
+    if (!attributeCreatorValueInvocation) {
         return nil;
     }
-    
-    NSArray *result = nil;
     
     [attributeCreatorValueInvocation invoke];
     
-    //doesn't increment retains counter of object of result. (using of weak references decreases performance 40 times.)
-    [attributeCreatorValueInvocation getReturnValue:&result];
+    __unsafe_unretained NSArray *allAttributesOfElement = nil;
+    [attributeCreatorValueInvocation getReturnValue:&allAttributesOfElement];
     
-    //so we need to increment retains counter manually
-    CFBridgingRetain(result);
-    
-    return [self attributesWithType:requiredClassOfAttribute from:result];
+    return [self attributesWithType:requiredClassOfAttribute from:allAttributesOfElement];
 }
 
 + (NSArray *)attributesWithType:(Class)requiredClassOfAttribute from:(NSArray *)attributes {
-    if (attributes == nil || [attributes count] == 0) {
+    if ([attributes count] == 0) {
         return nil;
     }
     
-    if (requiredClassOfAttribute == nil) {
+    if (!requiredClassOfAttribute) {
         return attributes;
     }
     
-    if ([attributes count] == 1 && [[attributes lastObject] isKindOfClass:requiredClassOfAttribute]) {
-        return attributes;
+    if ([attributes count] == 1) {
+        return (![[attributes lastObject] isKindOfClass:requiredClassOfAttribute]) ? nil : attributes;
     }
     
     NSMutableArray *result = [NSMutableArray array];
@@ -88,9 +81,9 @@
 
 + (NSInvocation *)attributeCreatorInvocationForElement:(NSString *)elementName cachedCreatorsDictionary:(NSMutableDictionary *)cachedCreatorsDictionary creatorSelectorNameFormatter:(NSString *(^)(NSString *))creatorSelectorNameFormatter {
     assert(creatorSelectorNameFormatter);
-           
+    
     NSInvocation *result = [cachedCreatorsDictionary objectForKey:elementName];
-    if (result != nil) {
+    if (result) {
         return result;
     }
     
@@ -101,7 +94,7 @@
     }
     
     result = [self invocationForSelector:creatorSelector];
-    if (result== nil) {
+    if (!result) {
         return nil;
     }
     

@@ -68,12 +68,16 @@
     
     [result appendFormat:@"static NSMutableDictionary __weak *%@ = nil;\n", factoryDictionaryHolderName];
     [result appendLine:@"    "];
-    [result appendFormat:@"+ (NSDictionary *)attributes%@ {\n", factoryName];
+    [result appendFormat:@"+ (NSMutableDictionary *)attributes%@ {\n", factoryName];
     [result appendFormat:@"    if (%@ != nil) {\n", factoryDictionaryHolderName];
     [result appendFormat:@"        return %@;\n", factoryDictionaryHolderName];
     [result appendLine:@"    }"];
     [result appendLine:@"    "];
-    [result appendFormat:@"    NSMutableDictionary *dictionaryHolder = [self mutableAttributesFactoriesFrom:[super attributes%@]];\n", factoryName];
+    [result appendFormat:@"    NSMutableDictionary *dictionaryHolder = [super attributes%@];\n", factoryName];
+    [result appendLine:@"    "];
+    [result appendLine:@"    if (!dictionaryHolder) {"];
+    [result appendLine:@"        dictionaryHolder = [NSMutableDictionary dictionary];"];
+    [result appendLine:@"    }"];
     [result appendLine:@"    "];
     
     for (AnnotatedElementModel *currentModel in modelsList) {
