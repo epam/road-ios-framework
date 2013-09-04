@@ -12,10 +12,10 @@ Pod::Spec.new do |s|
 
   s.author       = { "Epam Systems" => "support.spark@epam.com" }
 
-  s.platform :ios, '6.0'
-  s.ios.deployment_target = '6.0'
+  s.platform = :ios
+  s.ios.deployment_target = "6.0"
   
-  s.source       = { :git => "https://github.com/epam/spark-ios-framework.git", :tag => "0.0.1" }
+  s.source       = { :git => "https://github.com/epam/spark-ios-framework.git", :tag => "0.1" }
   
   s.subspec 'SparkCore' do |core|
     core.source_files = 'SparkCore/**/*.{h,m}'
