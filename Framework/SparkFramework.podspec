@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.platform = :ios
   s.ios.deployment_target = "6.0"
   
-  s.source       = { :git => "https://github.com/epam/spark-ios-framework.git", :tag => "0.1" }
+  s.source       = { :git => "https://github.com/edl00k/spark-ios-framework.git", :tag => "0.1" }
   
   s.subspec 'SparkCore' do |core|
     core.source_files = 'SparkCore/**/*.{h,m}'
