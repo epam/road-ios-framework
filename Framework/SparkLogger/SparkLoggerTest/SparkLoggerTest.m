@@ -70,10 +70,10 @@
     SFLogWriter *infoWriter = [SFConsoleLogWriter infoConsoleWriter];
     [[[SFServiceProvider sharedProvider] logger] addWriter:infoWriter];
     // trying to add information message
-    SFLogDebug(@"text message text message text message");
+    SFLogDebug(@"debug message");
     STAssertTrue([infoWriter.messageQueue count] == 0, @"The queue contains unacceptable message");
     // add valid message
-    SFLogInfo(@"text message text message text message");
+    SFLogInfo(@"%@:%@", @"info message 1 ", @"info message 2");
     STAssertTrue([infoWriter.messageQueue count] > 0, @"The queue of messages is empty");
     
     BOOL isFinished = NO;
@@ -92,11 +92,13 @@
     [[[SFServiceProvider sharedProvider] logger] addWriter:writer];
     
     NSString *simpleMessage = @"Simple test message";
+
+    SFLogInfo(simpleMessage);
     
-    [[[SFServiceProvider sharedProvider] logger] logInfoMessage:simpleMessage];
+    NSLog(@"ereetretertretr");
     
     STAssertFalse([[writer messageQueue] count] == 0, @"The queue of messages is empty");
-    STAssertEquals(simpleMessage, [[[writer messageQueue] objectAtIndex:0] message], @"Values are not equals");
+    STAssertTrue([simpleMessage isEqualToString:[[[writer messageQueue] objectAtIndex:0] message]], @"Values are not equals");
     
     BOOL isFinished = NO;
     while (!isFinished) {
@@ -122,7 +124,7 @@
         }
     }];
     
-    STAssertTrue([[writer formattedMessage:[SFLogMessage infoMessage:message2]] isEqualToString:message1] , @"Values are not equals");
+    STAssertTrue([[writer formattedMessage:[SFLogMessage logMessage:message2]] isEqualToString:message1] , @"Values are not equals");
 }
 
 @end

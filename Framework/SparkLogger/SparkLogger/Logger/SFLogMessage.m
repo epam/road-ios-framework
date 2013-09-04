@@ -45,51 +45,36 @@ NSString * const kSFLogMessageTypeNoLogging = @"SFLogMessageTypeNoLogging";
 
 @implementation SFLogMessage
 
-+ (SFLogMessage *)logMessage:(NSString * const)messageText type:(NSString * const)type level:(SFLogLevel const)level userInfo:(NSDictionary * const)userInfo {
-    SFLogMessage * const message = [[SFLogMessage alloc] init];
-    message.message = messageText;
-    if (!type) {
-        message.type = kSFLogMessageTypeConsoleOnly;
-    }
-    else {
-        message.type = type;
-    }
-    message.level = level;
-    message.userInfo = userInfo;
-    message.timeStamp = [NSDate date];
-    return message;
++ (SFLogMessage *)logMessage:(NSString *)msg {
+    
+    SFLogMessage * const msgLog = [SFLogMessage new];
+    msgLog.message = msg;
+    msgLog.type = kSFLogMessageTypeConsoleOnly;
+    msgLog.userInfo = nil; // todo
+    msgLog.timeStamp = [NSDate date];
+    return msgLog;
 }
 
-+ (SFLogMessage *)infoMessage:(NSString * const)messageText {
-    return [self logMessage:messageText type:kSFLogMessageTypeConsoleOnly level:SFLogLevelInfo userInfo:nil];
++ (SFLogMessage *)logMessageFormat:(NSString *)format args:(va_list)args {
+    
+    SFLogMessage * const msgLog = [SFLogMessage new];
+    msgLog.type = kSFLogMessageTypeConsoleOnly;
+    msgLog.userInfo = nil; // todo
+    msgLog.timeStamp = [NSDate date];
+    msgLog->_message = [[NSString alloc] initWithFormat:format arguments:args];
+    return msgLog;
 }
 
-+ (SFLogMessage *)warningMessage:(NSString * const)messageText {
-    return [self logMessage:messageText type:kSFLogMessageTypeConsoleOnly level:SFLogLevelWarning userInfo:nil];
++ (SFLogMessage *)logMessageFormat:(NSString *)format args:(va_list)args level:(SFLogLevel)level {
+    SFLogMessage * const msgLog = [SFLogMessage logMessageFormat:format args:args];
+    msgLog.level = level;
+    return msgLog;
 }
 
-+ (SFLogMessage *)errorMessage:(NSString * const)messageText {
-    return [self logMessage:messageText type:kSFLogMessageTypeConsoleOnly level:SFLogLevelError userInfo:nil];
-}
-
-+ (SFLogMessage *)debugMessage:(NSString * const)messageText {
-    return [self logMessage:messageText type:kSFLogMessageTypeConsoleOnly level:SFLogLevelDebug userInfo:nil];
-}
-
-+ (SFLogMessage *)infoMessage:(NSString * const)messageText type:(NSString *)type {
-    return [self logMessage:messageText type:type level:SFLogLevelInfo userInfo:nil];
-}
-
-+ (SFLogMessage *)warningMessage:(NSString * const)messageText type:(NSString *)type {
-    return [self logMessage:messageText type:type level:SFLogLevelWarning userInfo:nil];
-}
-
-+ (SFLogMessage *)errorMessage:(NSString * const)messageText type:(NSString *)type {
-    return [self logMessage:messageText type:type level:SFLogLevelError userInfo:nil];
-}
-
-+ (SFLogMessage *)debugMessage:(NSString * const)messageText type:(NSString *)type {
-    return [self logMessage:messageText type:type level:SFLogLevelDebug userInfo:nil];
++ (SFLogMessage *)logMessageFormat:(NSString *)format args:(va_list)args level:(SFLogLevel)level type:(NSString *)type {
+    SFLogMessage * const msgLog = [SFLogMessage logMessageFormat:format args:args level:level];
+    msgLog.type = type;
+    return msgLog;
 }
 
 #pragma mark - NSCoding
