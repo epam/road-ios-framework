@@ -270,17 +270,17 @@ if (isAwesome == YES) // Never do this.
 7. Avoid `self.` to access class' own properties unless you have implemented custom setter or getter. You should access class' instance variables directly instead.
 
 ### 7.1.Dot-Notation Syntax
-1. Use dot-notation for accessing and mutating properties. But do not use dot notation in a call path that contains a method call in it, since it may result in complex syntax.
+1. Dot-notation should be used for accessing and mutating properties. Bracket notation is preferred in all other instances.
 
 **For example:**
 ```objc
 view.backgroundColor = [UIColor orangeColor];
-[[UIApplication sharedApplication] delegate];
+[UIApplication sharedApplication].delegate;
 ```
 **Not:**
 ```objc
 [view setBackgroundColor:[UIColor orangeColor]];
-[UIApplication sharedApplication].delegate;
+UIApplication.sharedApplication.delegate;
 ```
 
 ### 7.2.Private Properties
