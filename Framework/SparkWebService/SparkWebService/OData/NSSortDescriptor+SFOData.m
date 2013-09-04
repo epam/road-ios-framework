@@ -38,11 +38,11 @@
 - (id)initWithProperty:(SFPropertyInfo *)propertyInfo ascending:(BOOL)ascending {
     NSString *propertyAttributeName;
     if ([NSClassFromString(propertyInfo.className) hasAttributesForProperty:propertyInfo.propertyName withAttributeType:[SFODataProperty class]]) {
-        SFODataProperty *propertyAttribute = [NSClassFromString(propertyInfo.className) lastAttributeForProperty:propertyInfo.propertyName withAttributeType:[SFODataProperty class]];
+        SFODataProperty *propertyAttribute = [NSClassFromString(propertyInfo.className) attributeForProperty:propertyInfo.propertyName withAttributeType:[SFODataProperty class]];
         propertyAttributeName = [propertyAttribute serializationKey];
     }
     else if ([NSClassFromString(propertyInfo.className) hasAttributesForProperty:propertyInfo.propertyName withAttributeType:[SFSerializable class]]) {
-        SFSerializable *propertyAttribute = [NSClassFromString(propertyInfo.className) lastAttributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializable class]];
+        SFSerializable *propertyAttribute = [NSClassFromString(propertyInfo.className) attributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializable class]];
         propertyAttributeName = [propertyAttribute serializationKey];
     }
     if (!propertyAttributeName) {

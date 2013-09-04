@@ -1,3 +1,6 @@
+#import "SFODataAbstractEntity.h"
+#import "SFODataEntity.h"
+#import "SFODataProperty.h"
 #import "SFODataTestEntity.h"
  
 @interface SFODataTestEntity(SFAttribute)

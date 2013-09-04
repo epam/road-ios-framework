@@ -1,3 +1,7 @@
+#import "SFODataPrioritizedPredicate.h"
+#import "SFODataExpression.h"
+#import "NSSortDescriptor+SFOData.h"
+#import "SFWebServiceURLBuilderParameter.h"
 #import "SFODataFetchRequest.h"
  
 @interface SFODataFetchRequest(SFAttribute)

@@ -1,3 +1,4 @@
+#import "SFWebServiceClient.h"
 #import <objc/runtime.h>
 #import "SFWebServiceCall.h"
 #import "SFWebServiceClient+DynamicMethod.h"
@@ -15,9 +16,11 @@
 #import "SFBasicAuthenticationProvider.h"
 #import "SFAuthenticating.h"
 #import "SFWebServiceBasicURLBuilder.h"
+#import <Spark/SparkServices.h>
 #import "SFWebServiceClient.h"
 #import "SFDefaultSerializer.h"
 #import "SFAuthenticating.h"
+#import "SFWebServiceClient.h"
 #import "SFWebServiceClient+DynamicTest.h"
  
 @interface SFWebServiceClient(SFAttribute)
