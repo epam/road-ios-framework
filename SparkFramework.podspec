@@ -25,6 +25,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'SparkCore' do |core|
+    core.ios.library = 'SparkFramework/SparkReflection'
     core.dependency 'SparkFramework/SparkReflection'
     core.source_files = 'Framework/SparkCore/SparkCore/**/*.{h,m}'
     core.public_header_files = 'Framework/SparkCore/SparkCore/SparkCore.h'
