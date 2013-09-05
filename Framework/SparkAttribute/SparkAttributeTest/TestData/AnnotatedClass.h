@@ -28,7 +28,7 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <Foundation/Foundation.h>
-#import "SparkAttributesSupport.h"
+#import "SparkAttribute.h"
 #import "SFTestAttribute.h"
 #import "CustomSFTestAttribute.h"
 
