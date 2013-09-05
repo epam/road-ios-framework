@@ -779,7 +779,7 @@
 				DSTROOT = /tmp/SparkCore.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SparkCore/SparkCore-Prefix.pch";
-				HEADER_SEARCH_PATHS = "../SparkReflection/**";
+				HEADER_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = SparkCore;
@@ -793,7 +793,7 @@
 				DSTROOT = /tmp/SparkCore.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SparkCore/SparkCore-Prefix.pch";
-				HEADER_SEARCH_PATHS = "../SparkReflection/**";
+				HEADER_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = SparkCore;
