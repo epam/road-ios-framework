@@ -28,18 +28,18 @@ static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_ivar__someField 
 
 static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForIvarsDict = nil;
     
-+ (NSDictionary *)attributesFactoriesForIvars {
++ (NSDictionary *)SF_attributesFactoriesForIvars {
     if (attributesAnnotatedClassFactoriesForIvarsDict != nil) {
         return attributesAnnotatedClassFactoriesForIvarsDict;
     }
     
-    NSMutableDictionary *dictionaryHolder = [super attributesFactoriesForIvars];
+    NSMutableDictionary *dictionaryHolder = [super SF_attributesFactoriesForIvars];
     
     if (!dictionaryHolder) {
         dictionaryHolder = [NSMutableDictionary dictionary];
     }
     
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_AnnotatedClass_ivar__someField)] forKey:@"_someField"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(sf_attributes_AnnotatedClass_ivar__someField)] forKey:@"_someField"];
     attributesAnnotatedClassFactoriesForIvarsDict = dictionaryHolder;  
     
     return attributesAnnotatedClassFactoriesForIvarsDict;
@@ -74,18 +74,18 @@ static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_property_window 
 
 static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForPropertiesDict = nil;
     
-+ (NSDictionary *)attributesFactoriesForProperties {
++ (NSDictionary *)SF_attributesFactoriesForProperties {
     if (attributesAnnotatedClassFactoriesForPropertiesDict != nil) {
         return attributesAnnotatedClassFactoriesForPropertiesDict;
     }
     
-    NSMutableDictionary *dictionaryHolder = [super attributesFactoriesForProperties];
+    NSMutableDictionary *dictionaryHolder = [super SF_attributesFactoriesForProperties];
     
     if (!dictionaryHolder) {
         dictionaryHolder = [NSMutableDictionary dictionary];
     }
     
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_AnnotatedClass_property_window)] forKey:@"window"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(sf_attributes_AnnotatedClass_property_window)] forKey:@"window"];
     attributesAnnotatedClassFactoriesForPropertiesDict = dictionaryHolder;  
     
     return attributesAnnotatedClassFactoriesForPropertiesDict;
@@ -137,19 +137,19 @@ static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_method_viewDidLo
 
 static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForMethodsDict = nil;
     
-+ (NSDictionary *)attributesFactoriesForMethods {
++ (NSDictionary *)SF_attributesFactoriesForMethods {
     if (attributesAnnotatedClassFactoriesForMethodsDict != nil) {
         return attributesAnnotatedClassFactoriesForMethodsDict;
     }
     
-    NSMutableDictionary *dictionaryHolder = [super attributesFactoriesForMethods];
+    NSMutableDictionary *dictionaryHolder = [super SF_attributesFactoriesForMethods];
     
     if (!dictionaryHolder) {
         dictionaryHolder = [NSMutableDictionary dictionary];
     }
         
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_AnnotatedClass_method_viewDidLoad_p0)] forKey:@"viewDidLoad"];
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_AnnotatedClass_method_viewDidLoad_p1)] forKey:@"viewDidLoad:"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(sf_attributes_AnnotatedClass_method_viewDidLoad_p0)] forKey:@"viewDidLoad"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(sf_attributes_AnnotatedClass_method_viewDidLoad_p1)] forKey:@"viewDidLoad:"];
     attributesAnnotatedClassFactoriesForMethodsDict = dictionaryHolder;  
     
     return attributesAnnotatedClassFactoriesForMethodsDict;
@@ -162,7 +162,7 @@ static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForMethodsDi
 
 static NSMutableArray __weak *sf_attributes_list__class_AnnotatedClass = nil;
 
-+ (NSArray *)attributesForClass {
++ (NSArray *)SF_attributesForClass {
     if (sf_attributes_list__class_AnnotatedClass != nil) {
         return sf_attributes_list__class_AnnotatedClass;
     }

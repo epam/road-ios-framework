@@ -85,13 +85,13 @@
         @autoreleasepool {            
             Class rootObjectClass = [rootObject class];
             
-            if ([rootObjectClass hasAttributesForClassWithAttributeType:[SFSerializable class]]) {
+            if ([rootObjectClass SF_hasAttributesForClassWithAttributeType:[SFSerializable class]]) {
                 properties = [[rootObjectClass properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(SFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
-                    return ![evaluatedObject.hostClass hasAttributesForProperty:evaluatedObject.propertyName withAttributeType:[SFDerived class]];
+                    return ![evaluatedObject.hostClass SF_hasAttributesForProperty:evaluatedObject.propertyName withAttributeType:[SFDerived class]];
                 }]];
             }
             else {
-                properties = [rootObjectClass propertiesWithAttributeType:[SFSerializable class]];
+                properties = [rootObjectClass SF_propertiesWithAttributeType:[SFSerializable class]];
             }
             
             
@@ -117,7 +117,7 @@
     id encodedValue = nil;
     
     if ([value isKindOfClass:[NSDate class]]) {
-        SFSerializableDate *serializableDateAttribute = [propertyInfo.hostClass attributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializableDate class]];
+        SFSerializableDate *serializableDateAttribute = [propertyInfo.hostClass SF_attributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializableDate class]];
         
         if (serializableDateAttribute.unixTimestamp) {
             NSDate *date = value;
@@ -141,7 +141,7 @@
 - (id)encodeValue:(id const)aValue {
     id value = aValue;
     
-    if ([[value class] hasAttributesForClassWithAttributeType:[SFSerializable class]] || [[[value class] propertiesWithAttributeType:[SFSerializable class]] count] > 0) {
+    if ([[value class] SF_hasAttributesForClassWithAttributeType:[SFSerializable class]] || [[[value class] SF_propertiesWithAttributeType:[SFSerializable class]] count] > 0) {
         value = [[self class] encodeRootObjectToSerializableObject:value];
     }
     else if ([value isKindOfClass:[NSArray class]]) {

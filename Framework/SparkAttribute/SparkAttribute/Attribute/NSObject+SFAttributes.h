@@ -31,23 +31,23 @@
 
 @interface NSObject (SFAttributes)
 
-+ (NSArray *)attributesForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForClassWithAttributeType:(Class)requiredClassOfAttribute;
++ (NSArray *)SF_attributesForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute;
++ (NSArray *)SF_attributesForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute;
++ (NSArray *)SF_attributesForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
++ (NSArray *)SF_attributesForClassWithAttributeType:(Class)requiredClassOfAttribute;
 
-+ (id)attributeForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute;
-+ (id)attributeForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute;
-+ (id)attributeForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
-+ (id)attributeForClassWithAttributeType:(Class)requiredClassOfAttribute;
++ (id)SF_attributeForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute;
++ (id)SF_attributeForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute;
++ (id)SF_attributeForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
++ (id)SF_attributeForClassWithAttributeType:(Class)requiredClassOfAttribute;
 
-+ (BOOL)hasAttributesForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute;
-+ (BOOL)hasAttributesForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute;
-+ (BOOL)hasAttributesForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
-+ (BOOL)hasAttributesForClassWithAttributeType:(Class)requiredClassOfAttribute;
++ (BOOL)SF_hasAttributesForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute;
++ (BOOL)SF_hasAttributesForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute;
++ (BOOL)SF_hasAttributesForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
++ (BOOL)SF_hasAttributesForClassWithAttributeType:(Class)requiredClassOfAttribute;
 
-+ (NSArray *)propertiesWithAttributeType:(Class)requiredClassOfAttribute;
-+ (NSArray *)ivarsWithAttributeType:(Class)requiredClassOfAttribute;
-+ (NSArray *)methodsWithAttributeType:(Class)requiredClassOfAttribute;
++ (NSArray *)SF_propertiesWithAttributeType:(Class)requiredClassOfAttribute;
++ (NSArray *)SF_ivarsWithAttributeType:(Class)requiredClassOfAttribute;
++ (NSArray *)SF_methodsWithAttributeType:(Class)requiredClassOfAttribute;
 
 @end

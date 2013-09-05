@@ -13,7 +13,7 @@
 @implementation SFSerializationAssistant
 
 + (NSString *)serializationKeyForProperty:(SFPropertyInfo *)propertyInfo {
-    NSArray *propertySerializableAttributes = [propertyInfo.hostClass attributesForProperty:propertyInfo.propertyName withAttributeType:[SFSerializable class]];
+    NSArray *propertySerializableAttributes = [propertyInfo.hostClass SF_attributesForProperty:propertyInfo.propertyName withAttributeType:[SFSerializable class]];
     
     if ([propertySerializableAttributes count] == 0) {
         return propertyInfo.propertyName;
@@ -29,7 +29,7 @@
 }
 
 + (NSString *)collectionItemClassNameForProperty:(SFPropertyInfo *)propertyInfo {
-    SFSerializableCollection *collectionAttribute = [propertyInfo.hostClass attributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializableCollection class]];
+    SFSerializableCollection *collectionAttribute = [propertyInfo.hostClass SF_attributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializableCollection class]];
     return (collectionAttribute == nil || collectionAttribute.collectionClass == nil) ? nil : NSStringFromClass(collectionAttribute.collectionClass);
 }
 

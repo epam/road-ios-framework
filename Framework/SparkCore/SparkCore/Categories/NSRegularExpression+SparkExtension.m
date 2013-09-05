@@ -33,28 +33,28 @@
 
 @implementation NSRegularExpression (SparkExtension)
 
-+ (NSRegularExpression *)regexFromString:(NSString *)regexString {
++ (NSRegularExpression *)SF_regexFromString:(NSString *)regexString {
     NSError *error = NULL;
     NSRegularExpression *result = [NSRegularExpression regularExpressionWithPattern:regexString options:0 error:&error];
     
     return result;
 }
 
-+ (NSString *)stringByReplacingRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSString *)sourceString {
-    NSRegularExpression *regex = [NSRegularExpression regexFromString:regexString];
++ (NSString *)SF_stringByReplacingRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSString *)sourceString {
+    NSRegularExpression *regex = [NSRegularExpression SF_regexFromString:regexString];
     
     NSString *result = [regex stringByReplacingMatchesInString:sourceString options:0 range:NSMakeRange(0, [sourceString length]) withTemplate:template];
     return result;
 }
 
-+ (void)replaceRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSMutableString *)sourceString {
-    NSRegularExpression *regex = [NSRegularExpression regexFromString:regexString];
++ (void)SF_replaceRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSMutableString *)sourceString {
+    NSRegularExpression *regex = [NSRegularExpression SF_regexFromString:regexString];
     
     [regex replaceMatchesInString:sourceString options:0 range:NSMakeRange(0, [sourceString length]) withTemplate:template];
 }
 
-+ (NSUInteger)numberOfMatchesToRegex:(NSString *)regexString inString:(NSString *)sourceString {
-    NSRegularExpression *regex = [NSRegularExpression regexFromString:regexString];
++ (NSUInteger)SF_numberOfMatchesToRegex:(NSString *)regexString inString:(NSString *)sourceString {
+    NSRegularExpression *regex = [NSRegularExpression SF_regexFromString:regexString];
     NSUInteger result = [regex numberOfMatchesInString:sourceString options:0 range:NSMakeRange(0, [sourceString length])];
     
     return result;

@@ -68,12 +68,12 @@
     
     [result appendFormat:@"static NSMutableDictionary __weak *%@ = nil;\n", factoryDictionaryHolderName];
     [result appendLine:@"    "];
-    [result appendFormat:@"+ (NSMutableDictionary *)attributes%@ {\n", factoryName];
+    [result appendFormat:@"+ (NSMutableDictionary *)SF_attributes%@ {\n", factoryName];
     [result appendFormat:@"    if (%@ != nil) {\n", factoryDictionaryHolderName];
     [result appendFormat:@"        return %@;\n", factoryDictionaryHolderName];
     [result appendLine:@"    }"];
     [result appendLine:@"    "];
-    [result appendFormat:@"    NSMutableDictionary *dictionaryHolder = [super attributes%@];\n", factoryName];
+    [result appendFormat:@"    NSMutableDictionary *dictionaryHolder = [super SF_attributes%@];\n", factoryName];
     [result appendLine:@"    "];
     [result appendLine:@"    if (!dictionaryHolder) {"];
     [result appendLine:@"        dictionaryHolder = [NSMutableDictionary dictionary];"];
@@ -85,7 +85,7 @@
             continue;
         }
         
-        [result appendFormat:@"    [dictionaryHolder setObject:[self invocationForSelector:@selector(%@)] forKey:@\"%@\"];\n", [self listCreatorName:currentModel], currentModel.name];
+        [result appendFormat:@"    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(%@)] forKey:@\"%@\"];\n", [self listCreatorName:currentModel], currentModel.name];
     }
     
     [result appendFormat:@"    %@ = dictionaryHolder;  \n", factoryDictionaryHolderName];
@@ -131,7 +131,7 @@
 }
 
 + (NSString *)listHolderName:(AnnotatedElementModel *)model {
-    NSString *result = [NSString stringWithFormat:@"sf_attributes_list_%@_%@_%@", [self modelHolderName:model], [self elementType], [self elementName:model]];
+    NSString *result = [NSString stringWithFormat:@"SF_attributes_list_%@_%@_%@", [self modelHolderName:model], [self elementType], [self elementName:model]];
     return result;
 }
 
@@ -142,7 +142,7 @@
 }
 
 + (NSString *)listCreatorName:(AnnotatedElementModel *)model {
-    NSString *result = [NSString stringWithFormat:@"sf_attributes_%@_%@_%@", [self modelHolderName:model], [self elementType], [self elementName:model]];
+    NSString *result = [NSString stringWithFormat:@"SF_attributes_%@_%@_%@", [self modelHolderName:model], [self elementType], [self elementName:model]];
     return result;
 }
 

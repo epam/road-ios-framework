@@ -33,15 +33,15 @@
 
 #pragma mark Will be overridden by annotated class
 
-+ (NSMutableDictionary *)attributesFactoriesForMethods { return nil; }
-+ (NSMutableDictionary *)attributesFactoriesForProperties { return nil; }
-+ (NSMutableDictionary *)attributesFactoriesForIvars { return nil; }
-+ (NSArray *)attributesForClass { return nil; }
++ (NSMutableDictionary *)SF_attributesFactoriesForMethods { return nil; }
++ (NSMutableDictionary *)SF_attributesFactoriesForProperties { return nil; }
++ (NSMutableDictionary *)SF_attributesFactoriesForIvars { return nil; }
++ (NSArray *)SF_attributesForClass { return nil; }
 
 #pragma mark Internal API
 
-+ (NSInvocation *)invocationForSelector:(SEL)selector {
-    return [NSInvocation invocationForSelector:selector target:self];
++ (NSInvocation *)SF_invocationForSelector:(SEL)selector {
+    return [NSInvocation SF_invocationForSelector:selector target:self];
 }
 
 

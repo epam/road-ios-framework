@@ -34,14 +34,14 @@
 
 #pragma mark Internal API
 
-+ (NSInvocation *)invocationForSelector:(SEL)selector;
++ (NSInvocation *)SF_invocationForSelector:(SEL)selector;
 
 #pragma mark Will be overridden by annotated class
 
-+ (NSMutableDictionary *)attributesFactoriesForMethods;
-+ (NSMutableDictionary *)attributesFactoriesForProperties;
-+ (NSMutableDictionary *)attributesFactoriesForIvars;
-+ (NSArray *)attributesForClass;
++ (NSMutableDictionary *)SF_attributesFactoriesForMethods;
++ (NSMutableDictionary *)SF_attributesFactoriesForProperties;
++ (NSMutableDictionary *)SF_attributesFactoriesForIvars;
++ (NSArray *)SF_attributesForClass;
 
 #pragma mark -
 
