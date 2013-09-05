@@ -30,13 +30,18 @@
 #import "SFWebServiceCallParameterEncoder.h"
 #import "SFSerializationDelegate.h"
 #import "SFWebServiceURLBuilderParameter.h"
+#import "SFAttachment.h"
+#import "SFMultipartData.h"
+#import "SFWebServiceClient.h"
 
 @implementation SFWebServiceCallParameterEncoder
 
-+ (void)encodeParameters:(NSArray *)parameterList withSerializator:(id<SFSerializationDelegate>)serializator callbackBlock:(void(^)(NSDictionary *parameters, NSData *postData))callbackBlock {
++ (void)encodeParameters:(NSArray *)parameterList forClient:(SFWebServiceClient *)webClient methodName:(NSString *)methodName withSerializator:(id<SFSerializationDelegate>)serializator callbackBlock:(void(^)(NSDictionary *parameters, NSData *postData, BOOL isMultipartData))callbackBlock {
     
     NSMutableDictionary *result = [[NSMutableDictionary alloc] initWithCapacity:[parameterList count]];
-    NSData *bodyData;
+    NSMutableData *bodyData;
+    NSString *boundary;
+    BOOL isMultipartData = NO;
     
     for (id object in parameterList) {
         
@@ -55,6 +60,30 @@
             NSAssert(bodyData == nil,@"The body data can not been setted more than once");
             bodyData = object;
         }
+        else if([object isKindOfClass:[SFAttachment class]]) {
+            
+            encodedObject = @"";
+            if (!bodyData) {
+                bodyData = [[NSMutableData alloc] init];
+            }
+            
+            boundary = [self boundaryFromWebServiceClient:webClient withMethodName:methodName];
+            isMultipartData = YES;
+            [self addAttachment:object toBodyData:bodyData boundary:boundary];
+        }
+        else if ([object isKindOfClass:[NSArray class]]
+                 && [object count] > 0
+                 && [object[0] isKindOfClass:[SFAttachment class]]) {
+            
+            encodedObject = @"";
+            if (!bodyData) {
+                bodyData = [[NSMutableData alloc] init];
+            }
+            
+            boundary = [self boundaryFromWebServiceClient:webClient withMethodName:methodName];
+            isMultipartData = YES;
+            [self addAttachments:object toBodyData:bodyData boundary:boundary];
+        }
         else if ([[object class] hasAttributesForClassWithAttributeType:[SFWebServiceURLBuilderParameter class]]) {
             encodedObject = object;
         }
@@ -69,7 +98,36 @@
         [result setObject:encodedObject forKey:key];
     }
     
-    callbackBlock(result, bodyData);
+    callbackBlock(result, bodyData, isMultipartData);
+}
+
++ (void)addAttachments:(NSArray *)attachments toBodyData:(NSMutableData *)bodyData boundary:(NSString *)boundary {
+    for (SFAttachment *attachment in attachments) {
+        [self addAttachment:attachment toBodyData:bodyData boundary:boundary];
+    }
+}
+
++ (void)addAttachment:(SFAttachment *)attachment toBodyData:(NSMutableData *)bodyData boundary:(NSString *)boundary {
+    NSMutableData * nextAttachment = [[NSMutableData alloc] init];
+    if (!bodyData.length) {
+        [nextAttachment appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+
+    [nextAttachment appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", attachment.name, attachment.fileName] dataUsingEncoding:NSUTF8StringEncoding]];
+    [nextAttachment appendData:[[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", attachment.contentType] dataUsingEncoding:NSUTF8StringEncoding]];
+    [nextAttachment appendData:[NSData dataWithData:attachment.data]];
+    [nextAttachment appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [bodyData appendData:nextAttachment];
+}
+
++ (NSString *)boundaryFromWebServiceClient:(id)webServiceClient withMethodName:(NSString *)methodName {
+    SFMultipartData *multipartDataAttribute = [[webServiceClient class] attributeForMethod:methodName withAttributeType:[SFMultipartData class]];
+    if (!multipartDataAttribute.boundary) {
+        // Some random default boundary
+        multipartDataAttribute.boundary = @"AaB03x";
+    }
+    return multipartDataAttribute.boundary;
 }
 
 @end

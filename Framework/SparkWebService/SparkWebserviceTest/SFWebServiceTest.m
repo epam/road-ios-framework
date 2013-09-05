@@ -285,4 +285,45 @@
     STAssertTrue(receivedError.code, @"Code've not been filled for generated error!");
 }
 
+- (void)testMultipartData {
+    [[[SFServiceProvider sharedProvider] logger] addWriter:[SFConsoleLogWriter new]];
+    
+    __block BOOL isFinished = NO;
+    __block NSError *receivedError;
+    
+    SFConcreteWebServiceClient *webClient = [[SFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://services.odata.org/V3/(S(plcxuejnllfvrrecpvqbehxz))/OData/OData.svc/Product(1)"];
+    SFAttachment *attachment = [[SFAttachment alloc] initWithName:@"image" fileName:@"imageName.jpg" data:[[NSData alloc] init]];
+    [webClient testMultipartDataWithAttachment:attachment success:^(id result) {
+        isFinished = YES;
+    } failure:^(NSError *error) {
+        receivedError = error;
+        isFinished = YES;
+    }];
+    
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
+    }
+}
+
+- (void)testMultipartDataArray {
+    [[[SFServiceProvider sharedProvider] logger] addWriter:[SFConsoleLogWriter new]];
+    
+    __block BOOL isFinished = NO;
+    __block NSError *receivedError;
+    
+    SFConcreteWebServiceClient *webClient = [[SFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://services.odata.org/V3/(S(plcxuejnllfvrrecpvqbehxz))/OData/OData.svc/Product(1)"];
+    NSArray *attachments = @[[[SFAttachment alloc] initWithName:@"image" fileName:@"imageName.jpg" data:[[NSData alloc] init]],
+                             [[SFAttachment alloc] initWithName:@"image" fileName:@"imageName2.jpg" data:[[NSData alloc] init]]];
+    [webClient testMultipartDataWithAttachments:attachments success:^(id result) {
+        isFinished = YES;
+    } failure:^(NSError *error) {
+        receivedError = error;
+        isFinished = YES;
+    }];
+    
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
+    }
+}
+
 @end

@@ -1,5 +1,5 @@
 //
-//  SFWebServiceCallParameterEncoder.h
+//  SFMultipartData.m
 //  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -27,23 +27,8 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Foundation/Foundation.h>
-@protocol SFSerializationDelegate;
-@class SFWebServiceClient;
+#import "SFMultipartData.h"
 
-/**
- Parameter encoder to create parameters for the webservice.
- */
-@interface SFWebServiceCallParameterEncoder : NSObject
-
-/**
- It will create a parameter dictionary based on the parameter list array. If it needs to be serialized, the serializator object will be used. If one object is NSData, it will be sent back as a post data.
- @param parameterList The list of parameters
- @param webClient The web client which handle service request
- @param methodName The method name is selector name which was invoked
- @param serializator The serializator object
- @param callbackBlock The callback block which will be called.
- */
-+ (void)encodeParameters:(NSArray *)parameterList forClient:(SFWebServiceClient *)webClient methodName:(NSString *)methodName withSerializator:(id<SFSerializationDelegate>)serializator callbackBlock:(void(^)(NSDictionary *parameters, NSData *postData, BOOL isMultipartData))callbackBlock;
+@implementation SFMultipartData
 
 @end

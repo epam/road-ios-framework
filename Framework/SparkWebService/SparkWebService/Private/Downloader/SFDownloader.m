@@ -41,6 +41,7 @@
 #import "SFWebServiceClient.h"
 #import "SFWebServiceLogger.h"
 #import <Spark/SparkCore.h>
+#import "SFMultipartData.h"
 
 @interface SFDownloader () {
     NSURLConnection * _connection;
@@ -85,6 +86,19 @@
 
 - (void)configureRequestForUrl:(NSURL * const)anUrl body:(NSData * const)httpBody sharedHeaders:(NSDictionary *)sharedHeaders values:(NSDictionary *)values {
     _request = [self requestForUrl:anUrl withMethod:_callAttribute.method withBody:httpBody];
+    
+    // For multipart form data we have to add specific header
+    if (_multipartData) {
+        NSString *boundary;
+        SFMultipartData *multipartDataAttribute = [[self.webServiceClient class] attributeForMethod:self.methodName withAttributeType:[SFMultipartData class]];
+        boundary = multipartDataAttribute.boundary;
+        if (!boundary.length) {
+            // Some random default boundary
+            boundary = @"AaB03x";
+        }
+        NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+        [_request addValue:contentType forHTTPHeaderField:@"Content-Type"];
+    }
     
     SFWebServiceHeader * const headerAttribute = [[_webServiceClient class] attributeForMethod:_methodName withAttributeType:[SFWebServiceHeader class]];
     
