@@ -30,6 +30,9 @@
 #ifndef SparkAttributesSupport_Header_h
 #define SparkAttributesSupport_Header_h
 
+/**
+ This macro defines attribute for class, method, property and instance variable (ivar)
+ */
 #define SF_ATTRIBUTE(AttrObject, ...)
 
 #endif

@@ -321,6 +321,7 @@
 				789669D615CBD1CD003D4AFC /* Sources */,
 				789669D715CBD1CD003D4AFC /* Frameworks */,
 				789669D815CBD1CD003D4AFC /* Copy Files */,
+				8D0106BF17D966E80089D1B1 /* Run Script (Create documentation set) */,
 			);
 			buildRules = (
 			);
@@ -459,6 +460,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		8D0106BF17D966E80089D1B1 /* Run Script (Create documentation set) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script (Create documentation set)";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#${SRCROOT}/../../tools/appledoc/appledoc --create-html --templates ${SRCROOT}/../../tools/appledoc/ --project-name appledoc --project-company \"EPAM\" --company-id com.epam --logformat xcode --output ${SRCROOT}/../../Documents/SparkAttribute/ --docset-install-path ${SRCROOT}/../../Documents/SparkAttribute ./SparkAttribute";
 		};
 /* End PBXShellScriptBuildPhase section */
 

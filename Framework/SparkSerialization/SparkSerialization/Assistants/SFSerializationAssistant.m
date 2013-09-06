@@ -13,13 +13,7 @@
 @implementation SFSerializationAssistant
 
 + (NSString *)serializationKeyForProperty:(SFPropertyInfo *)propertyInfo {
-    NSArray *propertySerializableAttributes = [propertyInfo.hostClass SF_attributesForProperty:propertyInfo.propertyName withAttributeType:[SFSerializable class]];
-    
-    if ([propertySerializableAttributes count] == 0) {
-        return propertyInfo.propertyName;
-    }
-    
-    SFSerializable *propertySerializableAttribute = [propertySerializableAttributes lastObject];
+    SFSerializable *propertySerializableAttribute = [propertyInfo.hostClass SF_attributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializable class]];
     
     if ([propertySerializableAttribute.serializationKey length] == 0) {
         return propertyInfo.propertyName;

@@ -36,7 +36,6 @@
 + (NSMutableDictionary *)SF_attributesFactoriesForMethods { return nil; }
 + (NSMutableDictionary *)SF_attributesFactoriesForProperties { return nil; }
 + (NSMutableDictionary *)SF_attributesFactoriesForIvars { return nil; }
-+ (NSArray *)SF_attributesForClass { return nil; }
 
 #pragma mark Internal API
 

@@ -27,7 +27,6 @@
 		D771947717CF41BC0011047F /* SparkGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = D771947617CF41BC0011047F /* SparkGeneratedAttribute.m */; };
 		D7AF13E817CF541500A92C31 /* SFServiceProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AF13E617CF541500A92C31 /* SFServiceProvider.m */; };
 		D7AF13EB17CF558B00A92C31 /* SFServiceProvider.h in Copy Files */ = {isa = PBXBuildFile; fileRef = D7AF13E717CF541500A92C31 /* SFServiceProvider.h */; };
-		D7AF141817CF642500A92C31 /* SFServiceProvider+SFTestService.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AF141717CF642500A92C31 /* SFServiceProvider+SFTestService.m */; };
 		D7AF141B17CF64B700A92C31 /* SFTestService.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AF141A17CF64B700A92C31 /* SFTestService.m */; };
 		D7AF149817CF8FD100A92C31 /* libSparkServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7869944D16AEBF3E00B28760 /* libSparkServices.a */; };
 		D7AF149917CF8FDB00A92C31 /* libSparkAttribute.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D765D73317CB80B2004D35E7 /* libSparkAttribute.a */; };
@@ -196,7 +195,6 @@
 		D7AF13E617CF541500A92C31 /* SFServiceProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFServiceProvider.m; sourceTree = "<group>"; };
 		D7AF13E717CF541500A92C31 /* SFServiceProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFServiceProvider.h; sourceTree = "<group>"; };
 		D7AF141617CF642500A92C31 /* SFServiceProvider+SFTestService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFServiceProvider+SFTestService.h"; sourceTree = "<group>"; };
-		D7AF141717CF642500A92C31 /* SFServiceProvider+SFTestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SFServiceProvider+SFTestService.m"; sourceTree = "<group>"; };
 		D7AF141917CF64B700A92C31 /* SFTestService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFTestService.h; path = TestService/SFTestService.h; sourceTree = "<group>"; };
 		D7AF141A17CF64B700A92C31 /* SFTestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFTestService.m; path = TestService/SFTestService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -241,7 +239,6 @@
 				D771947617CF41BC0011047F /* SparkGeneratedAttribute.m */,
 				5ACD21621741187600CC61AC /* TestService */,
 				D7AF141617CF642500A92C31 /* SFServiceProvider+SFTestService.h */,
-				D7AF141717CF642500A92C31 /* SFServiceProvider+SFTestService.m */,
 				5ACD215B1741179500CC61AC /* SFSparkServicesTest.h */,
 				5ACD215C1741179500CC61AC /* SFSparkServicesTest.m */,
 				5ACD21561741179500CC61AC /* Supporting Files */,
@@ -644,7 +641,6 @@
 			files = (
 				5ACD215D1741179500CC61AC /* SFSparkServicesTest.m in Sources */,
 				D771947717CF41BC0011047F /* SparkGeneratedAttribute.m in Sources */,
-				D7AF141817CF642500A92C31 /* SFServiceProvider+SFTestService.m in Sources */,
 				D7AF141B17CF64B700A92C31 /* SFTestService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

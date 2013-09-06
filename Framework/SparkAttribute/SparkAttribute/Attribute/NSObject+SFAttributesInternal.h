@@ -30,18 +30,24 @@
 #import <Foundation/Foundation.h>
 #import <Spark/NSInvocation+SparkExtension.h>
 
+/**
+ This category constains a set of methods which used by generated code.
+ 
+ **No one of this methods should not used by developer directly.**
+ 
+*/
+
 @interface NSObject (SFAttributesInternal)
 
 #pragma mark Internal API
 
 + (NSInvocation *)SF_invocationForSelector:(SEL)selector;
 
-#pragma mark Will be overridden by annotated class
+#pragma mark Will be overridden in generated code
 
 + (NSMutableDictionary *)SF_attributesFactoriesForMethods;
 + (NSMutableDictionary *)SF_attributesFactoriesForProperties;
 + (NSMutableDictionary *)SF_attributesFactoriesForIvars;
-+ (NSArray *)SF_attributesForClass;
 
 #pragma mark -
 
