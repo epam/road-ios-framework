@@ -1,6 +1,6 @@
 //
-//  SparkAttributesSupport.h
-//  SFAttributes
+//  SFODataEntity.m
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,11 +27,8 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef SparkAttributesSupport_Header_h
-#define SparkAttributesSupport_Header_h
+#import "SFODataEntity.h"
 
-#define SF_ATTRIBUTE(AttrObject, ...)
+@implementation SFODataEntity
 
-#endif
-
-#import "NSObject+SFAttributes.h"
+@end

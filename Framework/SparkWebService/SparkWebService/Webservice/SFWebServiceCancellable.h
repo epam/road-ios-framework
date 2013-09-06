@@ -1,6 +1,6 @@
 //
-//  SparkAttributesSupport.h
-//  SFAttributes
+//  SFWebServiceCancellable.h
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,11 +27,15 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef SparkAttributesSupport_Header_h
-#define SparkAttributesSupport_Header_h
+#import <Foundation/Foundation.h>
+/**
+ * The cancellable protocol. It has to be implemented if one of the call shoulb be cancellable.
+ */
+@protocol SFWebServiceCancellable <NSObject>
 
-#define SF_ATTRIBUTE(AttrObject, ...)
+/**
+ * Implementers should cancel the tasks.
+ */
+- (void)cancel;
 
-#endif
-
-#import "NSObject+SFAttributes.h"
+@end

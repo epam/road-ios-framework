@@ -1,6 +1,6 @@
 //
-//  SparkAttributesSupport.h
-//  SFAttributes
+//  SFODataPrioritizedPredicate.m
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,11 +27,14 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef SparkAttributesSupport_Header_h
-#define SparkAttributesSupport_Header_h
+#import "SFODataPrioritizedPredicate.h"
 
-#define SF_ATTRIBUTE(AttrObject, ...)
+@implementation SFODataPrioritizedPredicate
 
-#endif
+- (NSString *)description {
+    NSString *description = [NSString stringWithFormat:@"(%@)", [super description]];
+    
+    return description;
+}
 
-#import "NSObject+SFAttributes.h"
+@end

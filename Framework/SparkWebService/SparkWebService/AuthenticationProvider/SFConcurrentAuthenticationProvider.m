@@ -1,6 +1,6 @@
 //
-//  SparkAttributesSupport.h
-//  SFAttributes
+//  SFSafeAuthenticationProvider.m
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,11 +27,29 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef SparkAttributesSupport_Header_h
-#define SparkAttributesSupport_Header_h
+#import "SFConcurrentAuthenticationProvider.h"
+#import <objc/runtime.h>
 
-#define SF_ATTRIBUTE(AttrObject, ...)
+@implementation SFConcurrentAuthenticationProvider
 
-#endif
+- (id)init {
+    self = [super init];
+    if (self) {
+        _queue = dispatch_queue_create(NULL, DISPATCH_QUEUE_SERIAL);
+    }
+    return self;
+}
 
-#import "NSObject+SFAttributes.h"
+-(void)authenticate {
+    dispatch_async(_queue, ^{
+        [self concurrentAuthenticate];
+    });
+}
+
+- (void)concurrentAuthenticate {
+    @throw [NSException exceptionWithName:@"AbstractMethodInvocationException"
+                                   reason:@"Override method in subclasses, invoke this method on concrete subclasses."
+                                 userInfo:nil];
+}
+
+@end

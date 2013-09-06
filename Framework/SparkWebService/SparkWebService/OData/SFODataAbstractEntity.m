@@ -1,6 +1,6 @@
 //
-//  SparkAttributesSupport.h
-//  SFAttributes
+//  SFODataAbstractEntity.m
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,11 +27,20 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef SparkAttributesSupport_Header_h
-#define SparkAttributesSupport_Header_h
+#import "SFODataAbstractEntity.h"
+#import "SFODataEntity.h"
 
-#define SF_ATTRIBUTE(AttrObject, ...)
+@implementation SFODataAbstractEntity
 
-#endif
++ (NSString *)entityName {
+    SFODataEntity *entityAttribute = [self attributeForClassWithAttributeType:[SFODataEntity class]];
+    NSString *entityName = [entityAttribute entityName];
+    if (!entityName.length) {
+        entityName = NSStringFromClass(self);
+    }
+    
+    return entityName;
+}
 
-#import "NSObject+SFAttributes.h"
+
+@end

@@ -1,6 +1,6 @@
 //
-//  SparkAttributesSupport.h
-//  SFAttributes
+//  SparkWebServiceAnnotations.h
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,11 +27,15 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef SparkAttributesSupport_Header_h
-#define SparkAttributesSupport_Header_h
 
-#define SF_ATTRIBUTE(AttrObject, ...)
+#ifndef SparkWebservice_SparkWebServiceAnnotations_h
+#define SparkWebservice_SparkWebServiceAnnotations_h
+
+#import "SFWebServiceCall.h"
+#import "SFWebServiceClientStatusCodes.h"
+#import "SFWebServiceCache.h"
+#import "SFWebServiceCacheInvalidation.h"
+#import "SFWebServiceHeader.h"
+#import "SFWebServiceLogger.h"
 
 #endif
-
-#import "NSObject+SFAttributes.h"

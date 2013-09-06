@@ -1,6 +1,6 @@
 //
-//  SparkAttributesSupport.h
-//  SFAttributes
+//  SFWebServiceURLBuilding.h
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,11 +27,21 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef SparkAttributesSupport_Header_h
-#define SparkAttributesSupport_Header_h
+#import <Foundation/Foundation.h>
 
-#define SF_ATTRIBUTE(AttrObject, ...)
+@protocol SFWebServiceURLBuilding <NSObject>
 
-#endif
+/**
+ Create an NSURL from the template and the serviceRoot string, inserting the values into the template string.
+ @param urlTemplate The template string.
+ @param serviceRoot The serviceRoot string.
+ @param values The values for the template string keys.
+ */
++ (NSURL *)urlFromTemplate:(NSString * const)urlTemplate withServiceRoot:(NSString* const)serviceRoot values:(NSDictionary * const)values;
 
-#import "NSObject+SFAttributes.h"
+/**
+ The default escape string in the url template string. Override in subclasses if you need a non-default escape marker.
+ */
++ (NSString *)urlTemplateEscapeString;
+
+@end

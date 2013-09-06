@@ -1,6 +1,6 @@
 //
-//  SparkAttributesSupport.h
-//  SFAttributes
+//  SFODataExpression.h
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,11 +27,33 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef SparkAttributesSupport_Header_h
-#define SparkAttributesSupport_Header_h
+#import <Spark/SparkReflection.h>
 
-#define SF_ATTRIBUTE(AttrObject, ...)
+@class SFODataPredicate;
 
-#endif
+@interface SFODataExpression : NSObject
 
-#import "NSObject+SFAttributes.h"
+@property (nonatomic, strong) NSString *expression;
+
+/**
+ * Initializes expression with value.
+ * @param value The string value.
+ */
+- (id)initWithValue:(NSString *)value;
+/**
+ * Initializes expression with array of property infos.
+ * @param properties The property informations about chain of properties you want to initialize predicate with.
+ */
+- (id)initWithMultiLevelProperty:(NSArray *)properties;
+/**
+ * Initializes expression with property info.
+ * @param property The property information about property you want to initialize predicate with.
+ */
+- (id)initWithProperty:(SFPropertyInfo *)property;
+/**
+ * Initializes expression with predicate to use its result in another predicate.
+ * @param predicate The predicate to use it as expression.
+ */
+- (id)initWithPredicate:(SFODataPredicate *)predicate;
+
+@end

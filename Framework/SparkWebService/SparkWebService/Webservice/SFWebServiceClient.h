@@ -1,6 +1,6 @@
 //
-//  SparkAttributesSupport.h
-//  SFAttributes
+//  SFWebServiceClient.h
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,11 +27,42 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef SparkAttributesSupport_Header_h
-#define SparkAttributesSupport_Header_h
+#import <Spark/SparkServices.h>
 
-#define SF_ATTRIBUTE(AttrObject, ...)
+@protocol SFSerializationDelegate;
+@protocol SFAuthenticating;
 
-#endif
+typedef void (^SFWebServiceClientPrepareForSendRequestBlock)(NSMutableURLRequest* serviceRequest);
 
-#import "NSObject+SFAttributes.h"
+/**
+ The webservice client class. It can submit a request. It uses dynamic method resolution to implement various methods based on the annotations.
+ */
+@interface SFWebServiceClient : SFService
+
+/**
+ The serialization delegate.
+ */
+@property (strong, nonatomic) id<SFSerializationDelegate> serializationDelegate;
+
+/**
+ * The Web Service host url.
+ */
+@property (copy, nonatomic) NSString *serviceRoot;
+
+/**
+ * The shared for client headers.
+ */
+@property (strong, atomic) NSMutableDictionary *sharedHeaders;
+
+/*
+ * Authentication provider which will be used in case of authentication challenge from server
+ */
+@property (strong, nonatomic) id<SFAuthenticating> authenticationProvider;
+
+/**
+ Designated initializer.
+ @param serviceRoot The service root url.
+ */
+- (id)initWithServiceRoot:(NSString *)serviceRoot;
+
+@end

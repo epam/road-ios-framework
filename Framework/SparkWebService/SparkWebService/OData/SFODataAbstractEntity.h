@@ -1,6 +1,6 @@
 //
-//  SparkAttributesSupport.h
-//  SFAttributes
+//  SFODataAbstractEntity.h
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,11 +27,13 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef SparkAttributesSupport_Header_h
-#define SparkAttributesSupport_Header_h
+#import <Foundation/Foundation.h>
 
-#define SF_ATTRIBUTE(AttrObject, ...)
+@interface SFODataAbstractEntity : NSObject
 
-#endif
+/**
+ * Returns entity name of OData entity to use it in request to OData web service. It has to be defined in attribute or standart implementation will use class name instead
+ */
++ (NSString *)entityName;
 
-#import "NSObject+SFAttributes.h"
+@end
