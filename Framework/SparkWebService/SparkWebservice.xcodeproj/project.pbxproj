@@ -96,7 +96,6 @@
 		CD896C241737E84F00565C9C /* SFWebServiceHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = CD896C021737E84F00565C9C /* SFWebServiceHeader.m */; };
 		CD896C2E1737E84F00565C9C /* SFDefaultSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = CD896C1B1737E84F00565C9C /* SFDefaultSerializer.m */; };
 		CD896C301737E84F00565C9C /* SFWebServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CD896C211737E84F00565C9C /* SFWebServiceClient.m */; };
-		CD896C401737E85800565C9C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD896C321737E85800565C9C /* InfoPlist.strings */; };
 		CD896C421737E85800565C9C /* SFWebServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CD896C381737E85800565C9C /* SFWebServiceTest.m */; };
 		CDB8477A1737F318003BE170 /* SparkWebservice.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CD896C121737E84F00565C9C /* SparkWebservice.h */; };
 		CDB8477B1737F318003BE170 /* SparkWebServiceAnnotations.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CD896C131737E84F00565C9C /* SparkWebServiceAnnotations.h */; };
@@ -471,7 +470,6 @@
 		CD896C1D1737E84F00565C9C /* SFWebServiceCancellable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFWebServiceCancellable.h; sourceTree = "<group>"; };
 		CD896C201737E84F00565C9C /* SFWebServiceClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFWebServiceClient.h; sourceTree = "<group>"; };
 		CD896C211737E84F00565C9C /* SFWebServiceClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFWebServiceClient.m; sourceTree = "<group>"; };
-		CD896C331737E85800565C9C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CD896C341737E85800565C9C /* SFWebServiceClient+DynamicTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFWebServiceClient+DynamicTest.h"; sourceTree = "<group>"; };
 		CD896C371737E85800565C9C /* SFWebServiceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFWebServiceTest.h; sourceTree = "<group>"; };
 		CD896C381737E85800565C9C /* SFWebServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFWebServiceTest.m; sourceTree = "<group>"; };
@@ -731,7 +729,6 @@
 			children = (
 				83448CDD17D0D3E3002A0D15 /* SparkGeneratedAttribute.m */,
 				8396B43B17A25387009E7B9B /* Classes */,
-				CD896C321737E85800565C9C /* InfoPlist.strings */,
 				CD896C341737E85800565C9C /* SFWebServiceClient+DynamicTest.h */,
 				83B5D20417D4CDDB0030D8CD /* SFWebServiceClient+DynamicTest.m */,
 				CD896C371737E85800565C9C /* SFWebServiceTest.h */,
@@ -1065,7 +1062,6 @@
 				78CBA94B16C3D44A00DAC9BB /* SparkCore.xcodeproj in Resources */,
 				78CBA94C16C3D44A00DAC9BB /* SparkReflection.xcodeproj in Resources */,
 				78BCFFA816D24FE900D23908 /* SparkAttribute.xcodeproj in Resources */,
-				CD896C401737E85800565C9C /* InfoPlist.strings in Resources */,
 				83B97B9E175DCC23006C72BA /* SparkSerialization.xcodeproj in Resources */,
 				83B97BA1175DCD16006C72BA /* SparkLogger.xcodeproj in Resources */,
 			);
@@ -1278,17 +1274,6 @@
 			targetProxy = CD3BFBFF17391902006C4D2F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		CD896C321737E85800565C9C /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CD896C331737E85800565C9C /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		783AF1B51650FAF800AD247E /* Debug */ = {
