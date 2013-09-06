@@ -1,6 +1,6 @@
 //
-//  SFSerializableDate.h
-//  SparkSerialization
+//  SFWebServiceCallParameterEncoder.h
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,18 +27,20 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Spark/SparkAttribute.h>
+#import <Foundation/Foundation.h>
+@protocol SFSerializationDelegate;
 
 /**
- Serialization attribute. Can be used either as a class attribute to set date format for all properties of a class. Can be used as individual property attribute to specify format date for this property or to override general format of date for whole class. Default value specify both encoding and decoding format, for specifying format for concrete direction set this format string to decodingFormat or encodingFormat.
+ Parameter encoder to create parameters for the webservice.
  */
-@interface SFSerializableDate : NSObject
+@interface SFWebServiceCallParameterEncoder : NSObject
 
-@property(nonatomic, strong) NSString *format;
-
-@property(nonatomic, strong) NSString *decodingFormat;
-@property(nonatomic, strong) NSString *encodingFormat;
-
-@property(nonatomic, assign) BOOL unixTimestamp;
+/**
+ It will create a parameter dictionary based on the parameter list array. If it needs to be serialized, the serializator object will be used. If one object is NSData, it will be sent back as a post data. 
+ @param parameterList The list of parameters. 
+ @param serializator The serializator object
+ @param callbackBlock The callback block which will be called. 
+ */
++ (void)encodeParameters:(NSArray *)parameterList withSerializator:(id<SFSerializationDelegate>)serializator callbackBlock:(void(^)(NSDictionary *parameters, NSData *postData))callbackBlock;
 
 @end

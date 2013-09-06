@@ -1,6 +1,6 @@
 //
-//  SFSerializableDate.h
-//  SparkSerialization
+//  SFODataErrorHandler.m
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,18 +27,51 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Spark/SparkAttribute.h>
+#import "SFODataErrorHandler.h"
 
-/**
- Serialization attribute. Can be used either as a class attribute to set date format for all properties of a class. Can be used as individual property attribute to specify format date for this property or to override general format of date for whole class. Default value specify both encoding and decoding format, for specifying format for concrete direction set this format string to decodingFormat or encodingFormat.
- */
-@interface SFSerializableDate : NSObject
+#import <Spark/SparkSerialization.h>
+#import "NSError+SparkWebService.h"
 
-@property(nonatomic, strong) NSString *format;
+@implementation SFODataErrorHandler
 
-@property(nonatomic, strong) NSString *decodingFormat;
-@property(nonatomic, strong) NSString *encodingFormat;
++ (id)validateResponse:(NSURLResponse *)response withData:(NSData *)data {
+    NSError *error = nil;
+    
+    if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        NSRange successCodes = NSMakeRange(200, 100);
+        if (NSLocationInRange(httpResponse.statusCode, successCodes)) {
+            // No errors. Exiting method
+            error = nil;
+        }
+        else {
+            error = [self generateErrorForResponse:httpResponse withData:data];
+        }
+        
+    }
+    
+    return error;
+}
 
-@property(nonatomic, assign) BOOL unixTimestamp;
++ (id)generateErrorForResponse:(NSHTTPURLResponse *)response withData:(NSData *)data {
+    NSError *error = nil;
+    
+    id jsonObject = [SFAttributedDecoder decodeJSONData:data withRootClassNamed:nil];
+    
+    if ([jsonObject isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *errorInfo = [jsonObject valueForKey:@"odata.error"];
+        
+        NSInteger code = [[errorInfo valueForKey:@"code"] integerValue];
+        if (!code) {
+            code = response.statusCode;
+        }
+        
+        NSString *localizedDescription = [errorInfo valueForKeyPath:@"message.value"];
+        
+        error = [NSError errorWithDomain:kSFWebServiceErrorDomain code:code userInfo:@{NSLocalizedDescriptionKey: localizedDescription}];
+    }
+
+    return error;
+}
 
 @end

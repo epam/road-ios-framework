@@ -1,6 +1,6 @@
 //
-//  SFSerializableDate.h
-//  SparkSerialization
+//  SFODataExpression.h
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,18 +27,33 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Spark/SparkAttribute.h>
+#import <Spark/SparkReflection.h>
+
+@class SFODataPredicate;
+
+@interface SFODataExpression : NSObject
+
+@property (nonatomic, strong) NSString *expression;
 
 /**
- Serialization attribute. Can be used either as a class attribute to set date format for all properties of a class. Can be used as individual property attribute to specify format date for this property or to override general format of date for whole class. Default value specify both encoding and decoding format, for specifying format for concrete direction set this format string to decodingFormat or encodingFormat.
+ * Initializes expression with value.
+ * @param value The string value.
  */
-@interface SFSerializableDate : NSObject
-
-@property(nonatomic, strong) NSString *format;
-
-@property(nonatomic, strong) NSString *decodingFormat;
-@property(nonatomic, strong) NSString *encodingFormat;
-
-@property(nonatomic, assign) BOOL unixTimestamp;
+- (id)initWithValue:(NSString *)value;
+/**
+ * Initializes expression with array of property infos.
+ * @param properties The property informations about chain of properties you want to initialize predicate with.
+ */
+- (id)initWithMultiLevelProperty:(NSArray *)properties;
+/**
+ * Initializes expression with property info.
+ * @param property The property information about property you want to initialize predicate with.
+ */
+- (id)initWithProperty:(SFPropertyInfo *)property;
+/**
+ * Initializes expression with predicate to use its result in another predicate.
+ * @param predicate The predicate to use it as expression.
+ */
+- (id)initWithPredicate:(SFODataPredicate *)predicate;
 
 @end

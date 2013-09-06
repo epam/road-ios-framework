@@ -1,6 +1,6 @@
 //
-//  SFSerializableDate.h
-//  SparkSerialization
+//  SFAuthenticationProvider.h
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,18 +27,30 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Spark/SparkAttribute.h>
+#import "SFAuthenticating.h"
+
+FOUNDATION_EXPORT NSString *const kSFAuthorizationKey;
+
+extern const int kSFUnauthorizedCode;
+extern const int kSFProxyAuthenticationRequiredCode;
 
 /**
- Serialization attribute. Can be used either as a class attribute to set date format for all properties of a class. Can be used as individual property attribute to specify format date for this property or to override general format of date for whole class. Default value specify both encoding and decoding format, for specifying format for concrete direction set this format string to decodingFormat or encodingFormat.
+ The general provider who support opportunities secure connection SSL 
+ (without support certificates) using trusted hosts
  */
-@interface SFSerializableDate : NSObject
+@interface SFAuthenticationProvider : NSObject <SFAuthenticating> {
+@protected
+    BOOL _sessionOpened;
+    NSMutableSet * _successBlocks;
+    NSMutableSet * _failureBlocks;
+    __weak SFWebServiceClient * _webServiceClient;
+}
 
-@property(nonatomic, strong) NSString *format;
+@property (nonatomic, strong) NSString *authenticationProtectedMethod;
+@property (nonatomic, assign, readonly, getter = isSessionOpened) BOOL sessionOpened;
 
-@property(nonatomic, strong) NSString *decodingFormat;
-@property(nonatomic, strong) NSString *encodingFormat;
-
-@property(nonatomic, assign) BOOL unixTimestamp;
+- (void)callSuccessBlocksWithResult:(id)result;
+- (void)callFailureBlocksWithError:(NSError *)error;
+- (void)releaseCompletionBlocks;
 
 @end

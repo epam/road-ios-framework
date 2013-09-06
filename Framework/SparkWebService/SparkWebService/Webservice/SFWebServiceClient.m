@@ -1,6 +1,6 @@
 //
-//  SFSerializableDate.h
-//  SparkSerialization
+//  SFWebServiceClient.m
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,18 +27,37 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Spark/SparkAttribute.h>
+#import "SFWebServiceClient.h"
+#import "SFDefaultSerializer.h"
+#import "SFAuthenticating.h"
 
-/**
- Serialization attribute. Can be used either as a class attribute to set date format for all properties of a class. Can be used as individual property attribute to specify format date for this property or to override general format of date for whole class. Default value specify both encoding and decoding format, for specifying format for concrete direction set this format string to decodingFormat or encodingFormat.
- */
-@interface SFSerializableDate : NSObject
+@implementation SFWebServiceClient
 
-@property(nonatomic, strong) NSString *format;
+- (id)init {
+    self = [self initWithServiceRoot:nil];
+    
+    return self;
+}
 
-@property(nonatomic, strong) NSString *decodingFormat;
-@property(nonatomic, strong) NSString *encodingFormat;
+- (id)initWithServiceRoot:(NSString *)serviceRoot {
+    self = [super init];
+    
+    if (self) {
+        _serviceRoot = serviceRoot;
+        _serializationDelegate = [[SFDefaultSerializer alloc] init];
+        _sharedHeaders = [[NSMutableDictionary alloc] init];
+    }
+    
+    return self;
+}
 
-@property(nonatomic, assign) BOOL unixTimestamp;
+- (void)setAuthenticationProvider:(id<SFAuthenticating>)authenticationProvider {
+    // Managing authentication provider webServiceClient property
+    _authenticationProvider.webServiceClient = nil;
+    authenticationProvider.webServiceClient = self;
+    
+    _authenticationProvider = authenticationProvider;
+    
+}
 
 @end

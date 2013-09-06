@@ -68,9 +68,10 @@ Most of these guidelines match Apple's documentation and community-accepted best
 ```
 
 4. There should be exactly one blank line between methods in implementation file to aid in visual clarity and organization.
-5. Whitespace should be avoided in blank lines. Blank line should only have new line symbol and no other invisible symbols.
-6. Avoid adding blank lines at the end of files.
-7. Implementation files should be no longer than 2000 lines. If a source file becomes very long it is hard to understand. Therefore long classes should usually be refactored into several individual classes that focus on a specific task.
+5. Methods in implementation file should appear in the same order they are declared in header file. Private methods should be placed below all of the public methods.
+6. Whitespace should be avoided in blank lines. Blank line should only have new line symbol and no other invisible symbols.
+7. Avoid adding blank lines at the end of files.
+8. Implementation files should be no longer than 2000 lines. If a source file becomes very long it is hard to understand. Therefore long classes should usually be refactored into several individual classes that focus on a specific task.
 
 ### 3.1.Compiler Directives
 
@@ -89,10 +90,14 @@ Most of these guidelines match Apple's documentation and community-accepted best
 3. `#import` Objective-C/Objective-C++ headers, and `#include` C/C++ headers. Objective-C headers should not have `#define` guards as they are already encapsulated in `#import`. Standard C and C++ headers without any Objective-C in them can expect to be included by ordinary C and C++ files. Since there is no `#import` in standard C or C++, such files will be included by `#include` in those cases. Using `#include` for them in Objective-C source files as well means that these headers will always be included with the same semantics.
 
 #### 3.1.2.Pragma
-1. Use `#pragma mark` declarations in implementation file to categorize methods into functional groupings and protocol implementations.
+1. `#pragma mark` declarations should be used in implementation file to distinguish protocol implementation methods.
 **For example:**
-`#pragma mark - Pool delegate methods`
-2. There should be one newline before and after pragma marks.
+`#pragma mark - UITableViewDelegate methods`
+2. `#pragma mark` declarations should be used in implementation file to distinguish private methods.
+**For example:**
+`#pragma mark - Private methods`
+3. Every `#pragma mark` declaration that describes a group of methods should have corresponding closing mark after the last method in the group. Closing mark should only have one dash and no other text: `#pragma mark -`.
+4. There should be one newline before and after pragma marks. 
 
 
 ### 3.2.Comments
@@ -132,7 +137,7 @@ Every comment that you add should be either appledoc in header files or should s
 ## 5.Categories
 1. Category file name should follow the next pattern: `ClassName+CategoryName.h` and `ClassName+CategoryName.m`.
 2. If you add a category to a class without `SF` prefix then the category name should have `SF` prefix. If the class name already has `SF` prefix the category name should not have `SF` prefix. ***For example*** `NSObject+SFAttributes`, but `SFServiceProvider+Logging`.
-3. If you add a category to a class without `SF` prefix then the category method should have `SF` prefix to avoid method name collisions.
+3. If you add a category to a class without `SF` prefix then the category methods should have `SF_` prefix to avoid method name collisions.
 4. Categories should be named for the sort of functionality they provide. Don't create umbrella categories.
 
 ## 6.Methods
@@ -151,6 +156,7 @@ Every comment that you add should be either appledoc in header files or should s
 7. Use exactly one blank line within a method to separate functionality where necessary. However usually it is better to create another method for this purpose.
 8. It is recommended to avoid multiple `return` statements in one method. Multiple return statements might make it hard to understand execution flow of a method. However you may use guard conditions at the beginning of a method to return early.
 9. Method length should be no longer than 40 lines. It is preferable to keep method length below 30 lines. If a method becomes very long it is hard to understand. Therefore long methods should usually be refactored into several individual methods that focus on a specific task.
+10. Do not declare private methods in class extension (anonymous category) or anywhere else. Only provide private method definition without any separate declaration.
 
 ### 6.1.Initialization and Deallocation
 
@@ -269,17 +275,17 @@ if (isAwesome == YES) // Never do this.
 7. Avoid `self.` to access class' own properties unless you have implemented custom setter or getter. You should access class' instance variables directly instead.
 
 ### 7.1.Dot-Notation Syntax
-1. Use dot-notation for accessing and mutating properties. But do not use dot notation in a call path that contains a method call in it, since it may result in complex syntax.
+1. Dot-notation should be used for accessing and mutating properties. Bracket notation is preferred in all other instances.
 
 **For example:**
 ```objc
 view.backgroundColor = [UIColor orangeColor];
-[[UIApplication sharedApplication] delegate];
+[UIApplication sharedApplication].delegate;
 ```
 **Not:**
 ```objc
 [view setBackgroundColor:[UIColor orangeColor]];
-[UIApplication sharedApplication].delegate;
+UIApplication.sharedApplication.delegate;
 ```
 
 ### 7.2.Private Properties
@@ -301,6 +307,7 @@ view.backgroundColor = [UIColor orangeColor];
 3. There should be no instance variable declarations in header files. Instance variables belong to implementation details and should therefore be declared in class extension (anonymous categories) in implementation file.
 4. Instance variable name should be camel-case with the leading word being lowercase and a leading underscore.
 5. Asterisks indicating pointers belong with the variable, e.g., `NSString *text` not `NSString* text` or `NSString * text`.
+6. A local variable should be created as close as possible to the place where this variable is actually used.
 
 ### 8.1.Literals
 

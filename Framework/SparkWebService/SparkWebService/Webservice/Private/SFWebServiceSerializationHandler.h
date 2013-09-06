@@ -1,6 +1,6 @@
 //
-//  SFSerializableDate.h
-//  SparkSerialization
+//  SFWebServiceSerializationHandler.h
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,18 +27,22 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Spark/SparkAttribute.h>
+#import <Foundation/Foundation.h>
+
+@protocol SFSerializationDelegate;
+/**
+ Serialization handler. It will perform the deserialization.
+ */
+@interface SFWebServiceSerializationHandler : NSObject
 
 /**
- Serialization attribute. Can be used either as a class attribute to set date format for all properties of a class. Can be used as individual property attribute to specify format date for this property or to override general format of date for whole class. Default value specify both encoding and decoding format, for specifying format for concrete direction set this format string to decodingFormat or encodingFormat.
+ Deserialize data to a class with the given serializator object. 
+ @param data The data to serialized
+ @param serializationObject The serializator
+ @param deserializationClass The class to  deserialize.
+ @param callbackBlock The callback block to call.
  */
-@interface SFSerializableDate : NSObject
-
-@property(nonatomic, strong) NSString *format;
-
-@property(nonatomic, strong) NSString *decodingFormat;
-@property(nonatomic, strong) NSString *encodingFormat;
-
-@property(nonatomic, assign) BOOL unixTimestamp;
++(void)deserializeData:(NSData * const)data withSerializator:(id<SFSerializationDelegate>)serializationObject serializatinRoot:(NSString *)serializationRoot toDeserializationClass:(Class)deserializationClass withCompletitionBlock:(void(^)(id serializedData, NSError *error))callbackBlock;
 
 @end
+

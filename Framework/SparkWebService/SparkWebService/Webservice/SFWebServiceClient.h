@@ -1,6 +1,6 @@
 //
-//  SFSerializableDate.h
-//  SparkSerialization
+//  SFWebServiceClient.h
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,18 +27,42 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Spark/SparkAttribute.h>
+#import <Spark/SparkServices.h>
+
+@protocol SFSerializationDelegate;
+@protocol SFAuthenticating;
+
+typedef void (^SFWebServiceClientPrepareForSendRequestBlock)(NSMutableURLRequest* serviceRequest);
 
 /**
- Serialization attribute. Can be used either as a class attribute to set date format for all properties of a class. Can be used as individual property attribute to specify format date for this property or to override general format of date for whole class. Default value specify both encoding and decoding format, for specifying format for concrete direction set this format string to decodingFormat or encodingFormat.
+ The webservice client class. It can submit a request. It uses dynamic method resolution to implement various methods based on the annotations.
  */
-@interface SFSerializableDate : NSObject
+@interface SFWebServiceClient : SFService
 
-@property(nonatomic, strong) NSString *format;
+/**
+ The serialization delegate.
+ */
+@property (strong, nonatomic) id<SFSerializationDelegate> serializationDelegate;
 
-@property(nonatomic, strong) NSString *decodingFormat;
-@property(nonatomic, strong) NSString *encodingFormat;
+/**
+ * The Web Service host url.
+ */
+@property (copy, nonatomic) NSString *serviceRoot;
 
-@property(nonatomic, assign) BOOL unixTimestamp;
+/**
+ * The shared for client headers.
+ */
+@property (strong, atomic) NSMutableDictionary *sharedHeaders;
+
+/*
+ * Authentication provider which will be used in case of authentication challenge from server
+ */
+@property (strong, nonatomic) id<SFAuthenticating> authenticationProvider;
+
+/**
+ Designated initializer.
+ @param serviceRoot The service root url.
+ */
+- (id)initWithServiceRoot:(NSString *)serviceRoot;
 
 @end

@@ -1,8 +1,6 @@
 #import <Spark/SparkServices.h>
-#import "SFLogger.h"
-#import <Spark/SparkServices.h>
-#import "SFLogger.h"
-#import "SFServiceProvider+SFLogger.h"
+#import "SFConcreteWebServiceClient.h"
+#import "SFServiceProvider+ConcreteWebServiceClient.h"
  
 @interface SFServiceProvider(SFAttribute)
  
@@ -12,23 +10,22 @@
  
 #pragma mark - Fill Attributes generated code (Methods section)
 
-static NSMutableArray __weak *SF_attributes_list_SFServiceProvider_method_logger_p0 = nil;
+static NSMutableArray __weak *SF_attributes_list_SFServiceProvider_method_concreteWebServiceClient_p0 = nil;
 
-+ (NSArray *)SF_attributes_SFServiceProvider_method_logger_p0 {
-    if (SF_attributes_list_SFServiceProvider_method_logger_p0 != nil) {
-        return SF_attributes_list_SFServiceProvider_method_logger_p0;
++ (NSArray *)SF_attributes_SFServiceProvider_method_concreteWebServiceClient_p0 {
+    if (SF_attributes_list_SFServiceProvider_method_concreteWebServiceClient_p0 != nil) {
+        return SF_attributes_list_SFServiceProvider_method_concreteWebServiceClient_p0;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
     
     SFService *attr1 = [[SFService alloc] init];
-    attr1.serviceClass = [SFLogger class];
-    attr1.serviceClass = [SFLogger class];
+    attr1.serviceClass = [SFConcreteWebServiceClient class];
     [attributesArray addObject:attr1];
 
-    SF_attributes_list_SFServiceProvider_method_logger_p0 = attributesArray;
+    SF_attributes_list_SFServiceProvider_method_concreteWebServiceClient_p0 = attributesArray;
     
-    return SF_attributes_list_SFServiceProvider_method_logger_p0;
+    return SF_attributes_list_SFServiceProvider_method_concreteWebServiceClient_p0;
 }
 
 static NSMutableDictionary __weak *attributesSFServiceProviderFactoriesForMethodsDict = nil;
@@ -44,7 +41,7 @@ static NSMutableDictionary __weak *attributesSFServiceProviderFactoriesForMethod
         dictionaryHolder = [NSMutableDictionary dictionary];
     }
     
-    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_SFServiceProvider_method_logger_p0)] forKey:@"logger"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_SFServiceProvider_method_concreteWebServiceClient_p0)] forKey:@"concreteWebServiceClient"];
     attributesSFServiceProviderFactoriesForMethodsDict = dictionaryHolder;  
     
     return attributesSFServiceProviderFactoriesForMethodsDict;
