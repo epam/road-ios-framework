@@ -1,6 +1,6 @@
 //
-//  SparkAttributesSupport.h
-//  SFAttributes
+//  SFODataTestEntity.h
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,11 +27,20 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef SparkAttributesSupport_Header_h
-#define SparkAttributesSupport_Header_h
+#import "SFODataAbstractEntity.h"
+#import "SFODataEntity.h"
+#import "SFODataProperty.h"
 
-#define SF_ATTRIBUTE(AttrObject, ...)
+SF_ATTRIBUTE(SFODataEntity, entityName = @"TestEntity")
+@interface SFODataTestEntity : SFODataAbstractEntity
 
-#endif
+SF_ATTRIBUTE(SFODataProperty, serializationKey = @"Name")
+@property (nonatomic, strong) NSString *name;
+SF_ATTRIBUTE(SFODataProperty, serializationKey = @"Date")
+@property (nonatomic, strong) NSDate *date;
+SF_ATTRIBUTE(SFODataProperty, serializationKey = @"Cost")
+@property (nonatomic, strong) NSNumber *cost;
+SF_ATTRIBUTE(SFODataProperty, serializationKey = @"TotalCost")
+@property (nonatomic, strong) NSNumber *total;
 
-#import "NSObject+SFAttributes.h"
+@end

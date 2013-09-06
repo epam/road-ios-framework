@@ -1,6 +1,6 @@
 //
-//  SparkAttributesSupport.h
-//  SFAttributes
+//  SFDefaultSerializer.h
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,11 +27,13 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef SparkAttributesSupport_Header_h
-#define SparkAttributesSupport_Header_h
 
-#define SF_ATTRIBUTE(AttrObject, ...)
+#import <Foundation/Foundation.h>
+#import "SFSerializationDelegate.h"
+/**
+ The default serializer for web service
+ */
+@interface SFDefaultSerializer : NSObject <SFSerializationDelegate>
 
-#endif
 
-#import "NSObject+SFAttributes.h"
+@end

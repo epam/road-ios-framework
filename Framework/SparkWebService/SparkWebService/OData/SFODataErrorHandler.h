@@ -1,6 +1,6 @@
 //
-//  SparkAttributesSupport.h
-//  SFAttributes
+//  SFODataErrorHandler.h
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,11 +27,10 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef SparkAttributesSupport_Header_h
-#define SparkAttributesSupport_Header_h
+#import "SFWebServiceErrorHandling.h"
 
-#define SF_ATTRIBUTE(AttrObject, ...)
+@interface SFODataErrorHandler : NSObject <SFWebServiceErrorHandling>
 
-#endif
++ (id)generateErrorForResponse:(NSHTTPURLResponse *)response withData:(NSData *)data;
 
-#import "NSObject+SFAttributes.h"
+@end

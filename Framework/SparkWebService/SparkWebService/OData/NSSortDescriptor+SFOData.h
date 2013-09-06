@@ -1,6 +1,6 @@
 //
-//  SparkAttributesSupport.h
-//  SFAttributes
+//  NSSortDescriptor+SFOData.h
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,11 +27,17 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef SparkAttributesSupport_Header_h
-#define SparkAttributesSupport_Header_h
+#import <Foundation/Foundation.h>
 
-#define SF_ATTRIBUTE(AttrObject, ...)
+@class SFPropertyInfo;
 
-#endif
+@interface NSSortDescriptor (SFOData)
 
-#import "NSObject+SFAttributes.h"
+/**
+ * Initializes sort descriptor with property info to recieve OData sorted by it.
+ * @param property The property info of property you want to sort with.
+ * @param ascending The direction of sorting
+ */
+- (id)initWithProperty:(SFPropertyInfo *)property ascending:(BOOL)ascending;
+
+@end

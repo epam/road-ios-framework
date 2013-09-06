@@ -1,6 +1,6 @@
 //
-//  SparkAttributesSupport.h
-//  SFAttributes
+//  SFODataErrorHandler.m
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,11 +27,51 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef SparkAttributesSupport_Header_h
-#define SparkAttributesSupport_Header_h
+#import "SFODataErrorHandler.h"
 
-#define SF_ATTRIBUTE(AttrObject, ...)
+#import <Spark/SparkSerialization.h>
+#import "NSError+SparkWebService.h"
 
-#endif
+@implementation SFODataErrorHandler
 
-#import "NSObject+SFAttributes.h"
++ (id)validateResponse:(NSURLResponse *)response withData:(NSData *)data {
+    NSError *error = nil;
+    
+    if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        NSRange successCodes = NSMakeRange(200, 100);
+        if (NSLocationInRange(httpResponse.statusCode, successCodes)) {
+            // No errors. Exiting method
+            error = nil;
+        }
+        else {
+            error = [self generateErrorForResponse:httpResponse withData:data];
+        }
+        
+    }
+    
+    return error;
+}
+
++ (id)generateErrorForResponse:(NSHTTPURLResponse *)response withData:(NSData *)data {
+    NSError *error = nil;
+    
+    id jsonObject = [SFAttributedDecoder decodeJSONData:data withRootClassNamed:nil];
+    
+    if ([jsonObject isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *errorInfo = [jsonObject valueForKey:@"odata.error"];
+        
+        NSInteger code = [[errorInfo valueForKey:@"code"] integerValue];
+        if (!code) {
+            code = response.statusCode;
+        }
+        
+        NSString *localizedDescription = [errorInfo valueForKeyPath:@"message.value"];
+        
+        error = [NSError errorWithDomain:kSFWebServiceErrorDomain code:code userInfo:@{NSLocalizedDescriptionKey: localizedDescription}];
+    }
+
+    return error;
+}
+
+@end

@@ -1,6 +1,6 @@
 //
-//  SparkAttributesSupport.h
-//  SFAttributes
+//  SFBasicAuthenticationProvider.h
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,11 +27,17 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef SparkAttributesSupport_Header_h
-#define SparkAttributesSupport_Header_h
+#import "SFAuthenticationProvider.h"
 
-#define SF_ATTRIBUTE(AttrObject, ...)
+/**
+ There is provider which provide HTTP(S) Basic Authentication.
+ Note: supported opportunities over SSL (see here: SFAuthenticationProvider)
+ */
+@interface SFBasicAuthenticationProvider : SFAuthenticationProvider
 
-#endif
+@property (nonatomic, strong, readonly) NSString *user;
+@property (nonatomic, strong, readonly) NSString *password;
 
-#import "NSObject+SFAttributes.h"
+- (id)initWithUser:(NSString *)user password:(NSString *)password;
+
+@end

@@ -1,6 +1,6 @@
 //
-//  SparkAttributesSupport.h
-//  SFAttributes
+//  SFSafeAuthenticationProvider.h
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,11 +27,20 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef SparkAttributesSupport_Header_h
-#define SparkAttributesSupport_Header_h
+#import "SFAuthenticationProvider.h"
 
-#define SF_ATTRIBUTE(AttrObject, ...)
+@interface SFConcurrentAuthenticationProvider : SFAuthenticationProvider {
+  @protected
+    dispatch_queue_t _queue;
+}
 
+/**
+ The queue to work on. http://stackoverflow.com/questions/12511976/app-crashes-after-xcode-upgrade-to-4-5-assigning-retained-object-to-unsafe-unre
+ */
+#if OS_OBJECT_USE_OBJC
+@property (nonatomic, strong) dispatch_queue_t queue; // this is for Xcode 4.5 with LLVM 4.1 and iOS 6 SDK
+#else
+@property (nonatomic, assign) dispatch_queue_t queue; // this is for older Xcodes with older SDKs
 #endif
 
-#import "NSObject+SFAttributes.h"
+@end

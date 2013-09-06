@@ -1,6 +1,6 @@
 //
-//  SparkAttributesSupport.h
-//  SFAttributes
+//  SFAuthenticationProvider.h
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,11 +27,30 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef SparkAttributesSupport_Header_h
-#define SparkAttributesSupport_Header_h
+#import "SFAuthenticating.h"
 
-#define SF_ATTRIBUTE(AttrObject, ...)
+FOUNDATION_EXPORT NSString *const kSFAuthorizationKey;
 
-#endif
+extern const int kSFUnauthorizedCode;
+extern const int kSFProxyAuthenticationRequiredCode;
 
-#import "NSObject+SFAttributes.h"
+/**
+ The general provider who support opportunities secure connection SSL 
+ (without support certificates) using trusted hosts
+ */
+@interface SFAuthenticationProvider : NSObject <SFAuthenticating> {
+@protected
+    BOOL _sessionOpened;
+    NSMutableSet * _successBlocks;
+    NSMutableSet * _failureBlocks;
+    __weak SFWebServiceClient * _webServiceClient;
+}
+
+@property (nonatomic, strong) NSString *authenticationProtectedMethod;
+@property (nonatomic, assign, readonly, getter = isSessionOpened) BOOL sessionOpened;
+
+- (void)callSuccessBlocksWithResult:(id)result;
+- (void)callFailureBlocksWithError:(NSError *)error;
+- (void)releaseCompletionBlocks;
+
+@end

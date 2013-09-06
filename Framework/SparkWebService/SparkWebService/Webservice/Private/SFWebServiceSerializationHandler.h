@@ -1,6 +1,6 @@
 //
-//  SparkAttributesSupport.h
-//  SFAttributes
+//  SFWebServiceSerializationHandler.h
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,11 +27,22 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef SparkAttributesSupport_Header_h
-#define SparkAttributesSupport_Header_h
+#import <Foundation/Foundation.h>
 
-#define SF_ATTRIBUTE(AttrObject, ...)
+@protocol SFSerializationDelegate;
+/**
+ Serialization handler. It will perform the deserialization.
+ */
+@interface SFWebServiceSerializationHandler : NSObject
 
-#endif
+/**
+ Deserialize data to a class with the given serializator object. 
+ @param data The data to serialized
+ @param serializationObject The serializator
+ @param deserializationClass The class to  deserialize.
+ @param callbackBlock The callback block to call.
+ */
++(void)deserializeData:(NSData * const)data withSerializator:(id<SFSerializationDelegate>)serializationObject serializatinRoot:(NSString *)serializationRoot toDeserializationClass:(Class)deserializationClass withCompletitionBlock:(void(^)(id serializedData, NSError *error))callbackBlock;
 
-#import "NSObject+SFAttributes.h"
+@end
+

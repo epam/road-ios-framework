@@ -1,6 +1,6 @@
 //
-//  SparkAttributesSupport.h
-//  SFAttributes
+//  NSSortDescriptor+SFOData.m
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,11 +27,31 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef SparkAttributesSupport_Header_h
-#define SparkAttributesSupport_Header_h
+#import "NSSortDescriptor+SFOData.h"
+#import <Spark/SparkAttributesSupport.h>
+#import <Spark/SparkSerialization.h>
 
-#define SF_ATTRIBUTE(AttrObject, ...)
+#import "SFODataProperty.h"
 
-#endif
+@implementation NSSortDescriptor (SFOData)
 
-#import "NSObject+SFAttributes.h"
+- (id)initWithProperty:(SFPropertyInfo *)propertyInfo ascending:(BOOL)ascending {
+    NSString *propertyAttributeName;
+    if ([NSClassFromString(propertyInfo.className) hasAttributesForProperty:propertyInfo.propertyName withAttributeType:[SFODataProperty class]]) {
+        SFODataProperty *propertyAttribute = [NSClassFromString(propertyInfo.className) attributeForProperty:propertyInfo.propertyName withAttributeType:[SFODataProperty class]];
+        propertyAttributeName = [propertyAttribute serializationKey];
+    }
+    else if ([NSClassFromString(propertyInfo.className) hasAttributesForProperty:propertyInfo.propertyName withAttributeType:[SFSerializable class]]) {
+        SFSerializable *propertyAttribute = [NSClassFromString(propertyInfo.className) attributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializable class]];
+        propertyAttributeName = [propertyAttribute serializationKey];
+    }
+    if (!propertyAttributeName) {
+        propertyAttributeName = [propertyInfo getterName];
+    }
+    
+    self = [self initWithKey:propertyAttributeName ascending:ascending];
+    
+    return self;
+}
+
+@end

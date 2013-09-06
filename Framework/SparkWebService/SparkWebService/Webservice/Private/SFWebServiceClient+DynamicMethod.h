@@ -1,6 +1,6 @@
 //
-//  SparkAttributesSupport.h
-//  SFAttributes
+//  SFWebserviceClient+DynamicMethod.h
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,11 +27,20 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef SparkAttributesSupport_Header_h
-#define SparkAttributesSupport_Header_h
 
-#define SF_ATTRIBUTE(AttrObject, ...)
+#import "SFWebServiceClient.h"
 
-#endif
+@class SFDownloader;
 
-#import "NSObject+SFAttributes.h"
+@interface SFWebServiceClient (DynamicMethod)
+/**
+ Performs the api call for selector, using the values dictionary to replace variables in the url string template and optionally providing an http body. The method is equivalent to call the -apiCall:values:body:startImmediately: method with a shouldStartImmediately argument set to YES and disregarding.
+ @param selector The selector name.
+ @param values The values of the request.
+ @param httpBody The body data.
+ @param request The SFWebServiceRequest to represent url request.
+ @param processingQueue The queue where the call should start.
+ @param prepareForSendRequestBlock The block that will be executed before request sending.
+ */
+- (void)performCall:(SEL)selector values:(NSDictionary *const)values body:(NSData *const)httpBody request:(SFDownloader *)request processingQueue:(dispatch_queue_t)processingQueue prepareForSendRequestBlock:(SFWebServiceClientPrepareForSendRequestBlock)prepareForSendRequestBlock;
+@end

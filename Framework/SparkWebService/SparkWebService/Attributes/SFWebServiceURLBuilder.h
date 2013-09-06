@@ -1,8 +1,6 @@
 //
-//  SparkAttributesSupport.h
-//  SFAttributes
-//
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  SFWebServiceURLBuilder.h
+//  SparkWebservice
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -27,11 +25,10 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef SparkAttributesSupport_Header_h
-#define SparkAttributesSupport_Header_h
+#import <Spark/SparkAttributesSupport.h>
 
-#define SF_ATTRIBUTE(AttrObject, ...)
+@interface SFWebServiceURLBuilder : NSObject
 
-#endif
+@property (strong, nonatomic) Class builderClass;
 
-#import "NSObject+SFAttributes.h"
+@end

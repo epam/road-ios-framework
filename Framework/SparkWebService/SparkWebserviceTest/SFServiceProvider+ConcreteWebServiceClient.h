@@ -1,6 +1,6 @@
 //
-//  SparkAttributesSupport.h
-//  SFAttributes
+//  SFServiceProvider+ConcreteWebServiceClient.h
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,11 +27,12 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef SparkAttributesSupport_Header_h
-#define SparkAttributesSupport_Header_h
+#import <Spark/SparkServices.h>
+#import "SFConcreteWebServiceClient.h"
 
-#define SF_ATTRIBUTE(AttrObject, ...)
+@interface SFServiceProvider (ConcreteWebServiceClient)
 
-#endif
+SF_ATTRIBUTE(SFService, serviceClass = [SFConcreteWebServiceClient class])
+- (SFConcreteWebServiceClient *)concreteWebServiceClient;
 
-#import "NSObject+SFAttributes.h"
+@end

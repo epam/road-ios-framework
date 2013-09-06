@@ -1,6 +1,6 @@
 //
-//  SparkAttributesSupport.h
-//  SFAttributes
+//  SFWebServiceSerializationHandler.m
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,11 +27,27 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef SparkAttributesSupport_Header_h
-#define SparkAttributesSupport_Header_h
 
-#define SF_ATTRIBUTE(AttrObject, ...)
+#import "SFWebServiceSerializationHandler.h"
+#import "SFSerializationDelegate.h"
+#import "NSError+SparkWebService.h"
 
-#endif
+@implementation SFWebServiceSerializationHandler
 
-#import "NSObject+SFAttributes.h"
++(void)deserializeData:(NSData * const)data withSerializator:(id<SFSerializationDelegate>)serializationObject serializatinRoot:(NSString *)serializationRoot toDeserializationClass:(Class)deserializationClass withCompletitionBlock:(void(^)(id serializedData, NSError *error))callbackBlock
+{
+    id serializedData = data;
+    NSError *error;
+    if (serializationObject) {
+        
+        serializedData = [serializationObject deserializeData:data serializatinRoot:serializationRoot withDeserializationClass:deserializationClass error:nil];
+        
+        if (serializedData == nil) {
+            error = [NSError sparkWS_deserializationErrorWithData:data];
+        }
+    }
+    
+    callbackBlock(serializedData,error);
+}
+
+@end

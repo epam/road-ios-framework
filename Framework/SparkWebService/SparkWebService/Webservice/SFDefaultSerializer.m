@@ -1,6 +1,6 @@
 //
-//  SparkAttributesSupport.h
-//  SFAttributes
+//  SFDefaultSerializer.m
+//  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,11 +27,20 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef SparkAttributesSupport_Header_h
-#define SparkAttributesSupport_Header_h
+#import "SFDefaultSerializer.h"
+#import <Spark/SparkSerialization.h>
+@implementation SFDefaultSerializer
 
-#define SF_ATTRIBUTE(AttrObject, ...)
 
-#endif
+-(id)deserializeData:(NSData *)data serializatinRoot:(NSString *)serializationRoot withDeserializationClass:(Class)deserializationClass error:(NSError *__autoreleasing *)error
+{
+    id restored = [SFAttributedDecoder decodeJSONData:data withSerializtionRoot:serializationRoot rootClassNamed:NSStringFromClass(deserializationClass)];
+    return restored;
+}
 
-#import "NSObject+SFAttributes.h"
+-(NSString *)serializeObject:(id)object
+{
+    return [SFAttributedCoder encodeRootObject:object];
+}
+
+@end
