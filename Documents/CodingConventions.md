@@ -89,10 +89,14 @@ Most of these guidelines match Apple's documentation and community-accepted best
 3. `#import` Objective-C/Objective-C++ headers, and `#include` C/C++ headers. Objective-C headers should not have `#define` guards as they are already encapsulated in `#import`. Standard C and C++ headers without any Objective-C in them can expect to be included by ordinary C and C++ files. Since there is no `#import` in standard C or C++, such files will be included by `#include` in those cases. Using `#include` for them in Objective-C source files as well means that these headers will always be included with the same semantics.
 
 #### 3.1.2.Pragma
-1. Use `#pragma mark` declarations in implementation file to categorize methods into functional groupings and protocol implementations.
+1. `#pragma mark` declarations should be used in implementation file to distinguish protocol implementation methods.
 **For example:**
-`#pragma mark - Pool delegate methods`
-2. There should be one newline before and after pragma marks.
+`#pragma mark - UITableViewDelegate methods`
+2. `#pragma mark` declarations should be used in implementation file to distinguish private methods.
+**For example:**
+`#pragma mark - Private methods`
+3. Every `#pragma mark` declaration that describes a group of methods should have corresponding closing mark after the last method in the group. Closing mark should only have one dash and no other text: `#pragma mark -`.
+4. There should be one newline before and after pragma marks. 
 
 
 ### 3.2.Comments
