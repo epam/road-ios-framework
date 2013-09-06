@@ -307,6 +307,7 @@ UIApplication.sharedApplication.delegate;
 3. There should be no instance variable declarations in header files. Instance variables belong to implementation details and should therefore be declared in class extension (anonymous categories) in implementation file.
 4. Instance variable name should be camel-case with the leading word being lowercase and a leading underscore.
 5. Asterisks indicating pointers belong with the variable, e.g., `NSString *text` not `NSString* text` or `NSString * text`.
+6. A local variable should be created as close as possible to the place where this variable is actually used.
 
 ### 8.1.Literals
 
