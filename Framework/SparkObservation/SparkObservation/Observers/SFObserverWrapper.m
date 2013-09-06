@@ -1,0 +1,106 @@
+//
+//  SFObserverWrapper.m
+//  SparkObservation
+//
+//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//
+// Redistribution and use in source and binary forms, with or without 
+// modification, are permitted provided that the following conditions are met:
+// 
+//  Redistributions of source code must retain the above copyright notice, this 
+// list of conditions and the following disclaimer.
+//  Redistributions in binary form must reproduce the above copyright notice, this 
+// list of conditions and the following disclaimer in the documentation and/or 
+// other materials provided with the distribution.
+//  Neither the name of the EPAM Systems, Inc.  nor the names of its contributors 
+// may be used to endorse or promote products derived from this software without 
+// specific prior written permission.
+// 
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+// WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+// DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE 
+// FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL 
+// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
+// SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+// CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
+// OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+#import "SFObserverWrapper.h"
+
+NSString * const kSFNotificationNameViolationException = @"SFNotificationNameViolationException";
+NSString * const kSFNotificationNameViolationExceptionReason = @"Notification name change attempt after subscription.";
+NSString * const kSFNotificationOldNameKey = @"kSFNotificationOldNameKey";
+NSString * const kSFNotificationNewNameKey = @"kSFNotificationNewNameKey";
+
+@implementation SFObserverWrapper {
+    SFNotificationHandlerBlock _callback;
+    dispatch_queue_t _executionQueue;
+    id _actualObserver;
+    BOOL isSubscribed;
+}
+
+- (id)initWithName:(NSString *const)name object:(const id)anObject queue:(const dispatch_queue_t)aQueue handler:(SFNotificationHandlerBlock)handler {
+    self = [super init];
+    
+    if (self) {
+        _name = [name copy];
+        _notificationObject = anObject;
+        _executionQueue = aQueue;
+        _callback = [handler copy];
+        _async = YES;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationEvent:) name:_name object:_notificationObject];
+        isSubscribed = YES;
+    }
+    
+    return self;
+}
+
++ (SFObserverWrapper *)observerForName:(NSString *const)aName object:(const id)anObject queue:(const dispatch_queue_t)aQueue handler:(const SFNotificationHandlerBlock)handler {
+    return [[self alloc] initWithName:aName object:anObject queue:aQueue handler:handler];
+}
+
++ (SFObserverWrapper *)observerForName:(NSString *const)aName object:(const id)anObject handler:(const SFNotificationHandlerBlock)handler {
+    return [self observerForName:aName object:anObject queue:dispatch_get_current_queue() handler:handler];
+}
+
++ (SFObserverWrapper *)observerForName:(NSString *const)aName handler:(const SFNotificationHandlerBlock)handler {
+    return [self observerForName:aName object:nil handler:handler];
+}
+
++ (SFObserverWrapper *)observerForName:(NSString *const)aName queue:(const dispatch_queue_t)aQueue handler:(const SFNotificationHandlerBlock)handler {
+    return [self observerForName:aName object:nil queue:aQueue handler:handler];
+}
+
+- (void)setName:(NSString *)name {
+    if (isSubscribed) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:_name object:_notificationObject];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationEvent:) name:name object:_notificationObject];
+    }
+
+    isSubscribed = YES;
+    _name = [name copy];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:_name object:_notificationObject];
+}
+
+- (void)notificationEvent:(NSNotification * const)aNotification {
+
+    if (_callback != NULL) {
+        
+        if (_async) {
+            dispatch_async(_executionQueue, ^{ _callback(aNotification); });
+        }
+        else {
+            dispatch_sync(_executionQueue, ^{ _callback(aNotification); });
+        }
+    }
+}
+
+
+@end

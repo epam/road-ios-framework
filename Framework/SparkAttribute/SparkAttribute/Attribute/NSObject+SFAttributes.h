@@ -28,29 +28,29 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <Foundation/Foundation.h>
+#import <Spark/SFPropertyInfo.h>
+#import <Spark/SFMethodInfo.h>
+#import <Spark/SFIvarInfo.h>
 
 @interface NSObject (SFAttributes)
 
-#pragma mark - Attributes API
++ (NSArray *)attributesForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute;
++ (NSArray *)attributesForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute;
++ (NSArray *)attributesForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
++ (NSArray *)attributesForClassWithAttributeType:(Class)requiredClassOfAttribute;
 
-+ (NSInvocation *)invocationForSelector:(SEL)selector;
-+ (NSMutableDictionary *)mutableAttributesFactoriesFrom:(NSDictionary *)attributesFactories;
++ (id)attributeForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute;
++ (id)attributeForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute;
++ (id)attributeForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
++ (id)attributeForClassWithAttributeType:(Class)requiredClassOfAttribute;
 
-+ (NSArray *)attributesForInstanceMethod:(NSString *)instanceMethodName withType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForProperty:(NSString *)propertyName withType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForField:(NSString *)fieldName withType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForClass;
++ (BOOL)hasAttributesForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute;
++ (BOOL)hasAttributesForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute;
++ (BOOL)hasAttributesForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
++ (BOOL)hasAttributesForClassWithAttributeType:(Class)requiredClassOfAttribute;
 
-#pragma mark - Attributes API stubs
-
-//will be overridden by annotated class
-
-+ (NSDictionary *)attributesFactoriesForInstanceMethods;
-+ (NSDictionary *)attributesFactoriesForProperties;
-+ (NSDictionary *)attributesFactoriesForClassProperties;
-+ (NSDictionary *)attributesFactoriesForFields;
-
-#pragma mark -
-
++ (NSArray *)propertiesWithAttributeType:(Class)requiredClassOfAttribute;
++ (NSArray *)ivarsWithAttributeType:(Class)requiredClassOfAttribute;
++ (NSArray *)methodsWithAttributeType:(Class)requiredClassOfAttribute;
 
 @end

@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		5AD1FC48176603AC00E67BC4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD1FC47176603AC00E67BC4 /* Cocoa.framework */; };
 		78DDB7CE1647FF0200E7E92F /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78DDB7CD1647FF0200E7E92F /* SenTestingKit.framework */; };
+		8D7C108F17CDBD1C0010C418 /* SparkAttributesSupport.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8DF6C8CB17C474A100F829E8 /* SparkAttributesSupport.h */; };
+		8D7C109217CDBD210010C418 /* NSObject+SFAttributesInternal.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8D99708717CCB90600184507 /* NSObject+SFAttributesInternal.h */; };
+		8D7C109317CDBD240010C418 /* NSObject+SFAttributes.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8DF6C8CD17C474AD00F829E8 /* NSObject+SFAttributes.h */; };
+		8D99708917CCB90600184507 /* NSObject+SFAttributesInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D99708717CCB90600184507 /* NSObject+SFAttributesInternal.h */; };
+		8D99708A17CCB90600184507 /* NSObject+SFAttributesInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D99708817CCB90600184507 /* NSObject+SFAttributesInternal.m */; };
+		8D99708B17CCB90600184507 /* NSObject+SFAttributesInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D99708817CCB90600184507 /* NSObject+SFAttributesInternal.m */; };
+		8D99708C17CCB90600184507 /* NSObject+SFAttributesInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D99708817CCB90600184507 /* NSObject+SFAttributesInternal.m */; };
 		8DE377EA17C76B2200F30026 /* AttributesAPITest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE377E617C76B2200F30026 /* AttributesAPITest.m */; };
 		8DE377F617C76CAA00F30026 /* libSparkAttribute.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 789669DA15CBD1CD003D4AFC /* libSparkAttribute.a */; };
 		8DE3780817C76ED500F30026 /* AnnotatedClass+SFAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE377FE17C76ED500F30026 /* AnnotatedClass+SFAttributes.m */; };
@@ -72,6 +79,9 @@
 			dstPath = include/Spark;
 			dstSubfolderSpec = 16;
 			files = (
+				8D7C109317CDBD240010C418 /* NSObject+SFAttributes.h in Copy Files */,
+				8D7C109217CDBD210010C418 /* NSObject+SFAttributesInternal.h in Copy Files */,
+				8D7C108F17CDBD1C0010C418 /* SparkAttributesSupport.h in Copy Files */,
 			);
 			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,23 +96,25 @@
 		78DDB7CD1647FF0200E7E92F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		78DDB7D51647FF0200E7E92F /* SparkAttributeTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SparkAttributeTest-Info.plist"; sourceTree = "<group>"; };
 		78DDB7DC1647FF0200E7E92F /* SparkAttributeTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SparkAttributeTest-Prefix.pch"; sourceTree = "<group>"; };
+		8D99708717CCB90600184507 /* NSObject+SFAttributesInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSObject+SFAttributesInternal.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		8D99708817CCB90600184507 /* NSObject+SFAttributesInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSObject+SFAttributesInternal.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8DE377E517C76B2200F30026 /* AttributesAPITest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttributesAPITest.h; path = SparkAttributeTest/AttributesAPITest.h; sourceTree = SOURCE_ROOT; };
 		8DE377E617C76B2200F30026 /* AttributesAPITest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttributesAPITest.m; path = SparkAttributeTest/AttributesAPITest.m; sourceTree = SOURCE_ROOT; };
-		8DE377FE17C76ED500F30026 /* AnnotatedClass+SFAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AnnotatedClass+SFAttributes.m"; sourceTree = "<group>"; };
+		8DE377FE17C76ED500F30026 /* AnnotatedClass+SFAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "AnnotatedClass+SFAttributes.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8DE377FF17C76ED500F30026 /* AnnotatedClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnotatedClass.h; sourceTree = "<group>"; };
 		8DE3780017C76ED500F30026 /* AnnotatedClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotatedClass.m; sourceTree = "<group>"; };
 		8DE3780117C76ED500F30026 /* CustomSFTestAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSFTestAttribute.h; sourceTree = "<group>"; };
 		8DE3780217C76ED500F30026 /* CustomSFTestAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSFTestAttribute.m; sourceTree = "<group>"; };
-		8DE3780317C76ED500F30026 /* SecondAnnotatedClass+SFAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SecondAnnotatedClass+SFAttributes.m"; sourceTree = "<group>"; };
+		8DE3780317C76ED500F30026 /* SecondAnnotatedClass+SFAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "SecondAnnotatedClass+SFAttributes.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8DE3780417C76ED500F30026 /* SecondAnnotatedClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondAnnotatedClass.h; sourceTree = "<group>"; };
 		8DE3780517C76ED500F30026 /* SecondAnnotatedClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondAnnotatedClass.m; sourceTree = "<group>"; };
 		8DE3780617C76ED500F30026 /* SFTestAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTestAttribute.h; sourceTree = "<group>"; };
 		8DE3780717C76ED500F30026 /* SFTestAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTestAttribute.m; sourceTree = "<group>"; };
 		8DE3785E17C786FE00F30026 /* SparkCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkCore.xcodeproj; path = ../SparkCore/SparkCore.xcodeproj; sourceTree = "<group>"; };
-		8DE3786C17C7872100F30026 /* libSparkReflection.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libSparkReflection.a; path = "../SparkReflection/build/Release-iphoneos/libSparkReflection.a"; sourceTree = "<group>"; };
+		8DE3786C17C7872100F30026 /* libSparkReflection.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSparkReflection.a; path = "../SparkReflection/build/Release-iphoneos/libSparkReflection.a"; sourceTree = "<group>"; };
 		8DF6C8CB17C474A100F829E8 /* SparkAttributesSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparkAttributesSupport.h; sourceTree = "<group>"; };
-		8DF6C8CD17C474AD00F829E8 /* NSObject+SFAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SFAttributes.h"; sourceTree = "<group>"; };
-		8DF6C8CE17C474AD00F829E8 /* NSObject+SFAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SFAttributes.m"; sourceTree = "<group>"; };
+		8DF6C8CD17C474AD00F829E8 /* NSObject+SFAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSObject+SFAttributes.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		8DF6C8CE17C474AD00F829E8 /* NSObject+SFAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSObject+SFAttributes.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		9FA9F50215F63D6B00FDE9E0 /* SparkAttribute.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SparkAttribute.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FA9F50B15F63D6B00FDE9E0 /* SparkAttributeMac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SparkAttributeMac-Info.plist"; sourceTree = "<group>"; };
 		9FA9F50D15F63D6B00FDE9E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -196,6 +208,8 @@
 		78B13C4C169F223000869F3C /* Attribute */ = {
 			isa = PBXGroup;
 			children = (
+				8D99708717CCB90600184507 /* NSObject+SFAttributesInternal.h */,
+				8D99708817CCB90600184507 /* NSObject+SFAttributesInternal.m */,
 				8DF6C8CD17C474AD00F829E8 /* NSObject+SFAttributes.h */,
 				8DF6C8CE17C474AD00F829E8 /* NSObject+SFAttributes.m */,
 			);
@@ -293,6 +307,7 @@
 			files = (
 				8DF6C8CC17C474A100F829E8 /* SparkAttributesSupport.h in Headers */,
 				8DF6C8CF17C474AD00F829E8 /* NSObject+SFAttributes.h in Headers */,
+				8D99708917CCB90600184507 /* NSObject+SFAttributesInternal.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,7 +375,7 @@
 		789669D115CBD1CD003D4AFC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = ESD;
+				CLASSPREFIX = SF;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Epam Systems";
 			};
@@ -453,6 +468,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DF6C8D017C474AD00F829E8 /* NSObject+SFAttributes.m in Sources */,
+				8D99708A17CCB90600184507 /* NSObject+SFAttributesInternal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +484,7 @@
 				8DE3780B17C76ED500F30026 /* SecondAnnotatedClass+SFAttributes.m in Sources */,
 				8DE3780C17C76ED500F30026 /* SecondAnnotatedClass.m in Sources */,
 				8DE3780D17C76ED500F30026 /* SFTestAttribute.m in Sources */,
+				8D99708C17CCB90600184507 /* NSObject+SFAttributesInternal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +493,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DF6C8D117C474AD00F829E8 /* NSObject+SFAttributes.m in Sources */,
+				8D99708B17CCB90600184507 /* NSObject+SFAttributesInternal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,6 +550,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -555,6 +577,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -568,7 +594,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SparkAttribute/SparkAttribute-Prefix.pch";
 				HEADER_SEARCH_PATHS = "";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include;
 				PRODUCT_NAME = SparkAttribute;
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include;
@@ -584,7 +613,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SparkAttribute/SparkAttribute-Prefix.pch";
 				HEADER_SEARCH_PATHS = "";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include;
 				PRODUCT_NAME = SparkAttribute;
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include;
@@ -607,8 +639,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
-					"-objC",
 					"-all_load",
+					"-ObjC",
 				);
 				PRODUCT_NAME = SparkAttributeTest;
 				WRAPPER_EXTENSION = octest;
@@ -629,8 +661,8 @@
 				INFOPLIST_FILE = "SparkAttributeTest/SparkAttributeTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
-					"-objC",
 					"-all_load",
+					"-ObjC",
 				);
 				PRODUCT_NAME = SparkAttributeTest;
 				WRAPPER_EXTENSION = octest;

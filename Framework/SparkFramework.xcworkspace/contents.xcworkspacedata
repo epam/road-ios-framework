@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:SparkSerialization/SparkSerialization.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:SparkReflection/SparkReflection.xcodeproj">
    </FileRef>
    <FileRef
@@ -9,5 +12,14 @@
    </FileRef>
    <FileRef
       location = "group:SparkAttribute/SparkAttribute.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SparkObservation/SparkObservation.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SparkServices/SparkServices.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SparkLogger/SparkLogger.xcodeproj">
    </FileRef>
 </Workspace>

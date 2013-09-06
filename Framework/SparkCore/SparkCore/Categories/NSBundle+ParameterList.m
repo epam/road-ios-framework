@@ -30,16 +30,16 @@
 
 #import "NSBundle+ParameterList.h"
 
-NSString * const kESDPlistFileExtension = @"plist";
+NSString * const kSFPlistFileExtension = @"plist";
 
 @implementation NSBundle (ParameterList)
 
 - (NSString *)pathForPlistResource:(NSString *)plistResourceName {
-    return [self pathForResource:plistResourceName ofType:kESDPlistFileExtension];
+    return [self pathForResource:plistResourceName ofType:kSFPlistFileExtension];
 }
 
 - (NSURL *)urlForPlistResource:(NSString *)plistResourceName {
-    return [self URLForResource:plistResourceName withExtension:kESDPlistFileExtension];
+    return [self URLForResource:plistResourceName withExtension:kSFPlistFileExtension];
 }
 
 - (NSString *)pathForOwnedPlist {

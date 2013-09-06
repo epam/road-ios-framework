@@ -1,2 +1,12 @@
-**/.DS_Store
-**/xcuserdata
+.DS_Store
+xcuserdata
+
+tools/SparkAttributesCodeGenerator/SparkAttributesCodeGenerator.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+
+tools/SparkAttributesCodeGenerator/SparkAttributesCodeGenerator.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+
+tools/SparkAttributesCodeGenerator/SparkAttributesCodeGenerator.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+
+*.xcworkspacedata
+
+*.xcscheme

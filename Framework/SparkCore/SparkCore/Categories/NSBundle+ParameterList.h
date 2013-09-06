@@ -30,7 +30,7 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString * const kESDPlistFileExtension;
+extern NSString * const kSFPlistFileExtension;
 
 /**
  Convenience methods to fetch plist file paths with less code.

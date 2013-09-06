@@ -31,34 +31,14 @@
 #import "AnnotatedClass.h"
 #import "SecondAnnotatedClass.h"
 
-@interface AttributesAPITest() {
-    AnnotatedClass *_testObject;
-}
-
-@end
-
 @implementation AttributesAPITest
-
-- (void)setUp
-{
-    [super setUp];
-    
-    _testObject = [AnnotatedClass new];
-}
-
-- (void)tearDown
-{
-    // Tear-down code here.
-    _testObject = nil;
-    [super tearDown];
-}
 
 #pragma mark - Test Attributes generated code (Methods section)
 
 - (void)test_attributesForInstanceMethod {
-    NSArray *attributesList = [[_testObject class] attributesForInstanceMethod:@"viewDidLoad" withType:nil];
-    STAssertTrue(attributesList != nil, @"attributesList must be contain values");
-    STAssertTrue([attributesList count] == 2, @"attributesList must be contain 2 items");
+    NSArray *attributesList = [AnnotatedClass attributesForMethod:@"viewDidLoad" withAttributeType:nil];
+    STAssertTrue(attributesList != nil, @"attributesList must contain values");
+    STAssertTrue([attributesList count] == 2, @"attributesList must contain 2 items");
     
     CustomSFTestAttribute *testAttribute = [attributesList lastObject];
     STAssertTrue(testAttribute != nil, @"testAttribute must not be nil");
@@ -66,11 +46,11 @@
 }
 
 - (void)test_attributesForInstanceMethodCaching {
-    NSArray *attributesList1 = [[_testObject class] attributesForInstanceMethod:@"viewDidLoad" withType:nil];
-    STAssertTrue(attributesList1 != nil, @"attributesList1 must be contain values");
+    NSArray *attributesList1 = [AnnotatedClass attributesForMethod:@"viewDidLoad" withAttributeType:nil];
+    STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
 
-    NSArray *attributesList2 = [[_testObject class] attributesForInstanceMethod:@"viewDidLoad" withType:nil];
-    STAssertTrue(attributesList2 != nil, @"attributesList2 must be contain values");
+    NSArray *attributesList2 = [AnnotatedClass attributesForMethod:@"viewDidLoad" withAttributeType:nil];
+    STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
     
     STAssertTrue(attributesList1 == attributesList2, @"attributesList1 and attributesList2 must point at the same array");    
 }
@@ -79,25 +59,22 @@
     NSArray __weak *attributesList1 = nil;
     
     @autoreleasepool {
-        attributesList1 = [[_testObject class] attributesForInstanceMethod:@"viewDidLoad" withType:nil];
-        STAssertTrue(attributesList1 != nil, @"attributesList1 must be contain values");
+        attributesList1 = [AnnotatedClass attributesForMethod:@"viewDidLoad" withAttributeType:nil];
+        STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
     }
         
-    NSArray *attributesList2 = [[_testObject class] attributesForInstanceMethod:@"viewDidLoad" withType:nil];
-    STAssertTrue(attributesList2 != nil, @"attributesList2 must be contain values");
+    NSArray *attributesList2 = [AnnotatedClass attributesForMethod:@"viewDidLoad" withAttributeType:nil];
+    STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
     
     STAssertTrue(attributesList1 != attributesList2, @"it seems here is memory leak");
 }
 
-- (void)test_InstanceMethodCachingInterference {
-    AnnotatedClass *_testObject1 = [AnnotatedClass new];
-    SecondAnnotatedClass *_testObject2 = [SecondAnnotatedClass new];
+- (void)test_InstanceMethodCachingInterference {    
+    NSArray *attributesList1 = [AnnotatedClass attributesForMethod:@"viewDidLoad" withAttributeType:nil];
+    STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
     
-    NSArray *attributesList1 = [[_testObject1 class] attributesForInstanceMethod:@"viewDidLoad" withType:nil];
-    STAssertTrue(attributesList1 != nil, @"attributesList1 must be contain values");
-    
-    NSArray *attributesList2 = [[_testObject2 class] attributesForInstanceMethod:@"viewDidLoad" withType:nil];
-    STAssertTrue(attributesList2 != nil, @"attributesList2 must be contain values");
+    NSArray *attributesList2 = [SecondAnnotatedClass attributesForMethod:@"viewDidLoad" withAttributeType:nil];
+    STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
     
     STAssertTrue(attributesList1 != attributesList2, @"attributesList1 and attributesList2 must not point at the same array");
 }
@@ -107,9 +84,9 @@
 #pragma mark - Test Attributes generated code (Properties section)
 
 - (void)test_attributesForProperty {
-    NSArray *attributesList = [[_testObject class] attributesForProperty:@"window" withType:nil];
-    STAssertTrue(attributesList != nil, @"attributesList must be contain values");
-    STAssertTrue([attributesList count] == 2, @"attributesList must be contain 2 items");
+    NSArray *attributesList = [AnnotatedClass attributesForProperty:@"window" withAttributeType:nil];
+    STAssertTrue(attributesList != nil, @"attributesList must contain values");
+    STAssertTrue([attributesList count] == 2, @"attributesList must contain 2 items");
     
     CustomSFTestAttribute *testAttribute = [attributesList lastObject];
     STAssertTrue(testAttribute != nil, @"testAttribute must not be nil");
@@ -117,11 +94,11 @@
 }
 
 - (void)test_attributesForPropertyCaching {
-    NSArray *attributesList1 = [[_testObject class] attributesForProperty:@"window" withType:nil];
-    STAssertTrue(attributesList1 != nil, @"attributesList1 must be contain values");
+    NSArray *attributesList1 = [AnnotatedClass attributesForProperty:@"window" withAttributeType:nil];
+    STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
     
-    NSArray *attributesList2 = [[_testObject class] attributesForProperty:@"window" withType:nil];
-    STAssertTrue(attributesList2 != nil, @"attributesList2 must be contain values");
+    NSArray *attributesList2 = [AnnotatedClass attributesForProperty:@"window" withAttributeType:nil];
+    STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
     
     STAssertTrue(attributesList1 == attributesList2, @"attributesList1 and attributesList2 must point at the same array");
 }
@@ -130,25 +107,22 @@
     NSArray __weak *attributesList1 = nil;
     
     @autoreleasepool {
-        attributesList1 = [[_testObject class] attributesForProperty:@"window" withType:nil];
-        STAssertTrue(attributesList1 != nil, @"attributesList1 must be contain values");
+        attributesList1 = [AnnotatedClass attributesForProperty:@"window" withAttributeType:nil];
+        STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
     }
     
-    NSArray *attributesList2 = [[_testObject class] attributesForProperty:@"window" withType:nil];
-    STAssertTrue(attributesList2 != nil, @"attributesList2 must be contain values");
+    NSArray *attributesList2 = [AnnotatedClass attributesForProperty:@"window" withAttributeType:nil];
+    STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
     
     STAssertTrue(attributesList1 != attributesList2, @"it seems here is memory leak");
 }
 
-- (void)test_PropertyCachingInterference {
-    AnnotatedClass *_testObject1 = [AnnotatedClass new];
-    SecondAnnotatedClass *_testObject2 = [SecondAnnotatedClass new];
+- (void)test_PropertyCachingInterference {    
+    NSArray *attributesList1 = [AnnotatedClass attributesForProperty:@"window" withAttributeType:nil];
+    STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
     
-    NSArray *attributesList1 = [[_testObject1 class] attributesForProperty:@"window" withType:nil];
-    STAssertTrue(attributesList1 != nil, @"attributesList1 must be contain values");
-    
-    NSArray *attributesList2 = [[_testObject2 class] attributesForProperty:@"window" withType:nil];
-    STAssertTrue(attributesList2 != nil, @"attributesList2 must be contain values");
+    NSArray *attributesList2 = [SecondAnnotatedClass attributesForProperty:@"window" withAttributeType:nil];
+    STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
     
     STAssertTrue(attributesList1 != attributesList2, @"attributesList1 and attributesList2 must not point at the same array");
 }
@@ -158,20 +132,20 @@
 #pragma mark - Test Attributes generated code (Fields section)
 
 - (void)test_attributesForField {
-    NSArray *attributesList = [[_testObject class] attributesForField:@"_someField" withType:nil];
-    STAssertTrue(attributesList != nil, @"attributesList must be contain values");
-    STAssertTrue([attributesList count] == 1, @"attributesList must be contain 2 items");
+    NSArray *attributesList = [AnnotatedClass attributesForIvar:@"_someField" withAttributeType:nil];
+    STAssertTrue(attributesList != nil, @"attributesList must contain values");
+    STAssertTrue([attributesList count] == 1, @"attributesList must contain 2 items");
     
     CustomSFTestAttribute *testAttribute = [attributesList lastObject];
     STAssertTrue(testAttribute != nil, @"testAttribute must not be nil");
 }
 
 - (void)test_attributesForFieldCaching {
-    NSArray *attributesList1 = [[_testObject class] attributesForField:@"_someField" withType:nil];
-    STAssertTrue(attributesList1 != nil, @"attributesList1 must be contain values");
+    NSArray *attributesList1 = [AnnotatedClass attributesForIvar:@"_someField" withAttributeType:nil];
+    STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
     
-    NSArray *attributesList2 = [[_testObject class] attributesForField:@"_someField" withType:nil];
-    STAssertTrue(attributesList2 != nil, @"attributesList2 must be contain values");
+    NSArray *attributesList2 = [AnnotatedClass attributesForIvar:@"_someField" withAttributeType:nil];
+    STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
     
     STAssertTrue(attributesList1 == attributesList2, @"attributesList1 and attributesList2 must point at the same array");
 }
@@ -180,27 +154,127 @@
     NSArray __weak *attributesList1 = nil;
     
     @autoreleasepool {
-        attributesList1 = [[_testObject class] attributesForField:@"_someField" withType:nil];
-        STAssertTrue(attributesList1 != nil, @"attributesList1 must be contain values");
+        attributesList1 = [AnnotatedClass attributesForIvar:@"_someField" withAttributeType:nil];
+        STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
     }
     
-    NSArray *attributesList2 = [[_testObject class] attributesForField:@"_someField" withType:nil];
-    STAssertTrue(attributesList2 != nil, @"attributesList2 must be contain values");
+    NSArray *attributesList2 = [AnnotatedClass attributesForIvar:@"_someField" withAttributeType:nil];
+    STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
     
     STAssertTrue(attributesList1 != attributesList2, @"it seems here is memory leak");
 }
 
-- (void)test_FieldCachingInterference {
-    AnnotatedClass *_testObject1 = [AnnotatedClass new];
-    SecondAnnotatedClass *_testObject2 = [SecondAnnotatedClass new];
+- (void)test_FieldCachingInterference {    
+    NSArray *attributesList1 = [AnnotatedClass attributesForIvar:@"_someField" withAttributeType:nil];
+    STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
     
-    NSArray *attributesList1 = [[_testObject1 class] attributesForField:@"_someField" withType:nil];
-    STAssertTrue(attributesList1 != nil, @"attributesList1 must be contain values");
-    
-    NSArray *attributesList2 = [[_testObject2 class] attributesForField:@"_someField" withType:nil];
-    STAssertTrue(attributesList2 != nil, @"attributesList2 must be contain values");
+    NSArray *attributesList2 = [SecondAnnotatedClass attributesForIvar:@"_someField" withAttributeType:nil];
+    STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
     
     STAssertTrue(attributesList1 != attributesList2, @"attributesList1 and attributesList2 must not point at the same array");
+}
+
+- (void)test_attributesForClass {
+    NSArray *attributesList = [AnnotatedClass attributesForClassWithAttributeType:nil];
+    STAssertTrue(attributesList != nil, @"attributesList must contain values");
+    STAssertTrue([attributesList count] == 2, @"attributesList must contain 2 items");
+    
+    attributesList = [AnnotatedClass attributesForClassWithAttributeType:[CustomSFTestAttribute class]];
+    
+    STAssertTrue(attributesList != nil, @"attributesList must contain values");
+    STAssertTrue([attributesList count] == 1, @"attributesList must contain 2 items");
+}
+
+- (void)test_hasAttributesForMethod {
+    STAssertTrue([AnnotatedClass hasAttributesForMethod:@"viewDidLoad" withAttributeType:nil], @"please check function");
+    STAssertTrue([AnnotatedClass hasAttributesForMethod:@"viewDidLoad" withAttributeType:[CustomSFTestAttribute class]], @"please check function");
+    STAssertTrue(![AnnotatedClass hasAttributesForMethod:@"viewDidLoad" withAttributeType:[AnnotatedClass class]], @"please check function");
+}
+
+- (void)test_hasAttributesForProperty {
+    STAssertTrue([AnnotatedClass hasAttributesForProperty:@"window" withAttributeType:nil], @"please check function");
+    STAssertTrue([AnnotatedClass hasAttributesForProperty:@"window" withAttributeType:[CustomSFTestAttribute class]], @"please check function");
+    STAssertTrue(![AnnotatedClass hasAttributesForProperty:@"window" withAttributeType:[AnnotatedClass class]], @"please check function");
+}
+
+- (void)test_hasAttributesForIvar {
+    STAssertTrue([AnnotatedClass hasAttributesForIvar:@"_someField" withAttributeType:nil], @"please check function");
+}
+
+- (void)test_hasAttributesForClassWithAttributeType {
+    STAssertTrue([AnnotatedClass hasAttributesForClassWithAttributeType:nil], @"please check function");
+    STAssertTrue([AnnotatedClass hasAttributesForClassWithAttributeType:[CustomSFTestAttribute class]], @"please check function");
+    STAssertTrue(![AnnotatedClass hasAttributesForClassWithAttributeType:[AnnotatedClass class]], @"please check function");
+}
+
+- (void)test_propertiesWithAttributeType {
+    NSArray *properties = [AnnotatedClass propertiesWithAttributeType:nil];
+    STAssertTrue([properties count] == 1, @"properties must contain values");
+}
+
+- (void)test_propertiesWithAttributeType_withFiltering {
+    NSArray *properties = [AnnotatedClass propertiesWithAttributeType:[CustomSFTestAttribute class]];
+    STAssertTrue([properties count] == 1, @"properties must contain values");
+
+    SFPropertyInfo *property = [properties lastObject];
+    STAssertTrue([property.propertyName isEqualToString:@"window"], @"please check function");
+}
+
+- (void)test_propertiesWithAttributeType_withWrongFiltering {
+    NSArray *properties = [AnnotatedClass propertiesWithAttributeType:[AnnotatedClass class]];
+    STAssertTrue([properties count] == 0, @"properties must not contain values");
+}
+
+- (void)test_ivarsWithAttributeType {
+    NSArray *ivars = [AnnotatedClass ivarsWithAttributeType:nil];
+    STAssertTrue([ivars count] == 1, @"ivars must contain values");
+}
+
+- (void)test_ivarsWithAttributeType_withFiltering {
+    NSArray *ivars = [AnnotatedClass ivarsWithAttributeType:[SFTestAttribute class]];
+    STAssertTrue([ivars count] == 1, @"ivars must contain values");
+    
+    SFIvarInfo *ivar = [ivars lastObject];
+    STAssertTrue([ivar.name isEqualToString:@"_someField"], @"please check function");
+}
+
+- (void)test_ivarsWithAttributeType_withWrongFiltering {
+    NSArray *ivars = [AnnotatedClass ivarsWithAttributeType:[AnnotatedClass class]];
+    STAssertTrue([ivars count] == 0, @"ivars must not contain values");
+}
+
+- (void)test_methodsWithAttributeType {
+    NSArray *methods = [AnnotatedClass methodsWithAttributeType:nil];
+    STAssertTrue([methods count] == 2, @"methods must contain values");
+}
+
+- (void)test_methodsWithAttributeType_withFiltering {
+    NSArray *methods = [AnnotatedClass methodsWithAttributeType:[CustomSFTestAttribute class]];
+    STAssertTrue([methods count] == 1, @"methods must contain values");
+    
+    SFMethodInfo *method = [methods lastObject];
+    STAssertTrue([method.name isEqualToString:@"viewDidLoad"], @"please check function");
+}
+
+- (void)test_methodsWithAttributeType_withWrongFiltering {
+    NSArray *methods = [AnnotatedClass methodsWithAttributeType:[AnnotatedClass class]];
+    STAssertTrue([methods count] == 0, @"methods must not contain values");
+}
+
+- (void)test_attributeForMethod {
+    STAssertTrue([AnnotatedClass attributeForMethod:@"viewDidLoad" withAttributeType:[CustomSFTestAttribute class]] != nil, @"please check function");
+}
+
+- (void)test_attributeForProperty {
+    STAssertTrue([AnnotatedClass attributeForProperty:@"window" withAttributeType:[CustomSFTestAttribute class]] != nil, @"please check function");
+}
+
+- (void)test_attributeForIvar {
+    STAssertTrue([AnnotatedClass attributeForIvar:@"_someField" withAttributeType:[SFTestAttribute class]] != nil, @"please check function");
+}
+
+- (void)test_attributeForClassWithAttributeType {
+    STAssertTrue([AnnotatedClass attributeForClassWithAttributeType:[CustomSFTestAttribute class]] != nil, @"please check function");
 }
 
 #pragma mark -

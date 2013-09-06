@@ -39,7 +39,7 @@
         return nil;
     }
     
-    self.currentAttributesList = [NSMutableArray array];
+    self.currentAttributesList = [[AttributeModelsContainer alloc] init];
     self.currentImportFilesList = [NSMutableArray array];
     self.isFieldMode = NO;
     

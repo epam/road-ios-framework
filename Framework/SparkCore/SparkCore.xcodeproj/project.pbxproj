@@ -14,12 +14,12 @@
 		78180F0B16C3D0A800B4AA31 /* NSMutableDictionary+KeyedSubscript.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E70216C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.h */; };
 		78180F0C16C3D0BD00B4AA31 /* NSBundle+ParameterList.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6FA16C3CD320049E36B /* NSBundle+ParameterList.h */; };
 		78180F0D16C3D0BD00B4AA31 /* NSObject+AttachedCollections.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6FC16C3CD320049E36B /* NSObject+AttachedCollections.h */; };
-		78180F0F16C3D0BD00B4AA31 /* NSMutableString+ESDStringFormatter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E70416C3CD320049E36B /* NSMutableString+ESDStringFormatter.h */; };
-		78180F1116C3D0BD00B4AA31 /* ESDMutableObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D216C3CCE60049E36B /* ESDMutableObject.h */; };
-		78180F1216C3D0BD00B4AA31 /* ESDObjectPool.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D416C3CCE60049E36B /* ESDObjectPool.h */; };
-		78180F1316C3D0BD00B4AA31 /* ESDPooledObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D616C3CCE60049E36B /* ESDPooledObject.h */; };
-		78180F1416C3D0BD00B4AA31 /* ESDPoolObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D716C3CCE60049E36B /* ESDPoolObject.h */; };
-		78180F1516C3D0BD00B4AA31 /* ESDObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D916C3CCE60049E36B /* ESDObject.h */; };
+		78180F0F16C3D0BD00B4AA31 /* NSMutableString+SFStringFormatter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E70416C3CD320049E36B /* NSMutableString+SFStringFormatter.h */; };
+		78180F1116C3D0BD00B4AA31 /* SFMutableObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D216C3CCE60049E36B /* SFMutableObject.h */; };
+		78180F1216C3D0BD00B4AA31 /* SFObjectPool.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D416C3CCE60049E36B /* SFObjectPool.h */; };
+		78180F1316C3D0BD00B4AA31 /* SFPooledObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D616C3CCE60049E36B /* SFPooledObject.h */; };
+		78180F1416C3D0BD00B4AA31 /* SFPoolObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D716C3CCE60049E36B /* SFPoolObject.h */; };
+		78180F1516C3D0BD00B4AA31 /* SFObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D916C3CCE60049E36B /* SFObject.h */; };
 		782B6DAD16C3D5960057DF2C /* SparkCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E72216C3CD4A0049E36B /* SparkCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		782B6DAE16C3D5B50057DF2C /* NSString+AccessorUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E6EC16C3CD070049E36B /* NSString+AccessorUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		782B6DE116C3E74D0057DF2C /* NSString+AccessorUtilities.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6EC16C3CD070049E36B /* NSString+AccessorUtilities.h */; };
@@ -30,23 +30,23 @@
 		78B8E6C116C3CCC00049E36B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B8E6C016C3CCC00049E36B /* SenTestingKit.framework */; };
 		78B8E6C416C3CCC00049E36B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B8E69116C3CC3E0049E36B /* Foundation.framework */; };
 		78B8E6CA16C3CCC00049E36B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 78B8E6C816C3CCC00049E36B /* InfoPlist.strings */; };
-		78B8E6DB16C3CCE60049E36B /* ESDMutableObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E6D216C3CCE60049E36B /* ESDMutableObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		78B8E6DC16C3CCE60049E36B /* ESDMutableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D316C3CCE60049E36B /* ESDMutableObject.m */; };
-		78B8E6DD16C3CCE60049E36B /* ESDMutableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D316C3CCE60049E36B /* ESDMutableObject.m */; };
-		78B8E6DE16C3CCE60049E36B /* ESDMutableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D316C3CCE60049E36B /* ESDMutableObject.m */; };
-		78B8E6DF16C3CCE60049E36B /* ESDObjectPool.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E6D416C3CCE60049E36B /* ESDObjectPool.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		78B8E6E016C3CCE60049E36B /* ESDObjectPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D516C3CCE60049E36B /* ESDObjectPool.m */; };
-		78B8E6E116C3CCE60049E36B /* ESDObjectPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D516C3CCE60049E36B /* ESDObjectPool.m */; };
-		78B8E6E216C3CCE60049E36B /* ESDObjectPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D516C3CCE60049E36B /* ESDObjectPool.m */; };
-		78B8E6E316C3CCE60049E36B /* ESDPooledObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E6D616C3CCE60049E36B /* ESDPooledObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		78B8E6E416C3CCE60049E36B /* ESDPoolObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E6D716C3CCE60049E36B /* ESDPoolObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		78B8E6E516C3CCE60049E36B /* ESDPoolObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D816C3CCE60049E36B /* ESDPoolObject.m */; };
-		78B8E6E616C3CCE60049E36B /* ESDPoolObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D816C3CCE60049E36B /* ESDPoolObject.m */; };
-		78B8E6E716C3CCE60049E36B /* ESDPoolObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D816C3CCE60049E36B /* ESDPoolObject.m */; };
-		78B8E6E816C3CCE60049E36B /* ESDObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E6D916C3CCE60049E36B /* ESDObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		78B8E6E916C3CCE60049E36B /* ESDObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6DA16C3CCE60049E36B /* ESDObject.m */; };
-		78B8E6EA16C3CCE60049E36B /* ESDObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6DA16C3CCE60049E36B /* ESDObject.m */; };
-		78B8E6EB16C3CCE60049E36B /* ESDObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6DA16C3CCE60049E36B /* ESDObject.m */; };
+		78B8E6DB16C3CCE60049E36B /* SFMutableObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E6D216C3CCE60049E36B /* SFMutableObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78B8E6DC16C3CCE60049E36B /* SFMutableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D316C3CCE60049E36B /* SFMutableObject.m */; };
+		78B8E6DD16C3CCE60049E36B /* SFMutableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D316C3CCE60049E36B /* SFMutableObject.m */; };
+		78B8E6DE16C3CCE60049E36B /* SFMutableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D316C3CCE60049E36B /* SFMutableObject.m */; };
+		78B8E6DF16C3CCE60049E36B /* SFObjectPool.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E6D416C3CCE60049E36B /* SFObjectPool.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78B8E6E016C3CCE60049E36B /* SFObjectPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D516C3CCE60049E36B /* SFObjectPool.m */; };
+		78B8E6E116C3CCE60049E36B /* SFObjectPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D516C3CCE60049E36B /* SFObjectPool.m */; };
+		78B8E6E216C3CCE60049E36B /* SFObjectPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D516C3CCE60049E36B /* SFObjectPool.m */; };
+		78B8E6E316C3CCE60049E36B /* SFPooledObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E6D616C3CCE60049E36B /* SFPooledObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78B8E6E416C3CCE60049E36B /* SFPoolObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E6D716C3CCE60049E36B /* SFPoolObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78B8E6E516C3CCE60049E36B /* SFPoolObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D816C3CCE60049E36B /* SFPoolObject.m */; };
+		78B8E6E616C3CCE60049E36B /* SFPoolObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D816C3CCE60049E36B /* SFPoolObject.m */; };
+		78B8E6E716C3CCE60049E36B /* SFPoolObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D816C3CCE60049E36B /* SFPoolObject.m */; };
+		78B8E6E816C3CCE60049E36B /* SFObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E6D916C3CCE60049E36B /* SFObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78B8E6E916C3CCE60049E36B /* SFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6DA16C3CCE60049E36B /* SFObject.m */; };
+		78B8E6EA16C3CCE60049E36B /* SFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6DA16C3CCE60049E36B /* SFObject.m */; };
+		78B8E6EB16C3CCE60049E36B /* SFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6DA16C3CCE60049E36B /* SFObject.m */; };
 		78B8E6F016C3CD070049E36B /* NSString+AccessorUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6ED16C3CD070049E36B /* NSString+AccessorUtilities.m */; };
 		78B8E70616C3CD320049E36B /* NSArray+EmptyArrayChecks.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E6F816C3CD320049E36B /* NSArray+EmptyArrayChecks.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78B8E70716C3CD320049E36B /* NSArray+EmptyArrayChecks.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6F916C3CD320049E36B /* NSArray+EmptyArrayChecks.m */; };
@@ -68,21 +68,23 @@
 		78B8E71B16C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70316C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.m */; };
 		78B8E71C16C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70316C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.m */; };
 		78B8E71D16C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70316C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.m */; };
-		78B8E71E16C3CD320049E36B /* NSMutableString+ESDStringFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E70416C3CD320049E36B /* NSMutableString+ESDStringFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		78B8E71F16C3CD320049E36B /* NSMutableString+ESDStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70516C3CD320049E36B /* NSMutableString+ESDStringFormatter.m */; };
-		78B8E72016C3CD320049E36B /* NSMutableString+ESDStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70516C3CD320049E36B /* NSMutableString+ESDStringFormatter.m */; };
-		78B8E72116C3CD320049E36B /* NSMutableString+ESDStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70516C3CD320049E36B /* NSMutableString+ESDStringFormatter.m */; };
-		78B8E73016C3CDD90049E36B /* ESDTemplateParsingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E72916C3CDD90049E36B /* ESDTemplateParsingTest.m */; };
-		78B8E73116C3CDD90049E36B /* ESDConditionalComponentResultTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E72B16C3CDD90049E36B /* ESDConditionalComponentResultTest.m */; };
-		78B8E73216C3CDD90049E36B /* ESDPropertyNameMethodTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E72D16C3CDD90049E36B /* ESDPropertyNameMethodTest.m */; };
-		78B8E73916C3CDFD0049E36B /* ESDMutableObjectTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E73616C3CDFD0049E36B /* ESDMutableObjectTest.m */; };
-		78B8E73A16C3CDFD0049E36B /* ESDPoolTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E73816C3CDFD0049E36B /* ESDPoolTest.m */; };
+		78B8E71E16C3CD320049E36B /* NSMutableString+SFStringFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E70416C3CD320049E36B /* NSMutableString+SFStringFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78B8E71F16C3CD320049E36B /* NSMutableString+SFStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70516C3CD320049E36B /* NSMutableString+SFStringFormatter.m */; };
+		78B8E72016C3CD320049E36B /* NSMutableString+SFStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70516C3CD320049E36B /* NSMutableString+SFStringFormatter.m */; };
+		78B8E72116C3CD320049E36B /* NSMutableString+SFStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70516C3CD320049E36B /* NSMutableString+SFStringFormatter.m */; };
+		78B8E73016C3CDD90049E36B /* SFTemplateParsingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E72916C3CDD90049E36B /* SFTemplateParsingTest.m */; };
+		78B8E73116C3CDD90049E36B /* SFConditionalComponentResultTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E72B16C3CDD90049E36B /* SFConditionalComponentResultTest.m */; };
+		78B8E73216C3CDD90049E36B /* SFPropertyNameMethodTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E72D16C3CDD90049E36B /* SFPropertyNameMethodTest.m */; };
+		78B8E73916C3CDFD0049E36B /* SFMutableObjectTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E73616C3CDFD0049E36B /* SFMutableObjectTest.m */; };
+		78B8E73A16C3CDFD0049E36B /* SFPoolTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E73816C3CDFD0049E36B /* SFPoolTest.m */; };
 		78C2432416C3D314000D777F /* SparkReflection.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 78C2432316C3D314000D777F /* SparkReflection.xcodeproj */; };
 		78C2432516C3D314000D777F /* SparkReflection.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 78C2432316C3D314000D777F /* SparkReflection.xcodeproj */; };
 		78CBA91C16C3D36D00DAC9BB /* SparkReflection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78CBA91216C3D33A00DAC9BB /* SparkReflection.framework */; };
 		8DE3785217C784D000F30026 /* NSInvocation+SparkExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3785117C784D000F30026 /* NSInvocation+SparkExtension.m */; };
 		8DE3785317C784D000F30026 /* NSInvocation+SparkExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3785117C784D000F30026 /* NSInvocation+SparkExtension.m */; };
 		8DE3785D17C7869600F30026 /* NSInvocation+SparkExtension.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DE3785017C784D000F30026 /* NSInvocation+SparkExtension.h */; };
+		8DFAE16817D5F65D002687B8 /* NSRegularExpression+SparkExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DFAE16717D5F65D002687B8 /* NSRegularExpression+SparkExtension.m */; };
+		8DFAE16A17D5F681002687B8 /* NSRegularExpression+SparkExtension.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DFAE16617D5F65D002687B8 /* NSRegularExpression+SparkExtension.h */; };
 		E513EA2D179022BC0058F2EA /* SparkSingletonDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = E513EA2C179022BC0058F2EA /* SparkSingletonDefinition.h */; };
 		E5DED7B51790234900AB0250 /* SparkSingletonDefinition.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E513EA2C179022BC0058F2EA /* SparkSingletonDefinition.h */; };
 /* End PBXBuildFile section */
@@ -139,6 +141,7 @@
 			dstPath = include/Spark;
 			dstSubfolderSpec = 16;
 			files = (
+				8DFAE16A17D5F681002687B8 /* NSRegularExpression+SparkExtension.h in CopyFiles */,
 				8DE3785D17C7869600F30026 /* NSInvocation+SparkExtension.h in CopyFiles */,
 				E5DED7B51790234900AB0250 /* SparkSingletonDefinition.h in CopyFiles */,
 				78180F0816C3D0A300B4AA31 /* SparkCore.h in CopyFiles */,
@@ -147,13 +150,13 @@
 				78180F0B16C3D0A800B4AA31 /* NSMutableDictionary+KeyedSubscript.h in CopyFiles */,
 				78180F0C16C3D0BD00B4AA31 /* NSBundle+ParameterList.h in CopyFiles */,
 				78180F0D16C3D0BD00B4AA31 /* NSObject+AttachedCollections.h in CopyFiles */,
-				78180F0F16C3D0BD00B4AA31 /* NSMutableString+ESDStringFormatter.h in CopyFiles */,
-				78180F1116C3D0BD00B4AA31 /* ESDMutableObject.h in CopyFiles */,
+				78180F0F16C3D0BD00B4AA31 /* NSMutableString+SFStringFormatter.h in CopyFiles */,
+				78180F1116C3D0BD00B4AA31 /* SFMutableObject.h in CopyFiles */,
 				782B6DE116C3E74D0057DF2C /* NSString+AccessorUtilities.h in CopyFiles */,
-				78180F1216C3D0BD00B4AA31 /* ESDObjectPool.h in CopyFiles */,
-				78180F1316C3D0BD00B4AA31 /* ESDPooledObject.h in CopyFiles */,
-				78180F1416C3D0BD00B4AA31 /* ESDPoolObject.h in CopyFiles */,
-				78180F1516C3D0BD00B4AA31 /* ESDObject.h in CopyFiles */,
+				78180F1216C3D0BD00B4AA31 /* SFObjectPool.h in CopyFiles */,
+				78180F1316C3D0BD00B4AA31 /* SFPooledObject.h in CopyFiles */,
+				78180F1416C3D0BD00B4AA31 /* SFPoolObject.h in CopyFiles */,
+				78180F1516C3D0BD00B4AA31 /* SFObject.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,15 +176,15 @@
 		78B8E6C716C3CCC00049E36B /* SparkCoreTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SparkCoreTest-Info.plist"; sourceTree = "<group>"; };
 		78B8E6C916C3CCC00049E36B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		78B8E6CE16C3CCC10049E36B /* SparkCoreTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SparkCoreTest-Prefix.pch"; sourceTree = "<group>"; };
-		78B8E6D216C3CCE60049E36B /* ESDMutableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDMutableObject.h; sourceTree = "<group>"; };
-		78B8E6D316C3CCE60049E36B /* ESDMutableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDMutableObject.m; sourceTree = "<group>"; };
-		78B8E6D416C3CCE60049E36B /* ESDObjectPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDObjectPool.h; sourceTree = "<group>"; };
-		78B8E6D516C3CCE60049E36B /* ESDObjectPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDObjectPool.m; sourceTree = "<group>"; };
-		78B8E6D616C3CCE60049E36B /* ESDPooledObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDPooledObject.h; sourceTree = "<group>"; };
-		78B8E6D716C3CCE60049E36B /* ESDPoolObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDPoolObject.h; sourceTree = "<group>"; };
-		78B8E6D816C3CCE60049E36B /* ESDPoolObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDPoolObject.m; sourceTree = "<group>"; };
-		78B8E6D916C3CCE60049E36B /* ESDObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDObject.h; sourceTree = "<group>"; };
-		78B8E6DA16C3CCE60049E36B /* ESDObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDObject.m; sourceTree = "<group>"; };
+		78B8E6D216C3CCE60049E36B /* SFMutableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMutableObject.h; sourceTree = "<group>"; };
+		78B8E6D316C3CCE60049E36B /* SFMutableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMutableObject.m; sourceTree = "<group>"; };
+		78B8E6D416C3CCE60049E36B /* SFObjectPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFObjectPool.h; sourceTree = "<group>"; };
+		78B8E6D516C3CCE60049E36B /* SFObjectPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFObjectPool.m; sourceTree = "<group>"; };
+		78B8E6D616C3CCE60049E36B /* SFPooledObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPooledObject.h; sourceTree = "<group>"; };
+		78B8E6D716C3CCE60049E36B /* SFPoolObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPoolObject.h; sourceTree = "<group>"; };
+		78B8E6D816C3CCE60049E36B /* SFPoolObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPoolObject.m; sourceTree = "<group>"; };
+		78B8E6D916C3CCE60049E36B /* SFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFObject.h; sourceTree = "<group>"; };
+		78B8E6DA16C3CCE60049E36B /* SFObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFObject.m; sourceTree = "<group>"; };
 		78B8E6EC16C3CD070049E36B /* NSString+AccessorUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AccessorUtilities.h"; sourceTree = "<group>"; };
 		78B8E6ED16C3CD070049E36B /* NSString+AccessorUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AccessorUtilities.m"; sourceTree = "<group>"; };
 		78B8E6F816C3CD320049E36B /* NSArray+EmptyArrayChecks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+EmptyArrayChecks.h"; sourceTree = "<group>"; };
@@ -194,22 +197,24 @@
 		78B8E70116C3CD320049E36B /* NSDictionary+KeyedSubscript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+KeyedSubscript.m"; sourceTree = "<group>"; };
 		78B8E70216C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+KeyedSubscript.h"; sourceTree = "<group>"; };
 		78B8E70316C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+KeyedSubscript.m"; sourceTree = "<group>"; };
-		78B8E70416C3CD320049E36B /* NSMutableString+ESDStringFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+ESDStringFormatter.h"; sourceTree = "<group>"; };
-		78B8E70516C3CD320049E36B /* NSMutableString+ESDStringFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+ESDStringFormatter.m"; sourceTree = "<group>"; };
+		78B8E70416C3CD320049E36B /* NSMutableString+SFStringFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+SFStringFormatter.h"; sourceTree = "<group>"; };
+		78B8E70516C3CD320049E36B /* NSMutableString+SFStringFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+SFStringFormatter.m"; sourceTree = "<group>"; };
 		78B8E72216C3CD4A0049E36B /* SparkCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SparkCore.h; sourceTree = "<group>"; };
-		78B8E72816C3CDD90049E36B /* ESDTemplateParsingTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDTemplateParsingTest.h; sourceTree = "<group>"; };
-		78B8E72916C3CDD90049E36B /* ESDTemplateParsingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDTemplateParsingTest.m; sourceTree = "<group>"; };
-		78B8E72A16C3CDD90049E36B /* ESDConditionalComponentResultTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDConditionalComponentResultTest.h; sourceTree = "<group>"; };
-		78B8E72B16C3CDD90049E36B /* ESDConditionalComponentResultTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDConditionalComponentResultTest.m; sourceTree = "<group>"; };
-		78B8E72C16C3CDD90049E36B /* ESDPropertyNameMethodTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDPropertyNameMethodTest.h; sourceTree = "<group>"; };
-		78B8E72D16C3CDD90049E36B /* ESDPropertyNameMethodTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDPropertyNameMethodTest.m; sourceTree = "<group>"; };
-		78B8E73516C3CDFD0049E36B /* ESDMutableObjectTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDMutableObjectTest.h; sourceTree = "<group>"; };
-		78B8E73616C3CDFD0049E36B /* ESDMutableObjectTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ESDMutableObjectTest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		78B8E73716C3CDFD0049E36B /* ESDPoolTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDPoolTest.h; sourceTree = "<group>"; };
-		78B8E73816C3CDFD0049E36B /* ESDPoolTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDPoolTest.m; sourceTree = "<group>"; };
+		78B8E72816C3CDD90049E36B /* SFTemplateParsingTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTemplateParsingTest.h; sourceTree = "<group>"; };
+		78B8E72916C3CDD90049E36B /* SFTemplateParsingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTemplateParsingTest.m; sourceTree = "<group>"; };
+		78B8E72A16C3CDD90049E36B /* SFConditionalComponentResultTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFConditionalComponentResultTest.h; sourceTree = "<group>"; };
+		78B8E72B16C3CDD90049E36B /* SFConditionalComponentResultTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFConditionalComponentResultTest.m; sourceTree = "<group>"; };
+		78B8E72C16C3CDD90049E36B /* SFPropertyNameMethodTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPropertyNameMethodTest.h; sourceTree = "<group>"; };
+		78B8E72D16C3CDD90049E36B /* SFPropertyNameMethodTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPropertyNameMethodTest.m; sourceTree = "<group>"; };
+		78B8E73516C3CDFD0049E36B /* SFMutableObjectTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMutableObjectTest.h; sourceTree = "<group>"; };
+		78B8E73616C3CDFD0049E36B /* SFMutableObjectTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFMutableObjectTest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		78B8E73716C3CDFD0049E36B /* SFPoolTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPoolTest.h; sourceTree = "<group>"; };
+		78B8E73816C3CDFD0049E36B /* SFPoolTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPoolTest.m; sourceTree = "<group>"; };
 		78C2432316C3D314000D777F /* SparkReflection.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkReflection.xcodeproj; path = ../SparkReflection/SparkReflection.xcodeproj; sourceTree = "<group>"; };
 		8DE3785017C784D000F30026 /* NSInvocation+SparkExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+SparkExtension.h"; sourceTree = "<group>"; };
 		8DE3785117C784D000F30026 /* NSInvocation+SparkExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+SparkExtension.m"; sourceTree = "<group>"; };
+		8DFAE16617D5F65D002687B8 /* NSRegularExpression+SparkExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRegularExpression+SparkExtension.h"; sourceTree = "<group>"; };
+		8DFAE16717D5F65D002687B8 /* NSRegularExpression+SparkExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRegularExpression+SparkExtension.m"; sourceTree = "<group>"; };
 		CDA9F5AC16E9F098000A50CC /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		E513EA2C179022BC0058F2EA /* SparkSingletonDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparkSingletonDefinition.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -300,6 +305,8 @@
 		78B8E69F16C3CC880049E36B /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				8DFAE16617D5F65D002687B8 /* NSRegularExpression+SparkExtension.h */,
+				8DFAE16717D5F65D002687B8 /* NSRegularExpression+SparkExtension.m */,
 				78B8E72316C3CD7F0049E36B /* CollectionCategories */,
 				78B8E72516C3CD9F0049E36B /* BundleCategories */,
 				78B8E72616C3CDAA0049E36B /* TextualCategories */,
@@ -311,15 +318,15 @@
 		78B8E6A016C3CC880049E36B /* Containers */ = {
 			isa = PBXGroup;
 			children = (
-				78B8E6D216C3CCE60049E36B /* ESDMutableObject.h */,
-				78B8E6D316C3CCE60049E36B /* ESDMutableObject.m */,
-				78B8E6D416C3CCE60049E36B /* ESDObjectPool.h */,
-				78B8E6D516C3CCE60049E36B /* ESDObjectPool.m */,
-				78B8E6D616C3CCE60049E36B /* ESDPooledObject.h */,
-				78B8E6D716C3CCE60049E36B /* ESDPoolObject.h */,
-				78B8E6D816C3CCE60049E36B /* ESDPoolObject.m */,
-				78B8E6D916C3CCE60049E36B /* ESDObject.h */,
-				78B8E6DA16C3CCE60049E36B /* ESDObject.m */,
+				78B8E6D216C3CCE60049E36B /* SFMutableObject.h */,
+				78B8E6D316C3CCE60049E36B /* SFMutableObject.m */,
+				78B8E6D416C3CCE60049E36B /* SFObjectPool.h */,
+				78B8E6D516C3CCE60049E36B /* SFObjectPool.m */,
+				78B8E6D616C3CCE60049E36B /* SFPooledObject.h */,
+				78B8E6D716C3CCE60049E36B /* SFPoolObject.h */,
+				78B8E6D816C3CCE60049E36B /* SFPoolObject.m */,
+				78B8E6D916C3CCE60049E36B /* SFObject.h */,
+				78B8E6DA16C3CCE60049E36B /* SFObject.m */,
 			);
 			path = Containers;
 			sourceTree = "<group>";
@@ -400,8 +407,8 @@
 		78B8E72616C3CDAA0049E36B /* TextualCategories */ = {
 			isa = PBXGroup;
 			children = (
-				78B8E70416C3CD320049E36B /* NSMutableString+ESDStringFormatter.h */,
-				78B8E70516C3CD320049E36B /* NSMutableString+ESDStringFormatter.m */,
+				78B8E70416C3CD320049E36B /* NSMutableString+SFStringFormatter.h */,
+				78B8E70516C3CD320049E36B /* NSMutableString+SFStringFormatter.m */,
 			);
 			name = TextualCategories;
 			sourceTree = "<group>";
@@ -409,12 +416,12 @@
 		78B8E72716C3CDCF0049E36B /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				78B8E72816C3CDD90049E36B /* ESDTemplateParsingTest.h */,
-				78B8E72916C3CDD90049E36B /* ESDTemplateParsingTest.m */,
-				78B8E72A16C3CDD90049E36B /* ESDConditionalComponentResultTest.h */,
-				78B8E72B16C3CDD90049E36B /* ESDConditionalComponentResultTest.m */,
-				78B8E72C16C3CDD90049E36B /* ESDPropertyNameMethodTest.h */,
-				78B8E72D16C3CDD90049E36B /* ESDPropertyNameMethodTest.m */,
+				78B8E72816C3CDD90049E36B /* SFTemplateParsingTest.h */,
+				78B8E72916C3CDD90049E36B /* SFTemplateParsingTest.m */,
+				78B8E72A16C3CDD90049E36B /* SFConditionalComponentResultTest.h */,
+				78B8E72B16C3CDD90049E36B /* SFConditionalComponentResultTest.m */,
+				78B8E72C16C3CDD90049E36B /* SFPropertyNameMethodTest.h */,
+				78B8E72D16C3CDD90049E36B /* SFPropertyNameMethodTest.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -422,10 +429,10 @@
 		78B8E73416C3CDF90049E36B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				78B8E73516C3CDFD0049E36B /* ESDMutableObjectTest.h */,
-				78B8E73616C3CDFD0049E36B /* ESDMutableObjectTest.m */,
-				78B8E73716C3CDFD0049E36B /* ESDPoolTest.h */,
-				78B8E73816C3CDFD0049E36B /* ESDPoolTest.m */,
+				78B8E73516C3CDFD0049E36B /* SFMutableObjectTest.h */,
+				78B8E73616C3CDFD0049E36B /* SFMutableObjectTest.m */,
+				78B8E73716C3CDFD0049E36B /* SFPoolTest.h */,
+				78B8E73816C3CDFD0049E36B /* SFPoolTest.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -448,17 +455,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				782B6DAD16C3D5960057DF2C /* SparkCore.h in Headers */,
-				78B8E6DB16C3CCE60049E36B /* ESDMutableObject.h in Headers */,
-				78B8E6DF16C3CCE60049E36B /* ESDObjectPool.h in Headers */,
-				78B8E6E316C3CCE60049E36B /* ESDPooledObject.h in Headers */,
-				78B8E6E416C3CCE60049E36B /* ESDPoolObject.h in Headers */,
-				78B8E6E816C3CCE60049E36B /* ESDObject.h in Headers */,
+				78B8E6DB16C3CCE60049E36B /* SFMutableObject.h in Headers */,
+				78B8E6DF16C3CCE60049E36B /* SFObjectPool.h in Headers */,
+				78B8E6E316C3CCE60049E36B /* SFPooledObject.h in Headers */,
+				78B8E6E416C3CCE60049E36B /* SFPoolObject.h in Headers */,
+				78B8E6E816C3CCE60049E36B /* SFObject.h in Headers */,
 				78B8E70616C3CD320049E36B /* NSArray+EmptyArrayChecks.h in Headers */,
 				78B8E70A16C3CD320049E36B /* NSBundle+ParameterList.h in Headers */,
 				78B8E70E16C3CD320049E36B /* NSObject+AttachedCollections.h in Headers */,
 				78B8E71616C3CD320049E36B /* NSDictionary+KeyedSubscript.h in Headers */,
 				78B8E71A16C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.h in Headers */,
-				78B8E71E16C3CD320049E36B /* NSMutableString+ESDStringFormatter.h in Headers */,
+				78B8E71E16C3CD320049E36B /* NSMutableString+SFStringFormatter.h in Headers */,
 				782B6DAE16C3D5B50057DF2C /* NSString+AccessorUtilities.h in Headers */,
 				E513EA2D179022BC0058F2EA /* SparkSingletonDefinition.h in Headers */,
 			);
@@ -623,18 +630,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78B8E6DC16C3CCE60049E36B /* ESDMutableObject.m in Sources */,
-				78B8E6E016C3CCE60049E36B /* ESDObjectPool.m in Sources */,
-				78B8E6E516C3CCE60049E36B /* ESDPoolObject.m in Sources */,
-				78B8E6E916C3CCE60049E36B /* ESDObject.m in Sources */,
+				78B8E6DC16C3CCE60049E36B /* SFMutableObject.m in Sources */,
+				78B8E6E016C3CCE60049E36B /* SFObjectPool.m in Sources */,
+				78B8E6E516C3CCE60049E36B /* SFPoolObject.m in Sources */,
+				78B8E6E916C3CCE60049E36B /* SFObject.m in Sources */,
 				78B8E70716C3CD320049E36B /* NSArray+EmptyArrayChecks.m in Sources */,
 				78B8E70B16C3CD320049E36B /* NSBundle+ParameterList.m in Sources */,
 				78B8E70F16C3CD320049E36B /* NSObject+AttachedCollections.m in Sources */,
 				78B8E71716C3CD320049E36B /* NSDictionary+KeyedSubscript.m in Sources */,
 				78B8E6F016C3CD070049E36B /* NSString+AccessorUtilities.m in Sources */,
 				78B8E71B16C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.m in Sources */,
-				78B8E71F16C3CD320049E36B /* NSMutableString+ESDStringFormatter.m in Sources */,
+				78B8E71F16C3CD320049E36B /* NSMutableString+SFStringFormatter.m in Sources */,
 				8DE3785217C784D000F30026 /* NSInvocation+SparkExtension.m in Sources */,
+				8DFAE16817D5F65D002687B8 /* NSRegularExpression+SparkExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,17 +650,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78B8E6DD16C3CCE60049E36B /* ESDMutableObject.m in Sources */,
-				78B8E6E116C3CCE60049E36B /* ESDObjectPool.m in Sources */,
-				78B8E6E616C3CCE60049E36B /* ESDPoolObject.m in Sources */,
-				78B8E6EA16C3CCE60049E36B /* ESDObject.m in Sources */,
+				78B8E6DD16C3CCE60049E36B /* SFMutableObject.m in Sources */,
+				78B8E6E116C3CCE60049E36B /* SFObjectPool.m in Sources */,
+				78B8E6E616C3CCE60049E36B /* SFPoolObject.m in Sources */,
+				78B8E6EA16C3CCE60049E36B /* SFObject.m in Sources */,
 				78B8E70816C3CD320049E36B /* NSArray+EmptyArrayChecks.m in Sources */,
 				78B8E70C16C3CD320049E36B /* NSBundle+ParameterList.m in Sources */,
 				78B8E71016C3CD320049E36B /* NSObject+AttachedCollections.m in Sources */,
 				78B8E71816C3CD320049E36B /* NSDictionary+KeyedSubscript.m in Sources */,
 				78B8E71C16C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.m in Sources */,
 				782B6DE516C3E8E40057DF2C /* NSString+AccessorUtilities.m in Sources */,
-				78B8E72016C3CD320049E36B /* NSMutableString+ESDStringFormatter.m in Sources */,
+				78B8E72016C3CD320049E36B /* NSMutableString+SFStringFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,22 +668,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78B8E6DE16C3CCE60049E36B /* ESDMutableObject.m in Sources */,
-				78B8E6E216C3CCE60049E36B /* ESDObjectPool.m in Sources */,
-				78B8E6E716C3CCE60049E36B /* ESDPoolObject.m in Sources */,
-				78B8E6EB16C3CCE60049E36B /* ESDObject.m in Sources */,
+				78B8E6DE16C3CCE60049E36B /* SFMutableObject.m in Sources */,
+				78B8E6E216C3CCE60049E36B /* SFObjectPool.m in Sources */,
+				78B8E6E716C3CCE60049E36B /* SFPoolObject.m in Sources */,
+				78B8E6EB16C3CCE60049E36B /* SFObject.m in Sources */,
 				78B8E70916C3CD320049E36B /* NSArray+EmptyArrayChecks.m in Sources */,
 				78B8E70D16C3CD320049E36B /* NSBundle+ParameterList.m in Sources */,
 				78B8E71116C3CD320049E36B /* NSObject+AttachedCollections.m in Sources */,
 				78B8E71916C3CD320049E36B /* NSDictionary+KeyedSubscript.m in Sources */,
 				78B8E71D16C3CD320049E36B /* NSMutableDictionary+KeyedSubscript.m in Sources */,
-				78B8E72116C3CD320049E36B /* NSMutableString+ESDStringFormatter.m in Sources */,
-				78B8E73016C3CDD90049E36B /* ESDTemplateParsingTest.m in Sources */,
-				78B8E73116C3CDD90049E36B /* ESDConditionalComponentResultTest.m in Sources */,
-				78B8E73216C3CDD90049E36B /* ESDPropertyNameMethodTest.m in Sources */,
-				78B8E73916C3CDFD0049E36B /* ESDMutableObjectTest.m in Sources */,
+				78B8E72116C3CD320049E36B /* NSMutableString+SFStringFormatter.m in Sources */,
+				78B8E73016C3CDD90049E36B /* SFTemplateParsingTest.m in Sources */,
+				78B8E73116C3CDD90049E36B /* SFConditionalComponentResultTest.m in Sources */,
+				78B8E73216C3CDD90049E36B /* SFPropertyNameMethodTest.m in Sources */,
+				78B8E73916C3CDFD0049E36B /* SFMutableObjectTest.m in Sources */,
 				782B6DE416C3E8D80057DF2C /* NSString+AccessorUtilities.m in Sources */,
-				78B8E73A16C3CDFD0049E36B /* ESDPoolTest.m in Sources */,
+				78B8E73A16C3CDFD0049E36B /* SFPoolTest.m in Sources */,
 				8DE3785317C784D000F30026 /* NSInvocation+SparkExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -38,7 +38,7 @@
 
 @property (nonatomic, strong) PreprocessedSourceCode *sourceCodeInfo;
 @property (nonatomic, strong) NSMutableString *workCodeBuffer;
-@property (nonatomic, strong) NSMutableArray *currentAttributesList;
+@property (nonatomic, strong) AttributeModelsContainer *currentAttributesList;
 @property (nonatomic, strong) NSMutableArray *currentImportFilesList;
 
 @property (nonatomic, strong) ClassModel *currentClass;
