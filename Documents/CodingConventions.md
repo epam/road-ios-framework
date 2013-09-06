@@ -68,9 +68,10 @@ Most of these guidelines match Apple's documentation and community-accepted best
 ```
 
 4. There should be exactly one blank line between methods in implementation file to aid in visual clarity and organization.
-5. Whitespace should be avoided in blank lines. Blank line should only have new line symbol and no other invisible symbols.
-6. Avoid adding blank lines at the end of files.
-7. Implementation files should be no longer than 2000 lines. If a source file becomes very long it is hard to understand. Therefore long classes should usually be refactored into several individual classes that focus on a specific task.
+5. Methods in implementation file should appear in the same order they are declared in header file. Private methods should be placed below all of the public methods.
+6. Whitespace should be avoided in blank lines. Blank line should only have new line symbol and no other invisible symbols.
+7. Avoid adding blank lines at the end of files.
+8. Implementation files should be no longer than 2000 lines. If a source file becomes very long it is hard to understand. Therefore long classes should usually be refactored into several individual classes that focus on a specific task.
 
 ### 3.1.Compiler Directives
 
