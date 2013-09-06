@@ -132,7 +132,7 @@ Every comment that you add should be either appledoc in header files or should s
 ## 5.Categories
 1. Category file name should follow the next pattern: `ClassName+CategoryName.h` and `ClassName+CategoryName.m`.
 2. If you add a category to a class without `SF` prefix then the category name should have `SF` prefix. If the class name already has `SF` prefix the category name should not have `SF` prefix. ***For example*** `NSObject+SFAttributes`, but `SFServiceProvider+Logging`.
-3. If you add a category to a class without `SF` prefix then the category method should have `SF` prefix to avoid method name collisions.
+3. If you add a category to a class without `SF` prefix then the category methods should have `SF_` prefix to avoid method name collisions.
 4. Categories should be named for the sort of functionality they provide. Don't create umbrella categories.
 
 ## 6.Methods
@@ -151,6 +151,7 @@ Every comment that you add should be either appledoc in header files or should s
 7. Use exactly one blank line within a method to separate functionality where necessary. However usually it is better to create another method for this purpose.
 8. It is recommended to avoid multiple `return` statements in one method. Multiple return statements might make it hard to understand execution flow of a method. However you may use guard conditions at the beginning of a method to return early.
 9. Method length should be no longer than 40 lines. It is preferable to keep method length below 30 lines. If a method becomes very long it is hard to understand. Therefore long methods should usually be refactored into several individual methods that focus on a specific task.
+10. Do not declare private methods in class extension (anonymous category) or anywhere else. Only provide private method definition without any separate declaration.
 
 ### 6.1.Initialization and Deallocation
 
@@ -269,17 +270,17 @@ if (isAwesome == YES) // Never do this.
 7. Avoid `self.` to access class' own properties unless you have implemented custom setter or getter. You should access class' instance variables directly instead.
 
 ### 7.1.Dot-Notation Syntax
-1. Use dot-notation for accessing and mutating properties. But do not use dot notation in a call path that contains a method call in it, since it may result in complex syntax.
+1. Dot-notation should be used for accessing and mutating properties. Bracket notation is preferred in all other instances.
 
 **For example:**
 ```objc
 view.backgroundColor = [UIColor orangeColor];
-[[UIApplication sharedApplication] delegate];
+[UIApplication sharedApplication].delegate;
 ```
 **Not:**
 ```objc
 [view setBackgroundColor:[UIColor orangeColor]];
-[UIApplication sharedApplication].delegate;
+UIApplication.sharedApplication.delegate;
 ```
 
 ### 7.2.Private Properties
