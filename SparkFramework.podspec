@@ -19,16 +19,64 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => 'https://github.com/edl00k/spark-ios-framework.git', :tag => '0.0.1' }
   
-
   s.subspec 'SparkReflection' do |rf|
     rf.source_files = 'Framework/SparkReflection/SparkReflection/**/*.{h,m}'
-    rf.public_header_files = 'Framework/SparkReflection/SparkReflection/SparkReflection.h'
+    rf.public_header_files = 'Framework/SparkReflection/SparkReflection/**/*.h'
+    rf.header_dir = 'Spark'
+
   end
 
   s.subspec 'SparkCore' do |core|
     core.source_files = 'Framework/SparkCore/SparkCore/**/*.{h,m}'
-    core.public_header_files = 'Framework/SparkCore/SparkCore/SparkCore.h'
+    core.public_header_files = 'Framework/SparkCore/SparkCore/**/*.h'
     core.dependency 'SparkFramework/SparkReflection'
+    core.header_dir = 'Spark'
+  end
+
+  s.subspec 'SparkAttribute' do |attribute|
+    attribute.source_files = 'Framework/SparkAttribute/SparkAttribute/**/*.{h,m}'
+    attribute.public_header_files = 'Framework/SparkAttribute/SparkAttribute/**/*.h'
+    attribute.dependency 'SparkFramework/SparkReflection'
+    attribute.dependency 'SparkFramework/SparkCore'
+    attribute.header_dir = 'Spark'
+  end
+
+  s.post_install do |installer|
+
+    require 'rubygems'
+    require 'xcodeproject'
+
+    proj = XcodeProject::Project.new(Dir.getwd + '/SparkPods.xcodeproj')
+    XcodeProject::Tasks::BuildTask.new(proj)
+    
+  end
+
+  s.subspec 'SparkObservation' do |observation|
+    observation.source_files = 'Framework/SparkObservation/SparkObservation/**/*.{h,m}'
+    observation.public_header_files = 'Framework/SparkObservation/SparkObservation/**/*.h'
+    observation.header_dir = 'Spark'
+  end
+
+  s.subspec 'SparkServices' do |services|
+    services.source_files = 'Framework/SparkServices/SparkServices/**/*.{h,m}'
+    services.public_header_files = 'Framework/SparkServices/SparkServices/**/*.h'
+    services.dependency 'SparkFramework/SparkReflection'
+    services.dependency 'SparkFramework/SparkCore'
+    services.dependency 'SparkFramework/SparkAttribute'
+    services.header_dir = 'Spark'
+  end
+
+  s.subspec 'SparkLogger' do |logger|
+    logger.source_files = 'Framework/SparkLogger/SparkLogger/**/*.{h,m}'
+    logger.public_header_files = 'Framework/SparkLogger/SparkLogger/**/*.h'
+    logger.dependency 'SparkFramework/SparkCore'
+    logger.dependency 'SparkFramework/SparkReflection'
+    logger.dependency 'SparkFramework/SparkAttribute'
+    logger.dependency 'SparkFramework/SparkServices'    
+    logger.dependency 'SparkFramework/SparkObservation'
+    logger.ios.framework = 'CoreGraphics'
+    logger.ios.libraries = 'z'
+    logger.header_dir = 'Spark'
   end
 
 end
