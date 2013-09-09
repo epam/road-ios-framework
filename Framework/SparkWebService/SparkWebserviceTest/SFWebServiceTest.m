@@ -32,10 +32,11 @@
 #import "SFWebServiceClient+DynamicTest.h"
 #import "SFAuthenticating.h"
 #import "SFServiceProvider+ConcreteWebServiceClient.h"
-#import "SFDownloader.h"
+#import "SFDownloader+FakeRequest.h"
 
 #import "SFBasicAuthenticationProvider.h"
 #import "SFDigestAuthenticationProvider.h"
+#import <objc/runtime.h>
 
 @interface SFWebServiceTest ()
 {
@@ -45,6 +46,14 @@
 @end
 
 @implementation SFWebServiceTest
+
++ (void)setUp {
+    SEL originalSelector = @selector(start);
+    SEL overrideSelector = @selector(fakeStart);
+    Method originalMethod = class_getInstanceMethod([SFDownloader class], originalSelector);
+    Method overrideMethod = class_getInstanceMethod([SFDownloader class], overrideSelector);
+    method_exchangeImplementations(originalMethod, overrideMethod);
+}
 
 - (void)testHTTPBasicAuthentication {
     //[[[SFServiceProvider sharedProvider] logger] addWriter:[SFConsoleLogWriter new]];
@@ -125,98 +134,6 @@
     STAssertTrue([client.authenticationProvider isSessionOpened], @"Authentication was failed and session was not opened.");
 }
 
-//- (void)testAuthentication {
-//    authenticationFinished = NO;
-//    __block BOOL isFinished = false;
-//    
-//    SFWebServiceClient *client = [[SFWebServiceClient alloc] initWithServiceRoot:@"http://ephubudw0817.budapest.epam.com:1337"];
-//    client.authenticationProvider = [[SFBasicAuthenticationProvider alloc] initWithUser:@"epam" password:@"epam"];
-//    client.authenticationProvider.successBlock = ^(id result) {
-//        NSLog(@"%@", result);
-//    };
-//    client.authenticationProvider.failureBlock = ^(NSError *error) {
-//        NSLog(@"%@", error);
-//    };
-//    [client dynamicDownloadTest:@"TestParameterValue" callbackBlock:^(id list, NSError *error) {
-//        isFinished = YES;
-//    }];
-//    
-//    while (!isFinished) {
-//        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
-//    }
-//    
-//    STAssertTrue([client.authenticationProvider isSessionOpened], @"Authentication was failed and session was not opened.");
-//}
-//
-//
-//- (void)testDynamicResolution {
-//    
-//    SFWebServiceClient *client = [[SFWebServiceClient alloc] initWithServiceRoot:@"http://ephubudw0817.budapest.epam.com:1337"];
-//    SFDownloader *request = [client dynamicDownloadTest:@"TestParameterValue" callbackBlock:^(id list, NSError *error) {
-//    }];
-//
-//    sleep(1);
-//    
-//    STAssertTrue([[[request.request URL] absoluteString] hasSuffix:@"example=TestParameterValue"], @"Assertion: dynamic method resolution NOT works for GET parameter list");
-//}
-//
-//
-//- (void)testDownload {
-//
-//    __block BOOL isFinished = false;
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-//    
-//        SFWebServiceClient *client = [[SFWebServiceClient alloc] initWithServiceRoot:@"http://ephubudw0817.budapest.epam.com:1337"];
-//        [client downloadJSONWithCallbackBlock:^(id response, NSError *error) {
-//            SFLogInternalError(@"response: %@ error: %@", response, error);
-//            STAssertTrue(error == NULL, @"Assertion: download failing");
-//            isFinished = YES;
-//        }];
-//        
-//    });
-//    while (!isFinished) {
-//        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
-//    }
-//}
-//
-//- (void)testCancel {
-//    __block BOOL isFinished = false;
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-//        SFWebServiceClient *client = [[SFWebServiceClient alloc] initWithServiceRoot:@"http://ephubudw0817.budapest.epam.com:1337"];
-//        SFDownloader *request = [client dynamicDownloadTest:@"TestParameterValue" callbackBlock:^(id list, NSError *error) {
-//            STAssertTrue(error.code == 1001, @"Assertation: Not cancelled");
-//            isFinished = YES;
-//        }];
-//        [request cancel];
-//    });
-//    while (!isFinished) {
-//        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
-//    }
-//}
-//
-//- (void)testDynamicHeaders {
-//    __block BOOL isFinished = false;
-//    __block BOOL prepareBlockExecuted = NO;
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-//        SFWebServiceClient *client = [[SFWebServiceClient alloc] initWithServiceRoot:@"http://ephubudw0817.budapest.epam.com:1337"];
-//        [client loadListWithHeaderValueForTestKey1:@"headerValue1"
-//                                      prepareBlock:^(NSMutableURLRequest *serviceRequest) {
-//                                          prepareBlockExecuted = YES;
-//                                          NSMutableDictionary* headers = [[serviceRequest allHTTPHeaderFields] mutableCopy];
-//                                          [headers setObject:@"headerValue2" forKey:@"testKey2"];
-//                                          [serviceRequest setAllHTTPHeaderFields:headers];                                          
-//                                          NSAssert([[[serviceRequest allHTTPHeaderFields] valueForKey:@"testKey1"] isEqual:@"headerValue1"], @"Assertion: Attributes dynamic header test failed");
-//                                          NSAssert([[[serviceRequest allHTTPHeaderFields] valueForKey:@"testKey2"] isEqual:@"headerValue2"], @"Assertion: Changes in prepareBlock wasn't applied");
-//                                      } completionBlock:^(id list, NSError *error) {
-//                                          isFinished = YES;
-//                                      }];        
-//    });
-//    while (!isFinished) {
-//        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
-//    }
-//    NSAssert(prepareBlockExecuted, @"Assertion: PrepareBlock not called");
-//}
-//
 - (void)testWebServiceManagement {
     SFConcreteWebServiceClient *client = [[SFServiceProvider sharedProvider] concreteWebServiceClient];
     STAssertTrue(client != nil, @"Concrete web service client was not created properly.");
@@ -289,41 +206,46 @@
     [[[SFServiceProvider sharedProvider] logger] addWriter:[SFConsoleLogWriter new]];
     
     __block BOOL isFinished = NO;
-    __block NSError *receivedError;
+    __block BOOL isSuccess = NO;
     
-    SFConcreteWebServiceClient *webClient = [[SFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://services.odata.org/V3/(S(plcxuejnllfvrrecpvqbehxz))/OData/OData.svc/Product(1)"];
+    SFConcreteWebServiceClient *webClient = [[SFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.multipart.data"];
     SFAttachment *attachment = [[SFAttachment alloc] initWithName:@"image" fileName:@"imageName.jpg" data:[[NSData alloc] init]];
     [webClient testMultipartDataWithAttachment:attachment success:^(id result) {
         isFinished = YES;
+        isSuccess = YES;
     } failure:^(NSError *error) {
-        receivedError = error;
         isFinished = YES;
     }];
     
     while (!isFinished) {
         [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
     }
+    
+    STAssertTrue(isSuccess, @"Multipart form data request is failed");
+
 }
 
 - (void)testMultipartDataArray {
     [[[SFServiceProvider sharedProvider] logger] addWriter:[SFConsoleLogWriter new]];
     
     __block BOOL isFinished = NO;
-    __block NSError *receivedError;
+    __block BOOL isSuccess = NO;
     
-    SFConcreteWebServiceClient *webClient = [[SFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://services.odata.org/V3/(S(plcxuejnllfvrrecpvqbehxz))/OData/OData.svc/Product(1)"];
+    SFConcreteWebServiceClient *webClient = [[SFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.multipart.data"];
     NSArray *attachments = @[[[SFAttachment alloc] initWithName:@"image" fileName:@"imageName.jpg" data:[[NSData alloc] init]],
                              [[SFAttachment alloc] initWithName:@"image" fileName:@"imageName2.jpg" data:[[NSData alloc] init]]];
     [webClient testMultipartDataWithAttachments:attachments success:^(id result) {
         isFinished = YES;
+        isSuccess = YES;
     } failure:^(NSError *error) {
-        receivedError = error;
         isFinished = YES;
     }];
     
     while (!isFinished) {
         [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
     }
+    
+    STAssertTrue(isSuccess, @"Multipart form data request is failed");
 }
 
 @end

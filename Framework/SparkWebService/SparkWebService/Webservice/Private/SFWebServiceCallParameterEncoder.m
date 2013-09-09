@@ -123,11 +123,16 @@
 
 + (NSString *)boundaryFromWebServiceClient:(id)webServiceClient withMethodName:(NSString *)methodName {
     SFMultipartData *multipartDataAttribute = [[webServiceClient class] attributeForMethod:methodName withAttributeType:[SFMultipartData class]];
+    NSString *boundary;
     if (!multipartDataAttribute.boundary) {
-        // Some random default boundary
-        multipartDataAttribute.boundary = @"AaB03x";
+        // Default boundary
+        boundary = @"AaB03x";
     }
-    return multipartDataAttribute.boundary;
+    else {
+        boundary = multipartDataAttribute.boundary;
+    }
+    
+    return boundary;
 }
 
 @end
