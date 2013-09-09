@@ -31,7 +31,17 @@
 #define SparkAttributesSupport_Header_h
 
 /**
- This macro defines attribute for class, method, property and instance variable (ivar)
+ This macro is used to declare attributes.
+ The below is an example of macro usage:
+ 
+    SF_ATTRIBUTE (CustomSFTestAttribute, property1 = @ "Text1", property2 = @ "Text2")
+ 
+ The first parameter specifies the class of the declared object.
+ The following parameters (if necessary) is a comma separated list of the properties and values, 
+ which should be assigned to properties after creation of the attribute's object.
+ 
+ *Technical note: SparkAttributesCodeGenerator interprets this macro and generates appropriate code for creating attribute's objects,
+  therefore the macro doesn't produce any code themselves.*
  */
 #define SF_ATTRIBUTE(AttrObject, ...)
 

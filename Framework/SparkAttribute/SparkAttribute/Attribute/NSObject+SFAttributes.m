@@ -40,7 +40,7 @@
 
 @implementation NSObject (SFAttributes)
 
-#pragma mark - Attributes API
+#pragma mark - Attributes Private API
 
 + (NSArray *)SF_attributesFromCreatorInvocation:(NSInvocation *)attributeCreatorValueInvocation {
     if (!attributeCreatorValueInvocation) {
@@ -72,9 +72,7 @@
     return result;
 }
 
-+ (NSInvocation *)SF_attributeCreatorInvocationForElement:(NSString *)elementName cachedCreatorsDictionary:(NSMutableDictionary *)cachedCreatorsDictionary creatorSelectorNameFormatter:(NSString *(^)(NSString *))creatorSelectorNameFormatter {
-    assert(creatorSelectorNameFormatter);
-    
++ (NSInvocation *)SF_attributeCreatorInvocationForElement:(NSString *)elementName cachedCreatorsDictionary:(NSMutableDictionary *)cachedCreatorsDictionary creatorSelectorNameFormatter:(NSString *(^)(NSString *))creatorSelectorNameFormatter {    
     NSInvocation *result = [cachedCreatorsDictionary objectForKey:elementName];
     if (result) {
         return result;
@@ -94,6 +92,8 @@
     [cachedCreatorsDictionary setObject:result forKey:elementName];
     return result;
 }
+
+#pragma mark - Attributes Public API
 
 + (NSArray *)SF_attributesForMethod:(NSString *)methodName {
     NSInvocation *attributeCreatorInvocation = [self SF_attributeCreatorInvocationForElement:methodName cachedCreatorsDictionary:self.SF_attributesFactoriesForMethods creatorSelectorNameFormatter:^NSString *(NSString *methodName) {
@@ -122,22 +122,22 @@
 
 
 + (id)SF_attributeForMethod:(NSString *)methodName  withAttributeType:(Class)requiredClassOfAttribute {
-    assert(requiredClassOfAttribute);
+    NSAssert(requiredClassOfAttribute, @"You must specify class of required attribute");
     return [self SF_attributeWithType:requiredClassOfAttribute from:[self SF_attributesForMethod:methodName]];
 }
 
 + (id)SF_attributeForProperty:(NSString *)propertyName  withAttributeType:(Class)requiredClassOfAttribute {
-    assert(requiredClassOfAttribute);
+    NSAssert(requiredClassOfAttribute, @"You must specify class of required attribute");
     return [self SF_attributeWithType:requiredClassOfAttribute from:[self SF_attributesForProperty:propertyName]];
 }
 
 + (id)SF_attributeForIvar:(NSString *)ivarName  withAttributeType:(Class)requiredClassOfAttribute {
-    assert(requiredClassOfAttribute);
+    NSAssert(requiredClassOfAttribute, @"You must specify class of required attribute");
     return [self SF_attributeWithType:requiredClassOfAttribute from:[self SF_attributesForIvar:ivarName]];
 }
 
 + (id)SF_attributeForClassWithAttributeType:(Class)requiredClassOfAttribute {
-    assert(requiredClassOfAttribute);
+    NSAssert(requiredClassOfAttribute, @"You must specify class of required attribute");
     return [self SF_attributeWithType:requiredClassOfAttribute from:[self SF_attributesForClass]];
 }
 
