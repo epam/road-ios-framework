@@ -117,7 +117,7 @@
     id encodedValue = nil;
     
     if ([value isKindOfClass:[NSDate class]]) {
-        SFSerializableDate *serializableDateAttribute = (SFSerializableDate *)[propertyInfo.hostClass lastAttributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializableDate class]];
+        SFSerializableDate *serializableDateAttribute = [propertyInfo.hostClass attributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializableDate class]];
         
         if (serializableDateAttribute.unixTimestamp) {
             NSDate *date = value;

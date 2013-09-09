@@ -1,3 +1,8 @@
+#import <Foundation/Foundation.h>
+#import "SFSerializable.h"
+#import "SFSerializableDate.h"
+#import "SFSerializableCollection.h"
+#import "SFDerived.h"
 #import "SFSerializationTestObject.h"
  
 @interface SFSerializationTestObject(SFAttribute)

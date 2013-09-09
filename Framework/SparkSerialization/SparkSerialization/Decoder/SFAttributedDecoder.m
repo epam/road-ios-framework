@@ -211,7 +211,7 @@
 - (id)decodeDateString:(id const)value forProperty:(SFPropertyInfo * const)propertyInfo {
     id decodedValue = nil;
 
-    SFSerializableDate *serializableDateAttribute = (SFSerializableDate *)[propertyInfo.hostClass lastAttributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializableDate class]];
+    SFSerializableDate *serializableDateAttribute = [propertyInfo.hostClass attributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializableDate class]];
 
     if (serializableDateAttribute.unixTimestamp) {
         NSNumber *interval = value;

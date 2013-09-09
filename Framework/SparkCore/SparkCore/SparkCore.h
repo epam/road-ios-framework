@@ -41,4 +41,5 @@
 #import "SFObjectPool.h"
 #import "SFObject.h"
 #import "SparkSingletonDefinition.h"
+#import "NSRegularExpression+SparkExtension.h"
 #endif

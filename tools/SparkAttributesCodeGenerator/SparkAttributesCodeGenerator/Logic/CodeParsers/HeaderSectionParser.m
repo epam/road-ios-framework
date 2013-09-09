@@ -125,14 +125,14 @@ NSRegularExpression *keyWordRegex = nil;
 }
 
 + (void)processAttributeWithCodeParseState:(CodeParseState *)parseState {
-   [parseState.currentAttributesList addObject:[AttributeDataParser parseFrom:parseState]];
+   [parseState.currentAttributesList addAttributeModel:[AttributeDataParser parseFrom:parseState]];
 }
 
 + (void)processClassDefinitionBeginWithCodeParseState:(CodeParseState *)parseState {
     ClassModel *parsedClass = [ClassParser parseFrom:parseState];
     
     parsedClass.attributeModels = parseState.currentAttributesList;
-    parseState.currentAttributesList = [NSMutableArray array];
+    parseState.currentAttributesList = [[AttributeModelsContainer alloc] init];
     
     [parsedClass.filesToImport addObjectsFromArray:parseState.currentImportFilesList];
     parseState.currentImportFilesList = [NSMutableArray array];
@@ -162,7 +162,7 @@ NSRegularExpression *keyWordRegex = nil;
     PropertyModel *parsedProperty = [PropertyParser parseFrom:parseState];
     
     parsedProperty.attributeModels = parseState.currentAttributesList;
-    parseState.currentAttributesList = [NSMutableArray array];
+    parseState.currentAttributesList = [[AttributeModelsContainer alloc] init];
     
     if (parseState.currentClass == nil) {
         return;
@@ -176,7 +176,7 @@ NSRegularExpression *keyWordRegex = nil;
     MethodModel *parsedMethod = [MethodParser parseFrom:parseState forKeyWord:keyWord];
     
     parsedMethod.attributeModels = parseState.currentAttributesList;
-    parseState.currentAttributesList = [NSMutableArray array];
+    parseState.currentAttributesList = [[AttributeModelsContainer alloc] init];
     
     if (parseState.currentClass == nil) {
         return;
@@ -227,7 +227,7 @@ NSRegularExpression *keyWordRegex = nil;
     FieldModel *parsedField = [FieldParser parseFrom:parseState];
         
     parsedField.attributeModels = parseState.currentAttributesList;
-    parseState.currentAttributesList = [NSMutableArray array];
+    parseState.currentAttributesList = [[AttributeModelsContainer alloc] init];
     
     parsedField.holder = parseState.currentClass;
     [parseState.currentClass.fieldsList addObject:parsedField];
