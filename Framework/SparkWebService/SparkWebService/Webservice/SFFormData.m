@@ -1,5 +1,5 @@
 //
-//  SFAttachment.m
+//  SFFormData.m
 //  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -27,17 +27,23 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "SFAttachment.h"
+#import "SFFormData.h"
 
-@implementation SFAttachment
+@implementation SFFormData
 
-- (id)initWithName:(NSString *)name fileName:(NSString *)fileName data:(NSData *)data {
-    self = [self initWithName:name fileName:fileName data:data contentType:@"application/octet-stream"];
+- (id)initWithName:(NSString *)name data:(NSData *)data {
+    self = [self initWithName:name data:data fileName:nil contentType:nil];
 
     return self;
 }
 
-- (id)initWithName:(NSString *)name fileName:(NSString *)fileName data:(NSData *)data contentType:(NSString *)contentType {
+- (id)initWithName:(NSString *)name data:(NSData *)data fileName:(NSString *)fileName {
+    self = [self initWithName:name data:data fileName:fileName contentType:@"application/octet-stream"];
+
+    return self;
+}
+
+- (id)initWithName:(NSString *)name data:(NSData *)data fileName:(NSString *)fileName contentType:(NSString *)contentType {
     self = [super init];
 
     if (self) {

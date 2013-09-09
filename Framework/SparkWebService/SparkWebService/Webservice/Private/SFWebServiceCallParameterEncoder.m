@@ -30,9 +30,11 @@
 #import "SFWebServiceCallParameterEncoder.h"
 #import "SFSerializationDelegate.h"
 #import "SFWebServiceURLBuilderParameter.h"
-#import "SFAttachment.h"
+#import "SFFormData.h"
 #import "SFMultipartData.h"
 #import "SFWebServiceClient.h"
+
+static NSString * const kSFBoundaryDefaultString = @"AaB03x";
 
 @implementation SFWebServiceCallParameterEncoder
 
@@ -60,7 +62,7 @@
             NSAssert(bodyData == nil,@"The body data can not been setted more than once");
             bodyData = object;
         }
-        else if([object isKindOfClass:[SFAttachment class]]) {
+        else if([object isKindOfClass:[SFFormData class]]) {
             
             encodedObject = @"";
             if (!bodyData) {
@@ -73,7 +75,7 @@
         }
         else if ([object isKindOfClass:[NSArray class]]
                  && [object count] > 0
-                 && [object[0] isKindOfClass:[SFAttachment class]]) {
+                 && [object[0] isKindOfClass:[SFFormData class]]) {
             
             encodedObject = @"";
             if (!bodyData) {
@@ -102,20 +104,29 @@
 }
 
 + (void)addAttachments:(NSArray *)attachments toBodyData:(NSMutableData *)bodyData boundary:(NSString *)boundary {
-    for (SFAttachment *attachment in attachments) {
+    for (SFFormData *attachment in attachments) {
         [self addAttachment:attachment toBodyData:bodyData boundary:boundary];
     }
 }
 
-+ (void)addAttachment:(SFAttachment *)attachment toBodyData:(NSMutableData *)bodyData boundary:(NSString *)boundary {
++ (void)addAttachment:(SFFormData *)attachment toBodyData:(NSMutableData *)bodyData boundary:(NSString *)boundary {
+    NSAssert(attachment.name
+             && attachment.data, @"Attachment has not filled required properties");
+    
     NSMutableData * nextAttachment = [[NSMutableData alloc] init];
     if (!bodyData.length) {
         [nextAttachment appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     }
 
-    [nextAttachment appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", attachment.name, attachment.fileName] dataUsingEncoding:NSUTF8StringEncoding]];
-    [nextAttachment appendData:[[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", attachment.contentType] dataUsingEncoding:NSUTF8StringEncoding]];
+    if (attachment.fileName.length > 0) {
+        [nextAttachment appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", attachment.name, attachment.fileName] dataUsingEncoding:NSUTF8StringEncoding]];
+        [nextAttachment appendData:[[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", attachment.contentType] dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+    else {
+        [nextAttachment appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", attachment.name] dataUsingEncoding:NSUTF8StringEncoding]];
+    }
     [nextAttachment appendData:[NSData dataWithData:attachment.data]];
+    
     [nextAttachment appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     
     [bodyData appendData:nextAttachment];
@@ -126,7 +137,7 @@
     NSString *boundary;
     if (!multipartDataAttribute.boundary) {
         // Default boundary
-        boundary = @"AaB03x";
+        boundary = kSFBoundaryDefaultString;
     }
     else {
         boundary = multipartDataAttribute.boundary;

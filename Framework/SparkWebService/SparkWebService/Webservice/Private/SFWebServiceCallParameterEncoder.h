@@ -31,6 +31,8 @@
 @protocol SFSerializationDelegate;
 @class SFWebServiceClient;
 
+static NSString * const kSFBoundaryDefaultString;
+
 /**
  Parameter encoder to create parameters for the webservice.
  */

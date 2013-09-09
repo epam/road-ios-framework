@@ -78,14 +78,15 @@
 		8396B3F417A16A94009E7B9B /* SFBasicAuthenticationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8396B3F217A16A90009E7B9B /* SFBasicAuthenticationProvider.m */; };
 		8396B44E17A2623A009E7B9B /* SFAuthenticating.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8396B3F017A1637D009E7B9B /* SFAuthenticating.h */; };
 		8396B44F17A2623A009E7B9B /* SFBasicAuthenticationProvider.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8396B3F117A16A90009E7B9B /* SFBasicAuthenticationProvider.h */; };
-		839992B417D74B95002DAE8D /* SFAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 839992B317D74B95002DAE8D /* SFAttachment.m */; };
-		839992B517D74B95002DAE8D /* SFAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 839992B317D74B95002DAE8D /* SFAttachment.m */; };
+		839992B417D74B95002DAE8D /* SFFormData.m in Sources */ = {isa = PBXBuildFile; fileRef = 839992B317D74B95002DAE8D /* SFFormData.m */; };
+		839992B517D74B95002DAE8D /* SFFormData.m in Sources */ = {isa = PBXBuildFile; fileRef = 839992B317D74B95002DAE8D /* SFFormData.m */; };
 		839992B817D7658F002DAE8D /* SFMultipartData.m in Sources */ = {isa = PBXBuildFile; fileRef = 839992B717D7658F002DAE8D /* SFMultipartData.m */; };
 		839992B917D7658F002DAE8D /* SFMultipartData.m in Sources */ = {isa = PBXBuildFile; fileRef = 839992B717D7658F002DAE8D /* SFMultipartData.m */; };
-		839992E517D9DB45002DAE8D /* SFConcreteWebServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 839992E017D9DB45002DAE8D /* SFConcreteWebServiceClient.m */; };
 		839992E617D9DB45002DAE8D /* SFODataTestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 839992E217D9DB45002DAE8D /* SFODataTestEntity.m */; };
-		839992E717D9DB45002DAE8D /* SFServiceProvider+ConcreteWebServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 839992E417D9DB45002DAE8D /* SFServiceProvider+ConcreteWebServiceClient.m */; };
 		839992F817DA04D4002DAE8D /* SFDownloader+FakeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 839992F717DA04D4002DAE8D /* SFDownloader+FakeRequest.m */; };
+		83AA50E517DDF1F300C73DEF /* SFMultipartData.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 839992B617D7658F002DAE8D /* SFMultipartData.h */; };
+		83AA50E617DDF1FD00C73DEF /* SFFormData.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 839992B217D74B94002DAE8D /* SFFormData.h */; };
+		83AA50E917DDF6DC00C73DEF /* SFConcreteWebServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AA50E817DDF6DC00C73DEF /* SFConcreteWebServiceClient.m */; };
 		83ACF19B17A8F43E0077DF82 /* SFAuthenticationProvider.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 832540EC17A6B02B006AACF4 /* SFAuthenticationProvider.h */; };
 		83AFDCE0174F532900CC1200 /* SFWebServiceLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AFDCDF174F532900CC1200 /* SFWebServiceLogger.m */; };
 		83AFDCEB174F58FB00CC1200 /* SFWebServiceLogger.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83AFDCDE174F532900CC1200 /* SFWebServiceLogger.h */; };
@@ -359,6 +360,8 @@
 			dstPath = include/Spark;
 			dstSubfolderSpec = 16;
 			files = (
+				83AA50E617DDF1FD00C73DEF /* SFFormData.h in CopyFiles */,
+				83AA50E517DDF1F300C73DEF /* SFMultipartData.h in CopyFiles */,
 				83B1E0C317CB94A70049C112 /* SFWebServiceErrorHandling.h in CopyFiles */,
 				83FF041917C7A77700134DDE /* SFODataErrorHandler.h in CopyFiles */,
 				831EB9E917C600D4004C9BA5 /* SFWebServiceErrorHandler.h in CopyFiles */,
@@ -450,18 +453,17 @@
 		8396B3F017A1637D009E7B9B /* SFAuthenticating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAuthenticating.h; sourceTree = "<group>"; };
 		8396B3F117A16A90009E7B9B /* SFBasicAuthenticationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFBasicAuthenticationProvider.h; sourceTree = "<group>"; };
 		8396B3F217A16A90009E7B9B /* SFBasicAuthenticationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFBasicAuthenticationProvider.m; sourceTree = "<group>"; };
-		839992B217D74B94002DAE8D /* SFAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAttachment.h; sourceTree = "<group>"; };
-		839992B317D74B95002DAE8D /* SFAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAttachment.m; sourceTree = "<group>"; };
+		839992B217D74B94002DAE8D /* SFFormData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFFormData.h; sourceTree = "<group>"; };
+		839992B317D74B95002DAE8D /* SFFormData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFFormData.m; sourceTree = "<group>"; };
 		839992B617D7658F002DAE8D /* SFMultipartData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMultipartData.h; sourceTree = "<group>"; };
 		839992B717D7658F002DAE8D /* SFMultipartData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMultipartData.m; sourceTree = "<group>"; };
 		839992DF17D9DB45002DAE8D /* SFConcreteWebServiceClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFConcreteWebServiceClient.h; sourceTree = "<group>"; };
-		839992E017D9DB45002DAE8D /* SFConcreteWebServiceClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFConcreteWebServiceClient.m; sourceTree = "<group>"; };
 		839992E117D9DB45002DAE8D /* SFODataTestEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFODataTestEntity.h; sourceTree = "<group>"; };
 		839992E217D9DB45002DAE8D /* SFODataTestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFODataTestEntity.m; sourceTree = "<group>"; };
 		839992E317D9DB45002DAE8D /* SFServiceProvider+ConcreteWebServiceClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFServiceProvider+ConcreteWebServiceClient.h"; sourceTree = "<group>"; };
-		839992E417D9DB45002DAE8D /* SFServiceProvider+ConcreteWebServiceClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SFServiceProvider+ConcreteWebServiceClient.m"; sourceTree = "<group>"; };
 		839992F617DA04D4002DAE8D /* SFDownloader+FakeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFDownloader+FakeRequest.h"; sourceTree = "<group>"; };
 		839992F717DA04D4002DAE8D /* SFDownloader+FakeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SFDownloader+FakeRequest.m"; sourceTree = "<group>"; };
+		83AA50E817DDF6DC00C73DEF /* SFConcreteWebServiceClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFConcreteWebServiceClient.m; sourceTree = "<group>"; };
 		83AFDCDE174F532900CC1200 /* SFWebServiceLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFWebServiceLogger.h; sourceTree = "<group>"; };
 		83AFDCDF174F532900CC1200 /* SFWebServiceLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFWebServiceLogger.m; sourceTree = "<group>"; };
 		83B5D20417D4CDDB0030D8CD /* SFWebServiceClient+DynamicTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SFWebServiceClient+DynamicTest.m"; sourceTree = "<group>"; };
@@ -645,11 +647,10 @@
 			isa = PBXGroup;
 			children = (
 				839992DF17D9DB45002DAE8D /* SFConcreteWebServiceClient.h */,
-				839992E017D9DB45002DAE8D /* SFConcreteWebServiceClient.m */,
+				83AA50E817DDF6DC00C73DEF /* SFConcreteWebServiceClient.m */,
 				839992E117D9DB45002DAE8D /* SFODataTestEntity.h */,
 				839992E217D9DB45002DAE8D /* SFODataTestEntity.m */,
 				839992E317D9DB45002DAE8D /* SFServiceProvider+ConcreteWebServiceClient.h */,
-				839992E417D9DB45002DAE8D /* SFServiceProvider+ConcreteWebServiceClient.m */,
 				839992F617DA04D4002DAE8D /* SFDownloader+FakeRequest.h */,
 				839992F717DA04D4002DAE8D /* SFDownloader+FakeRequest.m */,
 			);
@@ -735,8 +736,8 @@
 				CD896C1C1737E84F00565C9C /* SFSerializationDelegate.h */,
 				837B002F17B3D42400D77A5D /* SFWebServiceURLBuilding.h */,
 				831EB9EA17C6047D004C9BA5 /* SFWebServiceErrorHandling.h */,
-				839992B217D74B94002DAE8D /* SFAttachment.h */,
-				839992B317D74B95002DAE8D /* SFAttachment.m */,
+				839992B217D74B94002DAE8D /* SFFormData.h */,
+				839992B317D74B95002DAE8D /* SFFormData.m */,
 			);
 			path = Webservice;
 			sourceTree = "<group>";
@@ -1182,12 +1183,11 @@
 				83448CDE17D0D3E3002A0D15 /* SparkGeneratedAttribute.m in Sources */,
 				83448CDF17D0D3EB002A0D15 /* SparkGeneratedAttribute.m in Sources */,
 				83B5D20517D4CDDC0030D8CD /* SFWebServiceClient+DynamicTest.m in Sources */,
-				839992B517D74B95002DAE8D /* SFAttachment.m in Sources */,
+				839992B517D74B95002DAE8D /* SFFormData.m in Sources */,
 				839992B917D7658F002DAE8D /* SFMultipartData.m in Sources */,
-				839992E517D9DB45002DAE8D /* SFConcreteWebServiceClient.m in Sources */,
 				839992E617D9DB45002DAE8D /* SFODataTestEntity.m in Sources */,
-				839992E717D9DB45002DAE8D /* SFServiceProvider+ConcreteWebServiceClient.m in Sources */,
 				839992F817DA04D4002DAE8D /* SFDownloader+FakeRequest.m in Sources */,
+				83AA50E917DDF6DC00C73DEF /* SFConcreteWebServiceClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1227,7 +1227,7 @@
 				831EB9ED17C60A65004C9BA5 /* SFODataErrorHandler.m in Sources */,
 				D719856817C65D5B0017C680 /* SFDigestAuthenticationProvider.m in Sources */,
 				83448CCF17D0C98B002A0D15 /* SparkGeneratedAttribute.m in Sources */,
-				839992B417D74B95002DAE8D /* SFAttachment.m in Sources */,
+				839992B417D74B95002DAE8D /* SFFormData.m in Sources */,
 				839992B817D7658F002DAE8D /* SFMultipartData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

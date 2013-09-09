@@ -31,6 +31,7 @@
 #import "SFDownloader.h"
 #import "SFLooper.h"
 #import <Spark/SparkLogger.h>
+#import <Spark/SparkCore.h>
 #import "NSError+SparkWebService.h"
 
 #import "SFWebServiceCall.h"
@@ -40,8 +41,8 @@
 #import "SFWebServiceSerializationHandler.h"
 #import "SFWebServiceClient.h"
 #import "SFWebServiceLogger.h"
-#import <Spark/SparkCore.h>
 #import "SFMultipartData.h"
+#import "SFWebServiceCallParameterEncoder.h"
 
 @interface SFDownloader () {
     NSURLConnection * _connection;
@@ -94,7 +95,7 @@
         boundary = multipartDataAttribute.boundary;
         if (!boundary.length) {
             // Some random default boundary
-            boundary = @"AaB03x";
+            boundary = kSFBoundaryDefaultString;
         }
         NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
         [_request addValue:contentType forHTTPHeaderField:@"Content-Type"];

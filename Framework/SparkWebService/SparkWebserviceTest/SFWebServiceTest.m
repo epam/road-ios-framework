@@ -48,6 +48,8 @@
 @implementation SFWebServiceTest
 
 + (void)setUp {
+    [[[SFServiceProvider sharedProvider] logger] addWriter:[SFConsoleLogWriter new]];
+    
     SEL originalSelector = @selector(start);
     SEL overrideSelector = @selector(fakeStart);
     Method originalMethod = class_getInstanceMethod([SFDownloader class], originalSelector);
@@ -56,7 +58,6 @@
 }
 
 - (void)testHTTPBasicAuthentication {
-    //[[[SFServiceProvider sharedProvider] logger] addWriter:[SFConsoleLogWriter new]];
     authenticationFinished = NO;
     __block BOOL isFinished = NO;
     
@@ -75,7 +76,6 @@
 }
 
 - (void)testHTTPBasicAuthenticationInConjunctionWithSSL {
-    //[[[SFServiceProvider sharedProvider] logger] addWriter:[SFConsoleLogWriter new]];
     authenticationFinished = NO;
     __block BOOL isFinished = NO;
     
@@ -95,7 +95,6 @@
 }
 
 - (void)testHTTPDigestAuthentication {
-    //[[[SFServiceProvider sharedProvider] logger] addWriter:[SFConsoleLogWriter new]];
     authenticationFinished = NO;
     __block BOOL isFinished = false;
     
@@ -115,7 +114,6 @@
 }
 
 - (void)testHTTPDigestAuthenticationInConjunctionWithSSL {
-    //[[[SFServiceProvider sharedProvider] logger] addWriter:[SFConsoleLogWriter new]];
     authenticationFinished = NO;
     __block BOOL isFinished = NO;
     
@@ -180,8 +178,6 @@
 }
 
 - (void)testODataErrorHandling {
-    [[[SFServiceProvider sharedProvider] logger] addWriter:[SFConsoleLogWriter new]];
-    
     __block BOOL isFinished = NO;
     __block NSError *receivedError;
     
@@ -203,13 +199,11 @@
 }
 
 - (void)testMultipartData {
-    [[[SFServiceProvider sharedProvider] logger] addWriter:[SFConsoleLogWriter new]];
-    
     __block BOOL isFinished = NO;
     __block BOOL isSuccess = NO;
     
     SFConcreteWebServiceClient *webClient = [[SFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.multipart.data"];
-    SFAttachment *attachment = [[SFAttachment alloc] initWithName:@"image" fileName:@"imageName.jpg" data:[[NSData alloc] init]];
+    SFFormData *attachment = [[SFFormData alloc] initWithName:@"image" data:[@"Random data 1" dataUsingEncoding:NSUTF8StringEncoding] fileName:@"imageName.jpg"];
     [webClient testMultipartDataWithAttachment:attachment success:^(id result) {
         isFinished = YES;
         isSuccess = YES;
@@ -226,14 +220,13 @@
 }
 
 - (void)testMultipartDataArray {
-    [[[SFServiceProvider sharedProvider] logger] addWriter:[SFConsoleLogWriter new]];
-    
     __block BOOL isFinished = NO;
     __block BOOL isSuccess = NO;
     
     SFConcreteWebServiceClient *webClient = [[SFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.multipart.data"];
-    NSArray *attachments = @[[[SFAttachment alloc] initWithName:@"image" fileName:@"imageName.jpg" data:[[NSData alloc] init]],
-                             [[SFAttachment alloc] initWithName:@"image" fileName:@"imageName2.jpg" data:[[NSData alloc] init]]];
+    NSArray *attachments = @[[[SFFormData alloc] initWithName:@"image" data:[@"Random data 1" dataUsingEncoding:NSUTF8StringEncoding] fileName:@"imageName.jpg"],
+                             [[SFFormData alloc] initWithName:@"image" data:[@"Random data 2" dataUsingEncoding:NSUTF8StringEncoding]],
+                             [[SFFormData alloc] initWithName:@"image" data:[@"Random data 3" dataUsingEncoding:NSUTF8StringEncoding] fileName:@"imageName2.jpg"]];
     [webClient testMultipartDataWithAttachments:attachments success:^(id result) {
         isFinished = YES;
         isSuccess = YES;

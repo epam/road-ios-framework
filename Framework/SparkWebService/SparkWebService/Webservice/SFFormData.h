@@ -1,5 +1,5 @@
 //
-//  SFServiceProvider+ConcreteWebServiceClient.h
+//  SFFormData.h
 //  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -27,8 +27,17 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "SFServiceProvider+ConcreteWebServiceClient.h"
+#import <Foundation/Foundation.h>
 
-@implementation SFServiceProvider (ConcreteWebServiceClient)
+@interface SFFormData : NSObject
+
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSData *data;
+@property (nonatomic, strong) NSString *fileName;
+@property (nonatomic, strong) NSString *contentType;
+
+- (id)initWithName:(NSString *)name data:(NSData *)data;
+- (id)initWithName:(NSString *)name data:(NSData *)data fileName:(NSString *)fileName;
+- (id)initWithName:(NSString *)name data:(NSData *)data fileName:(NSString *)fileName contentType:(NSString *)contentType;
 
 @end
