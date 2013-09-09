@@ -69,8 +69,8 @@ SPARK_SYNTHESIZE_SINGLETON_FOR_CLASS_WITH_ACCESSOR(SFServiceProvider, sharedProv
     id theService = services[serviceName];
     
     if (theService == nil) {
-        SFService * const serviceAnnotation = [[self class] attributeForMethod:serviceName withAttributeType:[SFService class]];
-        __unsafe_unretained Class const serviceClass = serviceAnnotation.serviceClass;
+        SFService * const serviceAttribute = [[self class] attributeForMethod:serviceName withAttributeType:[SFService class]];
+        __unsafe_unretained Class const serviceClass = serviceAttribute.serviceClass;
         theService = [(id)serviceClass new];
         [self registerService:theService forServiceName:serviceName];
     }

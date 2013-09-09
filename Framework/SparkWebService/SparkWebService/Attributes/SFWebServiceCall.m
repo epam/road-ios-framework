@@ -44,20 +44,6 @@
     return self;
 }
 
-// TEMP
-//- (void)attributeDidLoad {
-//    [super attributeDidLoad];
-//    
-//    if ([self.method length] == 0) {
-//        self.method = @"GET";
-//    }
-//    
-//    if ([self.prototypeClass length] == 0) {
-//        self.prototypeClass = nil;
-//    }
-//
-//}
-
 - (void)setSuccessCodes:(NSArray *)successCodes {
     __block NSMutableArray* ar = nil;
     if (successCodes != nil) {
