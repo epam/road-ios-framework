@@ -113,11 +113,12 @@
         [self.authenticationProvider addAuthenticationDataToRequest:_request];
     }
 
-    if (_callAttribute.overrideGlobalSuccessCodes) {
+    if (_callAttribute.overrideGlobalSuccessCodes
+        && _callAttribute.successCodes) {
         [self.successCodes removeAllObjects];
         [self.successCodes addObjectsFromArray:_callAttribute.successCodes];
     } else {
-        SFWebServiceClientStatusCodes* wsca = [[self class] attributeForClassWithAttributeType:[SFWebServiceClientStatusCodes class]];
+        SFWebServiceClientStatusCodes* wsca = [[self.webServiceClient class] attributeForClassWithAttributeType:[SFWebServiceClientStatusCodes class]];
         if ([wsca.successCodes count] > 0) {
             [self.successCodes removeAllObjects];
             [self.successCodes addObjectsFromArray:wsca.successCodes];
@@ -149,7 +150,7 @@
     self.response = response;
     
     if (!resultError && !_callAttribute.serializationDisabled) {
-        [SFWebServiceSerializationHandler deserializeData:result withSerializator:_webServiceClient.serializationDelegate serializatinRoot:_callAttribute.serializationRoot toDeserializationClass:NSClassFromString(_callAttribute.prototypeClass) withCompletitionBlock:^(id serializedData, NSError *error) {
+        [SFWebServiceSerializationHandler deserializeData:result withSerializator:_webServiceClient.serializationDelegate serializatinRoot:_callAttribute.serializationRoot toDeserializationClass:_callAttribute.prototypeClass withCompletitionBlock:^(id serializedData, NSError *error) {
             resultData = serializedData;
             resultError = error;
         }];

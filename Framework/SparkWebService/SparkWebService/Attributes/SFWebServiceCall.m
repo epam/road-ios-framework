@@ -44,20 +44,4 @@
     return self;
 }
 
-- (void)setSuccessCodes:(NSArray *)successCodes {
-    __block NSMutableArray* ar = nil;
-    if (successCodes != nil) {
-        ar = [NSMutableArray new];
-        [successCodes enumerateObjectsUsingBlock:^(NSValue *obj, NSUInteger idx, BOOL *stop) {
-            NSRange range = [obj rangeValue];
-            if (range.length == 0) {
-                [ar addObject:[NSNumber numberWithUnsignedInteger:range.location]];
-            } else {
-                [ar addObject:[NSValue valueWithRange:range]];
-            }
-        }];
-    }
-    _successCodes = [ar copy];
-}
-
 @end
