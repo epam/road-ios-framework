@@ -87,7 +87,7 @@
         }
     }
     
-    if (resultBlockStart == -1) {
+    if (resultBlockStart == -1 || resultBlockEnd == -1) {
         return NSMakeRange(0, 0);
     }
     
