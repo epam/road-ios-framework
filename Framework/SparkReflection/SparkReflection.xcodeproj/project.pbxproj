@@ -201,11 +201,11 @@
 		78CD6F6115CA8A7300F6C2F9 = {
 			isa = PBXGroup;
 			children = (
-				78CD6F6D15CA8A7300F6C2F9 /* Products */,
 				78CD6F7615CA8A7300F6C2F9 /* SparkReflection */,
 				9FA9F4B015F6359700FDE9E0 /* SparkReflectionMac */,
 				78289DFC1647C2200036BEFE /* SparkReflectionTest */,
 				78CD6F6F15CA8A7300F6C2F9 /* Frameworks */,
+				78CD6F6D15CA8A7300F6C2F9 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
