@@ -87,6 +87,7 @@
 		83AA50E517DDF1F300C73DEF /* SFMultipartData.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 839992B617D7658F002DAE8D /* SFMultipartData.h */; };
 		83AA50E617DDF1FD00C73DEF /* SFFormData.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 839992B217D74B94002DAE8D /* SFFormData.h */; };
 		83AA50E917DDF6DC00C73DEF /* SFConcreteWebServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AA50E817DDF6DC00C73DEF /* SFConcreteWebServiceClient.m */; };
+		83AA529317DF05BE00C73DEF /* SFWebServiceURLBuilderParameter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 837B004617B8C86100D77A5D /* SFWebServiceURLBuilderParameter.h */; };
 		83ACF19B17A8F43E0077DF82 /* SFAuthenticationProvider.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 832540EC17A6B02B006AACF4 /* SFAuthenticationProvider.h */; };
 		83AFDCE0174F532900CC1200 /* SFWebServiceLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AFDCDF174F532900CC1200 /* SFWebServiceLogger.m */; };
 		83AFDCEB174F58FB00CC1200 /* SFWebServiceLogger.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83AFDCDE174F532900CC1200 /* SFWebServiceLogger.h */; };
@@ -345,21 +346,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		5A0E549D17689EFE008EF613 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = include/Spark/TempAttributes;
-			dstSubfolderSpec = 7;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		78017ABB15C7F66C00DD1041 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = include/Spark;
 			dstSubfolderSpec = 16;
 			files = (
+				83AA529317DF05BE00C73DEF /* SFWebServiceURLBuilderParameter.h in CopyFiles */,
 				83AA50E617DDF1FD00C73DEF /* SFFormData.h in CopyFiles */,
 				83AA50E517DDF1F300C73DEF /* SFMultipartData.h in CopyFiles */,
 				83B1E0C317CB94A70049C112 /* SFWebServiceErrorHandling.h in CopyFiles */,
@@ -871,7 +864,6 @@
 				78FB203F15BD336B00C2137A /* Frameworks */,
 				78017ABB15C7F66C00DD1041 /* CopyFiles */,
 				7822DAFE16EE35130008FE53 /* Resources */,
-				5A0E549D17689EFE008EF613 /* CopyFiles */,
 				5A30F0B3178D55A200DFCB2A /* ShellScript */,
 			);
 			buildRules = (
@@ -1125,7 +1117,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../../tools/binaries/SparkAttributesCodeGenerator\" -src=\"${SRCROOT}/\" -dst=\"${SRCROOT}/SparkWebservice/SparkGeneratedAttributes/\"";
+			shellScript = "\"${SRCROOT}/../../tools/binaries/SparkAttributesCodeGenerator\" -src=\"${SRCROOT}/${PRODUCT_NAME}\" -dst=\"${SRCROOT}/SparkWebservice/SparkGeneratedAttributes/\"";
 		};
 		83C544EE174B80A9000C8BCD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;

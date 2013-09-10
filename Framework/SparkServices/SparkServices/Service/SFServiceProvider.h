@@ -1,5 +1,5 @@
 //
-//  ESDServiceProvider.h
+//  SFServiceProvider.h
 //  SparkAnnotation
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.

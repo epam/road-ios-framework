@@ -33,9 +33,11 @@
 
 #import "SFWebServiceCall.h"
 #import "SFWebServiceClientStatusCodes.h"
-#import "SFWebServiceCache.h"
-#import "SFWebServiceCacheInvalidation.h"
 #import "SFWebServiceHeader.h"
 #import "SFWebServiceLogger.h"
+#import "SFWebServiceErrorHandler.h"
+#import "SFWebServiceURLBuilder.h"
+#import "SFWebServiceURLBuilderParameter.h"
+#import "SFMultipartData.h"
 
 #endif
