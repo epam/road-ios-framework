@@ -2,4 +2,12 @@ language: objective-c
 before_install:
     - brew update
     - brew install xctool
-script: xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkCore build test
+script:
+    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkAttribute build test
+    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkCore build test
+    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkLogger build test
+    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkObservation build test
+    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkReflection build test
+    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkSerialization build test
+    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkServices build test
+    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkWebService build test
