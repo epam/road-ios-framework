@@ -1,7 +1,4 @@
 language: objective-c
-before_install:
-    - brew update
-    - brew install xctool
 script:
     - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkAttribute build test
     - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkCore build test
