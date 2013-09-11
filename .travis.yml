@@ -11,3 +11,4 @@ script:
     - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkSerialization build test
     - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkServices build test
     - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkWebService build test
+    - xctool -project tools/SparkAttributesCodeGenerator/SparkAttributesCodeGenerator.xcodeproj -scheme SparkAttributesCodeGenerator build
