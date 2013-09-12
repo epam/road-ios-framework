@@ -28,18 +28,18 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-#import "NSJSONSerialization+JSONStringHandling.h"
+#import "NSJSONSerialization+SFJSONStringHandling.h"
 
-@implementation NSJSONSerialization (JSONStringHandling)
+@implementation NSJSONSerialization (SFJSONStringHandling)
 
-+ (id)JSONObjectWithString:(NSString * const)string options:(const NSJSONReadingOptions)options error:(NSError * __autoreleasing *)error {
++ (id)SF_JSONObjectWithString:(NSString * const)string options:(const NSJSONReadingOptions)options error:(NSError * __autoreleasing *)error {
     NSData * const jsonData = [string dataUsingEncoding:NSUTF8StringEncoding];
     id result = [self JSONObjectWithData:jsonData options:options error:error];
     return result;
 }
 
-+ (id)JSONObjectWithString:(NSString * const)string {
-    return [self JSONObjectWithString:string options:NSJSONReadingAllowFragments error:nil];
++ (id)SF_JSONObjectWithString:(NSString * const)string {
+    return [self SF_JSONObjectWithString:string options:NSJSONReadingAllowFragments error:nil];
 }
 
 @end

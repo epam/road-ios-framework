@@ -2,3 +2,4 @@
 
 #import "AnnotatedClass+SFAttributes.m"
 #import "SFConcreteWebServiceClient+SFAttributes.m"
+#import "SFServiceProvider+SFAttributes.m"

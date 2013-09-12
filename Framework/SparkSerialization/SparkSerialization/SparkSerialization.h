@@ -30,7 +30,7 @@
 #ifndef SparkSerialization_SparkSerialization_h
 #define SparkSerialization_SparkSerialization_h
 
-#import "NSJSONSerialization+JSONStringHandling.h"
+#import "NSJSONSerialization+SFJSONStringHandling.h"
 #import "SFSerializable.h"
 #import "SFDerived.h"
 #import "SFSerializableCollection.h"

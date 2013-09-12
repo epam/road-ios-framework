@@ -27,7 +27,7 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Spark/SparkAttributesSupport.h>
+#import <Spark/SparkAttribute.h>
 
 /**
  Indicates if a serializable property is a weak-typed collection, such as NSArray, NSDictionary or NSSet. You can indicate with the defaultValue of this attribute the class names of the elements inside the collection, allowing the annotated decoder to restore these.

@@ -28,8 +28,9 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "NSSortDescriptor+SFOData.h"
-#import <Spark/SparkAttributesSupport.h>
+#import <Spark/SparkAttribute.h>
 #import <Spark/SparkSerialization.h>
+#import <Spark/SparkReflection.h>
 
 #import "SFODataProperty.h"
 
@@ -37,12 +38,12 @@
 
 - (id)initWithProperty:(SFPropertyInfo *)propertyInfo ascending:(BOOL)ascending {
     NSString *propertyAttributeName;
-    if ([NSClassFromString(propertyInfo.className) hasAttributesForProperty:propertyInfo.propertyName withAttributeType:[SFODataProperty class]]) {
-        SFODataProperty *propertyAttribute = [NSClassFromString(propertyInfo.className) attributeForProperty:propertyInfo.propertyName withAttributeType:[SFODataProperty class]];
+    if ([NSClassFromString(propertyInfo.className) SF_hasAttributesForProperty:propertyInfo.propertyName withAttributeType:[SFODataProperty class]]) {
+        SFODataProperty *propertyAttribute = [NSClassFromString(propertyInfo.className) SF_attributeForProperty:propertyInfo.propertyName withAttributeType:[SFODataProperty class]];
         propertyAttributeName = [propertyAttribute serializationKey];
     }
-    else if ([NSClassFromString(propertyInfo.className) hasAttributesForProperty:propertyInfo.propertyName withAttributeType:[SFSerializable class]]) {
-        SFSerializable *propertyAttribute = [NSClassFromString(propertyInfo.className) attributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializable class]];
+    else if ([NSClassFromString(propertyInfo.className) SF_hasAttributesForProperty:propertyInfo.propertyName withAttributeType:[SFSerializable class]]) {
+        SFSerializable *propertyAttribute = [NSClassFromString(propertyInfo.className) SF_attributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializable class]];
         propertyAttributeName = [propertyAttribute serializationKey];
     }
     if (!propertyAttributeName) {

@@ -51,7 +51,7 @@
 + (BOOL)resolveInstanceMethod:(SEL)sel {
     
     // retrieves the attribute for the selector
-    SFWebServiceCall *attribute = [self attributeForMethod:NSStringFromSelector(sel) withAttributeType:[SFWebServiceCall class]];
+    SFWebServiceCall *attribute = [self SF_attributeForMethod:NSStringFromSelector(sel) withAttributeType:[SFWebServiceCall class]];
     BOOL result;
     
     // if the attribute is found, attempt to add a dynamic implementation
@@ -165,10 +165,10 @@ prepareForSendRequestBlock:(SFWebServiceClientPrepareForSendRequestBlock)prepare
     dispatch_async(processingQueue, ^{
         NSString *methodName = NSStringFromSelector(selector);
         
-        SFWebServiceCall *callAttribute = [[self class] attributeForMethod:methodName withAttributeType:[SFWebServiceCall class]];
+        SFWebServiceCall *callAttribute = [[self class] SF_attributeForMethod:methodName withAttributeType:[SFWebServiceCall class]];
         
         // Getting url parser from attribute or using default one
-        SFWebServiceURLBuilder *urlParserAttribute = [[self class] attributeForMethod:methodName withAttributeType:[SFWebServiceURLBuilder class]];
+        SFWebServiceURLBuilder *urlParserAttribute = [[self class] SF_attributeForMethod:methodName withAttributeType:[SFWebServiceURLBuilder class]];
         Class urlParserClass = urlParserAttribute.builderClass;
         if (urlParserClass == nil) {
             urlParserClass = [SFWebServiceBasicURLBuilder class];

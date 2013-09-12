@@ -27,7 +27,7 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Spark/SparkAttributesSupport.h>
+#import <Spark/SparkAttribute.h>
 
 /**
  Serialization attribute for properties. If a class was flagged as serializable, one can add this attribute to individual properties to indicate if the property should be skipped and disregarded during serialization.

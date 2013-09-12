@@ -28,29 +28,149 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <Foundation/Foundation.h>
-#import <Spark/SFPropertyInfo.h>
-#import <Spark/SFMethodInfo.h>
-#import <Spark/SFIvarInfo.h>
 
+/**
+ This category constains a set of methods which provides access to attributes declared by macros SF_ATTRIBUTE
+ */
 @interface NSObject (SFAttributes)
 
-+ (NSArray *)attributesForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
-+ (NSArray *)attributesForClassWithAttributeType:(Class)requiredClassOfAttribute;
+/**
+ The method returns an array of attributes declared for method.
+ 
+ @param methodName Name of method whose attributes are needed.
 
-+ (id)attributeForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute;
-+ (id)attributeForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute;
-+ (id)attributeForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
-+ (id)attributeForClassWithAttributeType:(Class)requiredClassOfAttribute;
+ @return An array of attributes.
+*/
++ (NSArray *)SF_attributesForMethod:(NSString *)methodName;
 
-+ (BOOL)hasAttributesForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute;
-+ (BOOL)hasAttributesForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute;
-+ (BOOL)hasAttributesForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
-+ (BOOL)hasAttributesForClassWithAttributeType:(Class)requiredClassOfAttribute;
+/**
+ The method returns an array of attributes declared for property.
+ 
+ @param propertyName Name of property whose attributes are needed.
+ 
+ @return An array of attributes.
+*/
++ (NSArray *)SF_attributesForProperty:(NSString *)propertyName;
 
-+ (NSArray *)propertiesWithAttributeType:(Class)requiredClassOfAttribute;
-+ (NSArray *)ivarsWithAttributeType:(Class)requiredClassOfAttribute;
-+ (NSArray *)methodsWithAttributeType:(Class)requiredClassOfAttribute;
+/**
+ The method returns an array of attributes declared for instance variable.
+ 
+ @param ivarName Name of instance variable whose attributes are needed.
+ 
+ @return An array of attributes.
+*/
++ (NSArray *)SF_attributesForIvar:(NSString *)ivarName;
+
+/**
+ The method returns an array of attributes declared for class.
+
+ @return An array of attributes.
+*/
++ (NSArray *)SF_attributesForClass;
+
+/**
+ The method performs search for attribute of required class in array of attributes declared for method.
+ 
+ @param methodName Name of method.
+ @param requiredClassOfAttribute Class of required attribute. 
+ 
+ @return An object of attribute. Or nil if attribute was not found.
+ */
++ (id)SF_attributeForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute;
+
+/**
+ The method performs search for attribute of required class in array of attributes declared for property.
+ 
+ @param propertyName Name of property.
+ @param requiredClassOfAttribute Class of required attribute.
+ 
+ @return An object of attribute. Or nil if attribute was not found.
+ */
++ (id)SF_attributeForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute;
+
+/**
+ The method performs search for attribute of required class in array of attributes declared for instance variable.
+ 
+ @param ivarName Name of instance variable.
+ @param requiredClassOfAttribute Class of required attribute.
+ 
+ @return An object of attribute. Or nil if attribute was not found.
+ */
++ (id)SF_attributeForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
+
+/**
+ The method performs search for attribute of required class in array of attributes declared for class.
+ 
+ @param requiredClassOfAttribute Class of required attribute.
+ 
+ @return An object of attribute. Or nil if attribute was not found.
+ */
++ (id)SF_attributeForClassWithAttributeType:(Class)requiredClassOfAttribute;
+
+/**
+ The method checks whether attribute of required class has been declared for method.
+
+ @param methodName Name of method.
+ @param requiredClassOfAttribute Class of required attribute. If this variable is nil, method searches for any attribute.
+ 
+ @return YES if attribute exist. Or NO if attribute was not found.
+ */
++ (BOOL)SF_hasAttributesForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute;
+
+/**
+ The method checks whether attribute of required class has been declared for property.
+ 
+ @param propertyName Name of property.
+ @param requiredClassOfAttribute Class of required attribute. If this variable is nil, method searches for any attribute.
+ 
+ @return YES if attribute exist. Or NO if attribute was not found.
+ */
++ (BOOL)SF_hasAttributesForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute;
+
+/**
+ The method checks whether attribute of required class has been declared for instance variable.
+ 
+ @param ivarName Name of instance variable.
+ @param requiredClassOfAttribute Class of required attribute. If this variable is nil, method searches for any attribute.
+ 
+ @return YES if attribute exist. Or NO if attribute was not found.
+ */
++ (BOOL)SF_hasAttributesForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
+
+/**
+ The method checks whether attribute of required class has been declared for class.
+ 
+ @param requiredClassOfAttribute Class of required attribute. If this variable is nil, method searches for any attribute.
+ 
+ @return YES if attribute exist. Or NO if attribute was not found.
+ */
++ (BOOL)SF_hasAttributesForClassWithAttributeType:(Class)requiredClassOfAttribute;
+
+/**
+ The method returns an array of object's properties where was declared attribute of required class.
+ 
+ @param requiredClassOfAttribute Class of required attribute. If this variable is nil, method gathers properties with any attribute.
+ 
+ @return An array of properties.
+ */
++ (NSArray *)SF_propertiesWithAttributeType:(Class)requiredClassOfAttribute;
+
+/**
+ The method returns an array of object's instance variables where was declared attribute of required class.
+ 
+ @param requiredClassOfAttribute Class of required attribute. If this variable is nil, method gathers instance variables with any attribute.
+ 
+ @return An array of instance variables.
+ */
++ (NSArray *)SF_ivarsWithAttributeType:(Class)requiredClassOfAttribute;
+
+/**
+ The method returns an array of object's methods where was declared attribute of required class.
+ 
+ @param requiredClassOfAttribute Class of required attribute. If this variable is nil, method gathers methods with any attribute.
+ 
+ @return An array of methods.
+ */
++ (NSArray *)SF_methodsWithAttributeType:(Class)requiredClassOfAttribute;
 
 @end

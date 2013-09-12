@@ -36,7 +36,7 @@
 #import "SFSerializable.h"
 #import "SFDerived.h"
 #import "SFSerializableCollection.h"
-#import "NSJSONSerialization+JSONStringHandling.h"
+#import "NSJSONSerialization+SFJSONStringHandling.h"
 #import "SFSerializableDate.h"
 
 @interface SFAttributedDecoder ()
@@ -49,7 +49,7 @@
 @implementation SFAttributedDecoder
 
 + (id)decodeJSONString:(NSString *const)jsonString {
-    NSDictionary *dict = [NSJSONSerialization JSONObjectWithString:jsonString];
+    NSDictionary *dict = [NSJSONSerialization SF_JSONObjectWithString:jsonString];
     NSString * const className = dict[SFSerializedObjectClassName];
     return [self decodeJSONString:jsonString withRootClassNamed:className];
 }
@@ -122,13 +122,13 @@
     _rootObject = [[rootObjectClass alloc] init];
     NSArray *properties;
     @autoreleasepool {
-        if ([rootObjectClass hasAttributesForClassWithAttributeType:[SFSerializable class]]) {
+        if ([rootObjectClass SF_hasAttributesForClassWithAttributeType:[SFSerializable class]]) {
             properties = [[rootObjectClass properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(SFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
-                return ![evaluatedObject.hostClass hasAttributesForProperty:evaluatedObject.propertyName withAttributeType:[SFDerived class]];
+                return ![evaluatedObject.hostClass SF_hasAttributesForProperty:evaluatedObject.propertyName withAttributeType:[SFDerived class]];
             }]];
         }
         else {
-            properties = [rootObjectClass propertiesWithAttributeType:[SFSerializable class]];
+            properties = [rootObjectClass SF_propertiesWithAttributeType:[SFSerializable class]];
         }
     }
 
@@ -157,8 +157,8 @@
             value = [self decodeDictionary:value forProperty:aDesc];
         }
     }
-    else if ([aDesc.hostClass hasAttributesForProperty:aDesc.propertyName withAttributeType:[SFSerializableDate class]]
-             || [[self class] hasAttributesForClassWithAttributeType:[SFSerializableDate class]]) {
+    else if ([aDesc.hostClass SF_hasAttributesForProperty:aDesc.propertyName withAttributeType:[SFSerializableDate class]]
+             || [[self class] SF_hasAttributesForClassWithAttributeType:[SFSerializableDate class]]) {
         value = [self decodeDateString:aValue forProperty:aDesc];
     }
     return value;
@@ -211,7 +211,7 @@
 - (id)decodeDateString:(id const)value forProperty:(SFPropertyInfo * const)propertyInfo {
     id decodedValue = nil;
 
-    SFSerializableDate *serializableDateAttribute = [propertyInfo.hostClass attributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializableDate class]];
+    SFSerializableDate *serializableDateAttribute = [propertyInfo.hostClass SF_attributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializableDate class]];
 
     if (serializableDateAttribute.unixTimestamp) {
         NSNumber *interval = value;

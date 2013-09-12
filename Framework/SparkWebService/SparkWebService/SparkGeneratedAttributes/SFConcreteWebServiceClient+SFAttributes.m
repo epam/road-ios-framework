@@ -4,6 +4,7 @@
 #import "SFWebServiceCall.h"
 #import "SFWebServiceURLBuilder.h"
 #import "SFODataWebServiceURLBuilder.h"
+#import "SFConcreteWebServiceClient.h"
  
 @interface SFConcreteWebServiceClient(SFAttribute)
  

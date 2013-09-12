@@ -13,11 +13,11 @@
  
 #pragma mark - Fill Attributes generated code (Properties section)
 
-static NSMutableArray __weak *sf_attributes_list_SFSerializationTestObject_property_string2 = nil;
+static NSMutableArray __weak *SF_attributes_list_SFSerializationTestObject_property_string2 = nil;
 
-+ (NSArray *)sf_attributes_SFSerializationTestObject_property_string2 {
-    if (sf_attributes_list_SFSerializationTestObject_property_string2 != nil) {
-        return sf_attributes_list_SFSerializationTestObject_property_string2;
++ (NSArray *)SF_attributes_SFSerializationTestObject_property_string2 {
+    if (SF_attributes_list_SFSerializationTestObject_property_string2 != nil) {
+        return SF_attributes_list_SFSerializationTestObject_property_string2;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
@@ -25,16 +25,16 @@ static NSMutableArray __weak *sf_attributes_list_SFSerializationTestObject_prope
     SFDerived *attr1 = [[SFDerived alloc] init];
     [attributesArray addObject:attr1];
 
-    sf_attributes_list_SFSerializationTestObject_property_string2 = attributesArray;
+    SF_attributes_list_SFSerializationTestObject_property_string2 = attributesArray;
     
-    return sf_attributes_list_SFSerializationTestObject_property_string2;
+    return SF_attributes_list_SFSerializationTestObject_property_string2;
 }
 
-static NSMutableArray __weak *sf_attributes_list_SFSerializationTestObject_property_date1 = nil;
+static NSMutableArray __weak *SF_attributes_list_SFSerializationTestObject_property_date1 = nil;
 
-+ (NSArray *)sf_attributes_SFSerializationTestObject_property_date1 {
-    if (sf_attributes_list_SFSerializationTestObject_property_date1 != nil) {
-        return sf_attributes_list_SFSerializationTestObject_property_date1;
++ (NSArray *)SF_attributes_SFSerializationTestObject_property_date1 {
+    if (SF_attributes_list_SFSerializationTestObject_property_date1 != nil) {
+        return SF_attributes_list_SFSerializationTestObject_property_date1;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
@@ -44,16 +44,16 @@ static NSMutableArray __weak *sf_attributes_list_SFSerializationTestObject_prope
     attr1.encodingFormat = @"MM.dd.yyyy HH:mm:ss.AAA Z";
     [attributesArray addObject:attr1];
 
-    sf_attributes_list_SFSerializationTestObject_property_date1 = attributesArray;
+    SF_attributes_list_SFSerializationTestObject_property_date1 = attributesArray;
     
-    return sf_attributes_list_SFSerializationTestObject_property_date1;
+    return SF_attributes_list_SFSerializationTestObject_property_date1;
 }
 
-static NSMutableArray __weak *sf_attributes_list_SFSerializationTestObject_property_date2 = nil;
+static NSMutableArray __weak *SF_attributes_list_SFSerializationTestObject_property_date2 = nil;
 
-+ (NSArray *)sf_attributes_SFSerializationTestObject_property_date2 {
-    if (sf_attributes_list_SFSerializationTestObject_property_date2 != nil) {
-        return sf_attributes_list_SFSerializationTestObject_property_date2;
++ (NSArray *)SF_attributes_SFSerializationTestObject_property_date2 {
+    if (SF_attributes_list_SFSerializationTestObject_property_date2 != nil) {
+        return SF_attributes_list_SFSerializationTestObject_property_date2;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
@@ -63,16 +63,16 @@ static NSMutableArray __weak *sf_attributes_list_SFSerializationTestObject_prope
     attr1.decodingFormat = @"MM.dd.yyyy HH:mm:ss";
     [attributesArray addObject:attr1];
 
-    sf_attributes_list_SFSerializationTestObject_property_date2 = attributesArray;
+    SF_attributes_list_SFSerializationTestObject_property_date2 = attributesArray;
     
-    return sf_attributes_list_SFSerializationTestObject_property_date2;
+    return SF_attributes_list_SFSerializationTestObject_property_date2;
 }
 
-static NSMutableArray __weak *sf_attributes_list_SFSerializationTestObject_property_unixTimestamp = nil;
+static NSMutableArray __weak *SF_attributes_list_SFSerializationTestObject_property_unixTimestamp = nil;
 
-+ (NSArray *)sf_attributes_SFSerializationTestObject_property_unixTimestamp {
-    if (sf_attributes_list_SFSerializationTestObject_property_unixTimestamp != nil) {
-        return sf_attributes_list_SFSerializationTestObject_property_unixTimestamp;
++ (NSArray *)SF_attributes_SFSerializationTestObject_property_unixTimestamp {
+    if (SF_attributes_list_SFSerializationTestObject_property_unixTimestamp != nil) {
+        return SF_attributes_list_SFSerializationTestObject_property_unixTimestamp;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
@@ -81,16 +81,16 @@ static NSMutableArray __weak *sf_attributes_list_SFSerializationTestObject_prope
     attr1.unixTimestamp = YES;
     [attributesArray addObject:attr1];
 
-    sf_attributes_list_SFSerializationTestObject_property_unixTimestamp = attributesArray;
+    SF_attributes_list_SFSerializationTestObject_property_unixTimestamp = attributesArray;
     
-    return sf_attributes_list_SFSerializationTestObject_property_unixTimestamp;
+    return SF_attributes_list_SFSerializationTestObject_property_unixTimestamp;
 }
 
-static NSMutableArray __weak *sf_attributes_list_SFSerializationTestObject_property_subObjects = nil;
+static NSMutableArray __weak *SF_attributes_list_SFSerializationTestObject_property_subObjects = nil;
 
-+ (NSArray *)sf_attributes_SFSerializationTestObject_property_subObjects {
-    if (sf_attributes_list_SFSerializationTestObject_property_subObjects != nil) {
-        return sf_attributes_list_SFSerializationTestObject_property_subObjects;
++ (NSArray *)SF_attributes_SFSerializationTestObject_property_subObjects {
+    if (SF_attributes_list_SFSerializationTestObject_property_subObjects != nil) {
+        return SF_attributes_list_SFSerializationTestObject_property_subObjects;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
@@ -99,16 +99,16 @@ static NSMutableArray __weak *sf_attributes_list_SFSerializationTestObject_prope
     attr1.collectionClass = [SFSerializationTestObject class];
     [attributesArray addObject:attr1];
 
-    sf_attributes_list_SFSerializationTestObject_property_subObjects = attributesArray;
+    SF_attributes_list_SFSerializationTestObject_property_subObjects = attributesArray;
     
-    return sf_attributes_list_SFSerializationTestObject_property_subObjects;
+    return SF_attributes_list_SFSerializationTestObject_property_subObjects;
 }
 
-static NSMutableArray __weak *sf_attributes_list_SFSerializationTestObject_property_subDictionary = nil;
+static NSMutableArray __weak *SF_attributes_list_SFSerializationTestObject_property_subDictionary = nil;
 
-+ (NSArray *)sf_attributes_SFSerializationTestObject_property_subDictionary {
-    if (sf_attributes_list_SFSerializationTestObject_property_subDictionary != nil) {
-        return sf_attributes_list_SFSerializationTestObject_property_subDictionary;
++ (NSArray *)SF_attributes_SFSerializationTestObject_property_subDictionary {
+    if (SF_attributes_list_SFSerializationTestObject_property_subDictionary != nil) {
+        return SF_attributes_list_SFSerializationTestObject_property_subDictionary;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
@@ -117,26 +117,30 @@ static NSMutableArray __weak *sf_attributes_list_SFSerializationTestObject_prope
     attr1.collectionClass = [SFSerializationTestObject class];
     [attributesArray addObject:attr1];
 
-    sf_attributes_list_SFSerializationTestObject_property_subDictionary = attributesArray;
+    SF_attributes_list_SFSerializationTestObject_property_subDictionary = attributesArray;
     
-    return sf_attributes_list_SFSerializationTestObject_property_subDictionary;
+    return SF_attributes_list_SFSerializationTestObject_property_subDictionary;
 }
 
 static NSMutableDictionary __weak *attributesSFSerializationTestObjectFactoriesForPropertiesDict = nil;
     
-+ (NSDictionary *)attributesFactoriesForProperties {
++ (NSMutableDictionary *)SF_attributesFactoriesForProperties {
     if (attributesSFSerializationTestObjectFactoriesForPropertiesDict != nil) {
         return attributesSFSerializationTestObjectFactoriesForPropertiesDict;
     }
     
-    NSMutableDictionary *dictionaryHolder = [self mutableAttributesFactoriesFrom:[super attributesFactoriesForProperties]];
+    NSMutableDictionary *dictionaryHolder = [super SF_attributesFactoriesForProperties];
     
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_SFSerializationTestObject_property_string2)] forKey:@"string2"];
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_SFSerializationTestObject_property_date1)] forKey:@"date1"];
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_SFSerializationTestObject_property_date2)] forKey:@"date2"];
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_SFSerializationTestObject_property_unixTimestamp)] forKey:@"unixTimestamp"];
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_SFSerializationTestObject_property_subObjects)] forKey:@"subObjects"];
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_SFSerializationTestObject_property_subDictionary)] forKey:@"subDictionary"];
+    if (!dictionaryHolder) {
+        dictionaryHolder = [NSMutableDictionary dictionary];
+    }
+    
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_SFSerializationTestObject_property_string2)] forKey:@"string2"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_SFSerializationTestObject_property_date1)] forKey:@"date1"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_SFSerializationTestObject_property_date2)] forKey:@"date2"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_SFSerializationTestObject_property_unixTimestamp)] forKey:@"unixTimestamp"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_SFSerializationTestObject_property_subObjects)] forKey:@"subObjects"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_SFSerializationTestObject_property_subDictionary)] forKey:@"subDictionary"];
     attributesSFSerializationTestObjectFactoriesForPropertiesDict = dictionaryHolder;  
     
     return attributesSFSerializationTestObjectFactoriesForPropertiesDict;
@@ -147,11 +151,11 @@ static NSMutableDictionary __weak *attributesSFSerializationTestObjectFactoriesF
 
 #pragma mark - Fill Attributes generated code (Class section)
 
-static NSMutableArray __weak *sf_attributes_list__class_SFSerializationTestObject = nil;
+static NSMutableArray __weak *SF_attributes_list__class_SFSerializationTestObject = nil;
 
-+ (NSArray *)attributesForClass {
-    if (sf_attributes_list__class_SFSerializationTestObject != nil) {
-        return sf_attributes_list__class_SFSerializationTestObject;
++ (NSArray *)SF_attributesForClass {
+    if (SF_attributes_list__class_SFSerializationTestObject != nil) {
+        return SF_attributes_list__class_SFSerializationTestObject;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
@@ -159,9 +163,9 @@ static NSMutableArray __weak *sf_attributes_list__class_SFSerializationTestObjec
     SFSerializable *attr1 = [[SFSerializable alloc] init];
     [attributesArray addObject:attr1];
 
-    sf_attributes_list__class_SFSerializationTestObject = attributesArray;
+    SF_attributes_list__class_SFSerializationTestObject = attributesArray;
     
-    return sf_attributes_list__class_SFSerializationTestObject;
+    return SF_attributes_list__class_SFSerializationTestObject;
 }
 
 #pragma mark - 

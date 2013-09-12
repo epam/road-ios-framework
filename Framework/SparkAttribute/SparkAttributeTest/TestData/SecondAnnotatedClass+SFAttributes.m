@@ -28,14 +28,18 @@ static NSMutableArray __weak *sf_attributes_list_SecondAnnotatedClass_ivar__some
 
 static NSMutableDictionary __weak *attributesSecondAnnotatedClassFactoriesForIvarsDict = nil;
     
-+ (NSDictionary *)attributesFactoriesForIvars {
++ (NSDictionary *)SF_attributesFactoriesForIvars {
     if (attributesSecondAnnotatedClassFactoriesForIvarsDict != nil) {
         return attributesSecondAnnotatedClassFactoriesForIvarsDict;
     }
     
-    NSMutableDictionary *dictionaryHolder = [self mutableAttributesFactoriesFrom:[super attributesFactoriesForIvars]];
+    NSMutableDictionary *dictionaryHolder = [super SF_attributesFactoriesForIvars];
     
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_SecondAnnotatedClass_ivar__someField)] forKey:@"_someField"];
+    if (!dictionaryHolder) {
+        dictionaryHolder = [NSMutableDictionary dictionary];
+    }
+    
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(sf_attributes_SecondAnnotatedClass_ivar__someField)] forKey:@"_someField"];
     attributesSecondAnnotatedClassFactoriesForIvarsDict = dictionaryHolder;  
     
     return attributesSecondAnnotatedClassFactoriesForIvarsDict;
@@ -70,14 +74,18 @@ static NSMutableArray __weak *sf_attributes_list_SecondAnnotatedClass_property_w
 
 static NSMutableDictionary __weak *attributesSecondAnnotatedClassFactoriesForPropertiesDict = nil;
     
-+ (NSDictionary *)attributesFactoriesForProperties {
++ (NSDictionary *)SF_attributesFactoriesForProperties {
     if (attributesSecondAnnotatedClassFactoriesForPropertiesDict != nil) {
         return attributesSecondAnnotatedClassFactoriesForPropertiesDict;
     }
     
-    NSMutableDictionary *dictionaryHolder = [self mutableAttributesFactoriesFrom:[super attributesFactoriesForProperties]];
+    NSMutableDictionary *dictionaryHolder = [super SF_attributesFactoriesForProperties];
     
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_SecondAnnotatedClass_property_window)] forKey:@"window"];
+    if (!dictionaryHolder) {
+        dictionaryHolder = [NSMutableDictionary dictionary];
+    }
+    
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(sf_attributes_SecondAnnotatedClass_property_window)] forKey:@"window"];
     attributesSecondAnnotatedClassFactoriesForPropertiesDict = dictionaryHolder;  
     
     return attributesSecondAnnotatedClassFactoriesForPropertiesDict;
@@ -129,15 +137,19 @@ static NSMutableArray __weak *sf_attributes_list_SecondAnnotatedClass_method_vie
 
 static NSMutableDictionary __weak *attributesSecondAnnotatedClassFactoriesForMethodsDict = nil;
     
-+ (NSDictionary *)attributesFactoriesForMethods {
++ (NSDictionary *)SF_attributesFactoriesForMethods {
     if (attributesSecondAnnotatedClassFactoriesForMethodsDict != nil) {
         return attributesSecondAnnotatedClassFactoriesForMethodsDict;
     }
     
-    NSMutableDictionary *dictionaryHolder = [self mutableAttributesFactoriesFrom:[super attributesFactoriesForMethods]];
+    NSMutableDictionary *dictionaryHolder = [super SF_attributesFactoriesForMethods];
     
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_SecondAnnotatedClass_method_viewDidLoad_p0)] forKey:@"viewDidLoad"];
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_SecondAnnotatedClass_method_viewDidLoad_p1)] forKey:@"viewDidLoad:"];
+    if (!dictionaryHolder) {
+        dictionaryHolder = [NSMutableDictionary dictionary];
+    }
+    
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(sf_attributes_SecondAnnotatedClass_method_viewDidLoad_p0)] forKey:@"viewDidLoad"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(sf_attributes_SecondAnnotatedClass_method_viewDidLoad_p1)] forKey:@"viewDidLoad:"];
     attributesSecondAnnotatedClassFactoriesForMethodsDict = dictionaryHolder;  
     
     return attributesSecondAnnotatedClassFactoriesForMethodsDict;
@@ -150,7 +162,7 @@ static NSMutableDictionary __weak *attributesSecondAnnotatedClassFactoriesForMet
 
 static NSMutableArray __weak *sf_attributes_list__class_SecondAnnotatedClass = nil;
 
-+ (NSArray *)attributesForClass {
++ (NSArray *)SF_attributesForClass {
     if (sf_attributes_list__class_SecondAnnotatedClass != nil) {
         return sf_attributes_list__class_SecondAnnotatedClass;
     }

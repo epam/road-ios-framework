@@ -80,11 +80,11 @@
     
     // Checking response with error handler
     SFWebServiceErrorHandler *errorHandlerAttribute;
-    if ([[self.webServiceClient class] hasAttributesForClassWithAttributeType:[SFWebServiceErrorHandler class]]) {
-        errorHandlerAttribute = [[self.webServiceClient class] attributeForClassWithAttributeType:[SFWebServiceErrorHandler class]];
+    if ([[self.webServiceClient class] SF_hasAttributesForClassWithAttributeType:[SFWebServiceErrorHandler class]]) {
+        errorHandlerAttribute = [[self.webServiceClient class] SF_attributeForClassWithAttributeType:[SFWebServiceErrorHandler class]];
     }
     else {
-        errorHandlerAttribute = [[self.webServiceClient class] attributeForMethod:self.methodName withAttributeType:[SFWebServiceErrorHandler class]];
+        errorHandlerAttribute = [[self.webServiceClient class] SF_attributeForMethod:self.methodName withAttributeType:[SFWebServiceErrorHandler class]];
     }
     
     if (errorHandlerAttribute.handlerClass.length) {

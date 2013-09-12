@@ -55,7 +55,7 @@
             NSAssert(bodyData == nil,@"The body data can not been setted more than once");
             bodyData = object;
         }
-        else if ([[object class] hasAttributesForClassWithAttributeType:[SFWebServiceURLBuilderParameter class]]) {
+        else if ([[object class] SF_hasAttributesForClassWithAttributeType:[SFWebServiceURLBuilderParameter class]]) {
             encodedObject = object;
         }
         else {

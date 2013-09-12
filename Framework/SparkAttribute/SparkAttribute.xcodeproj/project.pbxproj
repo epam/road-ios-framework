@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		5AD1FC48176603AC00E67BC4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD1FC47176603AC00E67BC4 /* Cocoa.framework */; };
 		78DDB7CE1647FF0200E7E92F /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78DDB7CD1647FF0200E7E92F /* SenTestingKit.framework */; };
-		8D7C108F17CDBD1C0010C418 /* SparkAttributesSupport.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8DF6C8CB17C474A100F829E8 /* SparkAttributesSupport.h */; };
+		8D7C108F17CDBD1C0010C418 /* SparkAttribute.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8DF6C8CB17C474A100F829E8 /* SparkAttribute.h */; };
 		8D7C109217CDBD210010C418 /* NSObject+SFAttributesInternal.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8D99708717CCB90600184507 /* NSObject+SFAttributesInternal.h */; };
 		8D7C109317CDBD240010C418 /* NSObject+SFAttributes.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8DF6C8CD17C474AD00F829E8 /* NSObject+SFAttributes.h */; };
 		8D99708917CCB90600184507 /* NSObject+SFAttributesInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D99708717CCB90600184507 /* NSObject+SFAttributesInternal.h */; };
@@ -26,7 +26,7 @@
 		8DE3780D17C76ED500F30026 /* SFTestAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3780717C76ED500F30026 /* SFTestAttribute.m */; };
 		8DE3786D17C7872100F30026 /* libSparkReflection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE3786C17C7872100F30026 /* libSparkReflection.a */; };
 		8DE3786E17C7872500F30026 /* libSparkCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE3786517C786FF00F30026 /* libSparkCore.a */; };
-		8DF6C8CC17C474A100F829E8 /* SparkAttributesSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DF6C8CB17C474A100F829E8 /* SparkAttributesSupport.h */; };
+		8DF6C8CC17C474A100F829E8 /* SparkAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DF6C8CB17C474A100F829E8 /* SparkAttribute.h */; };
 		8DF6C8CF17C474AD00F829E8 /* NSObject+SFAttributes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DF6C8CD17C474AD00F829E8 /* NSObject+SFAttributes.h */; };
 		8DF6C8D017C474AD00F829E8 /* NSObject+SFAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF6C8CE17C474AD00F829E8 /* NSObject+SFAttributes.m */; };
 		8DF6C8D117C474AD00F829E8 /* NSObject+SFAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF6C8CE17C474AD00F829E8 /* NSObject+SFAttributes.m */; };
@@ -81,7 +81,7 @@
 			files = (
 				8D7C109317CDBD240010C418 /* NSObject+SFAttributes.h in Copy Files */,
 				8D7C109217CDBD210010C418 /* NSObject+SFAttributesInternal.h in Copy Files */,
-				8D7C108F17CDBD1C0010C418 /* SparkAttributesSupport.h in Copy Files */,
+				8D7C108F17CDBD1C0010C418 /* SparkAttribute.h in Copy Files */,
 			);
 			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,7 +112,7 @@
 		8DE3780717C76ED500F30026 /* SFTestAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTestAttribute.m; sourceTree = "<group>"; };
 		8DE3785E17C786FE00F30026 /* SparkCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkCore.xcodeproj; path = ../SparkCore/SparkCore.xcodeproj; sourceTree = "<group>"; };
 		8DE3786C17C7872100F30026 /* libSparkReflection.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSparkReflection.a; path = "../SparkReflection/build/Release-iphoneos/libSparkReflection.a"; sourceTree = "<group>"; };
-		8DF6C8CB17C474A100F829E8 /* SparkAttributesSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparkAttributesSupport.h; sourceTree = "<group>"; };
+		8DF6C8CB17C474A100F829E8 /* SparkAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparkAttribute.h; sourceTree = "<group>"; };
 		8DF6C8CD17C474AD00F829E8 /* NSObject+SFAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSObject+SFAttributes.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		8DF6C8CE17C474AD00F829E8 /* NSObject+SFAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSObject+SFAttributes.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		9FA9F50215F63D6B00FDE9E0 /* SparkAttribute.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SparkAttribute.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,7 +190,7 @@
 		789669DF15CBD1CD003D4AFC /* SparkAttribute */ = {
 			isa = PBXGroup;
 			children = (
-				8DF6C8CB17C474A100F829E8 /* SparkAttributesSupport.h */,
+				8DF6C8CB17C474A100F829E8 /* SparkAttribute.h */,
 				78B13C4C169F223000869F3C /* Attribute */,
 				789669E015CBD1CD003D4AFC /* Supporting Files */,
 			);
@@ -305,7 +305,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DF6C8CC17C474A100F829E8 /* SparkAttributesSupport.h in Headers */,
+				8DF6C8CC17C474A100F829E8 /* SparkAttribute.h in Headers */,
 				8DF6C8CF17C474AD00F829E8 /* NSObject+SFAttributes.h in Headers */,
 				8D99708917CCB90600184507 /* NSObject+SFAttributesInternal.h in Headers */,
 			);
@@ -321,6 +321,7 @@
 				789669D615CBD1CD003D4AFC /* Sources */,
 				789669D715CBD1CD003D4AFC /* Frameworks */,
 				789669D815CBD1CD003D4AFC /* Copy Files */,
+				8D0106BF17D966E80089D1B1 /* Run Script (Create documentation set) */,
 			);
 			buildRules = (
 			);
@@ -459,6 +460,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		8D0106BF17D966E80089D1B1 /* Run Script (Create documentation set) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script (Create documentation set)";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#${SRCROOT}/../../tools/appledoc/appledoc --create-html --templates ${SRCROOT}/../../tools/appledoc/ --project-name appledoc --project-company \"EPAM\" --company-id com.epam --logformat xcode --output ${SRCROOT}/../../Documents/SparkAttribute/ --docset-install-path ${SRCROOT}/../../Documents/SparkAttribute ./SparkAttribute";
 		};
 /* End PBXShellScriptBuildPhase section */
 

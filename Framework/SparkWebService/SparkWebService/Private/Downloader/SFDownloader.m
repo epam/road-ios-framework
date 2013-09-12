@@ -68,12 +68,12 @@
         _methodName = methodName;
         _authenticationProvider = authenticaitonProvider;
         _successCodes = [NSMutableArray arrayWithObjects:[NSValue valueWithRange:NSMakeRange(200, 100)], nil];
-        SFWebServiceLogger *loggerTypeAttribute = [[webServiceClient class] attributeForMethod:_methodName withAttributeType:[SFWebServiceLogger class]];
+        SFWebServiceLogger *loggerTypeAttribute = [[webServiceClient class] SF_attributeForMethod:_methodName withAttributeType:[SFWebServiceLogger class]];
         if (!loggerTypeAttribute) {
-            loggerTypeAttribute = [[self class] attributeForClassWithAttributeType:[SFWebServiceLogger class]];
+            loggerTypeAttribute = [[self class] SF_attributeForClassWithAttributeType:[SFWebServiceLogger class]];
         }
         _loggerType = loggerTypeAttribute.loggerType;
-        _callAttribute = [[_webServiceClient class] attributeForMethod:_methodName withAttributeType:[SFWebServiceCall class]];
+        _callAttribute = [[_webServiceClient class] SF_attributeForMethod:_methodName withAttributeType:[SFWebServiceCall class]];
     }
     
     return self;
@@ -86,7 +86,7 @@
 - (void)configureRequestForUrl:(NSURL * const)anUrl body:(NSData * const)httpBody sharedHeaders:(NSDictionary *)sharedHeaders values:(NSDictionary *)values {
     _request = [self requestForUrl:anUrl withMethod:_callAttribute.method withBody:httpBody];
     
-    SFWebServiceHeader * const headerAttribute = [[_webServiceClient class] attributeForMethod:_methodName withAttributeType:[SFWebServiceHeader class]];
+    SFWebServiceHeader * const headerAttribute = [[_webServiceClient class] SF_attributeForMethod:_methodName withAttributeType:[SFWebServiceHeader class]];
     
     // Adding shared headers to request
     NSMutableDictionary *headerFields = [sharedHeaders mutableCopy];
@@ -102,7 +102,7 @@
         [self.successCodes removeAllObjects];
         [self.successCodes addObjectsFromArray:_callAttribute.successCodes];
     } else {
-        SFWebServiceClientStatusCodes* wsca = [[self class] attributeForClassWithAttributeType:[SFWebServiceClientStatusCodes class]];
+        SFWebServiceClientStatusCodes* wsca = [[self class] SF_attributeForClassWithAttributeType:[SFWebServiceClientStatusCodes class]];
         if ([wsca.successCodes count] > 0) {
             [self.successCodes removeAllObjects];
             [self.successCodes addObjectsFromArray:wsca.successCodes];
