@@ -67,6 +67,10 @@
         }
         
         NSString *localizedDescription = [errorInfo valueForKeyPath:@"message.value"];
+        // Fixing crash in case value of message is nil and nil will be added into dictionary
+        if (!localizedDescription) {
+            localizedDescription = @"";
+        }
         
         error = [NSError errorWithDomain:kSFWebServiceErrorDomain code:code userInfo:@{NSLocalizedDescriptionKey: localizedDescription}];
     }

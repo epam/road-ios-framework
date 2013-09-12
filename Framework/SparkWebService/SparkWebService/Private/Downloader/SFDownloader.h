@@ -39,6 +39,11 @@
 @property (strong, nonatomic) id<SFAuthenticating> authenticationProvider;
 @property (strong, nonatomic, readonly) NSMutableURLRequest *request;
 
+/**
+ * The flag that specify if current request is multipart form data request.
+ */
+@property (assign, nonatomic, getter = isMultipartData) BOOL multipartData;
+
 @property (nonatomic, strong, readonly) SFWebServiceClient *webServiceClient;
 @property (nonatomic, strong, readonly) NSString *methodName;
 /**

@@ -39,7 +39,7 @@
 
 @property (copy, nonatomic) NSString *method;
 
-@property (copy, nonatomic) NSString *prototypeClass;
+@property (strong, nonatomic) Class prototypeClass;
 
 @property (copy, nonatomic) NSString *serializationRoot;
 
