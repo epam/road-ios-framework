@@ -11,10 +11,10 @@
       location = "group:SparkReflection/SparkReflection.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SparkCore/SparkCore.xcodeproj">
+      location = "group:SparkAttribute/SparkAttribute.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SparkAttribute/SparkAttribute.xcodeproj">
+      location = "group:SparkCore/SparkCore.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:SparkObservation/SparkObservation.xcodeproj">

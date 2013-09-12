@@ -1,5 +1,5 @@
 //
-//  SparkWebServiceAnnotations.h
+//  SFFormData.m
 //  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -27,17 +27,33 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#import "SFFormData.h"
 
-#ifndef SparkWebservice_SparkWebServiceAnnotations_h
-#define SparkWebservice_SparkWebServiceAnnotations_h
+@implementation SFFormData
 
-#import "SFWebServiceCall.h"
-#import "SFWebServiceClientStatusCodes.h"
-#import "SFWebServiceHeader.h"
-#import "SFWebServiceLogger.h"
-#import "SFWebServiceErrorHandler.h"
-#import "SFWebServiceURLBuilder.h"
-#import "SFWebServiceURLBuilderParameter.h"
-#import "SFMultipartData.h"
+- (id)initWithName:(NSString *)name data:(NSData *)data {
+    self = [self initWithName:name data:data fileName:nil contentType:nil];
 
-#endif
+    return self;
+}
+
+- (id)initWithName:(NSString *)name data:(NSData *)data fileName:(NSString *)fileName {
+    self = [self initWithName:name data:data fileName:fileName contentType:@"application/octet-stream"];
+
+    return self;
+}
+
+- (id)initWithName:(NSString *)name data:(NSData *)data fileName:(NSString *)fileName contentType:(NSString *)contentType {
+    self = [super init];
+
+    if (self) {
+        _name = name;
+        _fileName = fileName;
+        _data = data;
+        _contentType = contentType;
+    }
+
+    return self;
+}
+
+@end

@@ -40,13 +40,18 @@
 #import "SFSerializableDate.h"
 
 @interface SFAttributedDecoder ()
+
 @property (strong, nonatomic) id rootObject;
 @property (strong, nonatomic) id processedObject;
 @property (copy, nonatomic) NSString *rootObjectClassName;
-@property (strong, nonatomic) NSDateFormatter *dateFormatter;
+
 @end
 
-@implementation SFAttributedDecoder
+
+@implementation SFAttributedDecoder {
+    NSString * _dateFormat;
+    NSDateFormatter * _dateFormatter;
+}
 
 + (id)decodeJSONString:(NSString *const)jsonString {
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithString:jsonString];
@@ -236,8 +241,9 @@
         _dateFormatter = [[NSDateFormatter alloc] init];
     }
     
-    if (![formatString isEqualToString:_dateFormatter.dateFormat]) {
+    if (![formatString isEqualToString:_dateFormat]) {
         _dateFormatter.dateFormat = formatString;
+        _dateFormat = formatString;
     }
     
     return _dateFormatter;
