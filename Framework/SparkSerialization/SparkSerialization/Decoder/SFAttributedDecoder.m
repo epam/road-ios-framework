@@ -36,7 +36,7 @@
 #import "SFSerializable.h"
 #import "SFDerived.h"
 #import "SFSerializableCollection.h"
-#import "NSJSONSerialization+JSONStringHandling.h"
+#import "NSJSONSerialization+SFJSONStringHandling.h"
 #import "SFSerializableDate.h"
 
 @interface SFAttributedDecoder ()
@@ -49,7 +49,7 @@
 @implementation SFAttributedDecoder
 
 + (id)decodeJSONString:(NSString *const)jsonString {
-    NSDictionary *dict = [NSJSONSerialization JSONObjectWithString:jsonString];
+    NSDictionary *dict = [NSJSONSerialization SF_JSONObjectWithString:jsonString];
     NSString * const className = dict[SFSerializedObjectClassName];
     return [self decodeJSONString:jsonString withRootClassNamed:className];
 }

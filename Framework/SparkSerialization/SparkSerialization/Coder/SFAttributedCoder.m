@@ -47,25 +47,23 @@
     self = [super init];
     
     if (self) {
-        _archive = [[NSMutableDictionary alloc] init];
+        self.archive = [[NSMutableDictionary alloc] init];
     }
     
     return self;
 }
 
-+ (id)encodeRootObject:(id const)rootObject {
-    NSData * const data = [self encodeRootObjectToData:rootObject];
-    NSString * const json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    return json;
++ (id)encodeRootObject:(id)rootObject {
+    NSData *data = [self encodedDataOfRootObject:rootObject];    
+    return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 
-+ (NSData *)encodeRootObjectToData:(const id)rootObject {
-    id const result = [self encodeRootObjectToSerializableObject:rootObject];
-    NSData * const data = [NSJSONSerialization dataWithJSONObject:result options:NSJSONWritingPrettyPrinted error:nil];
-    return data;
++ (NSData *)encodedDataOfRootObject:(id)rootObject {
+    id result = [self encodeRootObjectToSerializableObject:rootObject];
+    return [NSJSONSerialization dataWithJSONObject:result options:NSJSONWritingPrettyPrinted error:nil];
 }
 
-+ (id)encodeRootObjectToSerializableObject:(id const)rootObject {
++ (id)encodeRootObjectToSerializableObject:(id)rootObject {
     SFLogInfo(@"Coder(%@ %p) started processing object(%@)", self, self, rootObject);
     id decoder = [[self alloc] init];
     [decoder encodeRootObject:rootObject];
@@ -73,7 +71,7 @@
     return [decoder archive];
 }
 
-- (void)encodeRootObject:(id const)rootObject {
+- (void)encodeRootObject:(id)rootObject {
     if ([rootObject isKindOfClass:[NSArray class]]) {
         self.archive = [self encodeArray:rootObject];
     } else if ([rootObject isKindOfClass:[NSDictionary class]]) {
@@ -112,7 +110,7 @@
 }
 
 
-- (id)encodeValue:(id const)aValue forProperty:(SFPropertyInfo *)propertyInfo {
+- (id)encodeValue:(id)aValue forProperty:(SFPropertyInfo *)propertyInfo {
     id value = aValue;
     id encodedValue = nil;
     
@@ -138,7 +136,7 @@
     return encodedValue;
 }
 
-- (id)encodeValue:(id const)aValue {
+- (id)encodeValue:(id)aValue {
     id value = aValue;
     
     if ([[value class] SF_hasAttributesForClassWithAttributeType:[SFSerializable class]] || [[[value class] SF_propertiesWithAttributeType:[SFSerializable class]] count] > 0) {
@@ -157,7 +155,7 @@
     return value;
 }
 
-- (id)encodeArray:(NSArray * const)anArray {
+- (id)encodeArray:(NSArray *)anArray {
     NSMutableArray *array = [NSMutableArray array];
     
     for (id aValue in anArray) {
@@ -167,7 +165,7 @@
     return [NSArray arrayWithArray:array];
 }
 
-- (id)encodeDictionary:(NSDictionary * const)aDict {
+- (id)encodeDictionary:(NSDictionary *)aDict {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
     for (id aKey in aDict) {
