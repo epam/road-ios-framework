@@ -2,16 +2,12 @@
 
 Component implements Attribute-Oriented Programming paradigm in Objective-C. It allows to add various metadata to the class, each method, property or ivar of the class. 
 
-E.g.
-
-	@property (nonatomic, strong) NSDate *birthdayDate;
-
-of some "Person" class could be annotated with "serializable"and format attributes to know whether and how to store object on disk.
+Following basic example annotates `birthday` property with "serializable" and format attributes to know whether and how to store object on disk.
 
 	SF_ATTRIBUTE(SFSerializableDate, format = @"dd/MM/yyyy HH:mm:ss Z", encodingFormat = @"MM.dd.yyyy HH:mm:ss.AAA Z")
 	@property (nonatomic, strong) NSDate *birthdayDate;
 
-Or attribute can declare particular class for logging service creation.  
+In other case attribute defines particular class for logging service creation.  
 	
 	@interface SFServiceProvider (SFLogger)
 
@@ -19,18 +15,18 @@ Or attribute can declare particular class for logging service creation.
 	- (id<SFLogging>)logger;
 	..
 
-In general attributes mark program elements (methods, properties and ivars) to indicate that they maintain specific application or domain semantics. Which is one more elegant way to separates business logic from app-specific semantics.
+But in general attributes mark program elements (methods, properties and ivars) to indicate that they maintain specific application or domain semantics. Which is one more elegant way to separates business logic from app-specific semantics.
 
 ##Adding existing attributes to classes.
 
 `SF_ATTRIBUTE` macro above the method declaration used to annotate a property, method or ivar with existing attributes.
 
-	SF_ATTRIBUTE(AttributeClass, param1 = value1, param2 = value2, ..)
+	SF_ATTRIBUTE(Class, param1 = value1, param2 = value2, ..)
 	- methodName;
 
-where `AttributeClass` is a Objective-C class name representing particular attribute followed by attribute properties.
+where `Class` is a name of any Objective-C representing particular attribute followed by it's properties.
 
-## Parameters
+##Parameters
 
 Parameters can get values with String:
 
@@ -80,3 +76,34 @@ E.g getting of the header for web service will like:
 ##Creating custom attributes
 
 Adding own custom attributes to the project is simple and straightforward. Subclass `NSObject` and declare attribute properies. To use it reference to it's classname in `SF_ATTRIBUTE` macro. 
+
+##Attributes in Spark 
+
+Modules from the framework take advantage of the annotation model and define their own attributes:
+
+**Logger**
+
+* SFLoggerWebServicePath - define URL for web service
+
+**Serialization**
+
+* SFDerived - 'do not serialize' for property in a serializable class
+* SFSerializable - mark as serializable (property or class-wide)
+* SFSerializableCollection - mark property as containing collection of serializable items
+* SFSerializableDate - define format for serializable NSDate property or for all date properties if applied to class 
+
+**Services**
+
+* SFService - define class for the service
+
+**WebService**
+
+* SFWebServiceCall - set specification for used service calls
+* SFWebServiceClientStatusCodes - list calls status codes
+* SFWebServiceErrorHandler - define error handler class
+* SFWebServiceHeader - list fields of the header
+* SFWebServiceLogger - define type of logging
+* SFWebServiceURLBuilder - define url builder class
+* SFWebServiceURLBuilderParameter
+
+Detailed information on attributes can be found in corresponding documentation pages and API reference.
