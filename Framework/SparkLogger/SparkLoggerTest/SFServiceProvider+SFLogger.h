@@ -28,7 +28,7 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <Spark/SparkServices.h>
-#import "SFLogger.h"
+#import "SparkLogger.h"
 
 @interface SFServiceProvider (SFLogger)
 

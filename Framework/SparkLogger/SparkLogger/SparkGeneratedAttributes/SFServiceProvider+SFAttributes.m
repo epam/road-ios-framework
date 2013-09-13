@@ -1,7 +1,7 @@
 #import <Spark/SparkServices.h>
 #import "SFLogger.h"
 #import <Spark/SparkServices.h>
-#import "SFLogger.h"
+#import "SparkLogger.h"
 #import "SFServiceProvider+SFLogger.h"
  
 @interface SFServiceProvider(SFAttribute)

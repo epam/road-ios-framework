@@ -41,16 +41,19 @@
 - (void)addWriter:(SFLogWriter * const)aWriter;
 - (void)removeWriter:(SFLogWriter * const)aWriter;
 
-- (void)logInternalErrorMessage:(NSString * const)messageText;
-- (void)logInfoMessage:(NSString * const)messageText;
-- (void)logWarningMessage:(NSString * const)messageText;
-- (void)logErrorMessage:(NSString * const)messageText;
-- (void)logDebugMessage:(NSString * const)messageText;
+- (void)logInternalErrorMessage:(NSString *)format, ...;
 
-- (void)logInfoMessage:(NSString * const)messageText type:(NSString *)type;
-- (void)logWarningMessage:(NSString * const)messageText type:(NSString *)type;
-- (void)logErrorMessage:(NSString * const)messageText type:(NSString *)type;
-- (void)logDebugMessage:(NSString * const)messageText type:(NSString *)type;
+- (void)logInfoMessage:(NSString *)format, ...;
+- (void)logInfoType:(NSString *)type message:(NSString *)format, ...;
+
+- (void)logDebugMessage:(NSString *)format, ...;
+- (void)logDebugType:(NSString *)type message:(NSString *)format, ...;
+
+- (void)logWarningMessage:(NSString *)format, ...;
+- (void)logWarningType:(NSString *)type message:(NSString *)format, ...;
+
+- (void)logErrorMessage:(NSString *)format, ...;
+- (void)logErrorType:(NSString *)type message:(NSString *)format, ...;
 
 @optional
 - (NSArray *)writers;
