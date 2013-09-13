@@ -73,7 +73,6 @@
 		8D9422F017E2C59C005F0AE3 /* SFMutableObjectTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9422E617E2C59C005F0AE3 /* SFMutableObjectTest.m */; };
 		8D9422F117E2C59C005F0AE3 /* SFPoolTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9422E817E2C59C005F0AE3 /* SFPoolTest.m */; };
 		8D9422F217E2C59C005F0AE3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D9422E917E2C59C005F0AE3 /* InfoPlist.strings */; };
-		8D9422F317E2C59C005F0AE3 /* SparkCoreTest-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D9422EB17E2C59C005F0AE3 /* SparkCoreTest-Info.plist */; };
 		8D94230217E2C5A9005F0AE3 /* AttributesAPITest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9422F617E2C5A9005F0AE3 /* AttributesAPITest.m */; };
 		8D94230317E2C5A9005F0AE3 /* AnnotatedClass+SFAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9422F817E2C5A9005F0AE3 /* AnnotatedClass+SFAttributes.m */; };
 		8D94230417E2C5A9005F0AE3 /* AnnotatedClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9422FA17E2C5A9005F0AE3 /* AnnotatedClass.m */; };
@@ -684,7 +683,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D9422F217E2C59C005F0AE3 /* InfoPlist.strings in Resources */,
-				8D9422F317E2C59C005F0AE3 /* SparkCoreTest-Info.plist in Resources */,
 				8D94231817E2C5B4005F0AE3 /* InfoPlist.strings in Resources */,
 				8D94231917E2C5B4005F0AE3 /* SparkReflectionTest-Info.plist in Resources */,
 				8D46587917E2C84500D5620F /* SFEncoding.plist in Resources */,

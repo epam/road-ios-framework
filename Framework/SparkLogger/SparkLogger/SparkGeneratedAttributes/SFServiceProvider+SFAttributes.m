@@ -1,8 +1,5 @@
 #import <Spark/SparkServices.h>
 #import "SFLogger.h"
-#import <Spark/SparkServices.h>
-#import "SFLogger.h"
-#import "SFServiceProvider+SFLogger.h"
  
 @interface SFServiceProvider(SFAttribute)
  
@@ -22,7 +19,6 @@ static NSMutableArray __weak *SF_attributes_list_SFServiceProvider_method_logger
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
     
     SFService *attr1 = [[SFService alloc] init];
-    attr1.serviceClass = [SFLogger class];
     attr1.serviceClass = [SFLogger class];
     [attributesArray addObject:attr1];
 

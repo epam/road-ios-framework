@@ -29,8 +29,8 @@
 
 #import "SparkLoggerTest.h"
 #import <Spark/SparkServices.h>
-#import "SparkLogger.h"
-#import "SFServiceProvider+SFLogger.h"
+#import <Spark/SparkLogger.h>
+#import <Spark/SFServiceProvider+LoggingService.h>
 
 @implementation SparkLoggerTest
 
