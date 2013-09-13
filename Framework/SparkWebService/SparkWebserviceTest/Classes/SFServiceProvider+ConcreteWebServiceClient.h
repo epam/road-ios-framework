@@ -33,6 +33,6 @@
 @interface SFServiceProvider (ConcreteWebServiceClient)
 
 SF_ATTRIBUTE(SFService, serviceClass = [SFConcreteWebServiceClient class])
-- (SFConcreteWebServiceClient *)concreteWebServiceClient;
++ (SFConcreteWebServiceClient *)concreteWebServiceClient;
 
 @end

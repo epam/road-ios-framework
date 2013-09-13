@@ -37,6 +37,6 @@
  The method to return the service instance. The attribute indicates this method returns a service, and which class to use in case the service is not yet initialized.
  */
 SF_ATTRIBUTE(SFService, serviceClass = [SFTestService class])
-- (SFTestService *)serviceInstance;
++ (SFTestService *)serviceInstance;
 
 @end
