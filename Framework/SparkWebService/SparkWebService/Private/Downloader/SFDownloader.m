@@ -31,6 +31,7 @@
 #import "SFDownloader.h"
 #import "SFLooper.h"
 #import <Spark/SparkLogger.h>
+#import <Spark/SparkCore.h>
 #import "NSError+SparkWebService.h"
 
 #import "SFWebServiceCall.h"
@@ -40,7 +41,8 @@
 #import "SFWebServiceSerializationHandler.h"
 #import "SFWebServiceClient.h"
 #import "SFWebServiceLogger.h"
-#import <Spark/SparkCore.h>
+#import "SFMultipartData.h"
+#import "SFWebServiceCallParameterEncoder.h"
 
 @interface SFDownloader () {
     NSURLConnection * _connection;
@@ -86,6 +88,19 @@
 - (void)configureRequestForUrl:(NSURL * const)anUrl body:(NSData * const)httpBody sharedHeaders:(NSDictionary *)sharedHeaders values:(NSDictionary *)values {
     _request = [self requestForUrl:anUrl withMethod:_callAttribute.method withBody:httpBody];
     
+    // For multipart form data we have to add specific header
+    if (_multipartData) {
+        NSString *boundary;
+        SFMultipartData *multipartDataAttribute = [[self.webServiceClient class] attributeForMethod:self.methodName withAttributeType:[SFMultipartData class]];
+        boundary = multipartDataAttribute.boundary;
+        if (!boundary.length) {
+            // Some random default boundary
+            boundary = kSFBoundaryDefaultString;
+        }
+        NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+        [_request addValue:contentType forHTTPHeaderField:@"Content-Type"];
+    }
+    
     SFWebServiceHeader * const headerAttribute = [[_webServiceClient class] attributeForMethod:_methodName withAttributeType:[SFWebServiceHeader class]];
     
     // Adding shared headers to request
@@ -98,11 +113,12 @@
         [self.authenticationProvider addAuthenticationDataToRequest:_request];
     }
 
-    if (_callAttribute.overrideGlobalSuccessCodes) {
+    if (_callAttribute.overrideGlobalSuccessCodes
+        && _callAttribute.successCodes) {
         [self.successCodes removeAllObjects];
         [self.successCodes addObjectsFromArray:_callAttribute.successCodes];
     } else {
-        SFWebServiceClientStatusCodes* wsca = [[self class] attributeForClassWithAttributeType:[SFWebServiceClientStatusCodes class]];
+        SFWebServiceClientStatusCodes* wsca = [[self.webServiceClient class] attributeForClassWithAttributeType:[SFWebServiceClientStatusCodes class]];
         if ([wsca.successCodes count] > 0) {
             [self.successCodes removeAllObjects];
             [self.successCodes addObjectsFromArray:wsca.successCodes];
@@ -134,7 +150,7 @@
     self.response = response;
     
     if (!resultError && !_callAttribute.serializationDisabled) {
-        [SFWebServiceSerializationHandler deserializeData:result withSerializator:_webServiceClient.serializationDelegate serializatinRoot:_callAttribute.serializationRoot toDeserializationClass:NSClassFromString(_callAttribute.prototypeClass) withCompletitionBlock:^(id serializedData, NSError *error) {
+        [SFWebServiceSerializationHandler deserializeData:result withSerializator:_webServiceClient.serializationDelegate serializatinRoot:_callAttribute.serializationRoot toDeserializationClass:_callAttribute.prototypeClass withCompletitionBlock:^(id serializedData, NSError *error) {
             resultData = serializedData;
             resultError = error;
         }];

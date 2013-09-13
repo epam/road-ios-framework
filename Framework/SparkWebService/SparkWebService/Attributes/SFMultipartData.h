@@ -1,5 +1,5 @@
 //
-//  SparkWebServiceAnnotations.h
+//  SFMultipartData.h
 //  SparkWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -27,17 +27,10 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#import <Spark/SparkAttributesSupport.h>
 
-#ifndef SparkWebservice_SparkWebServiceAnnotations_h
-#define SparkWebservice_SparkWebServiceAnnotations_h
+@interface SFMultipartData : NSObject
 
-#import "SFWebServiceCall.h"
-#import "SFWebServiceClientStatusCodes.h"
-#import "SFWebServiceHeader.h"
-#import "SFWebServiceLogger.h"
-#import "SFWebServiceErrorHandler.h"
-#import "SFWebServiceURLBuilder.h"
-#import "SFWebServiceURLBuilderParameter.h"
-#import "SFMultipartData.h"
+@property (nonatomic, strong) NSString *boundary;
 
-#endif
+@end

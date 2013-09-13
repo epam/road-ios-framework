@@ -536,6 +536,7 @@
 		78B8E68616C3CC3E0049E36B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = SF;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Epam Systems";
 			};

@@ -35,13 +35,12 @@
 #import "SFWebserviceClient.h"
 #import "SFWebServiceCancellable.h"
 #import "SFSerializationDelegate.h"
-#import "SFWebServiceLogWriter.h"
 #import "SFBasicAuthenticationProvider.h"
 #import "SFAuthenticationProvider.h"
 #import "SFAuthenticating.h"
 #import "SFConcurrentAuthenticationProvider.h"
 #import "SFWebServiceURLBuilding.h"
-#import "SFWebServiceURLBuilder.h"
+#import "SFFormData.h"
 
 #import "SFWebServiceOData.h"
 
