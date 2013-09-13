@@ -1,26 +1,5 @@
 #import "SFWebServiceClient.h"
-#import <objc/runtime.h>
-#import "SFWebServiceCall.h"
-#import "SFWebServiceClient+DynamicMethod.h"
-#import <Spark/SparkSerialization.h>
-#import <Spark/SparkServices.h>
-#import "SFWebServiceCancellable.h"
-#import "SFSerializationDelegate.h"
-#import "SFWebServiceCallParameterEncoder.h"
-#import "SFWebServiceHeader.h"
-#import "SFDownloader.h"
-#import "SFWebServiceLogger.h"
-#import "SFWebServiceURLBuilder.h"
-#import "SFWebServiceSerializationHandler.h"
-#import "SFWebServiceClientStatusCodes.h"
-#import "SFBasicAuthenticationProvider.h"
-#import "SFAuthenticating.h"
-#import "SFWebServiceBasicURLBuilder.h"
-#import <Spark/SparkServices.h>
-#import "SFWebServiceClient.h"
-#import "SFDefaultSerializer.h"
-#import "SFAuthenticating.h"
-#import "SFWebServiceClient.h"
+#import <Spark/SFWebServiceLogger.h>
  
 @interface SFWebServiceClient(SFAttribute)
  
