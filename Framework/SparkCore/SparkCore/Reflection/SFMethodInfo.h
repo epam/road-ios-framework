@@ -63,6 +63,11 @@
 @property (assign, nonatomic, getter = isClassMethod) BOOL classMethod;
 
 /**
+ An array of attributes declared for method.
+ */
+@property (readonly, nonatomic) NSArray *attributes;
+
+/**
  Returns an array of info objects for all the declared methods of the given class.
  @param aClass The class for which to return the method info.
  @result All info objects for the declared methods.
@@ -91,5 +96,14 @@
  @result The type string.
  */
 - (NSString *)typeOfArgumentAtIndex:(NSUInteger const)anIndex;
+
+/**
+ The method performs search for attribute of required class in array of attributes declared for method.
+ 
+ @param requiredClassOfAttribute Class of required attribute.
+ 
+ @return An object of attribute. Or nil if attribute was not found.
+ */
+- (id)attributeWithType:(Class)requiredClassOfAttribute;
 
 @end

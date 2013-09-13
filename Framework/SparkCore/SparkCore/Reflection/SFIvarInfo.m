@@ -31,8 +31,11 @@
 #import "SFIvarInfo.h"
 #import "SFEncodingMapper.h"
 #import <objc/runtime.h>
+#import "SparkAttribute.h"
 
 @implementation SFIvarInfo
+
+@dynamic attributes;
 
 + (NSArray *)ivarsOfClass:(__unsafe_unretained Class const)aClass {
     unsigned int memberCount;
@@ -66,6 +69,14 @@
     info.variableTypeName = [SFEncodingMapper nameFromTypeEncoding:encoding];
     info.primitive = ![encoding hasPrefix:@"@"];
     return info;
+}
+
+- (NSArray *)attributes {
+    return [self.hostClass SF_attributesForIvar:self.name];
+}
+
+- (id)attributeWithType:(Class)requiredClassOfAttribute {
+    return [self.hostClass SF_attributeForIvar:self.name withAttributeType:requiredClassOfAttribute];
 }
 
 

@@ -31,6 +31,7 @@
 #import "SFMethodInfo.h"
 #import "SFEncodingMapper.h"
 #import <objc/runtime.h>
+#import "SparkAttribute.h"
 
 // The number hidden of method arguments: self and _cmd
 static NSUInteger const kSFMethodArgumentOffset = 2;
@@ -38,6 +39,8 @@ static NSUInteger const kSFMethodArgumentOffset = 2;
 @implementation SFMethodInfo {
     NSArray *argumentTypes;
 }
+
+@dynamic attributes;
 
 + (NSArray *)methodsOfClass:(__unsafe_unretained Class const)aClass {
     unsigned int numberOfMethods = 0;
@@ -121,6 +124,14 @@ static NSUInteger const kSFMethodArgumentOffset = 2;
 
 - (NSString *)description {
     return [NSString stringWithFormat:@"%@: %@:%@, argument types: %@, return type: %@", [super description], _className, _name, [argumentTypes componentsJoinedByString:@","], _returnType];
+}
+
+- (NSArray *)attributes {
+    return [self.hostClass SF_attributesForMethod:self.name];
+}
+
+- (id)attributeWithType:(Class)requiredClassOfAttribute {
+    return [self.hostClass SF_attributeForMethod:self.name withAttributeType:requiredClassOfAttribute];
 }
 
 @end

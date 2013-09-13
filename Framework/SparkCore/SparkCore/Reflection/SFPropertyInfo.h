@@ -105,6 +105,11 @@
 @property (nonatomic, unsafe_unretained) Class attributeClass;
 
 /**
+ An array of attributes declared for property.
+ */
+@property (readonly, nonatomic) NSArray *attributes;
+
+/**
  Returns an array of info objects for the given class.
  @param aClass The class to fetch the property infos for.
  @result The array of filtered results.
@@ -126,5 +131,14 @@
  @result The info object.
  */
 + (SFPropertyInfo *)propertyNamed:(NSString *)name forClass:(__unsafe_unretained Class const)aClass;
+
+/**
+ The method performs search for attribute of required class in array of attributes declared for property.
+ 
+ @param requiredClassOfAttribute Class of required attribute.
+ 
+ @return An object of attribute. Or nil if attribute was not found.
+ */
+- (id)attributeWithType:(Class)requiredClassOfAttribute;
 
 @end

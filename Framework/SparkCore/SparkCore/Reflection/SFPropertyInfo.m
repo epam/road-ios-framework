@@ -32,8 +32,11 @@
 #import "SFEncodingMapper.h"
 #import "NSCharacterSet+EncodingCharacterSet.h"
 #import <objc/runtime.h>
+#import "SparkAttribute.h"
 
 @implementation SFPropertyInfo
+
+@dynamic attributes;
 
 + (NSArray *)propertiesForClass:(__unsafe_unretained Class const)aClass {
     NSMutableArray *result = [[NSMutableArray alloc] init];
@@ -107,6 +110,14 @@
     BOOL const result = attributeValue != NULL;
     free(attributeValue);
     return result;
+}
+
+- (NSArray *)attributes {
+    return [self.hostClass SF_attributesForProperty:self.propertyName];
+}
+
+- (id)attributeWithType:(Class)requiredClassOfAttribute {
+    return [self.hostClass SF_attributeForProperty:self.propertyName withAttributeType:requiredClassOfAttribute];
 }
 
 @end

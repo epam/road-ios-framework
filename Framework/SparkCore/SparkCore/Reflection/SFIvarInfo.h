@@ -59,6 +59,11 @@
 @property (assign, nonatomic) Class hostClass;
 
 /**
+ An array of attributes declared for instance variable.
+ */
+@property (readonly, nonatomic) NSArray *attributes;
+
+/**
  Returns an array of info objects.
  @param aClass The class to return the list of infos to.
  @result An array of info objects.
@@ -72,5 +77,14 @@
  @result The info object.
  */
 + (SFIvarInfo *)ivarNamed:(NSString * const)ivarName ofClass:(__unsafe_unretained Class const)aClass;
+
+/**
+ The method performs search for attribute of required class in array of attributes declared for instance variable.
+ 
+ @param requiredClassOfAttribute Class of required attribute.
+ 
+ @return An object of attribute. Or nil if attribute was not found.
+ */
+- (id)attributeWithType:(Class)requiredClassOfAttribute;
 
 @end
