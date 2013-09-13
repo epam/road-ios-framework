@@ -1,6 +1,5 @@
 #import <Spark/SparkServices.h>
 #import "SFConcreteWebServiceClient.h"
-#import "SFServiceProvider+ConcreteWebServiceClient.h"
  
 @interface SFServiceProvider(SFAttribute)
  

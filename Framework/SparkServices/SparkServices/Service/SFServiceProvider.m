@@ -41,7 +41,7 @@ const char *SFServiceMethodEncoding = "@@:";
 SPARK_SYNTHESIZE_SINGLETON_FOR_CLASS_WITH_ACCESSOR(SFServiceProvider, sharedProvider, ^(SFServiceProvider* object){ [object initialize]; });
 
 - (void)initialize {
-    services = [NSMutableDictionary new];
+    services = [[NSMutableDictionary alloc] init];
 }
 
 #pragma mark - Method resolution
@@ -69,9 +69,9 @@ SPARK_SYNTHESIZE_SINGLETON_FOR_CLASS_WITH_ACCESSOR(SFServiceProvider, sharedProv
     id theService = services[serviceName];
     
     if (theService == nil) {
-        SFService * const serviceAnnotation = [SFServiceProvider SF_attributeForMethod:serviceName withAttributeType:[SFService class]];
-        __unsafe_unretained Class const serviceClass = serviceAnnotation.serviceClass;
-        theService = [(id)serviceClass new];
+        SFService * const serviceAttribute = [[self class] SF_attributeForMethod:serviceName withAttributeType:[SFService class]];
+        __unsafe_unretained Class const serviceClass = serviceAttribute.serviceClass;
+        theService = [[(id)serviceClass alloc] init];
         [self registerService:theService forServiceName:serviceName];
     }
     

@@ -29,6 +29,6 @@
 
 #import "SFWebServiceClient+DynamicTest.h"
 
-@implementation SFWebServiceClient (DynamicTest)
-
-@end
+//@implementation SFWebServiceClient (DynamicTest)
+//
+//@end

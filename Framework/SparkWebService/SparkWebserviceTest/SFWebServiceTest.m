@@ -32,10 +32,11 @@
 #import "SFWebServiceClient+DynamicTest.h"
 #import "SFAuthenticating.h"
 #import "SFServiceProvider+ConcreteWebServiceClient.h"
-#import "SFDownloader.h"
+#import "SFDownloader+FakeRequest.h"
 
 #import "SFBasicAuthenticationProvider.h"
 #import "SFDigestAuthenticationProvider.h"
+#import <objc/runtime.h>
 
 @interface SFWebServiceTest ()
 {
@@ -46,8 +47,17 @@
 
 @implementation SFWebServiceTest
 
++ (void)setUp {
+    [[[SFServiceProvider sharedProvider] logger] addWriter:[SFConsoleLogWriter new]];
+    
+    SEL originalSelector = @selector(start);
+    SEL overrideSelector = @selector(fakeStart);
+    Method originalMethod = class_getInstanceMethod([SFDownloader class], originalSelector);
+    Method overrideMethod = class_getInstanceMethod([SFDownloader class], overrideSelector);
+    method_exchangeImplementations(originalMethod, overrideMethod);
+}
+
 - (void)testHTTPBasicAuthentication {
-    //[[[SFServiceProvider sharedProvider] logger] addWriter:[SFConsoleLogWriter new]];
     authenticationFinished = NO;
     __block BOOL isFinished = NO;
     
@@ -66,7 +76,6 @@
 }
 
 - (void)testHTTPBasicAuthenticationInConjunctionWithSSL {
-    //[[[SFServiceProvider sharedProvider] logger] addWriter:[SFConsoleLogWriter new]];
     authenticationFinished = NO;
     __block BOOL isFinished = NO;
     
@@ -86,7 +95,6 @@
 }
 
 - (void)testHTTPDigestAuthentication {
-    //[[[SFServiceProvider sharedProvider] logger] addWriter:[SFConsoleLogWriter new]];
     authenticationFinished = NO;
     __block BOOL isFinished = false;
     
@@ -106,7 +114,6 @@
 }
 
 - (void)testHTTPDigestAuthenticationInConjunctionWithSSL {
-    //[[[SFServiceProvider sharedProvider] logger] addWriter:[SFConsoleLogWriter new]];
     authenticationFinished = NO;
     __block BOOL isFinished = NO;
     
@@ -171,8 +178,6 @@
 }
 
 - (void)testODataErrorHandling {
-    [[[SFServiceProvider sharedProvider] logger] addWriter:[SFConsoleLogWriter new]];
-    
     __block BOOL isFinished = NO;
     __block NSError *receivedError;
     
@@ -191,6 +196,49 @@
     STAssertTrue(receivedError != nil, @"Error've not been generated!");
     STAssertTrue(receivedError.localizedDescription != nil, @"Localized description've not been filled for generated error!");
     STAssertTrue(receivedError.code, @"Code've not been filled for generated error!");
+}
+
+- (void)testMultipartData {
+    __block BOOL isFinished = NO;
+    __block BOOL isSuccess = NO;
+    
+    SFConcreteWebServiceClient *webClient = [[SFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.multipart.data"];
+    SFFormData *attachment = [[SFFormData alloc] initWithName:@"image" data:[@"Random data 1" dataUsingEncoding:NSUTF8StringEncoding] fileName:@"imageName.jpg"];
+    [webClient testMultipartDataWithAttachment:attachment success:^(id result) {
+        isFinished = YES;
+        isSuccess = YES;
+    } failure:^(NSError *error) {
+        isFinished = YES;
+    }];
+    
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
+    }
+    
+    STAssertTrue(isSuccess, @"Multipart form data request is failed");
+
+}
+
+- (void)testMultipartDataArray {
+    __block BOOL isFinished = NO;
+    __block BOOL isSuccess = NO;
+    
+    SFConcreteWebServiceClient *webClient = [[SFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.multipart.data"];
+    NSArray *attachments = @[[[SFFormData alloc] initWithName:@"image" data:[@"Random data 1" dataUsingEncoding:NSUTF8StringEncoding] fileName:@"imageName.jpg"],
+                             [[SFFormData alloc] initWithName:@"image" data:[@"Random data 2" dataUsingEncoding:NSUTF8StringEncoding]],
+                             [[SFFormData alloc] initWithName:@"image" data:[@"Random data 3" dataUsingEncoding:NSUTF8StringEncoding] fileName:@"imageName2.jpg"]];
+    [webClient testMultipartDataWithAttachments:attachments success:^(id result) {
+        isFinished = YES;
+        isSuccess = YES;
+    } failure:^(NSError *error) {
+        isFinished = YES;
+    }];
+    
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
+    }
+    
+    STAssertTrue(isSuccess, @"Multipart form data request is failed");
 }
 
 @end

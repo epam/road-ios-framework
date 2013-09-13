@@ -134,19 +134,20 @@
 }
 
 - (id<SFWebServiceCancellable>)executeDynamicInstanceMethodForSelector:(SEL)selector parameters:(NSArray *)parameterList prepareToLoadBlock:(SFWebServiceClientPrepareForSendRequestBlock)prepareToLoadBlock success:(id)successBlock failure:(id)failureBlock {
-    
+    NSString *methodName = NSStringFromSelector(selector);
     __block NSData *bodyData;
     __block NSDictionary *parametersDictionary;
-    __block SFDownloader *downloader = [[SFDownloader alloc] initWithClient:self methodName:NSStringFromSelector(selector) authenticationProvider:self.authenticationProvider];
+    __block SFDownloader *downloader = [[SFDownloader alloc] initWithClient:self methodName:methodName authenticationProvider:self.authenticationProvider];
     downloader.successBlock = successBlock;
     downloader.failureBlock = failureBlock;
     
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
     dispatch_async(queue, ^{
         
-        [SFWebServiceCallParameterEncoder encodeParameters:parameterList withSerializator:self.serializationDelegate callbackBlock:^(NSDictionary *parameters, NSData *postData) {
+        [SFWebServiceCallParameterEncoder encodeParameters:parameterList forClient:self methodName:methodName withSerializator:self.serializationDelegate callbackBlock:^(NSDictionary *parameters, NSData *postData, BOOL isMultipartData) {
             parametersDictionary = parameters;
             bodyData = postData;
+            downloader.multipartData = isMultipartData;
         }];
         
         [self performCall:selector values:parametersDictionary body:bodyData request:downloader processingQueue:queue prepareForSendRequestBlock:prepareToLoadBlock];

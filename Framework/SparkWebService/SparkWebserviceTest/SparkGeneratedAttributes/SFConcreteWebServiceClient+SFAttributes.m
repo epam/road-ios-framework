@@ -4,6 +4,8 @@
 #import "SFWebServiceCall.h"
 #import "SFWebServiceURLBuilder.h"
 #import "SFODataWebServiceURLBuilder.h"
+#import "SFFormData.h"
+#import "SFMultipartData.h"
 #import "SFConcreteWebServiceClient.h"
  
 @interface SFConcreteWebServiceClient(SFAttribute)
@@ -133,6 +135,46 @@ static NSMutableArray __weak *SF_attributes_list_SFConcreteWebServiceClient_meth
     return SF_attributes_list_SFConcreteWebServiceClient_method_testWrongSerializationRootWithSuccess_p2;
 }
 
+static NSMutableArray __weak *SF_attributes_list_SFConcreteWebServiceClient_method_testMultipartDataWithAttachment_p3 = nil;
+
++ (NSArray *)SF_attributes_SFConcreteWebServiceClient_method_testMultipartDataWithAttachment_p3 {
+    if (SF_attributes_list_SFConcreteWebServiceClient_method_testMultipartDataWithAttachment_p3 != nil) {
+        return SF_attributes_list_SFConcreteWebServiceClient_method_testMultipartDataWithAttachment_p3;
+    }
+    
+    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:2];
+    
+    SFWebServiceCall *attr1 = [[SFWebServiceCall alloc] init];
+    attr1.serializationDisabled = YES;
+    [attributesArray addObject:attr1];
+
+    SFMultipartData *attr2 = [[SFMultipartData alloc] init];
+    attr2.boundary = @"sdfsfsf";
+    [attributesArray addObject:attr2];
+
+    SF_attributes_list_SFConcreteWebServiceClient_method_testMultipartDataWithAttachment_p3 = attributesArray;
+    
+    return SF_attributes_list_SFConcreteWebServiceClient_method_testMultipartDataWithAttachment_p3;
+}
+
+static NSMutableArray __weak *SF_attributes_list_SFConcreteWebServiceClient_method_testMultipartDataWithAttachments_p3 = nil;
+
++ (NSArray *)SF_attributes_SFConcreteWebServiceClient_method_testMultipartDataWithAttachments_p3 {
+    if (SF_attributes_list_SFConcreteWebServiceClient_method_testMultipartDataWithAttachments_p3 != nil) {
+        return SF_attributes_list_SFConcreteWebServiceClient_method_testMultipartDataWithAttachments_p3;
+    }
+    
+    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
+    
+    SFWebServiceCall *attr1 = [[SFWebServiceCall alloc] init];
+    attr1.serializationDisabled = YES;
+    [attributesArray addObject:attr1];
+
+    SF_attributes_list_SFConcreteWebServiceClient_method_testMultipartDataWithAttachments_p3 = attributesArray;
+    
+    return SF_attributes_list_SFConcreteWebServiceClient_method_testMultipartDataWithAttachments_p3;
+}
+
 static NSMutableDictionary __weak *attributesSFConcreteWebServiceClientFactoriesForMethodsDict = nil;
     
 + (NSMutableDictionary *)SF_attributesFactoriesForMethods {
@@ -151,6 +193,8 @@ static NSMutableDictionary __weak *attributesSFConcreteWebServiceClientFactories
     [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p4)] forKey:@"loadDataWithFetchRequest:someImportantParameter:success:failure:"];
     [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_SFConcreteWebServiceClient_method_testSerializationRootWithSuccess_p2)] forKey:@"testSerializationRootWithSuccess:failure:"];
     [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_SFConcreteWebServiceClient_method_testWrongSerializationRootWithSuccess_p2)] forKey:@"testWrongSerializationRootWithSuccess:failure:"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_SFConcreteWebServiceClient_method_testMultipartDataWithAttachment_p3)] forKey:@"testMultipartDataWithAttachment:success:failure:"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_SFConcreteWebServiceClient_method_testMultipartDataWithAttachments_p3)] forKey:@"testMultipartDataWithAttachments:success:failure:"];
     attributesSFConcreteWebServiceClientFactoriesForMethodsDict = dictionaryHolder;  
     
     return attributesSFConcreteWebServiceClientFactoriesForMethodsDict;

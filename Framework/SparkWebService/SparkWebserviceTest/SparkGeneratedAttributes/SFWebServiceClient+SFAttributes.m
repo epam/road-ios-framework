@@ -21,7 +21,6 @@
 #import "SFDefaultSerializer.h"
 #import "SFAuthenticating.h"
 #import "SFWebServiceClient.h"
-#import "SFWebServiceClient+DynamicTest.h"
  
 @interface SFWebServiceClient(SFAttribute)
  

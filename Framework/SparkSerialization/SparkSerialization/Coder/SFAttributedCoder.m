@@ -37,11 +37,16 @@
 #import "SFSerializableDate.h"
 
 @interface SFAttributedCoder ()
+
 @property (strong, nonatomic) id archive;
-@property (strong, nonatomic) NSDateFormatter *dateFormatter;
+
 @end
 
-@implementation SFAttributedCoder
+
+@implementation SFAttributedCoder {
+    NSString * _dateFormat;
+    NSDateFormatter * _dateFormatter;
+}
 
 - (id)init {
     self = [super init];
@@ -184,8 +189,9 @@
         _dateFormatter = [[NSDateFormatter alloc] init];
     }
     
-    if (![formatString isEqualToString:_dateFormatter.dateFormat]) {
+    if (![formatString isEqualToString:_dateFormat]) {
         _dateFormatter.dateFormat = formatString;
+        _dateFormat = formatString;
     }
     
     return _dateFormatter;
