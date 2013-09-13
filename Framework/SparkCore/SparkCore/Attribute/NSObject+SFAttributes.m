@@ -141,59 +141,11 @@
     return [self SF_attributeWithType:requiredClassOfAttribute from:[self SF_attributesForClass]];
 }
 
-+ (BOOL)SF_hasAttributesForMethod:(NSString *)methodName  withAttributeType:(Class)requiredClassOfAttribute {
-    BOOL result = NO;
-    
-    if (requiredClassOfAttribute) {
-        result = ([self SF_attributeForMethod:methodName  withAttributeType:requiredClassOfAttribute] != nil);
-    } else {
-        result = ([[self SF_attributesForMethod:methodName] count] > 0);
-    }
-
-    return result;
-}
-
-+ (BOOL)SF_hasAttributesForProperty:(NSString *)propertyName  withAttributeType:(Class)requiredClassOfAttribute {
-    BOOL result = NO;
-    
-    if (requiredClassOfAttribute) {
-        result = ([self SF_attributeForProperty:propertyName  withAttributeType:requiredClassOfAttribute] != nil);
-    } else {
-        result = ([[self SF_attributesForProperty:propertyName] count] > 0);
-    }
-
-    return result;
-}
-
-+ (BOOL)SF_hasAttributesForIvar:(NSString *)ivarName  withAttributeType:(Class)requiredClassOfAttribute {
-    BOOL result = NO;
-    
-    if (requiredClassOfAttribute) {
-        result = ([self SF_attributeForIvar:ivarName  withAttributeType:requiredClassOfAttribute] != nil);
-    } else {
-        result = ([[self SF_attributesForIvar:ivarName] count] > 0);
-    }
-    
-    return result;
-}
-
-+ (BOOL)SF_hasAttributesForClassWithAttributeType:(Class)requiredClassOfAttribute {
-    BOOL result = NO;
-    
-    if (requiredClassOfAttribute) {
-        result = ([self SF_attributeForClassWithAttributeType:requiredClassOfAttribute] != nil);
-    } else {
-        result = ([[self SF_attributesForClass] count] > 0);
-    }
-    
-    return result;
-}
-
 + (NSArray *)SF_propertiesWithAttributeType:(Class)requiredClassOfAttribute {
     NSMutableArray *result = [NSMutableArray array];
     
     for (SFPropertyInfo *currentPropertyInfo in [self properties]) {
-        if ([self SF_hasAttributesForProperty:currentPropertyInfo.propertyName withAttributeType:requiredClassOfAttribute]) {
+        if ([currentPropertyInfo attributeWithType:requiredClassOfAttribute]) {
             [result addObject:currentPropertyInfo];
         }
     }
@@ -205,7 +157,7 @@
     NSMutableArray *result = [NSMutableArray array];
     
     for (SFIvarInfo *currentIvarInfo in [self ivars]) {
-        if ([self SF_hasAttributesForIvar:currentIvarInfo.name withAttributeType:requiredClassOfAttribute]) {
+        if ([currentIvarInfo attributeWithType:requiredClassOfAttribute]) {
             [result addObject:currentIvarInfo];
         }
     }
@@ -217,7 +169,7 @@
     NSMutableArray *result = [NSMutableArray array];
     
     for (SFMethodInfo *currentMethodInfo in [self methods]) {
-        if ([self SF_hasAttributesForMethod:currentMethodInfo.name withAttributeType:requiredClassOfAttribute]) {
+        if ([currentMethodInfo attributeWithType:requiredClassOfAttribute]) {
             [result addObject:currentMethodInfo];
         }
     }

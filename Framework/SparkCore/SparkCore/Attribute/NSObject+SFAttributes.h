@@ -108,48 +108,9 @@
 + (id)SF_attributeForClassWithAttributeType:(Class)requiredClassOfAttribute;
 
 /**
- The method checks whether attribute of required class has been declared for method.
-
- @param methodName Name of method.
- @param requiredClassOfAttribute Class of required attribute. If this variable is nil, method searches for any attribute.
- 
- @return YES if attribute exist. Or NO if attribute was not found.
- */
-+ (BOOL)SF_hasAttributesForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute;
-
-/**
- The method checks whether attribute of required class has been declared for property.
- 
- @param propertyName Name of property.
- @param requiredClassOfAttribute Class of required attribute. If this variable is nil, method searches for any attribute.
- 
- @return YES if attribute exist. Or NO if attribute was not found.
- */
-+ (BOOL)SF_hasAttributesForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute;
-
-/**
- The method checks whether attribute of required class has been declared for instance variable.
- 
- @param ivarName Name of instance variable.
- @param requiredClassOfAttribute Class of required attribute. If this variable is nil, method searches for any attribute.
- 
- @return YES if attribute exist. Or NO if attribute was not found.
- */
-+ (BOOL)SF_hasAttributesForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
-
-/**
- The method checks whether attribute of required class has been declared for class.
- 
- @param requiredClassOfAttribute Class of required attribute. If this variable is nil, method searches for any attribute.
- 
- @return YES if attribute exist. Or NO if attribute was not found.
- */
-+ (BOOL)SF_hasAttributesForClassWithAttributeType:(Class)requiredClassOfAttribute;
-
-/**
  The method returns an array of object's properties where was declared attribute of required class.
  
- @param requiredClassOfAttribute Class of required attribute. If this variable is nil, method gathers properties with any attribute.
+ @param requiredClassOfAttribute Class of required attribute.
  
  @return An array of properties.
  */
@@ -158,7 +119,7 @@
 /**
  The method returns an array of object's instance variables where was declared attribute of required class.
  
- @param requiredClassOfAttribute Class of required attribute. If this variable is nil, method gathers instance variables with any attribute.
+ @param requiredClassOfAttribute Class of required attribute.
  
  @return An array of instance variables.
  */
@@ -167,7 +128,7 @@
 /**
  The method returns an array of object's methods where was declared attribute of required class.
  
- @param requiredClassOfAttribute Class of required attribute. If this variable is nil, method gathers methods with any attribute.
+ @param requiredClassOfAttribute Class of required attribute.
  
  @return An array of methods.
  */

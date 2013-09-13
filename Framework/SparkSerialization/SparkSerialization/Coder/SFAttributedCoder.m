@@ -88,9 +88,9 @@
         @autoreleasepool {            
             Class rootObjectClass = [rootObject class];
             
-            if ([rootObjectClass SF_hasAttributesForClassWithAttributeType:[SFSerializable class]]) {
+            if ([rootObjectClass SF_attributeForClassWithAttributeType:[SFSerializable class]]) {
                 properties = [[rootObjectClass properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(SFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
-                    return ![evaluatedObject.hostClass SF_hasAttributesForProperty:evaluatedObject.propertyName withAttributeType:[SFDerived class]];
+                    return (![evaluatedObject attributeWithType:[SFDerived class]]);
                 }]];
             }
             else {
@@ -144,7 +144,7 @@
 - (id)encodeValue:(id)aValue {
     id value = aValue;
     
-    if ([[value class] SF_hasAttributesForClassWithAttributeType:[SFSerializable class]] || [[[value class] SF_propertiesWithAttributeType:[SFSerializable class]] count] > 0) {
+    if ([[value class] SF_attributeForClassWithAttributeType:[SFSerializable class]] || [[[value class] SF_propertiesWithAttributeType:[SFSerializable class]] count] > 0) {
         value = [[self class] encodeRootObjectToSerializableObject:value];
     }
     else if ([value isKindOfClass:[NSArray class]]) {

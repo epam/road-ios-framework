@@ -79,11 +79,8 @@
     SFLogTypedDebug(self.loggerType, @"URL connection(%p) has finished. URL: %@. Data was received: %@", aConnection, [aConnection.currentRequest.URL absoluteString], [NSString stringWithUTF8String:[self.data bytes]]);
     
     // Checking response with error handler
-    SFWebServiceErrorHandler *errorHandlerAttribute;
-    if ([[self.webServiceClient class] SF_hasAttributesForClassWithAttributeType:[SFWebServiceErrorHandler class]]) {
-        errorHandlerAttribute = [[self.webServiceClient class] SF_attributeForClassWithAttributeType:[SFWebServiceErrorHandler class]];
-    }
-    else {
+    SFWebServiceErrorHandler *errorHandlerAttribute = [[self.webServiceClient class] SF_attributeForClassWithAttributeType:[SFWebServiceErrorHandler class]];
+    if (!errorHandlerAttribute) {
         errorHandlerAttribute = [[self.webServiceClient class] SF_attributeForMethod:self.methodName withAttributeType:[SFWebServiceErrorHandler class]];
     }
     

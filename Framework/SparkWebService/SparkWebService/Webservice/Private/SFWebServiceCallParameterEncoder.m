@@ -86,7 +86,7 @@ static NSString * const kSFBoundaryDefaultString = @"AaB03x";
             isMultipartData = YES;
             [self addAttachments:object toBodyData:bodyData boundary:boundary];
         }
-        else if ([[object class] SF_hasAttributesForClassWithAttributeType:[SFWebServiceURLBuilderParameter class]]) {
+        else if ([[object class] SF_attributeForClassWithAttributeType:[SFWebServiceURLBuilderParameter class]]) {
             encodedObject = object;
         }
         else {

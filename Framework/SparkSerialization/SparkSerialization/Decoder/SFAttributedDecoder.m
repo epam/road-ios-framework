@@ -127,9 +127,9 @@
     _rootObject = [[rootObjectClass alloc] init];
     NSArray *properties;
     @autoreleasepool {
-        if ([rootObjectClass SF_hasAttributesForClassWithAttributeType:[SFSerializable class]]) {
+        if ([rootObjectClass SF_attributeForClassWithAttributeType:[SFSerializable class]]) {
             properties = [[rootObjectClass properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(SFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
-                return ![evaluatedObject.hostClass SF_hasAttributesForProperty:evaluatedObject.propertyName withAttributeType:[SFDerived class]];
+                return (![evaluatedObject attributeWithType:[SFDerived class]]);
             }]];
         }
         else {
@@ -162,8 +162,8 @@
             value = [self decodeDictionary:value forProperty:aDesc];
         }
     }
-    else if ([aDesc.hostClass SF_hasAttributesForProperty:aDesc.propertyName withAttributeType:[SFSerializableDate class]]
-             || [[self class] SF_hasAttributesForClassWithAttributeType:[SFSerializableDate class]]) {
+    else if ([aDesc attributeWithType:[SFSerializableDate class]]
+             || [[self class] SF_attributeForClassWithAttributeType:[SFSerializableDate class]]) {
         value = [self decodeDateString:aValue forProperty:aDesc];
     }
     return value;

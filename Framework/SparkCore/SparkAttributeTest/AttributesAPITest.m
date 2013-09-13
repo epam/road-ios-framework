@@ -185,33 +185,6 @@
     STAssertTrue(testAttribute != nil, @"please check function");
 }
 
-- (void)test_SF_hasAttributesForMethod {
-    STAssertTrue([AnnotatedClass SF_hasAttributesForMethod:@"viewDidLoad" withAttributeType:nil], @"please check function");
-    STAssertTrue([AnnotatedClass SF_hasAttributesForMethod:@"viewDidLoad" withAttributeType:[CustomSFTestAttribute class]], @"please check function");
-    STAssertTrue(![AnnotatedClass SF_hasAttributesForMethod:@"viewDidLoad" withAttributeType:[AnnotatedClass class]], @"please check function");
-}
-
-- (void)test_SF_hasAttributesForProperty {
-    STAssertTrue([AnnotatedClass SF_hasAttributesForProperty:@"window" withAttributeType:nil], @"please check function");
-    STAssertTrue([AnnotatedClass SF_hasAttributesForProperty:@"window" withAttributeType:[CustomSFTestAttribute class]], @"please check function");
-    STAssertTrue(![AnnotatedClass SF_hasAttributesForProperty:@"window" withAttributeType:[AnnotatedClass class]], @"please check function");
-}
-
-- (void)test_SF_hasAttributesForIvar {
-    STAssertTrue([AnnotatedClass SF_hasAttributesForIvar:@"_someField" withAttributeType:nil], @"please check function");
-}
-
-- (void)test_SF_hasAttributesForClassWithAttributeType {
-    STAssertTrue([AnnotatedClass SF_hasAttributesForClassWithAttributeType:nil], @"please check function");
-    STAssertTrue([AnnotatedClass SF_hasAttributesForClassWithAttributeType:[CustomSFTestAttribute class]], @"please check function");
-    STAssertTrue(![AnnotatedClass SF_hasAttributesForClassWithAttributeType:[AnnotatedClass class]], @"please check function");
-}
-
-- (void)test_SF_propertiesWithAttributeType {
-    NSArray *properties = [AnnotatedClass SF_propertiesWithAttributeType:nil];
-    STAssertTrue([properties count] == 1, @"properties must contain values");
-}
-
 - (void)test_SF_propertiesWithAttributeType_withFiltering {
     NSArray *properties = [AnnotatedClass SF_propertiesWithAttributeType:[CustomSFTestAttribute class]];
     STAssertTrue([properties count] == 1, @"properties must contain values");
@@ -225,11 +198,6 @@
     STAssertTrue([properties count] == 0, @"properties must not contain values");
 }
 
-- (void)test_SF_ivarsWithAttributeType {
-    NSArray *ivars = [AnnotatedClass SF_ivarsWithAttributeType:nil];
-    STAssertTrue([ivars count] == 1, @"ivars must contain values");
-}
-
 - (void)test_SF_ivarsWithAttributeType_withFiltering {
     NSArray *ivars = [AnnotatedClass SF_ivarsWithAttributeType:[SFTestAttribute class]];
     STAssertTrue([ivars count] == 1, @"ivars must contain values");
@@ -241,11 +209,6 @@
 - (void)test_SF_ivarsWithAttributeType_withWrongFiltering {
     NSArray *ivars = [AnnotatedClass SF_ivarsWithAttributeType:[AnnotatedClass class]];
     STAssertTrue([ivars count] == 0, @"ivars must not contain values");
-}
-
-- (void)test_SF_methodsWithAttributeType {
-    NSArray *methods = [AnnotatedClass SF_methodsWithAttributeType:nil];
-    STAssertTrue([methods count] == 2, @"methods must contain values");
 }
 
 - (void)test_SF_methodsWithAttributeType_withFiltering {
