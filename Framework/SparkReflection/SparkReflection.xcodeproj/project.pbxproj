@@ -608,7 +608,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SparkReflection/SparkReflection-Prefix.pch";
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = SparkReflection;
 				PUBLIC_HEADERS_FOLDER_PATH = ../usr/local/include;
 				SKIP_INSTALL = YES;
@@ -625,7 +628,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SparkReflection/SparkReflection-Prefix.pch";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = SparkReflection;
 				PUBLIC_HEADERS_FOLDER_PATH = ../usr/local/include;
 				SKIP_INSTALL = YES;
