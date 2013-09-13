@@ -48,7 +48,6 @@
 		D771949217CF4DED0011047F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D771949017CF4DED0011047F /* InfoPlist.strings */; };
 		D771949517CF4DED0011047F /* SparkLoggerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D771949417CF4DED0011047F /* SparkLoggerTest.m */; };
 		D7AF145517CF745000A92C31 /* libSparkServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF135A17CF4F1D00A92C31 /* libSparkServices.a */; };
-		D7AF145617CF745B00A92C31 /* libSparkAttribute.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7805B19416D2501200B84B33 /* libSparkAttribute.a */; };
 		D7AF145717CF745B00A92C31 /* libSparkObservation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF136B17CF502E00A92C31 /* libSparkObservation.a */; };
 		D7AF146517CF757900A92C31 /* SFServiceProvider+SFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AF146417CF757900A92C31 /* SFServiceProvider+SFLogger.m */; };
 		D7AF147717CF7C4A00A92C31 /* SparkGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AF147617CF7C4A00A92C31 /* SparkGeneratedAttribute.m */; };
@@ -56,31 +55,9 @@
 		D7AF14C717CF910A00A92C31 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF14C617CF910A00A92C31 /* UIKit.framework */; };
 		D7AF14C917CF914200A92C31 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF14C817CF914200A92C31 /* libz.dylib */; };
 		D7AF14CB17CF917800A92C31 /* libSparkCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF14CA17CF917800A92C31 /* libSparkCore.a */; };
-		D7AF14CD17CF918700A92C31 /* libSparkReflection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF14CC17CF918700A92C31 /* libSparkReflection.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7805B19316D2501200B84B33 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 78BCFF8C16D24ED600D23908 /* SparkAttribute.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 789669DA15CBD1CD003D4AFC;
-			remoteInfo = SparkAttribute;
-		};
-		7805B19516D2501200B84B33 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 78BCFF8C16D24ED600D23908 /* SparkAttribute.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9FA9F50215F63D6B00FDE9E0;
-			remoteInfo = SparkAttributeMac;
-		};
-		7805B19716D2501200B84B33 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 78BCFF8C16D24ED600D23908 /* SparkAttribute.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 78DDB7CC1647FF0200E7E92F;
-			remoteInfo = SparkAttributeTest;
-		};
 		D7AF135917CF4F1D00A92C31 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D7AF135317CF4F1D00A92C31 /* SparkServices.xcodeproj */;
@@ -143,13 +120,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 789AAE3116C4E3FA00FF7FB0;
 			remoteInfo = SparkLogger;
-		};
-		D7D587B017C635000081EC7C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 78BCFF8C16D24ED600D23908 /* SparkAttribute.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 789669D915CBD1CD003D4AFC;
-			remoteInfo = SparkAttribute;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -219,7 +189,6 @@
 		78B1BE9D16E7721A009AD4EF /* SFStreamDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFStreamDelegate.m; sourceTree = "<group>"; };
 		78B1BE9E16E7721A009AD4EF /* SFStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFStreamWriter.h; sourceTree = "<group>"; };
 		78B1BE9F16E7721A009AD4EF /* SFStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFStreamWriter.m; sourceTree = "<group>"; };
-		78BCFF8C16D24ED600D23908 /* SparkAttribute.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkAttribute.xcodeproj; path = ../SparkAttribute/SparkAttribute.xcodeproj; sourceTree = "<group>"; };
 		78F95AFB16E9F1CF00E58C3B /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		838844EC1760DDFA0052973D /* SFLoggerWebServicePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLoggerWebServicePath.h; sourceTree = "<group>"; };
 		838844ED1760DDFA0052973D /* SFLoggerWebServicePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLoggerWebServicePath.m; sourceTree = "<group>"; };
@@ -241,7 +210,6 @@
 		D7AF14C617CF910A00A92C31 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D7AF14C817CF914200A92C31 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		D7AF14CA17CF917800A92C31 /* libSparkCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSparkCore.a; path = "../SparkCore/build/Release-iphoneos/libSparkCore.a"; sourceTree = "<group>"; };
-		D7AF14CC17CF918700A92C31 /* libSparkReflection.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSparkReflection.a; path = "../SparkReflection/build/Release-iphoneos/libSparkReflection.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,12 +224,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7AF14CD17CF918700A92C31 /* libSparkReflection.a in Frameworks */,
 				D7AF14CB17CF917800A92C31 /* libSparkCore.a in Frameworks */,
 				D7AF14C917CF914200A92C31 /* libz.dylib in Frameworks */,
 				D7AF14C717CF910A00A92C31 /* UIKit.framework in Frameworks */,
 				D7AF149517CF8E1B00A92C31 /* libSparkLogger.a in Frameworks */,
-				D7AF145617CF745B00A92C31 /* libSparkAttribute.a in Frameworks */,
 				D7AF145717CF745B00A92C31 /* libSparkObservation.a in Frameworks */,
 				D7AF145517CF745000A92C31 /* libSparkServices.a in Frameworks */,
 				D771948A17CF4DED0011047F /* SenTestingKit.framework in Frameworks */,
@@ -272,16 +238,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7805B18016D2501200B84B33 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7805B19416D2501200B84B33 /* libSparkAttribute.a */,
-				7805B19616D2501200B84B33 /* SparkAttribute.framework */,
-				7805B19816D2501200B84B33 /* SparkAttributeTest.octest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		7837BF2916C4E9E30063A026 /* LogFilters */ = {
 			isa = PBXGroup;
 			children = (
@@ -355,13 +311,11 @@
 		789AAE3416C4E3FA00FF7FB0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D7AF14CC17CF918700A92C31 /* libSparkReflection.a */,
 				D7AF14CA17CF917800A92C31 /* libSparkCore.a */,
 				D7AF14C817CF914200A92C31 /* libz.dylib */,
 				D7AF14C617CF910A00A92C31 /* UIKit.framework */,
 				D7AF136417CF502E00A92C31 /* SparkObservation.xcodeproj */,
 				D7AF135317CF4F1D00A92C31 /* SparkServices.xcodeproj */,
-				78BCFF8C16D24ED600D23908 /* SparkAttribute.xcodeproj */,
 				789AAE3516C4E3FA00FF7FB0 /* Foundation.framework */,
 				78F95AFB16E9F1CF00E58C3B /* CoreFoundation.framework */,
 				D757824A17CCB91000BD85DA /* SenTestingKit.framework */,
@@ -484,7 +438,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				D7D587B117C635000081EC7C /* PBXTargetDependency */,
 				D7AF141D17CF663100A92C31 /* PBXTargetDependency */,
 				D7AF145917CF746500A92C31 /* PBXTargetDependency */,
 			);
@@ -535,10 +488,6 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 7805B18016D2501200B84B33 /* Products */;
-					ProjectRef = 78BCFF8C16D24ED600D23908 /* SparkAttribute.xcodeproj */;
-				},
-				{
 					ProductGroup = D7AF136517CF502E00A92C31 /* Products */;
 					ProjectRef = D7AF136417CF502E00A92C31 /* SparkObservation.xcodeproj */;
 				},
@@ -556,27 +505,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		7805B19416D2501200B84B33 /* libSparkAttribute.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libSparkAttribute.a;
-			remoteRef = 7805B19316D2501200B84B33 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7805B19616D2501200B84B33 /* SparkAttribute.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SparkAttribute.framework;
-			remoteRef = 7805B19516D2501200B84B33 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7805B19816D2501200B84B33 /* SparkAttributeTest.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SparkAttributeTest.octest;
-			remoteRef = 7805B19716D2501200B84B33 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		D7AF135A17CF4F1D00A92C31 /* libSparkServices.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -726,11 +654,6 @@
 			isa = PBXTargetDependency;
 			target = 789AAE3116C4E3FA00FF7FB0 /* SparkLogger */;
 			targetProxy = D7AF149317CF8E1300A92C31 /* PBXContainerItemProxy */;
-		};
-		D7D587B117C635000081EC7C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SparkAttribute;
-			targetProxy = D7D587B017C635000081EC7C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

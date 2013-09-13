@@ -8,12 +8,6 @@
       location = "group:SparkSerialization/SparkSerialization.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SparkReflection/SparkReflection.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:SparkAttribute/SparkAttribute.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:SparkCore/SparkCore.xcodeproj">
    </FileRef>
    <FileRef

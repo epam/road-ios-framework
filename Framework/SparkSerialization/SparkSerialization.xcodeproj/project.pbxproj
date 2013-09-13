@@ -10,11 +10,8 @@
 		5A1CC60A176F279300A6C154 /* TempAttributes in Resources */ = {isa = PBXBuildFile; fileRef = 78BCFF7F16D24E6800D23908 /* TempAttributes */; };
 		5A930A26173A85E200B649FF /* SFXMLModelParser.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = B975790116B3FE9300AE855D /* SFXMLModelParser.plist */; };
 		5AD1FC4F1766042200E67BC4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD1FC4E1766042200E67BC4 /* Cocoa.framework */; };
-		7810087E16D24A8600BFDB8D /* SparkAttribute.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 7810087D16D24A8600BFDB8D /* SparkAttribute.xcodeproj */; };
 		782B6D6816C3D4C10057DF2C /* SparkCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782B6CE116C3D46A0057DF2C /* SparkCore.framework */; };
-		782B6D6916C3D4C10057DF2C /* SparkReflection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782B6D3A16C3D46A0057DF2C /* SparkReflection.framework */; };
 		782B6D6E16C3D4CF0057DF2C /* libSparkCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 782B6CDF16C3D46A0057DF2C /* libSparkCore.a */; };
-		782B6D6F16C3D4CF0057DF2C /* libSparkReflection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 782B6D3816C3D46A0057DF2C /* libSparkReflection.a */; };
 		7841617F16480C1D0089FDE9 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7841617E16480C1D0089FDE9 /* SenTestingKit.framework */; };
 		7841618916480C1E0089FDE9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7841618716480C1E0089FDE9 /* InfoPlist.strings */; };
 		784161AC16480CC40089FDE9 /* SFJSONStringHandlingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 784161AB16480CC40089FDE9 /* SFJSONStringHandlingTest.m */; };
@@ -51,8 +48,6 @@
 		7895729516382AEE009D7417 /* SFAttributedCoder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7895727E163808BB009D7417 /* SFAttributedCoder.h */; };
 		7895729616382B06009D7417 /* SFSerializable.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7895728516380A33009D7417 /* SFSerializable.h */; };
 		7895729716382B08009D7417 /* SFDerived.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7895728F163828E1009D7417 /* SFDerived.h */; };
-		78B2476916D24AC000AFFDEE /* libSparkAttribute.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B2475E16D24AA100AFFDEE /* libSparkAttribute.a */; };
-		78B2476C16D24AC800AFFDEE /* SparkAttribute.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B2476016D24AA100AFFDEE /* SparkAttribute.framework */; };
 		78BCAECC16B674E7009EF466 /* SFXMLParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 786995E916AEC29000B28760 /* SFXMLParser.h */; };
 		78BCAECD16B674E7009EF466 /* SFXMLParser+ParseDelegation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B97578F916B3DE1B00AE855D /* SFXMLParser+ParseDelegation.h */; };
 		78BCAECE16B674E7009EF466 /* SFXMLSpecificParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7869965F16AED4C800B28760 /* SFXMLSpecificParser.h */; };
@@ -66,7 +61,6 @@
 		78BCAED616B674E7009EF466 /* SFXMLRelationshipPropertyParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B97578D616B3DC7C00AE855D /* SFXMLRelationshipPropertyParser.h */; };
 		78BCAED716B674E7009EF466 /* SFXMLModelParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B97578D816B3DC7C00AE855D /* SFXMLModelParser.h */; };
 		78CBA92B16C3D41800DAC9BB /* SparkCore.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 78CBA92916C3D41800DAC9BB /* SparkCore.xcodeproj */; };
-		78CBA92D16C3D41800DAC9BB /* SparkReflection.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 78CBA92A16C3D41800DAC9BB /* SparkReflection.xcodeproj */; };
 		78DD732B164A6305009B334C /* SFSerializableCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 78DD7329164A6305009B334C /* SFSerializableCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78DD732C164A6305009B334C /* SFSerializableCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DD732A164A6305009B334C /* SFSerializableCollection.m */; };
 		78DD732D164A6305009B334C /* SFSerializableCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DD732A164A6305009B334C /* SFSerializableCollection.m */; };
@@ -136,27 +130,6 @@
 			remoteGlobalIDString = 78B8E6BF16C3CCC00049E36B;
 			remoteInfo = SparkCoreTest;
 		};
-		782B6D3716C3D46A0057DF2C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 78CBA92A16C3D41800DAC9BB /* SparkReflection.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 78CD6F9915CA8AB800F6C2F9;
-			remoteInfo = SparkReflection;
-		};
-		782B6D3916C3D46A0057DF2C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 78CBA92A16C3D41800DAC9BB /* SparkReflection.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9FA9F4A915F6359700FDE9E0;
-			remoteInfo = SparkReflectionMac;
-		};
-		782B6D3B16C3D46A0057DF2C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 78CBA92A16C3D41800DAC9BB /* SparkReflection.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 78289DF51647C2200036BEFE;
-			remoteInfo = SparkReflectionTest;
-		};
 		782B6D6016C3D4B70057DF2C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78CBA92916C3D41800DAC9BB /* SparkCore.xcodeproj */;
@@ -164,61 +137,12 @@
 			remoteGlobalIDString = 78B8E68D16C3CC3E0049E36B;
 			remoteInfo = SparkCore;
 		};
-		782B6D6216C3D4B70057DF2C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 78CBA92A16C3D41800DAC9BB /* SparkReflection.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 78CD6F9815CA8AB800F6C2F9;
-			remoteInfo = SparkReflection;
-		};
 		782B6D6416C3D4BC0057DF2C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78CBA92916C3D41800DAC9BB /* SparkCore.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 78B8E6A516C3CCA50049E36B;
 			remoteInfo = SparkCoreMac;
-		};
-		782B6D6616C3D4BC0057DF2C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 78CBA92A16C3D41800DAC9BB /* SparkReflection.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 9FA9F4A815F6359700FDE9E0;
-			remoteInfo = SparkReflectionMac;
-		};
-		78B2475D16D24AA100AFFDEE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7810087D16D24A8600BFDB8D /* SparkAttribute.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 789669DA15CBD1CD003D4AFC;
-			remoteInfo = SparkAttribute;
-		};
-		78B2475F16D24AA100AFFDEE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7810087D16D24A8600BFDB8D /* SparkAttribute.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9FA9F50215F63D6B00FDE9E0;
-			remoteInfo = SparkAttributeMac;
-		};
-		78B2476116D24AA100AFFDEE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7810087D16D24A8600BFDB8D /* SparkAttribute.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 78DDB7CC1647FF0200E7E92F;
-			remoteInfo = SparkAttributeTest;
-		};
-		78B2476516D24AB600AFFDEE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7810087D16D24A8600BFDB8D /* SparkAttribute.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 789669D915CBD1CD003D4AFC;
-			remoteInfo = SparkAttribute;
-		};
-		78B2476A16D24AC500AFFDEE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7810087D16D24A8600BFDB8D /* SparkAttribute.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 9FA9F50115F63D6B00FDE9E0;
-			remoteInfo = SparkAttributeMac;
 		};
 		8D60077D17CFFECC0095E17D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -313,7 +237,6 @@
 
 /* Begin PBXFileReference section */
 		5AD1FC4E1766042200E67BC4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = ../../../../System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
-		7810087D16D24A8600BFDB8D /* SparkAttribute.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkAttribute.xcodeproj; path = ../SparkAttribute/SparkAttribute.xcodeproj; sourceTree = "<group>"; };
 		7841617D16480C1D0089FDE9 /* SparkSerializationTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SparkSerializationTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7841617E16480C1D0089FDE9 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		7841618616480C1E0089FDE9 /* SparkSerializationTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SparkSerializationTest-Info.plist"; sourceTree = "<group>"; };
@@ -346,7 +269,6 @@
 		78957290163828E1009D7417 /* SFDerived.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFDerived.m; sourceTree = "<group>"; };
 		78BCFF7F16D24E6800D23908 /* TempAttributes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TempAttributes; sourceTree = "<group>"; };
 		78CBA92916C3D41800DAC9BB /* SparkCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkCore.xcodeproj; path = ../SparkCore/SparkCore.xcodeproj; sourceTree = "<group>"; };
-		78CBA92A16C3D41800DAC9BB /* SparkReflection.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkReflection.xcodeproj; path = ../SparkReflection/SparkReflection.xcodeproj; sourceTree = "<group>"; };
 		78DD7329164A6305009B334C /* SFSerializableCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SFSerializableCollection.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		78DD732A164A6305009B334C /* SFSerializableCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSerializableCollection.m; sourceTree = "<group>"; };
 		835B6C70175628D50072765C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -397,10 +319,8 @@
 				8D60078317CFFF2C0095E17D /* libSparkLogger.a in Frameworks */,
 				8D900EBD17CF9B580018D336 /* libSparkSerialization.a in Frameworks */,
 				782B6D6E16C3D4CF0057DF2C /* libSparkCore.a in Frameworks */,
-				78B2476916D24AC000AFFDEE /* libSparkAttribute.a in Frameworks */,
 				7841617F16480C1D0089FDE9 /* SenTestingKit.framework in Frameworks */,
 				835B6C71175628D50072765C /* libz.dylib in Frameworks */,
-				782B6D6F16C3D4CF0057DF2C /* libSparkReflection.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,9 +335,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78B2476C16D24AC800AFFDEE /* SparkAttribute.framework in Frameworks */,
 				782B6D6816C3D4C10057DF2C /* SparkCore.framework in Frameworks */,
-				782B6D6916C3D4C10057DF2C /* SparkReflection.framework in Frameworks */,
 				5AD1FC4F1766042200E67BC4 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,16 +349,6 @@
 				782B6CDF16C3D46A0057DF2C /* libSparkCore.a */,
 				782B6CE116C3D46A0057DF2C /* SparkCore.framework */,
 				782B6CE316C3D46A0057DF2C /* SparkCoreTest.octest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		782B6CFA16C3D46A0057DF2C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				782B6D3816C3D46A0057DF2C /* libSparkReflection.a */,
-				782B6D3A16C3D46A0057DF2C /* SparkReflection.framework */,
-				782B6D3C16C3D46A0057DF2C /* SparkReflectionTest.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -524,9 +432,7 @@
 			children = (
 				8D60078717D000120095E17D /* SparkServices.xcodeproj */,
 				8D60077817CFFECC0095E17D /* SparkLogger.xcodeproj */,
-				7810087D16D24A8600BFDB8D /* SparkAttribute.xcodeproj */,
 				78CBA92916C3D41800DAC9BB /* SparkCore.xcodeproj */,
-				78CBA92A16C3D41800DAC9BB /* SparkReflection.xcodeproj */,
 				CDB87E6616EA0BA2003D9081 /* Foundation.framework */,
 				5AD1FC4E1766042200E67BC4 /* Cocoa.framework */,
 				835B6C70175628D50072765C /* libz.dylib */,
@@ -592,16 +498,6 @@
 				78DD732A164A6305009B334C /* SFSerializableCollection.m */,
 			);
 			path = Attributes;
-			sourceTree = "<group>";
-		};
-		78B2475816D24AA100AFFDEE /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				78B2475E16D24AA100AFFDEE /* libSparkAttribute.a */,
-				78B2476016D24AA100AFFDEE /* SparkAttribute.framework */,
-				78B2476216D24AA100AFFDEE /* SparkAttributeTest.octest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		8D1239B617CFAE9300094213 /* Assistants */ = {
@@ -804,9 +700,7 @@
 			dependencies = (
 				8D60079417D000210095E17D /* PBXTargetDependency */,
 				8D60078217CFFED90095E17D /* PBXTargetDependency */,
-				78B2476616D24AB600AFFDEE /* PBXTargetDependency */,
 				782B6D6116C3D4B70057DF2C /* PBXTargetDependency */,
-				782B6D6316C3D4B70057DF2C /* PBXTargetDependency */,
 			);
 			name = SparkSerialization;
 			productName = SecondSightSerialization;
@@ -825,9 +719,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				78B2476B16D24AC500AFFDEE /* PBXTargetDependency */,
 				782B6D6516C3D4BC0057DF2C /* PBXTargetDependency */,
-				782B6D6716C3D4BC0057DF2C /* PBXTargetDependency */,
 			);
 			name = SparkSerializationMac;
 			productName = SecondSightSerializationMac;
@@ -856,20 +748,12 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 78B2475816D24AA100AFFDEE /* Products */;
-					ProjectRef = 7810087D16D24A8600BFDB8D /* SparkAttribute.xcodeproj */;
-				},
-				{
 					ProductGroup = 782B6C8216C3D46A0057DF2C /* Products */;
 					ProjectRef = 78CBA92916C3D41800DAC9BB /* SparkCore.xcodeproj */;
 				},
 				{
 					ProductGroup = 8D60077917CFFECC0095E17D /* Products */;
 					ProjectRef = 8D60077817CFFECC0095E17D /* SparkLogger.xcodeproj */;
-				},
-				{
-					ProductGroup = 782B6CFA16C3D46A0057DF2C /* Products */;
-					ProjectRef = 78CBA92A16C3D41800DAC9BB /* SparkReflection.xcodeproj */;
 				},
 				{
 					ProductGroup = 8D60078817D000120095E17D /* Products */;
@@ -905,48 +789,6 @@
 			fileType = wrapper.cfbundle;
 			path = SparkCoreTest.octest;
 			remoteRef = 782B6CE216C3D46A0057DF2C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		782B6D3816C3D46A0057DF2C /* libSparkReflection.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libSparkReflection.a;
-			remoteRef = 782B6D3716C3D46A0057DF2C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		782B6D3A16C3D46A0057DF2C /* SparkReflection.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SparkReflection.framework;
-			remoteRef = 782B6D3916C3D46A0057DF2C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		782B6D3C16C3D46A0057DF2C /* SparkReflectionTest.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SparkReflectionTest.octest;
-			remoteRef = 782B6D3B16C3D46A0057DF2C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		78B2475E16D24AA100AFFDEE /* libSparkAttribute.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libSparkAttribute.a;
-			remoteRef = 78B2475D16D24AA100AFFDEE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		78B2476016D24AA100AFFDEE /* SparkAttribute.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SparkAttribute.framework;
-			remoteRef = 78B2475F16D24AA100AFFDEE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		78B2476216D24AA100AFFDEE /* SparkAttributeTest.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SparkAttributeTest.octest;
-			remoteRef = 78B2476116D24AA100AFFDEE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		8D60077E17CFFECC0095E17D /* libSparkLogger.a */ = {
@@ -1005,8 +847,6 @@
 				9FA9F4E015F636C500FDE9E0 /* InfoPlist.strings in Resources */,
 				B975790216B3FE9300AE855D /* SFXMLModelParser.plist in Resources */,
 				78CBA92B16C3D41800DAC9BB /* SparkCore.xcodeproj in Resources */,
-				78CBA92D16C3D41800DAC9BB /* SparkReflection.xcodeproj in Resources */,
-				7810087E16D24A8600BFDB8D /* SparkAttribute.xcodeproj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1126,30 +966,10 @@
 			name = SparkCore;
 			targetProxy = 782B6D6016C3D4B70057DF2C /* PBXContainerItemProxy */;
 		};
-		782B6D6316C3D4B70057DF2C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SparkReflection;
-			targetProxy = 782B6D6216C3D4B70057DF2C /* PBXContainerItemProxy */;
-		};
 		782B6D6516C3D4BC0057DF2C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SparkCoreMac;
 			targetProxy = 782B6D6416C3D4BC0057DF2C /* PBXContainerItemProxy */;
-		};
-		782B6D6716C3D4BC0057DF2C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SparkReflectionMac;
-			targetProxy = 782B6D6616C3D4BC0057DF2C /* PBXContainerItemProxy */;
-		};
-		78B2476616D24AB600AFFDEE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SparkAttribute;
-			targetProxy = 78B2476516D24AB600AFFDEE /* PBXContainerItemProxy */;
-		};
-		78B2476B16D24AC500AFFDEE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SparkAttributeMac;
-			targetProxy = 78B2476A16D24AC500AFFDEE /* PBXContainerItemProxy */;
 		};
 		8D60078217CFFED90095E17D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

@@ -42,4 +42,6 @@
 #import "SFObject.h"
 #import "SparkSingletonDefinition.h"
 #import "NSRegularExpression+SparkExtension.h"
+#import "SparkReflection.h"
+#import "SparkAttribute.h"
 #endif
