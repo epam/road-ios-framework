@@ -74,23 +74,11 @@ extern NSString * const kSFLogMessageTypeNoLogging;
  */
 @property (assign, nonatomic) SFLogLevel level;
 
-/**
- Factory method for creating a log message.
- @param messageText The message text.
- @param type The message type.
- @param level The log level of the message.
- @param userInfo The userInfo dictionary for the log message.
- */
-+ (SFLogMessage *)logMessage:(NSString * const)messageText type:(NSString * const)type level:(SFLogLevel const)level userInfo:(NSDictionary * const)userInfo;
++ (SFLogMessage *)logMessageFormat:(NSString *)format args:(va_list)args level:(SFLogLevel)level type:(NSString *)type;
++ (SFLogMessage *)logMessageFormat:(NSString *)format args:(va_list)args level:(SFLogLevel)level;
++ (SFLogMessage *)logMessageFormat:(NSString *)format args:(va_list)args;
 
-+ (SFLogMessage *)infoMessage:(NSString * const)messageText;
-+ (SFLogMessage *)warningMessage:(NSString * const)messageText;
-+ (SFLogMessage *)errorMessage:(NSString * const)messageText;
-+ (SFLogMessage *)debugMessage:(NSString * const)messageText;
-
-+ (SFLogMessage *)infoMessage:(NSString * const)messageText type:(NSString *)type;
-+ (SFLogMessage *)warningMessage:(NSString * const)messageText type:(NSString *)type;
-+ (SFLogMessage *)errorMessage:(NSString * const)messageText type:(NSString *)type;
-+ (SFLogMessage *)debugMessage:(NSString * const)messageText type:(NSString *)type;
+#pragma EXTRA
++ (SFLogMessage *)logMessage:(NSString *)message;
 
 @end

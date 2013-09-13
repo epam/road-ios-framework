@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>CD8B6CA1-B75F-4874-BBB0-99A887F73D67</string>
+	<string>875B21F3-CE36-42E4-9CFF-AC7037859B58</string>
 	<key>IDESourceControlProjectName</key>
 	<string>SparkFramework</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>E6515F0F-BB3C-404F-9D53-9C0C5A5604D3</key>
+		<key>A15CB3C2-EE2B-41C5-8C58-EB3FA5D4FD19</key>
 		<string>https://github.com/edl00k/spark-ios-framework.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Framework/SparkFramework.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>E6515F0F-BB3C-404F-9D53-9C0C5A5604D3</key>
+		<key>A15CB3C2-EE2B-41C5-8C58-EB3FA5D4FD19</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>E6515F0F-BB3C-404F-9D53-9C0C5A5604D3</string>
+	<string>A15CB3C2-EE2B-41C5-8C58-EB3FA5D4FD19</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>E6515F0F-BB3C-404F-9D53-9C0C5A5604D3</string>
+			<string>A15CB3C2-EE2B-41C5-8C58-EB3FA5D4FD19</string>
 			<key>IDESourceControlWCCName</key>
 			<string>spark-ios-framework</string>
 		</dict>

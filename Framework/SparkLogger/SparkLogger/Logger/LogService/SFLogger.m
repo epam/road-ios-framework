@@ -43,7 +43,7 @@
     self = [super init];
     if (self) {
         writers = [[NSMutableArray alloc] init];
-        internalWriter = [[SFConsoleLogWriter alloc]init];
+        internalWriter = [[SFConsoleLogWriter alloc] init];
     }
     return self;
 }
@@ -77,44 +77,85 @@
 
 #pragma mark - Logging methods
 
-- (void)logInfoMessage:(NSString *const)messageText {
-    [self logMessage:[SFLogMessage infoMessage:messageText]];
+- (void)logInfoMessage:(NSString *)format, ... {
+	va_list args;
+	if (format) {
+		va_start(args, format);
+        if (format) [self logMessage:[SFLogMessage logMessageFormat:format args:args level:SFLogLevelInfo]];
+		va_end(args);
+	}
 }
 
-- (void)logDebugMessage:(NSString *const)messageText {
-    [self logMessage:[SFLogMessage debugMessage:messageText]];
+- (void)logDebugMessage:(NSString *)format, ... {
+	va_list args;
+	if (format) {
+		va_start(args, format);
+        if (format) [self logMessage:[SFLogMessage logMessageFormat:format args:args level:SFLogLevelDebug]];
+		va_end(args);
+	}
 }
 
-- (void)logWarningMessage:(NSString *const)messageText {
-    [self logMessage:[SFLogMessage warningMessage:messageText]];
+- (void)logWarningMessage:(NSString *)format, ... {
+	va_list args;
+	if (format) {
+		va_start(args, format);
+        if (format) [self logMessage:[SFLogMessage logMessageFormat:format args:args level:SFLogLevelWarning]];
+		va_end(args);
+	}
 }
 
-- (void)logErrorMessage:(NSString *const)messageText {
-    [self logMessage:[SFLogMessage errorMessage:messageText]];
+- (void)logErrorMessage:(NSString *)format, ... {
+	va_list args;
+	if (format) {
+		va_start(args, format);
+        if (format) [self logMessage:[SFLogMessage logMessageFormat:format args:args level:SFLogLevelError]];
+		va_end(args);
+	}
 }
 
-- (void)logInternalErrorMessage:(NSString *const)messageText {
-    [internalWriter logValidMessage:[SFLogMessage errorMessage:messageText]];
+- (void)logInternalErrorMessage:(NSString *)format, ...  {
+    va_list args;
+	if (format) {
+		va_start(args, format);
+        if (format) [internalWriter logValidMessage:[SFLogMessage logMessageFormat:format args:args]];
+		va_end(args);
+	}
 }
 
-- (void)logInfoMessage:(NSString *const)messageText type:(NSString *)type {
-    SFLogMessage *message = [SFLogMessage infoMessage:messageText type:type];
-    [self logMessage:message];
+- (void)logInfoType:(NSString *)type message:(NSString *)format, ... {
+    va_list args;
+	if (format) {
+		va_start(args, format);
+        if (format) [self logMessage:[SFLogMessage logMessageFormat:format args:args level:SFLogLevelInfo type:type]];
+		va_end(args);
+	}
 }
 
-- (void)logDebugMessage:(NSString *const)messageText type:(NSString *)type {
-    SFLogMessage *message = [SFLogMessage debugMessage:messageText type:type];
-    [self logMessage:message];
+- (void)logDebugType:(NSString *)type message:(NSString *)format, ... {
+    va_list args;
+	if (format) {
+		va_start(args, format);
+        if (format) [self logMessage:[SFLogMessage logMessageFormat:format args:args level:SFLogLevelDebug type:type]];
+		va_end(args);
+	}
 }
 
-- (void)logWarningMessage:(NSString *const)messageText type:(NSString *)type {
-    SFLogMessage *message = [SFLogMessage warningMessage:messageText type:type];
-    [self logMessage:message];
+- (void)logWarningType:(NSString *)type message:(NSString *)format, ... {
+    va_list args;
+	if (format) {
+		va_start(args, format);
+        if (format) [self logMessage:[SFLogMessage logMessageFormat:format args:args level:SFLogLevelWarning type:type]];
+		va_end(args);
+	}
 }
 
-- (void)logErrorMessage:(NSString *const)messageText type:(NSString *)type {
-    SFLogMessage *message = [SFLogMessage infoMessage:messageText type:type];
-    [self logMessage:message];
+- (void)logErrorType:(NSString *)type message:(NSString *)format, ... {
+    va_list args;
+	if (format) {
+		va_start(args, format);
+        if (format) [self logMessage:[SFLogMessage logMessageFormat:format args:args level:SFLogLevelError type:type]];
+		va_end(args);
+	}
 }
 
 @end
