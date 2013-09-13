@@ -28,7 +28,6 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <Foundation/Foundation.h>
-#import <Spark/NSInvocation+SparkExtension.h>
 
 /**
  This category constains a set of methods which used by generated code.
@@ -40,13 +39,31 @@
 @interface NSObject (SFAttributesInternal)
 
 #pragma mark Internal API
-
+/**
+ Creates NSInvocation object for given selector.
+ @param selector A selector for NSInvocation object
+ @return NSInvocation object for given selector.
+ */
 + (NSInvocation *)SF_invocationForSelector:(SEL)selector;
 
 #pragma mark Will be overridden in generated code
-
+/**
+ Returns a dictionary which consists from method's names as keys and NSInvocation objects as values.
+ NSInvocation object points to a method which creates array of attribute objects declared for method specified in dictionary.
+ @return a dictionary which consists from method's names as keys and NSInvocation objects as values. Or nil if methods have no declarations
+ */
 + (NSMutableDictionary *)SF_attributesFactoriesForMethods;
+/**
+ Returns a dictionary which consists from property's names as keys and NSInvocation objects as values.
+ NSInvocation object points to a method which creates array of attribute objects declared for property specified in dictionary.
+ @return a dictionary which consists from property's names as keys and NSInvocation objects as values. Or nil if properties have no declarations
+ */
 + (NSMutableDictionary *)SF_attributesFactoriesForProperties;
+/**
+ Returns a dictionary which consists from instance variable's names as keys and NSInvocation objects as values.
+ NSInvocation object points to a method which creates array of attribute objects declared for instance variable specified in dictionary.
+ @return a dictionary which consists from instance variable's names as keys and NSInvocation objects as values. Or nil if instance variables have no declarations
+ */
 + (NSMutableDictionary *)SF_attributesFactoriesForIvars;
 
 #pragma mark -

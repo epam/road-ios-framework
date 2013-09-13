@@ -28,6 +28,7 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "NSObject+SFAttributesInternal.h"
+#import <Spark/NSInvocation+SparkExtension.h>
 
 @implementation NSObject (SFAttributesInternal)
 
