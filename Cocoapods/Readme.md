@@ -16,7 +16,7 @@ required [gem](http://rubygems.org):
         $ pod repo add spark-ios-framework https://github.com/epam/spark-ios-framework.git
         $ pod push spark-ios-framework --allow-warnings --local-only
 
-* create a project and copy `Podfile`
+* create a project and copy [`Podfile`](https://github.com/edl00k/spark-ios-framework/blob/support-pods/Cocoapods/Podfile)
 
 * install dependencies:
 
