@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9FA9F50115F63D6B00FDE9E0"
-               BuildableName = "SparkAttribute.framework"
-               BlueprintName = "SparkAttributeMac"
-               ReferencedContainer = "container:SparkAttribute.xcodeproj">
+               BlueprintIdentifier = "78FB204115BD336B00C2137A"
+               BuildableName = "libSparkWebservice.a"
+               BlueprintName = "SparkWebService"
+               ReferencedContainer = "container:SparkWebservice.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,6 +28,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "783AF1A21650FAF800AD247E"
+               BuildableName = "SparkWebserviceTest.octest"
+               BlueprintName = "SparkWebServiceTest"
+               ReferencedContainer = "container:SparkWebservice.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
