@@ -8,5 +8,3 @@ tools/SparkAttributesCodeGenerator/SparkAttributesCodeGenerator.xcodeproj/projec
 tools/SparkAttributesCodeGenerator/SparkAttributesCodeGenerator.xcodeproj/project.xcworkspace/contents.xcworkspacedata
 
 *.xcworkspacedata
-
-*.xcscheme
