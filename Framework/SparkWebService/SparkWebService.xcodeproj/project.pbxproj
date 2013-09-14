@@ -404,7 +404,7 @@
 		78BCFFA716D24FE900D23908 /* SparkAttribute.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkAttribute.xcodeproj; path = ../SparkAttribute/SparkAttribute.xcodeproj; sourceTree = "<group>"; };
 		78CBA94916C3D44A00DAC9BB /* SparkCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkCore.xcodeproj; path = ../SparkCore/SparkCore.xcodeproj; sourceTree = "<group>"; };
 		78CBA94A16C3D44A00DAC9BB /* SparkReflection.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkReflection.xcodeproj; path = ../SparkReflection/SparkReflection.xcodeproj; sourceTree = "<group>"; };
-		78FB204215BD336B00C2137A /* libSparkWebService.temp_caseinsensitive_rename.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSparkWebService.temp_caseinsensitive_rename.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		78FB204215BD336B00C2137A /* libSparkWebService.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSparkWebService.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		831EB9D917C600AA004C9BA5 /* SFWebServiceErrorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFWebServiceErrorHandler.h; sourceTree = "<group>"; };
 		831EB9DA17C600AA004C9BA5 /* SFWebServiceErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFWebServiceErrorHandler.m; sourceTree = "<group>"; };
 		831EB9EA17C6047D004C9BA5 /* SFWebServiceErrorHandling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFWebServiceErrorHandling.h; sourceTree = "<group>"; };
@@ -558,7 +558,7 @@
 		78FB204315BD336B00C2137A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				78FB204215BD336B00C2137A /* libSparkWebService.temp_caseinsensitive_rename.a */,
+				78FB204215BD336B00C2137A /* libSparkWebService.a */,
 				783AF1A31650FAF800AD247E /* SparkWebService.temp_caseinsensitive_renameTest.octest */,
 			);
 			name = Products;
@@ -878,7 +878,7 @@
 			);
 			name = SparkWebService;
 			productName = SecondSightWebservice;
-			productReference = 78FB204215BD336B00C2137A /* libSparkWebService.temp_caseinsensitive_rename.a */;
+			productReference = 78FB204215BD336B00C2137A /* libSparkWebService.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -1117,7 +1117,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../../tools/binaries/SparkAttributesCodeGenerator\" -src=\"${SRCROOT}/${PRODUCT_NAME}\" -dst=\"${SRCROOT}/SparkWebservice/SparkGeneratedAttributes/\"";
+			shellScript = "echo \"${SRCROOT}/${PRODUCT_NAME}\"\n\"${SRCROOT}/../../tools/binaries/SparkAttributesCodeGenerator\" -src=\"${SRCROOT}/${PRODUCT_NAME}\" -dst=\"${SRCROOT}/SparkWebService/SparkGeneratedAttributes/\"";
 		};
 		83C544EE174B80A9000C8BCD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1409,7 +1409,7 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = SparkWebService.temp_caseinsensitive_rename;
+				PRODUCT_NAME = SparkWebService;
 				PUBLIC_HEADERS_FOLDER_PATH = ../usr/local/include;
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "$(OBJROOT)/usr/local/include/** $(BUILT_PRODUCTS_DIR)/../usr/local/include/**";
@@ -1434,7 +1434,7 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = SparkWebService.temp_caseinsensitive_rename;
+				PRODUCT_NAME = SparkWebService;
 				PUBLIC_HEADERS_FOLDER_PATH = ../usr/local/include;
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "$(OBJROOT)/usr/local/include/** $(BUILT_PRODUCTS_DIR)/../usr/local/include/**";
