@@ -35,23 +35,9 @@
 
 @implementation SFSparkServicesTest
 
-- (void)setUp
-{
-    [super setUp];
-    
-    // Set-up code here.
-}
-
-- (void)tearDown
-{
-    // Tear-down code here.
-    
-    [super tearDown];
-}
-
 - (void)testInstanceFakeService
 {
-    SFTestService *databaseManager = [[SFServiceProvider sharedProvider] serviceInstance];
+    SFTestService *databaseManager = [SFServiceProvider serviceInstance];
     STAssertNotNil(databaseManager, @"Service has not been initialised.");
 }
 

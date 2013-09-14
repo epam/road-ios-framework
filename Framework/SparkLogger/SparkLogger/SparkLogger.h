@@ -46,25 +46,25 @@
 #import "SFServiceProvider+LoggingService.h"
 
 #define SFLogInternalError(...) \
-    [[[SFServiceProvider sharedProvider] logger] logInternalErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
+    [[SFServiceProvider logger] logInternalErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
 
 
 #define SFLogInfo(...) \
-        [[[SFServiceProvider sharedProvider] logger] logInfoMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]];
+        [[SFServiceProvider logger] logInfoMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]];
 #define SFLogDebug(...) \
-        [[[SFServiceProvider sharedProvider] logger] logDebugMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
+        [[SFServiceProvider logger] logDebugMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
 #define SFLogWarning(...) \
-        [[[SFServiceProvider sharedProvider] logger] logWarningMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
+        [[SFServiceProvider logger] logWarningMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
 #define SFLogError(...) \
-        [[[SFServiceProvider sharedProvider] logger] logErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
+        [[SFServiceProvider logger] logErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
 
 #define SFLogTypedInfo(__type__, ...) \
-        [[[SFServiceProvider sharedProvider] logger] logInfoMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
+        [[SFServiceProvider logger] logInfoMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
 #define SFLogTypedDebug(__type__, ...) \
-        [[[SFServiceProvider sharedProvider] logger] logDebugMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
+        [[SFServiceProvider logger] logDebugMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
 #define SFLogTypedWarning(__type__, ...) \
-        [[[SFServiceProvider sharedProvider] logger] logWarningMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
+        [[SFServiceProvider logger] logWarningMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
 #define SFLogTypedError(__type__, ...) \
-        [[[SFServiceProvider sharedProvider] logger] logErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
+        [[SFServiceProvider logger] logErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
 
 #endif

@@ -29,11 +29,8 @@
 
 
 #import <Foundation/Foundation.h>
-#import <Spark/SparkSingletonDefinition.h>
 #import "SFService.h"
 
 @interface SFServiceProvider : NSObject
-
-SPARK_DECLARE_SINGLETON_FOR_CLASS_WITH_ACCESSOR(SFServiceProvider, sharedProvider)
 
 @end
