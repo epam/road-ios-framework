@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:SparkWebService/SparkWebservice.xcodeproj">
+      location = "group:SparkWebService/SparkWebService/SparkWebService.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:SparkSerialization/SparkSerialization.xcodeproj">
