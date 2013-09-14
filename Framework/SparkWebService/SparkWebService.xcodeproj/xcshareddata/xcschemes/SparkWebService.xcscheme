@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "78FB204115BD336B00C2137A"
-               BuildableName = "libSparkWebservice.a"
+               BuildableName = "libSparkWebService.temp_caseinsensitive_rename.a"
                BlueprintName = "SparkWebService"
-               ReferencedContainer = "container:SparkWebservice.xcodeproj">
+               ReferencedContainer = "container:SparkWebService.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "783AF1A21650FAF800AD247E"
-               BuildableName = "SparkWebserviceTest.octest"
+               BuildableName = "SparkWebService.temp_caseinsensitive_renameTest.octest"
                BlueprintName = "SparkWebServiceTest"
-               ReferencedContainer = "container:SparkWebservice.xcodeproj">
+               ReferencedContainer = "container:SparkWebService.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
