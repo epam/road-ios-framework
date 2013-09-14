@@ -28,6 +28,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "783AF1A21650FAF800AD247E"
+               BuildableName = "SparkWebserviceTest.octest"
+               BlueprintName = "SparkWebserviceTest"
+               ReferencedContainer = "container:SparkWebservice.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

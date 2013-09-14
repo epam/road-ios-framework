@@ -28,6 +28,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7867EB7E16C3C91B00A93194"
+               BuildableName = "SparkObservationTest.octest"
+               BlueprintName = "SparkObservationTest"
+               ReferencedContainer = "container:SparkObservation.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
