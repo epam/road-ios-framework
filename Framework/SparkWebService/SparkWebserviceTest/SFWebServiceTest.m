@@ -48,7 +48,7 @@
 @implementation SFWebServiceTest
 
 + (void)setUp {
-    [[[SFServiceProvider sharedProvider] logger] addWriter:[SFConsoleLogWriter new]];
+    [[SFServiceProvider logger] addWriter:[SFConsoleLogWriter new]];
     
     SEL originalSelector = @selector(start);
     SEL overrideSelector = @selector(fakeStart);
@@ -133,11 +133,11 @@
 }
 
 - (void)testWebServiceManagement {
-    SFConcreteWebServiceClient *client = [[SFServiceProvider sharedProvider] concreteWebServiceClient];
+    SFConcreteWebServiceClient *client = [SFServiceProvider concreteWebServiceClient];
     STAssertTrue(client != nil, @"Concrete web service client was not created properly.");
     
     client.sharedHeaders = [@{@"key1" : @"value1"} mutableCopy];
-    SFConcreteWebServiceClient *theSameClient = [[SFServiceProvider sharedProvider] concreteWebServiceClient];
+    SFConcreteWebServiceClient *theSameClient = [SFServiceProvider concreteWebServiceClient];
     STAssertTrue([theSameClient.sharedHeaders count], @"Shared headers has not been saved.");
 }
 

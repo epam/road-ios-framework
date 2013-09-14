@@ -76,7 +76,7 @@
 #pragma mark - NSURLConnection data delegates
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)aConnection {
-    SFLogTypedDebug(self.loggerType, @"URL connection(%p) has finished. URL: %@. Data was received: %@", aConnection, [aConnection.currentRequest.URL absoluteString], [NSString stringWithUTF8String:[self.data bytes]]);
+    SFLogTypedDebug(self.loggerType, @"URL connection(%p) has finished. URL: %@. Data was received: %@", aConnection, [aConnection.currentRequest.URL absoluteString], [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding]);
     
     // Checking response with error handler
     SFWebServiceErrorHandler *errorHandlerAttribute;

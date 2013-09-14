@@ -1,3 +1,6 @@
+#import "SFServiceProvider.h"
+#import "SFTestService.h"
+#import "SFService.h"
 #import "SFServiceProvider+SFTestService.h"
  
 @interface SFServiceProvider(SFAttribute)
