@@ -1,0 +1,19 @@
+language: objective-c
+script:
+    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkAttribute build test -sdk iphonesimulator
+    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkCore build test -sdk iphonesimulator
+    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkLogger build test -sdk iphonesimulator
+    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkObservation build test -sdk iphonesimulator
+    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkReflection build test -sdk iphonesimulator
+    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkSerialization build test -sdk iphonesimulator
+    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkServices build test -sdk iphonesimulator
+    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkWebService build test -sdk iphonesimulator
+    - xctool -project tools/SparkAttributesCodeGenerator/SparkAttributesCodeGenerator.xcodeproj -scheme SparkAttributesCodeGenerator build
+notifications:
+  email:
+    - Nikita_Leonov@epam.com
+    - Yuru_Taustahuzau@epam.com
+    - Eduard_Beleninik@epam.com
+    - Igor_Chesnokov@epam.com
+    - Oleh_Sannikov@epam.com
+    - Tymur_Mamedov@epam.com
