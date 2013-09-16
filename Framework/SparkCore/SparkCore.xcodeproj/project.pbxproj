@@ -291,13 +291,13 @@
 		78B8E68516C3CC3E0049E36B = {
 			isa = PBXGroup;
 			children = (
-				78B8E69016C3CC3E0049E36B /* Frameworks */,
-				78B8E68F16C3CC3E0049E36B /* Products */,
 				8D9422F417E2C5A9005F0AE3 /* SparkAttributeTest */,
 				78B8E69316C3CC3E0049E36B /* SparkCore */,
 				78B8E6AD16C3CCA50049E36B /* SparkCoreMac */,
 				8D9422DC17E2C59C005F0AE3 /* SparkCoreTest */,
 				8D94230917E2C5B3005F0AE3 /* SparkReflectionTest */,
+				78B8E69016C3CC3E0049E36B /* Frameworks */,
+				78B8E68F16C3CC3E0049E36B /* Products */,
 			);
 			sourceTree = "<group>";
 		};
