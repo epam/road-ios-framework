@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
 
-#import <Spark/SparkAttributesSupport.h>
+#import <Spark/SparkAttribute.h>
 
 @interface SFWebServiceClientStatusCodes : NSObject
 

@@ -29,6 +29,7 @@
 
 
 #import "SFWebServiceClient.h"
+#import <Spark/SFWebServiceLogger.h>
 
 @protocol SFWebServiceCancellable;
 

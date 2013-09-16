@@ -55,19 +55,7 @@
 - (id)initWithMultiLevelProperty:(NSArray *)properties {
     NSMutableString *propertyName = nil;
     for (SFPropertyInfo *propertyInfo in properties) {
-        NSString *propertyAttributeName;
-        if ([NSClassFromString(propertyInfo.className) hasAttributesForProperty:propertyInfo.propertyName withAttributeType:[SFODataProperty class]]) {
-            SFODataProperty *propertyAttribute = [NSClassFromString(propertyInfo.className) attributeForProperty:propertyInfo.propertyName withAttributeType:[SFODataProperty class]];
-            propertyAttributeName = [propertyAttribute serializationKey];
-        }
-        else if ([NSClassFromString(propertyInfo.className) hasAttributesForProperty:propertyInfo.propertyName withAttributeType:[SFSerializable class]]) {
-            SFSerializable *propertyAttribute = [NSClassFromString(propertyInfo.className) attributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializable class]];
-            propertyAttributeName = [propertyAttribute serializationKey];
-        }
-        if (!propertyAttributeName) {
-            propertyAttributeName = [propertyInfo getterName];
-        }
-        
+        NSString *propertyAttributeName = [SFODataExpression propertyAttributeNameFromInfo:propertyInfo];
         if (propertyName) {
             [propertyName appendFormat:@"/%@", propertyAttributeName];
         }
@@ -81,6 +69,8 @@
     return self;
 }
 
+
+
 - (id)initWithPredicate:(SFODataPredicate *)predicate {
     self = [self initWithValue:[predicate description]];
     
@@ -89,6 +79,20 @@
 
 - (NSString *)description {
     return _expression;
+}
+
++ (NSString *)propertyAttributeNameFromInfo:(SFPropertyInfo *)propertyInfo {
+    SFODataProperty *dataPropertyAttribute = [propertyInfo attributeWithType:[SFODataProperty class]];
+    if (dataPropertyAttribute) {
+        return [dataPropertyAttribute serializationKey];
+    }
+    
+    SFSerializable *serializablePropertyAttribute = [propertyInfo attributeWithType:[SFSerializable class]];
+    if (serializablePropertyAttribute) {
+        return [serializablePropertyAttribute serializationKey];
+    }
+    
+    return [propertyInfo getterName];
 }
 
 @end

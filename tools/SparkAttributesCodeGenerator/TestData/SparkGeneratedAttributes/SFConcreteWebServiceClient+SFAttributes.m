@@ -13,11 +13,11 @@
  
 #pragma mark - Fill Attributes generated code (Methods section)
 
-static NSMutableArray __weak *sf_attributes_list_SFConcreteWebServiceClient_method_testErrorHandlerRootWithSuccess_p2 = nil;
+static NSMutableArray __weak *SF_attributes_list_SFConcreteWebServiceClient_method_testErrorHandlerRootWithSuccess_p2 = nil;
 
-+ (NSArray *)sf_attributes_SFConcreteWebServiceClient_method_testErrorHandlerRootWithSuccess_p2 {
-    if (sf_attributes_list_SFConcreteWebServiceClient_method_testErrorHandlerRootWithSuccess_p2 != nil) {
-        return sf_attributes_list_SFConcreteWebServiceClient_method_testErrorHandlerRootWithSuccess_p2;
++ (NSArray *)SF_attributes_SFConcreteWebServiceClient_method_testErrorHandlerRootWithSuccess_p2 {
+    if (SF_attributes_list_SFConcreteWebServiceClient_method_testErrorHandlerRootWithSuccess_p2 != nil) {
+        return SF_attributes_list_SFConcreteWebServiceClient_method_testErrorHandlerRootWithSuccess_p2;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:3];
@@ -35,16 +35,16 @@ static NSMutableArray __weak *sf_attributes_list_SFConcreteWebServiceClient_meth
     attr3.handlerClass = @"SFODataErrorHandler";
     [attributesArray addObject:attr3];
 
-    sf_attributes_list_SFConcreteWebServiceClient_method_testErrorHandlerRootWithSuccess_p2 = attributesArray;
+    SF_attributes_list_SFConcreteWebServiceClient_method_testErrorHandlerRootWithSuccess_p2 = attributesArray;
     
-    return sf_attributes_list_SFConcreteWebServiceClient_method_testErrorHandlerRootWithSuccess_p2;
+    return SF_attributes_list_SFConcreteWebServiceClient_method_testErrorHandlerRootWithSuccess_p2;
 }
 
-static NSMutableArray __weak *sf_attributes_list_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p3 = nil;
+static NSMutableArray __weak *SF_attributes_list_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p3 = nil;
 
-+ (NSArray *)sf_attributes_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p3 {
-    if (sf_attributes_list_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p3 != nil) {
-        return sf_attributes_list_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p3;
++ (NSArray *)SF_attributes_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p3 {
+    if (SF_attributes_list_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p3 != nil) {
+        return SF_attributes_list_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p3;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:3];
@@ -60,16 +60,16 @@ static NSMutableArray __weak *sf_attributes_list_SFConcreteWebServiceClient_meth
     attr3.builderClass = [SFODataWebServiceURLBuilder class];
     [attributesArray addObject:attr3];
 
-    sf_attributes_list_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p3 = attributesArray;
+    SF_attributes_list_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p3 = attributesArray;
     
-    return sf_attributes_list_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p3;
+    return SF_attributes_list_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p3;
 }
 
-static NSMutableArray __weak *sf_attributes_list_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p4 = nil;
+static NSMutableArray __weak *SF_attributes_list_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p4 = nil;
 
-+ (NSArray *)sf_attributes_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p4 {
-    if (sf_attributes_list_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p4 != nil) {
-        return sf_attributes_list_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p4;
++ (NSArray *)SF_attributes_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p4 {
+    if (SF_attributes_list_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p4 != nil) {
+        return SF_attributes_list_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p4;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:3];
@@ -87,16 +87,16 @@ static NSMutableArray __weak *sf_attributes_list_SFConcreteWebServiceClient_meth
     attr3.hearderFields = @{@"Accept" : @"application/json"};
     [attributesArray addObject:attr3];
 
-    sf_attributes_list_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p4 = attributesArray;
+    SF_attributes_list_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p4 = attributesArray;
     
-    return sf_attributes_list_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p4;
+    return SF_attributes_list_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p4;
 }
 
-static NSMutableArray __weak *sf_attributes_list_SFConcreteWebServiceClient_method_testSerializationRootWithSuccess_p2 = nil;
+static NSMutableArray __weak *SF_attributes_list_SFConcreteWebServiceClient_method_testSerializationRootWithSuccess_p2 = nil;
 
-+ (NSArray *)sf_attributes_SFConcreteWebServiceClient_method_testSerializationRootWithSuccess_p2 {
-    if (sf_attributes_list_SFConcreteWebServiceClient_method_testSerializationRootWithSuccess_p2 != nil) {
-        return sf_attributes_list_SFConcreteWebServiceClient_method_testSerializationRootWithSuccess_p2;
++ (NSArray *)SF_attributes_SFConcreteWebServiceClient_method_testSerializationRootWithSuccess_p2 {
+    if (SF_attributes_list_SFConcreteWebServiceClient_method_testSerializationRootWithSuccess_p2 != nil) {
+        return SF_attributes_list_SFConcreteWebServiceClient_method_testSerializationRootWithSuccess_p2;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
@@ -107,16 +107,16 @@ static NSMutableArray __weak *sf_attributes_list_SFConcreteWebServiceClient_meth
     attr1.successCodes = @[[NSValue valueWithRange:NSMakeRange(200, 300)]];
     [attributesArray addObject:attr1];
 
-    sf_attributes_list_SFConcreteWebServiceClient_method_testSerializationRootWithSuccess_p2 = attributesArray;
+    SF_attributes_list_SFConcreteWebServiceClient_method_testSerializationRootWithSuccess_p2 = attributesArray;
     
-    return sf_attributes_list_SFConcreteWebServiceClient_method_testSerializationRootWithSuccess_p2;
+    return SF_attributes_list_SFConcreteWebServiceClient_method_testSerializationRootWithSuccess_p2;
 }
 
-static NSMutableArray __weak *sf_attributes_list_SFConcreteWebServiceClient_method_testWrongSerializationRootWithSuccess_p2 = nil;
+static NSMutableArray __weak *SF_attributes_list_SFConcreteWebServiceClient_method_testWrongSerializationRootWithSuccess_p2 = nil;
 
-+ (NSArray *)sf_attributes_SFConcreteWebServiceClient_method_testWrongSerializationRootWithSuccess_p2 {
-    if (sf_attributes_list_SFConcreteWebServiceClient_method_testWrongSerializationRootWithSuccess_p2 != nil) {
-        return sf_attributes_list_SFConcreteWebServiceClient_method_testWrongSerializationRootWithSuccess_p2;
++ (NSArray *)SF_attributes_SFConcreteWebServiceClient_method_testWrongSerializationRootWithSuccess_p2 {
+    if (SF_attributes_list_SFConcreteWebServiceClient_method_testWrongSerializationRootWithSuccess_p2 != nil) {
+        return SF_attributes_list_SFConcreteWebServiceClient_method_testWrongSerializationRootWithSuccess_p2;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
@@ -127,25 +127,29 @@ static NSMutableArray __weak *sf_attributes_list_SFConcreteWebServiceClient_meth
     attr1.successCodes = @[[NSValue valueWithRange:NSMakeRange(200, 300)]];
     [attributesArray addObject:attr1];
 
-    sf_attributes_list_SFConcreteWebServiceClient_method_testWrongSerializationRootWithSuccess_p2 = attributesArray;
+    SF_attributes_list_SFConcreteWebServiceClient_method_testWrongSerializationRootWithSuccess_p2 = attributesArray;
     
-    return sf_attributes_list_SFConcreteWebServiceClient_method_testWrongSerializationRootWithSuccess_p2;
+    return SF_attributes_list_SFConcreteWebServiceClient_method_testWrongSerializationRootWithSuccess_p2;
 }
 
 static NSMutableDictionary __weak *attributesSFConcreteWebServiceClientFactoriesForMethodsDict = nil;
     
-+ (NSDictionary *)attributesFactoriesForMethods {
++ (NSMutableDictionary *)SF_attributesFactoriesForMethods {
     if (attributesSFConcreteWebServiceClientFactoriesForMethodsDict != nil) {
         return attributesSFConcreteWebServiceClientFactoriesForMethodsDict;
     }
     
-    NSMutableDictionary *dictionaryHolder = [self mutableAttributesFactoriesFrom:[super attributesFactoriesForMethods]];
+    NSMutableDictionary *dictionaryHolder = [super SF_attributesFactoriesForMethods];
     
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_SFConcreteWebServiceClient_method_testErrorHandlerRootWithSuccess_p2)] forKey:@"testErrorHandlerRootWithSuccess:failure:"];
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p3)] forKey:@"loadDataWithFetchRequest:success:failure:"];
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p4)] forKey:@"loadDataWithFetchRequest:someImportantParameter:success:failure:"];
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_SFConcreteWebServiceClient_method_testSerializationRootWithSuccess_p2)] forKey:@"testSerializationRootWithSuccess:failure:"];
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_SFConcreteWebServiceClient_method_testWrongSerializationRootWithSuccess_p2)] forKey:@"testWrongSerializationRootWithSuccess:failure:"];
+    if (!dictionaryHolder) {
+        dictionaryHolder = [NSMutableDictionary dictionary];
+    }
+    
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_SFConcreteWebServiceClient_method_testErrorHandlerRootWithSuccess_p2)] forKey:@"testErrorHandlerRootWithSuccess:failure:"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p3)] forKey:@"loadDataWithFetchRequest:success:failure:"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_SFConcreteWebServiceClient_method_loadDataWithFetchRequest_p4)] forKey:@"loadDataWithFetchRequest:someImportantParameter:success:failure:"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_SFConcreteWebServiceClient_method_testSerializationRootWithSuccess_p2)] forKey:@"testSerializationRootWithSuccess:failure:"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_SFConcreteWebServiceClient_method_testWrongSerializationRootWithSuccess_p2)] forKey:@"testWrongSerializationRootWithSuccess:failure:"];
     attributesSFConcreteWebServiceClientFactoriesForMethodsDict = dictionaryHolder;  
     
     return attributesSFConcreteWebServiceClientFactoriesForMethodsDict;

@@ -56,4 +56,6 @@
  */
 - (id)initWithPredicate:(SFODataPredicate *)predicate;
 
++ (NSString *)propertyAttributeNameFromInfo:(SFPropertyInfo *)propertyInfo;
+
 @end

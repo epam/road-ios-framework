@@ -4,5 +4,5 @@
 
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
-    #import <Spark/SparkReflection.h>
+    #import "SparkReflection.h"
 #endif

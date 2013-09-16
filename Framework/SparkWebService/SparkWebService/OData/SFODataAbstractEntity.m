@@ -33,7 +33,7 @@
 @implementation SFODataAbstractEntity
 
 + (NSString *)entityName {
-    SFODataEntity *entityAttribute = [self attributeForClassWithAttributeType:[SFODataEntity class]];
+    SFODataEntity *entityAttribute = [self SF_attributeForClassWithAttributeType:[SFODataEntity class]];
     NSString *entityName = [entityAttribute entityName];
     if (!entityName.length) {
         entityName = NSStringFromClass(self);

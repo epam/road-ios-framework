@@ -33,9 +33,9 @@
 
 @interface NSRegularExpression (SparkExtension)
 
-+ (NSRegularExpression *)regexFromString:(NSString *)regexString;
-+ (NSString *)stringByReplacingRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSString *)sourceString;
-+ (void)replaceRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSMutableString *)sourceString;
-+ (NSUInteger)numberOfMatchesToRegex:(NSString *)regexString inString:(NSString *)sourceString;
++ (NSRegularExpression *)SF_regexFromString:(NSString *)regexString;
++ (NSString *)SF_stringByReplacingRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSString *)sourceString;
++ (void)SF_replaceRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSMutableString *)sourceString;
++ (NSUInteger)SF_numberOfMatchesToRegex:(NSString *)regexString inString:(NSString *)sourceString;
 
 @end
