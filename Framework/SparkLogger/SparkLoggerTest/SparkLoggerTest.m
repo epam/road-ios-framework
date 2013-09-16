@@ -46,29 +46,29 @@
 
 - (void)testInstanceAsService {
     
-    id <SFLogging> logger = [[SFServiceProvider sharedProvider] logger];
+    id <SFLogging> logger = [SFServiceProvider logger];
     STAssertNotNil(logger, @"Logger as service has not been initialised.");
 }
 
 - (void)testInstanceWriters {
     // reset queue of writers
-    [[[SFServiceProvider sharedProvider] logger] setWriters:@[]];
+    [[SFServiceProvider logger] setWriters:@[]];
     
-    [[[SFServiceProvider sharedProvider] logger] addWriter:[SFConsoleLogWriter new]];
-    [[[SFServiceProvider sharedProvider] logger] addWriter:[SFConsoleLogWriter infoConsoleWriter]];
-    [[[SFServiceProvider sharedProvider] logger] addWriter:[SFConsoleLogWriter debugConsoleWriter]];
+    [[SFServiceProvider logger] addWriter:[SFConsoleLogWriter new]];
+    [[SFServiceProvider logger] addWriter:[SFConsoleLogWriter infoConsoleWriter]];
+    [[SFServiceProvider logger] addWriter:[SFConsoleLogWriter debugConsoleWriter]];
     
-    STAssertTrue([[[[SFServiceProvider sharedProvider] logger] writers] count] == 3, @"The number of the writers (added) doesn't coincide");
+    STAssertTrue([[[SFServiceProvider logger] writers] count] == 3, @"The number of the writers (added) doesn't coincide");
 }
 
 - (void)testFilters {
     
     // reset queue of writers
-    [[[SFServiceProvider sharedProvider] logger] setWriters:@[]];
+    [[SFServiceProvider logger] setWriters:@[]];
     
     // add writer (by information messages)
     SFLogWriter *infoWriter = [SFConsoleLogWriter infoConsoleWriter];
-    [[[SFServiceProvider sharedProvider] logger] addWriter:infoWriter];
+    [[SFServiceProvider logger] addWriter:infoWriter];
     // trying to add information message
     SFLogDebug(@"text message text message text message");
     STAssertTrue([infoWriter.messageQueue count] == 0, @"The queue contains unacceptable message");
@@ -85,15 +85,15 @@
 
 - (void)testSimpleSendInfoMessage {
     // reset queue of writers
-    [[[SFServiceProvider sharedProvider] logger] setWriters:@[]];
+    [[SFServiceProvider logger] setWriters:@[]];
 
     SFLogWriter *writer = [SFConsoleLogWriter new];
     // add console writer
-    [[[SFServiceProvider sharedProvider] logger] addWriter:writer];
+    [[SFServiceProvider logger] addWriter:writer];
     
     NSString *simpleMessage = @"Simple test message";
     
-    [[[SFServiceProvider sharedProvider] logger] logInfoMessage:simpleMessage];
+    [[SFServiceProvider logger] logInfoMessage:simpleMessage];
     
     STAssertFalse([[writer messageQueue] count] == 0, @"The queue of messages is empty");
     STAssertEquals(simpleMessage, [[[writer messageQueue] objectAtIndex:0] message], @"Values are not equals");

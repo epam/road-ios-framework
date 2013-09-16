@@ -74,7 +74,7 @@
 		8D94224B17E2A4BE005F0AE3 /* SFWebServiceClient+DynamicTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5D20417D4CDDB0030D8CD /* SFWebServiceClient+DynamicTest.m */; };
 		8D94224C17E2A4C2005F0AE3 /* SFWebServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CD896C381737E85800565C9C /* SFWebServiceTest.m */; };
 		8D94224D17E2A4C6005F0AE3 /* SFODataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 837B002617B3B9A300D77A5D /* SFODataTest.m */; };
-		8D94225117E2A4E3005F0AE3 /* libSparkWebservice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78FB204215BD336B00C2137A /* libSparkWebservice.a */; };
+		8D94225117E2A4E3005F0AE3 /* libSparkWebService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78FB204215BD336B00C2137A /* libSparkWebService.a */; };
 		CD69624116F0D2100090B201 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD69624016F0D20F0090B201 /* CFNetwork.framework */; };
 		CD896C231737E84F00565C9C /* SFWebServiceCall.m in Sources */ = {isa = PBXBuildFile; fileRef = CD896C001737E84F00565C9C /* SFWebServiceCall.m */; };
 		CD896C241737E84F00565C9C /* SFWebServiceHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = CD896C021737E84F00565C9C /* SFWebServiceHeader.m */; };
@@ -271,10 +271,10 @@
 		5A4AFC47176872640097B1D9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		5AD1FC0C176601C200E67BC4 /* SparkServices.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkServices.xcodeproj; path = ../SparkServices/SparkServices.xcodeproj; sourceTree = "<group>"; };
 		5AFB79C5176613C6007F813A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		783AF1A31650FAF800AD247E /* SparkWebserviceTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SparkWebserviceTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		783AF1A31650FAF800AD247E /* SparkWebService.temp_caseinsensitive_renameTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SparkWebService.temp_caseinsensitive_renameTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		783AF1A41650FAF800AD247E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		78CBA94916C3D44A00DAC9BB /* SparkCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkCore.xcodeproj; path = ../SparkCore/SparkCore.xcodeproj; sourceTree = "<group>"; };
-		78FB204215BD336B00C2137A /* libSparkWebservice.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSparkWebservice.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		78FB204215BD336B00C2137A /* libSparkWebService.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSparkWebService.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		831EB9D917C600AA004C9BA5 /* SFWebServiceErrorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SFWebServiceErrorHandler.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		831EB9DA17C600AA004C9BA5 /* SFWebServiceErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFWebServiceErrorHandler.m; sourceTree = "<group>"; };
 		831EB9EA17C6047D004C9BA5 /* SFWebServiceErrorHandling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFWebServiceErrorHandling.h; sourceTree = "<group>"; };
@@ -380,7 +380,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D94225117E2A4E3005F0AE3 /* libSparkWebservice.a in Frameworks */,
+				8D94225117E2A4E3005F0AE3 /* libSparkWebService.a in Frameworks */,
 				E5D6E05C17981FBA0041EBCB /* UIKit.framework in Frameworks */,
 				5A4AFC48176872640097B1D9 /* CoreData.framework in Frameworks */,
 				5AFB79C117661385007F813A /* libSparkCore.a in Frameworks */,
@@ -427,8 +427,8 @@
 		78FB204315BD336B00C2137A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				78FB204215BD336B00C2137A /* libSparkWebservice.a */,
-				783AF1A31650FAF800AD247E /* SparkWebserviceTest.octest */,
+				78FB204215BD336B00C2137A /* libSparkWebService.a */,
+				783AF1A31650FAF800AD247E /* SparkWebService.temp_caseinsensitive_renameTest.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -677,9 +677,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		783AF1A21650FAF800AD247E /* SparkWebserviceTest */ = {
+		783AF1A21650FAF800AD247E /* SparkWebServiceTest */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 783AF1B41650FAF800AD247E /* Build configuration list for PBXNativeTarget "SparkWebserviceTest" */;
+			buildConfigurationList = 783AF1B41650FAF800AD247E /* Build configuration list for PBXNativeTarget "SparkWebServiceTest" */;
 			buildPhases = (
 				83448CDC17D0D393002A0D15 /* ShellScript */,
 				783AF19E1650FAF800AD247E /* Sources */,
@@ -692,14 +692,14 @@
 			dependencies = (
 				8D94225017E2A4DA005F0AE3 /* PBXTargetDependency */,
 			);
-			name = SparkWebserviceTest;
+			name = SparkWebServiceTest;
 			productName = SecondSightWebserviceTest;
-			productReference = 783AF1A31650FAF800AD247E /* SparkWebserviceTest.octest */;
+			productReference = 783AF1A31650FAF800AD247E /* SparkWebService.temp_caseinsensitive_renameTest.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
-		78FB204115BD336B00C2137A /* SparkWebservice */ = {
+		78FB204115BD336B00C2137A /* SparkWebService */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 78FB204F15BD336B00C2137A /* Build configuration list for PBXNativeTarget "SparkWebservice" */;
+			buildConfigurationList = 78FB204F15BD336B00C2137A /* Build configuration list for PBXNativeTarget "SparkWebService" */;
 			buildPhases = (
 				83B1E28417CF91AD0049C112 /* ShellScript */,
 				78FB203E15BD336B00C2137A /* Sources */,
@@ -716,9 +716,9 @@
 				CD3BFBFA17391902006C4D2F /* PBXTargetDependency */,
 				5AF652C81767126D004A6BB7 /* PBXTargetDependency */,
 			);
-			name = SparkWebservice;
+			name = SparkWebService;
 			productName = SecondSightWebservice;
-			productReference = 78FB204215BD336B00C2137A /* libSparkWebservice.a */;
+			productReference = 78FB204215BD336B00C2137A /* libSparkWebService.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -731,7 +731,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Epam Systems";
 			};
-			buildConfigurationList = 78FB203C15BD336B00C2137A /* Build configuration list for PBXProject "SparkWebservice" */;
+			buildConfigurationList = 78FB203C15BD336B00C2137A /* Build configuration list for PBXProject "SparkWebService" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -761,8 +761,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				78FB204115BD336B00C2137A /* SparkWebservice */,
-				783AF1A21650FAF800AD247E /* SparkWebserviceTest */,
+				78FB204115BD336B00C2137A /* SparkWebService */,
+				783AF1A21650FAF800AD247E /* SparkWebServiceTest */,
 			);
 		};
 /* End PBXProject section */
@@ -905,7 +905,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../../tools/binaries/SparkAttributesCodeGenerator\" -src=\"${SRCROOT}/SparkWebservice/\" -dst=\"${SRCROOT}/SparkWebservice/SparkGeneratedAttributes/\"";
+			shellScript = "echo \"${SRCROOT}/${PRODUCT_NAME}\"\n\"${SRCROOT}/../../tools/binaries/SparkAttributesCodeGenerator\" -src=\"${SRCROOT}/SparkWebservice/\" -dst=\"${SRCROOT}/SparkWebservice/SparkGeneratedAttributes/\"";
 		};
 		83C544EE174B80A9000C8BCD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -998,7 +998,7 @@
 		};
 		8D94225017E2A4DA005F0AE3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 78FB204115BD336B00C2137A /* SparkWebservice */;
+			target = 78FB204115BD336B00C2137A /* SparkWebService */;
 			targetProxy = 8D94224F17E2A4DA005F0AE3 /* PBXContainerItemProxy */;
 		};
 		CD3BFBFA17391902006C4D2F /* PBXTargetDependency */ = {
@@ -1030,7 +1030,7 @@
 					"-all_load",
 					"-ObjC",
 				);
-				PRODUCT_NAME = SparkWebserviceTest;
+				PRODUCT_NAME = SparkWebService.temp_caseinsensitive_renameTest;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -1055,7 +1055,7 @@
 					"-all_load",
 					"-ObjC",
 				);
-				PRODUCT_NAME = SparkWebserviceTest;
+				PRODUCT_NAME = SparkWebService.temp_caseinsensitive_renameTest;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
@@ -1128,7 +1128,7 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = SparkWebservice;
+				PRODUCT_NAME = SparkWebService;
 				PUBLIC_HEADERS_FOLDER_PATH = ../usr/local/include;
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "$(OBJROOT)/usr/local/include/** $(BUILT_PRODUCTS_DIR)/../usr/local/include/**";
@@ -1153,7 +1153,7 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = SparkWebservice;
+				PRODUCT_NAME = SparkWebService;
 				PUBLIC_HEADERS_FOLDER_PATH = ../usr/local/include;
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "$(OBJROOT)/usr/local/include/** $(BUILT_PRODUCTS_DIR)/../usr/local/include/**";
@@ -1163,7 +1163,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		783AF1B41650FAF800AD247E /* Build configuration list for PBXNativeTarget "SparkWebserviceTest" */ = {
+		783AF1B41650FAF800AD247E /* Build configuration list for PBXNativeTarget "SparkWebServiceTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				783AF1B51650FAF800AD247E /* Debug */,
@@ -1172,7 +1172,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		78FB203C15BD336B00C2137A /* Build configuration list for PBXProject "SparkWebservice" */ = {
+		78FB203C15BD336B00C2137A /* Build configuration list for PBXProject "SparkWebService" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				78FB204D15BD336B00C2137A /* Debug */,
@@ -1181,7 +1181,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		78FB204F15BD336B00C2137A /* Build configuration list for PBXNativeTarget "SparkWebservice" */ = {
+		78FB204F15BD336B00C2137A /* Build configuration list for PBXNativeTarget "SparkWebService" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				78FB205015BD336B00C2137A /* Debug */,

@@ -758,6 +758,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SparkLoggerTest/SparkLoggerTest-Prefix.pch";
 				INFOPLIST_FILE = "SparkLoggerTest/SparkLoggerTest-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -778,6 +779,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SparkLoggerTest/SparkLoggerTest-Prefix.pch";
 				INFOPLIST_FILE = "SparkLoggerTest/SparkLoggerTest-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",

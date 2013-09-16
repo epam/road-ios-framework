@@ -34,28 +34,23 @@
 
 const char *SFServiceMethodEncoding = "@@:";
 
-@implementation SFServiceProvider {
-    NSMutableDictionary *services;
-}
+@implementation SFServiceProvider
 
-SPARK_SYNTHESIZE_SINGLETON_FOR_CLASS_WITH_ACCESSOR(SFServiceProvider, sharedProvider, ^(SFServiceProvider* object){ [object initialize]; });
+static NSMutableDictionary *services;
 
-- (void)initialize {
-    services = [[NSMutableDictionary alloc] init];
-}
 
 #pragma mark - Method resolution
 
-+ (BOOL)resolveInstanceMethod:(SEL)sel {
++ (BOOL)resolveClassMethod:(SEL)sel {
     BOOL result;
     NSString *selectorName = NSStringFromSelector(sel);
     SFService *serviceAttribute = [SFServiceProvider SF_attributeForMethod:selectorName withAttributeType:[SFService class]];
-
     
     if (serviceAttribute != nil) {
         result = YES;
-        IMP const implementation = [self instanceMethodForSelector:@selector(fetchService)];
-        class_addMethod(self, sel, implementation, SFServiceMethodEncoding);
+        IMP const implementation = [self methodForSelector:@selector(fetchService)];
+        Class metaClass = object_getClass(self);
+        class_addMethod(metaClass, sel, implementation, SFServiceMethodEncoding);
     }
     else {
         result = [super resolveInstanceMethod:sel];
@@ -64,7 +59,7 @@ SPARK_SYNTHESIZE_SINGLETON_FOR_CLASS_WITH_ACCESSOR(SFServiceProvider, sharedProv
     return result;
 }
 
-- (id)fetchService {
++ (id)fetchService {
     NSString * const serviceName = NSStringFromSelector(_cmd);
     id theService = services[serviceName];
     
@@ -78,11 +73,16 @@ SPARK_SYNTHESIZE_SINGLETON_FOR_CLASS_WITH_ACCESSOR(SFServiceProvider, sharedProv
     return theService;
 }
 
+
 #pragma mark - Service registration
 
-- (void)registerService:(const id)aServiceInstance forServiceName:(NSString * const)serviceName {
++ (void)registerService:(const id)aServiceInstance forServiceName:(NSString * const)serviceName {
     
     if (aServiceInstance != nil) {
+        if (!services) {
+            services = [[NSMutableDictionary alloc] init];
+        }
+        
         services[serviceName] = aServiceInstance;
     }
 }
