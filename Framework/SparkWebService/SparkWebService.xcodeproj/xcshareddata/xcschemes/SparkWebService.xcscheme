@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "78FB204115BD336B00C2137A"
-               BuildableName = "libSparkWebService.temp_caseinsensitive_rename.a"
+               BuildableName = "libSparkWebService.a"
                BlueprintName = "SparkWebService"
                ReferencedContainer = "container:SparkWebService.xcodeproj">
             </BuildableReference>

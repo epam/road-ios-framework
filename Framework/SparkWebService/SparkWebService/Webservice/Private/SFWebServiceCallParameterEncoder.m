@@ -86,7 +86,7 @@ static NSString * const kSFBoundaryDefaultString = @"AaB03x";
             isMultipartData = YES;
             [self addAttachments:object toBodyData:bodyData boundary:boundary];
         }
-        else if ([[object class] hasAttributesForClassWithAttributeType:[SFWebServiceURLBuilderParameter class]]) {
+        else if ([[object class] SF_attributeForClassWithAttributeType:[SFWebServiceURLBuilderParameter class]]) {
             encodedObject = object;
         }
         else {
@@ -133,7 +133,7 @@ static NSString * const kSFBoundaryDefaultString = @"AaB03x";
 }
 
 + (NSString *)boundaryFromWebServiceClient:(id)webServiceClient withMethodName:(NSString *)methodName {
-    SFMultipartData *multipartDataAttribute = [[webServiceClient class] attributeForMethod:methodName withAttributeType:[SFMultipartData class]];
+    SFMultipartData *multipartDataAttribute = [[webServiceClient class] SF_attributeForMethod:methodName withAttributeType:[SFMultipartData class]];
     NSString *boundary;
     if (!multipartDataAttribute.boundary) {
         // Default boundary

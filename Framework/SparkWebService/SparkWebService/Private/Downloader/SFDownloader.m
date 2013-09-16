@@ -70,12 +70,12 @@
         _methodName = methodName;
         _authenticationProvider = authenticaitonProvider;
         _successCodes = [NSMutableArray arrayWithObjects:[NSValue valueWithRange:NSMakeRange(200, 100)], nil];
-        SFWebServiceLogger *loggerTypeAttribute = [[webServiceClient class] attributeForMethod:_methodName withAttributeType:[SFWebServiceLogger class]];
+        SFWebServiceLogger *loggerTypeAttribute = [[webServiceClient class] SF_attributeForMethod:_methodName withAttributeType:[SFWebServiceLogger class]];
         if (!loggerTypeAttribute) {
-            loggerTypeAttribute = [[self class] attributeForClassWithAttributeType:[SFWebServiceLogger class]];
+            loggerTypeAttribute = [[self class] SF_attributeForClassWithAttributeType:[SFWebServiceLogger class]];
         }
         _loggerType = loggerTypeAttribute.loggerType;
-        _callAttribute = [[_webServiceClient class] attributeForMethod:_methodName withAttributeType:[SFWebServiceCall class]];
+        _callAttribute = [[_webServiceClient class] SF_attributeForMethod:_methodName withAttributeType:[SFWebServiceCall class]];
     }
     
     return self;
@@ -91,7 +91,7 @@
     // For multipart form data we have to add specific header
     if (_multipartData) {
         NSString *boundary;
-        SFMultipartData *multipartDataAttribute = [[self.webServiceClient class] attributeForMethod:self.methodName withAttributeType:[SFMultipartData class]];
+        SFMultipartData *multipartDataAttribute = [[self.webServiceClient class] SF_attributeForMethod:self.methodName withAttributeType:[SFMultipartData class]];
         boundary = multipartDataAttribute.boundary;
         if (!boundary.length) {
             // Some random default boundary
@@ -101,7 +101,7 @@
         [_request addValue:contentType forHTTPHeaderField:@"Content-Type"];
     }
     
-    SFWebServiceHeader * const headerAttribute = [[_webServiceClient class] attributeForMethod:_methodName withAttributeType:[SFWebServiceHeader class]];
+    SFWebServiceHeader * const headerAttribute = [[_webServiceClient class] SF_attributeForMethod:_methodName withAttributeType:[SFWebServiceHeader class]];
     
     // Adding shared headers to request
     NSMutableDictionary *headerFields = [sharedHeaders mutableCopy];
@@ -118,7 +118,8 @@
         [self.successCodes removeAllObjects];
         [self.successCodes addObjectsFromArray:_callAttribute.successCodes];
     } else {
-        SFWebServiceClientStatusCodes* wsca = [[self.webServiceClient class] attributeForClassWithAttributeType:[SFWebServiceClientStatusCodes class]];
+        SFWebServiceClientStatusCodes* wsca = [[self.webServiceClient class] SF_attributeForClassWithAttributeType:[SFWebServiceClientStatusCodes class]];
+
         if ([wsca.successCodes count] > 0) {
             [self.successCodes removeAllObjects];
             [self.successCodes addObjectsFromArray:wsca.successCodes];

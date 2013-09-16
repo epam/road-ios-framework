@@ -81,7 +81,7 @@
 }
 
 + (NSString *)listCreatorName:(AnnotatedElementModel *)model {
-    return @"attributesForClass";
+    return @"SF_attributesForClass";
 }
 
 + (NSString *)elementType {

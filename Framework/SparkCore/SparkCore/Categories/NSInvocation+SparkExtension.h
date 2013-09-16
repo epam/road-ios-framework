@@ -31,6 +31,6 @@
 
 @interface NSInvocation (SparkExtension)
 
-+ (NSInvocation *)invocationForSelector:(SEL)selector target:(id)target;
++ (NSInvocation *)SF_invocationForSelector:(SEL)selector target:(id)target;
 
 @end

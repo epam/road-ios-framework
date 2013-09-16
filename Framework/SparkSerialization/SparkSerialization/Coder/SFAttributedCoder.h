@@ -40,20 +40,20 @@
  @param rootObject The object to serialize.
  @result The json string.
  */
-+ (id)encodeRootObject:(id const)rootObject;
++ (id)encodeRootObject:(id)rootObject;
 
 /**
  Encodes the specified object into a json string data.
  @param rootObject The object to serialize.
  @result The json string data.
  */
-+ (NSData *)encodeRootObjectToData:(const id)rootObject;
++ (NSData *)encodedDataOfRootObject:(id)rootObject;
 
 /**
  Encodes the specified object into a json dictionary.
  @param rootObject The object to serialize.
  @result The json dictionary.
  */
-+ (NSDictionary *)encodeRootObjectToSerializableObject:(const id)rootObject;
++ (id)encodeRootObjectToSerializableObject:(id)rootObject;
 
 @end
