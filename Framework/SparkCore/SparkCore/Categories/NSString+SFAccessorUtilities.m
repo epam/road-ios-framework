@@ -38,23 +38,23 @@ static NSString * const kSFCaseTransformationFormat = @"%@%@%@";
 @implementation NSString (SFAccessorUtilities)
 
 - (NSString *)SF_stringByTransformingToSetterAccessor {
-    return [NSString stringWithFormat:kSFSetterNameFormat, [self stringWithUpperCaseFirstCharacter]];
+    return [NSString stringWithFormat:kSFSetterNameFormat, [self SF_stringWithUpperCaseFirstCharacter]];
 }
 
 - (NSString *)SF_stringByTransformingToGetterAccessor {
     NSString *result;
     
     if ([self hasPrefix:kSFSetterPrefix]) {
-        result = [[self substringWithRange:NSMakeRange([kSFSetterPrefix length], [self length]-([kSFSetterPrefix length] + 1))] stringWithLowerCaseFirstCharacter];
+        result = [[self substringWithRange:NSMakeRange([kSFSetterPrefix length], [self length]-([kSFSetterPrefix length] + 1))] SF_stringWithLowerCaseFirstCharacter];
     }
     else if ([self hasPrefix:kSFBooleanGetterPrefix]) {
-        result = [[self substringWithRange:NSMakeRange([kSFBooleanGetterPrefix length], [self length]-([kSFBooleanGetterPrefix length] + 1))] stringWithLowerCaseFirstCharacter];
+        result = [[self substringWithRange:NSMakeRange([kSFBooleanGetterPrefix length], [self length]-([kSFBooleanGetterPrefix length] + 1))] SF_stringWithLowerCaseFirstCharacter];
     }
     return result;
 }
 
 // Creates a string from the receiver by transforming its first letter character into upper case
-- (NSString *)stringWithUpperCaseFirstCharacter {
+- (NSString *)SF_stringWithUpperCaseFirstCharacter {
     NSRange const range = [self rangeOfCharacterFromSet:[NSCharacterSet letterCharacterSet]];
     NSString * const subString = [[self substringWithRange:range] uppercaseString];
     NSString * const firstPart = [self substringToIndex:range.location];
@@ -65,7 +65,7 @@ static NSString * const kSFCaseTransformationFormat = @"%@%@%@";
 }
 
 // Creates a string from the receiver by transforming its first letter character into lower case
-- (NSString *)stringWithLowerCaseFirstCharacter {
+- (NSString *)SF_stringWithLowerCaseFirstCharacter {
     NSRange const range = [self rangeOfCharacterFromSet:[NSCharacterSet letterCharacterSet]];
     NSString * const subString = [[self substringWithRange:range] lowercaseString];
     NSString * const firstPart = [self substringToIndex:range.location];
