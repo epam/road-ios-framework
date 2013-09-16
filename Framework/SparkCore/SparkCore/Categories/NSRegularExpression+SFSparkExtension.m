@@ -1,7 +1,8 @@
 //
-//  NSMutableDictionary+KeyedSubscript.m
-//  SparkCore
+//  NSRegularExpression+SFSparkExtension.m
+//  AttributesResearchLab
 //
+//  
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without 
@@ -26,18 +27,37 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
 
+#import "NSRegularExpression+SFSparkExtension.h"
 
-#import "NSMutableDictionary+KeyedSubscript.h"
+@implementation NSRegularExpression (SFSparkExtension)
 
-#ifndef __IPHONE_6_0
++ (NSRegularExpression *)SF_regexFromString:(NSString *)regexString {
+    NSError *error = NULL;
+    NSRegularExpression *result = [NSRegularExpression regularExpressionWithPattern:regexString options:0 error:&error];
+    
+    return result;
+}
 
-@implementation NSMutableDictionary (KeyedSubscript)
++ (NSString *)SF_stringByReplacingRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSString *)sourceString {
+    NSRegularExpression *regex = [NSRegularExpression SF_regexFromString:regexString];
+    
+    NSString *result = [regex stringByReplacingMatchesInString:sourceString options:0 range:NSMakeRange(0, [sourceString length]) withTemplate:template];
+    return result;
+}
 
-- (void)setObject:(id)obj forKeyedSubscript:(id<NSCopying>)key {
-    [self setObject:obj forKey:key];
++ (void)SF_replaceRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSMutableString *)sourceString {
+    NSRegularExpression *regex = [NSRegularExpression SF_regexFromString:regexString];
+    
+    [regex replaceMatchesInString:sourceString options:0 range:NSMakeRange(0, [sourceString length]) withTemplate:template];
+}
+
++ (NSUInteger)SF_numberOfMatchesToRegex:(NSString *)regexString inString:(NSString *)sourceString {
+    NSRegularExpression *regex = [NSRegularExpression SF_regexFromString:regexString];
+    NSUInteger result = [regex numberOfMatchesInString:sourceString options:0 range:NSMakeRange(0, [sourceString length])];
+    
+    return result;
 }
 
 @end
-
-#endif

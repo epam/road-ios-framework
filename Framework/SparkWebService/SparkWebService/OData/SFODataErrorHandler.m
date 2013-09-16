@@ -30,7 +30,7 @@
 #import "SFODataErrorHandler.h"
 
 #import <Spark/SparkSerialization.h>
-#import "NSError+SparkWebService.h"
+#import "NSError+SFSparkWebService.h"
 
 @implementation SFODataErrorHandler
 

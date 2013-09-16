@@ -30,7 +30,7 @@
 
 #import "SFPropertyInfoTest.h"
 #import "SFPropertyInfo.h"
-#import "NSObject+PropertyReflection.h"
+#import "NSObject+SFPropertyReflection.h"
 
 @implementation SFPropertyInfoTest {
     SFPropertyInfo *desc;
@@ -44,29 +44,29 @@
 }
 
 - (void)testStrong {
-    desc = [self propertyNamed:@"strong"];
+    desc = [self SF_propertyNamed:@"strong"];
     STAssertTrue([desc isWeak] == NO && [desc isCopied] == NO && [desc isDynamic] == NO, @"Assertion: property is strong.");
 }
 
 - (void)testWeak {
-    desc = [self propertyNamed:@"weak"];
+    desc = [self SF_propertyNamed:@"weak"];
     STAssertTrue([desc isWeak] && [desc isCopied] == NO && [desc isDynamic] == NO, @"Assertion: property is weak");
 }
 
 - (void)testCopyDynamic {
-    desc = [self propertyNamed:@"copy"];
+    desc = [self SF_propertyNamed:@"copy"];
     STAssertTrue([desc isCopied] && [desc isDynamic] && [desc isWeak] == NO, @"Assertion: property is declared copy, and is dynamically implemented.");
 }
 
 - (void)testBoolAssign {
-    desc = [self propertyNamed:@"valid"];
+    desc = [self SF_propertyNamed:@"valid"];
     STAssertTrue([desc isCopied] == NO && [desc isDynamic] == NO && [desc isWeak] == NO && [desc isNonatomic], @"Assertion: property is assigned and nonatomic");
     STAssertTrue([[desc getterName] isEqualToString:@"isValid"], @"Assertion: custom getter name (isValid) is correct (%@)", [desc getterName]);
     STAssertTrue([[desc setterName] isEqualToString:@"setToValid:"], @"Assertion: custom setter name (setToValid:) is correct (%@)", [desc setterName]);
 }
 
 - (void)testReadonlyAssignAtomic {
-    desc = [self propertyNamed:@"readonly"];
+    desc = [self SF_propertyNamed:@"readonly"];
     STAssertTrue([desc isNonatomic] == NO && [desc isReadonly], @"Assertion: property is atomic and readonly.");
 }
 

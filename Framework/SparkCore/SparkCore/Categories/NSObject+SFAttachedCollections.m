@@ -1,6 +1,6 @@
 //
-//  NSObject+PropertyReflection.m
-//  SparkReflection
+//  NSObject+OwnedCollections.m
+//  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -28,25 +28,21 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-#import "NSObject+PropertyReflection.h"
-#import <objc/runtime.h>
+#import "NSObject+SFAttachedCollections.h"
+#import "NSBundle+SFParameterList.h"
 
-@implementation NSObject (PropertyReflection)
+@implementation NSObject (SFAttachedCollections)
 
-- (NSArray * const)properties {
-    return [SFPropertyInfo propertiesForClass:[self class]];
+- (NSArray *)SF_attachedArray {
+    NSString * const path = [[NSBundle bundleForClass:[self class]] SF_pathForOwnedPlist];
+    NSArray * const array = [NSArray arrayWithContentsOfFile:path];
+    return array;
 }
 
-- (SFPropertyInfo *)propertyNamed:(NSString *)name {
-    return [SFPropertyInfo propertyNamed:name forClass:[self class]];
-}
-
-+ (NSArray * const)properties {
-    return [SFPropertyInfo propertiesForClass:self];
-}
-
-+ (SFPropertyInfo *)propertyNamed:(NSString *)name {
-    return [SFPropertyInfo propertyNamed:name forClass:self];
+- (NSDictionary *)SF_attachedDictionary {
+    NSString * const path = [[NSBundle bundleForClass:[self class]] SF_pathForOwnedPlist];
+    NSDictionary * const dictionary = [NSDictionary dictionaryWithContentsOfFile:path];
+    return dictionary;
 }
 
 @end

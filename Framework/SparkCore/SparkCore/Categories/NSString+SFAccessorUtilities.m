@@ -1,5 +1,5 @@
 //
-//  NSString+AccessorUtilities.m
+//  NSString+SFAccessorUtilities.m
 //  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -28,20 +28,20 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-#import "NSString+AccessorUtilities.h"
+#import "NSString+SFAccessorUtilities.h"
 
 static NSString * const kSFSetterNameFormat = @"set%@:";
 static NSString * const kSFSetterPrefix = @"set";
 static NSString * const kSFBooleanGetterPrefix = @"is";
 static NSString * const kSFCaseTransformationFormat = @"%@%@%@";
 
-@implementation NSString (AccessorUtilities)
+@implementation NSString (SFAccessorUtilities)
 
-- (NSString *)stringByTransformingToSetterAccessor {
+- (NSString *)SF_stringByTransformingToSetterAccessor {
     return [NSString stringWithFormat:kSFSetterNameFormat, [self stringWithUpperCaseFirstCharacter]];
 }
 
-- (NSString *)stringByTransformingToGetterAccessor {
+- (NSString *)SF_stringByTransformingToGetterAccessor {
     NSString *result;
     
     if ([self hasPrefix:kSFSetterPrefix]) {

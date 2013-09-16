@@ -51,7 +51,7 @@ static NSString * const kSFXMLRelationshipDeleteRuleKey = @"deleterule";
         [aChild.element removeFromParentRecursively:YES];
     }
     else if ([childName isEqualToString:kSFXMLRelationshipMaxCountKey]) {
-        self.element.maxCount = @([[(SFXMLElement *)[[[aChild element] children] lastElementIfNotEmpty] value] integerValue]);
+        self.element.maxCount = @([[(SFXMLElement *)[[[aChild element] children] SF_lastElementIfNotEmpty] value] integerValue]);
         [aChild.element removeFromParentRecursively:YES];
     }
     else if ([childName isEqualToString:kSFXMLRelationshipDeleteRuleKey]) {

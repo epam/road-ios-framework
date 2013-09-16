@@ -29,7 +29,7 @@
 
 #import "NSObject+SFAttributes.h"
 #import "NSObject+SFAttributesInternal.h"
-#import <Spark/NSRegularExpression+SparkExtension.h>
+#import <Spark/NSRegularExpression+SFSparkExtension.h>
 #import <Spark/SparkReflection.h>
 
 @interface NSObject(SFAttributesPrivate)
@@ -144,7 +144,7 @@
 + (NSArray *)SF_propertiesWithAttributeType:(Class)requiredClassOfAttribute {
     NSMutableArray *result = [NSMutableArray array];
     
-    for (SFPropertyInfo *currentPropertyInfo in [self properties]) {
+    for (SFPropertyInfo *currentPropertyInfo in [self SF_properties]) {
         if ([currentPropertyInfo attributeWithType:requiredClassOfAttribute]) {
             [result addObject:currentPropertyInfo];
         }
@@ -156,7 +156,7 @@
 + (NSArray *)SF_ivarsWithAttributeType:(Class)requiredClassOfAttribute {
     NSMutableArray *result = [NSMutableArray array];
     
-    for (SFIvarInfo *currentIvarInfo in [self ivars]) {
+    for (SFIvarInfo *currentIvarInfo in [self SF_ivars]) {
         if ([currentIvarInfo attributeWithType:requiredClassOfAttribute]) {
             [result addObject:currentIvarInfo];
         }
@@ -168,7 +168,7 @@
 + (NSArray *)SF_methodsWithAttributeType:(Class)requiredClassOfAttribute {
     NSMutableArray *result = [NSMutableArray array];
     
-    for (SFMethodInfo *currentMethodInfo in [self methods]) {
+    for (SFMethodInfo *currentMethodInfo in [self SF_methods]) {
         if ([currentMethodInfo attributeWithType:requiredClassOfAttribute]) {
             [result addObject:currentMethodInfo];
         }

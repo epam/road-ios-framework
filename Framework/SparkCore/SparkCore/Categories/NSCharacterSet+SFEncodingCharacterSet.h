@@ -1,5 +1,5 @@
 //
-//  NSCharacterSet+EncodingCharacterSet.h
+//  NSCharacterSet+SFEncodingCharacterSet.h
 //  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -33,47 +33,47 @@
 /**
  Factory methods for the NSCharacterSet class.
  */
-@interface NSCharacterSet (EncodingCharacterSet)
+@interface NSCharacterSet (SFEncodingCharacterSet)
 
 /**
  Character set with newline, whitespaces, and the '*' (dereference operation) character.
  */
-+ (NSCharacterSet *)pointerCharacterSet;
++ (NSCharacterSet *)SF_pointerCharacterSet;
 
 /**
  Character set with the newline, whitespace, quote mark ' " ', and at sign '@'.
  */
-+ (NSCharacterSet *)objectTypeEncodingCharacterSet;
++ (NSCharacterSet *)SF_objectTypeEncodingCharacterSet;
 
 /**
  Character set with the caret '^' character.
  */
-+ (NSCharacterSet *)valueTypePointerEncodingCharacterSet;
++ (NSCharacterSet *)SF_valueTypePointerEncodingCharacterSet;
 
 /**
  Character set with the struct open-close '{}' encoding characters.
  */
-+ (NSCharacterSet *)structEncodingCharacterSet;
++ (NSCharacterSet *)SF_structEncodingCharacterSet;
 
 /**
  Character set with the union open-close '()' encoding characters
  */
-+ (NSCharacterSet *)unionEncodingCharacterSet;
++ (NSCharacterSet *)SF_unionEncodingCharacterSet;
 
 /**
  Character set with the bit field opening encoding character 'b'.
  */
-+ (NSCharacterSet *)bitFieldEncodingCharacterSet;
++ (NSCharacterSet *)SF_bitFieldEncodingCharacterSet;
 
 /**
  Character set with the c-style array encoding characters '[]'.
  */
-+ (NSCharacterSet *)arrayEncodingCharacterSet;
++ (NSCharacterSet *)SF_arrayEncodingCharacterSet;
 
 /**
  Character set with the fixed size static c-style array encoding characters '[...]'. The set itself is composed of decimal numbers and the '^' (caret) sign.
  */
-+ (NSCharacterSet *)fixedArrayEncodingCharacterSet;
++ (NSCharacterSet *)SF_fixedArrayEncodingCharacterSet;
 
 /**
  Returns whether the string begins, or begins and ends with characters that belong to the character set.
@@ -81,6 +81,6 @@
  @param shouldTrimWhitespace Boolean value to tell if whitespaces should be ignored while doing the examination.
  @result The boolean value about the result.
  */
-- (BOOL)isPrefixInString:(NSString * const)aString shouldTrimWhiteSpace:(BOOL const)shouldTrimWhitespace;
+- (BOOL)SF_isPrefixInString:(NSString * const)aString shouldTrimWhiteSpace:(BOOL const)shouldTrimWhitespace;
 
 @end

@@ -30,7 +30,7 @@
 
 #import "SFIvarInfo.h"
 #import "SFIvarInfoTest.h"
-#import "NSObject+MemberVariableReflection.h"
+#import "NSObject+SFMemberVariableReflection.h"
 #import <objc/runtime.h>
 
 @implementation SFIvarInfoTest {
@@ -41,8 +41,8 @@
 - (void)setUp {
     integer = 3;
     string = @"value";
-    integerDescriptor = [self ivarNamed:@"integer"];
-    stringDescriptor = [self ivarNamed:@"string"];
+    integerDescriptor = [self SF_ivarNamed:@"integer"];
+    stringDescriptor = [self SF_ivarNamed:@"string"];
 }
 
 - (void)tearDown {
