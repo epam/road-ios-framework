@@ -25,4 +25,10 @@
    <FileRef
       location = "group:SparkLogger/SparkLogger.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:../NOTICE">
+   </FileRef>
+   <FileRef
+      location = "group:../LICENSE">
+   </FileRef>
 </Workspace>
