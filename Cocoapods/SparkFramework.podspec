@@ -25,26 +25,10 @@ Pod::Spec.new do |s|
     gen.source_files = 'Framework/SparkGeneratedAttributes/**/*.{h,m}'
   end
  
-  s.subspec 'SparkReflection' do |rf|
-    rf.source_files = 'Framework/SparkReflection/SparkReflection/**/*.{h,m}'
-    rf.public_header_files = 'Framework/SparkReflection/SparkReflection/**/*.h'
-    rf.header_dir = 'Spark'
-
-  end
-
   s.subspec 'SparkCore' do |core|
     core.source_files = 'Framework/SparkCore/SparkCore/**/*.{h,m}'
     core.public_header_files = 'Framework/SparkCore/SparkCore/**/*.h'
-    core.dependency 'SparkFramework/SparkReflection'
     core.header_dir = 'Spark'
-  end
-
-  s.subspec 'SparkAttribute' do |attribute|
-    attribute.source_files = 'Framework/SparkAttribute/SparkAttribute/**/*.{h,m}'
-    attribute.public_header_files = 'Framework/SparkAttribute/SparkAttribute/**/*.h'
-    attribute.dependency 'SparkFramework/SparkReflection'
-    attribute.dependency 'SparkFramework/SparkCore'
-    attribute.header_dir = 'Spark'
   end
 
   s.subspec 'SparkObservation' do |observation|
@@ -56,9 +40,7 @@ Pod::Spec.new do |s|
   s.subspec 'SparkServices' do |services|
     services.source_files = 'Framework/SparkServices/SparkServices/**/*.{h,m}'
     services.public_header_files = 'Framework/SparkServices/SparkServices/**/*.h'
-    services.dependency 'SparkFramework/SparkReflection'
     services.dependency 'SparkFramework/SparkCore'
-    services.dependency 'SparkFramework/SparkAttribute'
     services.header_dir = 'Spark'
   end
 
@@ -66,8 +48,6 @@ Pod::Spec.new do |s|
     logger.source_files = 'Framework/SparkLogger/SparkLogger/**/*.{h,m}'
     logger.public_header_files = 'Framework/SparkLogger/SparkLogger/**/*.h'
     logger.dependency 'SparkFramework/SparkCore'
-    logger.dependency 'SparkFramework/SparkReflection'
-    logger.dependency 'SparkFramework/SparkAttribute'
     logger.dependency 'SparkFramework/SparkServices'    
     logger.dependency 'SparkFramework/SparkObservation'
     logger.ios.framework = 'CoreGraphics', 'CoreFoundation'
