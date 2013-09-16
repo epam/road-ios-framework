@@ -408,7 +408,6 @@
 		7846754C15C16C20000E02DA = {
 			isa = PBXGroup;
 			children = (
-				8D60079717D004340095E17D /* UIKit.framework */,
 				9F0A8AB615C299340044A782 /* SparkSerialization */,
 				9FA9F4DB15F636C500FDE9E0 /* SparkSerializationMac */,
 				7841618416480C1E0089FDE9 /* SparkSerializationTest */,
@@ -438,6 +437,7 @@
 				835B6C70175628D50072765C /* libz.dylib */,
 				7841617E16480C1D0089FDE9 /* SenTestingKit.framework */,
 				CDA9F5D416E9F1D9000A50CC /* CoreFoundation.framework */,
+				8D60079717D004340095E17D /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
