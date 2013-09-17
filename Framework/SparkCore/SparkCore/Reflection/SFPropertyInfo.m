@@ -35,7 +35,56 @@
 #import <objc/runtime.h>
 #import "SparkAttribute.h"
 
+@interface SFPropertyInfo () {
+    NSString *_propertyName;
+    NSString *_className;
+    Class _hostClass;
+    NSString *_attributeClassName;
+    NSString *_setterName;
+    NSString *_getterName;
+    BOOL _dynamic;
+    BOOL _weak;
+    BOOL _nonatomic;
+    BOOL _strong;
+    BOOL _readonly;
+    BOOL _copied;
+    BOOL _object;
+    Class _attributeClass;
+}
+
+@property (copy, nonatomic) NSString *propertyName;
+@property (copy, nonatomic) NSString *className;
+@property (assign, nonatomic) Class hostClass;
+@property (copy, nonatomic) NSString *attributeClassName;
+@property (copy, nonatomic) NSString *setterName;
+@property (copy, nonatomic) NSString *getterName;
+@property (nonatomic, getter = isDynamic) BOOL dynamic;
+@property (nonatomic, getter = isWeak) BOOL weak;
+@property (nonatomic, getter = isNonatomic) BOOL nonatomic;
+@property (nonatomic, getter = isStrong) BOOL strong;
+@property (nonatomic, getter = isReadonly) BOOL readonly;
+@property (nonatomic, getter = isCopied) BOOL copied;
+@property (nonatomic, getter = isObject) BOOL object;
+@property (nonatomic, unsafe_unretained) Class attributeClass;
+
+@end
+
 @implementation SFPropertyInfo
+
+@synthesize propertyName = _propertyName;
+@synthesize className = _className;
+@synthesize hostClass = _hostClass;
+@synthesize attributeClassName = _attributeClassName;
+@synthesize setterName = _setterName;
+@synthesize getterName = _getterName;
+@synthesize dynamic = _dynamic;
+@synthesize weak = _weak;
+@synthesize nonatomic = _nonatomic;
+@synthesize strong = _strong;
+@synthesize readonly = _readonly;
+@synthesize copied = _copied;
+@synthesize object = _object;
+@synthesize attributeClass = _attributeClass;
 
 @dynamic attributes;
 

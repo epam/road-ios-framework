@@ -36,31 +36,31 @@
 /**
  The name of the method.
  */
-@property (copy, nonatomic) NSString *name;
+@property (readonly, nonatomic) NSString *name;
 
 /**
  The name of the class the method was declared to be a member of.
  */
-@property (copy, nonatomic) NSString *className;
+@property (readonly, nonatomic) NSString *className;
 /**
  The type of the host class.
  */
-@property (assign, nonatomic) Class hostClass;
+@property (readonly, nonatomic) Class hostClass;
 
 /**
  The number of arguments for the method.
  */
-@property (assign, nonatomic) NSUInteger numberOfArguments;
+@property (readonly, nonatomic) NSUInteger numberOfArguments;
 
 /**
  The string value describing the return value's type.
  */
-@property (copy, nonatomic) NSString *returnType;
+@property (readonly, nonatomic) NSString *returnType;
 
 /**
  Boolean value telling if the method was a class method.
  */
-@property (assign, nonatomic, getter = isClassMethod) BOOL classMethod;
+@property (readonly, nonatomic, getter = isClassMethod) BOOL classMethod;
 
 /**
  An array of attributes declared for method.

@@ -34,12 +34,37 @@
 #import <objc/runtime.h>
 #import "SparkAttribute.h"
 
+@interface SFMethodInfo () {
+    NSString *_name;
+    NSString *_className;
+    Class _hostClass;
+    NSUInteger _numberOfArguments;
+    NSString *_returnType;
+    BOOL _classMethod;
+    
+    NSArray *argumentTypes;
+}
+
+@property (copy, nonatomic) NSString *name;
+@property (copy, nonatomic) NSString *className;
+@property (assign, nonatomic) Class hostClass;
+@property (assign, nonatomic) NSUInteger numberOfArguments;
+@property (copy, nonatomic) NSString *returnType;
+@property (assign, nonatomic, getter = isClassMethod) BOOL classMethod;
+@end
+
+
 // The number hidden of method arguments: self and _cmd
 static NSUInteger const kSFMethodArgumentOffset = 2;
 
-@implementation SFMethodInfo {
-    NSArray *argumentTypes;
-}
+@implementation SFMethodInfo
+
+@synthesize name = _name;
+@synthesize className = _className;
+@synthesize hostClass = _hostClass;
+@synthesize numberOfArguments = _numberOfArguments;
+@synthesize returnType = _returnType;
+@synthesize classMethod = _classMethod;
 
 @dynamic attributes;
 

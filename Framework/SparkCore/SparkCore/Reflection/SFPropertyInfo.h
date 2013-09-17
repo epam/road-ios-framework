@@ -36,73 +36,73 @@
 /**
  The property's name.
  */
-@property (copy, nonatomic) NSString *propertyName;
+@property (readonly, nonatomic) NSString *propertyName;
 
 /**
  The name of the host class.
  */
-@property (copy, nonatomic) NSString *className;
+@property (readonly, nonatomic) NSString *className;
 
 /**
  The type of the host class.
  */
-@property (assign, nonatomic) Class hostClass;
+@property (readonly, nonatomic) Class hostClass;
 
 /**
  The name of the class or variable type of the property declaration.
  */
-@property (copy, nonatomic) NSString *attributeClassName;
+@property (readonly, nonatomic) NSString *attributeClassName;
 
 /**
  The name of the setter method.
  */
-@property (copy, nonatomic) NSString *setterName;
+@property (readonly, nonatomic) NSString *setterName;
 
 /**
  The name of the getter method.
  */
-@property (copy, nonatomic) NSString *getterName;
+@property (readonly, nonatomic) NSString *getterName;
 
 /**
  Boolean property telling whether the property's implementatin is done via the @dynamic directive.
  */
-@property (nonatomic, getter = isDynamic) BOOL dynamic;
+@property (readonly, nonatomic, getter = isDynamic) BOOL dynamic;
 
 /**
  Boolean property telling whether the property is weak.
  */
-@property (nonatomic, getter = isWeak) BOOL weak;
+@property (readonly, nonatomic, getter = isWeak) BOOL weak;
 
 /**
  Boolean property telling whether the property is nonatomic.
  */
-@property (nonatomic, getter = isNonatomic) BOOL nonatomic;
+@property (readonly, nonatomic, getter = isNonatomic) BOOL nonatomic;
 
 /**
  Boolean property telling whether the property is strong.
  */
-@property (nonatomic, getter = isStrong) BOOL strong;
+@property (readonly, nonatomic, getter = isStrong) BOOL strong;
 
 /**
  Boolean property telling whether the property is readonly.
  */
-@property (nonatomic, getter = isReadonly) BOOL readonly;
+@property (readonly, nonatomic, getter = isReadonly) BOOL readonly;
 
 /**
  Boolean property telling whether the property is copying.
  */
-@property (nonatomic, getter = isCopied) BOOL copied;
+@property (readonly, nonatomic, getter = isCopied) BOOL copied;
 
 /**
  Boolean property telling whether the property is pointing to an object instead of a primitive value.
  */
-@property (nonatomic, getter = isObject) BOOL object;
+@property (readonly, nonatomic, getter = isObject) BOOL object;
 
 /**
  The declared class of the property if applicable.
  For primitive types this is Nil.
  */
-@property (nonatomic, unsafe_unretained) Class attributeClass;
+@property (readonly, nonatomic, unsafe_unretained) Class attributeClass;
 
 /**
  An array of attributes declared for property.
