@@ -36,27 +36,27 @@
 /**
  The name of the ivar.
  */
-@property (copy, nonatomic) NSString *name;
+@property (readonly, nonatomic) NSString *name;
 
 /**
  The name of the type of the variable.
  */
-@property (assign, nonatomic) NSString *variableTypeName;
+@property (readonly, nonatomic) NSString *variableTypeName;
 
 /**
  Boolean value telling whether the ivar was of primitive (value) type or not.
  */
-@property (assign, nonatomic, getter = isPrimitive) BOOL primitive;
+@property (readonly, nonatomic, getter = isPrimitive) BOOL primitive;
 
 /**
  The name of the class to which the ivar belongs to.
  */
-@property (copy, nonatomic) NSString *className;
+@property (readonly, nonatomic) NSString *className;
 
 /**
  The type of the host class.
  */
-@property (assign, nonatomic) Class hostClass;
+@property (readonly, nonatomic) Class hostClass;
 
 /**
  An array of attributes declared for instance variable.

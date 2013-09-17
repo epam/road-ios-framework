@@ -34,7 +34,30 @@
 #import <objc/runtime.h>
 #import "SparkAttribute.h"
 
+@interface SFIvarInfo () {
+    NSString *_name;
+    NSString *_variableTypeName;
+    BOOL _primitive;
+    NSString *_className;
+    Class _hostClass;
+}
+
+@property (copy, nonatomic) NSString *name;
+@property (copy, nonatomic) NSString *variableTypeName;
+@property (assign, nonatomic, getter = isPrimitive) BOOL primitive;
+@property (copy, nonatomic) NSString *className;
+@property (assign, nonatomic) Class hostClass;
+
+@end
+
+
 @implementation SFIvarInfo
+
+@synthesize name = _name;
+@synthesize variableTypeName = _variableTypeName;
+@synthesize primitive = _primitive;
+@synthesize className = _className;
+@synthesize hostClass = _hostClass;
 
 @dynamic attributes;
 
