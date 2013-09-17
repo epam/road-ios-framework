@@ -1,5 +1,5 @@
 //
-//  NSArray+ConditionalComponentReturn.m
+//  NSString+SFAccessorUtilities.h
 //  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -28,36 +28,21 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-#import "NSArray+EmptyArrayChecks.h"
+/**
+ Category to convert back and forth between default setter and getter names.
+ */
+@interface NSString (SFAccessorUtilities)
 
-@implementation NSArray (EmptyArrayChecks)
+/**
+ Creates a setter accessor name from the given string by attaching a set- prefix and a : postfix to the receiver's content.
+ @result The setter name.
+ */
+- (NSString * const)SF_stringByTransformingToSetterAccessor;
 
-- (id)lastElementIfNotEmpty {
-    id lastObject = nil;
-    
-    if ([self count] > 0) {
-        lastObject = [self lastObject];
-    }
-    
-    return lastObject;
-}
-
-- (id)elementAtIndexIfInRange:(NSUInteger)index {
-    id object = nil;
-    
-    if ([self count] > index) {
-        object = [self objectAtIndex:index];
-    }
-    
-    return object;
-}
-
-- (id)elementWithPredicateBlock:(BOOL (^)(id evaluatedObject))evaluationBlock {
-    BOOL (^(testingBlock))(id evaludatedObject) = [evaluationBlock copy];
-    
-    return [[self filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-        return testingBlock(evaluatedObject);
-    }]] lastElementIfNotEmpty];
-}
+/**
+ Creates a getter accessor name from the receiver with the assumption it is a setter accessor method's name.
+ @result The getter name.
+ */
+- (NSString * const)SF_stringByTransformingToGetterAccessor;
 
 @end

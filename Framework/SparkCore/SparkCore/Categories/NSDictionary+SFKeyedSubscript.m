@@ -1,5 +1,5 @@
 //
-//  NSArray+EmptyArrayChecks.h
+//  NSDictionary+SFKeyedSubscript.m
 //  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -28,28 +28,17 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-/**
- Category to return array elements or nil, in case the specified index does not contain array element (out of range, or the array is empty).
- */
-@interface NSArray (EmptyArrayChecks)
+#import "NSDictionary+SFKeyedSubscript.h"
+#import <objc/runtime.h>
 
-/**
- Returns the last object of a non-empty array or nil, if the array was empty.
- */
-- (id)lastElementIfNotEmpty;
+#ifndef __IPHONE_6_0
 
-/**
- Returns the elements specified by the index or nil, if the index is out of range for the array.
- @param index The index for which the element should be returned.
- @result The element at index or nil, if the index was out of range, or the array was empty.
- */
-- (id)elementAtIndexIfInRange:(NSUInteger)index;
+@implementation NSDictionary (SFKeyedSubscript)
 
-/**
- Queries the array for an element what matches the predicate block specified and returns the first if found or nil, if none of the elements passed the test.
- @param evaluationBlock The predicate block.
- @result The first element passing the test or nil, if none of the elements passed the test.
- */
-- (id)elementWithPredicateBlock:(BOOL (^)(id evaluatedObject))evaluationBlock;
+- (id)SF_objectForKeyedSubscript:(id)key {
+    return [self objectForKey:key];
+}
 
 @end
+
+#endif

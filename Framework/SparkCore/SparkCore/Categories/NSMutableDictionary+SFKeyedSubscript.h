@@ -1,5 +1,5 @@
 //
-//  NSBundle+ParameterList.m
+//  NSMutableDictionary+SFKeyedSubscript.h
 //  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -28,22 +28,17 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-#import "NSBundle+ParameterList.h"
+#import <Foundation/Foundation.h>
 
-NSString * const kSFPlistFileExtension = @"plist";
+/**
+ Category to allow keyed subscript support for mutable dictionaries to set elements.
+ */
+#ifndef __IPHONE_6_0
 
-@implementation NSBundle (ParameterList)
+@interface NSMutableDictionary (SFKeyedSubscript)
 
-- (NSString *)pathForPlistResource:(NSString *)plistResourceName {
-    return [self pathForResource:plistResourceName ofType:kSFPlistFileExtension];
-}
-
-- (NSURL *)urlForPlistResource:(NSString *)plistResourceName {
-    return [self URLForResource:plistResourceName withExtension:kSFPlistFileExtension];
-}
-
-- (NSString *)pathForOwnedPlist {
-    return [self pathForPlistResource:NSStringFromClass([self class])];
-}
+- (void)SF_setObject:(id)obj forKeyedSubscript:(id<NSCopying>)key;
 
 @end
+
+#endif

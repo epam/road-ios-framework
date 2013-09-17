@@ -1,5 +1,5 @@
 //
-//  NSError+SparkWebService.h
+//  NSErrorh
 //  SparkWebservice
 //
 //  Created by Andrei Kuzma on 7/5/13.
@@ -10,15 +10,15 @@
 
 NSString * const kSFWebServiceErrorDomain;
 
-@interface NSError (SparkWebService)
+@interface NSError (SFSparkWebService)
 /**
  Create deserialization error, and insert the original data into the error userinfo.
  @param data The original data.
  */
-+(NSError *)sparkWS_deserializationErrorWithData:(NSData*)data;
++(NSError *)SF_sparkWS_deserializationErrorWithData:(NSData*)data;
 
 /**
  Create cancell error for cancelled webservice calls.
  */
-+(NSError*)sparkWS_cancellError;
++(NSError*)SF_sparkWS_cancellError;
 @end

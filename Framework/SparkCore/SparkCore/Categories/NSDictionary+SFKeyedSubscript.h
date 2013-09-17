@@ -1,6 +1,6 @@
 //
-//  NSObject+MemberVariableReflection.m
-//  SparkReflection
+//  NSDictionary+SFKeyedSubscript.h
+//  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -28,24 +28,15 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-#import "NSObject+MemberVariableReflection.h"
+#import <Foundation/Foundation.h>
 
-@implementation NSObject (MemberVariableReflection)
+/**
+ Category to extend keyed subscript for fetching elements in a dictionary prior to iOS 6.0.
+ */
+#ifndef __IPHONE_6_0
+@interface NSDictionary (SFKeyedSubscript)
 
-- (SFIvarInfo *)ivarNamed:(NSString *)name {
-    return [SFIvarInfo ivarNamed:name ofClass:[self class]];
-}
-
-- (NSArray *)ivars {
-    return [SFIvarInfo ivarsOfClass:[self class]];
-}
-
-+ (SFIvarInfo *)ivarNamed:(NSString *)name {
-    return [SFIvarInfo ivarNamed:name ofClass:self];
-}
-
-+ (NSArray *)ivars {
-    return [SFIvarInfo ivarsOfClass:self];
-}
+- (id)SF_objectForKeyedSubscript:(id)key;
 
 @end
+#endif

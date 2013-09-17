@@ -1,6 +1,6 @@
 //
-//  NSObject+PropertyReflection.h
-//  SparkReflection
+//  NSArray+ConditionalComponentReturn.m
+//  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,38 +27,37 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Foundation/Foundation.h>
-#import "SFPropertyInfo.h"
 
-/**
- Convenience methods to return property descriptors for objects.
- */
-@interface NSObject (PropertyReflection)
+#import "NSArray+SFEmptyArrayChecks.h"
 
-/**
- Returns an array of property info objects. Does not list superclass properties. Invoked on an instance of a class.
- @result The info objects' array.
- */
-- (NSArray * const)properties;
+@implementation NSArray (SFEmptyArrayChecks)
 
-/**
- Returns a property info. Invoked on an instance of a class.
- @param name The name of the property to fetch the info for.
- @result The info object.
- */
-- (SFPropertyInfo *)propertyNamed:(NSString *)name;
+- (id)SF_lastElementIfNotEmpty {
+    id lastObject = nil;
+    
+    if ([self count] > 0) {
+        lastObject = [self lastObject];
+    }
+    
+    return lastObject;
+}
 
-/**
- Returns an array of property info objects. Does not list superclass properties.
- @result The info objects' array.
- */
-+ (NSArray * const)properties;
+- (id)SF_elementAtIndexIfInRange:(NSUInteger)index {
+    id object = nil;
+    
+    if ([self count] > index) {
+        object = [self objectAtIndex:index];
+    }
+    
+    return object;
+}
 
-/**
- Returns a property info.
- @param name The name of the property to fetch the info for.
- @result The info object.
- */
-+ (SFPropertyInfo *)propertyNamed:(NSString *)name;
+- (id)SF_elementWithPredicateBlock:(BOOL (^)(id evaluatedObject))evaluationBlock {
+    BOOL (^(testingBlock))(id evaludatedObject) = [evaluationBlock copy];
+    
+    return [[self filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        return testingBlock(evaluatedObject);
+    }]] SF_lastElementIfNotEmpty];
+}
 
 @end

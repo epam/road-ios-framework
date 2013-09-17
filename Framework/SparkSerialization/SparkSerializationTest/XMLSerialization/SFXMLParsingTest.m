@@ -73,10 +73,10 @@
     [SFXMLModelParser parseXMLData:xmlData completion:^(SFXMLElement *rootElement, NSError *error) {
         rootNode = rootElement;
         
-        SFEntityElement *childElement = [[rootElement children] lastElementIfNotEmpty];
+        SFEntityElement *childElement = [[rootElement children] SF_lastElementIfNotEmpty];
         STAssertTrue([childElement isMemberOfClass:[SFEntityElement class]], @"Wrong element(%@) instead of SFEntityElement", NSStringFromClass([childElement class]));
         
-        SFRelationshipElement *relationshipElement = [childElement.relationships lastElementIfNotEmpty];
+        SFRelationshipElement *relationshipElement = [childElement.relationships SF_lastElementIfNotEmpty];
         STAssertTrue([relationshipElement isMemberOfClass:[SFRelationshipElement class]], @"Wrong element(%@) instead of SFRelationshipElement", NSStringFromClass([relationshipElement class]));
     }];
     

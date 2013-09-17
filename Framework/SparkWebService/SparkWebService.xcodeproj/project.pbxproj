@@ -95,8 +95,8 @@
 		E5B9D4F31786CFFE00E1901C /* SFDownloader+ConnectionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B9D4E41786CFFE00E1901C /* SFDownloader+ConnectionDelegate.m */; };
 		E5B9D4F51786CFFE00E1901C /* SFDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B9D4E61786CFFE00E1901C /* SFDownloader.m */; };
 		E5B9D4F71786CFFE00E1901C /* SFLooper.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B9D4E81786CFFE00E1901C /* SFLooper.m */; };
-		E5B9D4FB1786D01100E1901C /* NSError+SparkWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B9D4FA1786D01100E1901C /* NSError+SparkWebService.m */; };
-		E5B9D4FF1786D83D00E1901C /* NSError+SparkWebService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E5B9D4F91786D01100E1901C /* NSError+SparkWebService.h */; };
+		E5B9D4FB1786D01100E1901C /* NSError+SFSparkWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B9D4FA1786D01100E1901C /* NSError+SFSparkWebService.m */; };
+		E5B9D4FF1786D83D00E1901C /* NSError+SFSparkWebService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E5B9D4F91786D01100E1901C /* NSError+SFSparkWebService.h */; };
 		E5D6E05C17981FBA0041EBCB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D6E05B17981FBA0041EBCB /* UIKit.framework */; };
 		E5D81148179562510046DED1 /* SFWebServiceClientStatusCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D81147179562510046DED1 /* SFWebServiceClientStatusCodes.m */; };
 		E5D81156179563740046DED1 /* SFWebServiceClientStatusCodes.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E5D81146179562510046DED1 /* SFWebServiceClientStatusCodes.h */; };
@@ -252,7 +252,7 @@
 				5A164AAA179D762A003275EC /* SFWebServiceSerializationHandler.h in CopyFiles */,
 				5A164AAB179D762A003275EC /* SFWebServiceBasicURLBuilder.h in CopyFiles */,
 				E5D81156179563740046DED1 /* SFWebServiceClientStatusCodes.h in CopyFiles */,
-				E5B9D4FF1786D83D00E1901C /* NSError+SparkWebService.h in CopyFiles */,
+				E5B9D4FF1786D83D00E1901C /* NSError+SFSparkWebService.h in CopyFiles */,
 				83AFDCEB174F58FB00CC1200 /* SFWebServiceLogger.h in CopyFiles */,
 				CDB8477A1737F318003BE170 /* SparkWebservice.h in CopyFiles */,
 				CDB8477B1737F318003BE170 /* SparkWebServiceAnnotations.h in CopyFiles */,
@@ -279,9 +279,9 @@
 		831EB9DA17C600AA004C9BA5 /* SFWebServiceErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFWebServiceErrorHandler.m; sourceTree = "<group>"; };
 		831EB9EA17C6047D004C9BA5 /* SFWebServiceErrorHandling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFWebServiceErrorHandling.h; sourceTree = "<group>"; };
 		831EB9EB17C60A65004C9BA5 /* SFODataErrorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFODataErrorHandler.h; sourceTree = "<group>"; };
-		831EB9EC17C60A65004C9BA5 /* SFODataErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFODataErrorHandler.m; sourceTree = "<group>"; };
+		831EB9EC17C60A65004C9BA5 /* SFODataErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFODataErrorHandler.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		832540EC17A6B02B006AACF4 /* SFAuthenticationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAuthenticationProvider.h; sourceTree = "<group>"; };
-		832540ED17A6B02B006AACF4 /* SFAuthenticationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAuthenticationProvider.m; sourceTree = "<group>"; };
+		832540ED17A6B02B006AACF4 /* SFAuthenticationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFAuthenticationProvider.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		83448CCE17D0C98B002A0D15 /* SparkGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparkGeneratedAttribute.m; path = SparkGeneratedAttributes/SparkGeneratedAttribute.m; sourceTree = "<group>"; };
 		83448CDD17D0D3E3002A0D15 /* SparkGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparkGeneratedAttribute.m; path = SparkGeneratedAttributes/SparkGeneratedAttribute.m; sourceTree = "<group>"; };
 		8349D87917B0E5FE006BDA5F /* SFConcurrentAuthenticationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFConcurrentAuthenticationProvider.h; sourceTree = "<group>"; };
@@ -290,18 +290,18 @@
 		8349D96F17B22ED4006BDA5F /* SFODataFetchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFODataFetchRequest.m; sourceTree = "<group>"; };
 		8349D97117B23AF2006BDA5F /* SFODataPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFODataPredicate.h; sourceTree = "<group>"; };
 		8349D97217B23AF2006BDA5F /* SFODataPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFODataPredicate.m; sourceTree = "<group>"; };
-		8349D98F17B37E48006BDA5F /* SFODataExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFODataExpression.h; sourceTree = "<group>"; };
-		8349D99017B37E49006BDA5F /* SFODataExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFODataExpression.m; sourceTree = "<group>"; };
+		8349D98F17B37E48006BDA5F /* SFODataExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SFODataExpression.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		8349D99017B37E49006BDA5F /* SFODataExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFODataExpression.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		837B001117B3A1AE00D77A5D /* SFODataProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFODataProperty.h; sourceTree = "<group>"; };
 		837B001217B3A1AE00D77A5D /* SFODataProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFODataProperty.m; sourceTree = "<group>"; };
 		837B001917B3B0F000D77A5D /* SFODataEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFODataEntity.h; sourceTree = "<group>"; };
 		837B001A17B3B0F000D77A5D /* SFODataEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFODataEntity.m; sourceTree = "<group>"; };
 		837B001D17B3B1AB00D77A5D /* SFODataAbstractEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFODataAbstractEntity.h; sourceTree = "<group>"; };
 		837B001E17B3B1AB00D77A5D /* SFODataAbstractEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFODataAbstractEntity.m; sourceTree = "<group>"; };
-		837B002117B3B63C00D77A5D /* NSSortDescriptor+SFOData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSortDescriptor+SFOData.h"; sourceTree = "<group>"; };
+		837B002117B3B63C00D77A5D /* NSSortDescriptor+SFOData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSSortDescriptor+SFOData.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		837B002217B3B63C00D77A5D /* NSSortDescriptor+SFOData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSSortDescriptor+SFOData.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		837B002517B3B9A300D77A5D /* SFODataTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFODataTest.h; sourceTree = "<group>"; };
-		837B002617B3B9A300D77A5D /* SFODataTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFODataTest.m; sourceTree = "<group>"; };
+		837B002617B3B9A300D77A5D /* SFODataTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFODataTest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		837B002B17B3D30300D77A5D /* SFODataWebServiceURLBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFODataWebServiceURLBuilder.h; sourceTree = "<group>"; };
 		837B002C17B3D30300D77A5D /* SFODataWebServiceURLBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFODataWebServiceURLBuilder.m; sourceTree = "<group>"; };
 		837B002F17B3D42400D77A5D /* SFWebServiceURLBuilding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFWebServiceURLBuilding.h; sourceTree = "<group>"; };
@@ -315,7 +315,7 @@
 		837E97CE17466A4200EC465F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		8396B3F017A1637D009E7B9B /* SFAuthenticating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAuthenticating.h; sourceTree = "<group>"; };
 		8396B3F117A16A90009E7B9B /* SFBasicAuthenticationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFBasicAuthenticationProvider.h; sourceTree = "<group>"; };
-		8396B3F217A16A90009E7B9B /* SFBasicAuthenticationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFBasicAuthenticationProvider.m; sourceTree = "<group>"; };
+		8396B3F217A16A90009E7B9B /* SFBasicAuthenticationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFBasicAuthenticationProvider.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		839992B217D74B94002DAE8D /* SFFormData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFFormData.h; sourceTree = "<group>"; };
 		839992B317D74B95002DAE8D /* SFFormData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFFormData.m; sourceTree = "<group>"; };
 		839992B617D7658F002DAE8D /* SFMultipartData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMultipartData.h; sourceTree = "<group>"; };
@@ -344,7 +344,7 @@
 		CD896C1B1737E84F00565C9C /* SFDefaultSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFDefaultSerializer.m; sourceTree = "<group>"; };
 		CD896C1C1737E84F00565C9C /* SFSerializationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSerializationDelegate.h; sourceTree = "<group>"; };
 		CD896C1D1737E84F00565C9C /* SFWebServiceCancellable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFWebServiceCancellable.h; sourceTree = "<group>"; };
-		CD896C201737E84F00565C9C /* SFWebServiceClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFWebServiceClient.h; sourceTree = "<group>"; };
+		CD896C201737E84F00565C9C /* SFWebServiceClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SFWebServiceClient.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		CD896C211737E84F00565C9C /* SFWebServiceClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFWebServiceClient.m; sourceTree = "<group>"; };
 		CD896C341737E85800565C9C /* SFWebServiceClient+DynamicTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFWebServiceClient+DynamicTest.h"; sourceTree = "<group>"; };
 		CD896C371737E85800565C9C /* SFWebServiceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFWebServiceTest.h; sourceTree = "<group>"; };
@@ -352,24 +352,24 @@
 		CD896C3E1737E85800565C9C /* SparkWebserviceTest-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SparkWebserviceTest-Info.plist"; sourceTree = "<group>"; };
 		CD896C3F1737E85800565C9C /* SparkWebserviceTest-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SparkWebserviceTest-Prefix.pch"; sourceTree = "<group>"; };
 		CDA9F60C16E9F287000A50CC /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		D719856617C65D5B0017C680 /* SFDigestAuthenticationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFDigestAuthenticationProvider.m; sourceTree = "<group>"; };
+		D719856617C65D5B0017C680 /* SFDigestAuthenticationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFDigestAuthenticationProvider.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D719856717C65D5B0017C680 /* SFDigestAuthenticationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFDigestAuthenticationProvider.h; sourceTree = "<group>"; };
 		E5B9D4B51786CF9300E1901C /* SFWebServiceCallParameterEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFWebServiceCallParameterEncoder.h; sourceTree = "<group>"; };
 		E5B9D4B61786CF9300E1901C /* SFWebServiceCallParameterEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFWebServiceCallParameterEncoder.m; sourceTree = "<group>"; };
 		E5B9D4B71786CF9300E1901C /* SFWebServiceClient+DynamicMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFWebServiceClient+DynamicMethod.h"; sourceTree = "<group>"; };
 		E5B9D4B81786CF9300E1901C /* SFWebServiceClient+DynamicMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SFWebServiceClient+DynamicMethod.m"; sourceTree = "<group>"; };
 		E5B9D4BE1786CF9300E1901C /* SFWebServiceSerializationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFWebServiceSerializationHandler.h; sourceTree = "<group>"; };
-		E5B9D4BF1786CF9300E1901C /* SFWebServiceSerializationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFWebServiceSerializationHandler.m; sourceTree = "<group>"; };
+		E5B9D4BF1786CF9300E1901C /* SFWebServiceSerializationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFWebServiceSerializationHandler.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E5B9D4C01786CF9300E1901C /* SFWebServiceBasicURLBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFWebServiceBasicURLBuilder.h; sourceTree = "<group>"; };
-		E5B9D4C11786CF9300E1901C /* SFWebServiceBasicURLBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFWebServiceBasicURLBuilder.m; sourceTree = "<group>"; };
+		E5B9D4C11786CF9300E1901C /* SFWebServiceBasicURLBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFWebServiceBasicURLBuilder.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E5B9D4E31786CFFE00E1901C /* SFDownloader+ConnectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFDownloader+ConnectionDelegate.h"; sourceTree = "<group>"; };
-		E5B9D4E41786CFFE00E1901C /* SFDownloader+ConnectionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SFDownloader+ConnectionDelegate.m"; sourceTree = "<group>"; };
+		E5B9D4E41786CFFE00E1901C /* SFDownloader+ConnectionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "SFDownloader+ConnectionDelegate.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E5B9D4E51786CFFE00E1901C /* SFDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFDownloader.h; sourceTree = "<group>"; };
-		E5B9D4E61786CFFE00E1901C /* SFDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFDownloader.m; sourceTree = "<group>"; };
+		E5B9D4E61786CFFE00E1901C /* SFDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFDownloader.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E5B9D4E71786CFFE00E1901C /* SFLooper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLooper.h; sourceTree = "<group>"; };
 		E5B9D4E81786CFFE00E1901C /* SFLooper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLooper.m; sourceTree = "<group>"; };
-		E5B9D4F91786D01100E1901C /* NSError+SparkWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+SparkWebService.h"; sourceTree = "<group>"; };
-		E5B9D4FA1786D01100E1901C /* NSError+SparkWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+SparkWebService.m"; sourceTree = "<group>"; };
+		E5B9D4F91786D01100E1901C /* NSError+SFSparkWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSError+SFSparkWebService.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		E5B9D4FA1786D01100E1901C /* NSError+SFSparkWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSError+SFSparkWebService.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E5D6E05B17981FBA0041EBCB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E5D81146179562510046DED1 /* SFWebServiceClientStatusCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SFWebServiceClientStatusCodes.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		E5D81147179562510046DED1 /* SFWebServiceClientStatusCodes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFWebServiceClientStatusCodes.m; sourceTree = "<group>"; };
@@ -632,8 +632,8 @@
 		E5B9D4A41786CE9900E1901C /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				E5B9D4F91786D01100E1901C /* NSError+SparkWebService.h */,
-				E5B9D4FA1786D01100E1901C /* NSError+SparkWebService.m */,
+				E5B9D4F91786D01100E1901C /* NSError+SFSparkWebService.h */,
+				E5B9D4FA1786D01100E1901C /* NSError+SFSparkWebService.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -953,7 +953,7 @@
 				E5B9D4F31786CFFE00E1901C /* SFDownloader+ConnectionDelegate.m in Sources */,
 				E5B9D4F51786CFFE00E1901C /* SFDownloader.m in Sources */,
 				E5B9D4F71786CFFE00E1901C /* SFLooper.m in Sources */,
-				E5B9D4FB1786D01100E1901C /* NSError+SparkWebService.m in Sources */,
+				E5B9D4FB1786D01100E1901C /* NSError+SFSparkWebService.m in Sources */,
 				8396B3F317A16A90009E7B9B /* SFBasicAuthenticationProvider.m in Sources */,
 				832540EE17A6B02B006AACF4 /* SFAuthenticationProvider.m in Sources */,
 				8349D97017B22ED4006BDA5F /* SFODataFetchRequest.m in Sources */,

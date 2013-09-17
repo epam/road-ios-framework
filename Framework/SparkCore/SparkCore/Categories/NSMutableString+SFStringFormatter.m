@@ -32,7 +32,7 @@
 
 @implementation NSMutableString (SFStringFormatter)
 
-- (void)formatStringUsingValues:(NSDictionary *const)valueDictionary withEscape:(NSString *const)escapeString {
+- (void)SF_formatStringUsingValues:(NSDictionary *const)valueDictionary withEscape:(NSString *const)escapeString {
     @autoreleasepool {
         NSString *pattern = [NSString stringWithFormat:@"%@(.*?)%@", escapeString, escapeString];
         NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionAllowCommentsAndWhitespace error:nil];

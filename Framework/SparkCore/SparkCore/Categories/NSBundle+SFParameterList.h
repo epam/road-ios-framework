@@ -1,5 +1,5 @@
 //
-//  NSString+AccessorUtilities.h
+//  NSBundle+SFParameterList.h
 //  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -28,21 +28,33 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-/**
- Category to convert back and forth between default setter and getter names.
- */
-@interface NSString (AccessorUtilities)
+#import <Foundation/Foundation.h>
+
+extern NSString * const kSFPlistFileExtension;
 
 /**
- Creates a setter accessor name from the given string by attaching a set- prefix and a : postfix to the receiver's content.
- @result The setter name.
+ Convenience methods to fetch plist file paths with less code.
  */
-- (NSString * const)stringByTransformingToSetterAccessor;
+@interface NSBundle (SFParameterList)
 
 /**
- Creates a getter accessor name from the receiver with the assumption it is a setter accessor method's name.
- @result The getter name.
+ Convenience method to return a path for a plist file of a given name.
+ @param plistResourceName The name of the plist file.
+ @result The string representation for the path pointing to the plist file.
  */
-- (NSString * const)stringByTransformingToGetterAccessor;
+- (NSString *)SF_pathForPlistResource:(NSString *)plistResourceName;
+
+/**
+ Returns the resource path for the plist file with the same name as the receiver's class name.
+ @result Returns the path string for the plist file.
+ */
+- (NSString *)SF_pathForOwnedPlist;
+
+/**
+ Convenience method to return an NSURL representation of the path to a plist file in the bundle of a specified name.
+ @param plistResourceName The name of the plist file.
+ @result The url object containing the path.
+ */
+- (NSURL *)SF_urlForPlistResource:(NSString *)plistResourceName;
 
 @end

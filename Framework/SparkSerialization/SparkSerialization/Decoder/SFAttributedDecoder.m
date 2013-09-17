@@ -128,7 +128,7 @@
     NSArray *properties;
     @autoreleasepool {
         if ([rootObjectClass SF_attributeForClassWithAttributeType:[SFSerializable class]]) {
-            properties = [[rootObjectClass properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(SFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
+            properties = [[rootObjectClass SF_properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(SFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
                 return (![evaluatedObject attributeWithType:[SFDerived class]]);
             }]];
         }

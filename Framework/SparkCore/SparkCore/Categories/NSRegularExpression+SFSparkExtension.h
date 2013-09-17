@@ -1,7 +1,8 @@
 //
-//  NSMutableDictionary+KeyedSubscript.h
-//  SparkCore
+//  NSRegularExpression+SFSparkExtension.h
+//  AttributesResearchLab
 //
+//  
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without 
@@ -26,19 +27,15 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
+//
 
 #import <Foundation/Foundation.h>
 
-/**
- Category to allow keyed subscript support for mutable dictionaries to set elements.
- */
-#ifndef __IPHONE_6_0
+@interface NSRegularExpression (SFSparkExtension)
 
-@interface NSMutableDictionary (KeyedSubscript)
-
-- (void)setObject:(id)obj forKeyedSubscript:(id<NSCopying>)key;
++ (NSRegularExpression *)SF_regexFromString:(NSString *)regexString;
++ (NSString *)SF_stringByReplacingRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSString *)sourceString;
++ (void)SF_replaceRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSMutableString *)sourceString;
++ (NSUInteger)SF_numberOfMatchesToRegex:(NSString *)regexString inString:(NSString *)sourceString;
 
 @end
-
-#endif

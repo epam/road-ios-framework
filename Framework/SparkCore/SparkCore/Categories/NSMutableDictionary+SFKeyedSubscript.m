@@ -1,8 +1,7 @@
 //
-//  NSRegularExpression+SparkExtension.h
-//  AttributesResearchLab
+//  NSMutableDictionary+SFKeyedSubscript.m
+//  SparkCore
 //
-//  
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without 
@@ -27,15 +26,18 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-//
 
-#import <Foundation/Foundation.h>
 
-@interface NSRegularExpression (SparkExtension)
+#import "NSMutableDictionary+SFKeyedSubscript.h"
 
-+ (NSRegularExpression *)SF_regexFromString:(NSString *)regexString;
-+ (NSString *)SF_stringByReplacingRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSString *)sourceString;
-+ (void)SF_replaceRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSMutableString *)sourceString;
-+ (NSUInteger)SF_numberOfMatchesToRegex:(NSString *)regexString inString:(NSString *)sourceString;
+#ifndef __IPHONE_6_0
+
+@implementation NSMutableDictionary (SFKeyedSubscript)
+
+- (void)SF_setObject:(id)obj forKeyedSubscript:(id<NSCopying>)key {
+    [self setObject:obj forKey:key];
+}
 
 @end
+
+#endif

@@ -76,7 +76,7 @@
  @param aClass The class to which the ivar belongs to.
  @result The info object.
  */
-+ (SFIvarInfo *)ivarNamed:(NSString * const)ivarName ofClass:(__unsafe_unretained Class const)aClass;
++ (SFIvarInfo *)SF_ivarNamed:(NSString * const)ivarName ofClass:(__unsafe_unretained Class const)aClass;
 
 /**
  The method performs search for attribute of required class in array of attributes declared for instance variable.

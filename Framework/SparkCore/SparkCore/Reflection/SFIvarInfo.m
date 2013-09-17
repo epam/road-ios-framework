@@ -54,7 +54,7 @@
     return array;
 }
 
-+ (SFIvarInfo *)ivarNamed:(NSString *const)ivarName ofClass:(__unsafe_unretained Class const)aClass {
++ (SFIvarInfo *)SF_ivarNamed:(NSString *const)ivarName ofClass:(__unsafe_unretained Class const)aClass {
     Ivar anIvar = class_getInstanceVariable(aClass, [ivarName cStringUsingEncoding:NSUTF8StringEncoding]);
     SFIvarInfo *descriptor = [self infoFromIvar:anIvar];
     descriptor.className = NSStringFromClass(aClass);
