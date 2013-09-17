@@ -104,8 +104,8 @@ static NSUInteger const kSFMethodArgumentOffset = 2;
     info.hostClass = aClass;
     info.name = NSStringFromSelector(method_getName(method));
     info.numberOfArguments = (NSUInteger)method_getNumberOfArguments(method) - kSFMethodArgumentOffset;
-    info->argumentTypes = [self mapArgumentTypeEncodingForMethod:method numberOfArguments:info.numberOfArguments];
-    info.returnType = [self mapReturnTypeEncodingForMethod:method];
+    info->argumentTypes = [self argumentsTypeNamesOfMethod:method numberOfArguments:info.numberOfArguments];
+    info.returnType = [self returnTypeNameOfMethod:method];
     return info;
 }
 
@@ -126,11 +126,11 @@ static NSUInteger const kSFMethodArgumentOffset = 2;
     return argumentTypes[anIndex];
 }
 
-+ (NSArray *)mapArgumentTypeEncodingForMethod:(Method)aMethod numberOfArguments:(NSUInteger)numberOfArguments {
++ (NSArray *)argumentsTypeNamesOfMethod:(Method)method numberOfArguments:(NSUInteger)numberOfArguments {
     NSMutableArray * const array = [[NSMutableArray alloc] init];
     
     for (unsigned int index = kSFMethodArgumentOffset; index < numberOfArguments + kSFMethodArgumentOffset; index++) {
-        char *argEncoding = method_copyArgumentType(aMethod, index);
+        char *argEncoding = method_copyArgumentType(method, index);
         [array addObject:[SFTypeDecoder nameFromTypeEncoding:[NSString stringWithCString:argEncoding encoding:NSUTF8StringEncoding]]];
         free(argEncoding);
     }
@@ -138,8 +138,8 @@ static NSUInteger const kSFMethodArgumentOffset = 2;
     return array;
 }
 
-+ (NSString *)mapReturnTypeEncodingForMethod:(Method)aMethod {
-    char *returnTypeEncoding = method_copyReturnType(aMethod);
++ (NSString *)returnTypeNameOfMethod:(Method)method {
+    char *returnTypeEncoding = method_copyReturnType(method);
     NSString * const result = [NSString stringWithCString:returnTypeEncoding encoding:NSUTF8StringEncoding];
     free(returnTypeEncoding);
     return [SFTypeDecoder nameFromTypeEncoding:result];
