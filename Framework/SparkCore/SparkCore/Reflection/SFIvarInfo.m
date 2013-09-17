@@ -27,7 +27,6 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 #import "SFIvarInfo.h"
 
 #import "SFTypeDecoder.h"
@@ -62,13 +61,12 @@
 @dynamic attributes;
 
 + (NSArray *)ivarsOfClass:(Class)aClass {
-    unsigned int memberCount;
+    unsigned int memberCount = 0;
     Ivar * const ivarList = class_copyIvarList(aClass, &memberCount);
     NSMutableArray *array = [NSMutableArray array];
-    SFIvarInfo *descriptor;
     
     for (unsigned int index = 0; index < memberCount; index++) {
-        descriptor = [self infoFromIvar:ivarList[index]];
+        SFIvarInfo *descriptor = [self infoFromIvar:ivarList[index]];
         descriptor.className = NSStringFromClass(aClass);
         descriptor.hostClass = aClass;
         [array addObject:descriptor];
