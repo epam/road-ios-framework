@@ -29,7 +29,7 @@
 
 
 #import "SFPropertyInfo.h"
-#import "SFEncodingMapper.h"
+#import "SFTypeDecoder.h"
 #import "NSCharacterSet+SFEncodingCharacterSet.h"
 #import <objc/runtime.h>
 #import "SparkAttribute.h"
@@ -77,7 +77,7 @@
     NSString * const setterName = [self propertyAttributeNameForField:"S" property:property];
     
     info.propertyName = name;
-    info.attributeClassName = [SFEncodingMapper nameFromTypeEncoding:attributeName];
+    info.attributeClassName = [SFTypeDecoder nameFromTypeEncoding:attributeName];
     info.attributeClass = NSClassFromString([info.attributeClassName stringByTrimmingCharactersInSet:[NSCharacterSet SF_pointerCharacterSet]]);
     info.object = [attributeName hasPrefix:@"@"];
     info.className = NSStringFromClass(class);

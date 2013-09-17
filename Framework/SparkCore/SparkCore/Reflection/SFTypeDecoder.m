@@ -28,7 +28,7 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-#import "SFEncodingMapper.h"
+#import "SFTypeDecoder.h"
 #import "NSCharacterSet+SFEncodingCharacterSet.h"
 
 static NSString * const kSFEncodingMapFile = @"SFEncoding";
@@ -41,7 +41,7 @@ static NSString * const kSFStructFormat = @"struct %@";
 static NSString * const kSFFixedArrayFormat = @"%@[%ld]";
 static NSDictionary *kSFMapDictionary;
 
-@implementation SFEncodingMapper
+@implementation SFTypeDecoder
 
 +(void)initialize {
     static dispatch_once_t onceToken;

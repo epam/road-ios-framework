@@ -29,7 +29,7 @@
 
 
 #import "SFMethodInfo.h"
-#import "SFEncodingMapper.h"
+#import "SFTypeDecoder.h"
 #import <objc/runtime.h>
 #import "SparkAttribute.h"
 
@@ -108,7 +108,7 @@ static NSUInteger const kSFMethodArgumentOffset = 2;
     
     for (unsigned int index = kSFMethodArgumentOffset; index < numberOfArguments + kSFMethodArgumentOffset; index++) {
         char *argEncoding = method_copyArgumentType(aMethod, index);
-        [array addObject:[SFEncodingMapper nameFromTypeEncoding:[NSString stringWithCString:argEncoding encoding:NSUTF8StringEncoding]]];
+        [array addObject:[SFTypeDecoder nameFromTypeEncoding:[NSString stringWithCString:argEncoding encoding:NSUTF8StringEncoding]]];
         free(argEncoding);
     }
     
@@ -119,7 +119,7 @@ static NSUInteger const kSFMethodArgumentOffset = 2;
     char *returnTypeEncoding = method_copyReturnType(aMethod);
     NSString * const result = [NSString stringWithCString:returnTypeEncoding encoding:NSUTF8StringEncoding];
     free(returnTypeEncoding);
-    return [SFEncodingMapper nameFromTypeEncoding:result];
+    return [SFTypeDecoder nameFromTypeEncoding:result];
 }
 
 - (NSString *)description {

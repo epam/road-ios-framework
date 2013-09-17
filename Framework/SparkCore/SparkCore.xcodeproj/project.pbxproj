@@ -63,7 +63,7 @@
 		8D46587917E2C84500D5620F /* SFEncoding.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D9422CD17E2C53D005F0AE3 /* SFEncoding.plist */; };
 		8D9422CA17E2C52D005F0AE3 /* NSObject+SFAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9422C717E2C52D005F0AE3 /* NSObject+SFAttributes.m */; };
 		8D9422CB17E2C52D005F0AE3 /* NSObject+SFAttributesInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9422C917E2C52D005F0AE3 /* NSObject+SFAttributesInternal.m */; };
-		8D9422D617E2C53D005F0AE3 /* SFEncodingMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9422CF17E2C53D005F0AE3 /* SFEncodingMapper.m */; };
+		8D9422D617E2C53D005F0AE3 /* SFTypeDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9422CF17E2C53D005F0AE3 /* SFTypeDecoder.m */; };
 		8D9422D717E2C53D005F0AE3 /* SFIvarInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9422D117E2C53D005F0AE3 /* SFIvarInfo.m */; };
 		8D9422D817E2C53D005F0AE3 /* SFMethodInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9422D317E2C53D005F0AE3 /* SFMethodInfo.m */; };
 		8D9422D917E2C53D005F0AE3 /* SFPropertyInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9422D517E2C53D005F0AE3 /* SFPropertyInfo.m */; };
@@ -89,7 +89,7 @@
 		8D94232317E2C61A005F0AE3 /* NSObject+SFMemberVariableReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D94231D17E2C61A005F0AE3 /* NSObject+SFMemberVariableReflection.m */; };
 		8D94232417E2C61A005F0AE3 /* NSObject+SFMethodReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D94231F17E2C61A005F0AE3 /* NSObject+SFMethodReflection.m */; };
 		8D94232517E2C61A005F0AE3 /* NSObject+SFPropertyReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D94232117E2C61A005F0AE3 /* NSObject+SFPropertyReflection.m */; };
-		8D94232617E2C680005F0AE3 /* SFEncodingMapper.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D9422CE17E2C53D005F0AE3 /* SFEncodingMapper.h */; };
+		8D94232617E2C680005F0AE3 /* SFTypeDecoder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D9422CE17E2C53D005F0AE3 /* SFTypeDecoder.h */; };
 		8D94232717E2C680005F0AE3 /* SFIvarInfo.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D9422D017E2C53D005F0AE3 /* SFIvarInfo.h */; };
 		8D94232817E2C680005F0AE3 /* SFMethodInfo.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D9422D217E2C53D005F0AE3 /* SFMethodInfo.h */; };
 		8D94232917E2C680005F0AE3 /* SFPropertyInfo.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D9422D417E2C53D005F0AE3 /* SFPropertyInfo.h */; };
@@ -126,7 +126,7 @@
 			dstPath = include/Spark;
 			dstSubfolderSpec = 16;
 			files = (
-				8D94232617E2C680005F0AE3 /* SFEncodingMapper.h in CopyFiles */,
+				8D94232617E2C680005F0AE3 /* SFTypeDecoder.h in CopyFiles */,
 				8D94232717E2C680005F0AE3 /* SFIvarInfo.h in CopyFiles */,
 				8D94232817E2C680005F0AE3 /* SFMethodInfo.h in CopyFiles */,
 				8D94232917E2C680005F0AE3 /* SFPropertyInfo.h in CopyFiles */,
@@ -201,8 +201,8 @@
 		8D9422C817E2C52D005F0AE3 /* NSObject+SFAttributesInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSObject+SFAttributesInternal.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		8D9422C917E2C52D005F0AE3 /* NSObject+SFAttributesInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSObject+SFAttributesInternal.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8D9422CD17E2C53D005F0AE3 /* SFEncoding.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SFEncoding.plist; sourceTree = "<group>"; };
-		8D9422CE17E2C53D005F0AE3 /* SFEncodingMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFEncodingMapper.h; sourceTree = "<group>"; };
-		8D9422CF17E2C53D005F0AE3 /* SFEncodingMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFEncodingMapper.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		8D9422CE17E2C53D005F0AE3 /* SFTypeDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTypeDecoder.h; sourceTree = "<group>"; };
+		8D9422CF17E2C53D005F0AE3 /* SFTypeDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFTypeDecoder.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8D9422D017E2C53D005F0AE3 /* SFIvarInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SFIvarInfo.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		8D9422D117E2C53D005F0AE3 /* SFIvarInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFIvarInfo.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8D9422D217E2C53D005F0AE3 /* SFMethodInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SFMethodInfo.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -460,8 +460,8 @@
 			isa = PBXGroup;
 			children = (
 				8D9422CD17E2C53D005F0AE3 /* SFEncoding.plist */,
-				8D9422CE17E2C53D005F0AE3 /* SFEncodingMapper.h */,
-				8D9422CF17E2C53D005F0AE3 /* SFEncodingMapper.m */,
+				8D9422CE17E2C53D005F0AE3 /* SFTypeDecoder.h */,
+				8D9422CF17E2C53D005F0AE3 /* SFTypeDecoder.m */,
 				8D9422D017E2C53D005F0AE3 /* SFIvarInfo.h */,
 				8D9422D117E2C53D005F0AE3 /* SFIvarInfo.m */,
 				8D9422D217E2C53D005F0AE3 /* SFMethodInfo.h */,
@@ -727,7 +727,7 @@
 				8DFAE16817D5F65D002687B8 /* NSRegularExpression+SFSparkExtension.m in Sources */,
 				8D9422CA17E2C52D005F0AE3 /* NSObject+SFAttributes.m in Sources */,
 				8D9422CB17E2C52D005F0AE3 /* NSObject+SFAttributesInternal.m in Sources */,
-				8D9422D617E2C53D005F0AE3 /* SFEncodingMapper.m in Sources */,
+				8D9422D617E2C53D005F0AE3 /* SFTypeDecoder.m in Sources */,
 				8D9422D717E2C53D005F0AE3 /* SFIvarInfo.m in Sources */,
 				8D9422D817E2C53D005F0AE3 /* SFMethodInfo.m in Sources */,
 				8D9422D917E2C53D005F0AE3 /* SFPropertyInfo.m in Sources */,

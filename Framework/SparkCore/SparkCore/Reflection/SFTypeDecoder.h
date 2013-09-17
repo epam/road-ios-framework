@@ -33,7 +33,7 @@
 /**
  A simple mapper class to return the type encoding name from an encoding.
  */
-@interface SFEncodingMapper : NSObject
+@interface SFTypeDecoder : NSObject
 
 /**
  Returns the attribute name from the type encoding.
