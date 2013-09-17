@@ -29,6 +29,7 @@
 
 
 #import "SFPropertyInfo.h"
+
 #import "SFTypeDecoder.h"
 #import "NSCharacterSet+SFEncodingCharacterSet.h"
 #import <objc/runtime.h>

@@ -29,6 +29,7 @@
 
 
 #import "SFIvarInfo.h"
+
 #import "SFTypeDecoder.h"
 #import <objc/runtime.h>
 #import "SparkAttribute.h"

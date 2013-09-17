@@ -29,6 +29,7 @@
 
 
 #import "SFTypeDecoder.h"
+
 #import "NSCharacterSet+SFEncodingCharacterSet.h"
 
 static NSString * const kSFEncodingMapFile = @"SFEncoding";
