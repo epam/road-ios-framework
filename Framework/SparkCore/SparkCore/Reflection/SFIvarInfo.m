@@ -86,8 +86,9 @@
 
 + (SFIvarInfo *)infoFromIvar:(Ivar)anIvar {
     SFIvarInfo * const info = [[SFIvarInfo alloc] init];
-    NSString * const encoding = [NSString stringWithCString:ivar_getTypeEncoding(anIvar) encoding:NSUTF8StringEncoding];
     info.name = [NSString stringWithCString:ivar_getName(anIvar) encoding:NSUTF8StringEncoding];
+    
+    NSString * const encoding = [NSString stringWithCString:ivar_getTypeEncoding(anIvar) encoding:NSUTF8StringEncoding];
     info.variableTypeName = [SFTypeDecoder nameFromTypeEncoding:encoding];
     info.primitive = ![encoding hasPrefix:@"@"];
     return info;
