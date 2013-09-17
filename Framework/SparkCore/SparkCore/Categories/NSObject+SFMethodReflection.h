@@ -1,5 +1,5 @@
 //
-//  NSObject+MemberVariableReflection.h
+//  NSObject+SFMethodReflection.h
 //  SparkReflection
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -29,37 +29,45 @@
 
 
 #import <Foundation/Foundation.h>
-#import "SFIvarInfo.h"
+#import "SFMethodInfo.h"
 
 /**
- Category to retrieve member variable info objects from either a class or an instance of a class.
+ Convenience methods to fetch SFMethodDescriptors for the current object.
  */
-@interface NSObject (MemberVariableReflection)
+@interface NSObject (SFMethodReflection)
 
 /**
- Returns the info object corresponding to the instance variable of the given name.
- @param name The name of the ivar.
- @result The info object.
+ Returns a specific descriptor of the given name matching class methods for the current object.
+ @param methodName The name of the method.
  */
-+ (SFIvarInfo *)ivarNamed:(NSString *)name;
+- (SFMethodInfo *)SF_classMethodForName:(NSString *)methodName;
 
 /**
- Returns all info objects corresponding to the instance variable of the given name.
- @result The ivar info objects.
+ Returns a specific descriptor of the given name matching instance methods for the current object.
+ @param methodName The name of the method.
  */
-+ (NSArray *)ivars;
+- (SFMethodInfo *)SF_instanceMethodForName:(NSString *)methodName;
 
 /**
- Returns the info object corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @param name The name of the ivar.
- @result The info object.
+ Returns all method descriptor for the current object.
  */
-- (SFIvarInfo *)ivarNamed:(NSString *)name;
+- (NSArray *)SF_methods;
 
 /**
- Returns all info objects corresponding to the instance variable of the given name. Invoked on an instance of a class.
- @result The ivar info objects.
+ Returns a specific descriptor of the given name matching class methods for the current class.
+  @param methodName The name of the method.
  */
-- (NSArray *)ivars;
++ (SFMethodInfo *)SF_classMethodForName:(NSString *)methodName;
+
+/**
+ Returns all method descriptor for the current class.
+ */
++ (NSArray *)SF_methods;
+
+/**
+ Returns a specific descriptor of the given name matching instance methods for the current class.
+  @param methodName The name of the method.
+ */
++ (SFMethodInfo *)SF_instanceMethodForName:(NSString *)methodName;
 
 @end

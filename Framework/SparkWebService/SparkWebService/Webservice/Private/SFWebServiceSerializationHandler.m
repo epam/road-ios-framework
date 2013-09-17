@@ -30,7 +30,7 @@
 
 #import "SFWebServiceSerializationHandler.h"
 #import "SFSerializationDelegate.h"
-#import "NSError+SparkWebService.h"
+#import "NSError+SFSparkWebService.h"
 
 @implementation SFWebServiceSerializationHandler
 
@@ -43,7 +43,7 @@
         serializedData = [serializationObject deserializeData:data serializatinRoot:serializationRoot withDeserializationClass:deserializationClass error:nil];
         
         if (serializedData == nil) {
-            error = [NSError sparkWS_deserializationErrorWithData:data];
+            error = [NSError SF_sparkWS_deserializationErrorWithData:data];
         }
     }
     

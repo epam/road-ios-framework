@@ -29,7 +29,7 @@
 
 
 #import "SFMutableObject.h"
-#import "NSString+AccessorUtilities.h"
+#import "NSString+SFAccessorUtilities.h"
 #import <objc/runtime.h>
 #import "SparkReflection.h"
 
@@ -59,9 +59,9 @@ const char *SFMutableObjectGetterEncoding = "@@:";
 
 + (BOOL)resolveInstanceMethod:(SEL)sel {
     BOOL result;
-    NSString * const getterName = [NSStringFromSelector(sel) stringByTransformingToGetterAccessor];
-    NSString * const setterName = [getterName stringByTransformingToSetterAccessor];
-    SFPropertyInfo * const desc = [self propertyNamed:getterName];
+    NSString * const getterName = [NSStringFromSelector(sel) SF_stringByTransformingToGetterAccessor];
+    NSString * const setterName = [getterName SF_stringByTransformingToSetterAccessor];
+    SFPropertyInfo * const desc = [self SF_propertyNamed:getterName];
     
     
     if ([desc isDynamic]) {
@@ -86,7 +86,7 @@ const char *SFMutableObjectGetterEncoding = "@@:";
 }
 
 - (void)setGenericValueSetter:(id const)value {
-    NSString * const key = [NSStringFromSelector(_cmd) stringByTransformingToGetterAccessor];
+    NSString * const key = [NSStringFromSelector(_cmd) SF_stringByTransformingToGetterAccessor];
     [self setValue:value forUndefinedKey:key];
 }
 

@@ -45,17 +45,17 @@
 }
 
 - (void)testODataFetchRequest {
-    SFODataExpression *leftExpression = [[SFODataExpression alloc] initWithProperty:[SFODataTestEntity propertyNamed:@"name"]];
+    SFODataExpression *leftExpression = [[SFODataExpression alloc] initWithProperty:[SFODataTestEntity SF_propertyNamed:@"name"]];
     SFODataExpression *rightExpression = [[SFODataExpression alloc] initWithValue:@"Paul"];
     SFODataPredicate *firstPredicate = [[SFODataPrioritizedPredicate alloc] initWithLeftExpression:leftExpression rightExpression:rightExpression type:SFEqualToODataPredicateOperatorType];
     
-    leftExpression = [[SFODataExpression alloc] initWithProperty:[SFODataTestEntity propertyNamed:@"total"]];
+    leftExpression = [[SFODataExpression alloc] initWithProperty:[SFODataTestEntity SF_propertyNamed:@"total"]];
     rightExpression = [[SFODataExpression alloc] initWithValue:@"32"];
     SFODataPredicate *secondPredicate = [[SFODataPrioritizedPredicate alloc] initWithLeftExpression:leftExpression rightExpression:rightExpression type:SFLessThanOrEqualToODataPredicateOperatorType];
     
     SFODataPredicate *predicate = [[SFODataPredicate alloc] initWithLeftExpression:[firstPredicate expression] rightExpression:[secondPredicate expression] type:SFLogicalOrODataPredicateOperatorType];
     
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithProperty:[SFODataTestEntity propertyNamed:@"total"] ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithProperty:[SFODataTestEntity SF_propertyNamed:@"total"] ascending:YES];
     SFODataFetchRequest *fetchRequest = [[SFODataFetchRequest alloc] initWithEntityName:[SFODataTestEntity entityName] predicate:predicate sortDescriptors:@[sortDescriptor]];
     
     STAssertTrue([[fetchRequest generateQueryString] isEqualToString:@"$orderby=TotalCost asc&$filter=(Name eq Paul) or (TotalCost le 32)"], @"OData fetch request generated incorrect result");
@@ -83,10 +83,10 @@
 }
 
 - (void)testODataRequestURL {
-    SFODataExpression *leftExpression = [[SFODataExpression alloc] initWithProperty:[SFODataTestEntity propertyNamed:@"name"]];
+    SFODataExpression *leftExpression = [[SFODataExpression alloc] initWithProperty:[SFODataTestEntity SF_propertyNamed:@"name"]];
     SFODataExpression *rightExpression = [[SFODataExpression alloc] initWithValue:@"Paul"];
     SFODataPrioritizedPredicate *predicate = [[SFODataPrioritizedPredicate alloc] initWithLeftExpression:leftExpression rightExpression:rightExpression type:SFEqualToODataPredicateOperatorType];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithProperty:[SFODataTestEntity propertyNamed:@"total"] ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithProperty:[SFODataTestEntity SF_propertyNamed:@"total"] ascending:YES];
     SFODataFetchRequest *fetchRequest = [[SFODataFetchRequest alloc] initWithEntityName:[SFODataTestEntity entityName] predicate:predicate sortDescriptors:@[sortDescriptor]];
     
     __block BOOL isFinished = NO;
@@ -108,10 +108,10 @@
 }
 
 - (void)testODataRequestURLWithParams {
-    SFODataExpression *leftExpression = [[SFODataExpression alloc] initWithProperty:[SFODataTestEntity propertyNamed:@"name"]];
+    SFODataExpression *leftExpression = [[SFODataExpression alloc] initWithProperty:[SFODataTestEntity SF_propertyNamed:@"name"]];
     SFODataExpression *rightExpression = [[SFODataExpression alloc] initWithValue:@"Paul"];
     SFODataPrioritizedPredicate *predicate = [[SFODataPrioritizedPredicate alloc] initWithLeftExpression:leftExpression rightExpression:rightExpression type:SFEqualToODataPredicateOperatorType];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithProperty:[SFODataTestEntity propertyNamed:@"total"] ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithProperty:[SFODataTestEntity SF_propertyNamed:@"total"] ascending:YES];
     SFODataFetchRequest *fetchRequest = [[SFODataFetchRequest alloc] initWithEntityName:[SFODataTestEntity entityName] predicate:predicate sortDescriptors:@[sortDescriptor]];
     
     __block BOOL isFinished = NO;
@@ -133,7 +133,7 @@
 }
 
 - (void)testODataRequestURLWithPagination {
-    SFODataExpression *leftExpression = [[SFODataExpression alloc] initWithProperty:[SFODataTestEntity propertyNamed:@"name"]];
+    SFODataExpression *leftExpression = [[SFODataExpression alloc] initWithProperty:[SFODataTestEntity SF_propertyNamed:@"name"]];
     SFODataExpression *rightExpression = [[SFODataExpression alloc] initWithValue:@"Paul"];
     SFODataPredicate *predicate = [[SFODataPredicate alloc] initWithLeftExpression:leftExpression rightExpression:rightExpression type:SFEqualToODataPredicateOperatorType];
     SFODataFetchRequest *fetchRequest = [[SFODataFetchRequest alloc] initWithEntityName:[SFODataTestEntity entityName] predicate:predicate];

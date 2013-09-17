@@ -158,13 +158,13 @@
 		7837BF2616C4E4EA0063A026 /* SFLogMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLogMessage.h; sourceTree = "<group>"; };
 		7837BF2716C4E4EA0063A026 /* SFLogMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLogMessage.m; sourceTree = "<group>"; };
 		7837BF3016C4EA920063A026 /* SFLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLogger.h; sourceTree = "<group>"; };
-		7837BF3116C4EA920063A026 /* SFLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLogger.m; sourceTree = "<group>"; };
-		7837BF3316C4ED140063A026 /* SFLogWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLogWriter.h; sourceTree = "<group>"; };
+		7837BF3116C4EA920063A026 /* SFLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFLogger.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		7837BF3316C4ED140063A026 /* SFLogWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SFLogWriter.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		7837BF3416C4ED140063A026 /* SFLogWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLogWriter.m; sourceTree = "<group>"; };
 		7837BF3616C4ED980063A026 /* SFLogFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLogFilter.h; sourceTree = "<group>"; };
 		7837BF3716C4ED980063A026 /* SFLogFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLogFilter.m; sourceTree = "<group>"; };
 		7837BF3916C4EDA30063A026 /* SFLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLogFormatter.h; sourceTree = "<group>"; };
-		7837BF3A16C4EDA30063A026 /* SFLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLogFormatter.m; sourceTree = "<group>"; };
+		7837BF3A16C4EDA30063A026 /* SFLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFLogFormatter.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7837BF3C16C4F1390063A026 /* SFLogBlockFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLogBlockFormatter.h; sourceTree = "<group>"; };
 		7837BF3D16C4F1390063A026 /* SFLogBlockFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLogBlockFormatter.m; sourceTree = "<group>"; };
 		7837BF3F16C4F2BD0063A026 /* SFLogPlainFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLogPlainFormatter.h; sourceTree = "<group>"; };

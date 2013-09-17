@@ -130,7 +130,7 @@
  @param aClass The class to fetch the result for.
  @result The info object.
  */
-+ (SFPropertyInfo *)propertyNamed:(NSString *)name forClass:(__unsafe_unretained Class const)aClass;
++ (SFPropertyInfo *)SF_propertyNamed:(NSString *)name forClass:(__unsafe_unretained Class const)aClass;
 
 /**
  The method performs search for attribute of required class in array of attributes declared for property.

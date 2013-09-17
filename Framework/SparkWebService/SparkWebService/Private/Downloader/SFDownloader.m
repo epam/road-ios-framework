@@ -32,7 +32,7 @@
 #import "SFLooper.h"
 #import <Spark/SparkLogger.h>
 #import <Spark/SparkCore.h>
-#import "NSError+SparkWebService.h"
+#import "NSError+SFSparkWebService.h"
 
 #import "SFWebServiceCall.h"
 #import "SFWebServiceHeader.h"
@@ -190,7 +190,7 @@
     [_connection cancel];
      SFLogTypedDebug(self.loggerType, @"URL connection(%p) is canceled. URL: %@", _connection, [_connection.currentRequest.URL absoluteString]);
     self.data = nil;
-    self.downloadError = [NSError sparkWS_cancellError];
+    self.downloadError = [NSError SF_sparkWS_cancellError];
     [self stop];
    
 }
@@ -230,7 +230,7 @@ NSString * const SFAttributeTemplateEscape = @"%%";
     NSMutableDictionary* result = [NSMutableDictionary new];
     [serviceHeaderAttribute.hearderFields enumerateKeysAndObjectsUsingBlock:^(id key, NSString* obj, BOOL *stop) {
         NSMutableString* value = [obj mutableCopy];
-        [value formatStringUsingValues:values withEscape:SFAttributeTemplateEscape];
+        [value SF_formatStringUsingValues:values withEscape:SFAttributeTemplateEscape];
         result[key] = [value copy];
     }];
     return result;

@@ -31,17 +31,17 @@
 #define SparkCore_SparkCore_h
 
 #import "NSMutableString+SFStringFormatter.h"
-#import "NSString+AccessorUtilities.h"
-#import "NSObject+AttachedCollections.h"
-#import "NSArray+EmptyArrayChecks.h"
-#import "NSBundle+ParameterList.h"
+#import "NSString+SFAccessorUtilities.h"
+#import "NSObject+SFAttachedCollections.h"
+#import "NSArray+SFEmptyArrayChecks.h"
+#import "NSBundle+SFParameterList.h"
 #import "SFMutableObject.h"
 #import "SFPooledObject.h"
 #import "SFPoolObject.h"
 #import "SFObjectPool.h"
 #import "SFObject.h"
 #import "SparkSingletonDefinition.h"
-#import "NSRegularExpression+SparkExtension.h"
+#import "NSRegularExpression+SFSparkExtension.h"
 #import "SparkReflection.h"
 #import "SparkAttribute.h"
 #endif

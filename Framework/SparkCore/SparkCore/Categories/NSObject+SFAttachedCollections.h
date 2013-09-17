@@ -1,5 +1,5 @@
 //
-//  NSDictionary+KeyedSubscript.h
+//  NSObject+OwnedCollections.h
 //  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,12 +31,20 @@
 #import <Foundation/Foundation.h>
 
 /**
- Category to extend keyed subscript for fetching elements in a dictionary prior to iOS 6.0.
+ This category allows quick access to the collections created from plist files.
  */
-#ifndef __IPHONE_6_0
-@interface NSDictionary (KeyedSubscript)
+@interface NSObject (SFAttachedCollections)
 
-- (id)objectForKeyedSubscript:(id)key;
+/**
+ Returns the dictionary representation of the plist file with the same classname as of the receiver.
+ @return The dictionary initialized with the contents of the plist file.
+ */
+- (NSDictionary *)SF_attachedDictionary;
+
+/**
+ Returns the array representation of the plist file with the same classname as of the receiver.
+ @return The array initialized with the contents of the plist file.
+ */
+- (NSArray *)SF_attachedArray;
 
 @end
-#endif

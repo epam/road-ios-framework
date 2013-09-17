@@ -1,6 +1,6 @@
 //
-//  NSDictionary+KeyedSubscript.m
-//  SparkCore
+//  NSObject+SFMethodReflection.m
+//  SparkReflection
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -28,17 +28,33 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-#import "NSDictionary+KeyedSubscript.h"
-#import <objc/runtime.h>
+#import "NSObject+SFMethodReflection.h"
 
-#ifndef __IPHONE_6_0
+@implementation NSObject (SFMethodReflection)
 
-@implementation NSDictionary (KeyedSubscript)
-
-- (id)objectForKeyedSubscript:(id)key {
-    return [self objectForKey:key];
+- (SFMethodInfo *)SF_classMethodForName:(NSString *)methodName {
+    return [SFMethodInfo classMethodNamed:methodName forClass:[self class]];
 }
 
-@end
+- (SFMethodInfo *)SF_instanceMethodForName:(NSString *)methodName {
+    return [SFMethodInfo instanceMethodNamed:methodName forClass:[self class]];
+}
 
-#endif
+- (NSArray *)SF_methods {
+    return [SFMethodInfo methodsOfClass:[self class]];
+}
+
++ (SFMethodInfo *)SF_classMethodForName:(NSString *)methodName {
+    return [SFMethodInfo classMethodNamed:methodName forClass:self];
+}
+
++ (SFMethodInfo *)SF_instanceMethodForName:(NSString *)methodName {
+    return [SFMethodInfo instanceMethodNamed:methodName forClass:self];
+}
+
++ (NSArray *)SF_methods {
+    return [SFMethodInfo methodsOfClass:self];
+}
+
+
+@end

@@ -29,41 +29,41 @@
 
 
 #import "SFConditionalComponentResultTest.h"
-#import "NSArray+EmptyArrayChecks.h"
+#import "NSArray+SFEmptyArrayChecks.h"
 
 @implementation SFConditionalComponentResultTest
 
 - (void)testConditionalLastObjectNotExisting {
     NSArray * const array = @[];
-    id lastObject = [array lastElementIfNotEmpty];
+    id lastObject = [array SF_lastElementIfNotEmpty];
     
     STAssertTrue(lastObject == nil, @"Assertion: empty array's last object is nil with this method.");
 }
 
 - (void)testConditionalLastObjectExisting {
     NSArray * const array = @[@"first", @"second"];
-    id lastObject = [array lastElementIfNotEmpty];
+    id lastObject = [array SF_lastElementIfNotEmpty];
     
     STAssertTrue([lastObject isEqual:[array lastObject]], @"Assertion: lastObject method returns the same as the conditional version.");
 }
 
 - (void)testConditionalObjectAtIndexNotExisting {
     NSArray * const array = @[];
-    id object = [array elementAtIndexIfInRange:[array count]];
+    id object = [array SF_elementAtIndexIfInRange:[array count]];
     
     STAssertTrue(object == nil, @"Assertion: conditional returns nil for invalid index");
 }
 
 - (void)testConditionalObjectAtIndexExisting {
     NSArray * const array = @[@"first", @"second"];
-    id object = [array elementAtIndexIfInRange:0];
+    id object = [array SF_elementAtIndexIfInRange:0];
     
     STAssertTrue([object isEqual:[array objectAtIndex:0]], @"Assertion: objectAtIndex method returns the same as the conditional version.");
 }
 
 - (void)testObjectMatching {
     NSArray * const array = @[@"first", @"second"];
-    id object = [array elementWithPredicateBlock:^BOOL(NSString *evaluatedObject) {
+    id object = [array SF_elementWithPredicateBlock:^BOOL(NSString *evaluatedObject) {
         return [evaluatedObject isEqualToString:@"first"];
     }];
     

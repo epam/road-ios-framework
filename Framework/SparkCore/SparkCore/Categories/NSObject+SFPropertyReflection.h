@@ -1,5 +1,5 @@
 //
-//  NSObject+MethodReflection.m
+//  NSObject+SFPropertyReflection.h
 //  SparkReflection
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -27,34 +27,38 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#import <Foundation/Foundation.h>
+#import "SFPropertyInfo.h"
 
-#import "NSObject+MethodReflection.h"
+/**
+ Convenience methods to return property descriptors for objects.
+ */
+@interface NSObject (SFPropertyReflection)
 
-@implementation NSObject (MethodReflection)
+/**
+ Returns an array of property info objects. Does not list superclass properties. Invoked on an instance of a class.
+ @result The info objects' array.
+ */
+- (NSArray * const)SF_properties;
 
-- (SFMethodInfo *)classMethodForName:(NSString *)methodName {
-    return [SFMethodInfo classMethodNamed:methodName forClass:[self class]];
-}
+/**
+ Returns a property info. Invoked on an instance of a class.
+ @param name The name of the property to fetch the info for.
+ @result The info object.
+ */
+- (SFPropertyInfo *)SF_propertyNamed:(NSString *)name;
 
-- (SFMethodInfo *)instanceMethodForName:(NSString *)methodName {
-    return [SFMethodInfo instanceMethodNamed:methodName forClass:[self class]];
-}
+/**
+ Returns an array of property info objects. Does not list superclass properties.
+ @result The info objects' array.
+ */
++ (NSArray * const)SF_properties;
 
-- (NSArray *)methods {
-    return [SFMethodInfo methodsOfClass:[self class]];
-}
-
-+ (SFMethodInfo *)classMethodForName:(NSString *)methodName {
-    return [SFMethodInfo classMethodNamed:methodName forClass:self];
-}
-
-+ (SFMethodInfo *)instanceMethodForName:(NSString *)methodName {
-    return [SFMethodInfo instanceMethodNamed:methodName forClass:self];
-}
-
-+ (NSArray *)methods {
-    return [SFMethodInfo methodsOfClass:self];
-}
-
+/**
+ Returns a property info.
+ @param name The name of the property to fetch the info for.
+ @result The info object.
+ */
++ (SFPropertyInfo *)SF_propertyNamed:(NSString *)name;
 
 @end

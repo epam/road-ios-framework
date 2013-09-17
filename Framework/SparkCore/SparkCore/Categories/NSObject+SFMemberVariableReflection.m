@@ -1,6 +1,6 @@
 //
-//  NSBundle+ParameterList.h
-//  SparkCore
+//  NSObject+SFMemberVariableReflection.m
+//  SparkReflection
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -28,33 +28,24 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-#import <Foundation/Foundation.h>
+#import "NSObject+SFMemberVariableReflection.h"
 
-extern NSString * const kSFPlistFileExtension;
+@implementation NSObject (SFMemberVariableReflection)
 
-/**
- Convenience methods to fetch plist file paths with less code.
- */
-@interface NSBundle (ParameterList)
+- (SFIvarInfo *)SF_ivarNamed:(NSString *)name {
+    return [SFIvarInfo SF_ivarNamed:name ofClass:[self class]];
+}
 
-/**
- Convenience method to return a path for a plist file of a given name.
- @param plistResourceName The name of the plist file.
- @result The string representation for the path pointing to the plist file.
- */
-- (NSString *)pathForPlistResource:(NSString *)plistResourceName;
+- (NSArray *)SF_ivars {
+    return [SFIvarInfo ivarsOfClass:[self class]];
+}
 
-/**
- Returns the resource path for the plist file with the same name as the receiver's class name.
- @result Returns the path string for the plist file.
- */
-- (NSString *)pathForOwnedPlist;
++ (SFIvarInfo *)SF_ivarNamed:(NSString *)name {
+    return [SFIvarInfo SF_ivarNamed:name ofClass:self];
+}
 
-/**
- Convenience method to return an NSURL representation of the path to a plist file in the bundle of a specified name.
- @param plistResourceName The name of the plist file.
- @result The url object containing the path.
- */
-- (NSURL *)urlForPlistResource:(NSString *)plistResourceName;
++ (NSArray *)SF_ivars {
+    return [SFIvarInfo ivarsOfClass:self];
+}
 
 @end

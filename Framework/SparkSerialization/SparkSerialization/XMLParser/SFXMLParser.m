@@ -77,7 +77,7 @@
 }
 
 - (id<SFXMLParsing>)currentDelegate {
-    return [_parserStack lastElementIfNotEmpty];
+    return [_parserStack SF_lastElementIfNotEmpty];
 }
 
 - (BOOL)canUseDefaultParser {

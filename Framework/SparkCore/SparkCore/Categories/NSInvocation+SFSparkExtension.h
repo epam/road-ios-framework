@@ -1,5 +1,5 @@
 //
-//  NSInvocation+SparkExtension.m
+//  NSInvocation+SFSparkExtension.h
 //  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -27,21 +27,10 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "NSInvocation+SparkExtension.h"
+#import <Foundation/Foundation.h>
 
-@implementation NSInvocation (SparkExtension)
+@interface NSInvocation (SFSparkExtension)
 
-+ (NSInvocation *)SF_invocationForSelector:(SEL)selector target:(id)target  {
-    NSMethodSignature *methodSig = [target methodSignatureForSelector:selector];
-    if (methodSig == nil) {
-        return nil;
-    }
-    
-    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSig];
-    [invocation setSelector:selector];
-    [invocation setTarget:target];
-    
-    return invocation;
-}
++ (NSInvocation *)SF_invocationForSelector:(SEL)selector target:(id)target;
 
 @end

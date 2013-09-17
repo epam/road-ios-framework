@@ -1,6 +1,6 @@
 //
-//  NSObject+OwnedCollections.h
-//  SparkCore
+//  NSObject+SFPropertyReflection.m
+//  SparkReflection
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -28,23 +28,25 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-#import <Foundation/Foundation.h>
+#import "NSObject+SFPropertyReflection.h"
+#import <objc/runtime.h>
 
-/**
- This category allows quick access to the collections created from plist files.
- */
-@interface NSObject (AttachedCollections)
+@implementation NSObject (SFPropertyReflection)
 
-/**
- Returns the dictionary representation of the plist file with the same classname as of the receiver.
- @return The dictionary initialized with the contents of the plist file.
- */
-- (NSDictionary *)attachedDictionary;
+- (NSArray * const)SF_properties {
+    return [SFPropertyInfo propertiesForClass:[self class]];
+}
 
-/**
- Returns the array representation of the plist file with the same classname as of the receiver.
- @return The array initialized with the contents of the plist file.
- */
-- (NSArray *)attachedArray;
+- (SFPropertyInfo *)SF_propertyNamed:(NSString *)name {
+    return [SFPropertyInfo SF_propertyNamed:name forClass:[self class]];
+}
+
++ (NSArray * const)SF_properties {
+    return [SFPropertyInfo propertiesForClass:self];
+}
+
++ (SFPropertyInfo *)SF_propertyNamed:(NSString *)name {
+    return [SFPropertyInfo SF_propertyNamed:name forClass:self];
+}
 
 @end

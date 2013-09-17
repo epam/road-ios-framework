@@ -1,6 +1,6 @@
 //
-//  NSObject+MethodReflection.h
-//  SparkReflection
+//  NSBundle+SFParameterList.m
+//  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -28,46 +28,22 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-#import <Foundation/Foundation.h>
-#import "SFMethodInfo.h"
+#import "NSBundle+SFParameterList.h"
 
-/**
- Convenience methods to fetch SFMethodDescriptors for the current object.
- */
-@interface NSObject (MethodReflection)
+NSString * const kSFPlistFileExtension = @"plist";
 
-/**
- Returns a specific descriptor of the given name matching class methods for the current object.
- @param methodName The name of the method.
- */
-- (SFMethodInfo *)classMethodForName:(NSString *)methodName;
+@implementation NSBundle (SFParameterList)
 
-/**
- Returns a specific descriptor of the given name matching instance methods for the current object.
- @param methodName The name of the method.
- */
-- (SFMethodInfo *)instanceMethodForName:(NSString *)methodName;
+- (NSString *)SF_pathForPlistResource:(NSString *)plistResourceName {
+    return [self pathForResource:plistResourceName ofType:kSFPlistFileExtension];
+}
 
-/**
- Returns all method descriptor for the current object.
- */
-- (NSArray *)methods;
+- (NSURL *)SF_urlForPlistResource:(NSString *)plistResourceName {
+    return [self URLForResource:plistResourceName withExtension:kSFPlistFileExtension];
+}
 
-/**
- Returns a specific descriptor of the given name matching class methods for the current class.
-  @param methodName The name of the method.
- */
-+ (SFMethodInfo *)classMethodForName:(NSString *)methodName;
-
-/**
- Returns all method descriptor for the current class.
- */
-+ (NSArray *)methods;
-
-/**
- Returns a specific descriptor of the given name matching instance methods for the current class.
-  @param methodName The name of the method.
- */
-+ (SFMethodInfo *)instanceMethodForName:(NSString *)methodName;
+- (NSString *)SF_pathForOwnedPlist {
+    return [self SF_pathForPlistResource:NSStringFromClass([self class])];
+}
 
 @end

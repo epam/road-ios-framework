@@ -1,5 +1,5 @@
 //
-//  NSCharacterSet+EncodingCharacterSet.m
+//  NSCharacterSet+SFEncodingCharacterSet.m
 //  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -28,7 +28,7 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-#import "NSCharacterSet+EncodingCharacterSet.h"
+#import "NSCharacterSet+SFEncodingCharacterSet.h"
 
 static NSString * const kSFObjectTypeEncoding = @"@\"";
 static NSString * const kSFArrayEncoding = @"[]";
@@ -39,47 +39,47 @@ static NSString * const kSFAssignmentOperator = @"=";
 static NSString * const kSFPointerToTypeEncoding = @"^";
 static NSString * const kSFDereferenceOperator = @"*";
 
-@implementation NSCharacterSet (EncodingCharacterSet)
+@implementation NSCharacterSet (SFEncodingCharacterSet)
 
-+ (NSCharacterSet *)pointerCharacterSet {
++ (NSCharacterSet *)SF_pointerCharacterSet {
     NSMutableCharacterSet * const set = [NSMutableCharacterSet whitespaceAndNewlineCharacterSet];
     [set addCharactersInString:kSFDereferenceOperator];
     return set;
 }
 
-+ (NSCharacterSet *)objectTypeEncodingCharacterSet {
++ (NSCharacterSet *)SF_objectTypeEncodingCharacterSet {
     NSMutableCharacterSet * const set = [NSMutableCharacterSet whitespaceAndNewlineCharacterSet];
     [set addCharactersInString:kSFObjectTypeEncoding];
     return set;
 }
 
-+ (NSCharacterSet *)valueTypePointerEncodingCharacterSet {
++ (NSCharacterSet *)SF_valueTypePointerEncodingCharacterSet {
     return [NSCharacterSet characterSetWithCharactersInString:kSFPointerToTypeEncoding];
 }
 
-+ (NSCharacterSet *)structEncodingCharacterSet {
++ (NSCharacterSet *)SF_structEncodingCharacterSet {
     return [NSCharacterSet characterSetWithCharactersInString:kSFStructEncoding];
 }
 
-+ (NSCharacterSet *)unionEncodingCharacterSet {
++ (NSCharacterSet *)SF_unionEncodingCharacterSet {
     return [NSCharacterSet characterSetWithCharactersInString:kSFUnionEncoding];
 }
 
-+ (NSCharacterSet *)bitFieldEncodingCharacterSet {
++ (NSCharacterSet *)SF_bitFieldEncodingCharacterSet {
     return [NSCharacterSet characterSetWithCharactersInString:kSFBitFieldEncoding];
 }
 
-+ (NSCharacterSet *)arrayEncodingCharacterSet {
++ (NSCharacterSet *)SF_arrayEncodingCharacterSet {
     return [NSCharacterSet characterSetWithCharactersInString:kSFArrayEncoding];
 }
 
-+ (NSCharacterSet *)fixedArrayEncodingCharacterSet {
++ (NSCharacterSet *)SF_fixedArrayEncodingCharacterSet {
     NSMutableCharacterSet * const set = [NSMutableCharacterSet decimalDigitCharacterSet];
     [set addCharactersInString:kSFPointerToTypeEncoding];
     return set;
 }
 
-- (BOOL)isPrefixInString:(NSString * const)aString shouldTrimWhiteSpace:(BOOL const)shouldTrimWhiteSpace {
+- (BOOL)SF_isPrefixInString:(NSString * const)aString shouldTrimWhiteSpace:(BOOL const)shouldTrimWhiteSpace {
     NSString *stringToExamine = aString;
     
     if (shouldTrimWhiteSpace) {

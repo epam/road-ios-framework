@@ -87,7 +87,7 @@ static NSString * const kSFElementName = @"element";
 }
 
 - (void)allocateElement {
-    SFPropertyInfo * const prop = [self propertyNamed:kSFElementName];
+    SFPropertyInfo * const prop = [self SF_propertyNamed:kSFElementName];
     __unsafe_unretained const Class elementClass = prop.attributeClass;
     _element = [[elementClass alloc] init];
 }
