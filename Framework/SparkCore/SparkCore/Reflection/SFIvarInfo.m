@@ -66,7 +66,7 @@
     NSMutableArray *array = [NSMutableArray array];
     
     for (unsigned int index = 0; index < memberCount; index++) {
-        SFIvarInfo *descriptor = [self infoFromIvar:ivarList[index]];
+        SFIvarInfo *descriptor = [self SF_infoFromIvar:ivarList[index]];
         descriptor.className = NSStringFromClass(aClass);
         descriptor.hostClass = aClass;
         [array addObject:descriptor];
@@ -78,13 +78,13 @@
 
 + (SFIvarInfo *)SF_ivarNamed:(NSString *const)ivarName ofClass:(Class)aClass {
     Ivar anIvar = class_getInstanceVariable(aClass, [ivarName cStringUsingEncoding:NSUTF8StringEncoding]);
-    SFIvarInfo *descriptor = [self infoFromIvar:anIvar];
+    SFIvarInfo *descriptor = [self SF_infoFromIvar:anIvar];
     descriptor.className = NSStringFromClass(aClass);
     descriptor.hostClass = aClass;
     return descriptor;
 }
 
-+ (SFIvarInfo *)infoFromIvar:(Ivar)anIvar {
++ (SFIvarInfo *)SF_infoFromIvar:(Ivar)anIvar {
     SFIvarInfo * const info = [[SFIvarInfo alloc] init];
     info.name = [NSString stringWithCString:ivar_getName(anIvar) encoding:NSUTF8StringEncoding];
     

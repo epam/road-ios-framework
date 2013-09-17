@@ -68,17 +68,18 @@ static NSUInteger const kSFMethodArgumentOffset = 2;
 
 @dynamic attributes;
 
-+ (NSArray *)methodsOfClass:(Class)aClass {
-    unsigned int numberOfMethods = 0;
-    NSMutableArray * const result = [[NSMutableArray alloc] init];
++ (NSArray *)methodsOfClass:(Class)aClass {  
+    NSMutableArray *result = [[NSMutableArray alloc] init];
     
-    Method *methods = class_copyMethodList(aClass, &numberOfMethods);
-    [result addObjectsFromArray:[self methodInfoList:methods count:numberOfMethods ofClass:aClass areClassMethods:NO]];
-    free(methods);
+    unsigned int numberOfInstanceMethods = 0;
+    Method *instanceMethods = class_copyMethodList(aClass, &numberOfInstanceMethods);
+    [result addObjectsFromArray:[self methodInfoList:instanceMethods count:numberOfInstanceMethods ofClass:aClass areClassMethods:NO]];
+    free(instanceMethods);
     
-    methods = class_copyMethodList(object_getClass(aClass), &numberOfMethods);
-    [result addObjectsFromArray:[self methodInfoList:methods count:numberOfMethods ofClass:aClass areClassMethods:YES]];
-    free(methods);
+    unsigned int numberOfClassMethods = 0;
+    Method *classMethods = class_copyMethodList(object_getClass(aClass), &numberOfClassMethods);
+    [result addObjectsFromArray:[self methodInfoList:classMethods count:numberOfClassMethods ofClass:aClass areClassMethods:YES]];
+    free(classMethods);
     
     return result;
 }
