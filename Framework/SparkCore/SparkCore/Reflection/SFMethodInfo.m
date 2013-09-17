@@ -85,35 +85,31 @@ static NSUInteger const kSFMethodArgumentOffset = 2;
 }
 
 + (SFMethodInfo *)instanceMethodNamed:(NSString *)methodName forClass:(Class)aClass {
-    Method aMethod = class_getInstanceMethod(aClass, NSSelectorFromString(methodName));
-    SFMethodInfo * const info = [self methodInfo:aMethod forClass:aClass];
+    Method method = class_getInstanceMethod(aClass, NSSelectorFromString(methodName));
+    SFMethodInfo *info = [self methodInfo:method forClass:aClass];
     info.classMethod = NO;
     return info;
 }
 
 + (SFMethodInfo *)classMethodNamed:(NSString *)methodName forClass:(Class)aClass {
-    Method aMethod = class_getClassMethod(aClass, NSSelectorFromString(methodName));
-    SFMethodInfo * const info = [self methodInfo:aMethod forClass:aClass];
+    Method method = class_getClassMethod(aClass, NSSelectorFromString(methodName));
+    SFMethodInfo *info = [self methodInfo:method forClass:aClass];
     info.classMethod = YES;
     return info;
 }
 
-+ (SFMethodInfo *)methodInfo:(Method)aMethod forClass:(Class)aClass {
-    SFMethodInfo * const info = [[SFMethodInfo alloc] init];
++ (SFMethodInfo *)methodInfo:(Method)method forClass:(Class)aClass {
+    SFMethodInfo *info = [[SFMethodInfo alloc] init];
     info.className = NSStringFromClass(aClass);
     info.hostClass = aClass;
-    info.name = NSStringFromSelector(method_getName(aMethod));
-    info.numberOfArguments = (NSUInteger)method_getNumberOfArguments(aMethod) - kSFMethodArgumentOffset;
-    info->argumentTypes = [self mapArgumentTypeEncodingForMethod:aMethod numberOfArguments:info.numberOfArguments];
-    info.returnType = [self mapReturnTypeEncodingForMethod:aMethod];
+    info.name = NSStringFromSelector(method_getName(method));
+    info.numberOfArguments = (NSUInteger)method_getNumberOfArguments(method) - kSFMethodArgumentOffset;
+    info->argumentTypes = [self mapArgumentTypeEncodingForMethod:method numberOfArguments:info.numberOfArguments];
+    info.returnType = [self mapReturnTypeEncodingForMethod:method];
     return info;
 }
 
-+ (NSArray *)methodInfoList:(const Method *)methods
-                      count:(unsigned int)numberOfMethods
-                    ofClass:(Class)aClass
-            areClassMethods:(const BOOL)areClassMethods {
-
++ (NSArray *)methodInfoList:(const Method *)methods count:(unsigned int)numberOfMethods ofClass:(Class)aClass areClassMethods:(const BOOL)areClassMethods {
     NSMutableArray * const result = [[NSMutableArray alloc] init];
     SFMethodInfo *info;
     
