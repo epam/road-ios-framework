@@ -122,6 +122,7 @@ The format that is used for code comments can be found here: [appledoc](http://g
 
 #### 3.2.1.Comment Types
 Every comment that you add should be either appledoc in header files or should start with a comment type description mark. Here is the list of possible comment type description marks:
+
 1. TODO(date_added,author) - todo item, describes something that needs to be done.
 2. DESNOTE(date_added,author) - designers note, explain workaround, unexpected code, design decisions, etc.
 3. THIRDPARTY_START(date_added,who_added,license_name_or_link,taken_from_link) and THIRDPARTY_END - delimits copy-pasted code snippet. Or use THIRDPARTY(date_added,who_added,license_name_or_link,taken_from_link) - to mark copy-pasted function.
