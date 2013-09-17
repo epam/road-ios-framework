@@ -41,5 +41,6 @@
  @result The name of the type encoding.
  */
 + (NSString *)nameFromTypeEncoding:(NSString *)encoding;
++ (BOOL)isPrimitiveType:(NSString *)typeEncoding;
 
 @end

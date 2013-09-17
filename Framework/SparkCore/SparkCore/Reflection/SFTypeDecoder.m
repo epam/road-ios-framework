@@ -94,4 +94,8 @@ static NSDictionary *kSFMapDictionary;
     return result;
 }
 
++ (BOOL)isPrimitiveType:(NSString *)typeEncoding {
+    return (![typeEncoding hasPrefix:@"@"]);
+}
+
 @end
