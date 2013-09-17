@@ -33,7 +33,7 @@
 
 @implementation NSObject (SFPropertyReflection)
 
-- (NSArray * const)SF_properties {
+- (NSArray *)SF_properties {
     return [SFPropertyInfo propertiesForClass:[self class]];
 }
 
@@ -41,7 +41,7 @@
     return [SFPropertyInfo SF_propertyNamed:name forClass:[self class]];
 }
 
-+ (NSArray * const)SF_properties {
++ (NSArray *)SF_properties {
     return [SFPropertyInfo propertiesForClass:self];
 }
 

@@ -85,7 +85,7 @@ const char *SFMutableObjectGetterEncoding = "@@:";
     return result;
 }
 
-- (void)setGenericValueSetter:(id const)value {
+- (void)setGenericValueSetter:(id)value {
     NSString * const key = [NSStringFromSelector(_cmd) SF_stringByTransformingToGetterAccessor];
     [self setValue:value forUndefinedKey:key];
 }

@@ -79,7 +79,7 @@ static NSString * const kSFDereferenceOperator = @"*";
     return set;
 }
 
-- (BOOL)SF_isPrefixInString:(NSString * const)aString shouldTrimWhiteSpace:(BOOL const)shouldTrimWhiteSpace {
+- (BOOL)SF_isPrefixInString:(NSString *)aString shouldTrimWhiteSpace:(BOOL)shouldTrimWhiteSpace {
     NSString *stringToExamine = aString;
     
     if (shouldTrimWhiteSpace) {

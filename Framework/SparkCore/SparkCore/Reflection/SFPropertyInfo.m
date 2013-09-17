@@ -39,7 +39,7 @@
 
 @dynamic attributes;
 
-+ (NSArray *)propertiesForClass:(__unsafe_unretained Class const)aClass {
++ (NSArray *)propertiesForClass:(Class)aClass {
     NSMutableArray *result = [[NSMutableArray alloc] init];
     unsigned int numberOfProperties = 0;
     objc_property_t *propertiesArray = class_copyPropertyList(aClass, &numberOfProperties);
@@ -52,7 +52,7 @@
     return result;
 }
 
-+ (SFPropertyInfo *)SF_propertyNamed:(NSString *)name forClass:(__unsafe_unretained Class const)aClass {
++ (SFPropertyInfo *)SF_propertyNamed:(NSString *)name forClass:(Class)aClass {
     objc_property_t prop = class_getProperty(aClass, [name cStringUsingEncoding:NSUTF8StringEncoding]);
     SFPropertyInfo *result = nil;
     
@@ -63,14 +63,14 @@
     return result;
 }
 
-+ (NSArray *)propertiesForClass:(__unsafe_unretained Class const)class withPredicate:(NSPredicate * const)aPredicate {
++ (NSArray *)propertiesForClass:(Class)class withPredicate:(NSPredicate *)aPredicate {
     NSArray *result = [self propertiesForClass:class];
     return [result filteredArrayUsingPredicate:aPredicate];
 }
 
 // For reference see apple's documetation about declared properties:
 // https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtPropertyIntrospection.html
-+ (SFPropertyInfo *)property:(objc_property_t const)property forClass:(__unsafe_unretained Class const)class {
++ (SFPropertyInfo *)property:(objc_property_t)property forClass:(Class)class {
     SFPropertyInfo * const info = [[SFPropertyInfo alloc] init];
     NSString * const name = [NSString stringWithCString:property_getName(property) encoding:NSUTF8StringEncoding];
     NSString * const attributeName = [self propertyAttributeNameForField:"T" property:property];

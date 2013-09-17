@@ -68,7 +68,7 @@
  @param aClass The class to return the list of infos to.
  @result An array of info objects.
  */
-+ (NSArray *)ivarsOfClass:(__unsafe_unretained Class const)aClass;
++ (NSArray *)ivarsOfClass:(Class)aClass;
 
 /**
  Returns an info objects for the given ivar name.
@@ -76,7 +76,7 @@
  @param aClass The class to which the ivar belongs to.
  @result The info object.
  */
-+ (SFIvarInfo *)SF_ivarNamed:(NSString * const)ivarName ofClass:(__unsafe_unretained Class const)aClass;
++ (SFIvarInfo *)SF_ivarNamed:(NSString *)ivarName ofClass:(Class)aClass;
 
 /**
  The method performs search for attribute of required class in array of attributes declared for instance variable.

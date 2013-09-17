@@ -72,7 +72,7 @@
  @param aClass The class for which to return the method info.
  @result All info objects for the declared methods.
  */
-+ (NSArray *)methodsOfClass:(__unsafe_unretained Class const)aClass;
++ (NSArray *)methodsOfClass:(Class)aClass;
 
 /**
  Returns an info object corresponding to a class method of the given name.
@@ -80,7 +80,7 @@
  @param aClass The class for which to return a method info.
  @result The info object.
  */
-+ (SFMethodInfo *)classMethodNamed:(NSString *)methodName forClass:(__unsafe_unretained Class const)aClass;
++ (SFMethodInfo *)classMethodNamed:(NSString *)methodName forClass:(Class)aClass;
 
 /**
  Returns an info object corresponding to an instance method of the given name.
@@ -88,14 +88,14 @@
  @param aClass The class for which to return a method info.
  @result The info object.
  */
-+ (SFMethodInfo *)instanceMethodNamed:(NSString *)methodName forClass:(__unsafe_unretained Class const)aClass;
++ (SFMethodInfo *)instanceMethodNamed:(NSString *)methodName forClass:(Class)aClass;
 
 /**
  The type of the argument at the specified index.
  @param anIndex The index of the argument. If the index is out of range (not between 0 and number of arguments), the method throws an exception.
  @result The type string.
  */
-- (NSString *)typeOfArgumentAtIndex:(NSUInteger const)anIndex;
+- (NSString *)typeOfArgumentAtIndex:(NSUInteger)anIndex;
 
 /**
  The method performs search for attribute of required class in array of attributes declared for method.

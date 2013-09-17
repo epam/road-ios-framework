@@ -81,6 +81,6 @@
  @param shouldTrimWhitespace Boolean value to tell if whitespaces should be ignored while doing the examination.
  @result The boolean value about the result.
  */
-- (BOOL)SF_isPrefixInString:(NSString * const)aString shouldTrimWhiteSpace:(BOOL const)shouldTrimWhitespace;
+- (BOOL)SF_isPrefixInString:(NSString *)aString shouldTrimWhiteSpace:(BOOL)shouldTrimWhitespace;
 
 @end

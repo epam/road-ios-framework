@@ -45,7 +45,7 @@
  @param pool The pool sending the message.
  @param anIdentifier The identifier for which the object was repooled.
  */
-- (void)pool:(SFObjectPool * const)pool didRepoolObjectForIdentifier:(NSString * const)anIdentifier;
+- (void)pool:(SFObjectPool *)pool didRepoolObjectForIdentifier:(NSString *)anIdentifier;
 
 /**
  Informs the delegate that a new object was created for an identifier.
@@ -53,7 +53,7 @@
  @param anObject The newly created object.
  @param anIdentifier The identifier for which the object was created.
  */
-- (void)pool:(SFObjectPool * const)pool didInstantiateObject:(id<SFPooledObject> const)anObject forIdentifier:(NSString * const)anIdentifier;
+- (void)pool:(SFObjectPool *)pool didInstantiateObject:(id<SFPooledObject>)anObject forIdentifier:(NSString *)anIdentifier;
 
 /**
  Informs the delegate that an object was removed from the pool as it was requested.
@@ -62,7 +62,7 @@
  @param anObject The newly created object.
 
  */
-- (void)pool:(SFObjectPool * const)pool didLendObject:(id<SFPooledObject> const)anObject forIdentifier:(NSString * const)anIdentifier;
+- (void)pool:(SFObjectPool *)pool didLendObject:(id<SFPooledObject>)anObject forIdentifier:(NSString *)anIdentifier;
 
 @end
 
@@ -85,19 +85,19 @@
  Puts an object instance of a registered class back into the object pool.
  @param anObject The object to put back into the appropriate object pool.
  */
-- (void)repoolObject:(id<SFPooledObject> const)anObject;
+- (void)repoolObject:(id<SFPooledObject>)anObject;
 
 /**
  Returns an object for the specified pool reuse identifier. Note, this also removes the object from the pool until it is repooled, therefore you have to make sure to keep it alive via a strong reference.
  @param anIdentifier The unique pool reuse identifier.
  */
-- (id)objectForIdentifier:(NSString * const)anIdentifier;
+- (id)objectForIdentifier:(NSString *)anIdentifier;
 
 /**
  Registers a class to be available for pooling.
  @param aClassName The name of the class to be registered.
  @param reuseIdentifier The identifier associated with the given class. Note: the id has to be unique, overriding the same identifier with this method will raise an exception.
  */
-- (void)registerClassNamed:(NSString * const)aClassName forIdentifier:(NSString * const)reuseIdentifier;
+- (void)registerClassNamed:(NSString *)aClassName forIdentifier:(NSString *)reuseIdentifier;
 
 @end

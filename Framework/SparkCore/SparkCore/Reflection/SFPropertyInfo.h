@@ -114,7 +114,7 @@
  @param aClass The class to fetch the property infos for.
  @result The array of filtered results.
  */
-+ (NSArray * const)propertiesForClass:(__unsafe_unretained Class const)aClass;
++ (NSArray *)propertiesForClass:(Class)aClass;
 
 /**
  Returns an array of info objects for the given class filtered with the predicate.
@@ -122,7 +122,7 @@
  @param aPredicate The predicate to apply before returning the results.
  @result The array of filtered results.
  */
-+ (NSArray *)propertiesForClass:(__unsafe_unretained Class const)aClass withPredicate:(NSPredicate * const)aPredicate;
++ (NSArray *)propertiesForClass:(Class)aClass withPredicate:(NSPredicate *)aPredicate;
 
 /**
  Fetches the specific info object corresponding to the property named for the given class.
@@ -130,7 +130,7 @@
  @param aClass The class to fetch the result for.
  @result The info object.
  */
-+ (SFPropertyInfo *)SF_propertyNamed:(NSString *)name forClass:(__unsafe_unretained Class const)aClass;
++ (SFPropertyInfo *)SF_propertyNamed:(NSString *)name forClass:(Class)aClass;
 
 /**
  The method performs search for attribute of required class in array of attributes declared for property.

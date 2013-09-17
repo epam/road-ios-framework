@@ -61,7 +61,7 @@
 
 @dynamic attributes;
 
-+ (NSArray *)ivarsOfClass:(__unsafe_unretained Class const)aClass {
++ (NSArray *)ivarsOfClass:(Class)aClass {
     unsigned int memberCount;
     Ivar * const ivarList = class_copyIvarList(aClass, &memberCount);
     NSMutableArray *array = [NSMutableArray array];
@@ -78,7 +78,7 @@
     return array;
 }
 
-+ (SFIvarInfo *)SF_ivarNamed:(NSString *const)ivarName ofClass:(__unsafe_unretained Class const)aClass {
++ (SFIvarInfo *)SF_ivarNamed:(NSString *const)ivarName ofClass:(Class)aClass {
     Ivar anIvar = class_getInstanceVariable(aClass, [ivarName cStringUsingEncoding:NSUTF8StringEncoding]);
     SFIvarInfo *descriptor = [self infoFromIvar:anIvar];
     descriptor.className = NSStringFromClass(aClass);

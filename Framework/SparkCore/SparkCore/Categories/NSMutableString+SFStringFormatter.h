@@ -40,6 +40,6 @@
  @param valueDictionary The key-values representing the keys to be replaced by values in the template string.
  @param escapeString The escape string marking the spot of a replacement.
  */
-- (void)SF_formatStringUsingValues:(NSDictionary * const)valueDictionary withEscape:(NSString * const)escapeString;
+- (void)SF_formatStringUsingValues:(NSDictionary *)valueDictionary withEscape:(NSString *)escapeString;
 
 @end

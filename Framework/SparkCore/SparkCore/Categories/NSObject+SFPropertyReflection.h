@@ -39,7 +39,7 @@
  Returns an array of property info objects. Does not list superclass properties. Invoked on an instance of a class.
  @result The info objects' array.
  */
-- (NSArray * const)SF_properties;
+- (NSArray *)SF_properties;
 
 /**
  Returns a property info. Invoked on an instance of a class.
@@ -52,7 +52,7 @@
  Returns an array of property info objects. Does not list superclass properties.
  @result The info objects' array.
  */
-+ (NSArray * const)SF_properties;
++ (NSArray *)SF_properties;
 
 /**
  Returns a property info.

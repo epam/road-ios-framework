@@ -37,12 +37,12 @@
  Creates a setter accessor name from the given string by attaching a set- prefix and a : postfix to the receiver's content.
  @result The setter name.
  */
-- (NSString * const)SF_stringByTransformingToSetterAccessor;
+- (NSString *)SF_stringByTransformingToSetterAccessor;
 
 /**
  Creates a getter accessor name from the receiver with the assumption it is a setter accessor method's name.
  @result The getter name.
  */
-- (NSString * const)SF_stringByTransformingToGetterAccessor;
+- (NSString *)SF_stringByTransformingToGetterAccessor;
 
 @end

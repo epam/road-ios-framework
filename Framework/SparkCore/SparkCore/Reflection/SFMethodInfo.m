@@ -43,7 +43,7 @@ static NSUInteger const kSFMethodArgumentOffset = 2;
 
 @dynamic attributes;
 
-+ (NSArray *)methodsOfClass:(__unsafe_unretained Class const)aClass {
++ (NSArray *)methodsOfClass:(Class)aClass {
     unsigned int numberOfMethods = 0;
     NSMutableArray * const result = [[NSMutableArray alloc] init];
     
@@ -58,21 +58,21 @@ static NSUInteger const kSFMethodArgumentOffset = 2;
     return result;
 }
 
-+ (SFMethodInfo *)instanceMethodNamed:(NSString *)methodName forClass:(__unsafe_unretained Class const)aClass {
++ (SFMethodInfo *)instanceMethodNamed:(NSString *)methodName forClass:(Class)aClass {
     Method aMethod = class_getInstanceMethod(aClass, NSSelectorFromString(methodName));
     SFMethodInfo * const info = [self methodInfo:aMethod forClass:aClass];
     info.classMethod = NO;
     return info;
 }
 
-+ (SFMethodInfo *)classMethodNamed:(NSString *)methodName forClass:(__unsafe_unretained Class const)aClass {
++ (SFMethodInfo *)classMethodNamed:(NSString *)methodName forClass:(Class)aClass {
     Method aMethod = class_getClassMethod(aClass, NSSelectorFromString(methodName));
     SFMethodInfo * const info = [self methodInfo:aMethod forClass:aClass];
     info.classMethod = YES;
     return info;
 }
 
-+ (SFMethodInfo *)methodInfo:(Method const)aMethod forClass:(__unsafe_unretained Class const)aClass {
++ (SFMethodInfo *)methodInfo:(Method)aMethod forClass:(Class)aClass {
     SFMethodInfo * const info = [[SFMethodInfo alloc] init];
     info.className = NSStringFromClass(aClass);
     info.hostClass = aClass;
@@ -84,8 +84,8 @@ static NSUInteger const kSFMethodArgumentOffset = 2;
 }
 
 + (NSArray *)methodInfoList:(const Method *)methods
-                      count:(unsigned int const)numberOfMethods
-                    ofClass:(__unsafe_unretained Class const)aClass
+                      count:(unsigned int)numberOfMethods
+                    ofClass:(Class)aClass
             areClassMethods:(const BOOL)areClassMethods {
 
     NSMutableArray * const result = [[NSMutableArray alloc] init];
@@ -104,7 +104,7 @@ static NSUInteger const kSFMethodArgumentOffset = 2;
     return argumentTypes[anIndex];
 }
 
-+ (NSArray *)mapArgumentTypeEncodingForMethod:(Method const)aMethod numberOfArguments:(NSUInteger const)numberOfArguments {
++ (NSArray *)mapArgumentTypeEncodingForMethod:(Method)aMethod numberOfArguments:(NSUInteger)numberOfArguments {
     NSMutableArray * const array = [[NSMutableArray alloc] init];
     
     for (unsigned int index = kSFMethodArgumentOffset; index < numberOfArguments + kSFMethodArgumentOffset; index++) {
@@ -116,7 +116,7 @@ static NSUInteger const kSFMethodArgumentOffset = 2;
     return array;
 }
 
-+ (NSString *)mapReturnTypeEncodingForMethod:(Method const)aMethod {
++ (NSString *)mapReturnTypeEncodingForMethod:(Method)aMethod {
     char *returnTypeEncoding = method_copyReturnType(aMethod);
     NSString * const result = [NSString stringWithCString:returnTypeEncoding encoding:NSUTF8StringEncoding];
     free(returnTypeEncoding);
