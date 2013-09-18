@@ -38,6 +38,8 @@
     SFConsoleLogWriter *internalWriter;
 }
 
+@synthesize logLevel = _logLevel;
+
 - (id)init
 {
     self = [super init];

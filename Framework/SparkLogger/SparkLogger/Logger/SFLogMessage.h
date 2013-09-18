@@ -27,22 +27,21 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
-typedef enum SFLogLevel : NSInteger {
-    
-    SFLogLevelInfo = -1000,
-    SFLogLevelDebug = -1001,
-    SFLogLevelWarning = -1002,
-    SFLogLevelError = -1003
-    
-} SFLogLevel;
-
 extern NSString * const kSFLogMessageTypeAllLoggers;
 extern NSString * const kSFLogMessageTypeNetworkOnly;
 extern NSString * const kSFLogMessageTypeConsoleOnly;
 extern NSString * const kSFLogMessageTypeWebServiceOnly;
 extern NSString * const kSFLogMessageTypeFileOnly;
 extern NSString * const kSFLogMessageTypeNoLogging;
+
+typedef NS_ENUM(NSInteger, SFLogLevel) {
+    
+    SFLogLevelInfo = -1000,
+    SFLogLevelDebug = -1001,
+    SFLogLevelWarning = -1002,
+    SFLogLevelError = -1003
+    
+};
 
 /**
  The log message encapsulation object.
