@@ -1,6 +1,6 @@
 #Attributes
 
-Component implements Attribute-Oriented Programming paradigm in Objective-C. It allows to add various metadata to the class, each method, property or ivar of the class. 
+Component implements [Attribute-Oriented Programming](https://en.wikipedia.org/wiki/Attribute-oriented_programming) paradigm in Objective-C. It allows to add various metadata to the class, each method, property or ivar of the class. 
 
 Following basic example annotates `birthday` property with "serializable" and format attributes to know whether and how to store object on disk.
 
