@@ -96,13 +96,13 @@
 /**
  Boolean property telling whether the property is pointing to an object instead of a primitive value.
  */
-@property (readonly, nonatomic, getter = isObject) BOOL object;
+@property (readonly, nonatomic, getter = isPrimitive) BOOL primitive;
 
 /**
  The declared class of the property if applicable.
  For primitive types this is Nil.
  */
-@property (readonly, nonatomic, unsafe_unretained) Class typeClass;
+@property (readonly, nonatomic) Class typeClass;
 
 /**
  An array of attributes declared for property.

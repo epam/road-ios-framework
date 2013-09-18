@@ -48,7 +48,7 @@
     BOOL _strong;
     BOOL _readonly;
     BOOL _copied;
-    BOOL _object;
+    BOOL _primitive;
     Class _typeClass;
 }
 
@@ -58,14 +58,14 @@
 @property (copy, nonatomic) NSString *typeName;
 @property (copy, nonatomic) NSString *setterName;
 @property (copy, nonatomic) NSString *getterName;
-@property (nonatomic, getter = isDynamic) BOOL dynamic;
-@property (nonatomic, getter = isWeak) BOOL weak;
-@property (nonatomic, getter = isNonatomic) BOOL nonatomic;
-@property (nonatomic, getter = isStrong) BOOL strong;
-@property (nonatomic, getter = isReadonly) BOOL readonly;
-@property (nonatomic, getter = isCopied) BOOL copied;
-@property (nonatomic, getter = isObject) BOOL object;
-@property (nonatomic, unsafe_unretained) Class typeClass;
+@property (assign, nonatomic, getter = isDynamic) BOOL dynamic;
+@property (assign, nonatomic, getter = isWeak) BOOL weak;
+@property (assign, nonatomic, getter = isNonatomic) BOOL nonatomic;
+@property (assign, nonatomic, getter = isStrong) BOOL strong;
+@property (assign, nonatomic, getter = isReadonly) BOOL readonly;
+@property (assign, nonatomic, getter = isCopied) BOOL copied;
+@property (assign, nonatomic, getter = isPrimitive) BOOL primitive;
+@property (assign, nonatomic) Class typeClass;
 
 @end
 
@@ -83,7 +83,7 @@
 @synthesize strong = _strong;
 @synthesize readonly = _readonly;
 @synthesize copied = _copied;
-@synthesize object = _object;
+@synthesize primitive = _primitive;
 @synthesize typeClass = _typeClass;
 
 @dynamic attributes;
@@ -129,7 +129,7 @@
     info.propertyName = name;
     info.typeName = [SFTypeDecoder nameFromTypeEncoding:attributeName];
     info.typeClass = NSClassFromString([info.typeName stringByTrimmingCharactersInSet:[NSCharacterSet SF_pointerCharacterSet]]);
-    info.object = [attributeName hasPrefix:@"@"];
+    info.primitive = [SFTypeDecoder isPrimitiveType:attributeName];
     info.className = NSStringFromClass(class);
     info.hostClass = class;
     info.getterName = getterName;
