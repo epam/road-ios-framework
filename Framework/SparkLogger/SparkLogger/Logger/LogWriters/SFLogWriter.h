@@ -113,13 +113,8 @@
 + (SFLogWriter *)fileWriterWithPath:(NSString * const)path;
 
 /**
- Returns a console log writer for info messages.
+ Returns a console log writer with plain formatter.
  */
-+ (SFLogWriter *)infoConsoleWriter;
-
-/**
- Returns a console log writer for debug messages.
- */
-+ (SFLogWriter *)debugConsoleWriter;
++ (SFLogWriter *)plainConsoleWriter;
 
 @end
