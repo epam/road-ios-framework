@@ -10,3 +10,4 @@ tools/SparkAttributesCodeGenerator/SparkAttributesCodeGenerator.xcodeproj/projec
 *.xcworkspacedata
 
 Framework/SparkServices/SparkServicesTest/SparkGeneratedAttributes/*
+Framework/SparkFramework.xcworkspace/xcshareddata

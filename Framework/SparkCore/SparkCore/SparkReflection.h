@@ -34,9 +34,9 @@
 #import "SFIvarInfo.h"
 #import "SFMethodInfo.h"
 #import "SFPropertyInfo.h"
-#import "NSObject+PropertyReflection.h"
-#import "NSObject+MemberVariableReflection.h"
-#import "NSObject+MethodReflection.h"
-#import "NSCharacterSet+EncodingCharacterSet.h"
+#import "NSObject+SFPropertyReflection.h"
+#import "NSObject+SFMemberVariableReflection.h"
+#import "NSObject+SFMethodReflection.h"
+#import "NSCharacterSet+SFEncodingCharacterSet.h"
 
 #endif

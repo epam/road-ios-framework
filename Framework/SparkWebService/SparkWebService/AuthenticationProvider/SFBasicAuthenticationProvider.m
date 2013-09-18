@@ -28,7 +28,7 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "SFBasicAuthenticationProvider.h"
-#import "NSError+SparkWebService.h"
+#import "NSError+SFSparkWebService.h"
 
 @interface SFBasicAuthenticationProvider ()
 @property (nonatomic, strong) NSURLCredential *credential;

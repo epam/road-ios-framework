@@ -29,7 +29,7 @@
 
 
 #import "SFDigestAuthenticationProvider.h"
-#import "NSError+SparkWebService.h"
+#import "NSError+SFSparkWebService.h"
 
 @interface SFDigestAuthenticationProvider ()
 @property (nonatomic, strong) NSURLCredential *credential;

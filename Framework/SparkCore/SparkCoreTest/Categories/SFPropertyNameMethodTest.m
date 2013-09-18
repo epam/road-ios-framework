@@ -29,7 +29,7 @@
 
 
 #import "SFPropertyNameMethodTest.h"
-#import "NSString+AccessorUtilities.h"
+#import "NSString+SFAccessorUtilities.h"
 
 @implementation SFPropertyNameMethodTest {
     NSString *setter;
@@ -51,12 +51,12 @@
 }
 
 - (void)testSetterName {
-    NSString * const aSetterName = [getter stringByTransformingToSetterAccessor];
+    NSString * const aSetterName = [getter SF_stringByTransformingToSetterAccessor];
     STAssertTrue([aSetterName isEqualToString:setter], @"Assertion: setter value is constructed properly. Expected: %@, result: %@", setter, aSetterName);
 }
 
 - (void)testGetterName {
-    NSString * const aGetterName = [setter stringByTransformingToGetterAccessor];
+    NSString * const aGetterName = [setter SF_stringByTransformingToGetterAccessor];
     STAssertTrue([aGetterName isEqualToString:getter], @"Assertion: getter value is constructed properly. Expected: %@, result: %@", getter, aGetterName);
 }
 

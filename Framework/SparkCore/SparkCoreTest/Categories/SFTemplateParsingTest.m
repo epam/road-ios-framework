@@ -54,7 +54,7 @@
 }
 
 - (void)testTemplateParsing {
-    [template formatStringUsingValues:values withEscape:escape];
+    [template SF_formatStringUsingValues:values withEscape:escape];
     NSRange rangeOfKey = [template rangeOfString:@"key"];
     NSRange rangeOfEscape = [template rangeOfString:escape];
     NSRange rangeOfValue1 = [template rangeOfString:@"value1"];

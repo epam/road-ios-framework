@@ -30,7 +30,7 @@
 
 #import "SFDownloader+ConnectionDelegate.h"
 #import <Spark/SparkLogger.h>
-#import "NSError+SparkWebService.h"
+#import "NSError+SFSparkWebService.h"
 
 #import "SFAuthenticating.h"
 #import "SFWebServiceClient.h"

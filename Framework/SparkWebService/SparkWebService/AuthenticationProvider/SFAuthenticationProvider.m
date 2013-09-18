@@ -28,7 +28,7 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "SFAuthenticationProvider.h"
-#import "NSError+SparkWebService.h"
+#import "NSError+SFSparkWebService.h"
 
 NSString * const kSFAuthorizationKey = @"authorization";
 

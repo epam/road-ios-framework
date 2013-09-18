@@ -30,7 +30,7 @@
 
 #import "SFPropertyInfo.h"
 #import "SFEncodingMapper.h"
-#import "NSCharacterSet+EncodingCharacterSet.h"
+#import "NSCharacterSet+SFEncodingCharacterSet.h"
 #import <objc/runtime.h>
 #import "SparkAttribute.h"
 
@@ -51,7 +51,7 @@
     return result;
 }
 
-+ (SFPropertyInfo *)propertyNamed:(NSString *)name forClass:(__unsafe_unretained Class const)aClass {
++ (SFPropertyInfo *)SF_propertyNamed:(NSString *)name forClass:(__unsafe_unretained Class const)aClass {
     objc_property_t prop = class_getProperty(aClass, [name cStringUsingEncoding:NSUTF8StringEncoding]);
     SFPropertyInfo *result = nil;
     
@@ -78,7 +78,7 @@
     
     info.propertyName = name;
     info.attributeClassName = [SFEncodingMapper nameFromTypeEncoding:attributeName];
-    info.attributeClass = NSClassFromString([info.attributeClassName stringByTrimmingCharactersInSet:[NSCharacterSet pointerCharacterSet]]);
+    info.attributeClass = NSClassFromString([info.attributeClassName stringByTrimmingCharactersInSet:[NSCharacterSet SF_pointerCharacterSet]]);
     info.object = [attributeName hasPrefix:@"@"];
     info.className = NSStringFromClass(class);
     info.hostClass = class;
