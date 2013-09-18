@@ -58,8 +58,8 @@
     STAssertTrue([stringDescriptor isPrimitive] == NO, @"Assertion: string descriptor returns primitive == NO");
     STAssertTrue([[stringDescriptor className] isEqualToString:NSStringFromClass([self class])], @"Assertion: classname is correct.");
     
-    STAssertTrue([[stringDescriptor variableTypeName] hasPrefix:@"NSString"], @"Assertion: variable type name for string is NSString.");
-    STAssertTrue([[integerDescriptor variableTypeName] isEqualToString:@"int"], @"Assertion: variable type name for omteger is int.");
+    STAssertTrue([[stringDescriptor typeName] hasPrefix:@"NSString"], @"Assertion: variable type name for string is NSString.");
+    STAssertTrue([[integerDescriptor typeName] isEqualToString:@"int"], @"Assertion: variable type name for omteger is int.");
 }
 
 @end
