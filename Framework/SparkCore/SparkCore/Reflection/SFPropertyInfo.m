@@ -31,7 +31,6 @@
 #import "SFPropertyInfo.h"
 
 #import "SFTypeDecoder.h"
-#import "NSCharacterSet+SFEncodingCharacterSet.h"
 #import <objc/runtime.h>
 #import "SparkAttribute.h"
 
@@ -128,8 +127,8 @@
     
     info.propertyName = name;
     info.typeName = [SFTypeDecoder nameFromTypeEncoding:attributeName];
-    info.typeClass = NSClassFromString([info.typeName stringByTrimmingCharactersInSet:[NSCharacterSet SF_pointerCharacterSet]]);
-    info.primitive = [SFTypeDecoder isPrimitiveType:attributeName];
+    info.typeClass = NSClassFromString([SFTypeDecoder SF_classNameFromTypeName:info.typeName]);
+    info.primitive = [SFTypeDecoder SF_isPrimitiveType:attributeName];
     info.className = NSStringFromClass(class);
     info.hostClass = class;
     info.getterName = getterName;

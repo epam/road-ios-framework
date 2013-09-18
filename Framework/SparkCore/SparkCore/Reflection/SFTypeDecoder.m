@@ -30,8 +30,6 @@
 
 #import "SFTypeDecoder.h"
 
-#import "NSCharacterSet+SFEncodingCharacterSet.h"
-
 static NSString * const kSFEncodingMapFile = @"SFEncoding";
 static NSString * const kSFPlistExtension = @"plist";
 static NSString * const kSFPointerFormat = @"%@ *";
@@ -41,6 +39,29 @@ static NSString * const kSFUnionFormat = @"union %@";
 static NSString * const kSFStructFormat = @"struct %@";
 static NSString * const kSFFixedArrayFormat = @"%@[%ld]";
 static NSDictionary *kSFMapDictionary;
+
+static NSString * const kSFObjectTypeEncoding = @"@\"";
+static NSString * const kSFArrayEncoding = @"[]";
+static NSString * const kSFBitFieldEncoding = @"b";
+static NSString * const kSFStructEncoding = @"{}";
+static NSString * const kSFUnionEncoding = @"()";
+static NSString * const kSFAssignmentOperator = @"=";
+static NSString * const kSFPointerToTypeEncoding = @"^";
+static NSString * const kSFDereferenceOperator = @"*";
+
+@interface SFTypeDecoder ()
+
++ (NSCharacterSet *)SF_pointerCharacterSet;
++ (NSCharacterSet *)SF_objectTypeEncodingCharacterSet;
++ (NSCharacterSet *)SF_valueTypePointerEncodingCharacterSet;
++ (NSCharacterSet *)SF_structEncodingCharacterSet;
++ (NSCharacterSet *)SF_unionEncodingCharacterSet;
++ (NSCharacterSet *)SF_bitFieldEncodingCharacterSet;
++ (NSCharacterSet *)SF_arrayEncodingCharacterSet;
++ (NSCharacterSet *)SF_fixedArrayEncodingCharacterSet;
++ (BOOL)SF_isPrefix:(NSCharacterSet *)prefixSet inString:(NSString *)string;
+
+@end
 
 @implementation SFTypeDecoder
 
@@ -54,34 +75,34 @@ static NSDictionary *kSFMapDictionary;
 
 + (NSString *)nameFromTypeEncoding:(NSString *)encoding {
     NSString *result;
-
+    
     if ([encoding length] == 1) {
         result = kSFMapDictionary[encoding];
     }
-    else if ([[NSCharacterSet SF_objectTypeEncodingCharacterSet] SF_isPrefixInString:encoding shouldTrimWhiteSpace:NO]) {
-        result = [NSString stringWithFormat:kSFPointerFormat, [encoding stringByTrimmingCharactersInSet:[NSCharacterSet SF_objectTypeEncodingCharacterSet]]];
+    else if ([self SF_isPrefix:[self SF_objectTypeEncodingCharacterSet] inString:encoding]) {
+        result = [NSString stringWithFormat:kSFPointerFormat, [encoding stringByTrimmingCharactersInSet:[self SF_objectTypeEncodingCharacterSet]]];
     }
-    else if ([[NSCharacterSet SF_valueTypePointerEncodingCharacterSet] SF_isPrefixInString:encoding shouldTrimWhiteSpace:NO]) {
-        result = [NSString stringWithFormat:kSFPointerFormat, [self nameFromTypeEncoding:[encoding stringByTrimmingCharactersInSet:[NSCharacterSet SF_valueTypePointerEncodingCharacterSet]]]];
+    else if ([self SF_isPrefix:[self SF_valueTypePointerEncodingCharacterSet] inString:encoding]) {
+        result = [NSString stringWithFormat:kSFPointerFormat, [self nameFromTypeEncoding:[encoding stringByTrimmingCharactersInSet:[self SF_valueTypePointerEncodingCharacterSet]]]];
     }
-    else if ([[NSCharacterSet SF_arrayEncodingCharacterSet] SF_isPrefixInString:encoding shouldTrimWhiteSpace:NO]) {
-        result = [NSString stringWithFormat:kSFArrayFormat, [self nameFromTypeEncoding:[encoding stringByTrimmingCharactersInSet:[NSCharacterSet SF_arrayEncodingCharacterSet]]]];
+    else if ([self SF_isPrefix:[self SF_arrayEncodingCharacterSet] inString:encoding]) {
+        result = [NSString stringWithFormat:kSFArrayFormat, [self nameFromTypeEncoding:[encoding stringByTrimmingCharactersInSet:[self SF_arrayEncodingCharacterSet]]]];
     }
-    else if ([[NSCharacterSet SF_bitFieldEncodingCharacterSet] SF_isPrefixInString:encoding shouldTrimWhiteSpace:NO]) {
-        result = [NSString stringWithFormat:kSFBitfieldFormat, [encoding stringByTrimmingCharactersInSet:[NSCharacterSet SF_bitFieldEncodingCharacterSet]]];
+    else if ([self SF_isPrefix:[self SF_bitFieldEncodingCharacterSet] inString:encoding]) {
+        result = [NSString stringWithFormat:kSFBitfieldFormat, [encoding stringByTrimmingCharactersInSet:[self SF_bitFieldEncodingCharacterSet]]];
     }
-    else if ([[NSCharacterSet SF_structEncodingCharacterSet] SF_isPrefixInString:encoding shouldTrimWhiteSpace:NO]) {
-        result = [NSString stringWithFormat:kSFStructFormat, [encoding stringByTrimmingCharactersInSet:[NSCharacterSet SF_structEncodingCharacterSet]]];
+    else if ([self SF_isPrefix:[self SF_structEncodingCharacterSet] inString:encoding]) {
+        result = [NSString stringWithFormat:kSFStructFormat, [encoding stringByTrimmingCharactersInSet:[self SF_structEncodingCharacterSet]]];
     }
-    else if ([[NSCharacterSet SF_unionEncodingCharacterSet] SF_isPrefixInString:encoding shouldTrimWhiteSpace:NO]) {
-        result = [NSString stringWithFormat:kSFUnionFormat, [encoding stringByTrimmingCharactersInSet:[NSCharacterSet SF_unionEncodingCharacterSet]]];
+    else if ([self SF_isPrefix:[self SF_unionEncodingCharacterSet] inString:encoding]) {
+        result = [NSString stringWithFormat:kSFUnionFormat, [encoding stringByTrimmingCharactersInSet:[self SF_unionEncodingCharacterSet]]];
     }
-    else if ([[NSCharacterSet decimalDigitCharacterSet] SF_isPrefixInString:encoding shouldTrimWhiteSpace:NO] && [encoding rangeOfCharacterFromSet:[NSCharacterSet SF_valueTypePointerEncodingCharacterSet]].location != NSNotFound) {
+    else if ([self SF_isPrefix:[NSCharacterSet decimalDigitCharacterSet] inString:encoding] && [encoding rangeOfCharacterFromSet:[self SF_valueTypePointerEncodingCharacterSet]].location != NSNotFound) {
         // in case the encoding is a fixed size c-style array, then the numbers preceding the '^' sign is the length of it
         // the long casts are required for the %ld format specifier, which in turn is needed for the mac-compatibility, where NSInteger is long instead of int.
         NSInteger arraySize = 0;
         [[NSScanner scannerWithString:encoding] scanInteger:&arraySize];
-        NSString * const typeEncoding = [encoding stringByTrimmingCharactersInSet:[NSCharacterSet SF_fixedArrayEncodingCharacterSet]];
+        NSString * const typeEncoding = [encoding stringByTrimmingCharactersInSet:[self SF_fixedArrayEncodingCharacterSet]];
         NSString * const type = [self nameFromTypeEncoding:typeEncoding];
         result = [NSString stringWithFormat:kSFFixedArrayFormat, type, (long)arraySize];
     }
@@ -94,8 +115,56 @@ static NSDictionary *kSFMapDictionary;
     return result;
 }
 
-+ (BOOL)isPrimitiveType:(NSString *)typeEncoding {
++ (NSCharacterSet *)SF_pointerCharacterSet {
+    NSMutableCharacterSet * const set = [NSMutableCharacterSet whitespaceAndNewlineCharacterSet];
+    [set addCharactersInString:kSFDereferenceOperator];
+    return set;
+}
+
++ (NSCharacterSet *)SF_objectTypeEncodingCharacterSet {
+    NSMutableCharacterSet * const set = [NSMutableCharacterSet whitespaceAndNewlineCharacterSet];
+    [set addCharactersInString:kSFObjectTypeEncoding];
+    return set;
+}
+
++ (NSCharacterSet *)SF_valueTypePointerEncodingCharacterSet {
+    return [NSCharacterSet characterSetWithCharactersInString:kSFPointerToTypeEncoding];
+}
+
++ (NSCharacterSet *)SF_structEncodingCharacterSet {
+    return [NSCharacterSet characterSetWithCharactersInString:kSFStructEncoding];
+}
+
++ (NSCharacterSet *)SF_unionEncodingCharacterSet {
+    return [NSCharacterSet characterSetWithCharactersInString:kSFUnionEncoding];
+}
+
++ (NSCharacterSet *)SF_bitFieldEncodingCharacterSet {
+    return [NSCharacterSet characterSetWithCharactersInString:kSFBitFieldEncoding];
+}
+
++ (NSCharacterSet *)SF_arrayEncodingCharacterSet {
+    return [NSCharacterSet characterSetWithCharactersInString:kSFArrayEncoding];
+}
+
++ (NSCharacterSet *)SF_fixedArrayEncodingCharacterSet {
+    NSMutableCharacterSet * const set = [NSMutableCharacterSet decimalDigitCharacterSet];
+    [set addCharactersInString:kSFPointerToTypeEncoding];
+    return set;
+}
+
++ (BOOL)SF_isPrefix:(NSCharacterSet *)prefixSet inString:(NSString *)string {
+    NSAssert([string length] > 0, @"Assertion: string (%@) is not empty and is not nil.", string);
+    return [string rangeOfCharacterFromSet:prefixSet options:NSLiteralSearch range:NSMakeRange(0, 1)].location != NSNotFound;
+}
+
+
++ (BOOL)SF_isPrimitiveType:(NSString *)typeEncoding {
     return (![typeEncoding hasPrefix:@"@"]);
+}
+
++ (NSString *)SF_classNameFromTypeName:(NSString *)typeName {
+    return [typeName stringByTrimmingCharactersInSet:[self SF_pointerCharacterSet]];
 }
 
 @end

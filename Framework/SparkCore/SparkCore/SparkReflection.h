@@ -31,7 +31,6 @@
 #ifndef SparkReflection_SparkReflection_h
 #define SparkReflection_SparkReflection_h
 
-#import "NSCharacterSet+SFEncodingCharacterSet.h"
 #import "NSObject+SFMemberVariableReflection.h"
 #import "NSObject+SFMethodReflection.h"
 #import "NSObject+SFPropertyReflection.h"

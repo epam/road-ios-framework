@@ -85,7 +85,6 @@
 		8D94231717E2C5B4005F0AE3 /* SFPropertyInfoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D94231017E2C5B4005F0AE3 /* SFPropertyInfoTest.m */; };
 		8D94231817E2C5B4005F0AE3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D94231117E2C5B4005F0AE3 /* InfoPlist.strings */; };
 		8D94231917E2C5B4005F0AE3 /* SparkReflectionTest-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D94231317E2C5B4005F0AE3 /* SparkReflectionTest-Info.plist */; };
-		8D94232217E2C61A005F0AE3 /* NSCharacterSet+SFEncodingCharacterSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D94231B17E2C61A005F0AE3 /* NSCharacterSet+SFEncodingCharacterSet.m */; };
 		8D94232317E2C61A005F0AE3 /* NSObject+SFMemberVariableReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D94231D17E2C61A005F0AE3 /* NSObject+SFMemberVariableReflection.m */; };
 		8D94232417E2C61A005F0AE3 /* NSObject+SFMethodReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D94231F17E2C61A005F0AE3 /* NSObject+SFMethodReflection.m */; };
 		8D94232517E2C61A005F0AE3 /* NSObject+SFPropertyReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D94232117E2C61A005F0AE3 /* NSObject+SFPropertyReflection.m */; };
@@ -97,7 +96,6 @@
 		8D94232B17E2C680005F0AE3 /* NSObject+SFAttributesInternal.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D9422C817E2C52D005F0AE3 /* NSObject+SFAttributesInternal.h */; };
 		8D94232C17E2C680005F0AE3 /* SparkAttribute.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D9422C317E2C522005F0AE3 /* SparkAttribute.h */; };
 		8D94232D17E2C680005F0AE3 /* SparkReflection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D9422C417E2C522005F0AE3 /* SparkReflection.h */; };
-		8D94232E17E2C680005F0AE3 /* NSCharacterSet+SFEncodingCharacterSet.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D94231A17E2C61A005F0AE3 /* NSCharacterSet+SFEncodingCharacterSet.h */; };
 		8D94232F17E2C680005F0AE3 /* NSObject+SFMemberVariableReflection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D94231C17E2C61A005F0AE3 /* NSObject+SFMemberVariableReflection.h */; };
 		8D94233017E2C680005F0AE3 /* NSObject+SFMethodReflection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D94231E17E2C61A005F0AE3 /* NSObject+SFMethodReflection.h */; };
 		8D94233117E2C680005F0AE3 /* NSObject+SFPropertyReflection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D94232017E2C61A005F0AE3 /* NSObject+SFPropertyReflection.h */; };
@@ -134,7 +132,6 @@
 				8D94232B17E2C680005F0AE3 /* NSObject+SFAttributesInternal.h in CopyFiles */,
 				8D94232C17E2C680005F0AE3 /* SparkAttribute.h in CopyFiles */,
 				8D94232D17E2C680005F0AE3 /* SparkReflection.h in CopyFiles */,
-				8D94232E17E2C680005F0AE3 /* NSCharacterSet+SFEncodingCharacterSet.h in CopyFiles */,
 				8D94232F17E2C680005F0AE3 /* NSObject+SFMemberVariableReflection.h in CopyFiles */,
 				8D94233017E2C680005F0AE3 /* NSObject+SFMethodReflection.h in CopyFiles */,
 				8D94233117E2C680005F0AE3 /* NSObject+SFPropertyReflection.h in CopyFiles */,
@@ -243,8 +240,6 @@
 		8D94231217E2C5B4005F0AE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8D94231317E2C5B4005F0AE3 /* SparkReflectionTest-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SparkReflectionTest-Info.plist"; sourceTree = "<group>"; };
 		8D94231417E2C5B4005F0AE3 /* SparkReflectionTest-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SparkReflectionTest-Prefix.pch"; sourceTree = "<group>"; };
-		8D94231A17E2C61A005F0AE3 /* NSCharacterSet+SFEncodingCharacterSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSCharacterSet+SFEncodingCharacterSet.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		8D94231B17E2C61A005F0AE3 /* NSCharacterSet+SFEncodingCharacterSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSCharacterSet+SFEncodingCharacterSet.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8D94231C17E2C61A005F0AE3 /* NSObject+SFMemberVariableReflection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSObject+SFMemberVariableReflection.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		8D94231D17E2C61A005F0AE3 /* NSObject+SFMemberVariableReflection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSObject+SFMemberVariableReflection.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8D94231E17E2C61A005F0AE3 /* NSObject+SFMethodReflection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSObject+SFMethodReflection.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -349,8 +344,6 @@
 		78B8E69F16C3CC880049E36B /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				8D94231A17E2C61A005F0AE3 /* NSCharacterSet+SFEncodingCharacterSet.h */,
-				8D94231B17E2C61A005F0AE3 /* NSCharacterSet+SFEncodingCharacterSet.m */,
 				8D94231C17E2C61A005F0AE3 /* NSObject+SFMemberVariableReflection.h */,
 				8D94231D17E2C61A005F0AE3 /* NSObject+SFMemberVariableReflection.m */,
 				8D94231E17E2C61A005F0AE3 /* NSObject+SFMethodReflection.h */,
@@ -731,7 +724,6 @@
 				8D9422D717E2C53D005F0AE3 /* SFIvarInfo.m in Sources */,
 				8D9422D817E2C53D005F0AE3 /* SFMethodInfo.m in Sources */,
 				8D9422D917E2C53D005F0AE3 /* SFPropertyInfo.m in Sources */,
-				8D94232217E2C61A005F0AE3 /* NSCharacterSet+SFEncodingCharacterSet.m in Sources */,
 				8D94232317E2C61A005F0AE3 /* NSObject+SFMemberVariableReflection.m in Sources */,
 				8D94232417E2C61A005F0AE3 /* NSObject+SFMethodReflection.m in Sources */,
 				8D94232517E2C61A005F0AE3 /* NSObject+SFPropertyReflection.m in Sources */,

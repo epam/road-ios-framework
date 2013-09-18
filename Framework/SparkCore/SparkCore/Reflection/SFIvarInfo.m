@@ -90,7 +90,7 @@
     
     NSString *typeEncoding = [NSString stringWithCString:ivar_getTypeEncoding(anIvar) encoding:NSUTF8StringEncoding];
     info.typeName = [SFTypeDecoder nameFromTypeEncoding:typeEncoding];
-    info.primitive = [SFTypeDecoder isPrimitiveType:typeEncoding];
+    info.primitive = [SFTypeDecoder SF_isPrimitiveType:typeEncoding];
 
     return info;
 }

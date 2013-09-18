@@ -41,6 +41,19 @@
  @result The name of the type encoding.
  */
 + (NSString *)nameFromTypeEncoding:(NSString *)encoding;
-+ (BOOL)isPrimitiveType:(NSString *)typeEncoding;
+
+/**
+ Checks whether type is primitive or not.
+ @param typeEncoding The type encoding in NSString.
+ @result YES if type is primitive or NO if type is a class.
+ */
++ (BOOL)SF_isPrimitiveType:(NSString *)typeEncoding;
+
+/**
+ Returns just type (without any special symbols like *) from the type encoding.
+ @param typeName The type encoding in NSString.
+ @result The just name of the type encoding.
+ */
++ (NSString *)SF_classNameFromTypeName:(NSString *)typeName;
 
 @end
