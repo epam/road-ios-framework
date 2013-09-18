@@ -36,27 +36,27 @@
 /**
  The name of the ivar.
  */
-@property (copy, nonatomic) NSString *name;
+@property (readonly, nonatomic) NSString *name;
 
 /**
  The name of the type of the variable.
  */
-@property (assign, nonatomic) NSString *variableTypeName;
+@property (readonly, nonatomic) NSString *typeName;
 
 /**
  Boolean value telling whether the ivar was of primitive (value) type or not.
  */
-@property (assign, nonatomic, getter = isPrimitive) BOOL primitive;
+@property (readonly, nonatomic, getter = isPrimitive) BOOL primitive;
 
 /**
  The name of the class to which the ivar belongs to.
  */
-@property (copy, nonatomic) NSString *className;
+@property (readonly, nonatomic) NSString *className;
 
 /**
  The type of the host class.
  */
-@property (assign, nonatomic) Class hostClass;
+@property (readonly, nonatomic) Class hostClass;
 
 /**
  An array of attributes declared for instance variable.
@@ -68,7 +68,7 @@
  @param aClass The class to return the list of infos to.
  @result An array of info objects.
  */
-+ (NSArray *)ivarsOfClass:(__unsafe_unretained Class const)aClass;
++ (NSArray *)ivarsOfClass:(Class)aClass;
 
 /**
  Returns an info objects for the given ivar name.
@@ -76,7 +76,7 @@
  @param aClass The class to which the ivar belongs to.
  @result The info object.
  */
-+ (SFIvarInfo *)SF_ivarNamed:(NSString * const)ivarName ofClass:(__unsafe_unretained Class const)aClass;
++ (SFIvarInfo *)SF_ivarNamed:(NSString *)ivarName ofClass:(Class)aClass;
 
 /**
  The method performs search for attribute of required class in array of attributes declared for instance variable.

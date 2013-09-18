@@ -27,24 +27,46 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 #import "SFIvarInfo.h"
-#import "SFEncodingMapper.h"
+
+#import "SFTypeDecoder.h"
 #import <objc/runtime.h>
 #import "SparkAttribute.h"
 
+@interface SFIvarInfo () {
+    NSString *_name;
+    NSString *_variableTypeName;
+    BOOL _primitive;
+    NSString *_className;
+    Class _hostClass;
+}
+
+@property (copy, nonatomic) NSString *name;
+@property (copy, nonatomic) NSString *typeName;
+@property (assign, nonatomic, getter = isPrimitive) BOOL primitive;
+@property (copy, nonatomic) NSString *className;
+@property (assign, nonatomic) Class hostClass;
+
+@end
+
+
 @implementation SFIvarInfo
+
+@synthesize name = _name;
+@synthesize typeName = _variableTypeName;
+@synthesize primitive = _primitive;
+@synthesize className = _className;
+@synthesize hostClass = _hostClass;
 
 @dynamic attributes;
 
-+ (NSArray *)ivarsOfClass:(__unsafe_unretained Class const)aClass {
-    unsigned int memberCount;
++ (NSArray *)ivarsOfClass:(Class)aClass {
+    unsigned int memberCount = 0;
     Ivar * const ivarList = class_copyIvarList(aClass, &memberCount);
     NSMutableArray *array = [NSMutableArray array];
-    SFIvarInfo *descriptor;
     
     for (unsigned int index = 0; index < memberCount; index++) {
-        descriptor = [self infoFromIvar:ivarList[index]];
+        SFIvarInfo *descriptor = [self SF_infoFromIvar:ivarList[index]];
         descriptor.className = NSStringFromClass(aClass);
         descriptor.hostClass = aClass;
         [array addObject:descriptor];
@@ -54,20 +76,22 @@
     return array;
 }
 
-+ (SFIvarInfo *)SF_ivarNamed:(NSString *const)ivarName ofClass:(__unsafe_unretained Class const)aClass {
++ (SFIvarInfo *)SF_ivarNamed:(NSString *const)ivarName ofClass:(Class)aClass {
     Ivar anIvar = class_getInstanceVariable(aClass, [ivarName cStringUsingEncoding:NSUTF8StringEncoding]);
-    SFIvarInfo *descriptor = [self infoFromIvar:anIvar];
+    SFIvarInfo *descriptor = [self SF_infoFromIvar:anIvar];
     descriptor.className = NSStringFromClass(aClass);
     descriptor.hostClass = aClass;
     return descriptor;
 }
 
-+ (SFIvarInfo *)infoFromIvar:(Ivar)anIvar {
++ (SFIvarInfo *)SF_infoFromIvar:(Ivar)anIvar {
     SFIvarInfo * const info = [[SFIvarInfo alloc] init];
-    NSString * const encoding = [NSString stringWithCString:ivar_getTypeEncoding(anIvar) encoding:NSUTF8StringEncoding];
     info.name = [NSString stringWithCString:ivar_getName(anIvar) encoding:NSUTF8StringEncoding];
-    info.variableTypeName = [SFEncodingMapper nameFromTypeEncoding:encoding];
-    info.primitive = ![encoding hasPrefix:@"@"];
+    
+    NSString *typeEncoding = [NSString stringWithCString:ivar_getTypeEncoding(anIvar) encoding:NSUTF8StringEncoding];
+    info.typeName = [SFTypeDecoder nameFromTypeEncoding:typeEncoding];
+    info.primitive = [SFTypeDecoder SF_isPrimitiveType:typeEncoding];
+
     return info;
 }
 

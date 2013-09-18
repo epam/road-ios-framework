@@ -40,13 +40,13 @@
  Returns a specific descriptor of the given name matching class methods for the current object.
  @param methodName The name of the method.
  */
-- (SFMethodInfo *)SF_classMethodForName:(NSString *)methodName;
+- (SFMethodInfo *)SF_classMethodNamed:(NSString *)methodName;
 
 /**
  Returns a specific descriptor of the given name matching instance methods for the current object.
  @param methodName The name of the method.
  */
-- (SFMethodInfo *)SF_instanceMethodForName:(NSString *)methodName;
+- (SFMethodInfo *)SF_instanceMethodNamed:(NSString *)methodName;
 
 /**
  Returns all method descriptor for the current object.
@@ -57,7 +57,7 @@
  Returns a specific descriptor of the given name matching class methods for the current class.
   @param methodName The name of the method.
  */
-+ (SFMethodInfo *)SF_classMethodForName:(NSString *)methodName;
++ (SFMethodInfo *)SF_classMethodNamed:(NSString *)methodName;
 
 /**
  Returns all method descriptor for the current class.
@@ -68,6 +68,6 @@
  Returns a specific descriptor of the given name matching instance methods for the current class.
   @param methodName The name of the method.
  */
-+ (SFMethodInfo *)SF_instanceMethodForName:(NSString *)methodName;
++ (SFMethodInfo *)SF_instanceMethodNamed:(NSString *)methodName;
 
 @end

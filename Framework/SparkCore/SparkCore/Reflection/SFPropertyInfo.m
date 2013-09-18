@@ -29,16 +29,65 @@
 
 
 #import "SFPropertyInfo.h"
-#import "SFEncodingMapper.h"
-#import "NSCharacterSet+SFEncodingCharacterSet.h"
+
+#import "SFTypeDecoder.h"
 #import <objc/runtime.h>
 #import "SparkAttribute.h"
 
+@interface SFPropertyInfo () {
+    NSString *_propertyName;
+    NSString *_className;
+    Class _hostClass;
+    NSString *_typeName;
+    NSString *_setterName;
+    NSString *_getterName;
+    BOOL _dynamic;
+    BOOL _weak;
+    BOOL _nonatomic;
+    BOOL _strong;
+    BOOL _readonly;
+    BOOL _copied;
+    BOOL _primitive;
+    Class _typeClass;
+}
+
+@property (copy, nonatomic) NSString *propertyName;
+@property (copy, nonatomic) NSString *className;
+@property (assign, nonatomic) Class hostClass;
+@property (copy, nonatomic) NSString *typeName;
+@property (copy, nonatomic) NSString *setterName;
+@property (copy, nonatomic) NSString *getterName;
+@property (assign, nonatomic, getter = isDynamic) BOOL dynamic;
+@property (assign, nonatomic, getter = isWeak) BOOL weak;
+@property (assign, nonatomic, getter = isNonatomic) BOOL nonatomic;
+@property (assign, nonatomic, getter = isStrong) BOOL strong;
+@property (assign, nonatomic, getter = isReadonly) BOOL readonly;
+@property (assign, nonatomic, getter = isCopied) BOOL copied;
+@property (assign, nonatomic, getter = isPrimitive) BOOL primitive;
+@property (assign, nonatomic) Class typeClass;
+
+@end
+
 @implementation SFPropertyInfo
+
+@synthesize propertyName = _propertyName;
+@synthesize className = _className;
+@synthesize hostClass = _hostClass;
+@synthesize typeName = _typeName;
+@synthesize setterName = _setterName;
+@synthesize getterName = _getterName;
+@synthesize dynamic = _dynamic;
+@synthesize weak = _weak;
+@synthesize nonatomic = _nonatomic;
+@synthesize strong = _strong;
+@synthesize readonly = _readonly;
+@synthesize copied = _copied;
+@synthesize primitive = _primitive;
+@synthesize typeClass = _typeClass;
 
 @dynamic attributes;
 
-+ (NSArray *)propertiesForClass:(__unsafe_unretained Class const)aClass {
++ (NSArray *)propertiesForClass:(Class)aClass {
     NSMutableArray *result = [[NSMutableArray alloc] init];
     unsigned int numberOfProperties = 0;
     objc_property_t *propertiesArray = class_copyPropertyList(aClass, &numberOfProperties);
@@ -51,7 +100,7 @@
     return result;
 }
 
-+ (SFPropertyInfo *)SF_propertyNamed:(NSString *)name forClass:(__unsafe_unretained Class const)aClass {
++ (SFPropertyInfo *)SF_propertyNamed:(NSString *)name forClass:(Class)aClass {
     objc_property_t prop = class_getProperty(aClass, [name cStringUsingEncoding:NSUTF8StringEncoding]);
     SFPropertyInfo *result = nil;
     
@@ -62,14 +111,14 @@
     return result;
 }
 
-+ (NSArray *)propertiesForClass:(__unsafe_unretained Class const)class withPredicate:(NSPredicate * const)aPredicate {
++ (NSArray *)propertiesForClass:(Class)class withPredicate:(NSPredicate *)aPredicate {
     NSArray *result = [self propertiesForClass:class];
     return [result filteredArrayUsingPredicate:aPredicate];
 }
 
 // For reference see apple's documetation about declared properties:
 // https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtPropertyIntrospection.html
-+ (SFPropertyInfo *)property:(objc_property_t const)property forClass:(__unsafe_unretained Class const)class {
++ (SFPropertyInfo *)property:(objc_property_t)property forClass:(Class)class {
     SFPropertyInfo * const info = [[SFPropertyInfo alloc] init];
     NSString * const name = [NSString stringWithCString:property_getName(property) encoding:NSUTF8StringEncoding];
     NSString * const attributeName = [self propertyAttributeNameForField:"T" property:property];
@@ -77,9 +126,9 @@
     NSString * const setterName = [self propertyAttributeNameForField:"S" property:property];
     
     info.propertyName = name;
-    info.attributeClassName = [SFEncodingMapper nameFromTypeEncoding:attributeName];
-    info.attributeClass = NSClassFromString([info.attributeClassName stringByTrimmingCharactersInSet:[NSCharacterSet SF_pointerCharacterSet]]);
-    info.object = [attributeName hasPrefix:@"@"];
+    info.typeName = [SFTypeDecoder nameFromTypeEncoding:attributeName];
+    info.typeClass = NSClassFromString([SFTypeDecoder SF_classNameFromTypeName:info.typeName]);
+    info.primitive = [SFTypeDecoder SF_isPrimitiveType:attributeName];
     info.className = NSStringFromClass(class);
     info.hostClass = class;
     info.getterName = getterName;

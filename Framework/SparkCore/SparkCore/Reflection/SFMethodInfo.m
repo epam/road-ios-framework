@@ -29,64 +29,87 @@
 
 
 #import "SFMethodInfo.h"
-#import "SFEncodingMapper.h"
+
+#import "SFTypeDecoder.h"
 #import <objc/runtime.h>
 #import "SparkAttribute.h"
+
+@interface SFMethodInfo () {
+    NSString *_name;
+    NSString *_className;
+    Class _hostClass;
+    NSUInteger _numberOfArguments;
+    NSString *_returnType;
+    BOOL _classMethod;
+    
+    NSArray *argumentTypes;
+}
+
+@property (copy, nonatomic) NSString *name;
+@property (copy, nonatomic) NSString *className;
+@property (assign, nonatomic) Class hostClass;
+@property (assign, nonatomic) NSUInteger numberOfArguments;
+@property (copy, nonatomic) NSString *returnType;
+@property (assign, nonatomic, getter = isClassMethod) BOOL classMethod;
+@end
+
 
 // The number hidden of method arguments: self and _cmd
 static NSUInteger const kSFMethodArgumentOffset = 2;
 
-@implementation SFMethodInfo {
-    NSArray *argumentTypes;
-}
+@implementation SFMethodInfo
+
+@synthesize name = _name;
+@synthesize className = _className;
+@synthesize hostClass = _hostClass;
+@synthesize numberOfArguments = _numberOfArguments;
+@synthesize returnType = _returnType;
+@synthesize classMethod = _classMethod;
 
 @dynamic attributes;
 
-+ (NSArray *)methodsOfClass:(__unsafe_unretained Class const)aClass {
-    unsigned int numberOfMethods = 0;
-    NSMutableArray * const result = [[NSMutableArray alloc] init];
++ (NSArray *)methodsOfClass:(Class)aClass {  
+    NSMutableArray *result = [[NSMutableArray alloc] init];
     
-    Method *methods = class_copyMethodList(aClass, &numberOfMethods);
-    [result addObjectsFromArray:[self methodInfoList:methods count:numberOfMethods ofClass:aClass areClassMethods:NO]];
-    free(methods);
+    unsigned int numberOfInstanceMethods = 0;
+    Method *instanceMethods = class_copyMethodList(aClass, &numberOfInstanceMethods);
+    [result addObjectsFromArray:[self methodInfoList:instanceMethods count:numberOfInstanceMethods ofClass:aClass areClassMethods:NO]];
+    free(instanceMethods);
     
-    methods = class_copyMethodList(object_getClass(aClass), &numberOfMethods);
-    [result addObjectsFromArray:[self methodInfoList:methods count:numberOfMethods ofClass:aClass areClassMethods:YES]];
-    free(methods);
+    unsigned int numberOfClassMethods = 0;
+    Method *classMethods = class_copyMethodList(object_getClass(aClass), &numberOfClassMethods);
+    [result addObjectsFromArray:[self methodInfoList:classMethods count:numberOfClassMethods ofClass:aClass areClassMethods:YES]];
+    free(classMethods);
     
     return result;
 }
 
-+ (SFMethodInfo *)instanceMethodNamed:(NSString *)methodName forClass:(__unsafe_unretained Class const)aClass {
-    Method aMethod = class_getInstanceMethod(aClass, NSSelectorFromString(methodName));
-    SFMethodInfo * const info = [self methodInfo:aMethod forClass:aClass];
++ (SFMethodInfo *)instanceMethodNamed:(NSString *)methodName forClass:(Class)aClass {
+    Method method = class_getInstanceMethod(aClass, NSSelectorFromString(methodName));
+    SFMethodInfo *info = [self methodInfo:method forClass:aClass];
     info.classMethod = NO;
     return info;
 }
 
-+ (SFMethodInfo *)classMethodNamed:(NSString *)methodName forClass:(__unsafe_unretained Class const)aClass {
-    Method aMethod = class_getClassMethod(aClass, NSSelectorFromString(methodName));
-    SFMethodInfo * const info = [self methodInfo:aMethod forClass:aClass];
++ (SFMethodInfo *)classMethodNamed:(NSString *)methodName forClass:(Class)aClass {
+    Method method = class_getClassMethod(aClass, NSSelectorFromString(methodName));
+    SFMethodInfo *info = [self methodInfo:method forClass:aClass];
     info.classMethod = YES;
     return info;
 }
 
-+ (SFMethodInfo *)methodInfo:(Method const)aMethod forClass:(__unsafe_unretained Class const)aClass {
-    SFMethodInfo * const info = [[SFMethodInfo alloc] init];
++ (SFMethodInfo *)methodInfo:(Method)method forClass:(Class)aClass {
+    SFMethodInfo *info = [[SFMethodInfo alloc] init];
     info.className = NSStringFromClass(aClass);
     info.hostClass = aClass;
-    info.name = NSStringFromSelector(method_getName(aMethod));
-    info.numberOfArguments = (NSUInteger)method_getNumberOfArguments(aMethod) - kSFMethodArgumentOffset;
-    info->argumentTypes = [self mapArgumentTypeEncodingForMethod:aMethod numberOfArguments:info.numberOfArguments];
-    info.returnType = [self mapReturnTypeEncodingForMethod:aMethod];
+    info.name = NSStringFromSelector(method_getName(method));
+    info.numberOfArguments = (NSUInteger)method_getNumberOfArguments(method) - kSFMethodArgumentOffset;
+    info->argumentTypes = [self argumentsTypeNamesOfMethod:method numberOfArguments:info.numberOfArguments];
+    info.returnType = [self returnTypeNameOfMethod:method];
     return info;
 }
 
-+ (NSArray *)methodInfoList:(const Method *)methods
-                      count:(unsigned int const)numberOfMethods
-                    ofClass:(__unsafe_unretained Class const)aClass
-            areClassMethods:(const BOOL)areClassMethods {
-
++ (NSArray *)methodInfoList:(const Method *)methods count:(unsigned int)numberOfMethods ofClass:(Class)aClass areClassMethods:(const BOOL)areClassMethods {
     NSMutableArray * const result = [[NSMutableArray alloc] init];
     SFMethodInfo *info;
     
@@ -103,23 +126,23 @@ static NSUInteger const kSFMethodArgumentOffset = 2;
     return argumentTypes[anIndex];
 }
 
-+ (NSArray *)mapArgumentTypeEncodingForMethod:(Method const)aMethod numberOfArguments:(NSUInteger const)numberOfArguments {
++ (NSArray *)argumentsTypeNamesOfMethod:(Method)method numberOfArguments:(NSUInteger)numberOfArguments {
     NSMutableArray * const array = [[NSMutableArray alloc] init];
     
     for (unsigned int index = kSFMethodArgumentOffset; index < numberOfArguments + kSFMethodArgumentOffset; index++) {
-        char *argEncoding = method_copyArgumentType(aMethod, index);
-        [array addObject:[SFEncodingMapper nameFromTypeEncoding:[NSString stringWithCString:argEncoding encoding:NSUTF8StringEncoding]]];
+        char *argEncoding = method_copyArgumentType(method, index);
+        [array addObject:[SFTypeDecoder nameFromTypeEncoding:[NSString stringWithCString:argEncoding encoding:NSUTF8StringEncoding]]];
         free(argEncoding);
     }
     
     return array;
 }
 
-+ (NSString *)mapReturnTypeEncodingForMethod:(Method const)aMethod {
-    char *returnTypeEncoding = method_copyReturnType(aMethod);
++ (NSString *)returnTypeNameOfMethod:(Method)method {
+    char *returnTypeEncoding = method_copyReturnType(method);
     NSString * const result = [NSString stringWithCString:returnTypeEncoding encoding:NSUTF8StringEncoding];
     free(returnTypeEncoding);
-    return [SFEncodingMapper nameFromTypeEncoding:result];
+    return [SFTypeDecoder nameFromTypeEncoding:result];
 }
 
 - (NSString *)description {
