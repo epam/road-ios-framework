@@ -5,7 +5,7 @@ Or a set of reusable components taking advantage of extra dimension [Attribute-O
 
 * Source: [github.com/epam/spark-ios-framework](github.com/epam/spark-ios-framework)
 * Homepage: [sparkiosframework.com](http://sparkiosframework.com)
-* Twitter: [@sparkiosframework](https://twitter.com/sparkiosframework)
+
 
 ##Components
 
