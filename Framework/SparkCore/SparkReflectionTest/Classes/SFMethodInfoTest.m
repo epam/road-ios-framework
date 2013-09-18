@@ -41,13 +41,13 @@
 }
 
 - (void)testInstanceMethodDescriptor {
-    SFMethodInfo *desc = [self SF_instanceMethodForName:@"instanceMethod"];
+    SFMethodInfo *desc = [self SF_instanceMethodNamed:@"instanceMethod"];
     STAssertTrue([[desc className] isEqualToString:NSStringFromClass([self class])],@"Assertion: classname is correct for method descriptor.");
     STAssertTrue([desc isClassMethod] == NO, @"Assertion: method is instance method.");
 }
 
 - (void)testClassMethodDescriptor {
-    SFMethodInfo *desc = [self SF_classMethodForName:@"classMethod"];
+    SFMethodInfo *desc = [self SF_classMethodNamed:@"classMethod"];
     STAssertTrue([desc isClassMethod] == YES, @"Assertion: method is class method");
 }
 
