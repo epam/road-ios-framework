@@ -138,12 +138,8 @@
     return [SFFileLogWriter writerWithPath:path];
 }
 
-+ (SFLogWriter *)infoConsoleWriter {
-    return [SFConsoleLogWriter infoConsoleWriter];
-}
-
-+ (SFLogWriter *)debugConsoleWriter {
-    return [SFConsoleLogWriter debugConsoleWriter];
++ (SFLogWriter *)plainConsoleWriter {
+    return [SFConsoleLogWriter plainConsoleWriter];
 }
 
 -(void)dealloc

@@ -55,31 +55,50 @@
     [[SFServiceProvider logger] setWriters:@[]];
     
     [[SFServiceProvider logger] addWriter:[SFConsoleLogWriter new]];
-    [[SFServiceProvider logger] addWriter:[SFConsoleLogWriter infoConsoleWriter]];
-    [[SFServiceProvider logger] addWriter:[SFConsoleLogWriter debugConsoleWriter]];
+    [[SFServiceProvider logger] addWriter:[SFConsoleLogWriter plainConsoleWriter]];
+    [[SFServiceProvider logger] addWriter:[SFConsoleLogWriter plainConsoleWriter]];
     
     STAssertTrue([[[SFServiceProvider logger] writers] count] == 3, @"The number of the writers (added) doesn't coincide");
 }
 
 - (void)testFilters {
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(SFLogMessage *evaluatedObject, NSDictionary *bindings) {
+        return [evaluatedObject.type isEqualToString:kSFLogMessageTypeNetworkOnly];
+    }];
+    SFLogFilter *logFilter = [SFLogFilter filterWithPrediate:predicate];
     
+    SFLogMessage *validLogMessage = [SFLogMessage logMessage:@"Simple message" type:kSFLogMessageTypeNetworkOnly level:SFLogLevelWarning userInfo:nil];
+    SFLogMessage *invalidLogMessage = [SFLogMessage logMessage:@"Simple message" type:kSFLogMessageTypeFileOnly level:SFLogLevelWarning userInfo:nil];
+    
+    STAssertTrue([logFilter hasMessagePassedTest:validLogMessage], @"Valid message have not passed test!");
+    STAssertFalse([logFilter hasMessagePassedTest:invalidLogMessage], @"Invalid message have passed test!");
+}
+
+- (void)testMacroses {
     // reset queue of writers
     [[SFServiceProvider logger] setWriters:@[]];
     
-    // add writer (by information messages)
-    SFLogWriter *infoWriter = [SFConsoleLogWriter infoConsoleWriter];
-    [[SFServiceProvider logger] addWriter:infoWriter];
-    // trying to add information message
-    SFLogDebug(@"text message text message text message");
-    STAssertTrue([infoWriter.messageQueue count] == 0, @"The queue contains unacceptable message");
-    // add valid message
-    SFLogInfo(@"text message text message text message");
-    STAssertTrue([infoWriter.messageQueue count] > 0, @"The queue of messages is empty");
+    SFLogWriter *writer = [SFConsoleLogWriter new];
+    // add console writer
+    [[SFServiceProvider logger] addWriter:writer];
+    [[SFServiceProvider logger] setLogLevel:SFLogLevelWarning];
+    
+    SFLogInfo(@"I 234242%@", @"87686");
+    SFLogDebug(@"D 098765, %d", 2342);
+    SFLogWarning(@"W 12345%@", [[NSObject alloc] init]);
+    SFLogError(@"E 345678%2.6f", 234.234626);
+    
+    SFLogTypedInfo(kSFLogMessageTypeAllLoggers, @"I 234242%2.6f", 234.234626);
+    SFLogTypedDebug(kSFLogMessageTypeAllLoggers, @"D 234242%@", [[NSObject alloc] init]);
+    SFLogTypedWarning(kSFLogMessageTypeAllLoggers, @"W 234242%@", @"87686");
+    SFLogTypedError(kSFLogMessageTypeAllLoggers, @"E 234242");
     
     BOOL isFinished = NO;
     while (!isFinished) {
         [[NSRunLoop mainRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
-        isFinished = YES;
+        if ([[writer messageQueue] count] == 0) {
+            isFinished = YES;
+        }
     }
 }
 
