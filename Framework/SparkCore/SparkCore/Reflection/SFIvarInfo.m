@@ -42,7 +42,7 @@
 }
 
 @property (copy, nonatomic) NSString *name;
-@property (copy, nonatomic) NSString *variableTypeName;
+@property (copy, nonatomic) NSString *typeName;
 @property (assign, nonatomic, getter = isPrimitive) BOOL primitive;
 @property (copy, nonatomic) NSString *className;
 @property (assign, nonatomic) Class hostClass;
@@ -53,7 +53,7 @@
 @implementation SFIvarInfo
 
 @synthesize name = _name;
-@synthesize variableTypeName = _variableTypeName;
+@synthesize typeName = _variableTypeName;
 @synthesize primitive = _primitive;
 @synthesize className = _className;
 @synthesize hostClass = _hostClass;
@@ -89,7 +89,7 @@
     info.name = [NSString stringWithCString:ivar_getName(anIvar) encoding:NSUTF8StringEncoding];
     
     NSString *typeEncoding = [NSString stringWithCString:ivar_getTypeEncoding(anIvar) encoding:NSUTF8StringEncoding];
-    info.variableTypeName = [SFTypeDecoder nameFromTypeEncoding:typeEncoding];
+    info.typeName = [SFTypeDecoder nameFromTypeEncoding:typeEncoding];
     info.primitive = [SFTypeDecoder isPrimitiveType:typeEncoding];
 
     return info;

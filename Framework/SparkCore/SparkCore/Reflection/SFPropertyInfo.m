@@ -39,7 +39,7 @@
     NSString *_propertyName;
     NSString *_className;
     Class _hostClass;
-    NSString *_attributeClassName;
+    NSString *_typeName;
     NSString *_setterName;
     NSString *_getterName;
     BOOL _dynamic;
@@ -49,13 +49,13 @@
     BOOL _readonly;
     BOOL _copied;
     BOOL _object;
-    Class _attributeClass;
+    Class _typeClass;
 }
 
 @property (copy, nonatomic) NSString *propertyName;
 @property (copy, nonatomic) NSString *className;
 @property (assign, nonatomic) Class hostClass;
-@property (copy, nonatomic) NSString *attributeClassName;
+@property (copy, nonatomic) NSString *typeName;
 @property (copy, nonatomic) NSString *setterName;
 @property (copy, nonatomic) NSString *getterName;
 @property (nonatomic, getter = isDynamic) BOOL dynamic;
@@ -65,7 +65,7 @@
 @property (nonatomic, getter = isReadonly) BOOL readonly;
 @property (nonatomic, getter = isCopied) BOOL copied;
 @property (nonatomic, getter = isObject) BOOL object;
-@property (nonatomic, unsafe_unretained) Class attributeClass;
+@property (nonatomic, unsafe_unretained) Class typeClass;
 
 @end
 
@@ -74,7 +74,7 @@
 @synthesize propertyName = _propertyName;
 @synthesize className = _className;
 @synthesize hostClass = _hostClass;
-@synthesize attributeClassName = _attributeClassName;
+@synthesize typeName = _typeName;
 @synthesize setterName = _setterName;
 @synthesize getterName = _getterName;
 @synthesize dynamic = _dynamic;
@@ -84,7 +84,7 @@
 @synthesize readonly = _readonly;
 @synthesize copied = _copied;
 @synthesize object = _object;
-@synthesize attributeClass = _attributeClass;
+@synthesize typeClass = _typeClass;
 
 @dynamic attributes;
 
@@ -127,8 +127,8 @@
     NSString * const setterName = [self propertyAttributeNameForField:"S" property:property];
     
     info.propertyName = name;
-    info.attributeClassName = [SFTypeDecoder nameFromTypeEncoding:attributeName];
-    info.attributeClass = NSClassFromString([info.attributeClassName stringByTrimmingCharactersInSet:[NSCharacterSet SF_pointerCharacterSet]]);
+    info.typeName = [SFTypeDecoder nameFromTypeEncoding:attributeName];
+    info.typeClass = NSClassFromString([info.typeName stringByTrimmingCharactersInSet:[NSCharacterSet SF_pointerCharacterSet]]);
     info.object = [attributeName hasPrefix:@"@"];
     info.className = NSStringFromClass(class);
     info.hostClass = class;

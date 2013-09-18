@@ -41,7 +41,7 @@
 /**
  The name of the type of the variable.
  */
-@property (readonly, nonatomic) NSString *variableTypeName;
+@property (readonly, nonatomic) NSString *typeName;
 
 /**
  Boolean value telling whether the ivar was of primitive (value) type or not.

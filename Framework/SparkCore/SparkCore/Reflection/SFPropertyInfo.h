@@ -51,7 +51,7 @@
 /**
  The name of the class or variable type of the property declaration.
  */
-@property (readonly, nonatomic) NSString *attributeClassName;
+@property (readonly, nonatomic) NSString *typeName;
 
 /**
  The name of the setter method.
@@ -102,7 +102,7 @@
  The declared class of the property if applicable.
  For primitive types this is Nil.
  */
-@property (readonly, nonatomic, unsafe_unretained) Class attributeClass;
+@property (readonly, nonatomic, unsafe_unretained) Class typeClass;
 
 /**
  An array of attributes declared for property.
