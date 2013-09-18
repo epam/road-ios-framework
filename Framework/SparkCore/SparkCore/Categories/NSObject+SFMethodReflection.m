@@ -1,6 +1,6 @@
 //
 //  NSObject+SFMethodReflection.m
-//  SparkReflection
+//  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //

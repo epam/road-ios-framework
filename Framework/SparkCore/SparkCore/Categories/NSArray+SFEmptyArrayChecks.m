@@ -1,5 +1,5 @@
 //
-//  NSArray+ConditionalComponentReturn.m
+//  NSArray+SFEmptyArrayChecks.m
 //  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
