@@ -55,7 +55,7 @@
     BOOL result;
     
     // if the attribute is found, attempt to add a dynamic implementation
-    if (attribute != nil) {
+    if (attribute) {
         [self addDynamicWebserviceCallForSelector:sel];
         result = YES;
     }
@@ -122,10 +122,10 @@
     // if there are parameters, the last one can be the prepareToLoad block
     if (parameterList.count > 0) {
         prepareToLoadBlock = [parameterList lastObject];
-        if (![self isBlockObject:prepareToLoadBlock]) {
-            prepareToLoadBlock = nil;
-        } else {
+        if ([self isBlockObject:prepareToLoadBlock]) {
             [parameterList removeLastObject];
+        } else {
+            prepareToLoadBlock = nil;
         }
     }
     
