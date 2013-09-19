@@ -72,7 +72,7 @@ static NSString * const kSFObserverTargetKeyPath = @"target";
         }
     }
     else {
-        callback(change[NSKeyValueChangeOldKey], change[NSKeyValueChangeNewKey]);
+        _callback(change[NSKeyValueChangeOldKey], change[NSKeyValueChangeNewKey]);
     }
 }
 
