@@ -58,8 +58,8 @@ Pod::Spec.new do |s|
   end
 
     s.subspec 'SparkSerialization' do |serialization|
-    serialization.source_files = 'Framework/SparkLogger/SparkLogger/**/*.{h,m}'
-    serialization.public_header_files = 'Framework/SparkLogger/SparkLogger/**/*.h'
+    serialization.source_files = 'Framework/SparkSerialization/SparkSerialization/**/*.{h,m}'
+    serialization.public_header_files = 'Framework/SparkSerialization/SparkSerialization/**/*.h'
     serialization.dependency 'SparkFramework/SparkCore'
     serialization.dependency 'SparkFramework/SparkServices'    
     serialization.dependency 'SparkFramework/SparkLogger'

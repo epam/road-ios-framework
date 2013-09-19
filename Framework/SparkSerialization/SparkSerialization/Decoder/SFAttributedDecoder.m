@@ -114,7 +114,7 @@
     [decoder setRootObjectClassName:jsonDict[SFSerializedObjectClassName]];
 
     if ([[decoder rootObjectClassName] length] == 0) {
-        [decoder setRootObjectClassName:NSStringFromClass(aDesc.attributeClass)];
+        [decoder setRootObjectClassName:NSStringFromClass(aDesc.typeClass)];
     }
 
     [decoder decodeRootObject:jsonDict];
@@ -155,7 +155,7 @@
     }
     else if ([value isKindOfClass:[NSDictionary class]]) {
         
-        if ([aDesc.attributeClass isSubclassOfClass:[NSDictionary class]]) {
+        if (![aDesc.typeClass isSubclassOfClass:[NSDictionary class]]) {
             value = [self decodeDictionary:value forProperty:aDesc];
         }
         else {

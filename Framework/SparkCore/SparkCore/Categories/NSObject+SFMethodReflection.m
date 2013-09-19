@@ -1,6 +1,6 @@
 //
 //  NSObject+SFMethodReflection.m
-//  SparkReflection
+//  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -32,11 +32,11 @@
 
 @implementation NSObject (SFMethodReflection)
 
-- (SFMethodInfo *)SF_classMethodForName:(NSString *)methodName {
+- (SFMethodInfo *)SF_classMethodNamed:(NSString *)methodName {
     return [SFMethodInfo classMethodNamed:methodName forClass:[self class]];
 }
 
-- (SFMethodInfo *)SF_instanceMethodForName:(NSString *)methodName {
+- (SFMethodInfo *)SF_instanceMethodNamed:(NSString *)methodName {
     return [SFMethodInfo instanceMethodNamed:methodName forClass:[self class]];
 }
 
@@ -44,11 +44,11 @@
     return [SFMethodInfo methodsOfClass:[self class]];
 }
 
-+ (SFMethodInfo *)SF_classMethodForName:(NSString *)methodName {
++ (SFMethodInfo *)SF_classMethodNamed:(NSString *)methodName {
     return [SFMethodInfo classMethodNamed:methodName forClass:self];
 }
 
-+ (SFMethodInfo *)SF_instanceMethodForName:(NSString *)methodName {
++ (SFMethodInfo *)SF_instanceMethodNamed:(NSString *)methodName {
     return [SFMethodInfo instanceMethodNamed:methodName forClass:self];
 }
 

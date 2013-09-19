@@ -1,6 +1,6 @@
 //
 //  SFMethodInfo.h
-//  SparkReflection
+//  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -36,31 +36,31 @@
 /**
  The name of the method.
  */
-@property (copy, nonatomic) NSString *name;
+@property (readonly, nonatomic) NSString *name;
 
 /**
  The name of the class the method was declared to be a member of.
  */
-@property (copy, nonatomic) NSString *className;
+@property (readonly, nonatomic) NSString *className;
 /**
  The type of the host class.
  */
-@property (assign, nonatomic) Class hostClass;
+@property (readonly, nonatomic) Class hostClass;
 
 /**
  The number of arguments for the method.
  */
-@property (assign, nonatomic) NSUInteger numberOfArguments;
+@property (readonly, nonatomic) NSUInteger numberOfArguments;
 
 /**
  The string value describing the return value's type.
  */
-@property (copy, nonatomic) NSString *returnType;
+@property (readonly, nonatomic) NSString *returnType;
 
 /**
  Boolean value telling if the method was a class method.
  */
-@property (assign, nonatomic, getter = isClassMethod) BOOL classMethod;
+@property (readonly, nonatomic, getter = isClassMethod) BOOL classMethod;
 
 /**
  An array of attributes declared for method.
@@ -72,7 +72,7 @@
  @param aClass The class for which to return the method info.
  @result All info objects for the declared methods.
  */
-+ (NSArray *)methodsOfClass:(__unsafe_unretained Class const)aClass;
++ (NSArray *)methodsOfClass:(Class)aClass;
 
 /**
  Returns an info object corresponding to a class method of the given name.
@@ -80,7 +80,7 @@
  @param aClass The class for which to return a method info.
  @result The info object.
  */
-+ (SFMethodInfo *)classMethodNamed:(NSString *)methodName forClass:(__unsafe_unretained Class const)aClass;
++ (SFMethodInfo *)classMethodNamed:(NSString *)methodName forClass:(Class)aClass;
 
 /**
  Returns an info object corresponding to an instance method of the given name.
@@ -88,14 +88,14 @@
  @param aClass The class for which to return a method info.
  @result The info object.
  */
-+ (SFMethodInfo *)instanceMethodNamed:(NSString *)methodName forClass:(__unsafe_unretained Class const)aClass;
++ (SFMethodInfo *)instanceMethodNamed:(NSString *)methodName forClass:(Class)aClass;
 
 /**
  The type of the argument at the specified index.
  @param anIndex The index of the argument. If the index is out of range (not between 0 and number of arguments), the method throws an exception.
  @result The type string.
  */
-- (NSString *)typeOfArgumentAtIndex:(NSUInteger const)anIndex;
+- (NSString *)typeOfArgumentAtIndex:(NSUInteger)anIndex;
 
 /**
  The method performs search for attribute of required class in array of attributes declared for method.
