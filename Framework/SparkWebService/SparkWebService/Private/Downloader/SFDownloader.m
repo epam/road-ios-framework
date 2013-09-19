@@ -206,7 +206,7 @@
     if (self.downloadError && self.data) {
         NSMutableDictionary* userInfo = self.downloadError.userInfo == nil ? [NSMutableDictionary new] : [self.downloadError.userInfo mutableCopy];
         NSString* result = [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding];
-        [userInfo setObject: result ? result : self.data forKey:@"result"];
+        userInfo[@"result"] = result ? result : self.data;
         self.downloadError = [[NSError alloc] initWithDomain:self.downloadError.domain code:self.downloadError.code userInfo:userInfo];
         self.data = nil;
     }

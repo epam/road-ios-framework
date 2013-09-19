@@ -46,7 +46,7 @@
     id object = nil;
     
     if ([self count] > index) {
-        object = [self objectAtIndex:index];
+        object = self[index];
     }
     
     return object;

@@ -39,7 +39,7 @@
 
     NSArray *valuesArray = [values allValues];
     for (int index = 0; index < [values count]; index++) {
-        id value = [valuesArray objectAtIndex:index];
+        id value = valuesArray[index];
         
         if ([value isKindOfClass:[SFODataFetchRequest class]]) {
             SFODataFetchRequest *fetchRequest = value;

@@ -85,11 +85,16 @@ static NSDictionary *kSFMapDictionary;
         result = [NSString stringWithFormat:kSFFixedArrayFormat, type, (long)arraySize];
     }
     
+    return [SFEncodingMapper checkResultValue:result encoding:encoding];
+}
+
+#pragma mark - Private methods
+
++ (NSString*)checkResultValue:(NSString*)result encoding:(NSString*)encoding {
     if ([result length] == 0) {
         // in case no match is found, a fail-safe solution is to keep the encoding itself
-        result = [encoding copy];
+        return [encoding copy];
     }
-    
     return result;
 }
 

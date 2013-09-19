@@ -155,11 +155,11 @@
     }
     else if ([value isKindOfClass:[NSDictionary class]]) {
         
-        if (![aDesc.attributeClass isSubclassOfClass:[NSDictionary class]]) {
-            value = [[self class] decodeJSONDictionary:value forProperty:aDesc];
+        if ([aDesc.attributeClass isSubclassOfClass:[NSDictionary class]]) {
+            value = [self decodeDictionary:value forProperty:aDesc];
         }
         else {
-            value = [self decodeDictionary:value forProperty:aDesc];
+            value = [[self class] decodeJSONDictionary:value forProperty:aDesc];
         }
     }
     else if ([aDesc attributeWithType:[SFSerializableDate class]]
@@ -257,7 +257,7 @@
     NSMutableString *currentKeyPath = [[NSMutableString alloc] init];
     
     for (int index = 0; index < [keys count]; index++) {
-        NSString *key = [keys objectAtIndex:index];
+        NSString *key = keys[index];
         if (currentKeyPath.length) {
             [currentKeyPath appendString:@"."];
         }
