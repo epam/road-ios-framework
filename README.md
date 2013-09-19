@@ -1,6 +1,5 @@
 #Spark iOS Framework [![Build Status](https://magnum.travis-ci.com/epam/spark-ios-framework.png?token=o3R2wxGct9xoZkZhni3K&branch=dev)](https://magnum.travis-ci.com/epam/spark-ios-framework)
 ===================
-Spark iOS Framework is all that you need besides UI.
 A set of reusable components taking advantage of extra dimension [Attribute-Oriented Programming](https://en.wikipedia.org/wiki/Attribute-oriented_programming) adds.
 
 * Source: [github.com/epam/spark-ios-framework](github.com/epam/spark-ios-framework)
@@ -56,8 +55,3 @@ To use **Spark API Reference** create symlink to `Spark.docset`from documents
 
 ##License
 Spark is made available under the terms of the [BSD v3](http://opensource.org/licenses/BSD-3-Clause). See the LICENSE file that accompanies this distribution for the full text of the license.
-
-
-
-
-
