@@ -138,7 +138,7 @@
             }
 
             for (int indexOfEntityName = 0; indexOfEntityName < [expandOption count]; indexOfEntityName++) {
-                 NSString *entityName = expandOption[indexOfEntityName];
+                NSString *entityName = expandOption[indexOfEntityName];
                 if (indexOfEntityName == 0) {
                     [queryString appendFormat:@"%@", entityName];
                 }

@@ -171,9 +171,13 @@ static NSString * const kCFBundleDisplayName = @"CFBundleDisplayName";
         temp_addr = interfaces; 
         while(temp_addr != NULL) { 
             
+            BOOL checkAddr = (temp_addr->ifa_addr->sa_family == AF_INET);
+            
             // Check if interface is en0 which is the wifi connection on the iPhone
             // it may also be en1 on your ipad3.
-            if((temp_addr->ifa_addr->sa_family == AF_INET) && ([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"])) {
+            BOOL checkIntreface = ([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"]);
+            
+            if(checkAddr && checkIntreface) {
                 // Get NSString from C String
                 address = @(inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr));
             }

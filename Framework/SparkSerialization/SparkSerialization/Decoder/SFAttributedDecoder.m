@@ -155,7 +155,7 @@
     }
     else if ([value isKindOfClass:[NSDictionary class]]) {
         
-        if (![aDesc.typeClass isSubclassOfClass:[NSDictionary class]]) {
+        if ([aDesc.typeClass isSubclassOfClass:[NSDictionary class]]) {
             value = [self decodeDictionary:value forProperty:aDesc];
         }
         else {
@@ -182,6 +182,7 @@
     [aDictionary enumerateKeysAndObjectsUsingBlock:^(id aKey, id aValue, BOOL *stop) {
         [dict setObject:[self decodeCollectionElement:aValue forProperty:aDesc] forKey:aKey];
     }];
+    
     return [dict copy];
 }
 
