@@ -89,7 +89,7 @@
         return nil;
     }
     
-    [cachedCreatorsDictionary setObject:result forKey:elementName];
+    cachedCreatorsDictionary[elementName] = result;
     return result;
 }
 

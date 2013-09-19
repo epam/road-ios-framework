@@ -63,7 +63,7 @@ static NSString * const kCFBundleDisplayName = @"CFBundleDisplayName";
     
     if (self) {
         
-        applicationName = [[[NSBundle mainBundle] infoDictionary] objectForKey:kCFBundleDisplayName];
+        applicationName = [[NSBundle mainBundle] infoDictionary][kCFBundleDisplayName];
         connection = [[SFConnection alloc] initWithType:kSFNetLogServiceType applicationName:applicationName];
         connection.delegate = self;
         [connection start];
@@ -171,13 +171,15 @@ static NSString * const kCFBundleDisplayName = @"CFBundleDisplayName";
         temp_addr = interfaces; 
         while(temp_addr != NULL) { 
             
-            if(temp_addr->ifa_addr->sa_family == AF_INET) {
-                // Check if interface is en0 which is the wifi connection on the iPhone
-                // it may also be en1 on your ipad3.
-                if([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"]) { 
-                    // Get NSString from C String 
-                    address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)]; 
-                } 
+            BOOL checkAddr = (temp_addr->ifa_addr->sa_family == AF_INET);
+            
+            // Check if interface is en0 which is the wifi connection on the iPhone
+            // it may also be en1 on your ipad3.
+            BOOL checkIntreface = ([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"]);
+            
+            if(checkAddr && checkIntreface) {
+                // Get NSString from C String
+                address = @(inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr));
             }
             
             temp_addr = temp_addr->ifa_next; 

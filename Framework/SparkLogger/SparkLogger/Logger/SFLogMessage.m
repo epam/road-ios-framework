@@ -47,11 +47,11 @@ NSString * const kSFLogMessageTypeNoLogging = @"SFLogMessageTypeNoLogging";
 + (SFLogMessage *)logMessage:(NSString * const)messageText type:(NSString * const)type level:(SFLogLevel const)level userInfo:(NSDictionary * const)userInfo {
     SFLogMessage * const message = [[SFLogMessage alloc] init];
     message.message = messageText;
-    if (!type) {
-        message.type = kSFLogMessageTypeConsoleOnly;
+    if (type) {
+        message.type = type;
     }
     else {
-        message.type = type;
+        message.type = kSFLogMessageTypeConsoleOnly;
     }
     message.level = level;
     message.userInfo = userInfo;
