@@ -50,16 +50,8 @@
     printf("%s\n", [result cStringUsingEncoding:NSUTF8StringEncoding]);
 }
 
-+ (SFLogWriter *)infoConsoleWriter {
++ (SFLogWriter *)plainConsoleWriter {
     SFConsoleLogWriter * const writer = [[SFConsoleLogWriter alloc] init];
-    [writer addFilter:[SFLogFilter filterForLevel:SFLogLevelInfo]];
-    writer.formatter = [SFLogFormatter plainFormatter];
-    return writer;
-}
-
-+ (SFLogWriter *)debugConsoleWriter {
-    SFConsoleLogWriter * const writer = [[SFConsoleLogWriter alloc] init];
-    [writer addFilter:[SFLogFilter filterForLevel:SFLogLevelDebug]];
     writer.formatter = [SFLogFormatter plainFormatter];
     return writer;
 }

@@ -36,6 +36,8 @@
  */
 @protocol SFLogging <NSObject>
 
+@property (nonatomic, assign) SFLogLevel logLevel;
+
 - (void)logMessage:(SFLogMessage * const)message;
 - (void)addWriter:(SFLogWriter * const)aWriter;
 - (void)removeWriter:(SFLogWriter * const)aWriter;

@@ -50,21 +50,21 @@
 
 
 #define SFLogInfo(...) \
-        [[SFServiceProvider logger] logInfoMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]];
+        if ([SFServiceProvider logger].logLevel >= SFLogLevelInfo) [[SFServiceProvider logger] logInfoMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]];
 #define SFLogDebug(...) \
-        [[SFServiceProvider logger] logDebugMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
+        if ([SFServiceProvider logger].logLevel >= SFLogLevelDebug) [[SFServiceProvider logger] logDebugMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
 #define SFLogWarning(...) \
-        [[SFServiceProvider logger] logWarningMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
+        if ([SFServiceProvider logger].logLevel >= SFLogLevelWarning) [[SFServiceProvider logger] logWarningMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
 #define SFLogError(...) \
-        [[SFServiceProvider logger] logErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
+        if ([SFServiceProvider logger].logLevel >= SFLogLevelError) [[SFServiceProvider logger] logErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
 
 #define SFLogTypedInfo(__type__, ...) \
-        [[SFServiceProvider logger] logInfoMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
+        if ([SFServiceProvider logger].logLevel >= SFLogLevelInfo) [[SFServiceProvider logger] logInfoMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
 #define SFLogTypedDebug(__type__, ...) \
-        [[SFServiceProvider logger] logDebugMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
+        if ([SFServiceProvider logger].logLevel >= SFLogLevelDebug) [[SFServiceProvider logger] logDebugMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
 #define SFLogTypedWarning(__type__, ...) \
-        [[SFServiceProvider logger] logWarningMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
+        if ([SFServiceProvider logger].logLevel >= SFLogLevelWarning) [[SFServiceProvider logger] logWarningMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
 #define SFLogTypedError(__type__, ...) \
-        [[SFServiceProvider logger] logErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
+        if ([SFServiceProvider logger].logLevel >= SFLogLevelError) [[SFServiceProvider logger] logErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
 
 #endif

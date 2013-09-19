@@ -32,14 +32,10 @@
  The console log writer.
  */
 @interface SFConsoleLogWriter : SFLogWriter
-/**
- Returns a console log writer for info messages.
- */
-+ (SFLogWriter *)debugConsoleWriter;
 
 /**
- Returns a console log writer for info messages.
+ Returns a console log writer with plain formatter.
  */
-+ (SFLogWriter *)infoConsoleWriter;
++ (SFLogWriter *)plainConsoleWriter;
 
 @end

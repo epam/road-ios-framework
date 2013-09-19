@@ -1,6 +1,6 @@
 //
 //  SparkReflection.h
-//  SparkReflection
+//  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -31,12 +31,11 @@
 #ifndef SparkReflection_SparkReflection_h
 #define SparkReflection_SparkReflection_h
 
+#import "NSObject+SFMemberVariableReflection.h"
+#import "NSObject+SFMethodReflection.h"
+#import "NSObject+SFPropertyReflection.h"
 #import "SFIvarInfo.h"
 #import "SFMethodInfo.h"
 #import "SFPropertyInfo.h"
-#import "NSObject+SFPropertyReflection.h"
-#import "NSObject+SFMemberVariableReflection.h"
-#import "NSObject+SFMethodReflection.h"
-#import "NSCharacterSet+SFEncodingCharacterSet.h"
 
 #endif
