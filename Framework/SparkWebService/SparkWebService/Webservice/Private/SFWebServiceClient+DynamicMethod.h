@@ -1,6 +1,6 @@
 //
-//  SFWebserviceClient+DynamicMethod.h
-//  SparkWebservice
+//  SFWebServiceClient+DynamicMethod.h
+//  SparkWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
