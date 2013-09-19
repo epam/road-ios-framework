@@ -1,6 +1,6 @@
 //
-//  SFWebServiceTest.h
-//  SparkWebservice
+//  SFWebServiceTest.m
+//  SparkWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
