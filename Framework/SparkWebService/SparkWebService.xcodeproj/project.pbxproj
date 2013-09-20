@@ -905,7 +905,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"${SRCROOT}/${PRODUCT_NAME}\"\n\"${SRCROOT}/../../tools/binaries/SparkAttributesCodeGenerator\" -src=\"${SRCROOT}/SparkWebservice/\" -dst=\"${SRCROOT}/SparkWebservice/SparkGeneratedAttributes/\"";
+			shellScript = "echo \"${SRCROOT}/${PRODUCT_NAME}\"\n\"${SRCROOT}/../../SparkAttributesCodeGenerator\" -src=\"${SRCROOT}/SparkWebservice/\" -dst=\"${SRCROOT}/SparkWebservice/SparkGeneratedAttributes/\"";
 		};
 		83C544EE174B80A9000C8BCD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -567,7 +567,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/../../tools/binaries/SparkAttributesCodeGenerator -src=${SRCROOT}/SparkLogger/ -dst=${SRCROOT}/SparkLogger/SparkGeneratedAttributes/";
+			shellScript = "\"${SRCROOT}/../../SparkAttributesCodeGenerator\" -src=\"${SRCROOT}/SparkLogger/\" -dst=\"${SRCROOT}/SparkLogger/SparkGeneratedAttributes/\"";
 		};
 		D771948717CF4DED0011047F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;

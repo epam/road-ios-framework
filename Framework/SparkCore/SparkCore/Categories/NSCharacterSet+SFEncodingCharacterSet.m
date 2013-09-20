@@ -41,16 +41,24 @@ static NSString * const kSFDereferenceOperator = @"*";
 
 @implementation NSCharacterSet (SFEncodingCharacterSet)
 
+static NSMutableCharacterSet * SFPointerCharacterSet = nil;
+static NSMutableCharacterSet * SFObjectTypeEncodingCharacterSet = nil;
+
 + (NSCharacterSet *)SF_pointerCharacterSet {
-    NSMutableCharacterSet * const set = [NSMutableCharacterSet whitespaceAndNewlineCharacterSet];
-    [set addCharactersInString:kSFDereferenceOperator];
-    return set;
+    if (!SFPointerCharacterSet) {
+        SFPointerCharacterSet = [NSMutableCharacterSet whitespaceAndNewlineCharacterSet];
+        [SFPointerCharacterSet addCharactersInString:kSFDereferenceOperator];
+    }
+
+    return SFPointerCharacterSet;
 }
 
 + (NSCharacterSet *)SF_objectTypeEncodingCharacterSet {
-    NSMutableCharacterSet * const set = [NSMutableCharacterSet whitespaceAndNewlineCharacterSet];
-    [set addCharactersInString:kSFObjectTypeEncoding];
-    return set;
+    if (!SFObjectTypeEncodingCharacterSet) {
+        SFObjectTypeEncodingCharacterSet = [NSMutableCharacterSet whitespaceAndNewlineCharacterSet];
+        [SFObjectTypeEncodingCharacterSet addCharactersInString:kSFObjectTypeEncoding];
+    }
+    return SFObjectTypeEncodingCharacterSet;
 }
 
 + (NSCharacterSet *)SF_valueTypePointerEncodingCharacterSet {
