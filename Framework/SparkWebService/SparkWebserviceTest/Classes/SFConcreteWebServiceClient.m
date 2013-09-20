@@ -1,6 +1,6 @@
 //
 //  SFConcreteWebServiceClient.m
-//  SparkWebservice
+//  SparkWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //

@@ -1,5 +1,5 @@
 //
-//  NSArray+ConditionalComponentReturn.m
+//  NSArray+SFEmptyArrayChecks.m
 //  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -46,7 +46,7 @@
     id object = nil;
     
     if ([self count] > index) {
-        object = [self objectAtIndex:index];
+        object = self[index];
     }
     
     return object;
@@ -56,6 +56,7 @@
     BOOL (^(testingBlock))(id evaludatedObject) = [evaluationBlock copy];
     
     return [[self filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        
         return testingBlock(evaluatedObject);
     }]] SF_lastElementIfNotEmpty];
 }

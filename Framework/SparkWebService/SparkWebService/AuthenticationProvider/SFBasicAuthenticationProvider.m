@@ -1,6 +1,6 @@
 //
 //  SFBasicAuthenticationProvider.m
-//  SparkWebservice
+//  SparkWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -71,10 +71,10 @@
             NSEnumerator *protectionSpaceEnumerator = [credentials keyEnumerator];
             id protectionSpace;
             while (protectionSpace = [protectionSpaceEnumerator nextObject]) {
-                NSEnumerator *userEnumerator = [[credentials objectForKey:protectionSpace] keyEnumerator];
+                NSEnumerator *userEnumerator = [(credentials[protectionSpace]) keyEnumerator];
                 id user;
                 while (user = [userEnumerator nextObject]) {
-                    NSURLCredential *credential = [[credentials objectForKey:protectionSpace] objectForKey:user];
+                    NSURLCredential *credential = (credentials[protectionSpace])[user];
                     [[NSURLCredentialStorage sharedCredentialStorage] removeCredential:credential forProtectionSpace:protectionSpace];
                 }
             }

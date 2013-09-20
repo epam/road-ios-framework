@@ -1,6 +1,6 @@
 //
 //  SFWebServiceCallParameterEncoder.m
-//  SparkWebservice
+//  SparkWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -97,7 +97,7 @@ static NSString * const kSFBoundaryDefaultString = @"AaB03x";
         }
         
         // store encoded objects
-        [result setObject:encodedObject forKey:key];
+        result[key] = encodedObject;
     }
     
     callbackBlock(result, bodyData, isMultipartData);

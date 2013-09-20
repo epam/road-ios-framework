@@ -178,7 +178,7 @@
 		789AAE3916C4E3FA00FF7FB0 /* SparkLogger-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SparkLogger-Prefix.pch"; sourceTree = "<group>"; };
 		789AAE4716C4E43100FF7FB0 /* SparkLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SparkLogger.h; sourceTree = "<group>"; };
 		78B1BE9316E7711A009AD4EF /* SFNetLogWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFNetLogWriter.h; sourceTree = "<group>"; };
-		78B1BE9416E7711A009AD4EF /* SFNetLogWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFNetLogWriter.m; sourceTree = "<group>"; };
+		78B1BE9416E7711A009AD4EF /* SFNetLogWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFNetLogWriter.m; sourceTree = "<group>"; };
 		78B1BE9716E7721A009AD4EF /* SFConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFConnection.h; sourceTree = "<group>"; };
 		78B1BE9816E7721A009AD4EF /* SFConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFConnection.m; sourceTree = "<group>"; };
 		78B1BE9916E7721A009AD4EF /* SFConnectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFConnectionDelegate.h; sourceTree = "<group>"; };
@@ -567,7 +567,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../../SparkAttributesCodeGenerator\" -src=\"${SRCROOT}/SparkLogger/\" -dst=\"${SRCROOT}/SparkLogger/SparkGeneratedAttributes/\"";
+			shellScript = "\"${SRCROOT}/../../tools/binaries/SparkAttributesCodeGenerator\" -src=\"${SRCROOT}/SparkLogger/\" -dst=\"${SRCROOT}/SparkLogger/SparkGeneratedAttributes/\"";
 		};
 		D771948717CF4DED0011047F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -182,7 +182,7 @@
     
     for (id aKey in aDict) {
         id aValue = aDict[aKey];
-        [dict setObject:[self encodeValue:aValue] forKey:aKey];
+        dict[aKey] = [self encodeValue:aValue];
     }
     
     return [NSDictionary dictionaryWithDictionary:dict];

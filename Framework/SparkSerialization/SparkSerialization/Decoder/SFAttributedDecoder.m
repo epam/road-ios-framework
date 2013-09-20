@@ -122,7 +122,7 @@
     rootClassName = jsonDict[SFSerializedObjectClassName];
 
     if ([rootClassName length] == 0) {
-        rootClassName = NSStringFromClass(aDesc.attributeClass);
+        rootClassName = NSStringFromClass(aDesc.typeClass);
     }
 
     return [self decodeRootObject:jsonDict withRootClassNamed:rootClassName];
@@ -164,8 +164,7 @@
         value = [self decodeArray:value forProperty:aDesc];
     }
     else if ([value isKindOfClass:[NSDictionary class]]) {
-        
-        if (![aDesc.attributeClass isSubclassOfClass:[NSDictionary class]]) {
+        if (![aDesc.typeClass isSubclassOfClass:[NSDictionary class]]) {
             value = [self decodeJSONDictionary:value forProperty:aDesc];
         }
         else {
@@ -192,6 +191,7 @@
     [aDictionary enumerateKeysAndObjectsUsingBlock:^(id aKey, id aValue, BOOL *stop) {
         [dict setObject:[self decodeCollectionElement:aValue forProperty:aDesc] forKey:aKey];
     }];
+    
     return [dict copy];
 }
 
@@ -275,7 +275,7 @@
     NSMutableString *currentKeyPath = [[NSMutableString alloc] init];
     
     for (int index = 0; index < [keys count]; index++) {
-        NSString *key = [keys objectAtIndex:index];
+        NSString *key = keys[index];
         if (currentKeyPath.length) {
             [currentKeyPath appendString:@"."];
         }
