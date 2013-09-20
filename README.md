@@ -49,9 +49,9 @@ If you'd like to embed only specific components from the framework it can be don
 
 Documentation for all components can be found in **Documents** folder.
 
-To use **Spark API Reference** build SparkDocumentation project
+To use **Spark API Reference** build **SparkDocumentation** project
  
-* [`you need to have appledoc installed`](https://github.com/tomaz/appledoc/blob/master/Readme.markdown)
+* You need to have [`appledoc`](https://github.com/tomaz/appledoc/blob/master/Readme.markdown) installed.
 
 		git clone git://github.com/tomaz/appledoc.git
 		cd appledoc
