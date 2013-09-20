@@ -1,0 +1,125 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		D75BF05B17EC6BC300DDF8E3 /* Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = D75BF05C17EC6BC300DDF8E3 /* Build configuration list for PBXAggregateTarget "Documentation" */;
+			buildPhases = (
+				D75BF06017EC6BE000DDF8E3 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Documentation;
+			productName = Documentation;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXGroup section */
+		D75BF04B17EC68F700DDF8E3 = {
+			isa = PBXGroup;
+			children = (
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		D75BF04C17EC68F700DDF8E3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+			};
+			buildConfigurationList = D75BF04F17EC68F700DDF8E3 /* Build configuration list for PBXProject "SparkDocumentation" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D75BF04B17EC68F700DDF8E3;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D75BF05B17EC6BC300DDF8E3 /* Documentation */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D75BF06017EC6BE000DDF8E3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"Spark Documentation\" \\\n--project-company \"EPAM Systems, Inc.\" \\\n--company-id \"com.epam\" \\\n--output \"Documentation\" \\\n--no-install-docset \\\n--logformat xcode \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--keep-intermediate-files \\\n--no-repeat-first-par \\\n--no-warn-invalid-crossref \\\n--merge-categories \\\n--exit-threshold 2 \\\n--docset-platform-family iphoneos \\\n--ignore \"*.m\" \\\n\"../\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D75BF05017EC68F800DDF8E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+			};
+			name = Debug;
+		};
+		D75BF05117EC68F800DDF8E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+			};
+			name = Release;
+		};
+		D75BF05D17EC6BC300DDF8E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos7.0;
+			};
+			name = Debug;
+		};
+		D75BF05E17EC6BC300DDF8E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos7.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D75BF04F17EC68F700DDF8E3 /* Build configuration list for PBXProject "SparkDocumentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D75BF05017EC68F800DDF8E3 /* Debug */,
+				D75BF05117EC68F800DDF8E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D75BF05C17EC6BC300DDF8E3 /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D75BF05D17EC6BC300DDF8E3 /* Debug */,
+				D75BF05E17EC6BC300DDF8E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D75BF04C17EC68F700DDF8E3 /* Project object */;
+}
