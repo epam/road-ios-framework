@@ -1,8 +1,8 @@
 language: objective-c
 script:
     - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkWebService build | tee xcodebuild.log
-	- oclint-xcodebuild
-	- oclint-json-compilation-database
+    - oclint-xcodebuild
+    - oclint-json-compilation-database
 notifications:
   email:
     - Valery_Demin@epam.com
