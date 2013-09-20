@@ -45,18 +45,25 @@
 
 @implementation SFAttributedCoder {
     NSString * _dateFormat;
-    NSDateFormatter * _dateFormatter;
+    NSMutableDictionary * _dateFormatters;
 }
+
+
+#pragma mark - Initialization
 
 - (id)init {
     self = [super init];
     
     if (self) {
         self.archive = [[NSMutableDictionary alloc] init];
+        _dateFormatters = [[NSMutableDictionary alloc] init];
     }
     
     return self;
 }
+
+
+#pragma mark - Encoding
 
 + (id)encodeRootObject:(id)rootObject {
     NSData *data = [self encodedDataOfRootObject:rootObject];    
@@ -185,16 +192,14 @@
 #pragma mark - Support methods
 
 - (NSDateFormatter *)dataFormatterWithFormatString:(NSString *)formatString {
-    if (!_dateFormatter) {
-        _dateFormatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *dateFormatter = [_dateFormatters objectForKey:formatString];
+    if (!dateFormatter) {
+        dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = formatString;
+        [_dateFormatters setObject:dateFormatter forKey:formatString];
     }
-    
-    if (![formatString isEqualToString:_dateFormat]) {
-        _dateFormatter.dateFormat = formatString;
-        _dateFormat = formatString;
-    }
-    
-    return _dateFormatter;
+
+    return dateFormatter;
 }
 
 @end
