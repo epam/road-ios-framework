@@ -68,4 +68,15 @@ Pod::Spec.new do |s|
     serialization.header_dir = 'Spark'
   end
 
+    s.subspec 'SparkWebService' do |web|
+    web.source_files = 'Framework/SparkWebService/SparkWebService/**/*.{h,m}'
+    web.public_header_files = 'Framework/SparkWebService/SparkWebService/**/*.h'
+    web.dependency 'SparkFramework/SparkCore'
+    web.dependency 'SparkFramework/SparkSerialization'
+    web.dependency 'SparkFramework/SparkServices'    
+    web.dependency 'SparkFramework/SparkLogger'
+    web.ios.framework = 'CoreFoundation', 'CFNetwork'
+    web.header_dir = 'Spark'
+  end
+
 end
