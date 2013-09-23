@@ -27,9 +27,7 @@ Pod::Spec.new do |s|
  
   s.subspec 'SparkCore' do |core|
     core.source_files = 'Framework/SparkCore/SparkCore/**/*.{h,m}'
-    core.public_header_files = 'Framework/SparkCore/SparkCore/Core/**/*.h', \
-                              'Framework/SparkCore/SparkCore/Attribute/**/*.h',\
-                              'Framework/SparkCore/SparkCore/Reflection/**/*.h'
+    core.public_header_files = 'Framework/SparkCore/SparkCore/**/*.h'
     core.header_dir = 'Spark'
   end
 
@@ -66,6 +64,17 @@ Pod::Spec.new do |s|
     serialization.ios.framework = 'CoreFoundation'
     serialization.library = 'z'
     serialization.header_dir = 'Spark'
+  end
+
+    s.subspec 'SparkWebService' do |web|
+    web.source_files = 'Framework/SparkWebService/SparkWebService/**/*.{h,m}'
+    web.public_header_files = 'Framework/SparkWebService/SparkWebService/**/*.h'
+    web.dependency 'SparkFramework/SparkCore'
+    web.dependency 'SparkFramework/SparkSerialization'
+    web.dependency 'SparkFramework/SparkServices'    
+    web.dependency 'SparkFramework/SparkLogger'
+    web.ios.framework = 'CoreFoundation', 'CFNetwork'
+    web.header_dir = 'Spark'
   end
 
 end
