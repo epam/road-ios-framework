@@ -2,8 +2,10 @@ language: objective-c
 before_install:
     - brew install oclint.rb
 script:
-    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkWebService build | tee xcodebuild.log
+    - xcodebuild -workspace Framework/SparkFramework.xcworkspace -scheme SparkWebService build | tee xcodebuild.log
+	- echo xccodebuild.log
     - oclint-xcodebuild
+	- echo compile_commands.json
     - oclint-json-compilation-database
 notifications:
   email:
