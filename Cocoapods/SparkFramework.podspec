@@ -27,9 +27,7 @@ Pod::Spec.new do |s|
  
   s.subspec 'SparkCore' do |core|
     core.source_files = 'Framework/SparkCore/SparkCore/**/*.{h,m}'
-    core.public_header_files = 'Framework/SparkCore/SparkCore/Core/**/*.h', \
-                              'Framework/SparkCore/SparkCore/Attribute/**/*.h',\
-                              'Framework/SparkCore/SparkCore/Reflection/**/*.h'
+    core.public_header_files = 'Framework/SparkCore/SparkCore/**/*.h'
     core.header_dir = 'Spark'
   end
 
