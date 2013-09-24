@@ -3,15 +3,11 @@ before_install:
     - brew install oclint.rb
 script:
     - cd Framework
-    - xcodebuild -workspace SparkFramework.xcworkspace -scheme SparkCore build | tee xcodebuild.log
     - pwd
-    - cat xcodebuild.log
-    - oclint-xcodebuild
-    - cat compile_commands.json
     - ls
-    - oclint-json-compilation-database
-    - oclint SparkCore/SparkCore/Attribute/NSObject+SFAttributes.m -- -c
     - which clang
+    - clang --version
+    - find /usr/ stdarg.h | grep stdarg.h
 notifications:
   email:
     - Valery_Demin@epam.com
