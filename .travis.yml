@@ -3,9 +3,11 @@ before_install:
     - brew install oclint.rb
 script:
     - xcodebuild -workspace Framework/SparkFramework.xcworkspace -scheme SparkCore build | tee xcodebuild.log
-    - cat "xcodebuild.log"
+    - pwd
+    - cat xcodebuild.log
     - oclint-xcodebuild
-    - cat "compile_commands.json"
+    - cat compile_commands.json
+    - ls
     - oclint-json-compilation-database
 notifications:
   email:
