@@ -10,6 +10,7 @@ script:
     - cat compile_commands.json
     - ls
     - oclint-json-compilation-database
+    - oclint SparkCore/SparkCore/Attribute/NSObject+SFAttributes.m -- -c
 notifications:
   email:
     - Valery_Demin@epam.com
