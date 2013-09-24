@@ -2,7 +2,8 @@ language: objective-c
 before_install:
     - brew install oclint.rb
 script:
-    - xcodebuild -workspace Framework/SparkFramework.xcworkspace -scheme SparkCore build | tee xcodebuild.log
+    - cd Framework
+    - xcodebuild -workspace SparkFramework.xcworkspace -scheme SparkCore build | tee xcodebuild.log
     - pwd
     - cat xcodebuild.log
     - oclint-xcodebuild
