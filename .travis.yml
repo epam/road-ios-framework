@@ -11,6 +11,7 @@ script:
     - ls
     - oclint-json-compilation-database
     - oclint SparkCore/SparkCore/Attribute/NSObject+SFAttributes.m -- -c
+    - which clang
 notifications:
   email:
     - Valery_Demin@epam.com
