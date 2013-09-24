@@ -274,7 +274,7 @@ if (isAwesome == YES) // Never do this.
 4. Declare properties `copy` if they return immutable objects and aren't ever mutated in the implementation.
 5. Synthesize should not be used if it is not redefining default synthesize behavior. `@synthesize` and `@dynamic` should each be declared on new lines in the implementation.
 6. Prefer exposing an immutable type for a property to promote encapsulation.
-7. Avoid `self.` to access class' own properties unless you have implemented custom setter or getter. You should access class' instance variables directly instead.
+7. Use `self.` to access class' own public properties. If you directly access instance variable for a public property, this will break KVO.
 
 ### 7.1.Dot-Notation Syntax
 1. Dot-notation should be used for accessing and mutating properties. Bracket notation is preferred in all other instances.
