@@ -10,8 +10,6 @@ class SparkConfigurator
     
     @@spark_attributes_code_generator_url = "https://github.com/epam/spark-ios-framework/raw/master/tools/binaries/SparkAttributesCodeGenerator"
     
-    #TODO replace absolute paths with Xcode env vars
-    
     def self.set_github_credentials(username, password)
         @@github_username = username
         @@github_password = password
