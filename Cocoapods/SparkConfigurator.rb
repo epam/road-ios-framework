@@ -8,7 +8,14 @@ class SparkConfigurator
     
     @@path_proj_pods = @@path_proj_user + '/Pods'
     
+    @@spark_attributes_code_generator_url = "https://github.com/epam/spark-ios-framework/raw/master/tools/binaries/SparkAttributesCodeGenerator"
+    
     #TODO replace absolute paths with Xcode env vars
+    
+    def self.set_github_credentials(username, password)
+        @@github_username = username
+        @@github_password = password
+    end
     
     def self.pre_install(installer)
         genereted_attributes_user_path = "#{@@path_proj_user}/#{@@user_project_name}/SparkGeneratedAttributes"
@@ -20,12 +27,12 @@ class SparkConfigurator
     
     def self.post_install(installer)
         # run scripts
-        run_script_user = "#{@@path_proj_user}/binaries/SparkAttributesCodeGenerator"\
-        " -src=#{@@path_proj_user}/#{@@user_project_name}"\
-        " -dst=#{@@path_proj_user}/#{@@user_project_name}/SparkGeneratedAttributes/"
-        run_script_pods = "#{@@path_proj_user}/binaries/SparkAttributesCodeGenerator"\
-        " -src=#{@@path_proj_pods}/"\
-        " -dst=#{@@path_proj_pods}/SparkFramework/Framework/SparkGeneratedAttributes/"
+        run_script_user = "\"${SRCROOT}/binaries/SparkAttributesCodeGenerator\""\
+        " -src=\"${SRCROOT}/${PROJECT_NAME}\""\
+        " -dst=\"${SRCROOT}/${PROJECT_NAME}/SparkGeneratedAttributes/\""
+        run_script_pods = "\"${SRCROOT}/../binaries/SparkAttributesCodeGenerator\""\
+        " -src=\"${SRCROOT}/\""\
+        " -dst=\"${SRCROOT}/SparkFramework/Framework/SparkGeneratedAttributes/\""
         
         puts "user's project: #{@@path_user_project}"
         
@@ -44,12 +51,8 @@ class SparkConfigurator
         proj.save(proj.path)
         
         SparkConfigurator::add_script_to_project_targets(run_script_pods, 'Spark generate attributes', installer.project)
-        
-        # create directories 9shared sources
-        path_binary = Dir.getwd + '/binaries'
-        if !File.directory?(path_binary)
-            FileUtils.mkdir(path_binary)
-        end
+
+        SparkConfigurator::initialize_binaries()
     end
     
     def self.create_generated_attributes_for_path(path)
@@ -69,5 +72,25 @@ class SparkConfigurator
             phase.shell_script = script
             target.build_phases.insert(0, phase)
         end
+    end
+
+    def self.initialize_binaries()
+        binary_path = Dir.getwd + '/binaries'
+        if !File.directory?(binary_path)
+            FileUtils.mkdir(binary_path)
+        end
+
+        attributes_code_generator_path = "#{binary_path}/SparkAttributesCodeGenerator"
+
+        curl_call = "curl "
+        if (defined? @@github_username)
+            curl_call += "-u #{@@github_username}:#{@@github_password} "
+        end
+        curl_call += "-L -o \"#{attributes_code_generator_path}\" #{@@spark_attributes_code_generator_url}"
+
+        puts curl_call
+
+        system curl_call
+        system "chmod +x \"#{attributes_code_generator_path}\""
     end
 end
