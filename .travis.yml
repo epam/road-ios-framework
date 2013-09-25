@@ -4,10 +4,8 @@ before_install:
     - tar -zxvf oclint-0.7-x86_64-apple-darwin-10.tar.gz
     - OCLINT_HOME=/Users/travis/build/valery-demin/spark-ios-framework/oclint-0.7-x86_64-apple-darwin-10
     - PATH=$OCLINT_HOME/bin:$PATH
-    - oclint
 script:
-    - cd Framework
-    - xcodebuild -workspace SparkFramework.xcworkspace -scheme SparkCore build | tee xcodebuild.log
+    - xcodebuild -workspace Framework/SparkFramework.xcworkspace -scheme SparkCore build | tee xcodebuild.log
     - pwd
     - cat xcodebuild.log
     - oclint-xcodebuild
@@ -15,7 +13,6 @@ script:
     - ls
     - oclint-json-compilation-database
     - oclint SparkCore/SparkCore/Attribute/NSObject+SFAttributes.m -- -c
-    - which clang
 notifications:
   email:
     - Valery_Demin@epam.com
