@@ -8,6 +8,8 @@ class SparkConfigurator
     
     @@path_proj_pods = @@path_proj_user + '/Pods'
     
+    #TODO replace absolute paths with Xcode env vars
+    
     def self.pre_install(installer)
         genereted_attributes_user_path = "#{@@path_proj_user}/#{@@user_project_name}/SparkGeneratedAttributes"
         genereted_attributes_pods_path = "#{@@path_proj_pods}/SparkFramework/Framework/SparkGeneratedAttributes"
@@ -27,7 +29,7 @@ class SparkConfigurator
         
         puts "user's project: #{@@path_user_project}"
         
-        if File.exists?(path_user_project)
+        if File.exists?(@@path_user_project)
             puts "Info: found user's project by path: #{@@path_user_project}"
             else
             puts "Error: not found user's project (Podfile should be located in your project directory)"
@@ -62,7 +64,7 @@ class SparkConfigurator
     
     def self.add_script_to_project_targets(script, script_name, project)
         project.targets.each do |target|
-            phase = installer.project.new(Xcodeproj::Project::PBXShellScriptBuildPhase)
+            phase = project.new(Xcodeproj::Project::PBXShellScriptBuildPhase)
             phase.name = script_name
             phase.shell_script = script
             target.build_phases.insert(0, phase)
