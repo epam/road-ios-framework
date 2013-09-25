@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>codefile</key>
+	<string>//
+//  $webClientName$.m
+//  ODataDemo
+//
+//  Created on $creationdate$ by ODataEntityGenerator.
+//  Copyright (c) EPAM Systems. All rights reserved.
+//
+
+#import &quot;$webClientName$.h&quot;
+
+@implementation $webClientName$
+
+@end
+</string>
+	<key>serviceDeclaration</key>
+	<string>
+SF_ATTRIBUTE(SFWebServiceHeader, hearderFields = @{@&quot;Accept&quot; : @&quot;application/json&quot;})
+SF_ATTRIBUTE(SFWebServiceURLBuilder, builderClass = [SFODataWebServiceURLBuilder class])
+SF_ATTRIBUTE(SFWebServiceCall, prototypeClass = [$classname$ class])
+- (void)load$entity_set_name$WithFetchRequest:(SFODataFetchRequest *)fetchRequest success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+</string>
+	<key>headerfile</key>
+	<string>//
+//  $webClientName$.h
+//
+//  Created on $creationdate$ by ODataEntityGenerator.
+//  Copyright (c) EPAM Systems. All rights reserved.
+//
+
+#import &lt;Spark/SparkWebservice.h&gt;
+
+SF_ATTRIBUTE(SFWebServiceErrorHandler, handlerClass = @&quot;SFODataErrorHandler&quot;)
+SF_ATTRIBUTE(SFWebServiceClientStatusCodes, successCodes = @[[NSValue valueWithRange:NSMakeRange(200, 100)]])
+@interface $webClientName$ : SFWebServiceClient
+$service_declaration$
+@end
+</string>
+	<key>webClientName</key>
+	<string>ODataWebClient</string>
+	<key>creationDateFormatString</key>
+	<string>yyyy-MM-dd</string>
+</dict>
+</plist>

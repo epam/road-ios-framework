@@ -1,3 +1,6 @@
+#import <Foundation/Foundation.h>
+#import "ESDAttribute.h"
+#import "CustomESDAttribute.h"
 #import "AnnotatedClass.h"
  
 @interface AnnotatedClass(SFAttribute)
@@ -6,13 +9,64 @@
  
 @implementation AnnotatedClass(SFAttribute)
  
-#pragma mark - Fill Attributes generated code (Fields section)
+#pragma mark - Fill Attributes generated code (Ivars section)
 
-static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_field__testPropStore1 = nil;
+static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_ivar__someField = nil;
 
-+ (NSArray *)sf_attributes_AnnotatedClass_field__testPropStore1 {
-    if (sf_attributes_list_AnnotatedClass_field__testPropStore1 != nil) {
-        return sf_attributes_list_AnnotatedClass_field__testPropStore1;
++ (NSArray *)SF_attributes_AnnotatedClass_ivar__someField {
+    if (SF_attributes_list_AnnotatedClass_ivar__someField != nil) {
+        return SF_attributes_list_AnnotatedClass_ivar__someField;
+    }
+    
+    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
+    
+    ESDAttribute *attr1 = [[ESDAttribute alloc] init];
+    [attributesArray addObject:attr1];
+
+    SF_attributes_list_AnnotatedClass_ivar__someField = attributesArray;
+    
+    return SF_attributes_list_AnnotatedClass_ivar__someField;
+}
+
+static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_ivar__someField3 = nil;
+
++ (NSArray *)SF_attributes_AnnotatedClass_ivar__someField3 {
+    if (SF_attributes_list_AnnotatedClass_ivar__someField3 != nil) {
+        return SF_attributes_list_AnnotatedClass_ivar__someField3;
+    }
+    
+    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
+    
+    ESDAttribute *attr1 = [[ESDAttribute alloc] init];
+    [attributesArray addObject:attr1];
+
+    SF_attributes_list_AnnotatedClass_ivar__someField3 = attributesArray;
+    
+    return SF_attributes_list_AnnotatedClass_ivar__someField3;
+}
+
+static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_ivar__someField4 = nil;
+
++ (NSArray *)SF_attributes_AnnotatedClass_ivar__someField4 {
+    if (SF_attributes_list_AnnotatedClass_ivar__someField4 != nil) {
+        return SF_attributes_list_AnnotatedClass_ivar__someField4;
+    }
+    
+    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
+    
+    ESDAttribute *attr1 = [[ESDAttribute alloc] init];
+    [attributesArray addObject:attr1];
+
+    SF_attributes_list_AnnotatedClass_ivar__someField4 = attributesArray;
+    
+    return SF_attributes_list_AnnotatedClass_ivar__someField4;
+}
+
+static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_ivar__testPropStore1 = nil;
+
++ (NSArray *)SF_attributes_AnnotatedClass_ivar__testPropStore1 {
+    if (SF_attributes_list_AnnotatedClass_ivar__testPropStore1 != nil) {
+        return SF_attributes_list_AnnotatedClass_ivar__testPropStore1;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
@@ -22,79 +76,31 @@ static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_field__testPropS
     attr1.property2 = @"PropStore1Text2//";
     [attributesArray addObject:attr1];
 
-    sf_attributes_list_AnnotatedClass_field__testPropStore1 = attributesArray;
+    SF_attributes_list_AnnotatedClass_ivar__testPropStore1 = attributesArray;
     
-    return sf_attributes_list_AnnotatedClass_field__testPropStore1;
+    return SF_attributes_list_AnnotatedClass_ivar__testPropStore1;
 }
 
-static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_field__someField = nil;
-
-+ (NSArray *)sf_attributes_AnnotatedClass_field__someField {
-    if (sf_attributes_list_AnnotatedClass_field__someField != nil) {
-        return sf_attributes_list_AnnotatedClass_field__someField;
+static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForIvarsDict = nil;
+    
++ (NSMutableDictionary *)SF_attributesFactoriesForIvars {
+    if (attributesAnnotatedClassFactoriesForIvarsDict != nil) {
+        return attributesAnnotatedClassFactoriesForIvarsDict;
     }
     
-    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
+    NSMutableDictionary *dictionaryHolder = [super SF_attributesFactoriesForIvars];
     
-    ESDAttribute *attr1 = [[ESDAttribute alloc] init];
-    [attributesArray addObject:attr1];
-
-    sf_attributes_list_AnnotatedClass_field__someField = attributesArray;
-    
-    return sf_attributes_list_AnnotatedClass_field__someField;
-}
-
-static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_field__someField3 = nil;
-
-+ (NSArray *)sf_attributes_AnnotatedClass_field__someField3 {
-    if (sf_attributes_list_AnnotatedClass_field__someField3 != nil) {
-        return sf_attributes_list_AnnotatedClass_field__someField3;
+    if (!dictionaryHolder) {
+        dictionaryHolder = [NSMutableDictionary dictionary];
     }
     
-    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_ivar__someField)] forKey:@"_someField"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_ivar__someField3)] forKey:@"_someField3"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_ivar__someField4)] forKey:@"_someField4"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_ivar__testPropStore1)] forKey:@"_testPropStore1"];
+    attributesAnnotatedClassFactoriesForIvarsDict = dictionaryHolder;  
     
-    ESDAttribute *attr1 = [[ESDAttribute alloc] init];
-    [attributesArray addObject:attr1];
-
-    sf_attributes_list_AnnotatedClass_field__someField3 = attributesArray;
-    
-    return sf_attributes_list_AnnotatedClass_field__someField3;
-}
-
-static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_field__someField4 = nil;
-
-+ (NSArray *)sf_attributes_AnnotatedClass_field__someField4 {
-    if (sf_attributes_list_AnnotatedClass_field__someField4 != nil) {
-        return sf_attributes_list_AnnotatedClass_field__someField4;
-    }
-    
-    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
-    
-    ESDAttribute *attr1 = [[ESDAttribute alloc] init];
-    [attributesArray addObject:attr1];
-
-    sf_attributes_list_AnnotatedClass_field__someField4 = attributesArray;
-    
-    return sf_attributes_list_AnnotatedClass_field__someField4;
-}
-
-static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForFieldsDict = nil;
-    
-+ (NSDictionary *)attributesFactoriesForFields {
-    if (attributesAnnotatedClassFactoriesForFieldsDict != nil) {
-        return attributesAnnotatedClassFactoriesForFieldsDict;
-    }
-    
-    NSMutableDictionary *dictionaryHolder = [self mutableAttributesFactoriesFrom:[super attributesFactoriesForFields]];
-    
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_AnnotatedClass_field__testPropStore1)] forKey:@"_testPropStore1"];
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_AnnotatedClass_field__someField)] forKey:@"_someField"];
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_AnnotatedClass_field__someField2)] forKey:@"_someField2"];
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_AnnotatedClass_field__someField3)] forKey:@"_someField3"];
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_AnnotatedClass_field__someField4)] forKey:@"_someField4"];
-    attributesAnnotatedClassFactoriesForFieldsDict = dictionaryHolder;  
-    
-    return attributesAnnotatedClassFactoriesForFieldsDict;
+    return attributesAnnotatedClassFactoriesForIvarsDict;
 }
 
 
@@ -102,11 +108,11 @@ static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForFieldsDic
 
 #pragma mark - Fill Attributes generated code (Properties section)
 
-static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_property_window = nil;
+static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_property_window = nil;
 
-+ (NSArray *)sf_attributes_AnnotatedClass_property_window {
-    if (sf_attributes_list_AnnotatedClass_property_window != nil) {
-        return sf_attributes_list_AnnotatedClass_property_window;
++ (NSArray *)SF_attributes_AnnotatedClass_property_window {
+    if (SF_attributes_list_AnnotatedClass_property_window != nil) {
+        return SF_attributes_list_AnnotatedClass_property_window;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:2];
@@ -119,16 +125,16 @@ static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_property_window 
     attr2.intProperty = (2+2)*2;
     [attributesArray addObject:attr2];
 
-    sf_attributes_list_AnnotatedClass_property_window = attributesArray;
+    SF_attributes_list_AnnotatedClass_property_window = attributesArray;
     
-    return sf_attributes_list_AnnotatedClass_property_window;
+    return SF_attributes_list_AnnotatedClass_property_window;
 }
 
-static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_property_window2 = nil;
+static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_property_window2 = nil;
 
-+ (NSArray *)sf_attributes_AnnotatedClass_property_window2 {
-    if (sf_attributes_list_AnnotatedClass_property_window2 != nil) {
-        return sf_attributes_list_AnnotatedClass_property_window2;
++ (NSArray *)SF_attributes_AnnotatedClass_property_window2 {
+    if (SF_attributes_list_AnnotatedClass_property_window2 != nil) {
+        return SF_attributes_list_AnnotatedClass_property_window2;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:2];
@@ -141,22 +147,26 @@ static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_property_window2
     attr2.intProperty = (2+2)*2;
     [attributesArray addObject:attr2];
 
-    sf_attributes_list_AnnotatedClass_property_window2 = attributesArray;
+    SF_attributes_list_AnnotatedClass_property_window2 = attributesArray;
     
-    return sf_attributes_list_AnnotatedClass_property_window2;
+    return SF_attributes_list_AnnotatedClass_property_window2;
 }
 
 static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForPropertiesDict = nil;
     
-+ (NSDictionary *)attributesFactoriesForProperties {
++ (NSMutableDictionary *)SF_attributesFactoriesForProperties {
     if (attributesAnnotatedClassFactoriesForPropertiesDict != nil) {
         return attributesAnnotatedClassFactoriesForPropertiesDict;
     }
     
-    NSMutableDictionary *dictionaryHolder = [self mutableAttributesFactoriesFrom:[super attributesFactoriesForProperties]];
+    NSMutableDictionary *dictionaryHolder = [super SF_attributesFactoriesForProperties];
     
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_AnnotatedClass_property_window)] forKey:@"window"];
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_AnnotatedClass_property_window2)] forKey:@"window2"];
+    if (!dictionaryHolder) {
+        dictionaryHolder = [NSMutableDictionary dictionary];
+    }
+    
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_property_window)] forKey:@"window"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_property_window2)] forKey:@"window2"];
     attributesAnnotatedClassFactoriesForPropertiesDict = dictionaryHolder;  
     
     return attributesAnnotatedClassFactoriesForPropertiesDict;
@@ -167,14 +177,14 @@ static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForPropertie
 
 #pragma mark - Fill Attributes generated code (Methods section)
 
-static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_method_viewDidLoad_p0 = nil;
+static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_method_viewDidLoad_p0 = nil;
 
-+ (NSArray *)sf_attributes_AnnotatedClass_method_viewDidLoad_p0 {
-    if (sf_attributes_list_AnnotatedClass_method_viewDidLoad_p0 != nil) {
-        return sf_attributes_list_AnnotatedClass_method_viewDidLoad_p0;
++ (NSArray *)SF_attributes_AnnotatedClass_method_viewDidLoad_p0 {
+    if (SF_attributes_list_AnnotatedClass_method_viewDidLoad_p0 != nil) {
+        return SF_attributes_list_AnnotatedClass_method_viewDidLoad_p0;
     }
     
-    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:4];
+    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:2];
     
     ESDAttribute *attr1 = [[ESDAttribute alloc] init];
     [attributesArray addObject:attr1];
@@ -182,29 +192,25 @@ static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_method_viewDidLo
     CustomESDAttribute *attr2 = [[CustomESDAttribute alloc] init];
     attr2.property1 = @"Text1";
     attr2.property2 = @"Text2//";
+    attr2.property3 = @"Text1";
+    attr2.property4 = @"Text2//";
+    attr2.property5 = @"Text1";
+    attr2.property6 = @"Text2//";
     [attributesArray addObject:attr2];
 
-    ESDAttribute *attr3 = [[ESDAttribute alloc] init];
-    [attributesArray addObject:attr3];
-
-    CustomESDAttribute *attr4 = [[CustomESDAttribute alloc] init];
-    attr4.property1 = @"Text1";
-    attr4.property2 = @"Text2//";
-    [attributesArray addObject:attr4];
-
-    sf_attributes_list_AnnotatedClass_method_viewDidLoad_p0 = attributesArray;
+    SF_attributes_list_AnnotatedClass_method_viewDidLoad_p0 = attributesArray;
     
-    return sf_attributes_list_AnnotatedClass_method_viewDidLoad_p0;
+    return SF_attributes_list_AnnotatedClass_method_viewDidLoad_p0;
 }
 
-static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_method_viewDidLoad_p1 = nil;
+static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_method_viewDidLoad_p1 = nil;
 
-+ (NSArray *)sf_attributes_AnnotatedClass_method_viewDidLoad_p1 {
-    if (sf_attributes_list_AnnotatedClass_method_viewDidLoad_p1 != nil) {
-        return sf_attributes_list_AnnotatedClass_method_viewDidLoad_p1;
++ (NSArray *)SF_attributes_AnnotatedClass_method_viewDidLoad_p1 {
+    if (SF_attributes_list_AnnotatedClass_method_viewDidLoad_p1 != nil) {
+        return SF_attributes_list_AnnotatedClass_method_viewDidLoad_p1;
     }
     
-    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:4];
+    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:2];
     
     ESDAttribute *attr1 = [[ESDAttribute alloc] init];
     [attributesArray addObject:attr1];
@@ -212,35 +218,175 @@ static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_method_viewDidLo
     CustomESDAttribute *attr2 = [[CustomESDAttribute alloc] init];
     attr2.property1 = @"Text1";
     attr2.property2 = @"/*";
+    attr2.property1 = @"Text1";
+    attr2.property2 = @"/*";
     [attributesArray addObject:attr2];
 
-    ESDAttribute *attr3 = [[ESDAttribute alloc] init];
-    [attributesArray addObject:attr3];
-
-    CustomESDAttribute *attr4 = [[CustomESDAttribute alloc] init];
-    attr4.property1 = @"Text1";
-    attr4.property2 = @"/*";
-    [attributesArray addObject:attr4];
-
-    sf_attributes_list_AnnotatedClass_method_viewDidLoad_p1 = attributesArray;
+    SF_attributes_list_AnnotatedClass_method_viewDidLoad_p1 = attributesArray;
     
-    return sf_attributes_list_AnnotatedClass_method_viewDidLoad_p1;
+    return SF_attributes_list_AnnotatedClass_method_viewDidLoad_p1;
 }
 
-static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForInstanceMethodsDict = nil;
-    
-+ (NSDictionary *)attributesFactoriesForInstanceMethods {
-    if (attributesAnnotatedClassFactoriesForInstanceMethodsDict != nil) {
-        return attributesAnnotatedClassFactoriesForInstanceMethodsDict;
+static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_method_viewDidLoad_p2 = nil;
+
++ (NSArray *)SF_attributes_AnnotatedClass_method_viewDidLoad_p2 {
+    if (SF_attributes_list_AnnotatedClass_method_viewDidLoad_p2 != nil) {
+        return SF_attributes_list_AnnotatedClass_method_viewDidLoad_p2;
     }
     
-    NSMutableDictionary *dictionaryHolder = [self mutableAttributesFactoriesFrom:[super attributesFactoriesForInstanceMethods]];
+    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
     
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_AnnotatedClass_method_viewDidLoad_p0)] forKey:@"viewDidLoad"];
-    [dictionaryHolder setObject:[self invocationForSelector:@selector(sf_attributes_AnnotatedClass_method_viewDidLoad_p1)] forKey:@"viewDidLoad:"];
-    attributesAnnotatedClassFactoriesForInstanceMethodsDict = dictionaryHolder;  
+    SFAttribute *attr1 = [[SFAttribute alloc] init];
+    [attributesArray addObject:attr1];
+
+    SF_attributes_list_AnnotatedClass_method_viewDidLoad_p2 = attributesArray;
     
-    return attributesAnnotatedClassFactoriesForInstanceMethodsDict;
+    return SF_attributes_list_AnnotatedClass_method_viewDidLoad_p2;
+}
+
+static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_method_testErrorHandlerRootWithSuccess_p2 = nil;
+
++ (NSArray *)SF_attributes_AnnotatedClass_method_testErrorHandlerRootWithSuccess_p2 {
+    if (SF_attributes_list_AnnotatedClass_method_testErrorHandlerRootWithSuccess_p2 != nil) {
+        return SF_attributes_list_AnnotatedClass_method_testErrorHandlerRootWithSuccess_p2;
+    }
+    
+    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:3];
+    
+    SFWebServiceCall *attr1 = [[SFWebServiceCall alloc] init];
+    attr1.serializationDisabled = NO;
+    attr1.relativePath = @"%%0%%";
+    [attributesArray addObject:attr1];
+
+    SFWebServiceHeader *attr2 = [[SFWebServiceHeader alloc] init];
+    attr2.hearderFields = @{@"Accept" : @"application/json"};
+    [attributesArray addObject:attr2];
+
+    SFWebServiceErrorHandler *attr3 = [[SFWebServiceErrorHandler alloc] init];
+    attr3.handlerClass = @"SFODataErrorHandler";
+    [attributesArray addObject:attr3];
+
+    SF_attributes_list_AnnotatedClass_method_testErrorHandlerRootWithSuccess_p2 = attributesArray;
+    
+    return SF_attributes_list_AnnotatedClass_method_testErrorHandlerRootWithSuccess_p2;
+}
+
+static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p3 = nil;
+
++ (NSArray *)SF_attributes_AnnotatedClass_method_loadDataWithFetchRequest_p3 {
+    if (SF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p3 != nil) {
+        return SF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p3;
+    }
+    
+    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:3];
+    
+    SFWebServiceCall *attr1 = [[SFWebServiceCall alloc] init];
+    [attributesArray addObject:attr1];
+
+    SFWebServiceHeader *attr2 = [[SFWebServiceHeader alloc] init];
+    attr2.hearderFields = @{@"Accept": @"application/json"};
+    [attributesArray addObject:attr2];
+
+    SFWebServiceURLBuilder *attr3 = [[SFWebServiceURLBuilder alloc] init];
+    attr3.builderClass = [SFODataWebServiceURLBuilder class];
+    [attributesArray addObject:attr3];
+
+    SF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p3 = attributesArray;
+    
+    return SF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p3;
+}
+
+static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p4 = nil;
+
++ (NSArray *)SF_attributes_AnnotatedClass_method_loadDataWithFetchRequest_p4 {
+    if (SF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p4 != nil) {
+        return SF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p4;
+    }
+    
+    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:3];
+    
+    SFWebServiceCall *attr1 = [[SFWebServiceCall alloc] init];
+    attr1.serializationDisabled = NO;
+    attr1.relativePath = @"?importantParameter=%%1%%";
+    [attributesArray addObject:attr1];
+
+    SFWebServiceURLBuilder *attr2 = [[SFWebServiceURLBuilder alloc] init];
+    attr2.builderClass = [SFODataWebServiceURLBuilder class];
+    [attributesArray addObject:attr2];
+
+    SFWebServiceHeader *attr3 = [[SFWebServiceHeader alloc] init];
+    attr3.hearderFields = @{@"Accept" : @"application/json"};
+    [attributesArray addObject:attr3];
+
+    SF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p4 = attributesArray;
+    
+    return SF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p4;
+}
+
+static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_method_testSerializationRootWithSuccess_p2 = nil;
+
++ (NSArray *)SF_attributes_AnnotatedClass_method_testSerializationRootWithSuccess_p2 {
+    if (SF_attributes_list_AnnotatedClass_method_testSerializationRootWithSuccess_p2 != nil) {
+        return SF_attributes_list_AnnotatedClass_method_testSerializationRootWithSuccess_p2;
+    }
+    
+    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
+    
+    SFWebServiceCall *attr1 = [[SFWebServiceCall alloc] init];
+    attr1.serializationDisabled = NO;
+    attr1.serializationRoot = @"coord.lon";
+    attr1.successCodes = @[[NSValue valueWithRange:NSMakeRange(200, 300)]];
+    [attributesArray addObject:attr1];
+
+    SF_attributes_list_AnnotatedClass_method_testSerializationRootWithSuccess_p2 = attributesArray;
+    
+    return SF_attributes_list_AnnotatedClass_method_testSerializationRootWithSuccess_p2;
+}
+
+static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_method_testWrongSerializationRootWithSuccess_p2 = nil;
+
++ (NSArray *)SF_attributes_AnnotatedClass_method_testWrongSerializationRootWithSuccess_p2 {
+    if (SF_attributes_list_AnnotatedClass_method_testWrongSerializationRootWithSuccess_p2 != nil) {
+        return SF_attributes_list_AnnotatedClass_method_testWrongSerializationRootWithSuccess_p2;
+    }
+    
+    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
+    
+    SFWebServiceCall *attr1 = [[SFWebServiceCall alloc] init];
+    attr1.serializationDisabled = NO;
+    attr1.serializationRoot = @"coord.lon.localizedMessage.locale";
+    attr1.successCodes = @[[NSValue valueWithRange:NSMakeRange(200, 300)]];
+    [attributesArray addObject:attr1];
+
+    SF_attributes_list_AnnotatedClass_method_testWrongSerializationRootWithSuccess_p2 = attributesArray;
+    
+    return SF_attributes_list_AnnotatedClass_method_testWrongSerializationRootWithSuccess_p2;
+}
+
+static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForMethodsDict = nil;
+    
++ (NSMutableDictionary *)SF_attributesFactoriesForMethods {
+    if (attributesAnnotatedClassFactoriesForMethodsDict != nil) {
+        return attributesAnnotatedClassFactoriesForMethodsDict;
+    }
+    
+    NSMutableDictionary *dictionaryHolder = [super SF_attributesFactoriesForMethods];
+    
+    if (!dictionaryHolder) {
+        dictionaryHolder = [NSMutableDictionary dictionary];
+    }
+    
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_method_viewDidLoad_p0)] forKey:@"viewDidLoad"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_method_viewDidLoad_p1)] forKey:@"viewDidLoad:"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_method_viewDidLoad_p2)] forKey:@"viewDidLoad:param2:"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_method_testErrorHandlerRootWithSuccess_p2)] forKey:@"testErrorHandlerRootWithSuccess:failure:"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_method_loadDataWithFetchRequest_p3)] forKey:@"loadDataWithFetchRequest:success:failure:"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_method_loadDataWithFetchRequest_p4)] forKey:@"loadDataWithFetchRequest:someImportantParameter:success:failure:"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_method_testSerializationRootWithSuccess_p2)] forKey:@"testSerializationRootWithSuccess:failure:"];
+    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_method_testWrongSerializationRootWithSuccess_p2)] forKey:@"testWrongSerializationRootWithSuccess:failure:"];
+    attributesAnnotatedClassFactoriesForMethodsDict = dictionaryHolder;  
+    
+    return attributesAnnotatedClassFactoriesForMethodsDict;
 }
 
 
@@ -248,11 +394,11 @@ static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForInstanceM
 
 #pragma mark - Fill Attributes generated code (Class section)
 
-static NSMutableArray __weak *sf_attributes_list__class_AnnotatedClass = nil;
+static NSMutableArray __weak *SF_attributes_list__class_AnnotatedClass = nil;
 
-+ (NSArray *)attributesForClass {
-    if (sf_attributes_list__class_AnnotatedClass != nil) {
-        return sf_attributes_list__class_AnnotatedClass;
++ (NSArray *)SF_attributesForClass {
+    if (SF_attributes_list__class_AnnotatedClass != nil) {
+        return SF_attributes_list__class_AnnotatedClass;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:2];
@@ -282,9 +428,9 @@ static NSMutableArray __weak *sf_attributes_list__class_AnnotatedClass = nil;
               };
     [attributesArray addObject:attr2];
 
-    sf_attributes_list__class_AnnotatedClass = attributesArray;
+    SF_attributes_list__class_AnnotatedClass = attributesArray;
     
-    return sf_attributes_list__class_AnnotatedClass;
+    return SF_attributes_list__class_AnnotatedClass;
 }
 
 #pragma mark - 

@@ -46,6 +46,7 @@
 		8DD9C1F517B1C3C000B00CAA /* SourceFilesProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD9C1D217B1C3C000B00CAA /* SourceFilesProcessor.m */; };
 		8DD9C1FB17B1C60100B00CAA /* Console.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD9C1F817B1C60100B00CAA /* Console.m */; };
 		8DD9C1FC17B1C60100B00CAA /* ESDArgumentResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD9C1FA17B1C60100B00CAA /* ESDArgumentResolver.m */; };
+		8DFAE17017D6085F002687B8 /* AttributeModelsContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DFAE16F17D6085F002687B8 /* AttributeModelsContainer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -139,6 +140,8 @@
 		8DD9C1F817B1C60100B00CAA /* Console.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Console.m; sourceTree = "<group>"; };
 		8DD9C1F917B1C60100B00CAA /* ESDArgumentResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDArgumentResolver.h; sourceTree = "<group>"; };
 		8DD9C1FA17B1C60100B00CAA /* ESDArgumentResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDArgumentResolver.m; sourceTree = "<group>"; };
+		8DFAE16E17D6085F002687B8 /* AttributeModelsContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeModelsContainer.h; sourceTree = "<group>"; };
+		8DFAE16F17D6085F002687B8 /* AttributeModelsContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributeModelsContainer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,6 +286,8 @@
 		8DD9C1B217B1C3C000B00CAA /* DataContainers */ = {
 			isa = PBXGroup;
 			children = (
+				8DFAE16E17D6085F002687B8 /* AttributeModelsContainer.h */,
+				8DFAE16F17D6085F002687B8 /* AttributeModelsContainer.m */,
 				8DD9C1B317B1C3C000B00CAA /* ClassModelsContainer.h */,
 				8DD9C1B417B1C3C000B00CAA /* ClassModelsContainer.m */,
 				8DD9C1B517B1C3C000B00CAA /* MetaMarkersContainer.h */,
@@ -428,6 +433,7 @@
 				8DD9C1FB17B1C60100B00CAA /* Console.m in Sources */,
 				8DD9C1FC17B1C60100B00CAA /* ESDArgumentResolver.m in Sources */,
 				8DB3AACD17B1DABB006421E0 /* NSFileManager+ExtendedAPI.m in Sources */,
+				8DFAE17017D6085F002687B8 /* AttributeModelsContainer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

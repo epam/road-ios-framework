@@ -1,0 +1,305 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		38AE131C3AC8CF12943D414D /* ASParsingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AE169314A8B89DFBC20B3F /* ASParsingHelper.m */; };
+		4962A1CB150909130015043C /* templates.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4962A1CA150902EF0015043C /* templates.plist */; };
+		49B4B30C1504D01300B30D78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B4B30B1504D01300B30D78 /* Foundation.framework */; };
+		49B4B30F1504D01300B30D78 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4B30E1504D01300B30D78 /* main.m */; };
+		49B4B31B1504E0A500B30D78 /* SMDParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4B31A1504E0A500B30D78 /* SMDParser.m */; };
+		49B4B33F1506235500B30D78 /* EntityDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4B33E1506235500B30D78 /* EntityDescriptor.m */; };
+		49B4B3461506369A00B30D78 /* PropertyDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4B3451506369A00B30D78 /* PropertyDescriptor.m */; };
+		49B4B37415067C1200B30D78 /* NSXMLElement+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4B37315067C1200B30D78 /* NSXMLElement+Additions.m */; };
+		49B4B3B31507C24900B30D78 /* EntityGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4B3B21507C24900B30D78 /* EntityGenerator.m */; };
+		831EB9AE17C35566004C9BA5 /* ServiceGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 831EB9AD17C35564004C9BA5 /* ServiceGenerator.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		4962A1C81508FADE0015043C /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = "com.apple.build-tasks.copy-strings-file";
+			fileType = text.plist.strings;
+			isEditable = 1;
+			outputFiles = (
+			);
+			script = "# builtin-copyStrings\n";
+		};
+/* End PBXBuildRule section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		49B4B3051504D01300B30D78 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = .;
+			dstSubfolderSpec = 16;
+			files = (
+				4962A1CB150909130015043C /* templates.plist in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		38AE169314A8B89DFBC20B3F /* ASParsingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASParsingHelper.m; sourceTree = "<group>"; };
+		38AE19CE2A50709A3121D2BB /* ASParsingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASParsingHelper.h; sourceTree = "<group>"; };
+		4962A1CA150902EF0015043C /* templates.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = templates.plist; path = ../templates.plist; sourceTree = "<group>"; };
+		49B4B3071504D01300B30D78 /* ODataEntityGenerator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ODataEntityGenerator; sourceTree = BUILT_PRODUCTS_DIR; };
+		49B4B30B1504D01300B30D78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		49B4B30E1504D01300B30D78 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		49B4B3111504D01300B30D78 /* ODataEntityGenerator-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ODataEntityGenerator-Prefix.pch"; sourceTree = "<group>"; };
+		49B4B3191504E0A500B30D78 /* SMDParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDParser.h; sourceTree = "<group>"; };
+		49B4B31A1504E0A500B30D78 /* SMDParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDParser.m; sourceTree = "<group>"; };
+		49B4B33D1506235500B30D78 /* EntityDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityDescriptor.h; sourceTree = "<group>"; };
+		49B4B33E1506235500B30D78 /* EntityDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityDescriptor.m; sourceTree = "<group>"; };
+		49B4B3441506369A00B30D78 /* PropertyDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyDescriptor.h; sourceTree = "<group>"; };
+		49B4B3451506369A00B30D78 /* PropertyDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyDescriptor.m; sourceTree = "<group>"; };
+		49B4B37215067C1200B30D78 /* NSXMLElement+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSXMLElement+Additions.h"; sourceTree = "<group>"; };
+		49B4B37315067C1200B30D78 /* NSXMLElement+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSXMLElement+Additions.m"; sourceTree = "<group>"; };
+		49B4B3B11507C24900B30D78 /* EntityGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityGenerator.h; sourceTree = "<group>"; };
+		49B4B3B21507C24900B30D78 /* EntityGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityGenerator.m; sourceTree = "<group>"; };
+		831EB9AC17C35561004C9BA5 /* ServiceGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceGenerator.h; sourceTree = "<group>"; };
+		831EB9AD17C35564004C9BA5 /* ServiceGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceGenerator.m; sourceTree = "<group>"; };
+		831EB9AF17C358E7004C9BA5 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		83AA548317E1975500C73DEF /* serviceTemplates.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = serviceTemplates.plist; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		49B4B3041504D01300B30D78 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49B4B30C1504D01300B30D78 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		49B4B2FC1504D01200B30D78 = {
+			isa = PBXGroup;
+			children = (
+				49B4B30D1504D01300B30D78 /* ODataEntityGenerator */,
+				49B4B30A1504D01300B30D78 /* Frameworks */,
+				49B4B3081504D01300B30D78 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		49B4B3081504D01300B30D78 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				49B4B3071504D01300B30D78 /* ODataEntityGenerator */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		49B4B30A1504D01300B30D78 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				49B4B30B1504D01300B30D78 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		49B4B30D1504D01300B30D78 /* ODataEntityGenerator */ = {
+			isa = PBXGroup;
+			children = (
+				83AA548317E1975500C73DEF /* serviceTemplates.plist */,
+				4962A1CA150902EF0015043C /* templates.plist */,
+				49B4B30E1504D01300B30D78 /* main.m */,
+				49B4B3B11507C24900B30D78 /* EntityGenerator.h */,
+				49B4B3B21507C24900B30D78 /* EntityGenerator.m */,
+				831EB9AC17C35561004C9BA5 /* ServiceGenerator.h */,
+				831EB9AD17C35564004C9BA5 /* ServiceGenerator.m */,
+				49B4B3191504E0A500B30D78 /* SMDParser.h */,
+				49B4B31A1504E0A500B30D78 /* SMDParser.m */,
+				49B4B33D1506235500B30D78 /* EntityDescriptor.h */,
+				49B4B33E1506235500B30D78 /* EntityDescriptor.m */,
+				49B4B3441506369A00B30D78 /* PropertyDescriptor.h */,
+				49B4B3451506369A00B30D78 /* PropertyDescriptor.m */,
+				49B4B37215067C1200B30D78 /* NSXMLElement+Additions.h */,
+				49B4B37315067C1200B30D78 /* NSXMLElement+Additions.m */,
+				49B4B3101504D01300B30D78 /* Supporting Files */,
+				38AE19CE2A50709A3121D2BB /* ASParsingHelper.h */,
+				38AE169314A8B89DFBC20B3F /* ASParsingHelper.m */,
+				831EB9AF17C358E7004C9BA5 /* Constants.h */,
+			);
+			path = ODataEntityGenerator;
+			sourceTree = "<group>";
+		};
+		49B4B3101504D01300B30D78 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				49B4B3111504D01300B30D78 /* ODataEntityGenerator-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		49B4B3061504D01300B30D78 /* ODataEntityGenerator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49B4B3161504D01300B30D78 /* Build configuration list for PBXNativeTarget "ODataEntityGenerator" */;
+			buildPhases = (
+				49B4B3031504D01300B30D78 /* Sources */,
+				49B4B3041504D01300B30D78 /* Frameworks */,
+				49B4B3051504D01300B30D78 /* CopyFiles */,
+			);
+			buildRules = (
+				4962A1C81508FADE0015043C /* PBXBuildRule */,
+			);
+			dependencies = (
+			);
+			name = ODataEntityGenerator;
+			productName = ODataEntityGenerator;
+			productReference = 49B4B3071504D01300B30D78 /* ODataEntityGenerator */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		49B4B2FE1504D01200B30D78 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "EPAM Systems";
+			};
+			buildConfigurationList = 49B4B3011504D01200B30D78 /* Build configuration list for PBXProject "ODataEntityGenerator" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 49B4B2FC1504D01200B30D78;
+			productRefGroup = 49B4B3081504D01300B30D78 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				49B4B3061504D01300B30D78 /* ODataEntityGenerator */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		49B4B3031504D01300B30D78 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49B4B30F1504D01300B30D78 /* main.m in Sources */,
+				49B4B31B1504E0A500B30D78 /* SMDParser.m in Sources */,
+				49B4B33F1506235500B30D78 /* EntityDescriptor.m in Sources */,
+				49B4B3461506369A00B30D78 /* PropertyDescriptor.m in Sources */,
+				49B4B37415067C1200B30D78 /* NSXMLElement+Additions.m in Sources */,
+				49B4B3B31507C24900B30D78 /* EntityGenerator.m in Sources */,
+				38AE131C3AC8CF12943D414D /* ASParsingHelper.m in Sources */,
+				831EB9AE17C35566004C9BA5 /* ServiceGenerator.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		49B4B3141504D01300B30D78 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		49B4B3151504D01300B30D78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		49B4B3171504D01300B30D78 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ODataEntityGenerator/ODataEntityGenerator-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		49B4B3181504D01300B30D78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ODataEntityGenerator/ODataEntityGenerator-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		49B4B3011504D01200B30D78 /* Build configuration list for PBXProject "ODataEntityGenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49B4B3141504D01300B30D78 /* Debug */,
+				49B4B3151504D01300B30D78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49B4B3161504D01300B30D78 /* Build configuration list for PBXNativeTarget "ODataEntityGenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49B4B3171504D01300B30D78 /* Debug */,
+				49B4B3181504D01300B30D78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 49B4B2FE1504D01200B30D78 /* Project object */;
+}

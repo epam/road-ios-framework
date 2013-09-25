@@ -31,14 +31,14 @@
 
 #import "MethodsAttributesCodeGenerator.h"
 #import "MethodModel.h"
+#import "NSRegularExpression+ExtendedAPI.h"
 
 @implementation MethodsAttributesCodeGenerator
 
 + (NSString *)elementName:(AnnotatedElementModel *)model {
     MethodModel *methodModel = (MethodModel *)model;
- 
-    NSString *result = [NSString stringWithFormat:@"%@_p%ld", methodModel.name, (unsigned long)methodModel.parametersCount];
-    return result;
+    NSString *methodModelName = [NSRegularExpression stringByReplacingRegex:@":.*" withTemplate:@"" inString:methodModel.name];
+    return [NSString stringWithFormat:@"%@_p%ld", methodModelName, (unsigned long)methodModel.parametersCount];
 }
 
 + (NSString *)elementType {
@@ -49,21 +49,8 @@
     return @"Methods";
 }
 
-+ (NSString *)factoryKeyName:(AnnotatedElementModel *)model {
-    MethodModel *methodModel = (MethodModel *)model;
-    
-    NSMutableString *result = [NSMutableString new];
-    [result appendString:methodModel.name];
-    
-    for (NSUInteger paramCount = 0; paramCount < methodModel.parametersCount; paramCount ++) {
-        [result appendString:@":"];
-    }
-    
-    return result;
-}
-
 + (NSString *)factoryName {
-    return @"FactoriesForInstanceMethods";
+    return @"FactoriesForMethods";
 }
 
 @end

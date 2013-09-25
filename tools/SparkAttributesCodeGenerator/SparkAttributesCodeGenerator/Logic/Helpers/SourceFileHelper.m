@@ -73,7 +73,7 @@
             continue;
         }
         
-        if (![subItemPath hasSuffix:@".m"]) {
+        if (![subItemPath hasSuffix:@".m"] && ![subItemPath hasSuffix:@".h"]) {
             continue;
         }
         

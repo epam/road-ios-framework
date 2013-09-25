@@ -42,7 +42,6 @@
 + (NSString *)elementName:(AnnotatedElementModel *)model;
 + (NSString *)elementType;
 
-+ (NSString *)factoryKeyName:(AnnotatedElementModel *)model;
 + (NSString *)factoryName;
 
 + (void)decorateSectionIn:(NSMutableString *)result;
