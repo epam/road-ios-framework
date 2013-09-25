@@ -2,7 +2,7 @@ require File.expand_path('./', 'SparkConfigurator.rb')
 
 platform :ios, '5.0'
 
-pod 'SparkFramework', '~> 0.0.1'
+pod 'SparkFramework', '~> 1.1.0'
 # Add your custom pod specs here
 
 pre_install do |installer|
