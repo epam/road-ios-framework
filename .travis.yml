@@ -2,7 +2,7 @@ language: objective-c
 before_install:
     - curl -O http://archives.oclint.org/releases/0.7/oclint-0.7-x86_64-apple-darwin-10.tar.gz
     - tar -zxvf oclint-0.7-x86_64-apple-darwin-10.tar.gz
-    - OCLINT_HOME='pwd'/oclint-0.7-x86_64-apple-darwin-10
+    - OCLINT_HOME=/Users/travis/build/valery-demin/spark-ios-framework/oclint-0.7-x86_64-apple-darwin-10
     - PATH=$OCLINT_HOME/bin:$PATH
 script:
     - xcodebuild -workspace Framework/SparkFramework.xcworkspace -scheme SparkCore build | tee xcodebuild.log
