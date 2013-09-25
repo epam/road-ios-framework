@@ -1,40 +1,13 @@
-
 .DS_Store
+xcuserdata
 
-tools/SparkAttributesCodeGenerator/SparkAttributesCodeGenerator.xcodeproj/project.xcworkspace/xcuserdata/igor_c.xcuserdatad/UserInterfaceState.xcuserstate
+tools/SparkAttributesCodeGenerator/SparkAttributesCodeGenerator.xcodeproj/project.xcworkspace/contents.xcworkspacedata
 
-tools/SparkAttributesCodeGenerator/SparkAttributesCodeGenerator.xcodeproj/xcuserdata/igor_c.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist
+tools/SparkAttributesCodeGenerator/SparkAttributesCodeGenerator.xcodeproj/project.xcworkspace/contents.xcworkspacedata
 
-tools/SparkAttributesCodeGenerator/SparkAttributesCodeGenerator.xcodeproj/xcuserdata/igor_c.xcuserdatad/xcschemes/xcschememanagement.plist
+tools/SparkAttributesCodeGenerator/SparkAttributesCodeGenerator.xcodeproj/project.xcworkspace/contents.xcworkspacedata
 
-tools/SparkAttributesCodeGenerator/AttributesPrototype/AttributesPrototype.xcodeproj/xcuserdata/igor_c.xcuserdatad/xcschemes/xcschememanagement.plist
+*.xcworkspacedata
 
-tools/SparkAttributesCodeGenerator/AttributesPrototype/AttributesPrototype.xcodeproj/xcuserdata/igor_c.xcuserdatad/xcschemes/AttributesPrototype.xcscheme
-
-tools/SparkAttributesCodeGenerator/AttributesPrototype/AttributesPrototype.xcodeproj/xcuserdata/igor_c.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist
-
-tools/SparkAttributesCodeGenerator/AttributesPrototype/AttributesPrototype.xcodeproj/project.xcworkspace/xcuserdata/igor_c.xcuserdatad/UserInterfaceState.xcuserstate
-
-tools/NetLog-Listener/NetLog-Listener.xcodeproj/xcuserdata/attila_tamasi.xcuserdatad/xcschemes/xcschememanagement.plist
-
-tools/NetLog-Listener/NetLog-Listener.xcodeproj/xcuserdata/attila_tamasi.xcuserdatad/xcschemes/NetLog-Listener.xcscheme
-
-tools/SparkAttributesCodeGenerator/SparkAttributesCodeGenerator.xcodeproj/project.xcworkspace/xcuserdata/igor_c.xcuserdatad/WorkspaceSettings.xcsettings
-
-tools/SparkAttributesCodeGenerator/AttributesPrototype/AttributesPrototype.xcodeproj/project.xcworkspace/xcuserdata/igor_c.xcuserdatad/WorkspaceSettings.xcsettings
-
-Framework/SparkFramework.xcworkspace/xcuserdata/igor_c.xcuserdatad/UserInterfaceState.xcuserstate
-
-Framework/SparkAttribute/SparkAttribute.xcodeproj/xcuserdata/igor_c.xcuserdatad/xcschemes/xcschememanagement.plist
-
-Framework/SparkAttribute/SparkAttribute.xcodeproj/xcuserdata/igor_c.xcuserdatad/xcschemes/SparkAttributeTest.xcscheme
-
-Framework/SparkAttribute/SparkAttribute.xcodeproj/xcuserdata/igor_c.xcuserdatad/xcschemes/SparkAttributeMac.xcscheme
-
-Framework/SparkAttribute/SparkAttribute.xcodeproj/xcuserdata/igor_c.xcuserdatad/xcschemes/SparkAttribute.xcscheme
-
-Framework/SparkAttribute/SparkAttribute.xcodeproj/project.xcworkspace/xcuserdata/igor_c.xcuserdatad/UserInterfaceState.xcuserstate
-
-Framework/SparkAttribute/SparkAttribute.xcodeproj/xcuserdata/Csucsu.xcuserdatad/xcschemes/SparkAttributeMac.xcscheme
-
-Framework/SparkAttribute/SparkAttribute.xcodeproj/xcuserdata/Csucsu.xcuserdatad/xcschemes/xcschememanagement.plist
+Framework/SparkServices/SparkServicesTest/SparkGeneratedAttributes/*
+Framework/SparkFramework.xcworkspace/xcshareddata

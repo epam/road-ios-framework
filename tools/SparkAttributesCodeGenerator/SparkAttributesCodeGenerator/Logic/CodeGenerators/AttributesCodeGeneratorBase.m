@@ -68,16 +68,24 @@
     
     [result appendFormat:@"static NSMutableDictionary __weak *%@ = nil;\n", factoryDictionaryHolderName];
     [result appendLine:@"    "];
-    [result appendFormat:@"+ (NSDictionary *)attributes%@ {\n", factoryName];
+    [result appendFormat:@"+ (NSMutableDictionary *)SF_attributes%@ {\n", factoryName];
     [result appendFormat:@"    if (%@ != nil) {\n", factoryDictionaryHolderName];
     [result appendFormat:@"        return %@;\n", factoryDictionaryHolderName];
     [result appendLine:@"    }"];
     [result appendLine:@"    "];
-    [result appendFormat:@"    NSMutableDictionary *dictionaryHolder = [self mutableAttributesFactoriesFrom:[super attributes%@]];\n", factoryName];
+    [result appendFormat:@"    NSMutableDictionary *dictionaryHolder = [super SF_attributes%@];\n", factoryName];
+    [result appendLine:@"    "];
+    [result appendLine:@"    if (!dictionaryHolder) {"];
+    [result appendLine:@"        dictionaryHolder = [NSMutableDictionary dictionary];"];
+    [result appendLine:@"    }"];
     [result appendLine:@"    "];
     
     for (AnnotatedElementModel *currentModel in modelsList) {
-        [result appendFormat:@"    [dictionaryHolder setObject:[self invocationForSelector:@selector(%@)] forKey:@\"%@\"];\n", [self listCreatorName:currentModel], [self factoryKeyName:currentModel]];
+        if ([currentModel.attributeModels.attributeModels count] == 0) {
+            continue;
+        }
+        
+        [result appendFormat:@"    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(%@)] forKey:@\"%@\"];\n", [self listCreatorName:currentModel], currentModel.name];
     }
     
     [result appendFormat:@"    %@ = dictionaryHolder;  \n", factoryDictionaryHolderName];
@@ -92,7 +100,7 @@
 + (NSMutableString *)generateCodeForModel:(AnnotatedElementModel *)model {
     NSMutableString *result = [NSMutableString new];
     
-    NSUInteger countOfAttributes = [model.attributeModels count];
+    NSUInteger countOfAttributes = [model.attributeModels.attributeModels count];
     
     if (countOfAttributes == 0) {
         return result;
@@ -113,7 +121,7 @@
     [result appendFormat:@"        return %@;\n", listHolderName];
     [result appendLine:@"    }"];
     [result appendLine:@"    "];
-    [result appendFormat:@"    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:%ld];\n", (unsigned long)[model.attributeModels count]];
+    [result appendFormat:@"    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:%ld];\n", (unsigned long)[model.attributeModels.attributeModels count]];
     [result appendLine:@"    "];
     [result appendString:[self generateAttributesCreatingBodyForModels:model.attributeModels]];
     [result appendFormat:@"    %@ = attributesArray;\n", listHolderName];
@@ -123,7 +131,7 @@
 }
 
 + (NSString *)listHolderName:(AnnotatedElementModel *)model {
-    NSString *result = [NSString stringWithFormat:@"sf_attributes_list_%@_%@_%@", [self modelHolderName:model], [self elementType], [self elementName:model]];
+    NSString *result = [NSString stringWithFormat:@"SF_attributes_list_%@_%@_%@", [self modelHolderName:model], [self elementType], [self elementName:model]];
     return result;
 }
 
@@ -134,12 +142,8 @@
 }
 
 + (NSString *)listCreatorName:(AnnotatedElementModel *)model {
-    NSString *result = [NSString stringWithFormat:@"sf_attributes_%@_%@_%@", [self modelHolderName:model], [self elementType], [self elementName:model]];
+    NSString *result = [NSString stringWithFormat:@"SF_attributes_%@_%@_%@", [self modelHolderName:model], [self elementType], [self elementName:model]];
     return result;
-}
-
-+ (NSString *)factoryKeyName:(AnnotatedElementModel *)model {
-    return model.name;
 }
 
 + (NSString *)elementName:(AnnotatedElementModel *)model {
@@ -158,12 +162,12 @@
     return @"";
 }
 
-+ (NSString *)generateAttributesCreatingBodyForModels:(NSArray *)attributeModels {
++ (NSString *)generateAttributesCreatingBodyForModels:(AttributeModelsContainer *)attributeModels {
     NSMutableString *result = [NSMutableString new];
     
     NSUInteger attributeIndex = 1;
     
-    for (AttributeModel *currentModel in attributeModels) {
+    for (AttributeModel *currentModel in attributeModels.attributeModels) {
         NSString *attributeVariable = [NSString stringWithFormat:@"attr%ld", (unsigned long)attributeIndex];
         
         [result appendFormat:@"    %@ *%@ = [[%@ alloc] init];\n", currentModel.classType, attributeVariable, currentModel.classType];

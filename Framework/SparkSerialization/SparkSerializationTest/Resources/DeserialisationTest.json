@@ -1,0 +1,46 @@
+{
+    "strings" : [
+                 "value3",
+                 "value4"
+                 ],
+    "string1" : "value1",
+    "date1" : "22\/07\/2013 10:07:43 +0300",
+    "date2" : "07.22.2013 12:07:01",
+    "unixTimestamp" : 1365609600,
+    "boolean" : 1,
+    "subDictionary" : {
+        "object3" : {
+            "boolean" : 0,
+            "SFSerializedObjectClassName" : "SFSerializationTestObject",
+            "integer" : 5,
+            "string1" : "value31"
+        }
+    },
+    "SFSerializedObjectClassName" : "SFSerializationTestObject",
+    "integer" : 0,
+    "child" : {
+        "boolean" : 0,
+        "SFSerializedObjectClassName" : "SFSerializationTestObject",
+        "strings" : [
+                     "value7",
+                     "value8"
+                     ],
+        "subObjects" : [
+                        {
+                        "boolean" : 0,
+                        "SFSerializedObjectClassName" : "SFSerializationTestObject",
+                        "integer" : 5,
+                        "string1" : "value31"
+                        },
+                        {
+                        "boolean" : 0,
+                        "SFSerializedObjectClassName" : "SFSerializationTestObject",
+                        "integer" : 0,
+                        "number" : 3,
+                        "string1" : "value41"
+                        }
+                        ],
+        "integer" : 0,
+        "string1" : "value5"
+    }
+}

@@ -68,6 +68,7 @@ SF_ATTRIBUTE(CustomESDAttribute,
 ///Testing of method with attributes
 SF_ATTRIBUTE(ESDAttribute)
 SF_ATTRIBUTE(CustomESDAttribute, property1 = @"Text1", /*Another /* comment*/ property2 = @"Text2//")
+SF_ATTRIBUTE(CustomESDAttribute, property3 = @"Text1", /*Another /* comment*/ property4 = @"Text2//")
 //Noise comment
         - (void)viewDidLoad;
 
@@ -75,6 +76,9 @@ SF_ATTRIBUTE(CustomESDAttribute, property1 = @"Text1", /*Another /* comment*/ pr
 ///@param param1 Some parameter
 SF_ATTRIBUTE(ESDAttribute)
 SF_ATTRIBUTE(CustomESDAttribute, property1 = @"Text1", property2 = @"/*") - (void)viewDidLoad:(BOOL)param1;
+
+SF_ATTRIBUTE(SFAttribute)
+- (void)viewDidLoad:(BOOL)param1 param2:(BOOL)param2;
 
 ///Testing of property with attributes
 SF_ATTRIBUTE(ESDAttribute)
@@ -94,7 +98,7 @@ SF_ATTRIBUTE(CustomESDAttribute, property2 = @"*/", intProperty = (2+2)*2) //Som
 
 ///Testing of method with attributes
 SF_ATTRIBUTE(ESDAttribute)
-SF_ATTRIBUTE(CustomESDAttribute, property1 = @"Text1", /*Another /* comment*/ property2 = @"Text2//")
+SF_ATTRIBUTE(CustomESDAttribute, property5 = @"Text1", /*Another /* comment*/ property6 = @"Text2//")
 //Noise comment
         - (void)viewDidLoad;
 
@@ -109,5 +113,26 @@ SF_ATTRIBUTE(CustomESDAttribute, property2 = @"*/", intProperty = (2+2)*2) //Som
     @property
         (strong, nonatomic)
             UIWindow *window2;
+
+SF_ATTRIBUTE(SFWebServiceCall, serializationDisabled = NO, relativePath = @"%%0%%")
+SF_ATTRIBUTE(SFWebServiceHeader, hearderFields = @{@"Accept" : @"application/json"})
+SF_ATTRIBUTE(SFWebServiceErrorHandler, handlerClass = @"SFODataErrorHandler")
+- (id<SFWebServiceCancellable>)testErrorHandlerRootWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+SF_ATTRIBUTE(SFWebServiceCall)
+SF_ATTRIBUTE(SFWebServiceHeader, hearderFields = @{@"Accept": @"application/json"})
+SF_ATTRIBUTE(SFWebServiceURLBuilder, builderClass = [SFODataWebServiceURLBuilder class])
+- (id<SFWebServiceCancellable>)loadDataWithFetchRequest:(SFODataFetchRequest *)fetchRequest success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+SF_ATTRIBUTE(SFWebServiceCall, serializationDisabled = NO, relativePath = @"?importantParameter=%%1%%")
+SF_ATTRIBUTE(SFWebServiceURLBuilder, builderClass = [SFODataWebServiceURLBuilder class])
+SF_ATTRIBUTE(SFWebServiceHeader, hearderFields = @{@"Accept" : @"application/json"})
+- (id<SFWebServiceCancellable>)loadDataWithFetchRequest:(SFODataFetchRequest *)fetchRequest someImportantParameter:(NSString *)importantParameter success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+SF_ATTRIBUTE(SFWebServiceCall, serializationDisabled = NO, serializationRoot = @"coord.lon", successCodes = @[[NSValue valueWithRange:NSMakeRange(200, 300)]])
+- (id<SFWebServiceCancellable>)testSerializationRootWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+SF_ATTRIBUTE(SFWebServiceCall, serializationDisabled = NO, serializationRoot = @"coord.lon.localizedMessage.locale", successCodes = @[[NSValue valueWithRange:NSMakeRange(200, 300)]])
+- (id<SFWebServiceCancellable>)testWrongSerializationRootWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
 @end
