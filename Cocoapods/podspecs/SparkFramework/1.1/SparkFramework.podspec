@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 
   s.requires_arc = true
 
-  s.source       = { :git => 'https://github.com/edl00k/spark-ios-framework.git', :tag => '0.0.1' }
+  s.source       = { :git => 'https://github.com/epam/spark-ios-framework.git', :tag => ‘1.1’ }
 
   s.xcconfig = { 'OTHER_LDFLAGS' => '-all_load' }
 
