@@ -66,9 +66,8 @@
     NSString *factoryName = [self factoryName];
     NSString *factoryDictionaryHolderName = [NSString stringWithFormat:@"attributes%@%@Dict", [self modelHolderName:[modelsList lastObject]], [self factoryName]];
     
-    [result appendFormat:@"static NSMutableDictionary __weak *%@ = nil;\n", factoryDictionaryHolderName];
-    [result appendLine:@"    "];
     [result appendFormat:@"+ (NSMutableDictionary *)SF_attributes%@ {\n", factoryName];
+    [result appendFormat:@"    NSMutableDictionary *%@ = [[SFAttributeCacheManager attributeCache] objectForKey:@\"SF%@%@\"];\n", factoryDictionaryHolderName, [self modelHolderName:[modelsList lastObject]], factoryName];
     [result appendFormat:@"    if (%@ != nil) {\n", factoryDictionaryHolderName];
     [result appendFormat:@"        return %@;\n", factoryDictionaryHolderName];
     [result appendLine:@"    }"];
@@ -77,6 +76,7 @@
     [result appendLine:@"    "];
     [result appendLine:@"    if (!dictionaryHolder) {"];
     [result appendLine:@"        dictionaryHolder = [NSMutableDictionary dictionary];"];
+    [result appendFormat:@"        [[SFAttributeCacheManager attributeCache] setObject:dictionaryHolder forKey:@\"SF%@%@\"];\n", [self modelHolderName:[modelsList lastObject]], factoryName];
     [result appendLine:@"    }"];
     [result appendLine:@"    "];
     
@@ -96,7 +96,6 @@
     return result;
 }
 
-
 + (NSMutableString *)generateCodeForModel:(AnnotatedElementModel *)model {
     NSMutableString *result = [NSMutableString new];
     
@@ -114,9 +113,10 @@
 + (void)writeMethodBodyTo:(NSMutableString *)result forModel:(AnnotatedElementModel *)model {
     NSString *listHolderName = [self listHolderName:model];
     NSString *listCreatorName = [self listCreatorName:model];
+    NSString *cacheKey = [listHolderName stringByReplacingOccurrencesOfString:@"SF_attributes_list" withString:@"SFAL"];
     
-    [result appendFormat:@"static NSMutableArray __weak *%@ = nil;\n\n", listHolderName];
     [result appendFormat:@"+ (NSArray *)%@ {\n", listCreatorName];
+    [result appendFormat:@"    NSMutableArray *%@ = [[SFAttributeCacheManager attributeCache] objectForKey:@\"%@\"];\n", listHolderName, cacheKey];
     [result appendFormat:@"    if (%@ != nil) {\n", listHolderName];
     [result appendFormat:@"        return %@;\n", listHolderName];
     [result appendLine:@"    }"];
@@ -125,6 +125,7 @@
     [result appendLine:@"    "];
     [result appendString:[self generateAttributesCreatingBodyForModels:model.attributeModels]];
     [result appendFormat:@"    %@ = attributesArray;\n", listHolderName];
+    [result appendFormat:@"    [[SFAttributeCacheManager attributeCache] setObject:attributesArray forKey:@\"%@\"];\n", cacheKey];
     [result appendLine:@"    "];
     [result appendFormat:@"    return %@;\n", listHolderName];
     [result appendLine:@"}"];
