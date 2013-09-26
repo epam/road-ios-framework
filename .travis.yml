@@ -8,7 +8,7 @@ script:
     - xcodebuild -workspace Framework/SparkFramework.xcworkspace -scheme SparkCore build | tee xcodebuild.log
     - oclint-xcodebuild
     - oclint-json-compilation-database -- -rc=LONG_LINE=300 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 20 -max-priority-3 65
-    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkCore test -sdk iphonesimulator	
+    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkCore build test -sdk iphonesimulator	
 notifications:
   email:
     - Valery_Demin@epam.com
