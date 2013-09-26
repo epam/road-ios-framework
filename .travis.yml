@@ -5,9 +5,12 @@ before_install:
     - OCLINT_HOME=/Users/travis/build/valery-demin/spark-ios-framework/oclint-0.7-x86_64-apple-darwin-10
     - PATH=$OCLINT_HOME/bin:$PATH
 script:
+
+    - xcodebuild -workspace Framework/SparkFramework.xcworkspace -scheme SparkCore build test -sdk iphonesimulator
+    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkCore build test -sdk iphonesimulator	
     - xcodebuild -workspace Framework/SparkFramework.xcworkspace -scheme SparkCore build test -sdk iphonesimulator | tee xcodebuild.log
     - oclint-xcodebuild
-    - oclint-json-compilation-database -- -rc=LONG_LINE=200 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 20 -max-priority-3 65
+    - oclint-json-compilation-database -- -rc=LONG_LINE=300 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 20 -max-priority-3 65
 notifications:
   email:
     - Valery_Demin@epam.com
