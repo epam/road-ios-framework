@@ -105,20 +105,15 @@
     id parameterBeforeLastParameter;
 
     // Check whether one or two last parameters are blocks
-    if ([parameterList count] > 0) {
-        lastParameter = [parameterList lastObject];
-        if ([self isBlockObject:lastParameter]) {
+    lastParameter = [parameterList lastObject];
+    if ([self isBlockObject:lastParameter]) {
+        [parameterList removeLastObject];
+        parameterBeforeLastParameter = [parameterList lastObject];
+        if ([self isBlockObject:parameterBeforeLastParameter]) {
             [parameterList removeLastObject];
-            
-            if ([parameterList count] > 0) {
-                parameterBeforeLastParameter = [parameterList lastObject];
-                if ([self isBlockObject:parameterBeforeLastParameter]) {
-                    [parameterList removeLastObject];
-                }
-                else {
-                    parameterBeforeLastParameter = nil;
-                }
-            }
+        }
+        else {
+            parameterBeforeLastParameter = nil;
         }
     }
     
