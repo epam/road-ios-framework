@@ -5,41 +5,41 @@ before_install:
     - OCLINT_HOME=$('pwd')/oclint-0.7-x86_64-apple-darwin-10
     - PATH=$OCLINT_HOME/bin:$PATH
 script:
-    - alias analize_by_oclint="oclint-json-compilation-database -- -rc=LONG_LINE=300 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 20 -max-priority-3 65"
+    - alias analize_using_oclint="oclint-json-compilation-database -- -rc=LONG_LINE=300 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 20 -max-priority-3 65"
     # =================     SparkCore     =================
     - xcodebuild -workspace Framework/SparkFramework.xcworkspace -scheme SparkCore build | tee xcodebuild.log > /dev/null
     - oclint-xcodebuild
-    - analize_by_oclint
+    - analize_using_oclint
     - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkCore test -sdk iphonesimulator
     # =================     SparkLogger     =================
     - xcodebuild -workspace Framework/SparkFramework.xcworkspace -scheme SparkLogger build | tee xcodebuild.log > /dev/null
     - oclint-xcodebuild
-    - analize_by_oclint
+    - analize_using_oclint
     - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkLogger test -sdk iphonesimulator
     # =================     SparkObservation     =================
     - xcodebuild -workspace Framework/SparkFramework.xcworkspace -scheme SparkObservation build | tee xcodebuild.log > /dev/null
     - oclint-xcodebuild
-    - analize_by_oclint
+    - analize_using_oclint
     - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkObservation test -sdk iphonesimulator
     # =================     SparkSerialization     =================
     - xcodebuild -workspace Framework/SparkFramework.xcworkspace -scheme SparkSerialization build | tee xcodebuild.log > /dev/null
     - oclint-xcodebuild
-    - analize_by_oclint
+    - analize_using_oclint
     - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkSerialization test -sdk iphonesimulator
     # =================     SparkServices     =================
     - xcodebuild -workspace Framework/SparkFramework.xcworkspace -scheme SparkServices build | tee xcodebuild.log > /dev/null
     - oclint-xcodebuild
-    - analize_by_oclint
+    - analize_using_oclint
     - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkServices test -sdk iphonesimulator
     # =================     SparkWebService     =================
     - xcodebuild -workspace Framework/SparkFramework.xcworkspace -scheme SparkWebService build | tee xcodebuild.log > /dev/null
     - oclint-xcodebuild
-    - analize_by_oclint
+    - analize_using_oclint
     - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkWebService test -sdk iphonesimulator
     # =================     SparkAttributesCodeGenerator     =================
     - xcodebuild -project tools/SparkAttributesCodeGenerator/SparkAttributesCodeGenerator.xcodeproj -scheme SparkAttributesCodeGenerator build | tee xcodebuild.log
     - oclint-xcodebuild
-    - analize_by_oclint
+    - analize_using_oclint
 notifications:
   email:
     - Valery_Demin@epam.com
