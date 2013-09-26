@@ -506,8 +506,8 @@
 		839992DE17D9DB45002DAE8D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				8D94224417E2A3BE005F0AE3 /* SFConcreteWebServiceClient.m */,
 				839992DF17D9DB45002DAE8D /* SFConcreteWebServiceClient.h */,
+				8D94224417E2A3BE005F0AE3 /* SFConcreteWebServiceClient.m */,
 				839992E117D9DB45002DAE8D /* SFODataTestEntity.h */,
 				839992E217D9DB45002DAE8D /* SFODataTestEntity.m */,
 				839992E317D9DB45002DAE8D /* SFServiceProvider+ConcreteWebServiceClient.h */,
