@@ -1,7 +1,6 @@
 //
-//
-//  SFWebServiceClient.m
-//  SparkWebService
+//  SFAttributeCacheManager.h
+//  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -28,37 +27,11 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "SFWebServiceClient.h"
-#import "SFDefaultSerializer.h"
-#import "SFAuthenticating.h"
+#import <Foundation/Foundation.h>
+#import "SparkSingletonDefinition.h"
 
-@implementation SFWebServiceClient
+@interface SFAttributeCacheManager : NSObject
 
-- (id)init {
-    self = [self initWithServiceRoot:nil];
-    
-    return self;
-}
-
-- (id)initWithServiceRoot:(NSString *)serviceRoot {
-    self = [super init];
-    
-    if (self) {
-        _serviceRoot = serviceRoot;
-        _serializationDelegate = [[SFDefaultSerializer alloc] init];
-        _sharedHeaders = [[NSMutableDictionary alloc] init];
-    }
-    
-    return self;
-}
-
-- (void)setAuthenticationProvider:(id<SFAuthenticating>)authenticationProvider {
-    // Managing authentication provider webServiceClient property
-    _authenticationProvider.webServiceClient = nil;
-    authenticationProvider.webServiceClient = self;
-    
-    _authenticationProvider = authenticationProvider;
-    
-}
++ (NSMutableDictionary *)attributeCache;
 
 @end
