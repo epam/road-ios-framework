@@ -101,21 +101,35 @@
     id successBlock;
     id failureBlock;
     
-    // if there are parameters, the last one should be the callback block
-    if (parameterList.count == 1) {
-        successBlock = [parameterList lastObject];
-        [parameterList removeLastObject];
-        NSAssert([self isBlockObject:successBlock], @"Last parameter of selector:%@ should be the callback block", NSStringFromSelector(_cmd));
+    id lastParameter;
+    id parameterBeforeLastParameter;
+
+    // Check whether one or two last parameters are blocks
+    if ([parameterList count] > 0) {
+        lastParameter = [parameterList lastObject];
+        if ([self isBlockObject:lastParameter]) {
+            [parameterList removeLastObject];
+            
+            if ([parameterList count] > 0) {
+                parameterBeforeLastParameter = [parameterList lastObject];
+                if ([self isBlockObject:parameterBeforeLastParameter]) {
+                    [parameterList removeLastObject];
+                }
+                else {
+                    parameterBeforeLastParameter = nil;
+                }
+            }
+        }
     }
     
-    if (parameterList.count > 1) {
-        failureBlock = [parameterList lastObject];
-        [parameterList removeLastObject];
-        NSAssert([self isBlockObject:failureBlock], @"Last parameter of selector:%@ should be the callback block", NSStringFromSelector(_cmd));
-        
-        successBlock = [parameterList lastObject];
-        [parameterList removeLastObject];
-        NSAssert([self isBlockObject:successBlock], @"Last parameter of selector:%@ should be the callback block", NSStringFromSelector(_cmd));
+    // Two blocks : success and failure blocks
+    if (parameterBeforeLastParameter) {
+        successBlock = parameterBeforeLastParameter;
+        failureBlock = lastParameter;
+    }
+    // One block : only success block
+    else if (lastParameter) {
+        successBlock = lastParameter;
     }
     
     id prepareToLoadBlock;
