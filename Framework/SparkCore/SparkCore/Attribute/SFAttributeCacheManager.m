@@ -1,7 +1,6 @@
 //
-//
-//  SFWebServiceClient.m
-//  SparkWebService
+//  SFAttributeCacheManager.m
+//  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -28,37 +27,55 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "SFWebServiceClient.h"
-#import "SFDefaultSerializer.h"
-#import "SFAuthenticating.h"
+#import "SFAttributeCacheManager.h"
+#import <UIKit/UIKit.h>
 
-@implementation SFWebServiceClient
-
-- (id)init {
-    self = [self initWithServiceRoot:nil];
-    
-    return self;
+@implementation SFAttributeCacheManager {
+    NSMutableDictionary * _sharedCache;
+    /**
+     The queue to work on. http://stackoverflow.com/questions/12511976/app-crashes-after-xcode-upgrade-to-4-5-assigning-retained-object-to-unsafe-unre
+     */
+#if OS_OBJECT_USE_OBJC
+    dispatch_queue_t _queue; // this is for Xcode 4.5 with LLVM 4.1 and iOS 6 SDK
+#else
+    dispatch_queue_t _queue; // this is for older Xcodes with older SDKs
+#endif
 }
 
-- (id)initWithServiceRoot:(NSString *)serviceRoot {
++ (NSMutableDictionary *)attributeCache {
+    static dispatch_once_t onceToken;
+    static id sharedCacheManager = nil;
+    dispatch_once(&onceToken, ^{
+        sharedCacheManager = [[self alloc] init];
+    });
+    
+    return [sharedCacheManager sharedCache];
+}
+
+- (id)init
+{
     self = [super init];
-    
     if (self) {
-        _serviceRoot = serviceRoot;
-        _serializationDelegate = [[SFDefaultSerializer alloc] init];
-        _sharedHeaders = [[NSMutableDictionary alloc] init];
+        _queue = dispatch_queue_create(NULL, DISPATCH_QUEUE_SERIAL);
+        _sharedCache = [[NSMutableDictionary alloc] init];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRecieveMemoryWarning) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
     }
-    
     return self;
 }
 
-- (void)setAuthenticationProvider:(id<SFAuthenticating>)authenticationProvider {
-    // Managing authentication provider webServiceClient property
-    _authenticationProvider.webServiceClient = nil;
-    authenticationProvider.webServiceClient = self;
+- (NSMutableDictionary *)sharedCache {
+    __block id cache;
+    dispatch_sync(_queue, ^{
+        cache = _sharedCache;
+    });
     
-    _authenticationProvider = authenticationProvider;
-    
+    return cache;
+}
+
+- (void)didRecieveMemoryWarning {
+    dispatch_sync(_queue, ^{
+        [_sharedCache removeAllObjects];
+    });
 }
 
 @end

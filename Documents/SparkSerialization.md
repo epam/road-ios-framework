@@ -1,6 +1,6 @@
 #Serialization
 
-**Attribute**-based JSON serializer and block-based XML deserialization. 
+**Attribute**-based JSON and XML serializers. 
 
 #1. JSON
 
@@ -54,32 +54,29 @@ where `SF_ATTRIBUTE(SFSerializable)` defines that class with all it's properties
 `cars` property marked as a serializable collection containing `Car` objects.
 
 #2. XML
-XML support is limited to deserialization only and uses [SAX](http://en.wikipedia.org/wiki/Simple_API_for_XML) in contrast to DOM-based built-in parser.
+Serializer implements SAX-based XML deserialization into **attributed** object tree on top of `NSXMLParser` and XML serialization with `libxml2`. 
 
-Entry point is a `SFXMLSpecificParser` class. It provides generic deserializing into built-in system types by invoking
+API is similar to JSON serializer: 
 
-		+ (void)parseXMLData:(NSData * const)xmlData completion:(parseHandler)completionBlock;
-
-To handle elements parsing process
-
-	- (void)childDidFinishParsing:(id<SFXMLParsing> const)aChild
-
-should be overriden to handle parsing tags and reading values or attributes of `<SFXMLParsing>` node.
-
-**SFXMLParsing protocol**
-
-	@property (strong, nonatomic) SFXMLElement *element;
-	@property (weak, nonatomic) SFXMLSpecificParser *parent; 
-	- (NSArray *)children;
-
-To give parser a clue about node names to custom classes map `initialize` in parser subclass should be overriden.
-
-		- (void)initialize {
-		    [super initialize];
-		    [self registerParserClassNamed:@"MyNode" forElementName:@"myNodeObject"];
-		}
-As a result parser will invoke code passed in completion block :
+* `SFAttributedXMLCoder` encodes serializable object into XML stored in `NSString`, `NSData` or `NSDictionary`. 
+		+ (id)encodeRootObject:(id const)rootObject;
+		…
 	
-	[YourParser parseXMLData:xmlDocumentData completion:^(SFXMLElement *rootElement, NSError *error) {
-    [self handleParsedElements:rootElement];
-}];
+* `SFAttributedDecoder` acts in a reverse direction.
+		 + (id)decodeXMLString:(NSString * const)xmlString;
+		…
+
+Where by *serializable object* meant any `NSObject` subclass with serialization attributes defined.
+
+##Defined Attributes
+
+**JSON** parsing attributes are derived and extended with:
+
+* `SFExternal`. Marks entity as saved externally and adds link to it.
+* `SFNamespace`. Defines namespace and prefix relation of the entity.
+* `SFPreferXMLAttributes`. Marks that entity or attribute prefers  to be save in XML attributes when possible. 
+* `SFEntityIdentifier`. Sets the name of XML attribute where entity identifier is stored, e.g. `@"Name"` should be set as property identification:
+
+		<Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+	
+
