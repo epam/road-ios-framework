@@ -18,7 +18,7 @@ before_install:
     - PATH=$OCLINT_HOME/bin:$PATH
 before_script:
     - export WORKSPACE="-workspace Framework/SparkFramework.xcworkspace"
-    - exoport PROJECT="-project tools/SparkAttributesCodeGenerator/SparkAttributesCodeGenerator.xcodeproj"
+    - export PROJECT="-project tools/SparkAttributesCodeGenerator/SparkAttributesCodeGenerator.xcodeproj"
     - if [[ $SPARK_SCHEME == SparkAttributesCodeGenerator ]]; then export PATCH_FOR_PROJECT_OR_WORKSPACE=$PROJECT; else export PATCH_FOR_PROJECT_OR_WORKSPACE=$WORKSPACE; fi
 script:
     - xcodebuild $PATCH_FOR_PROJECT_OR_WORKSPACE -scheme $SPARK_SCHEME build | tee xcodebuild.log > /dev/null
