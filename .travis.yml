@@ -1,8 +1,5 @@
 language: objective-c
 env:
-  global:
-    - "WORKSPACE=-workspace Framework/SparkFramework.xcworkspace"
-    - "PROJECT=-project tools/SparkAttributesCodeGenerator/SparkAttributesCodeGenerator.xcodeproj"
   matrix:
     - SPARK_SCHEME=SparkCore
     - SPARK_SCHEME=SparkLogger
@@ -20,13 +17,14 @@ before_install:
     - OCLINT_HOME=$('pwd')/oclint-0.7-x86_64-apple-darwin-10
     - PATH=$OCLINT_HOME/bin:$PATH
 before_script:
+    - export WORKSPACE="-workspace Framework/SparkFramework.xcworkspace"
+    - exoport PROJECT="-project tools/SparkAttributesCodeGenerator/SparkAttributesCodeGenerator.xcodeproj"
     - if [[ $SPARK_SCHEME == SparkAttributesCodeGenerator ]]; then export PATCH_FOR_PROJECT_OR_WORKSPACE=$PROJECT; else export PATCH_FOR_PROJECT_OR_WORKSPACE=$WORKSPACE; fi
 script:
-    # =================     Spark Schemes     =================
     - xcodebuild $PATCH_FOR_PROJECT_OR_WORKSPACE -scheme $SPARK_SCHEME build | tee xcodebuild.log > /dev/null
     - oclint-xcodebuild
     - oclint-json-compilation-database -- -rc=LONG_LINE=300 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 30 -max-priority-3 65
-    - if [[ $SPARK_SCHEME != SparkAttributesCodeGenerator ]]; then xctool -workspace Framework/SparkFramework.xcworkspace -scheme $SPARK_SCHEME test -sdk iphonesimulator; fi	
+    - if [[ $SPARK_SCHEME != SparkAttributesCodeGenerator ]]; then $WORKSPACE -scheme $SPARK_SCHEME test -sdk iphonesimulator; fi	
 notifications:
   email:
     - Valery_Demin@epam.com
