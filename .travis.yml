@@ -1,40 +1,23 @@
 language: objective-c
+env:
+    - SPARK_SCHEME=SparkCore
+    - SPARK_SCHEME=SparkLogger
+    - SPARK_SCHEME=SparkObservation
+    - SPARK_SCHEME=SparkSerialization
+    - SPARK_SCHEME=SparkServices
+    - SPARK_SCHEME=SparkWebService
 before_install:
     - curl -O http://archives.oclint.org/releases/0.7/oclint-0.7-x86_64-apple-darwin-10.tar.gz
     - tar -zxvf oclint-0.7-x86_64-apple-darwin-10.tar.gz
+    - rm $('pwd')/oclint-0.7-x86_64-apple-darwin-10/lib/oclint/rules/libUnusedMethodParameterRule.dylib	
     - OCLINT_HOME=$('pwd')/oclint-0.7-x86_64-apple-darwin-10
     - PATH=$OCLINT_HOME/bin:$PATH
 script:
-    # =================     SparkCore     =================
-    - xcodebuild -workspace Framework/SparkFramework.xcworkspace -scheme SparkCore build | tee xcodebuild.log > /dev/null
+    # =================     Spark Schemes     =================
+    - xcodebuild -workspace Framework/SparkFramework.xcworkspace -scheme $SPARK_SCHEME build | tee xcodebuild.log > /dev/null
     - oclint-xcodebuild
     - oclint-json-compilation-database -- -rc=LONG_LINE=300 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 20 -max-priority-3 65
-    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkCore test -sdk iphonesimulator
-    # =================     SparkLogger     =================
-    - xcodebuild -workspace Framework/SparkFramework.xcworkspace -scheme SparkLogger build | tee xcodebuild.log > /dev/null
-    - oclint-xcodebuild
-    - oclint-json-compilation-database -- -rc=LONG_LINE=300 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 20 -max-priority-3 65
-    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkLogger test -sdk iphonesimulator
-    # =================     SparkObservation     =================
-    - xcodebuild -workspace Framework/SparkFramework.xcworkspace -scheme SparkObservation build | tee xcodebuild.log > /dev/null
-    - oclint-xcodebuild
-    - oclint-json-compilation-database -- -rc=LONG_LINE=300 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 20 -max-priority-3 65
-    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkObservation test -sdk iphonesimulator
-    # =================     SparkSerialization     =================
-    - xcodebuild -workspace Framework/SparkFramework.xcworkspace -scheme SparkSerialization build | tee xcodebuild.log > /dev/null
-    - oclint-xcodebuild
-    - oclint-json-compilation-database -- -rc=LONG_LINE=300 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 20 -max-priority-3 65
-    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkSerialization test -sdk iphonesimulator
-    # =================     SparkServices     =================
-    - xcodebuild -workspace Framework/SparkFramework.xcworkspace -scheme SparkServices build | tee xcodebuild.log > /dev/null
-    - oclint-xcodebuild
-    - oclint-json-compilation-database -- -rc=LONG_LINE=300 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 20 -max-priority-3 65
-    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkServices test -sdk iphonesimulator
-    # =================     SparkWebService     =================
-    - xcodebuild -workspace Framework/SparkFramework.xcworkspace -scheme SparkWebService build | tee xcodebuild.log > /dev/null
-    - oclint-xcodebuild
-    - oclint-json-compilation-database -- -rc=LONG_LINE=300 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 20 -max-priority-3 65
-    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme SparkWebService test -sdk iphonesimulator
+    - xctool -workspace Framework/SparkFramework.xcworkspace -scheme $SPARK_SCHEME test -sdk iphonesimulator
     # =================     SparkAttributesCodeGenerator     =================
     - xcodebuild -project tools/SparkAttributesCodeGenerator/SparkAttributesCodeGenerator.xcodeproj -scheme SparkAttributesCodeGenerator build | tee xcodebuild.log > /dev/null
     - oclint-xcodebuild
