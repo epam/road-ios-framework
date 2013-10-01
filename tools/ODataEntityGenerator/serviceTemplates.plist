@@ -34,7 +34,7 @@ SF_ATTRIBUTE(SFWebServiceCall, prototypeClass = [$classname$ class])
 
 #import &lt;Spark/SparkWebservice.h&gt;
 
-SF_ATTRIBUTE(SFWebServiceErrorHandler, handlerClass = @&quot;ESDODataErrorHandler&quot;)
+SF_ATTRIBUTE(SFWebServiceErrorHandler, handlerClass = @&quot;SFODataErrorHandler&quot;)
 SF_ATTRIBUTE(SFWebServiceClientStatusCodes, successCodes = @[[NSValue valueWithRange:NSMakeRange(200, 100)]])
 @interface $webClientName$ : SFWebServiceClient
 $service_declaration$

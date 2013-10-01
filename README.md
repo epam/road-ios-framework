@@ -49,9 +49,7 @@ If you'd like to embed only specific components from the framework it can be don
 
 Documentation for all components can be found in **Documents** folder.
 
-To use **Spark API Reference** create symlink to `Spark.docset`from documents
- 
-	ln -s Spark.docset ~/Library/Developer/Shared/Documentation/DocSets/Spark.docset
+_coming soon in [cocoadocs.org](http://cocoadocs.org)_
 
 ##License
 Spark is made available under the terms of the [BSD v3](http://opensource.org/licenses/BSD-3-Clause). See the LICENSE file that accompanies this distribution for the full text of the license.

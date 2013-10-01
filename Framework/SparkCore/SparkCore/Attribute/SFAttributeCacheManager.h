@@ -1,6 +1,6 @@
 //
-//  SFLoggerWebServicePath.h
-//  SparkLogger
+//  SFAttributeCacheManager.h
+//  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,8 +27,11 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Spark/SparkAttribute.h>
+#import <Foundation/Foundation.h>
+#import "SparkSingletonDefinition.h"
 
-@interface SFLoggerWebServicePath : NSObject
+@interface SFAttributeCacheManager : NSObject
+
++ (NSMutableDictionary *)attributeCache;
 
 @end
