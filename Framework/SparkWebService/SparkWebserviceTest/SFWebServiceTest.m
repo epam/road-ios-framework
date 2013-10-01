@@ -252,15 +252,4 @@
     }
 }
 
-- (void)testMethodWithoutBlocks {
-    SFConcreteWebServiceClient *webClient = [[SFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.method.without.blocks"];
-    [webClient testMethodWithoutBlocks];
-    
-    __block BOOL isFinished = NO;
-    while (!isFinished) {
-        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
-        isFinished = YES;
-    }
-}
-
 @end

@@ -97,27 +97,15 @@
         [parameterList addObject:parameter];
     }
     va_end(arguments);
-    
-    id successBlock;
-    id failureBlock;
-    
-    id lastParameter;
-    id parameterBeforeLastParameter;
 
+    NSAssert([parameterList count] >= 2, @"Method signature must have at least two parameters - completion blocks. Example: - (id)sendRequestWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;");
     // Check whether one or two last parameters are blocks
-    lastParameter = [parameterList lastObject];
-    if ([self isBlockObject:lastParameter]) {
-        [parameterList removeLastObject];
-        parameterBeforeLastParameter = [parameterList lastObject];
-        if ([self isBlockObject:parameterBeforeLastParameter]) {
-            [parameterList removeLastObject];
-        }
-        else {
-            parameterBeforeLastParameter = nil;
-        }
-    }
+    id lastParameter = [self lastBlockObject:parameterList];
+    id parameterBeforeLastParameter = [self lastBlockObject:parameterList];
     
     // Two blocks : success and failure blocks
+    id successBlock;
+    id failureBlock;
     if (parameterBeforeLastParameter) {
         successBlock = parameterBeforeLastParameter;
         failureBlock = lastParameter;
@@ -127,16 +115,8 @@
         successBlock = lastParameter;
     }
     
-    id prepareToLoadBlock;
     // if there are parameters, the last one can be the prepareToLoad block
-    if (parameterList.count > 0) {
-        prepareToLoadBlock = [parameterList lastObject];
-        if ([self isBlockObject:prepareToLoadBlock]) {
-            [parameterList removeLastObject];
-        } else {
-            prepareToLoadBlock = nil;
-        }
-    }
+    id prepareToLoadBlock = [self lastObjectIfBlock:parameterList];
     
     // finally pass the parameters to the dynamic method
     return [self executeDynamicInstanceMethodForSelector:_cmd parameters:parameterList prepareToLoadBlock:prepareToLoadBlock success:successBlock failure:failureBlock];
@@ -144,12 +124,13 @@
 
 - (id<SFWebServiceCancellable>)executeDynamicInstanceMethodForSelector:(SEL)selector parameters:(NSArray *)parameterList prepareToLoadBlock:(SFWebServiceClientPrepareForSendRequestBlock)prepareToLoadBlock success:(id)successBlock failure:(id)failureBlock {
     NSString *methodName = NSStringFromSelector(selector);
-    __block NSData *bodyData;
-    __block NSDictionary *parametersDictionary;
+
     __block SFDownloader *downloader = [[SFDownloader alloc] initWithClient:self methodName:methodName authenticationProvider:self.authenticationProvider];
     downloader.successBlock = successBlock;
     downloader.failureBlock = failureBlock;
-    
+
+    __block NSData *bodyData;
+    __block NSDictionary *parametersDictionary;
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
     dispatch_async(queue, ^{
         
@@ -164,7 +145,6 @@
     
     return downloader;
 }
-
 
 - (void)performCall:(SEL)selector
              values:(NSDictionary *const)values
@@ -200,8 +180,34 @@ prepareForSendRequestBlock:(SFWebServiceClientPrepareForSendRequestBlock)prepare
     });
 }
 
-- (BOOL)isBlockObject:(id)aBlock {
-    return [[aBlock class] isSubclassOfClass:NSClassFromString(@"NSBlock")];
+- (id)lastObjectIfBlock:(NSMutableArray *)parameterList {
+    id lastObject = [parameterList lastObject];
+    if ([[lastObject class] isSubclassOfClass:NSClassFromString(@"NSBlock")]) {
+        [parameterList removeLastObject];
+    } else if (lastObject == [NSNull null]) {
+        [parameterList removeLastObject];
+        lastObject = nil;
+    }
+    else {
+        lastObject = nil;
+    }
+    
+    return lastObject;
+}
+
+- (id)lastBlockObject:(NSMutableArray *)parameterList {
+    id lastObject = [parameterList lastObject];
+    if ([[lastObject class] isSubclassOfClass:NSClassFromString(@"NSBlock")]) {
+        [parameterList removeLastObject];
+    } else if (lastObject == [NSNull null]) {
+        [parameterList removeLastObject];
+        lastObject = nil;
+    }
+    else {
+        NSAssert([[lastObject class] isSubclassOfClass:NSClassFromString(@"NSBlock")] || lastObject == [NSNull null], @"Last two parameters must be completion blocks (or nil - to ignore completion handling). Example: - (id)sendRequestWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;");
+    }
+    
+    return lastObject;
 }
 
 @end
