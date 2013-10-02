@@ -8,4 +8,4 @@ if [[ $SPARK_SCHEME == SparkAttributesCodeGenerator ]]; then export PATCH_FOR_PR
 # =================     Run build, test and oclint check     ===========
 xctool $PATCH_FOR_PROJECT_OR_WORKSPACE -scheme $SPARK_SCHEME -reporter pretty -reporter json-compilation-database:compile_commands.json build
 if [[ $SPARK_SCHEME != SparkAttributesCodeGenerator ]]; then xctool $WORKSPACE -scheme $SPARK_SCHEME test -sdk iphonesimulator; fi	
-oclint-json-compilation-database -- -rc=LONG_LINE=300 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 30 -max-priority-3 65
+oclint-json-compilation-database -- -rc=LONG_LINE=300 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 30 -max-priority-3 80
