@@ -1,6 +1,6 @@
 //
-//  SparkWebservice.h
-//  SparkWebService
+//  SFAttributeCacheManager.h
+//  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,22 +27,11 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#import <Foundation/Foundation.h>
+#import "SparkSingletonDefinition.h"
 
-#ifndef SparkWebservice_SparkWebservice_h
-#define SparkWebservice_SparkWebservice_h
+@interface SFAttributeCacheManager : NSObject
 
-#include "SparkWebServiceAnnotations.h"
-#import "SFWebserviceClient.h"
-#import "SFWebServiceCancellable.h"
-#import "SFSerializationDelegate.h"
-#import "SFBasicAuthenticationProvider.h"
-#import "SFAuthenticationProvider.h"
-#import "SFAuthenticating.h"
-#import "SFConcurrentAuthenticationProvider.h"
-#import "SFWebServiceURLBuilding.h"
-#import "SFFormData.h"
-#import "SFDownloader.h"
++ (NSMutableDictionary *)attributeCache;
 
-#import "SFWebServiceOData.h"
-
-#endif
+@end

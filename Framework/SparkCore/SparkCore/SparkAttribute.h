@@ -48,3 +48,4 @@
 #endif
 
 #import "NSObject+SFAttributes.h"
+#import "SFAttributeCacheManager.h"

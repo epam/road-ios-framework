@@ -21,6 +21,8 @@
 		786994FF16AEC0C100B28760 /* SFService.h in Headers */ = {isa = PBXBuildFile; fileRef = 7869946216AEBF9A00B28760 /* SFService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7869950116AEC0CF00B28760 /* SFService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7869946316AEBF9A00B28760 /* SFService.m */; };
 		78CBA92616C3D40300DAC9BB /* SparkCore.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 78CBA92416C3D40300DAC9BB /* SparkCore.xcodeproj */; };
+		83AE634917F469560053780E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AE634817F469560053780E /* UIKit.framework */; };
+		D771947517CF41A60011047F /* SparkGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = D771947417CF41A60011047F /* SparkGeneratedAttribute.m */; };
 		D771947717CF41BC0011047F /* SparkGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = D771947617CF41BC0011047F /* SparkGeneratedAttribute.m */; };
 		D7AF13E817CF541500A92C31 /* SFServiceProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AF13E617CF541500A92C31 /* SFServiceProvider.m */; };
 		D7AF13EB17CF558B00A92C31 /* SFServiceProvider.h in Copy Files */ = {isa = PBXBuildFile; fileRef = D7AF13E717CF541500A92C31 /* SFServiceProvider.h */; };
@@ -120,6 +122,8 @@
 		786994F116AEC09E00B28760 /* SparkServicesMac-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SparkServicesMac-Prefix.pch"; sourceTree = "<group>"; };
 		78CBA92416C3D40300DAC9BB /* SparkCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkCore.xcodeproj; path = ../SparkCore/SparkCore.xcodeproj; sourceTree = "<group>"; };
 		78F95ADD16E9F16600E58C3B /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		83AE634817F469560053780E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D771947417CF41A60011047F /* SparkGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparkGeneratedAttribute.m; path = SparkGeneratedAttributes/SparkGeneratedAttribute.m; sourceTree = "<group>"; };
 		D771947617CF41BC0011047F /* SparkGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparkGeneratedAttribute.m; path = SparkGeneratedAttributes/SparkGeneratedAttribute.m; sourceTree = "<group>"; };
 		D7AF13E617CF541500A92C31 /* SFServiceProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFServiceProvider.m; sourceTree = "<group>"; };
 		D7AF13E717CF541500A92C31 /* SFServiceProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFServiceProvider.h; sourceTree = "<group>"; };
@@ -133,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83AE634917F469560053780E /* UIKit.framework in Frameworks */,
 				D7AF149A17CF8FDB00A92C31 /* libSparkCore.a in Frameworks */,
 				D7AF149817CF8FD100A92C31 /* libSparkServices.a in Frameworks */,
 				5ACD2188174124EA00CC61AC /* SenTestingKit.framework in Frameworks */,
@@ -225,6 +230,7 @@
 		7869944F16AEBF3E00B28760 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				83AE634817F469560053780E /* UIKit.framework */,
 				5AD1FC4C1766040600E67BC4 /* Cocoa.framework */,
 				5ACD2186174124B500CC61AC /* SenTestingKit.framework */,
 				78CBA92416C3D40300DAC9BB /* SparkCore.xcodeproj */,
