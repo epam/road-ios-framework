@@ -9,13 +9,13 @@ env:
     - SPARK_SCHEME=SparkSerialization
     - SPARK_SCHEME=SparkAttributesCodeGenerator
 before_script:
-    - chmod +x ./script/ci/install_simian.sh
-    - chmod +x ./script/ci/install_oclint.sh
-    - chmod +x ./script/ci/script_simian.sh
-    - chmod +x ./script/ci/script_general.sh
+    - chmod +x ./install_simian.sh
+    - chmod +x ./install_oclint.sh
+    - chmod +x ./script_simian.sh
+    - chmod +x ./script_general.sh
 script:
-    - if [[ $SPARK_SCHEME == Simian ]]; then ./script/ci/install_simian.sh; else ./script/ci/install_oclint.sh; fi
-    - if [[ $SPARK_SCHEME == Simian ]]; then ./script/ci/script_simian.sh; else ./script/ci/script_general.sh; fi
+    - if [[ $SPARK_SCHEME == Simian ]]; then ./install_simian.sh > /dev/null; else ./install_oclint.sh > /dev/null; fi
+    - if [[ $SPARK_SCHEME == Simian ]]; then ./script_simian.sh; else ./script_general.sh; fi
 notifications:
   email:
     - Valery_Demin@epam.com
