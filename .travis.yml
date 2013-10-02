@@ -22,4 +22,10 @@ script:
 
 notifications:
   email:
+    - Nikita_Leonov@epam.com
+    - Yuru_Taustahuzau@epam.com
+    - Eduard_Beleninik@epam.com
+    - Igor_Chesnokov@epam.com
+    - Oleh_Sannikov@epam.com
+    - Tymur_Mamedov@epam.com
     - Valery_Demin@epam.com
