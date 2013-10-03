@@ -102,7 +102,6 @@
 + (SFPropertyInfo *)property:(objc_property_t)property forClass:(Class)class {
     SFPropertyInfo * const info = [[SFPropertyInfo alloc] initWithProperty:property];
     info.hostClass = class;
-    info.propertyName = [NSString stringWithCString:property_getName(property) encoding:NSUTF8StringEncoding];
     
     return info;
 }
@@ -145,6 +144,14 @@
 }
 
 #pragma mark - Specifiers
+
+- (NSString *)propertyName {
+    if (!_propertyName) {
+        _propertyName = [NSString stringWithCString:property_getName(_property) encoding:NSUTF8StringEncoding];
+    }
+    
+    return _propertyName;
+}
 
 - (NSString *)className {
     if (_className) {
