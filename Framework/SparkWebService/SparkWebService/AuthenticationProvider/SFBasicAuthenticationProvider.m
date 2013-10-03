@@ -30,11 +30,8 @@
 #import "SFBasicAuthenticationProvider.h"
 #import "NSError+SFSparkWebService.h"
 
-@interface SFBasicAuthenticationProvider ()
-@property (nonatomic, strong) NSURLCredential *credential;
-@end
-
 @implementation SFBasicAuthenticationProvider
+
 
 #pragma mark - Initialization
 
