@@ -243,7 +243,6 @@
 		7869945216AEBF3E00B28760 /* SparkServices */ = {
 			isa = PBXGroup;
 			children = (
-				D771947417CF41A60011047F /* SparkGeneratedAttribute.m */,
 				7869946A16AEBFC400B28760 /* SparkServices.h */,
 				7869946016AEBF8F00B28760 /* Attributes */,
 				7869946116AEBF8F00B28760 /* Service */,
@@ -336,7 +335,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7869945B16AEBF3E00B28760 /* Build configuration list for PBXNativeTarget "SparkServices" */;
 			buildPhases = (
-				D75DE0B117CB704F00CAEDC2 /* ShellScript */,
 				7869944916AEBF3E00B28760 /* Sources */,
 				7869944A16AEBF3E00B28760 /* Frameworks */,
 				7869944B16AEBF3E00B28760 /* Copy Files */,
@@ -476,19 +474,6 @@
 			shellPath = /bin/sh;
 			shellScript = "${SRCROOT}/../../tools/binaries/SparkAttributesCodeGenerator -src=${SRCROOT}/SparkServicesTest/ -dst=${SRCROOT}/SparkServicesTest/SparkGeneratedAttributes/";
 		};
-		D75DE0B117CB704F00CAEDC2 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../../tools/binaries/SparkAttributesCodeGenerator\" -src=\"${SRCROOT}/SparkServices/\" -dst=\"${SRCROOT}/SparkServices/SparkGeneratedAttributes/\"";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -507,7 +492,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7869946416AEBF9A00B28760 /* SFService.m in Sources */,
-				D771947517CF41A60011047F /* SparkGeneratedAttribute.m in Sources */,
 				D7AF13E817CF541500A92C31 /* SFServiceProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

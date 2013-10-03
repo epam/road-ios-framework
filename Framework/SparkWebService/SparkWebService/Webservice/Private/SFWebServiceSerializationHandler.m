@@ -34,7 +34,7 @@
 
 @implementation SFWebServiceSerializationHandler
 
-+(void)deserializeData:(NSData * const)data withSerializator:(id<SFSerializationDelegate>)serializationObject serializatinRoot:(NSString *)serializationRoot toDeserializationClass:(Class)deserializationClass withCompletitionBlock:(void(^)(id serializedData, NSError *error))callbackBlock
++ (void)deserializeData:(NSData * const)data withSerializator:(id<SFSerializationDelegate>)serializationObject serializatinRoot:(NSString *)serializationRoot toDeserializationClass:(Class)deserializationClass withCompletitionBlock:(void(^)(id serializedData, NSError *error))callbackBlock
 {
     id serializedData = data;
     NSError *error;
