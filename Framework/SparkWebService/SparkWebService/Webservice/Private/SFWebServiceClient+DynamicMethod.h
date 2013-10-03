@@ -33,6 +33,7 @@
 @class SFDownloader;
 
 @interface SFWebServiceClient (DynamicMethod)
+
 /**
  Performs the api call for selector, using the values dictionary to replace variables in the url string template and optionally providing an http body. The method is equivalent to call the -apiCall:values:body:startImmediately: method with a shouldStartImmediately argument set to YES and disregarding.
  @param selector The selector name.
@@ -43,4 +44,5 @@
  @param prepareForSendRequestBlock The block that will be executed before request sending.
  */
 - (void)performCall:(SEL)selector values:(NSDictionary *const)values body:(NSData *const)httpBody request:(SFDownloader *)request processingQueue:(dispatch_queue_t)processingQueue prepareForSendRequestBlock:(SFWebServiceClientPrepareForSendRequestBlock)prepareForSendRequestBlock;
+
 @end

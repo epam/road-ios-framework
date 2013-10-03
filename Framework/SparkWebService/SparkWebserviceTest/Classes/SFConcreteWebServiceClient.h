@@ -64,9 +64,12 @@ SF_ATTRIBUTE(SFWebServiceCall, serializationDisabled = NO, serializationRoot = @
 
 SF_ATTRIBUTE(SFWebServiceCall, serializationDisabled = YES)
 SF_ATTRIBUTE(SFMultipartData, boundary = @"sdfsfsf")
-- (id<SFWebServiceCancellable>)testMultipartDataWithAttachment:(SFFormData *)attachment success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+- (id<SFWebServiceCancellable>)testMultipartDataWithAttachment:(SFFormData *)attachment success:(id)successBlock failure:(void(^)(NSError *error))failureBlock;
 
 SF_ATTRIBUTE(SFWebServiceCall, serializationDisabled = YES)
 - (id<SFWebServiceCancellable>)testMultipartDataWithAttachments:(NSArray *)attachments success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+SF_ATTRIBUTE(SFWebServiceCall, serializationDisabled = YES)
+- (id<SFWebServiceCancellable>)testMethodWithoutBlocks;
 
 @end
