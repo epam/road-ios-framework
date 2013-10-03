@@ -1,5 +1,7 @@
 language: objective-c
+
 env:
+    - SPARK_SCHEME=Simian
     - SPARK_SCHEME=SparkCore
     - SPARK_SCHEME=SparkLogger
     - SPARK_SCHEME=SparkServices
@@ -7,23 +9,14 @@ env:
     - SPARK_SCHEME=SparkObservation
     - SPARK_SCHEME=SparkSerialization
     - SPARK_SCHEME=SparkAttributesCodeGenerator
-before_install:
-    - curl -O http://archives.oclint.org/releases/0.7/oclint-0.7-x86_64-apple-darwin-10.tar.gz
-    - tar -zxvf oclint-0.7-x86_64-apple-darwin-10.tar.gz
-    # =================     Remove necessary rules from "lib/oclint/rules/" folder of oclint     ===========
-    #- rm $('pwd')/oclint-0.7-x86_64-apple-darwin-10/lib/oclint/rules/libUnusedMethodParameterRule.dylib
-    # ======================================================================================================
-    - OCLINT_HOME=$('pwd')/oclint-0.7-x86_64-apple-darwin-10
-    - PATH=$OCLINT_HOME/bin:$PATH
+
 before_script:
-    # =================     Set environment variables     ===========
-    - export WORKSPACE="-workspace Framework/SparkFramework.xcworkspace"
-    - export PROJECT="-project tools/SparkAttributesCodeGenerator/SparkAttributesCodeGenerator.xcodeproj"
-    - if [[ $SPARK_SCHEME == SparkAttributesCodeGenerator ]]; then export PATCH_FOR_PROJECT_OR_WORKSPACE=$PROJECT; else export PATCH_FOR_PROJECT_OR_WORKSPACE=$WORKSPACE; fi
+    - chmod +x ./script_simian.sh
+    - chmod +x ./script_general.sh
+
 script:
-    - xctool $PATCH_FOR_PROJECT_OR_WORKSPACE -scheme $SPARK_SCHEME -reporter pretty -reporter json-compilation-database:compile_commands.json build
-    - if [[ $SPARK_SCHEME != SparkAttributesCodeGenerator ]]; then xctool $WORKSPACE -scheme $SPARK_SCHEME test -sdk iphonesimulator; fi	
-    - oclint-json-compilation-database -- -rc=LONG_LINE=300 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 30 -max-priority-3 80
+    - if [[ $SPARK_SCHEME == Simian ]]; then ./script_simian.sh; else ./script_general.sh; fi
+
 notifications:
   email:
     - Nikita_Leonov@epam.com
