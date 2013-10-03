@@ -51,6 +51,9 @@
             response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:400 HTTPVersion:@"HTTP/1.1" headerFields:@{}];
         }
     }
+    else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.method.without.blocks"]) {
+        response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{}];
+    }
     else {
         // Not processed URL
         [self fakeStart];
