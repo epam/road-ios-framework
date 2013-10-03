@@ -134,15 +134,13 @@
     __unsafe_unretained Class const rootObjectClass = NSClassFromString(rootClassName);
     rootObject = [[rootObjectClass alloc] init];
     NSArray *properties;
-    @autoreleasepool {
-        if ([rootObjectClass SF_attributeForClassWithAttributeType:[SFSerializable class]]) {
-            properties = [[rootObjectClass SF_properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(SFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
-                return (![evaluatedObject attributeWithType:[SFDerived class]]);
-            }]];
-        }
-        else {
-            properties = [rootObjectClass SF_propertiesWithAttributeType:[SFSerializable class]];
-        }
+    if ([rootObjectClass SF_attributeForClassWithAttributeType:[SFSerializable class]]) {
+        properties = [[rootObjectClass SF_properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(SFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
+            return (![evaluatedObject attributeWithType:[SFDerived class]]);
+        }]];
+    }
+    else {
+        properties = [rootObjectClass SF_propertiesWithAttributeType:[SFSerializable class]];
     }
 
     NSString *aKey;
@@ -154,7 +152,7 @@
             [rootObject setValue:result forKey:[aDesc propertyName]];
         }
     }
-    
+
     return rootObject;
 }
 
@@ -180,9 +178,9 @@
 
 - (id)decodeArray:(NSArray * const)anArray forProperty:(SFPropertyInfo * const)aDesc {
     NSMutableArray *array = [[NSMutableArray alloc] init];
-    [anArray enumerateObjectsUsingBlock:^(id aValue, NSUInteger idx, BOOL *stop) {
+    for (id aValue in anArray) {
         [array addObject:[self decodeCollectionElement:aValue forProperty:aDesc]];
-    }];
+    }
     return [array copy];
 }
 
