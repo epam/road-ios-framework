@@ -28,8 +28,10 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "SFLogFormatter.h"
+
 #import "SFLogBlockFormatter.h"
 #import "SFLogPlainFormatter.h"
+#import "SFLogMessage.h"
 
 @implementation SFLogFormatter
 

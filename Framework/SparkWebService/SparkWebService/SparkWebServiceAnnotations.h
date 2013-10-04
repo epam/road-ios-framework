@@ -39,5 +39,6 @@
 #import "SFWebServiceURLBuilder.h"
 #import "SFWebServiceURLBuilderParameter.h"
 #import "SFMultipartData.h"
+#import "SFLoggerWebServicePath.h"
 
 #endif

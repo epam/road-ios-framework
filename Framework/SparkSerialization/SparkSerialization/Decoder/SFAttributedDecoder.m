@@ -224,7 +224,7 @@
 - (id)decodeDateString:(id const)value forProperty:(SFPropertyInfo * const)propertyInfo {
     id decodedValue = nil;
 
-    SFSerializableDate *serializableDateAttribute = [propertyInfo.hostClass SF_attributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializableDate class]];
+    SFSerializableDate *serializableDateAttribute = [propertyInfo attributeWithType:[SFSerializableDate class]];
 
     if (serializableDateAttribute.unixTimestamp) {
         if (![value isKindOfClass:[NSNumber class]]) {

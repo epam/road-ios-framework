@@ -43,7 +43,7 @@
 - (id)initWithOutputStream:(NSOutputStream *)aStream {
     
     self = [super init];
-
+    
     if (self) {
         
         stream = aStream;
@@ -58,7 +58,7 @@
 
 // Starts the broadcasting, schedules the stream in the current background thread's runloop.
 - (void)startBroadcasting {
-
+    
     [stream setDelegate:self];
     [stream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     [stream open];
@@ -70,7 +70,7 @@
 - (void)keepThreadAlive {
     
     while (!isCancelled) {
-        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];           
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
         [self processStoredBuffers];
     }
     
@@ -92,8 +92,8 @@
 }
 
 // Adds a datapacked to the local buffer and attempts to write it to the stream.
-- (void)addData:(NSData *)packet {   
-
+- (void)addData:(NSData *)packet {
+    
     @synchronized (bufferedData) {
         [bufferedData addObject:packet];
     }

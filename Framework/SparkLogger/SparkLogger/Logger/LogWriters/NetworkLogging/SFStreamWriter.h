@@ -30,7 +30,7 @@
 /**
  Streamwriter class that manages the logging and broadcasting of log messages to established connections.
  */
-@interface SFStreamWriter : NSObject <NSStreamDelegate>
+@interface SFStreamWriter : NSObject
 
 /**
  Designated initializer.

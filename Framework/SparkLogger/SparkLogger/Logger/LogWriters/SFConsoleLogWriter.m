@@ -29,6 +29,8 @@
 
 #import "SFConsoleLogWriter.h"
 
+#import "SFLogFormatter.h"
+
 @implementation SFConsoleLogWriter
 
 - (void)logValidMessage:(SFLogMessage * const)aMessage {
