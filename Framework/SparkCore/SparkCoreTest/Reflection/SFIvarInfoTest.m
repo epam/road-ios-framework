@@ -1,6 +1,6 @@
 //
-//  SFBasicAuthenticationProvider.h
-//  SparkWebService
+//  SFIvarInfoTest.m
+//  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,22 +27,54 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
-#import "SFDigestAuthenticationProvider.h"
-#import "NSError+SFSparkWebService.h"
-
-@implementation SFDigestAuthenticationProvider
+#import <SenTestingKit/SenTestingKit.h>
+#import <objc/runtime.h>
+#import "SFIvarInfo.h"
 
 
-#pragma mark - SFAuthenticating
+@interface SFIvarInfoTest : SenTestCase {
+    Class _testClass;
+}
+@end
 
-- (void)processAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge forConnection:(NSURLConnection *)connection {
-    [super processAuthenticationChallenge:challenge forConnection:connection];
-    
-    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodHTTPDigest]) {
-        if (!_credential) [self authenticate];
-        [challenge.sender useCredential:_credential forAuthenticationChallenge:challenge];
+@implementation SFIvarInfoTest
+
+const static NSUInteger numberOfIVars = 352;
+const static char *testClassName = "testClassName";
+
+- (void)setUp {
+    [super setUp];
+    // Put setup code here; it will be run once, before the first test case.
+    _testClass = objc_allocateClassPair([NSObject class], testClassName, 0);
+}
+
+- (void)testIVarCount
+{
+    NSUInteger inc = 0;
+    for (int i = inc; i <= numberOfIVars; i++) {
+        const char *cstring = [[NSString stringWithFormat:@"var%d", i] UTF8String];
+        class_addIvar(_testClass, cstring, sizeof(id), rint(log2(sizeof(id))), @encode(id));
+        inc++;
     }
+    STAssertTrue(inc == [[SFIvarInfo ivarsOfClass:_testClass] count], @"It's not equals a sum of ivars");
+}
+
+- (void)testIVarByName
+{
+    const char* ivarName = "ivarNameTest";
+    char *type = @encode(NSObject);
+    class_addIvar(_testClass, ivarName, sizeof(type), log2(sizeof(type)), type);
+    
+    NSString *tempIvar = [NSString stringWithCString:ivarName encoding:NSUTF8StringEncoding];
+    SFIvarInfo *result = [SFIvarInfo SF_ivarNamed:tempIvar ofClass:_testClass];
+    STAssertNotNil(result, @"Can't find data by ivar name");
+}
+
+- (void)tearDown
+{
+    _testClass = nil;
+    // Put teardown code here; it will be run once, after the last test case.
+    [super tearDown];
 }
 
 @end

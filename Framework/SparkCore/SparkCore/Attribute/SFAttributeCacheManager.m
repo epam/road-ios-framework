@@ -1,6 +1,6 @@
 //
-//  SFBasicAuthenticationProvider.h
-//  SparkWebService
+//  SFAttributeCacheManager.m
+//  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,22 +27,55 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#import "SFAttributeCacheManager.h"
+#import <UIKit/UIKit.h>
 
-#import "SFDigestAuthenticationProvider.h"
-#import "NSError+SFSparkWebService.h"
+@implementation SFAttributeCacheManager {
+    NSMutableDictionary * _sharedCache;
+    /**
+     The queue to work on. http://stackoverflow.com/questions/12511976/app-crashes-after-xcode-upgrade-to-4-5-assigning-retained-object-to-unsafe-unre
+     */
+#if OS_OBJECT_USE_OBJC
+    dispatch_queue_t _queue; // this is for Xcode 4.5 with LLVM 4.1 and iOS 6 SDK
+#else
+    dispatch_queue_t _queue; // this is for older Xcodes with older SDKs
+#endif
+}
 
-@implementation SFDigestAuthenticationProvider
-
-
-#pragma mark - SFAuthenticating
-
-- (void)processAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge forConnection:(NSURLConnection *)connection {
-    [super processAuthenticationChallenge:challenge forConnection:connection];
++ (NSMutableDictionary *)attributeCache {
+    static dispatch_once_t onceToken;
+    static id sharedCacheManager = nil;
+    dispatch_once(&onceToken, ^{
+        sharedCacheManager = [[self alloc] init];
+    });
     
-    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodHTTPDigest]) {
-        if (!_credential) [self authenticate];
-        [challenge.sender useCredential:_credential forAuthenticationChallenge:challenge];
+    return [sharedCacheManager sharedCache];
+}
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        _queue = dispatch_queue_create(NULL, DISPATCH_QUEUE_SERIAL);
+        _sharedCache = [[NSMutableDictionary alloc] init];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRecieveMemoryWarning) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
     }
+    return self;
+}
+
+- (NSMutableDictionary *)sharedCache {
+    __block id cache;
+    dispatch_sync(_queue, ^{
+        cache = _sharedCache;
+    });
+    
+    return cache;
+}
+
+- (void)didRecieveMemoryWarning {
+    dispatch_sync(_queue, ^{
+        [_sharedCache removeAllObjects];
+    });
 }
 
 @end

@@ -216,7 +216,6 @@
     }
     
     STAssertTrue(isSuccess, @"Multipart form data request is failed");
-
 }
 
 - (void)testMultipartDataArray {
@@ -239,6 +238,18 @@
     }
     
     STAssertTrue(isSuccess, @"Multipart form data request is failed");
+}
+
+- (void)testNilsInCompletionBlocks {
+    SFConcreteWebServiceClient *webClient = [[SFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.method.without.blocks"];
+    SFFormData *attachment = [[SFFormData alloc] initWithName:@"image" data:[@"Random data 1" dataUsingEncoding:NSUTF8StringEncoding] fileName:@"imageName.jpg"];
+    [webClient testMultipartDataWithAttachment:attachment success:nil failure:nil];
+    
+    __block BOOL isFinished = NO;
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
+        isFinished = YES;
+    }
 }
 
 @end

@@ -33,7 +33,10 @@
  There is provider which provide HTTP(S) Basic Authentication.
  Note: supported opportunities over SSL (see here: SFAuthenticationProvider)
  */
-@interface SFBasicAuthenticationProvider : SFAuthenticationProvider
+@interface SFBasicAuthenticationProvider : SFAuthenticationProvider {
+  @protected
+    NSURLCredential * _credential;
+}
 
 @property (nonatomic, strong, readonly) NSString *user;
 @property (nonatomic, strong, readonly) NSString *password;

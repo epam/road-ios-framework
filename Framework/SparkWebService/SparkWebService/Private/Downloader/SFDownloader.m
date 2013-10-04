@@ -215,11 +215,15 @@
 #pragma mark - Request logic
 
 -(void)performSuccessBlockOnSpecificThread {
-    self.successBlock(_serializedData);
+    if (self.successBlock) {
+        self.successBlock(_serializedData);
+    }
 }
 
 -(void)performFailureBlockOnSpecificThread {
-    self.failureBlock(_downloadError);
+    if (self.failureBlock) {
+        self.failureBlock(_downloadError);
+    }
 }
 
 #pragma mark - Utitlity

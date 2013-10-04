@@ -1,6 +1,6 @@
 //
-//  SFBasicAuthenticationProvider.h
-//  SparkWebService
+//  SFAttributeCacheManager.h
+//  SparkCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,22 +27,11 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#import <Foundation/Foundation.h>
+#import "SparkSingletonDefinition.h"
 
-#import "SFDigestAuthenticationProvider.h"
-#import "NSError+SFSparkWebService.h"
+@interface SFAttributeCacheManager : NSObject
 
-@implementation SFDigestAuthenticationProvider
-
-
-#pragma mark - SFAuthenticating
-
-- (void)processAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge forConnection:(NSURLConnection *)connection {
-    [super processAuthenticationChallenge:challenge forConnection:connection];
-    
-    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodHTTPDigest]) {
-        if (!_credential) [self authenticate];
-        [challenge.sender useCredential:_credential forAuthenticationChallenge:challenge];
-    }
-}
++ (NSMutableDictionary *)attributeCache;
 
 @end

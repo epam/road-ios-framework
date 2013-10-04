@@ -4,27 +4,27 @@
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
-// Redistribution and use in source and binary forms, with or without 
+// Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
-// 
-//  Redistributions of source code must retain the above copyright notice, this 
+//
+//  Redistributions of source code must retain the above copyright notice, this
 // list of conditions and the following disclaimer.
-//  Redistributions in binary form must reproduce the above copyright notice, this 
-// list of conditions and the following disclaimer in the documentation and/or 
+//  Redistributions in binary form must reproduce the above copyright notice, this
+// list of conditions and the following disclaimer in the documentation and/or
 // other materials provided with the distribution.
-//  Neither the name of the EPAM Systems, Inc.  nor the names of its contributors 
-// may be used to endorse or promote products derived from this software without 
+//  Neither the name of the EPAM Systems, Inc.  nor the names of its contributors
+// may be used to endorse or promote products derived from this software without
 // specific prior written permission.
-// 
-// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-// WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
-// DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE 
-// FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL 
-// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
-// SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
-// CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
-// OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+// WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+// DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+// FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+// SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+// CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+// OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
@@ -42,7 +42,9 @@
     NSString *_returnType;
     BOOL _classMethod;
     
-    NSArray *argumentTypes;
+    NSArray *_argumentTypes;
+    
+    Method _method;
 }
 
 @property (copy, nonatomic) NSString *name;
@@ -51,6 +53,7 @@
 @property (assign, nonatomic) NSUInteger numberOfArguments;
 @property (copy, nonatomic) NSString *returnType;
 @property (assign, nonatomic, getter = isClassMethod) BOOL classMethod;
+
 @end
 
 
@@ -68,7 +71,10 @@ static NSUInteger const kSFMethodArgumentOffset = 2;
 
 @dynamic attributes;
 
-+ (NSArray *)methodsOfClass:(Class)aClass {  
+
+#pragma mark - Initialization
+
++ (NSArray *)methodsOfClass:(Class)aClass {
     NSMutableArray *result = [[NSMutableArray alloc] init];
     
     unsigned int numberOfInstanceMethods = 0;
@@ -80,6 +86,19 @@ static NSUInteger const kSFMethodArgumentOffset = 2;
     Method *classMethods = class_copyMethodList(object_getClass(aClass), &numberOfClassMethods);
     [result addObjectsFromArray:[self methodInfoList:classMethods count:numberOfClassMethods ofClass:aClass areClassMethods:YES]];
     free(classMethods);
+    
+    return result;
+}
+
++ (NSArray *)methodInfoList:(const Method *)methods count:(unsigned int)numberOfMethods ofClass:(Class)aClass areClassMethods:(const BOOL)areClassMethods {
+    NSMutableArray * const result = [[NSMutableArray alloc] init];
+    SFMethodInfo *info;
+    
+    for (unsigned int index = 0; index < numberOfMethods; index++) {
+        info = [self methodInfo:methods[index] forClass:aClass];
+        info.classMethod = areClassMethods;
+        [result addObject:info];
+    }
     
     return result;
 }
@@ -99,31 +118,28 @@ static NSUInteger const kSFMethodArgumentOffset = 2;
 }
 
 + (SFMethodInfo *)methodInfo:(Method)method forClass:(Class)aClass {
-    SFMethodInfo *info = [[SFMethodInfo alloc] init];
-    info.className = NSStringFromClass(aClass);
+    SFMethodInfo *info = [[SFMethodInfo alloc] initWithMethod:method];
     info.hostClass = aClass;
     info.name = NSStringFromSelector(method_getName(method));
     info.numberOfArguments = (NSUInteger)method_getNumberOfArguments(method) - kSFMethodArgumentOffset;
-    info->argumentTypes = [self argumentsTypeNamesOfMethod:method numberOfArguments:info.numberOfArguments];
-    info.returnType = [self returnTypeNameOfMethod:method];
+    
     return info;
 }
 
-+ (NSArray *)methodInfoList:(const Method *)methods count:(unsigned int)numberOfMethods ofClass:(Class)aClass areClassMethods:(const BOOL)areClassMethods {
-    NSMutableArray * const result = [[NSMutableArray alloc] init];
-    SFMethodInfo *info;
-    
-    for (unsigned int index = 0; index < numberOfMethods; index++) {
-        info = [self methodInfo:methods[index] forClass:aClass];
-        info.classMethod = areClassMethods;
-        [result addObject:info];
+- (id)initWithMethod:(Method)method {
+    self = [super init];
+    if (self) {
+        _method = method;
     }
-
-    return result;
+    
+    return self;
 }
 
 - (NSString *)typeOfArgumentAtIndex:(const NSUInteger)anIndex {
-    return argumentTypes[anIndex];
+    if (!_argumentTypes) {
+        _argumentTypes = [[self class] argumentsTypeNamesOfMethod:_method numberOfArguments:_numberOfArguments];
+    }
+    return _argumentTypes[anIndex];
 }
 
 + (NSArray *)argumentsTypeNamesOfMethod:(Method)method numberOfArguments:(NSUInteger)numberOfArguments {
@@ -145,9 +161,27 @@ static NSUInteger const kSFMethodArgumentOffset = 2;
     return [SFTypeDecoder nameFromTypeEncoding:result];
 }
 
-- (NSString *)description {
-    return [NSString stringWithFormat:@"%@: %@:%@, argument types: %@, return type: %@", [super description], _className, _name, [argumentTypes componentsJoinedByString:@","], _returnType];
+
+#pragma mark - Specifiers
+
+- (NSString *)className {
+    if (!_className) {
+        _className = NSStringFromClass(_hostClass);
+    }
+    
+    return _className;
 }
+
+- (NSString *)returnType {
+    if (!_returnType) {
+        _returnType = [[self class] returnTypeNameOfMethod:_method];
+    }
+    
+    return _returnType;
+}
+
+
+#pragma mark - Attributes
 
 - (NSArray *)attributes {
     return [self.hostClass SF_attributesForMethod:self.name];
