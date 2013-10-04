@@ -39,14 +39,6 @@
     return [predicate evaluateWithObject:message];
 }
 
-+ (SFLogFilter *)filterForLevel:(const SFLogLevel)level {
-    SFLogFilter *filter = [[SFLogFilter alloc] init];
-    filter->predicate = [NSPredicate predicateWithBlock:^BOOL(SFLogMessage * const evaluatedObject, NSDictionary *bindings) {
-        return evaluatedObject.level >= level;
-    }];
-    return filter;
-}
-
 + (SFLogFilter *)filterWithPrediate:(NSPredicate * const)predicate {
     SFLogFilter *filter = [[SFLogFilter alloc] init];
     filter->predicate = predicate;
@@ -56,7 +48,7 @@
 + (SFLogFilter *)consoleFilter {
     NSPredicate * const predicate = [NSPredicate predicateWithBlock:^BOOL(SFLogMessage * const evaluatedObject, NSDictionary *bindings) {
         return [evaluatedObject.type isEqualToString:kSFLogMessageTypeAllLoggers]
-            || [evaluatedObject.type isEqualToString:kSFLogMessageTypeConsoleOnly];
+        || [evaluatedObject.type isEqualToString:kSFLogMessageTypeConsoleOnly];
     }];
     return [self filterWithPrediate:predicate];
 }

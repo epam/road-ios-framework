@@ -41,7 +41,6 @@
 #import "SFConcurrentAuthenticationProvider.h"
 #import "SFWebServiceURLBuilding.h"
 #import "SFFormData.h"
-#import "SFDownloader.h"
 
 #import "SFWebServiceOData.h"
 

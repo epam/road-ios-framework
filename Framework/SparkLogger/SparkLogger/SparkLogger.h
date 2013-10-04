@@ -41,13 +41,11 @@
 #import "SFLogBlockFormatter.h"
 #import "SFLogPlainFormatter.h"
 #import "SFLogFilter.h"
-#import "SFLoggerWebServicePath.h"
 #import "SFLogMessageWrapper.h"
 #import "SFServiceProvider+LoggingService.h"
 
 #define SFLogInternalError(...) \
-    [[SFServiceProvider logger] logInternalErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
-
+        [[SFServiceProvider logger] logInternalErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
 
 #define SFLogInfo(...) \
         if ([SFServiceProvider logger].logLevel >= SFLogLevelInfo) [[SFServiceProvider logger] logInfoMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]];

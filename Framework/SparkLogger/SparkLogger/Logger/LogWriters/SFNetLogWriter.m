@@ -27,14 +27,16 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <SystemConfiguration/SystemConfiguration.h>
 #import "SFNetLogWriter.h"
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <UIKit/UIKit.h>
+
+#include <ifaddrs.h>
+#include <arpa/inet.h>
 #import "SFLogMessage.h"
 #import "SFLogMessageWrapper.h"
 #import "SFStreamWriter.h"
 #import "SFConnection.h"
-#include <ifaddrs.h>
-#include <arpa/inet.h>
 
 static NSString * const kSFNetLogServiceType = @"_appalocalnetwork._tcp.";
 static NSString * const kCFBundleDisplayName = @"CFBundleDisplayName";
@@ -53,8 +55,8 @@ static NSString * const kCFBundleDisplayName = @"CFBundleDisplayName";
 
 @implementation SFNetLogWriter
 
-@synthesize delegate;
-@synthesize streamWriter;
+@synthesize delegate = _delegate;
+@synthesize streamWriter = _streamWriter;
 
 // Initiates a connection to browse for possible network services, creates a unique id for the logging session
 - (id)init {
@@ -79,11 +81,7 @@ static NSString * const kCFBundleDisplayName = @"CFBundleDisplayName";
 
 - (void)logValidMessage:(SFLogMessage * const)aMessage {
     SFLogMessageWrapper *wrapper = [[SFLogMessageWrapper alloc] initWithMessage:aMessage deviceName:[self deviceName] applicationName:applicationName uniqueId:uniqueIdForSession];
-    NSMutableData *data = [NSMutableData data];
-    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-    [archiver encodeRootObject:wrapper];
-    [archiver finishEncoding];
-    [streamWriter writeData:data];
+    [self writeObjectWithSteamWriter:wrapper];
 }
 
 - (void)logQueue {
@@ -97,14 +95,17 @@ static NSString * const kCFBundleDisplayName = @"CFBundleDisplayName";
         
         [self.messageQueue removeAllObjects];
         
-        NSMutableData *data = [NSMutableData data];
-        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-        [archiver encodeRootObject:messageWrappers];
-        [archiver finishEncoding];
-        [streamWriter writeData:data];
+        [self writeObjectWithSteamWriter:messageWrappers];
     });
 }
 
+- (void)writeObjectWithSteamWriter:(id)object {
+    NSMutableData *data = [NSMutableData data];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    [archiver encodeRootObject:object];
+    [archiver finishEncoding];
+    [_streamWriter writeData:data];
+}
 
 - (void)dealloc {
     connection.delegate = nil;
@@ -115,16 +116,16 @@ static NSString * const kCFBundleDisplayName = @"CFBundleDisplayName";
 // Updates the streamwriter with the available services and informs the delegate about the names of the connected services
 - (void)connection:(SFConnection *)connection didFindServices:(NSSet *)services {
     
-    streamWriter = [[SFStreamWriter alloc] initWithServices:services];
+    _streamWriter = [[SFStreamWriter alloc] initWithServices:services];
     serviceNames = [NSMutableArray array];
     
     for (NSNetService *aService in services) {
         [serviceNames addObject:[aService name]];
     }
     
-    if ([delegate respondsToSelector:@selector(logWriter:availableServiceNames:)]) {
+    if ([_delegate respondsToSelector:@selector(logWriter:availableServiceNames:)]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [delegate logWriter:self availableServiceNames:serviceNames];
+            [_delegate logWriter:self availableServiceNames:serviceNames];
         });
     }
 }
@@ -133,27 +134,23 @@ static NSString * const kCFBundleDisplayName = @"CFBundleDisplayName";
 - (void)connection:(SFConnection *)connection willRemoveService:(NSNetService *)service {
     [serviceNames removeObject:[service name]];
     
-    if ([delegate respondsToSelector:@selector(logWriter:availableServiceNames:)]) {
+    if ([_delegate respondsToSelector:@selector(logWriter:availableServiceNames:)]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [delegate logWriter:self availableServiceNames:serviceNames];
+            [_delegate logWriter:self availableServiceNames:serviceNames];
         });
     }
     
-    [streamWriter removeService:service];
+    [_streamWriter removeService:service];
 }
 
 // Creates a device name
 - (NSString *)deviceName {
-#warning FIX ME
-    /*
     NSString *result = [[UIDevice currentDevice] name];
     
     if ([result hasSuffix:@"Simulator"]) {
         result = [result stringByAppendingFormat:@"_%@", [self ipAddress]];
     }
     return result;
-     */
-    return @"FIX-ME-NAME";
 }
 
 // Returns the IP address of the device

@@ -29,6 +29,7 @@
 
 #import "SFLogMessage.h"
 
+
 static NSString * const kMessage = @"kMessage";
 static NSString * const kMessageType = @"kMessageType";
 static NSString * const kUserInfo = @"kUserInfo";
@@ -41,6 +42,7 @@ NSString * const kSFLogMessageTypeWebServiceOnly = @"SFLogMessageTypeWebServiceO
 NSString * const kSFLogMessageTypeConsoleOnly = @"SFLogMessageTypeConsoleOnly";
 NSString * const kSFLogMessageTypeFileOnly = @"SFLogMessageTypeFileOnly";
 NSString * const kSFLogMessageTypeNoLogging = @"SFLogMessageTypeNoLogging";
+
 
 @implementation SFLogMessage
 
@@ -103,7 +105,7 @@ NSString * const kSFLogMessageTypeNoLogging = @"SFLogMessageTypeNoLogging";
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
-
+    
     if (self) {
         _message = [[aDecoder decodeObjectForKey:kMessage] copy];
         _type = [[aDecoder decodeObjectForKey:kMessageType] copy];

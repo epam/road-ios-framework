@@ -30,7 +30,8 @@
 #import "SFLogger.h"
 
 #import "SFLogMessage.h"
-#import "SparkLogger.h"
+#import "SFLogWriter.h"
+#import "SFConsoleLogWriter.h"
 
 @implementation SFLogger {
     NSMutableArray *writers;
@@ -44,7 +45,7 @@
     self = [super init];
     if (self) {
         writers = [[NSMutableArray alloc] init];
-        internalWriter = [[SFConsoleLogWriter alloc]init];
+        internalWriter = [[SFConsoleLogWriter alloc] init];
     }
     return self;
 }
