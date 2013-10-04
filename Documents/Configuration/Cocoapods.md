@@ -1,30 +1,48 @@
-Using with Cocoapods
+Advanced Spark Integration 
 ========================
-The way to manage library dependencies in Objective-C projects.
+_Spark Attribites_ are using code generation to provide attributes functionality. Such approach require running of additional tooling each time when you compile binary to generated necessary code augmentation. SparkConfigrator.rb automatically downloads all required tools and adds custom build-phase step into your project to handle attributes routine. 
 
-## Sharing pod specifications with yourself ##
+With a basic configuration cocoapods generates workspace with the same name as the only project stored in a folder with Podfile. All dependencies will be integrated into the first target of the project. In case if you already using workspace or have multiple projects in the same folder additional configuration of podfile will be required. Following commands available for handling such cases:
 
-required [gem](http://rubygems.org):
+* [workspace](http://docs.cocoapods.org/podfile.html#workspace) - defines workspace that should be used for integration
+	
+		workspace 'MyCustomWorkspace'
 
-* install cocoapods
+* [xcodeproj](http://docs.cocoapods.org/podfile.html#xcodeproj) - defines project that should include pod dependencies
 
-        $ [sudo] gem install cocoapods
-        $ pod setup
+		xcodeproj 'path\to\project\MyProject1'
+		xcodeproj 'path\to\project\MyProject2'
+		
+* [target](http://docs.cocoapods.org/podfile.html#target) - provides a way to scope dependencies for further linking
 
-* add `SparkFramework.podspec`:
+		target :MyProject1 do
+			pod 'spark-ios-framework/SparkServices'
+		end
 
-        $ pod repo add spark-ios-framework https://github.com/epam/spark-ios-framework.git
-        $ pod push spark-ios-framework --allow-warnings --local-only
+		target :MyProject2 do
+			pod 'spark-ios-framework/SparkWebService'
+		end
 
-* create a project and copy [`Podfile`](https://github.com/edl00k/spark-ios-framework/blob/support-pods/Cocoapods/Podfile)
+* [link_with](http://docs.cocoapods.org/podfile.html#link_with) - defines integration targets 
 
-* install dependencies:
+		link_with ['MyProject1', 'MyProject1Tests']		
 
-        $ pod install
+With a commands above you may shape your dependencies as you want. Here is an example of a complex case:
 
- _Now, we need work with Xcode workspace instead of the project file_
- 
-* copy `SparkAttributesCodeGenerator` (https://github.com/edl00k/spark-ios-framework/tree/master/tools/binaries) file into new directory `binaries` in your own project
+		platform :ios, '6.0'
+		workspace 'MyCustomWorkspace'
 
-* adjust `Run Script` in _"Build Phases"_ before `Compile Sources` for all targets _including Pods.xcodeproj_
+		target :MyProject1 do
+			xcodeproj 'MyProject1/MyProject1'
+			pod 'spark-ios-framework/SparkServices'
+		end
 
+		target :MyProject2 do
+			xcodeproj 'MyProject2/MyProject2'
+			pod 'spark-ios-framework/SparkWebService'
+		end
+		
+		post_install do |installer|
+		  require File.expand_path('./', 'SparkConfigurator.rb')
+		  SparkConfigurator::post_install(installer)
+		end
