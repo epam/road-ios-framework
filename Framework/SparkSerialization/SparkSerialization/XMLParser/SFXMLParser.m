@@ -1,6 +1,6 @@
 //
 //  SFXMLParser.m
-//  SparkDAO
+//  SparkSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -35,42 +35,38 @@
 #import "SFXMLElement.h"
 #import "SFXMLSpecificParser.h"
 
-@interface SFXMLParser ()
-@property (strong, nonatomic) NSMutableArray *parserStack;
-@property (strong, nonatomic) SFXMLElement *rootElement;
-@end
-
 @implementation SFXMLParser {
-    SFObjectPool *pool;
+    SFObjectPool * _pool;
+    NSMutableArray * _parserStack;
+    SFXMLElement * _rootElement;
 }
 
-// main method to invoke when starting the deserialization of an xml document
 + (void)parseXMLData:(NSData * const)xmlData completion:(parseHandler)completionBlock {
     SFXMLParser * const parserDelegate = [[self alloc] init];
     NSXMLParser * const theParser = [[NSXMLParser alloc] initWithData:xmlData];
     theParser.delegate = parserDelegate;
     [theParser parse];
-    completionBlock(parserDelegate.rootElement, [theParser parserError]);
+    completionBlock(parserDelegate->_rootElement, [theParser parserError]);
 }
 
 - (void)initialize {
     [super initialize];
     _parserStack = [[NSMutableArray alloc] init];
-    pool = [[SFObjectPool alloc] init];
-    pool.delegate = self;
+    _pool = [[SFObjectPool alloc] init];
+    _pool.delegate = self;
 }
 
 - (void)registerParserClassNamed:(NSString * const)aParserClassName forElementName:(NSString * const)elementName {
     SFLogDebug(@"Parser(%@) are registered on element with name: %@", aParserClassName, elementName);
-    [pool registerClassNamed:aParserClassName forIdentifier:elementName];
+    [_pool registerClassNamed:aParserClassName forIdentifier:elementName];
 }
 
 - (id<SFXMLParsing>)parserForElementName:(NSString * const)elementName {
-    id<SFXMLParsing> parser = [pool objectForIdentifier:elementName];
+    id<SFXMLParsing> parser = [_pool objectForIdentifier:elementName];
     
     if (parser == nil && [self canUseDefaultParser]) {
-        [pool registerClassNamed:NSStringFromClass([SFXMLSpecificParser class]) forIdentifier:elementName];
-        parser = [pool objectForIdentifier:elementName];
+        [_pool registerClassNamed:NSStringFromClass([SFXMLSpecificParser class]) forIdentifier:elementName];
+        parser = [_pool objectForIdentifier:elementName];
     }
     
     return parser;
@@ -92,6 +88,28 @@
 
 - (void)pool:(SFObjectPool *const)pool didLendObject:(const id<SFXMLParsing>)anObject forIdentifier:(NSString *const)anIdentifier {
     [anObject setParent:[self currentDelegate]];
+}
+
+
+#pragma mark - Parsing delegate methods
+
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
+    id<SFXMLParsing> aParser = [self parserForElementName:elementName];
+    [_parserStack addObject:aParser];
+    [aParser parser:parser didStartElement:elementName namespaceURI:namespaceURI qualifiedName:qName attributes:attributeDict];
+    
+    if (_rootElement == nil) {
+        _rootElement = [aParser element];
+    }
+}
+
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
+    [[self currentDelegate] parser:parser foundCharacters:string];
+}
+
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
+    [[self currentDelegate] parser:parser didEndElement:elementName namespaceURI:namespaceURI qualifiedName:qName];
+    [_parserStack removeLastObject];
 }
 
 @end

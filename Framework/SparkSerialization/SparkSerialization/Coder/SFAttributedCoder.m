@@ -36,16 +36,10 @@
 #import "SFDerived.h"
 #import "SFSerializableDate.h"
 
-@interface SFAttributedCoder ()
-
-@property (strong, nonatomic) id archive;
-
-@end
-
-
 @implementation SFAttributedCoder {
     NSString * _dateFormat;
     NSMutableDictionary * _dateFormatters;
+    id _archive;
 }
 
 
@@ -55,7 +49,7 @@
     self = [super init];
     
     if (self) {
-        self.archive = [[NSMutableDictionary alloc] init];
+        _archive = [[NSMutableDictionary alloc] init];
         _dateFormatters = [[NSMutableDictionary alloc] init];
     }
     
@@ -77,20 +71,20 @@
 
 + (id)encodeRootObjectToSerializableObject:(id)rootObject {
     SFLogInfo(@"Coder(%@ %p) started processing object(%@)", self, self, rootObject);
-    id decoder = [[self alloc] init];
+    SFAttributedCoder *decoder = [[self alloc] init];
     [decoder encodeRootObject:rootObject];
     SFLogInfo(@"Coder(%@ %p) ended processing", self, self);
-    return [decoder archive];
+    return decoder->_archive;
 }
 
 - (void)encodeRootObject:(id)rootObject {
     if ([rootObject isKindOfClass:[NSArray class]]) {
-        self.archive = [self encodeArray:rootObject];
+        _archive = [self encodeArray:rootObject];
     } else if ([rootObject isKindOfClass:[NSDictionary class]]) {
-        self.archive = [self encodeDictionary:rootObject];
+        _archive = [self encodeDictionary:rootObject];
     }
     else {
-        [self.archive setObject:NSStringFromClass([rootObject class]) forKey:SFSerializedObjectClassName];
+        [_archive setObject:NSStringFromClass([rootObject class]) forKey:SFSerializedObjectClassName];
         NSArray *properties;
         @autoreleasepool {            
             Class rootObjectClass = [rootObject class];
@@ -114,16 +108,14 @@
                 NSString *key = [SFSerializationAssistant serializationKeyForProperty:aDesc];
                 
                 if (value != nil) {
-                    [self.archive setObject:value forKey:key];
+                    [_archive setObject:value forKey:key];
                 }
             }
         }    
     }
 }
 
-
-- (id)encodeValue:(id)aValue forProperty:(SFPropertyInfo *)propertyInfo {
-    id value = aValue;
+- (id)encodeValue:(id)value forProperty:(SFPropertyInfo *)propertyInfo {
     id encodedValue = nil;
     
     if ([value isKindOfClass:[NSDate class]]) {
