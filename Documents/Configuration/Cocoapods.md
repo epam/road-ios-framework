@@ -35,11 +35,13 @@ With a commands above you may shape your dependencies as you want. Here is an ex
 		target :MyProject1 do
 			xcodeproj 'MyProject1/MyProject1'
 			pod 'spark-ios-framework/SparkServices'
+			link_with ['MyProject1', 'MyProject1Tests']
 		end
 
 		target :MyProject2 do
 			xcodeproj 'MyProject2/MyProject2'
 			pod 'spark-ios-framework/SparkWebService'
+			#There is no link_with specified, so pod will be linked with a first target in a project
 		end
 		
 		post_install do |installer|
