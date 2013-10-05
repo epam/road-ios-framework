@@ -8,7 +8,7 @@ Registering a service requires 2 simple steps:
 
 * Add category to `SFServiceProvider` with a getter for the service.
 	
-		@interface ESDServiceProvider (SampleService)
+		@interface SFServiceProvider (SampleService)
 		 
 		- (id<SampleServiceInterface>)watchListService;
 		 
