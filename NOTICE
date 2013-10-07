@@ -1,10 +1,18 @@
 NOTICE
 
 ---
+Spark iOS Framework (http://github.com/epam/spark-ios-framework)
+
+Licensed under the BSD v3 license.
+
+Copyright (c) 2013, EPAM Systems, Inc.
+
+---
 Programmatically retrieving IP Address of iPhone (http://blog.zachwaugh.com/post/309927273/programmatically-retrieving-ip-address-of-iphone)
 
 Licensed under the MIT license.
 
 Copyright (c) 2009 Zach Waugh
 
-License terms are available in License.txt file and may also accompany the various software.
+---
+License terms are available in LICENSE file and may also accompany the various software.
