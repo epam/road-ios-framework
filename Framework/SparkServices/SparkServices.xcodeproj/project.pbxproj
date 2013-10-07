@@ -22,7 +22,6 @@
 		7869950116AEC0CF00B28760 /* SFService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7869946316AEBF9A00B28760 /* SFService.m */; };
 		78CBA92616C3D40300DAC9BB /* SparkCore.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 78CBA92416C3D40300DAC9BB /* SparkCore.xcodeproj */; };
 		83AE634917F469560053780E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AE634817F469560053780E /* UIKit.framework */; };
-		D771947517CF41A60011047F /* SparkGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = D771947417CF41A60011047F /* SparkGeneratedAttribute.m */; };
 		D771947717CF41BC0011047F /* SparkGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = D771947617CF41BC0011047F /* SparkGeneratedAttribute.m */; };
 		D7AF13E817CF541500A92C31 /* SFServiceProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AF13E617CF541500A92C31 /* SFServiceProvider.m */; };
 		D7AF13EB17CF558B00A92C31 /* SFServiceProvider.h in Copy Files */ = {isa = PBXBuildFile; fileRef = D7AF13E717CF541500A92C31 /* SFServiceProvider.h */; };
@@ -123,7 +122,6 @@
 		78CBA92416C3D40300DAC9BB /* SparkCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkCore.xcodeproj; path = ../SparkCore/SparkCore.xcodeproj; sourceTree = "<group>"; };
 		78F95ADD16E9F16600E58C3B /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		83AE634817F469560053780E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		D771947417CF41A60011047F /* SparkGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparkGeneratedAttribute.m; path = SparkGeneratedAttributes/SparkGeneratedAttribute.m; sourceTree = "<group>"; };
 		D771947617CF41BC0011047F /* SparkGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparkGeneratedAttribute.m; path = SparkGeneratedAttributes/SparkGeneratedAttribute.m; sourceTree = "<group>"; };
 		D7AF13E617CF541500A92C31 /* SFServiceProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFServiceProvider.m; sourceTree = "<group>"; };
 		D7AF13E717CF541500A92C31 /* SFServiceProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFServiceProvider.h; sourceTree = "<group>"; };
@@ -554,6 +552,8 @@
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SparkServicesTest/SparkServicesTest-Prefix.pch";
 				INFOPLIST_FILE = "SparkServicesTest/SparkServicesTest-Info.plist";
@@ -578,6 +578,8 @@
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SparkServicesTest/SparkServicesTest-Prefix.pch";
 				INFOPLIST_FILE = "SparkServicesTest/SparkServicesTest-Info.plist";
