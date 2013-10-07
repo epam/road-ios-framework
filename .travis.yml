@@ -19,7 +19,7 @@ script:
     - if [[ $SPARK_SCHEME == Simian ]]; then ./script_simian.sh; else ./script_general.sh; fi
 
 after_success:
-    - if [[ $SPARK_SCHEME != Simian ]]; then ./coveralls.rb --extension m; fi
+    - if [[ $SPARK_SCHEME != Simian && $SPARK_SCHEME != SparkAttributesCodeGenerator ]]; then ./coveralls.rb --extension m; fi
 
 notifications:
   email:
