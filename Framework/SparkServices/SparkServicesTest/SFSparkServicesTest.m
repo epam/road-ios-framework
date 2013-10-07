@@ -41,4 +41,18 @@
     STAssertNotNil(databaseManager, @"Service has not been initialised.");
 }
 
+- (void)testServiceWithoutAnnotations {
+    STAssertFalse([SFServiceProvider resolveClassMethod:@selector(serviceWithoutAttributes)], @"Service provider respond with undefined result on wrong specified method");
+}
+
+- (void)testServiceWithMissingPropertyOfAttribute {
+    id service = [SFServiceProvider serviceWithMissingPropertyOfAttribute];
+    STAssertNil(service, @"Service provider respond with undefined result on method with wrong attribute");
+}
+
+- (void)testServiceWithWrongAnnotations {
+    id service = [SFServiceProvider serviceWithWrongAttribute];
+    STAssertNil(service, @"Service provider respond with undefined result on method with wrong attribute");
+}
+
 @end
