@@ -22,8 +22,6 @@
 		78B1BEA116E7721A009AD4EF /* SFLogMessageWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B1BE9B16E7721A009AD4EF /* SFLogMessageWrapper.m */; };
 		78B1BEA216E7721A009AD4EF /* SFStreamDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B1BE9D16E7721A009AD4EF /* SFStreamDelegate.m */; };
 		78B1BEA316E7721A009AD4EF /* SFStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B1BE9F16E7721A009AD4EF /* SFStreamWriter.m */; };
-		838844EE1760DDFA0052973D /* SFLoggerWebServicePath.m in Sources */ = {isa = PBXBuildFile; fileRef = 838844ED1760DDFA0052973D /* SFLoggerWebServicePath.m */; };
-		8388451C176210910052973D /* SFLoggerWebServicePath.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 838844EC1760DDFA0052973D /* SFLoggerWebServicePath.h */; };
 		8D6007DA17D014A00095E17D /* SFServiceProvider+LoggingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6007D917D014A00095E17D /* SFServiceProvider+LoggingService.m */; };
 		8D6007DC17D016890095E17D /* SFServiceProvider+LoggingService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D6007D817D014A00095E17D /* SFServiceProvider+LoggingService.h */; };
 		CD4E844F16F7663F00618316 /* SFConnection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B1BE9716E7721A009AD4EF /* SFConnection.h */; };
@@ -130,7 +128,6 @@
 			dstSubfolderSpec = 16;
 			files = (
 				8D6007DC17D016890095E17D /* SFServiceProvider+LoggingService.h in CopyFiles */,
-				8388451C176210910052973D /* SFLoggerWebServicePath.h in CopyFiles */,
 				CD4E844F16F7663F00618316 /* SFConnection.h in CopyFiles */,
 				CD4E845016F7663F00618316 /* SFConnectionDelegate.h in CopyFiles */,
 				CD4E845116F7663F00618316 /* SFLogMessageWrapper.h in CopyFiles */,
@@ -189,8 +186,6 @@
 		78B1BE9E16E7721A009AD4EF /* SFStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFStreamWriter.h; sourceTree = "<group>"; };
 		78B1BE9F16E7721A009AD4EF /* SFStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFStreamWriter.m; sourceTree = "<group>"; };
 		78F95AFB16E9F1CF00E58C3B /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		838844EC1760DDFA0052973D /* SFLoggerWebServicePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLoggerWebServicePath.h; sourceTree = "<group>"; };
-		838844ED1760DDFA0052973D /* SFLoggerWebServicePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLoggerWebServicePath.m; sourceTree = "<group>"; };
 		8D6007D817D014A00095E17D /* SFServiceProvider+LoggingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFServiceProvider+LoggingService.h"; sourceTree = "<group>"; };
 		8D6007D917D014A00095E17D /* SFServiceProvider+LoggingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SFServiceProvider+LoggingService.m"; sourceTree = "<group>"; };
 		D757824A17CCB91000BD85DA /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -342,7 +337,6 @@
 		789AAE4616C4E42900FF7FB0 /* Logger */ = {
 			isa = PBXGroup;
 			children = (
-				838844EB1760DCF10052973D /* Attributes */,
 				7837BF2C16C4E9E30063A026 /* LogWriters */,
 				7837BF2B16C4E9E30063A026 /* LogService */,
 				7837BF2516C4E4870063A026 /* SFLogging.h */,
@@ -366,15 +360,6 @@
 				78B1BE9F16E7721A009AD4EF /* SFStreamWriter.m */,
 			);
 			path = NetworkLogging;
-			sourceTree = "<group>";
-		};
-		838844EB1760DCF10052973D /* Attributes */ = {
-			isa = PBXGroup;
-			children = (
-				838844EC1760DDFA0052973D /* SFLoggerWebServicePath.h */,
-				838844ED1760DDFA0052973D /* SFLoggerWebServicePath.m */,
-			);
-			path = Attributes;
 			sourceTree = "<group>";
 		};
 		D771948D17CF4DED0011047F /* SparkLoggerTest */ = {
@@ -616,7 +601,6 @@
 				78B1BEA116E7721A009AD4EF /* SFLogMessageWrapper.m in Sources */,
 				78B1BEA216E7721A009AD4EF /* SFStreamDelegate.m in Sources */,
 				78B1BEA316E7721A009AD4EF /* SFStreamWriter.m in Sources */,
-				838844EE1760DDFA0052973D /* SFLoggerWebServicePath.m in Sources */,
 				D771947D17CF43630011047F /* SparkGeneratedAttribute.m in Sources */,
 				8D6007DA17D014A00095E17D /* SFServiceProvider+LoggingService.m in Sources */,
 			);
@@ -755,6 +739,8 @@
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SparkLoggerTest/SparkLoggerTest-Prefix.pch";
 				INFOPLIST_FILE = "SparkLoggerTest/SparkLoggerTest-Info.plist";
@@ -776,6 +762,8 @@
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SparkLoggerTest/SparkLoggerTest-Prefix.pch";
 				INFOPLIST_FILE = "SparkLoggerTest/SparkLoggerTest-Info.plist";

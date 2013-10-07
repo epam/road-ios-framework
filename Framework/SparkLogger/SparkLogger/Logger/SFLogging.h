@@ -26,35 +26,98 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+// See the NOTICE file and the LICENSE file distributed with this work
+// for additional information regarding copyright ownership and licensing
 
-#import <Foundation/Foundation.h>
 #import "SFLogMessage.h"
-#import "SFLogWriter.h"
+
+@class SFLogWriter;
 
 /**
- Describes the logger service's public interface.
+ Describes the logger service's public interface. All methods, except where specified otherwise, are thread-safe and can be safely use in multithread enviorment.
  */
 @protocol SFLogging <NSObject>
 
 @property (nonatomic, assign) SFLogLevel logLevel;
 
+/**
+ * Logs specified message in current set of log writers.
+ * @param message The message that will be logged.
+ */
 - (void)logMessage:(SFLogMessage * const)message;
-- (void)addWriter:(SFLogWriter * const)aWriter;
-- (void)removeWriter:(SFLogWriter * const)aWriter;
+/**
+ * Adds new writers to current set of log writers at the end of list. Method is not thread-safe.
+ * writer The writer that will be added to current set of log writers
+ */
+- (void)addWriter:(SFLogWriter * const)writer;
+/**
+ * Removes specified writer from current set of log writers. Method is not thread-safe.
+ * writer The writer that will be added to current set of log writers
+ */
+- (void)removeWriter:(SFLogWriter * const)writer;
 
+/**
+ * Logs new message with specified message text using internal console logger.
+ * @param messageText The text of message for intialization message object.
+ */
 - (void)logInternalErrorMessage:(NSString * const)messageText;
+/**
+ * Logs new message with predefined log type SFLogLevelInfo and specified message text.
+ * @param messageText The text of message for intialization message object.
+ */
 - (void)logInfoMessage:(NSString * const)messageText;
-- (void)logWarningMessage:(NSString * const)messageText;
-- (void)logErrorMessage:(NSString * const)messageText;
+/**
+ * Logs new message with predefined log type SFLogLevelDebug and specified message text.
+ * @param messageText The text of message for intialization message object.
+ */
 - (void)logDebugMessage:(NSString * const)messageText;
+/**
+ * Logs new message with predefined log type SFLogLevelWarning and specified message text.
+ * @param messageText The text of message for intialization message object.
+ */
+- (void)logWarningMessage:(NSString * const)messageText;
+/**
+ * Logs new message with predefined log type SFLogLevelError and specified message text.
+ * @param messageText The text of message for intialization message object.
+ */
+- (void)logErrorMessage:(NSString * const)messageText;
 
+/**
+ * Logs new message with predefined log type SFLogLevelInfo and specified message text and type.
+ * @param messageText The text of message for intialization message object.
+ * @param type The type of message for initialization message object.
+ */
 - (void)logInfoMessage:(NSString * const)messageText type:(NSString *)type;
-- (void)logWarningMessage:(NSString * const)messageText type:(NSString *)type;
-- (void)logErrorMessage:(NSString * const)messageText type:(NSString *)type;
+/**
+ * Logs new message with predefined log type SFLogLevelDebug and specified message text and type.
+ * @param messageText The text of message for intialization message object.
+ * @param type The type of message for initialization message object.
+ */
 - (void)logDebugMessage:(NSString * const)messageText type:(NSString *)type;
+/**
+ * Logs new message with predefined log type SFLogLevelWarning and specified message text and type.
+ * @param messageText The text of message for intialization message object.
+ * @param type The type of message for initialization message object.
+ */
+- (void)logWarningMessage:(NSString * const)messageText type:(NSString *)type;
+/**
+ * Logs new message with predefined log type SFLogLevelError and specified message text and type.
+ * @param messageText The text of message for intialization message object.
+ * @param type The type of message for initialization message object.
+ */
+- (void)logErrorMessage:(NSString * const)messageText type:(NSString *)type;
 
 @optional
+/**
+ * Returns current log writers.
+ * @return The current array of log writers for logging.
+ */
 - (NSArray *)writers;
+/**
+ * Sets new array of log writers.
+ * @param arrayOfWriters The new array of log writers. Method is not thread-safe.
+ */
 - (void)setWriters:(NSArray * const)arrayOfWriters;
 
 @end

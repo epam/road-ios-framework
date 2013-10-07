@@ -26,9 +26,11 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+// See the NOTICE file and the LICENSE file distributed with this work
+// for additional information regarding copyright ownership and licensing
 
-#import <Foundation/Foundation.h>
-#import "SFLogMessage.h"
+@class SFLogMessage;
 
 /**
  Abstract base class of the log filters - implementing log message checks.
@@ -36,41 +38,34 @@
 @interface SFLogFilter : NSObject
 
 /**
- Invoked by the writer to check if a specific log message passes the test implemented by the filter.
- @param message The message to test.
- @result The result of the message test.
+ * Invoked by the writer to check if a specific log message passes the test implemented by the filter.
+ * @param message The message to test.
+ * @result The result of the message test.
  */
 - (BOOL)hasMessagePassedTest:(SFLogMessage * const)message;
 
 /**
- Creates a filter for the specified log level, allowing only messages of that level to pass the filter's check.
- @param level The log level to filter for.
- @result The filter instance.
- */
-+ (SFLogFilter *)filterForLevel:(SFLogLevel const)level;
-
-/**
- Creates a filter with the specified predicate.
- @param predicate The predicate against which the log message (SFLogMessage instance) is evaluated.
- @result 
+ * Creates a filter with the specified predicate.
+ * @param predicate The predicate against which the log message (SFLogMessage instance) is evaluated.
+ * @result The log filter that was initialized with predicate.
  */
 + (SFLogFilter *)filterWithPrediate:(NSPredicate * const)predicate;
 
 /**
- Provides pre - configured filter for only file type messages
- @result Filter for only file type messages
+ * Provides pre - configured filter for only file type messages
+ * @result Filter for only file type messages
  */
 + (SFLogFilter *)fileFilter;
 
 /**
- Provides pre - configured filter for only network type messages
- @result Filter for only network type messages
+ * Provides pre - configured filter for only network type messages
+ * @result Filter for only network type messages
  */
 + (SFLogFilter *)networkFilter;
 
 /**
- Provides pre - configured filter for only console type messages
- @result Filter for only console type messages
+ * Provides pre - configured filter for only console type messages
+ * @result Filter for only console type messages
  */
 + (SFLogFilter *)consoleFilter;
 
