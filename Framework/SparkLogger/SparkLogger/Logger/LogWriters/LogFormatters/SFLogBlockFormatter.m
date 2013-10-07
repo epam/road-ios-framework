@@ -29,6 +29,8 @@
 
 #import "SFLogBlockFormatter.h"
 
+#import "SFLogMessage.h"
+
 @implementation SFLogBlockFormatter {
     NSString * (^formatterBlock)(SFLogMessage *);
 }

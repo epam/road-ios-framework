@@ -29,6 +29,8 @@
 
 #import "SFLogPlainFormatter.h"
 
+#import "SFLogMessage.h"
+
 @implementation SFLogPlainFormatter {
     NSDateFormatter *formatter;
 }

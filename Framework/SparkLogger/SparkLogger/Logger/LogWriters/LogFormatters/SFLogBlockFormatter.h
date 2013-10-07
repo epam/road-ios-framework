@@ -28,13 +28,19 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "SFLogFormatter.h"
-#import "SFLogMessage.h"
+
+@class SFLogMessage;
 
 /**
  Concrete subclass of the SFLogFormatter class.
  */
 @interface SFLogBlockFormatter : SFLogFormatter
 
+/**
+ * Creates formatter with specified block.
+ * @param formatterBlock The block that format message.
+ * @return The log formatter initialized with block.
+ */
 + (SFLogBlockFormatter *)formatterWithBlock:(NSString * (^)(SFLogMessage *))formatterBlock;
 
 @end

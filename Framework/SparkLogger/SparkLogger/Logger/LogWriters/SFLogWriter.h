@@ -28,9 +28,10 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <Foundation/Foundation.h>
-#import "SFLogMessage.h"
-#import "SFLogFilter.h"
-#import "SFLogFormatter.h"
+
+@class SFLogFilter;
+@class SFLogMessage;
+@class SFLogFormatter;
 
 /**
  Abstract base class of all log writers, contains all the methods and the necessary implementations to make this class and its subclass function as log writers.
@@ -77,7 +78,7 @@
 - (BOOL)hasMessagePassedFilters:(SFLogMessage *const)aMessage;
 
 /**
- Logs a message to this writer.
+ Logs a message to this writer. Method has to be implemented in subclasses.
  @param aMessage The message to be logged.
  */
 - (void)logValidMessage:(SFLogMessage * const)aMessage;

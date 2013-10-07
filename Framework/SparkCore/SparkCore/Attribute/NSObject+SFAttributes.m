@@ -43,10 +43,6 @@
 #pragma mark - Attributes Private API
 
 + (NSArray *)SF_attributesFromCreatorInvocation:(NSInvocation *)attributeCreatorValueInvocation {
-    if (!attributeCreatorValueInvocation) {
-        return nil;
-    }
-    
     [attributeCreatorValueInvocation invoke];
     
     __unsafe_unretained NSArray *result = nil;
@@ -56,10 +52,6 @@
 }
 
 + (id)SF_attributeWithType:(Class)requiredClassOfAttribute from:(NSArray *)attributes {
-    if ([attributes count] == 0) {
-        return nil;
-    }
-    
     id result = nil;
     
     for (NSObject *attribute in attributes) {

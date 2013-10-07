@@ -82,14 +82,56 @@ typedef NS_ENUM(NSInteger, SFLogLevel) {
  */
 + (SFLogMessage *)logMessage:(NSString * const)messageText type:(NSString * const)type level:(SFLogLevel const)level userInfo:(NSDictionary * const)userInfo;
 
+/**
+ * Creates log message with predefined log type SFLogLevelInfo and specified message text.
+ * @param messageText The text of message for intialization message object.
+ */
 + (SFLogMessage *)infoMessage:(NSString * const)messageText;
-+ (SFLogMessage *)warningMessage:(NSString * const)messageText;
-+ (SFLogMessage *)errorMessage:(NSString * const)messageText;
+
+/**
+ * Creates log message with predefined log type SFLogLevelDebug and specified message text.
+ * @param messageText The text of message for intialization message object.
+ */
 + (SFLogMessage *)debugMessage:(NSString * const)messageText;
 
+/**
+ * Creates log message with predefined log type SFLogLevelWarning and specified message text.
+ * @param messageText The text of message for intialization message object.
+ */
++ (SFLogMessage *)warningMessage:(NSString * const)messageText;
+
+/**
+ * Creates log message with predefined log type SFLogLevelError and specified message text.
+ * @param messageText The text of message for intialization message object.
+ */
++ (SFLogMessage *)errorMessage:(NSString * const)messageText;
+
+/**
+ * Creates log message with predefined log type SFLogLevelInfo and specified message text and type.
+ * @param messageText The text of message for intialization message object.
+ * @param type The type of message for initialization message object.
+ */
 + (SFLogMessage *)infoMessage:(NSString * const)messageText type:(NSString *)type;
-+ (SFLogMessage *)warningMessage:(NSString * const)messageText type:(NSString *)type;
-+ (SFLogMessage *)errorMessage:(NSString * const)messageText type:(NSString *)type;
+
+/**
+ * Creates log message with predefined log type SFLogLevelDebug and specified message text and type.
+ * @param messageText The text of message for intialization message object.
+ * @param type The type of message for initialization message object.
+ */
 + (SFLogMessage *)debugMessage:(NSString * const)messageText type:(NSString *)type;
+
+/**
+ * Creates log message with predefined log type SFLogLevelWarning and specified message text and type.
+ * @param messageText The text of message for intialization message object.
+ * @param type The type of message for initialization message object.
+ */
++ (SFLogMessage *)warningMessage:(NSString * const)messageText type:(NSString *)type;
+
+/**
+ * Creates log message with predefined log type SFLogLevelError and specified message text and type.
+ * @param messageText The text of message for intialization message object.
+ * @param type The type of message for initialization message object.
+ */
++ (SFLogMessage *)errorMessage:(NSString * const)messageText type:(NSString *)type;
 
 @end
