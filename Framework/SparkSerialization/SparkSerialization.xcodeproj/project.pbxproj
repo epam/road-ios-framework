@@ -19,6 +19,10 @@
 		3337D3DD1803ECE200FE22F4 /* SFAttributedXMLDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3337D3D81803ECE200FE22F4 /* SFAttributedXMLDecoder.m */; };
 		33BC999A17FD818F0039EB5E /* SFAttributedXMLCoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BC999917FD818F0039EB5E /* SFAttributedXMLCoderTest.m */; };
 		33BC999B17FD83020039EB5E /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 331843EF17FC656600634BF6 /* libxml2.2.dylib */; };
+		33F0EEEB1804AA15001DCCED /* SFAttributedCoder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3337D3CD1803ECE200FE22F4 /* SFAttributedCoder.h */; };
+		33F0EEEC1804AA15001DCCED /* SFAttributedDecoder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3337D3CF1803ECE200FE22F4 /* SFAttributedDecoder.h */; };
+		33F0EEED1804AA15001DCCED /* SFAttributedXMLCoder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3337D3D51803ECE200FE22F4 /* SFAttributedXMLCoder.h */; };
+		33F0EEEE1804AA15001DCCED /* SFAttributedXMLDecoder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3337D3D71803ECE200FE22F4 /* SFAttributedXMLDecoder.h */; };
 		5A1CC60A176F279300A6C154 /* TempAttributes in Resources */ = {isa = PBXBuildFile; fileRef = 78BCFF7F16D24E6800D23908 /* TempAttributes */; };
 		5AD1FC4F1766042200E67BC4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD1FC4E1766042200E67BC4 /* Cocoa.framework */; };
 		782B6D6816C3D4C10057DF2C /* SparkCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782B6CE116C3D46A0057DF2C /* SparkCore.framework */; };
@@ -163,6 +167,10 @@
 			dstPath = include/Spark;
 			dstSubfolderSpec = 16;
 			files = (
+				33F0EEEB1804AA15001DCCED /* SFAttributedCoder.h in CopyFiles */,
+				33F0EEEC1804AA15001DCCED /* SFAttributedDecoder.h in CopyFiles */,
+				33F0EEED1804AA15001DCCED /* SFAttributedXMLCoder.h in CopyFiles */,
+				33F0EEEE1804AA15001DCCED /* SFAttributedXMLDecoder.h in CopyFiles */,
 				83A36B3817982C1E00449C0C /* SFSerializableDate.h in CopyFiles */,
 				7865355B163969BB00E86841 /* NSJSONSerialization+SFJSONStringHandling.h in CopyFiles */,
 				7895729616382B06009D7417 /* SFSerializable.h in CopyFiles */,

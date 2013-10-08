@@ -40,12 +40,7 @@
 #import "SFSerializableDate.h"
 #import "SFAttributedCoder.h"
 #import "SFAttributedDecoder.h"
-#import "SFXMLParser.h"
-#import "SFXMLElement.h"
-#import "SFXMLSpecificParser.h"
-#import "SFXMLModelParser.h"
-#import "SFEntityElement.h"
-#import "SFPropertyElement.h"
-#import "SFRelationshipElement.h"
+#import "SFAttributedXMLCoder.h"
+#import "SFAttributedXMLDecoder.h"
 
 #endif
