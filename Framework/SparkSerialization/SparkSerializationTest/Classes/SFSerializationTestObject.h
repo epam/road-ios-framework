@@ -57,6 +57,8 @@ SF_ATTRIBUTE(SFSerializableDate, unixTimestamp = YES)
 
 @property (strong, nonatomic) SFSerializationTestObject *child;
 
+//@property (assign, nonatomic) NSRange range;
+
 SF_ATTRIBUTE(SFSerializableCollection, collectionClass = [SFSerializationTestObject class])
 @property (strong, nonatomic) NSArray *subObjects;
 

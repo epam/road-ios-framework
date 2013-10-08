@@ -7,8 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		331843EE17FC628D00634BF6 /* SFXMLAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 331843ED17FC628D00634BF6 /* SFXMLAttributes.m */; };
+		331843F017FC656600634BF6 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 331843EF17FC656600634BF6 /* libxml2.2.dylib */; };
+		3337D3801802B5AE00FE22F4 /* DeserialisationTest.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3337D37F1802B5AE00FE22F4 /* DeserialisationTest.xml */; };
+		3337D3831802BB1600FE22F4 /* DeserialisationTest2.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3337D3811802BB1600FE22F4 /* DeserialisationTest2.xml */; };
+		3337D3841802BB1600FE22F4 /* DeserialisationTest3.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3337D3821802BB1600FE22F4 /* DeserialisationTest3.xml */; };
+		3337D39D1803DED500FE22F4 /* SFXMLSerializationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3337D39C1803DED500FE22F4 /* SFXMLSerializationContext.m */; };
+		336D206817F44702000F8D38 /* SFAttributedXMLCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 336D206717F44702000F8D38 /* SFAttributedXMLCoder.m */; };
+		33BBB4B417FE77B50073F8CD /* SFAttributedXMLDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BBB4B317FE77B50073F8CD /* SFAttributedXMLDecoder.m */; };
+		33BC999A17FD818F0039EB5E /* SFAttributedXMLCoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BC999917FD818F0039EB5E /* SFAttributedXMLCoderTest.m */; };
+		33BC999B17FD83020039EB5E /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 331843EF17FC656600634BF6 /* libxml2.2.dylib */; };
 		5A1CC60A176F279300A6C154 /* TempAttributes in Resources */ = {isa = PBXBuildFile; fileRef = 78BCFF7F16D24E6800D23908 /* TempAttributes */; };
-		5A930A26173A85E200B649FF /* SFXMLModelParser.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = B975790116B3FE9300AE855D /* SFXMLModelParser.plist */; };
 		5AD1FC4F1766042200E67BC4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD1FC4E1766042200E67BC4 /* Cocoa.framework */; };
 		782B6D6816C3D4C10057DF2C /* SparkCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782B6CE116C3D46A0057DF2C /* SparkCore.framework */; };
 		782B6D6E16C3D4CF0057DF2C /* libSparkCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 782B6CDF16C3D46A0057DF2C /* libSparkCore.a */; };
@@ -21,17 +30,6 @@
 		786535591639648E00E86841 /* NSJSONSerialization+SFJSONStringHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = 786535571639648E00E86841 /* NSJSONSerialization+SFJSONStringHandling.m */; };
 		7865355A1639648E00E86841 /* NSJSONSerialization+SFJSONStringHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = 786535571639648E00E86841 /* NSJSONSerialization+SFJSONStringHandling.m */; };
 		7865355B163969BB00E86841 /* NSJSONSerialization+SFJSONStringHandling.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 786535561639648E00E86841 /* NSJSONSerialization+SFJSONStringHandling.h */; };
-		786995EC16AEC29000B28760 /* SFXMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 786995E916AEC29000B28760 /* SFXMLParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		786995ED16AEC29000B28760 /* SFXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 786995EA16AEC29000B28760 /* SFXMLParser.m */; };
-		786995EE16AEC29000B28760 /* SFXMLParsing.h in Headers */ = {isa = PBXBuildFile; fileRef = 786995EB16AEC29000B28760 /* SFXMLParsing.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7869966116AED4C800B28760 /* SFXMLSpecificParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 7869965F16AED4C800B28760 /* SFXMLSpecificParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7869966216AED4C800B28760 /* SFXMLSpecificParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7869966016AED4C800B28760 /* SFXMLSpecificParser.m */; };
-		7869966316AED4C800B28760 /* SFXMLSpecificParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7869966016AED4C800B28760 /* SFXMLSpecificParser.m */; };
-		7869967216AEE3A800B28760 /* SFXMLElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 7869967016AEE3A800B28760 /* SFXMLElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7869967316AEE3A800B28760 /* SFXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 7869967116AEE3A800B28760 /* SFXMLElement.m */; };
-		7869967416AEE3A800B28760 /* SFXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 7869967116AEE3A800B28760 /* SFXMLElement.m */; };
-		786996B816AFF27900B28760 /* SFXMLParsingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 786996B716AFF27900B28760 /* SFXMLParsingTest.m */; };
-		786996BA16B0078800B28760 /* SFXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 786995EA16AEC29000B28760 /* SFXMLParser.m */; };
 		78957280163808BB009D7417 /* SFAttributedCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7895727E163808BB009D7417 /* SFAttributedCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78957281163808BB009D7417 /* SFAttributedCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7895727F163808BB009D7417 /* SFAttributedCoder.m */; };
 		78957282163808BB009D7417 /* SFAttributedCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7895727F163808BB009D7417 /* SFAttributedCoder.m */; };
@@ -48,18 +46,6 @@
 		7895729516382AEE009D7417 /* SFAttributedCoder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7895727E163808BB009D7417 /* SFAttributedCoder.h */; };
 		7895729616382B06009D7417 /* SFSerializable.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7895728516380A33009D7417 /* SFSerializable.h */; };
 		7895729716382B08009D7417 /* SFDerived.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7895728F163828E1009D7417 /* SFDerived.h */; };
-		78BCAECC16B674E7009EF466 /* SFXMLParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 786995E916AEC29000B28760 /* SFXMLParser.h */; };
-		78BCAECD16B674E7009EF466 /* SFXMLParser+ParseDelegation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B97578F916B3DE1B00AE855D /* SFXMLParser+ParseDelegation.h */; };
-		78BCAECE16B674E7009EF466 /* SFXMLSpecificParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7869965F16AED4C800B28760 /* SFXMLSpecificParser.h */; };
-		78BCAECF16B674E7009EF466 /* SFXMLParsing.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 786995EB16AEC29000B28760 /* SFXMLParsing.h */; };
-		78BCAED016B674E7009EF466 /* SFXMLElement.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7869967016AEE3A800B28760 /* SFXMLElement.h */; };
-		78BCAED116B674E7009EF466 /* SFEntityElement.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B97578CB16B3DC7C00AE855D /* SFEntityElement.h */; };
-		78BCAED216B674E7009EF466 /* SFPropertyElement.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B97578CD16B3DC7C00AE855D /* SFPropertyElement.h */; };
-		78BCAED316B674E7009EF466 /* SFRelationshipElement.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B97578CF16B3DC7C00AE855D /* SFRelationshipElement.h */; };
-		78BCAED416B674E7009EF466 /* SFXMLEntityParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B97578D216B3DC7C00AE855D /* SFXMLEntityParser.h */; };
-		78BCAED516B674E7009EF466 /* SFXMLRelationshipParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B97578D416B3DC7C00AE855D /* SFXMLRelationshipParser.h */; };
-		78BCAED616B674E7009EF466 /* SFXMLRelationshipPropertyParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B97578D616B3DC7C00AE855D /* SFXMLRelationshipPropertyParser.h */; };
-		78BCAED716B674E7009EF466 /* SFXMLModelParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B97578D816B3DC7C00AE855D /* SFXMLModelParser.h */; };
 		78CBA92B16C3D41800DAC9BB /* SparkCore.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 78CBA92916C3D41800DAC9BB /* SparkCore.xcodeproj */; };
 		78DD732B164A6305009B334C /* SFSerializableCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 78DD7329164A6305009B334C /* SFSerializableCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78DD732C164A6305009B334C /* SFSerializableCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DD732A164A6305009B334C /* SFSerializableCollection.m */; };
@@ -80,32 +66,6 @@
 		9F80CD5C15F64EEE0031BA24 /* SparkSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F80CD5B15F64EEE0031BA24 /* SparkSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F80CD8215F64F500031BA24 /* SparkSerialization.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9F80CD5B15F64EEE0031BA24 /* SparkSerialization.h */; };
 		9FA9F4E015F636C500FDE9E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FA9F4DE15F636C500FDE9E0 /* InfoPlist.strings */; };
-		B97578DA16B3DC7C00AE855D /* SFEntityElement.h in Headers */ = {isa = PBXBuildFile; fileRef = B97578CB16B3DC7C00AE855D /* SFEntityElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B97578DB16B3DC7C00AE855D /* SFEntityElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578CC16B3DC7C00AE855D /* SFEntityElement.m */; };
-		B97578DC16B3DC7C00AE855D /* SFEntityElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578CC16B3DC7C00AE855D /* SFEntityElement.m */; };
-		B97578DE16B3DC7C00AE855D /* SFPropertyElement.h in Headers */ = {isa = PBXBuildFile; fileRef = B97578CD16B3DC7C00AE855D /* SFPropertyElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B97578DF16B3DC7C00AE855D /* SFPropertyElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578CE16B3DC7C00AE855D /* SFPropertyElement.m */; };
-		B97578E016B3DC7C00AE855D /* SFPropertyElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578CE16B3DC7C00AE855D /* SFPropertyElement.m */; };
-		B97578E216B3DC7C00AE855D /* SFRelationshipElement.h in Headers */ = {isa = PBXBuildFile; fileRef = B97578CF16B3DC7C00AE855D /* SFRelationshipElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B97578E316B3DC7C00AE855D /* SFRelationshipElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578D016B3DC7C00AE855D /* SFRelationshipElement.m */; };
-		B97578E416B3DC7C00AE855D /* SFRelationshipElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578D016B3DC7C00AE855D /* SFRelationshipElement.m */; };
-		B97578E616B3DC7C00AE855D /* SFXMLEntityParser.h in Headers */ = {isa = PBXBuildFile; fileRef = B97578D216B3DC7C00AE855D /* SFXMLEntityParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B97578E716B3DC7C00AE855D /* SFXMLEntityParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578D316B3DC7C00AE855D /* SFXMLEntityParser.m */; };
-		B97578E816B3DC7C00AE855D /* SFXMLEntityParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578D316B3DC7C00AE855D /* SFXMLEntityParser.m */; };
-		B97578EA16B3DC7C00AE855D /* SFXMLRelationshipParser.h in Headers */ = {isa = PBXBuildFile; fileRef = B97578D416B3DC7C00AE855D /* SFXMLRelationshipParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B97578EB16B3DC7C00AE855D /* SFXMLRelationshipParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578D516B3DC7C00AE855D /* SFXMLRelationshipParser.m */; };
-		B97578EC16B3DC7C00AE855D /* SFXMLRelationshipParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578D516B3DC7C00AE855D /* SFXMLRelationshipParser.m */; };
-		B97578EE16B3DC7C00AE855D /* SFXMLRelationshipPropertyParser.h in Headers */ = {isa = PBXBuildFile; fileRef = B97578D616B3DC7C00AE855D /* SFXMLRelationshipPropertyParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B97578EF16B3DC7C00AE855D /* SFXMLRelationshipPropertyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578D716B3DC7C00AE855D /* SFXMLRelationshipPropertyParser.m */; };
-		B97578F016B3DC7C00AE855D /* SFXMLRelationshipPropertyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578D716B3DC7C00AE855D /* SFXMLRelationshipPropertyParser.m */; };
-		B97578F216B3DC7C00AE855D /* SFXMLModelParser.h in Headers */ = {isa = PBXBuildFile; fileRef = B97578D816B3DC7C00AE855D /* SFXMLModelParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B97578F316B3DC7C00AE855D /* SFXMLModelParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578D916B3DC7C00AE855D /* SFXMLModelParser.m */; };
-		B97578F416B3DC7C00AE855D /* SFXMLModelParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578D916B3DC7C00AE855D /* SFXMLModelParser.m */; };
-		B97578FB16B3DE1B00AE855D /* SFXMLParser+ParseDelegation.h in Headers */ = {isa = PBXBuildFile; fileRef = B97578F916B3DE1B00AE855D /* SFXMLParser+ParseDelegation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B97578FC16B3DE1B00AE855D /* SFXMLParser+ParseDelegation.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578FA16B3DE1B00AE855D /* SFXMLParser+ParseDelegation.m */; };
-		B97578FD16B3DE1B00AE855D /* SFXMLParser+ParseDelegation.m in Sources */ = {isa = PBXBuildFile; fileRef = B97578FA16B3DE1B00AE855D /* SFXMLParser+ParseDelegation.m */; };
-		B975790216B3FE9300AE855D /* SFXMLModelParser.plist in Resources */ = {isa = PBXBuildFile; fileRef = B975790116B3FE9300AE855D /* SFXMLModelParser.plist */; };
-		B975790316B3FE9300AE855D /* SFXMLModelParser.plist in Resources */ = {isa = PBXBuildFile; fileRef = B975790116B3FE9300AE855D /* SFXMLModelParser.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,7 +170,6 @@
 			dstSubfolderSpec = 16;
 			files = (
 				83A36B3817982C1E00449C0C /* SFSerializableDate.h in CopyFiles */,
-				5A930A26173A85E200B649FF /* SFXMLModelParser.plist in CopyFiles */,
 				7865355B163969BB00E86841 /* NSJSONSerialization+SFJSONStringHandling.h in CopyFiles */,
 				7895729616382B06009D7417 /* SFSerializable.h in CopyFiles */,
 				7895729416382AEB009D7417 /* SFAttributedDecoder.h in CopyFiles */,
@@ -218,24 +177,25 @@
 				7895729516382AEE009D7417 /* SFAttributedCoder.h in CopyFiles */,
 				78DD732F164A6553009B334C /* SFSerializableCollection.h in CopyFiles */,
 				9F80CD8215F64F500031BA24 /* SparkSerialization.h in CopyFiles */,
-				78BCAECC16B674E7009EF466 /* SFXMLParser.h in CopyFiles */,
-				78BCAECD16B674E7009EF466 /* SFXMLParser+ParseDelegation.h in CopyFiles */,
-				78BCAECE16B674E7009EF466 /* SFXMLSpecificParser.h in CopyFiles */,
-				78BCAECF16B674E7009EF466 /* SFXMLParsing.h in CopyFiles */,
-				78BCAED016B674E7009EF466 /* SFXMLElement.h in CopyFiles */,
-				78BCAED116B674E7009EF466 /* SFEntityElement.h in CopyFiles */,
-				78BCAED216B674E7009EF466 /* SFPropertyElement.h in CopyFiles */,
-				78BCAED316B674E7009EF466 /* SFRelationshipElement.h in CopyFiles */,
-				78BCAED416B674E7009EF466 /* SFXMLEntityParser.h in CopyFiles */,
-				78BCAED516B674E7009EF466 /* SFXMLRelationshipParser.h in CopyFiles */,
-				78BCAED616B674E7009EF466 /* SFXMLRelationshipPropertyParser.h in CopyFiles */,
-				78BCAED716B674E7009EF466 /* SFXMLModelParser.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		331843EC17FC628D00634BF6 /* SFXMLAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFXMLAttributes.h; sourceTree = "<group>"; };
+		331843ED17FC628D00634BF6 /* SFXMLAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFXMLAttributes.m; sourceTree = "<group>"; };
+		331843EF17FC656600634BF6 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		3337D37F1802B5AE00FE22F4 /* DeserialisationTest.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DeserialisationTest.xml; sourceTree = "<group>"; };
+		3337D3811802BB1600FE22F4 /* DeserialisationTest2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DeserialisationTest2.xml; sourceTree = "<group>"; };
+		3337D3821802BB1600FE22F4 /* DeserialisationTest3.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DeserialisationTest3.xml; sourceTree = "<group>"; };
+		3337D39B1803DED500FE22F4 /* SFXMLSerializationContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFXMLSerializationContext.h; sourceTree = "<group>"; };
+		3337D39C1803DED500FE22F4 /* SFXMLSerializationContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFXMLSerializationContext.m; sourceTree = "<group>"; };
+		336D206617F44702000F8D38 /* SFAttributedXMLCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAttributedXMLCoder.h; sourceTree = "<group>"; };
+		336D206717F44702000F8D38 /* SFAttributedXMLCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAttributedXMLCoder.m; sourceTree = "<group>"; };
+		33BBB4B217FE77B50073F8CD /* SFAttributedXMLDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAttributedXMLDecoder.h; sourceTree = "<group>"; };
+		33BBB4B317FE77B50073F8CD /* SFAttributedXMLDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAttributedXMLDecoder.m; sourceTree = "<group>"; };
+		33BC999917FD818F0039EB5E /* SFAttributedXMLCoderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFAttributedXMLCoderTest.m; path = ../SFAttributedXMLCoderTest.m; sourceTree = "<group>"; };
 		5AD1FC4E1766042200E67BC4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = ../../../../System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		7841617D16480C1D0089FDE9 /* SparkSerializationTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SparkSerializationTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7841617E16480C1D0089FDE9 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -250,15 +210,6 @@
 		78513E6F1649220C0049549A /* SFAnnotatedCoderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFAnnotatedCoderTest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		786535561639648E00E86841 /* NSJSONSerialization+SFJSONStringHandling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSJSONSerialization+SFJSONStringHandling.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		786535571639648E00E86841 /* NSJSONSerialization+SFJSONStringHandling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSJSONSerialization+SFJSONStringHandling.m"; sourceTree = "<group>"; };
-		786995E916AEC29000B28760 /* SFXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFXMLParser.h; sourceTree = "<group>"; };
-		786995EA16AEC29000B28760 /* SFXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFXMLParser.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		786995EB16AEC29000B28760 /* SFXMLParsing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFXMLParsing.h; sourceTree = "<group>"; };
-		7869965F16AED4C800B28760 /* SFXMLSpecificParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFXMLSpecificParser.h; sourceTree = "<group>"; };
-		7869966016AED4C800B28760 /* SFXMLSpecificParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFXMLSpecificParser.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		7869967016AEE3A800B28760 /* SFXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFXMLElement.h; sourceTree = "<group>"; };
-		7869967116AEE3A800B28760 /* SFXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFXMLElement.m; sourceTree = "<group>"; };
-		786996B616AFF27900B28760 /* SFXMLParsingTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFXMLParsingTest.h; sourceTree = "<group>"; };
-		786996B716AFF27900B28760 /* SFXMLParsingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFXMLParsingTest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7895727E163808BB009D7417 /* SFAttributedCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SFAttributedCoder.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		7895727F163808BB009D7417 /* SFAttributedCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFAttributedCoder.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7895728516380A33009D7417 /* SFSerializable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SFSerializable.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -288,23 +239,6 @@
 		9FA9F4DD15F636C500FDE9E0 /* SparkSerializationMac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SparkSerializationMac-Info.plist"; sourceTree = "<group>"; };
 		9FA9F4DF15F636C500FDE9E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9FA9F4E115F636C500FDE9E0 /* SparkSerializationMac-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SparkSerializationMac-Prefix.pch"; sourceTree = "<group>"; };
-		B97578CB16B3DC7C00AE855D /* SFEntityElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFEntityElement.h; sourceTree = "<group>"; };
-		B97578CC16B3DC7C00AE855D /* SFEntityElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFEntityElement.m; sourceTree = "<group>"; };
-		B97578CD16B3DC7C00AE855D /* SFPropertyElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPropertyElement.h; sourceTree = "<group>"; };
-		B97578CE16B3DC7C00AE855D /* SFPropertyElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPropertyElement.m; sourceTree = "<group>"; };
-		B97578CF16B3DC7C00AE855D /* SFRelationshipElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFRelationshipElement.h; sourceTree = "<group>"; };
-		B97578D016B3DC7C00AE855D /* SFRelationshipElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFRelationshipElement.m; sourceTree = "<group>"; };
-		B97578D216B3DC7C00AE855D /* SFXMLEntityParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFXMLEntityParser.h; sourceTree = "<group>"; };
-		B97578D316B3DC7C00AE855D /* SFXMLEntityParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFXMLEntityParser.m; sourceTree = "<group>"; };
-		B97578D416B3DC7C00AE855D /* SFXMLRelationshipParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFXMLRelationshipParser.h; sourceTree = "<group>"; };
-		B97578D516B3DC7C00AE855D /* SFXMLRelationshipParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFXMLRelationshipParser.m; sourceTree = "<group>"; };
-		B97578D616B3DC7C00AE855D /* SFXMLRelationshipPropertyParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFXMLRelationshipPropertyParser.h; sourceTree = "<group>"; };
-		B97578D716B3DC7C00AE855D /* SFXMLRelationshipPropertyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFXMLRelationshipPropertyParser.m; sourceTree = "<group>"; };
-		B97578D816B3DC7C00AE855D /* SFXMLModelParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFXMLModelParser.h; sourceTree = "<group>"; };
-		B97578D916B3DC7C00AE855D /* SFXMLModelParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFXMLModelParser.m; sourceTree = "<group>"; };
-		B97578F916B3DE1B00AE855D /* SFXMLParser+ParseDelegation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFXMLParser+ParseDelegation.h"; sourceTree = "<group>"; };
-		B97578FA16B3DE1B00AE855D /* SFXMLParser+ParseDelegation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "SFXMLParser+ParseDelegation.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		B975790116B3FE9300AE855D /* SFXMLModelParser.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SFXMLModelParser.plist; sourceTree = "<group>"; };
 		CDA9F5D416E9F1D9000A50CC /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		CDB87E6616EA0BA2003D9081 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -314,6 +248,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33BC999B17FD83020039EB5E /* libxml2.2.dylib in Frameworks */,
 				8D60079817D004340095E17D /* UIKit.framework in Frameworks */,
 				8D60079517D0002D0095E17D /* libSparkServices.a in Frameworks */,
 				8D60078317CFFF2C0095E17D /* libSparkLogger.a in Frameworks */,
@@ -328,6 +263,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				331843F017FC656600634BF6 /* libxml2.2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +279,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3337D3991803DED500FE22F4 /* XML */ = {
+			isa = PBXGroup;
+			children = (
+				3337D39A1803DED500FE22F4 /* Internal */,
+			);
+			path = XML;
+			sourceTree = "<group>";
+		};
+		3337D39A1803DED500FE22F4 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				3337D39B1803DED500FE22F4 /* SFXMLSerializationContext.h */,
+				3337D39C1803DED500FE22F4 /* SFXMLSerializationContext.m */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
 		782B6C8216C3D46A0057DF2C /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,7 +312,6 @@
 				8D60078417CFFF7D0095E17D /* SparkGeneratedAttributes */,
 				784161A416480C670089FDE9 /* Categories */,
 				784161A516480C670089FDE9 /* Classes */,
-				786996B516AFF26900B28760 /* XMLSerialization */,
 				784161A616480C670089FDE9 /* Resources */,
 				7841618516480C1E0089FDE9 /* Supporting Files */,
 			);
@@ -392,6 +344,7 @@
 				78513E6C164921BF0049549A /* SFSerializationTestObject.m */,
 				78513E6E1649220C0049549A /* SFAnnotatedCoderTest.h */,
 				78513E6F1649220C0049549A /* SFAnnotatedCoderTest.m */,
+				33BC999917FD818F0039EB5E /* SFAttributedXMLCoderTest.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -401,6 +354,9 @@
 			children = (
 				78BCFF7F16D24E6800D23908 /* TempAttributes */,
 				83BEEF701744EAB50095BD53 /* DeserialisationTest.json */,
+				3337D37F1802B5AE00FE22F4 /* DeserialisationTest.xml */,
+				3337D3811802BB1600FE22F4 /* DeserialisationTest2.xml */,
+				3337D3821802BB1600FE22F4 /* DeserialisationTest3.xml */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -429,6 +385,7 @@
 		7846755A15C16C21000E02DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				331843EF17FC656600634BF6 /* libxml2.2.dylib */,
 				8D60078717D000120095E17D /* SparkServices.xcodeproj */,
 				8D60077817CFFECC0095E17D /* SparkLogger.xcodeproj */,
 				78CBA92916C3D41800DAC9BB /* SparkCore.xcodeproj */,
@@ -451,40 +408,6 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
-		786995E516AEC27100B28760 /* XMLParser */ = {
-			isa = PBXGroup;
-			children = (
-				7869967616AEEE9800B28760 /* SpecificClasses */,
-				786995E916AEC29000B28760 /* SFXMLParser.h */,
-				786995EA16AEC29000B28760 /* SFXMLParser.m */,
-				B97578F916B3DE1B00AE855D /* SFXMLParser+ParseDelegation.h */,
-				B97578FA16B3DE1B00AE855D /* SFXMLParser+ParseDelegation.m */,
-				7869965F16AED4C800B28760 /* SFXMLSpecificParser.h */,
-				7869966016AED4C800B28760 /* SFXMLSpecificParser.m */,
-				786995EB16AEC29000B28760 /* SFXMLParsing.h */,
-				7869967016AEE3A800B28760 /* SFXMLElement.h */,
-				7869967116AEE3A800B28760 /* SFXMLElement.m */,
-			);
-			path = XMLParser;
-			sourceTree = "<group>";
-		};
-		7869967616AEEE9800B28760 /* SpecificClasses */ = {
-			isa = PBXGroup;
-			children = (
-				B97578C916B3DC7C00AE855D /* DatabaseModel */,
-			);
-			path = SpecificClasses;
-			sourceTree = "<group>";
-		};
-		786996B516AFF26900B28760 /* XMLSerialization */ = {
-			isa = PBXGroup;
-			children = (
-				786996B616AFF27900B28760 /* SFXMLParsingTest.h */,
-				786996B716AFF27900B28760 /* SFXMLParsingTest.m */,
-			);
-			path = XMLSerialization;
-			sourceTree = "<group>";
-		};
 		78957284163809A0009D7417 /* Attributes */ = {
 			isa = PBXGroup;
 			children = (
@@ -496,6 +419,8 @@
 				78957290163828E1009D7417 /* SFDerived.m */,
 				78DD7329164A6305009B334C /* SFSerializableCollection.h */,
 				78DD732A164A6305009B334C /* SFSerializableCollection.m */,
+				331843EC17FC628D00634BF6 /* SFXMLAttributes.h */,
+				331843ED17FC628D00634BF6 /* SFXMLAttributes.m */,
 			);
 			path = Attributes;
 			sourceTree = "<group>";
@@ -541,11 +466,11 @@
 			children = (
 				8D1239B617CFAE9300094213 /* Assistants */,
 				9F80CD5B15F64EEE0031BA24 /* SparkSerialization.h */,
-				786995E516AEC27100B28760 /* XMLParser */,
 				78957284163809A0009D7417 /* Attributes */,
 				786535551639647300E86841 /* Categories */,
 				9F91540815C7D52200F1A369 /* Coder */,
 				9F91541615C7D52200F1A369 /* Decoder */,
+				3337D3991803DED500FE22F4 /* XML */,
 				9F0A8AB715C299340044A782 /* Supporting Files */,
 			);
 			path = SparkSerialization;
@@ -564,6 +489,8 @@
 			children = (
 				7895727E163808BB009D7417 /* SFAttributedCoder.h */,
 				7895727F163808BB009D7417 /* SFAttributedCoder.m */,
+				336D206617F44702000F8D38 /* SFAttributedXMLCoder.h */,
+				336D206717F44702000F8D38 /* SFAttributedXMLCoder.m */,
 			);
 			path = Coder;
 			sourceTree = "<group>";
@@ -573,6 +500,8 @@
 			children = (
 				7895728A16380F73009D7417 /* SFAttributedDecoder.h */,
 				7895728B16380F73009D7417 /* SFAttributedDecoder.m */,
+				33BBB4B217FE77B50073F8CD /* SFAttributedXMLDecoder.h */,
+				33BBB4B317FE77B50073F8CD /* SFAttributedXMLDecoder.m */,
 			);
 			path = Decoder;
 			sourceTree = "<group>";
@@ -595,44 +524,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B97578C916B3DC7C00AE855D /* DatabaseModel */ = {
-			isa = PBXGroup;
-			children = (
-				B97578CA16B3DC7C00AE855D /* Elements */,
-				B97578D116B3DC7C00AE855D /* Parsers */,
-			);
-			path = DatabaseModel;
-			sourceTree = "<group>";
-		};
-		B97578CA16B3DC7C00AE855D /* Elements */ = {
-			isa = PBXGroup;
-			children = (
-				B97578CB16B3DC7C00AE855D /* SFEntityElement.h */,
-				B97578CC16B3DC7C00AE855D /* SFEntityElement.m */,
-				B97578CD16B3DC7C00AE855D /* SFPropertyElement.h */,
-				B97578CE16B3DC7C00AE855D /* SFPropertyElement.m */,
-				B97578CF16B3DC7C00AE855D /* SFRelationshipElement.h */,
-				B97578D016B3DC7C00AE855D /* SFRelationshipElement.m */,
-			);
-			path = Elements;
-			sourceTree = "<group>";
-		};
-		B97578D116B3DC7C00AE855D /* Parsers */ = {
-			isa = PBXGroup;
-			children = (
-				B97578D216B3DC7C00AE855D /* SFXMLEntityParser.h */,
-				B97578D316B3DC7C00AE855D /* SFXMLEntityParser.m */,
-				B97578D416B3DC7C00AE855D /* SFXMLRelationshipParser.h */,
-				B97578D516B3DC7C00AE855D /* SFXMLRelationshipParser.m */,
-				B97578D616B3DC7C00AE855D /* SFXMLRelationshipPropertyParser.h */,
-				B97578D716B3DC7C00AE855D /* SFXMLRelationshipPropertyParser.m */,
-				B97578D816B3DC7C00AE855D /* SFXMLModelParser.h */,
-				B97578D916B3DC7C00AE855D /* SFXMLModelParser.m */,
-				B975790116B3FE9300AE855D /* SFXMLModelParser.plist */,
-			);
-			path = Parsers;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -646,18 +537,6 @@
 				78DD732B164A6305009B334C /* SFSerializableCollection.h in Headers */,
 				7895728C16380F73009D7417 /* SFAttributedDecoder.h in Headers */,
 				78957291163828E1009D7417 /* SFDerived.h in Headers */,
-				786995EC16AEC29000B28760 /* SFXMLParser.h in Headers */,
-				786995EE16AEC29000B28760 /* SFXMLParsing.h in Headers */,
-				7869966116AED4C800B28760 /* SFXMLSpecificParser.h in Headers */,
-				7869967216AEE3A800B28760 /* SFXMLElement.h in Headers */,
-				B97578DA16B3DC7C00AE855D /* SFEntityElement.h in Headers */,
-				B97578DE16B3DC7C00AE855D /* SFPropertyElement.h in Headers */,
-				B97578E216B3DC7C00AE855D /* SFRelationshipElement.h in Headers */,
-				B97578E616B3DC7C00AE855D /* SFXMLEntityParser.h in Headers */,
-				B97578EA16B3DC7C00AE855D /* SFXMLRelationshipParser.h in Headers */,
-				B97578EE16B3DC7C00AE855D /* SFXMLRelationshipPropertyParser.h in Headers */,
-				B97578F216B3DC7C00AE855D /* SFXMLModelParser.h in Headers */,
-				B97578FB16B3DE1B00AE855D /* SFXMLParser+ParseDelegation.h in Headers */,
 				9F80CD5C15F64EEE0031BA24 /* SparkSerialization.h in Headers */,
 				83A36B3517982A0B00449C0C /* SFSerializableDate.h in Headers */,
 			);
@@ -833,9 +712,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3337D3831802BB1600FE22F4 /* DeserialisationTest2.xml in Resources */,
 				7841618916480C1E0089FDE9 /* InfoPlist.strings in Resources */,
-				B975790316B3FE9300AE855D /* SFXMLModelParser.plist in Resources */,
 				83BEEF711744EAB50095BD53 /* DeserialisationTest.json in Resources */,
+				3337D3801802B5AE00FE22F4 /* DeserialisationTest.xml in Resources */,
+				3337D3841802BB1600FE22F4 /* DeserialisationTest3.xml in Resources */,
 				5A1CC60A176F279300A6C154 /* TempAttributes in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -845,7 +726,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FA9F4E015F636C500FDE9E0 /* InfoPlist.strings in Resources */,
-				B975790216B3FE9300AE855D /* SFXMLModelParser.plist in Resources */,
 				78CBA92B16C3D41800DAC9BB /* SparkCore.xcodeproj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -901,8 +781,8 @@
 			files = (
 				784161AC16480CC40089FDE9 /* SFJSONStringHandlingTest.m in Sources */,
 				78513E6D164921BF0049549A /* SFSerializationTestObject.m in Sources */,
+				33BC999A17FD818F0039EB5E /* SFAttributedXMLCoderTest.m in Sources */,
 				78513E701649220C0049549A /* SFAnnotatedCoderTest.m in Sources */,
-				786996B816AFF27900B28760 /* SFXMLParsingTest.m in Sources */,
 				8D60078617CFFF7D0095E17D /* SparkGeneratedAttribute.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -917,19 +797,12 @@
 				78957292163828E1009D7417 /* SFDerived.m in Sources */,
 				786535591639648E00E86841 /* NSJSONSerialization+SFJSONStringHandling.m in Sources */,
 				78DD732C164A6305009B334C /* SFSerializableCollection.m in Sources */,
-				7869966216AED4C800B28760 /* SFXMLSpecificParser.m in Sources */,
-				7869967316AEE3A800B28760 /* SFXMLElement.m in Sources */,
-				786996BA16B0078800B28760 /* SFXMLParser.m in Sources */,
-				B97578DB16B3DC7C00AE855D /* SFEntityElement.m in Sources */,
-				B97578DF16B3DC7C00AE855D /* SFPropertyElement.m in Sources */,
-				B97578E316B3DC7C00AE855D /* SFRelationshipElement.m in Sources */,
-				B97578E716B3DC7C00AE855D /* SFXMLEntityParser.m in Sources */,
-				B97578EB16B3DC7C00AE855D /* SFXMLRelationshipParser.m in Sources */,
-				B97578EF16B3DC7C00AE855D /* SFXMLRelationshipPropertyParser.m in Sources */,
-				B97578F316B3DC7C00AE855D /* SFXMLModelParser.m in Sources */,
-				B97578FC16B3DE1B00AE855D /* SFXMLParser+ParseDelegation.m in Sources */,
+				331843EE17FC628D00634BF6 /* SFXMLAttributes.m in Sources */,
+				336D206817F44702000F8D38 /* SFAttributedXMLCoder.m in Sources */,
 				83A36B2F1798205000449C0C /* SFSerializableDate.m in Sources */,
+				33BBB4B417FE77B50073F8CD /* SFAttributedXMLDecoder.m in Sources */,
 				8D1239BC17CFAED300094213 /* SFSerializationAssistant.m in Sources */,
+				3337D39D1803DED500FE22F4 /* SFXMLSerializationContext.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -943,17 +816,6 @@
 				78957293163828E1009D7417 /* SFDerived.m in Sources */,
 				7865355A1639648E00E86841 /* NSJSONSerialization+SFJSONStringHandling.m in Sources */,
 				78DD732D164A6305009B334C /* SFSerializableCollection.m in Sources */,
-				786995ED16AEC29000B28760 /* SFXMLParser.m in Sources */,
-				7869966316AED4C800B28760 /* SFXMLSpecificParser.m in Sources */,
-				7869967416AEE3A800B28760 /* SFXMLElement.m in Sources */,
-				B97578DC16B3DC7C00AE855D /* SFEntityElement.m in Sources */,
-				B97578E016B3DC7C00AE855D /* SFPropertyElement.m in Sources */,
-				B97578E416B3DC7C00AE855D /* SFRelationshipElement.m in Sources */,
-				B97578E816B3DC7C00AE855D /* SFXMLEntityParser.m in Sources */,
-				B97578EC16B3DC7C00AE855D /* SFXMLRelationshipParser.m in Sources */,
-				B97578F016B3DC7C00AE855D /* SFXMLRelationshipPropertyParser.m in Sources */,
-				B97578F416B3DC7C00AE855D /* SFXMLModelParser.m in Sources */,
-				B97578FD16B3DE1B00AE855D /* SFXMLParser+ParseDelegation.m in Sources */,
 				83A36B3617982A1600449C0C /* SFSerializableDate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1081,6 +943,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/include/libxml2,
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include;
@@ -1106,6 +973,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/include/libxml2,
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";

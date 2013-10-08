@@ -58,7 +58,7 @@
     return self;
 }
 
-+ (id)encodeRootObject:(id)rootObject {
++ (NSString*)encodeRootObject:(id)rootObject {
     NSData *data = [self encodedDataOfRootObject:rootObject];    
     return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }

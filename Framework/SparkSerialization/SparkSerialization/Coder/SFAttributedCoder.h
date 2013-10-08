@@ -40,7 +40,7 @@
  @param rootObject The object to serialize.
  @result The json string.
  */
-+ (id)encodeRootObject:(id)rootObject;
++ (NSString*)encodeRootObject:(id)rootObject;
 
 /**
  Encodes the specified object into a json string data.

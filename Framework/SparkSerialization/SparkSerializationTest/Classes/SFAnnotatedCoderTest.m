@@ -42,6 +42,7 @@
     object3.string1 = @"value31";
     object3.string2 = @"value32";
     object3.integer = 5;
+//    object3.range = NSMakeRange(0, 100);
     SFSerializationTestObject *object4 = [[SFSerializationTestObject alloc] init];
     object4.string2 = @"value42";
     object4.string1 = @"value41";
