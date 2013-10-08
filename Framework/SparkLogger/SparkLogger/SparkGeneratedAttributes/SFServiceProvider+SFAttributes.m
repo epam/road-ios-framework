@@ -9,9 +9,8 @@
  
 #pragma mark - Fill Attributes generated code (Methods section)
 
-static NSMutableArray __weak *SF_attributes_list_SFServiceProvider_method_logger_p0 = nil;
-
 + (NSArray *)SF_attributes_SFServiceProvider_method_logger_p0 {
+    NSMutableArray *SF_attributes_list_SFServiceProvider_method_logger_p0 = [[SFAttributeCacheManager attributeCache] objectForKey:@"SFAL_SFServiceProvider_method_logger_p0"];
     if (SF_attributes_list_SFServiceProvider_method_logger_p0 != nil) {
         return SF_attributes_list_SFServiceProvider_method_logger_p0;
     }
@@ -23,13 +22,13 @@ static NSMutableArray __weak *SF_attributes_list_SFServiceProvider_method_logger
     [attributesArray addObject:attr1];
 
     SF_attributes_list_SFServiceProvider_method_logger_p0 = attributesArray;
+    [[SFAttributeCacheManager attributeCache] setObject:attributesArray forKey:@"SFAL_SFServiceProvider_method_logger_p0"];
     
     return SF_attributes_list_SFServiceProvider_method_logger_p0;
 }
 
-static NSMutableDictionary __weak *attributesSFServiceProviderFactoriesForMethodsDict = nil;
-    
 + (NSMutableDictionary *)SF_attributesFactoriesForMethods {
+    NSMutableDictionary *attributesSFServiceProviderFactoriesForMethodsDict = [[SFAttributeCacheManager attributeCache] objectForKey:@"SFSFServiceProviderFactoriesForMethods"];
     if (attributesSFServiceProviderFactoriesForMethodsDict != nil) {
         return attributesSFServiceProviderFactoriesForMethodsDict;
     }
@@ -38,6 +37,7 @@ static NSMutableDictionary __weak *attributesSFServiceProviderFactoriesForMethod
     
     if (!dictionaryHolder) {
         dictionaryHolder = [NSMutableDictionary dictionary];
+        [[SFAttributeCacheManager attributeCache] setObject:dictionaryHolder forKey:@"SFSFServiceProviderFactoriesForMethods"];
     }
     
     [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_SFServiceProvider_method_logger_p0)] forKey:@"logger"];

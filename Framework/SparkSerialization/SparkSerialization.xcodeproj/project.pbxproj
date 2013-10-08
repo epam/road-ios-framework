@@ -12,9 +12,11 @@
 		3337D3801802B5AE00FE22F4 /* DeserialisationTest.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3337D37F1802B5AE00FE22F4 /* DeserialisationTest.xml */; };
 		3337D3831802BB1600FE22F4 /* DeserialisationTest2.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3337D3811802BB1600FE22F4 /* DeserialisationTest2.xml */; };
 		3337D3841802BB1600FE22F4 /* DeserialisationTest3.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3337D3821802BB1600FE22F4 /* DeserialisationTest3.xml */; };
-		3337D39D1803DED500FE22F4 /* SFXMLSerializationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3337D39C1803DED500FE22F4 /* SFXMLSerializationContext.m */; };
-		336D206817F44702000F8D38 /* SFAttributedXMLCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 336D206717F44702000F8D38 /* SFAttributedXMLCoder.m */; };
-		33BBB4B417FE77B50073F8CD /* SFAttributedXMLDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BBB4B317FE77B50073F8CD /* SFAttributedXMLDecoder.m */; };
+		3337D3D91803ECE200FE22F4 /* SFAttributedCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3337D3CE1803ECE200FE22F4 /* SFAttributedCoder.m */; };
+		3337D3DA1803ECE200FE22F4 /* SFAttributedDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3337D3D01803ECE200FE22F4 /* SFAttributedDecoder.m */; };
+		3337D3DB1803ECE200FE22F4 /* SFXMLSerializationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3337D3D41803ECE200FE22F4 /* SFXMLSerializationContext.m */; };
+		3337D3DC1803ECE200FE22F4 /* SFAttributedXMLCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3337D3D61803ECE200FE22F4 /* SFAttributedXMLCoder.m */; };
+		3337D3DD1803ECE200FE22F4 /* SFAttributedXMLDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3337D3D81803ECE200FE22F4 /* SFAttributedXMLDecoder.m */; };
 		33BC999A17FD818F0039EB5E /* SFAttributedXMLCoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BC999917FD818F0039EB5E /* SFAttributedXMLCoderTest.m */; };
 		33BC999B17FD83020039EB5E /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 331843EF17FC656600634BF6 /* libxml2.2.dylib */; };
 		5A1CC60A176F279300A6C154 /* TempAttributes in Resources */ = {isa = PBXBuildFile; fileRef = 78BCFF7F16D24E6800D23908 /* TempAttributes */; };
@@ -30,20 +32,12 @@
 		786535591639648E00E86841 /* NSJSONSerialization+SFJSONStringHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = 786535571639648E00E86841 /* NSJSONSerialization+SFJSONStringHandling.m */; };
 		7865355A1639648E00E86841 /* NSJSONSerialization+SFJSONStringHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = 786535571639648E00E86841 /* NSJSONSerialization+SFJSONStringHandling.m */; };
 		7865355B163969BB00E86841 /* NSJSONSerialization+SFJSONStringHandling.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 786535561639648E00E86841 /* NSJSONSerialization+SFJSONStringHandling.h */; };
-		78957280163808BB009D7417 /* SFAttributedCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7895727E163808BB009D7417 /* SFAttributedCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		78957281163808BB009D7417 /* SFAttributedCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7895727F163808BB009D7417 /* SFAttributedCoder.m */; };
-		78957282163808BB009D7417 /* SFAttributedCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7895727F163808BB009D7417 /* SFAttributedCoder.m */; };
 		7895728716380A33009D7417 /* SFSerializable.h in Headers */ = {isa = PBXBuildFile; fileRef = 7895728516380A33009D7417 /* SFSerializable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7895728816380A33009D7417 /* SFSerializable.m in Sources */ = {isa = PBXBuildFile; fileRef = 7895728616380A33009D7417 /* SFSerializable.m */; };
 		7895728916380A33009D7417 /* SFSerializable.m in Sources */ = {isa = PBXBuildFile; fileRef = 7895728616380A33009D7417 /* SFSerializable.m */; };
-		7895728C16380F73009D7417 /* SFAttributedDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7895728A16380F73009D7417 /* SFAttributedDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7895728D16380F73009D7417 /* SFAttributedDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7895728B16380F73009D7417 /* SFAttributedDecoder.m */; };
-		7895728E16380F73009D7417 /* SFAttributedDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7895728B16380F73009D7417 /* SFAttributedDecoder.m */; };
 		78957291163828E1009D7417 /* SFDerived.h in Headers */ = {isa = PBXBuildFile; fileRef = 7895728F163828E1009D7417 /* SFDerived.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78957292163828E1009D7417 /* SFDerived.m in Sources */ = {isa = PBXBuildFile; fileRef = 78957290163828E1009D7417 /* SFDerived.m */; };
 		78957293163828E1009D7417 /* SFDerived.m in Sources */ = {isa = PBXBuildFile; fileRef = 78957290163828E1009D7417 /* SFDerived.m */; };
-		7895729416382AEB009D7417 /* SFAttributedDecoder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7895728A16380F73009D7417 /* SFAttributedDecoder.h */; };
-		7895729516382AEE009D7417 /* SFAttributedCoder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7895727E163808BB009D7417 /* SFAttributedCoder.h */; };
 		7895729616382B06009D7417 /* SFSerializable.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7895728516380A33009D7417 /* SFSerializable.h */; };
 		7895729716382B08009D7417 /* SFDerived.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7895728F163828E1009D7417 /* SFDerived.h */; };
 		78CBA92B16C3D41800DAC9BB /* SparkCore.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 78CBA92916C3D41800DAC9BB /* SparkCore.xcodeproj */; };
@@ -172,9 +166,7 @@
 				83A36B3817982C1E00449C0C /* SFSerializableDate.h in CopyFiles */,
 				7865355B163969BB00E86841 /* NSJSONSerialization+SFJSONStringHandling.h in CopyFiles */,
 				7895729616382B06009D7417 /* SFSerializable.h in CopyFiles */,
-				7895729416382AEB009D7417 /* SFAttributedDecoder.h in CopyFiles */,
 				7895729716382B08009D7417 /* SFDerived.h in CopyFiles */,
-				7895729516382AEE009D7417 /* SFAttributedCoder.h in CopyFiles */,
 				78DD732F164A6553009B334C /* SFSerializableCollection.h in CopyFiles */,
 				9F80CD8215F64F500031BA24 /* SparkSerialization.h in CopyFiles */,
 			);
@@ -189,12 +181,17 @@
 		3337D37F1802B5AE00FE22F4 /* DeserialisationTest.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DeserialisationTest.xml; sourceTree = "<group>"; };
 		3337D3811802BB1600FE22F4 /* DeserialisationTest2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DeserialisationTest2.xml; sourceTree = "<group>"; };
 		3337D3821802BB1600FE22F4 /* DeserialisationTest3.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DeserialisationTest3.xml; sourceTree = "<group>"; };
-		3337D39B1803DED500FE22F4 /* SFXMLSerializationContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFXMLSerializationContext.h; sourceTree = "<group>"; };
-		3337D39C1803DED500FE22F4 /* SFXMLSerializationContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFXMLSerializationContext.m; sourceTree = "<group>"; };
-		336D206617F44702000F8D38 /* SFAttributedXMLCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAttributedXMLCoder.h; sourceTree = "<group>"; };
-		336D206717F44702000F8D38 /* SFAttributedXMLCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAttributedXMLCoder.m; sourceTree = "<group>"; };
-		33BBB4B217FE77B50073F8CD /* SFAttributedXMLDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAttributedXMLDecoder.h; sourceTree = "<group>"; };
-		33BBB4B317FE77B50073F8CD /* SFAttributedXMLDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAttributedXMLDecoder.m; sourceTree = "<group>"; };
+		3337D3CB1803ECD100FE22F4 /* SparkSerialization-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SparkSerialization-Prefix.pch"; sourceTree = "<group>"; };
+		3337D3CD1803ECE200FE22F4 /* SFAttributedCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAttributedCoder.h; sourceTree = "<group>"; };
+		3337D3CE1803ECE200FE22F4 /* SFAttributedCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAttributedCoder.m; sourceTree = "<group>"; };
+		3337D3CF1803ECE200FE22F4 /* SFAttributedDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAttributedDecoder.h; sourceTree = "<group>"; };
+		3337D3D01803ECE200FE22F4 /* SFAttributedDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAttributedDecoder.m; sourceTree = "<group>"; };
+		3337D3D31803ECE200FE22F4 /* SFXMLSerializationContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFXMLSerializationContext.h; sourceTree = "<group>"; };
+		3337D3D41803ECE200FE22F4 /* SFXMLSerializationContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFXMLSerializationContext.m; sourceTree = "<group>"; };
+		3337D3D51803ECE200FE22F4 /* SFAttributedXMLCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAttributedXMLCoder.h; sourceTree = "<group>"; };
+		3337D3D61803ECE200FE22F4 /* SFAttributedXMLCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAttributedXMLCoder.m; sourceTree = "<group>"; };
+		3337D3D71803ECE200FE22F4 /* SFAttributedXMLDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAttributedXMLDecoder.h; sourceTree = "<group>"; };
+		3337D3D81803ECE200FE22F4 /* SFAttributedXMLDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAttributedXMLDecoder.m; sourceTree = "<group>"; };
 		33BC999917FD818F0039EB5E /* SFAttributedXMLCoderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFAttributedXMLCoderTest.m; path = ../SFAttributedXMLCoderTest.m; sourceTree = "<group>"; };
 		5AD1FC4E1766042200E67BC4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = ../../../../System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		7841617D16480C1D0089FDE9 /* SparkSerializationTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SparkSerializationTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,12 +207,8 @@
 		78513E6F1649220C0049549A /* SFAnnotatedCoderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFAnnotatedCoderTest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		786535561639648E00E86841 /* NSJSONSerialization+SFJSONStringHandling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSJSONSerialization+SFJSONStringHandling.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		786535571639648E00E86841 /* NSJSONSerialization+SFJSONStringHandling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSJSONSerialization+SFJSONStringHandling.m"; sourceTree = "<group>"; };
-		7895727E163808BB009D7417 /* SFAttributedCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SFAttributedCoder.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		7895727F163808BB009D7417 /* SFAttributedCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFAttributedCoder.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7895728516380A33009D7417 /* SFSerializable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SFSerializable.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		7895728616380A33009D7417 /* SFSerializable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSerializable.m; sourceTree = "<group>"; };
-		7895728A16380F73009D7417 /* SFAttributedDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAttributedDecoder.h; sourceTree = "<group>"; };
-		7895728B16380F73009D7417 /* SFAttributedDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SFAttributedDecoder.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7895728F163828E1009D7417 /* SFDerived.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SFDerived.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		78957290163828E1009D7417 /* SFDerived.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFDerived.m; sourceTree = "<group>"; };
 		78BCFF7F16D24E6800D23908 /* TempAttributes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TempAttributes; sourceTree = "<group>"; };
@@ -279,19 +272,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3337D3991803DED500FE22F4 /* XML */ = {
+		3337D3CC1803ECE200FE22F4 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
-				3337D39A1803DED500FE22F4 /* Internal */,
+				3337D3CD1803ECE200FE22F4 /* SFAttributedCoder.h */,
+				3337D3CE1803ECE200FE22F4 /* SFAttributedCoder.m */,
+				3337D3CF1803ECE200FE22F4 /* SFAttributedDecoder.h */,
+				3337D3D01803ECE200FE22F4 /* SFAttributedDecoder.m */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		3337D3D11803ECE200FE22F4 /* XML */ = {
+			isa = PBXGroup;
+			children = (
+				3337D3D21803ECE200FE22F4 /* Internal */,
+				3337D3D51803ECE200FE22F4 /* SFAttributedXMLCoder.h */,
+				3337D3D61803ECE200FE22F4 /* SFAttributedXMLCoder.m */,
+				3337D3D71803ECE200FE22F4 /* SFAttributedXMLDecoder.h */,
+				3337D3D81803ECE200FE22F4 /* SFAttributedXMLDecoder.m */,
 			);
 			path = XML;
 			sourceTree = "<group>";
 		};
-		3337D39A1803DED500FE22F4 /* Internal */ = {
+		3337D3D21803ECE200FE22F4 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				3337D39B1803DED500FE22F4 /* SFXMLSerializationContext.h */,
-				3337D39C1803DED500FE22F4 /* SFXMLSerializationContext.m */,
+				3337D3D31803ECE200FE22F4 /* SFXMLSerializationContext.h */,
+				3337D3D41803ECE200FE22F4 /* SFXMLSerializationContext.m */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -468,9 +476,9 @@
 				9F80CD5B15F64EEE0031BA24 /* SparkSerialization.h */,
 				78957284163809A0009D7417 /* Attributes */,
 				786535551639647300E86841 /* Categories */,
-				9F91540815C7D52200F1A369 /* Coder */,
-				9F91541615C7D52200F1A369 /* Decoder */,
-				3337D3991803DED500FE22F4 /* XML */,
+				3337D3CB1803ECD100FE22F4 /* SparkSerialization-Prefix.pch */,
+				3337D3CC1803ECE200FE22F4 /* JSON */,
+				3337D3D11803ECE200FE22F4 /* XML */,
 				9F0A8AB715C299340044A782 /* Supporting Files */,
 			);
 			path = SparkSerialization;
@@ -482,28 +490,6 @@
 				9F0A8AB815C299340044A782 /* SparkSerialization-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		9F91540815C7D52200F1A369 /* Coder */ = {
-			isa = PBXGroup;
-			children = (
-				7895727E163808BB009D7417 /* SFAttributedCoder.h */,
-				7895727F163808BB009D7417 /* SFAttributedCoder.m */,
-				336D206617F44702000F8D38 /* SFAttributedXMLCoder.h */,
-				336D206717F44702000F8D38 /* SFAttributedXMLCoder.m */,
-			);
-			path = Coder;
-			sourceTree = "<group>";
-		};
-		9F91541615C7D52200F1A369 /* Decoder */ = {
-			isa = PBXGroup;
-			children = (
-				7895728A16380F73009D7417 /* SFAttributedDecoder.h */,
-				7895728B16380F73009D7417 /* SFAttributedDecoder.m */,
-				33BBB4B217FE77B50073F8CD /* SFAttributedXMLDecoder.h */,
-				33BBB4B317FE77B50073F8CD /* SFAttributedXMLDecoder.m */,
-			);
-			path = Decoder;
 			sourceTree = "<group>";
 		};
 		9FA9F4DB15F636C500FDE9E0 /* SparkSerializationMac */ = {
@@ -531,11 +517,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78957280163808BB009D7417 /* SFAttributedCoder.h in Headers */,
 				786535581639648E00E86841 /* NSJSONSerialization+SFJSONStringHandling.h in Headers */,
 				7895728716380A33009D7417 /* SFSerializable.h in Headers */,
 				78DD732B164A6305009B334C /* SFSerializableCollection.h in Headers */,
-				7895728C16380F73009D7417 /* SFAttributedDecoder.h in Headers */,
 				78957291163828E1009D7417 /* SFDerived.h in Headers */,
 				9F80CD5C15F64EEE0031BA24 /* SparkSerialization.h in Headers */,
 				83A36B3517982A0B00449C0C /* SFSerializableDate.h in Headers */,
@@ -791,18 +775,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78957281163808BB009D7417 /* SFAttributedCoder.m in Sources */,
+				3337D3DC1803ECE200FE22F4 /* SFAttributedXMLCoder.m in Sources */,
 				7895728816380A33009D7417 /* SFSerializable.m in Sources */,
-				7895728D16380F73009D7417 /* SFAttributedDecoder.m in Sources */,
+				3337D3DA1803ECE200FE22F4 /* SFAttributedDecoder.m in Sources */,
 				78957292163828E1009D7417 /* SFDerived.m in Sources */,
+				3337D3DB1803ECE200FE22F4 /* SFXMLSerializationContext.m in Sources */,
 				786535591639648E00E86841 /* NSJSONSerialization+SFJSONStringHandling.m in Sources */,
 				78DD732C164A6305009B334C /* SFSerializableCollection.m in Sources */,
+				3337D3D91803ECE200FE22F4 /* SFAttributedCoder.m in Sources */,
 				331843EE17FC628D00634BF6 /* SFXMLAttributes.m in Sources */,
-				336D206817F44702000F8D38 /* SFAttributedXMLCoder.m in Sources */,
 				83A36B2F1798205000449C0C /* SFSerializableDate.m in Sources */,
-				33BBB4B417FE77B50073F8CD /* SFAttributedXMLDecoder.m in Sources */,
 				8D1239BC17CFAED300094213 /* SFSerializationAssistant.m in Sources */,
-				3337D39D1803DED500FE22F4 /* SFXMLSerializationContext.m in Sources */,
+				3337D3DD1803ECE200FE22F4 /* SFAttributedXMLDecoder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -810,9 +794,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78957282163808BB009D7417 /* SFAttributedCoder.m in Sources */,
 				7895728916380A33009D7417 /* SFSerializable.m in Sources */,
-				7895728E16380F73009D7417 /* SFAttributedDecoder.m in Sources */,
 				78957293163828E1009D7417 /* SFDerived.m in Sources */,
 				7865355A1639648E00E86841 /* NSJSONSerialization+SFJSONStringHandling.m in Sources */,
 				78DD732D164A6305009B334C /* SFSerializableCollection.m in Sources */,

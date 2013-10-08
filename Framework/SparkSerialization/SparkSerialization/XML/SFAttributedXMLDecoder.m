@@ -103,7 +103,7 @@
         if (_context.currentNodeProperty)
         {
             //  We want to stay abstract which concrete class was requested
-            _context.currentNode = [[[_context.currentNodeProperty.attributeClass alloc] init] mutableCopy];
+            _context.currentNode = [[[_context.currentNodeProperty.typeClass alloc] init] mutableCopy];
             collectionAttribute = [_context.currentNodeProperty attributeWithType:[SFSerializableCollection class]];
             _context.currentNodeProperty = nil;
         }
@@ -122,7 +122,7 @@
             SFLogWarning(@"SFAttributedXMLDecoder: Skipped missing property '%@'", elementName);
             _context.elementSkipped = YES;
         }
-        elementClass = elementProperty.attributeClass;
+        elementClass = elementProperty.typeClass;
     }
 
     [_context saveContext];
@@ -233,7 +233,7 @@
 {
     id result = string;
     SFSerializableDate *dateAttribute = nil;
-    NSString *attributeClassName = property.attributeClassName;
+    NSString *attributeClassName = property.typeName;
 
     if ([attributeClassName isEqualToString:@"NSNumber"] || [attributeClassName isEqualToString:@"c"])
     {
