@@ -5,7 +5,7 @@
 	<key>creationDateFormatString</key>
 	<string>yyyy-MM-dd</string>
 	<key>dateFormat</key>
-	<string>yyyy-MM-dd&apos;T&apos;HH:mm:SS&apos;Z&apos;</string>
+	<string>yyyy-MM-dd&apos;T&apos;HH:mm:ss&apos;Z&apos;</string>
 	<key>readonlyProperties</key>
 	<true/>
 	<key>camelcaseProperties</key>

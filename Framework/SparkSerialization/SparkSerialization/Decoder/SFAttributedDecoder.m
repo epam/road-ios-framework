@@ -26,7 +26,9 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
+//
+// See the NOTICE file and the LICENSE file distributed with this work
+// for additional information regarding copyright ownership and licensing
 
 #import "SFAttributedDecoder.h"
 #import <Spark/SparkReflection.h>
@@ -41,26 +43,34 @@
 
 @interface SFAttributedDecoder ()
 
-@property (strong, nonatomic) id rootObject;
-@property (strong, nonatomic) id processedObject;
-@property (copy, nonatomic) NSString *rootObjectClassName;
-
 @end
 
 
 @implementation SFAttributedDecoder {
     NSString * _dateFormat;
-    NSDateFormatter * _dateFormatter;
+    NSMutableDictionary * _dateFormatters;
 }
+
+
+#pragma mark - Initialization
+
+- (id)init {
+    self = [super init];
+    
+    if (self) {
+        _dateFormatters = [[NSMutableDictionary alloc] init];
+    }
+    
+    return self;
+}
+
+
+#pragma mark - Decoding
 
 + (id)decodeJSONString:(NSString *const)jsonString {
     NSDictionary *dict = [NSJSONSerialization SF_JSONObjectWithString:jsonString];
     NSString * const className = dict[SFSerializedObjectClassName];
     return [self decodeJSONString:jsonString withRootClassNamed:className];
-}
-
-+ (id)decodeJSONString:(NSString *const)jsonString withRootClassNamed:(NSString *const)rootClassName {
-    return [self decodeJSONData:[jsonString dataUsingEncoding:NSUTF8StringEncoding] withRootClassNamed:rootClassName];
 }
 
 + (id)decodeJSONData:(NSData * const)jsonData withSerializtionRoot:(NSString *)serializationRoot rootClassNamed:(NSString * const)rootClassName {
@@ -69,8 +79,12 @@
     if (serializationRoot.length) {
         partOfJsonObject  = [self jsonObjectForKeyPath:serializationRoot atJsonObject:jsonObject];
     }
-
+    
     return [self decodePredeserializedObject:partOfJsonObject withRootClassName:rootClassName];
+}
+
++ (id)decodeJSONString:(NSString *const)jsonString withRootClassNamed:(NSString *const)rootClassName {
+    return [self decodeJSONData:[jsonString dataUsingEncoding:NSUTF8StringEncoding] withRootClassNamed:rootClassName];
 }
 
 + (id)decodeJSONData:(NSData * const)jsonData withRootClassNamed:(NSString * const)rootClassName {
@@ -86,15 +100,17 @@
     } else {
         SFLogDebug(@"Decoder(%@ %p) started processing object(%@)", self, self, jsonObject);
 
+        id decoder = [[self alloc] init];
+        
         if ([jsonObject isKindOfClass:[NSArray class]]) {
             result = [NSMutableArray array];
             
             for (id const anElement in jsonObject) {
-                [result addObject:[self decodeJSONDictionary:anElement withRootClassNamed:rootClassName]];
+                [result addObject:[decoder decodeRootObject:anElement withRootClassNamed:rootClassName]];
             }
         }
         else if ([jsonObject isKindOfClass:[NSDictionary class]]) {
-            result = [self decodeJSONDictionary:jsonObject withRootClassNamed:rootClassName];
+            result = [decoder decodeRootObject:jsonObject withRootClassNamed:rootClassName];
         }
         SFLogDebug(@"Decoder(%@ %p) ended processing", self, self);
     }
@@ -102,39 +118,31 @@
     return result;
 }
 
-+ (id)decodeJSONDictionary:(NSDictionary * const)jsonDict withRootClassNamed:(NSString * const)rootClassName {
-    id decoder = [[self alloc] init];
-    [decoder setRootObjectClassName:rootClassName];
-    [decoder decodeRootObject:jsonDict];
-     return [decoder rootObject];
-}
+- (id)decodeJSONDictionary:(NSDictionary * const)jsonDict forProperty:(SFPropertyInfo * const)aDesc {
+    NSString * rootClassName;
+    
+    rootClassName = jsonDict[SFSerializedObjectClassName];
 
-+ (id)decodeJSONDictionary:(NSDictionary * const)jsonDict forProperty:(SFPropertyInfo * const)aDesc {
-    const id decoder = [[self alloc] init];
-    [decoder setRootObjectClassName:jsonDict[SFSerializedObjectClassName]];
-
-    if ([[decoder rootObjectClassName] length] == 0) {
-        [decoder setRootObjectClassName:NSStringFromClass(aDesc.attributeClass)];
+    if ([rootClassName length] == 0) {
+        rootClassName = NSStringFromClass(aDesc.typeClass);
     }
 
-    [decoder decodeRootObject:jsonDict];
-    return [decoder rootObject];
+    return [self decodeRootObject:jsonDict withRootClassNamed:rootClassName];
 }
 
-- (void)decodeRootObject:(NSDictionary * const)jsonDict {
+- (id)decodeRootObject:(NSDictionary * const)jsonDict withRootClassNamed:(NSString * const)rootClassName {
+    id rootObject;
     
-    __unsafe_unretained Class const rootObjectClass = NSClassFromString(self.rootObjectClassName);
-    _rootObject = [[rootObjectClass alloc] init];
+    __unsafe_unretained Class const rootObjectClass = NSClassFromString(rootClassName);
+    rootObject = [[rootObjectClass alloc] init];
     NSArray *properties;
-    @autoreleasepool {
-        if ([rootObjectClass SF_attributeForClassWithAttributeType:[SFSerializable class]]) {
-            properties = [[rootObjectClass SF_properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(SFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
-                return (![evaluatedObject attributeWithType:[SFDerived class]]);
-            }]];
-        }
-        else {
-            properties = [rootObjectClass SF_propertiesWithAttributeType:[SFSerializable class]];
-        }
+    if ([rootObjectClass SF_attributeForClassWithAttributeType:[SFSerializable class]]) {
+        properties = [[rootObjectClass SF_properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(SFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
+            return (![evaluatedObject attributeWithType:[SFDerived class]]);
+        }]];
+    }
+    else {
+        properties = [rootObjectClass SF_propertiesWithAttributeType:[SFSerializable class]];
     }
 
     NSString *aKey;
@@ -143,9 +151,11 @@
             aKey = [SFSerializationAssistant serializationKeyForProperty:aDesc];
             
             id result = [self decodeValue:jsonDict[aKey] forProperty:aDesc];
-            [_rootObject setValue:result forKey:[aDesc propertyName]];
+            [rootObject setValue:result forKey:[aDesc propertyName]];
         }
     }
+
+    return rootObject;
 }
 
 - (id)decodeValue:(id const)aValue forProperty:(SFPropertyInfo * const)aDesc {
@@ -154,9 +164,8 @@
         value = [self decodeArray:value forProperty:aDesc];
     }
     else if ([value isKindOfClass:[NSDictionary class]]) {
-        
-        if (![aDesc.attributeClass isSubclassOfClass:[NSDictionary class]]) {
-            value = [[self class] decodeJSONDictionary:value forProperty:aDesc];
+        if (![aDesc.typeClass isSubclassOfClass:[NSDictionary class]]) {
+            value = [self decodeJSONDictionary:value forProperty:aDesc];
         }
         else {
             value = [self decodeDictionary:value forProperty:aDesc];
@@ -171,9 +180,9 @@
 
 - (id)decodeArray:(NSArray * const)anArray forProperty:(SFPropertyInfo * const)aDesc {
     NSMutableArray *array = [[NSMutableArray alloc] init];
-    [anArray enumerateObjectsUsingBlock:^(id aValue, NSUInteger idx, BOOL *stop) {
+    for (id aValue in anArray) {
         [array addObject:[self decodeCollectionElement:aValue forProperty:aDesc]];
-    }];
+    }
     return [array copy];
 }
 
@@ -182,6 +191,7 @@
     [aDictionary enumerateKeysAndObjectsUsingBlock:^(id aKey, id aValue, BOOL *stop) {
         [dict setObject:[self decodeCollectionElement:aValue forProperty:aDesc] forKey:aKey];
     }];
+    
     return [dict copy];
 }
 
@@ -204,7 +214,7 @@
         }
         
         if ([decodeClassName length] > 0) {
-            value = [[self class] decodeJSONDictionary:aValue withRootClassNamed:decodeClassName];
+            value = [self decodeRootObject:aValue withRootClassNamed:decodeClassName];
         }
         else {
             value = [self decodeDictionary:aValue forProperty:nil];
@@ -216,18 +226,28 @@
 - (id)decodeDateString:(id const)value forProperty:(SFPropertyInfo * const)propertyInfo {
     id decodedValue = nil;
 
-    SFSerializableDate *serializableDateAttribute = [propertyInfo.hostClass SF_attributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializableDate class]];
+    SFSerializableDate *serializableDateAttribute = [propertyInfo attributeWithType:[SFSerializableDate class]];
 
     if (serializableDateAttribute.unixTimestamp) {
-        NSNumber *interval = value;
-        decodedValue = [NSDate dateWithTimeIntervalSince1970:[interval intValue]];
+        if (![value isKindOfClass:[NSNumber class]]) {
+            decodedValue = nil;
+        }
+        else {
+            NSNumber *interval = value;
+            decodedValue = [NSDate dateWithTimeIntervalSince1970:[interval intValue]];
+        }
     }
     else {
-        NSString *dateFormat = ([serializableDateAttribute.decodingFormat length] == 0) ? serializableDateAttribute.format: serializableDateAttribute.decodingFormat;
-        NSAssert(dateFormat, @"SFSerializableDate must have either format or encodingFormat specified");
-        
-        NSDateFormatter *dateFormatter = [self dateFormatterWithFormatString:dateFormat];
-        decodedValue = [dateFormatter dateFromString:value];
+        if (![value isKindOfClass:[NSString class]]) {
+            decodedValue = nil;
+        }
+        else {
+            NSString *dateFormat = ([serializableDateAttribute.decodingFormat length] == 0) ? serializableDateAttribute.format: serializableDateAttribute.decodingFormat;
+            NSAssert(dateFormat, @"SFSerializableDate must have either format or encodingFormat specified");
+            
+            NSDateFormatter *dateFormatter = [self dateFormatterWithFormatString:dateFormat];
+            decodedValue = [dateFormatter dateFromString:value];
+        }
     }
     
     return decodedValue;
@@ -237,16 +257,14 @@
 #pragma mark - Support methods
 
 - (NSDateFormatter *)dateFormatterWithFormatString:(NSString *)formatString {
-    if (!_dateFormatter) {
-        _dateFormatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *dateFormatter = [_dateFormatters objectForKey:formatString];
+    if (!dateFormatter) {
+        dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = formatString;
+        [_dateFormatters setObject:dateFormatter forKey:formatString];
     }
     
-    if (![formatString isEqualToString:_dateFormat]) {
-        _dateFormatter.dateFormat = formatString;
-        _dateFormat = formatString;
-    }
-    
-    return _dateFormatter;
+    return dateFormatter;
 }
 
 + (id)jsonObjectForKeyPath:(NSString *)keyPath atJsonObject:(id)jsonObject {
@@ -257,7 +275,7 @@
     NSMutableString *currentKeyPath = [[NSMutableString alloc] init];
     
     for (int index = 0; index < [keys count]; index++) {
-        NSString *key = [keys objectAtIndex:index];
+        NSString *key = keys[index];
         if (currentKeyPath.length) {
             [currentKeyPath appendString:@"."];
         }

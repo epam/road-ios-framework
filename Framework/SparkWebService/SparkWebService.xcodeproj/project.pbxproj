@@ -66,8 +66,10 @@
 		83B1E0C317CB94A70049C112 /* SFWebServiceErrorHandling.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 831EB9EA17C6047D004C9BA5 /* SFWebServiceErrorHandling.h */; };
 		83B97B9E175DCC23006C72BA /* SparkSerialization.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 83B97B9C175DCC22006C72BA /* SparkSerialization.xcodeproj */; };
 		83B97BA1175DCD16006C72BA /* SparkLogger.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 83B97B9F175DCD15006C72BA /* SparkLogger.xcodeproj */; };
+		83BCEAFC17FC4B1400B5A7C4 /* SFConcreteWebServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 83BCEAFB17FC4B1400B5A7C4 /* SFConcreteWebServiceClient.m */; };
+		83BCEB6017FEB4A700B5A7C4 /* SFLoggerWebServicePath.m in Sources */ = {isa = PBXBuildFile; fileRef = 83BCEB5F17FEB4A700B5A7C4 /* SFLoggerWebServicePath.m */; };
+		83BCEB6817FEB4CF00B5A7C4 /* SFLoggerWebServicePath.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83BCEB5E17FEB4A700B5A7C4 /* SFLoggerWebServicePath.h */; };
 		83FF041917C7A77700134DDE /* SFODataErrorHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 831EB9EB17C60A65004C9BA5 /* SFODataErrorHandler.h */; };
-		8D94224717E2A4A9005F0AE3 /* SFConcreteWebServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D94224417E2A3BE005F0AE3 /* SFConcreteWebServiceClient.m */; };
 		8D94224817E2A4B0005F0AE3 /* SFODataTestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 839992E217D9DB45002DAE8D /* SFODataTestEntity.m */; };
 		8D94224917E2A4B5005F0AE3 /* SFDownloader+FakeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 839992F717DA04D4002DAE8D /* SFDownloader+FakeRequest.m */; };
 		8D94224A17E2A4BB005F0AE3 /* SparkGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 83448CDD17D0D3E3002A0D15 /* SparkGeneratedAttribute.m */; };
@@ -224,6 +226,7 @@
 			dstPath = include/Spark;
 			dstSubfolderSpec = 16;
 			files = (
+				83BCEB6817FEB4CF00B5A7C4 /* SFLoggerWebServicePath.h in CopyFiles */,
 				83AA529317DF05BE00C73DEF /* SFWebServiceURLBuilderParameter.h in CopyFiles */,
 				83AA50E617DDF1FD00C73DEF /* SFFormData.h in CopyFiles */,
 				83AA50E517DDF1F300C73DEF /* SFMultipartData.h in CopyFiles */,
@@ -331,7 +334,9 @@
 		83B5D20417D4CDDB0030D8CD /* SFWebServiceClient+DynamicTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SFWebServiceClient+DynamicTest.m"; sourceTree = "<group>"; };
 		83B97B9C175DCC22006C72BA /* SparkSerialization.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkSerialization.xcodeproj; path = ../SparkSerialization/SparkSerialization.xcodeproj; sourceTree = "<group>"; };
 		83B97B9F175DCD15006C72BA /* SparkLogger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkLogger.xcodeproj; path = ../SparkLogger/SparkLogger.xcodeproj; sourceTree = "<group>"; };
-		8D94224417E2A3BE005F0AE3 /* SFConcreteWebServiceClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFConcreteWebServiceClient.m; sourceTree = "<group>"; };
+		83BCEAFB17FC4B1400B5A7C4 /* SFConcreteWebServiceClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFConcreteWebServiceClient.m; sourceTree = "<group>"; };
+		83BCEB5E17FEB4A700B5A7C4 /* SFLoggerWebServicePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLoggerWebServicePath.h; sourceTree = "<group>"; };
+		83BCEB5F17FEB4A700B5A7C4 /* SFLoggerWebServicePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLoggerWebServicePath.m; sourceTree = "<group>"; };
 		CD69624016F0D20F0090B201 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		CD896BFF1737E84F00565C9C /* SFWebServiceCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFWebServiceCall.h; sourceTree = "<group>"; };
 		CD896C001737E84F00565C9C /* SFWebServiceCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFWebServiceCall.m; sourceTree = "<group>"; };
@@ -506,8 +511,8 @@
 		839992DE17D9DB45002DAE8D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				8D94224417E2A3BE005F0AE3 /* SFConcreteWebServiceClient.m */,
 				839992DF17D9DB45002DAE8D /* SFConcreteWebServiceClient.h */,
+				83BCEAFB17FC4B1400B5A7C4 /* SFConcreteWebServiceClient.m */,
 				839992E117D9DB45002DAE8D /* SFODataTestEntity.h */,
 				839992E217D9DB45002DAE8D /* SFODataTestEntity.m */,
 				839992E317D9DB45002DAE8D /* SFServiceProvider+ConcreteWebServiceClient.h */,
@@ -557,6 +562,8 @@
 		CD896BFC1737E84F00565C9C /* Attributes */ = {
 			isa = PBXGroup;
 			children = (
+				83BCEB5E17FEB4A700B5A7C4 /* SFLoggerWebServicePath.h */,
+				83BCEB5F17FEB4A700B5A7C4 /* SFLoggerWebServicePath.m */,
 				831EB9D917C600AA004C9BA5 /* SFWebServiceErrorHandler.h */,
 				831EB9DA17C600AA004C9BA5 /* SFWebServiceErrorHandler.m */,
 				CD896BFF1737E84F00565C9C /* SFWebServiceCall.h */,
@@ -927,7 +934,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D94224717E2A4A9005F0AE3 /* SFConcreteWebServiceClient.m in Sources */,
 				8D94224817E2A4B0005F0AE3 /* SFODataTestEntity.m in Sources */,
 				8D94224917E2A4B5005F0AE3 /* SFDownloader+FakeRequest.m in Sources */,
 				8D94224A17E2A4BB005F0AE3 /* SparkGeneratedAttribute.m in Sources */,
@@ -948,6 +954,7 @@
 				CD896C301737E84F00565C9C /* SFWebServiceClient.m in Sources */,
 				83AFDCE0174F532900CC1200 /* SFWebServiceLogger.m in Sources */,
 				E5B9D4C41786CF9300E1901C /* SFWebServiceCallParameterEncoder.m in Sources */,
+				83BCEAFC17FC4B1400B5A7C4 /* SFConcreteWebServiceClient.m in Sources */,
 				E5B9D4C61786CF9300E1901C /* SFWebServiceClient+DynamicMethod.m in Sources */,
 				E5B9D4CC1786CF9300E1901C /* SFWebServiceSerializationHandler.m in Sources */,
 				E5B9D4F31786CFFE00E1901C /* SFDownloader+ConnectionDelegate.m in Sources */,
@@ -972,6 +979,7 @@
 				831EB9DB17C600AA004C9BA5 /* SFWebServiceErrorHandler.m in Sources */,
 				831EB9ED17C60A65004C9BA5 /* SFODataErrorHandler.m in Sources */,
 				D719856817C65D5B0017C680 /* SFDigestAuthenticationProvider.m in Sources */,
+				83BCEB6017FEB4A700B5A7C4 /* SFLoggerWebServicePath.m in Sources */,
 				83448CCF17D0C98B002A0D15 /* SparkGeneratedAttribute.m in Sources */,
 				839992B417D74B95002DAE8D /* SFFormData.m in Sources */,
 				839992B817D7658F002DAE8D /* SFMultipartData.m in Sources */,
@@ -1020,6 +1028,8 @@
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SparkWebserviceTest/SparkWebserviceTest-Prefix.pch";
 				INFOPLIST_FILE = "SparkWebserviceTest/SparkWebserviceTest-Info.plist";
@@ -1046,6 +1056,8 @@
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SparkWebserviceTest/SparkWebserviceTest-Prefix.pch";
 				INFOPLIST_FILE = "SparkWebserviceTest/SparkWebserviceTest-Info.plist";

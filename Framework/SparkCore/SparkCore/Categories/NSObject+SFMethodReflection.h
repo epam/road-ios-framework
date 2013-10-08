@@ -26,6 +26,9 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+// See the NOTICE file and the LICENSE file distributed with this work
+// for additional information regarding copyright ownership and licensing
 
 
 #import <Foundation/Foundation.h>
@@ -40,13 +43,13 @@
  Returns a specific descriptor of the given name matching class methods for the current object.
  @param methodName The name of the method.
  */
-- (SFMethodInfo *)SF_classMethodForName:(NSString *)methodName;
+- (SFMethodInfo *)SF_classMethodNamed:(NSString *)methodName;
 
 /**
  Returns a specific descriptor of the given name matching instance methods for the current object.
  @param methodName The name of the method.
  */
-- (SFMethodInfo *)SF_instanceMethodForName:(NSString *)methodName;
+- (SFMethodInfo *)SF_instanceMethodNamed:(NSString *)methodName;
 
 /**
  Returns all method descriptor for the current object.
@@ -57,7 +60,7 @@
  Returns a specific descriptor of the given name matching class methods for the current class.
   @param methodName The name of the method.
  */
-+ (SFMethodInfo *)SF_classMethodForName:(NSString *)methodName;
++ (SFMethodInfo *)SF_classMethodNamed:(NSString *)methodName;
 
 /**
  Returns all method descriptor for the current class.
@@ -68,6 +71,6 @@
  Returns a specific descriptor of the given name matching instance methods for the current class.
   @param methodName The name of the method.
  */
-+ (SFMethodInfo *)SF_instanceMethodForName:(NSString *)methodName;
++ (SFMethodInfo *)SF_instanceMethodNamed:(NSString *)methodName;
 
 @end

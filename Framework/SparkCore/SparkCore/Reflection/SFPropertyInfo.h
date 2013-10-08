@@ -26,6 +26,9 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+// See the NOTICE file and the LICENSE file distributed with this work
+// for additional information regarding copyright ownership and licensing
 
 
 /**
@@ -36,73 +39,73 @@
 /**
  The property's name.
  */
-@property (copy, nonatomic) NSString *propertyName;
+@property (readonly, nonatomic) NSString *propertyName;
 
 /**
  The name of the host class.
  */
-@property (copy, nonatomic) NSString *className;
+@property (readonly, nonatomic) NSString *className;
 
 /**
  The type of the host class.
  */
-@property (assign, nonatomic) Class hostClass;
+@property (readonly, nonatomic) Class hostClass;
 
 /**
  The name of the class or variable type of the property declaration.
  */
-@property (copy, nonatomic) NSString *attributeClassName;
+@property (readonly, nonatomic) NSString *typeName;
 
 /**
  The name of the setter method.
  */
-@property (copy, nonatomic) NSString *setterName;
+@property (readonly, nonatomic) NSString *setterName;
 
 /**
  The name of the getter method.
  */
-@property (copy, nonatomic) NSString *getterName;
+@property (readonly, nonatomic) NSString *getterName;
 
 /**
  Boolean property telling whether the property's implementatin is done via the @dynamic directive.
  */
-@property (nonatomic, getter = isDynamic) BOOL dynamic;
+@property (readonly, nonatomic, getter = isDynamic) BOOL dynamic;
 
 /**
  Boolean property telling whether the property is weak.
  */
-@property (nonatomic, getter = isWeak) BOOL weak;
+@property (readonly, nonatomic, getter = isWeak) BOOL weak;
 
 /**
  Boolean property telling whether the property is nonatomic.
  */
-@property (nonatomic, getter = isNonatomic) BOOL nonatomic;
+@property (readonly, nonatomic, getter = isNonatomic) BOOL nonatomic;
 
 /**
  Boolean property telling whether the property is strong.
  */
-@property (nonatomic, getter = isStrong) BOOL strong;
+@property (readonly, nonatomic, getter = isStrong) BOOL strong;
 
 /**
  Boolean property telling whether the property is readonly.
  */
-@property (nonatomic, getter = isReadonly) BOOL readonly;
+@property (readonly, nonatomic, getter = isReadonly) BOOL readonly;
 
 /**
  Boolean property telling whether the property is copying.
  */
-@property (nonatomic, getter = isCopied) BOOL copied;
+@property (readonly, nonatomic, getter = isCopied) BOOL copied;
 
 /**
  Boolean property telling whether the property is pointing to an object instead of a primitive value.
  */
-@property (nonatomic, getter = isObject) BOOL object;
+@property (readonly, nonatomic, getter = isPrimitive) BOOL primitive;
 
 /**
  The declared class of the property if applicable.
  For primitive types this is Nil.
  */
-@property (nonatomic, unsafe_unretained) Class attributeClass;
+@property (readonly, nonatomic) Class typeClass;
 
 /**
  An array of attributes declared for property.
@@ -114,7 +117,7 @@
  @param aClass The class to fetch the property infos for.
  @result The array of filtered results.
  */
-+ (NSArray * const)propertiesForClass:(__unsafe_unretained Class const)aClass;
++ (NSArray *)propertiesForClass:(Class)aClass;
 
 /**
  Returns an array of info objects for the given class filtered with the predicate.
@@ -122,7 +125,7 @@
  @param aPredicate The predicate to apply before returning the results.
  @result The array of filtered results.
  */
-+ (NSArray *)propertiesForClass:(__unsafe_unretained Class const)aClass withPredicate:(NSPredicate * const)aPredicate;
++ (NSArray *)propertiesForClass:(Class)aClass withPredicate:(NSPredicate *)aPredicate;
 
 /**
  Fetches the specific info object corresponding to the property named for the given class.
@@ -130,7 +133,7 @@
  @param aClass The class to fetch the result for.
  @result The info object.
  */
-+ (SFPropertyInfo *)SF_propertyNamed:(NSString *)name forClass:(__unsafe_unretained Class const)aClass;
++ (SFPropertyInfo *)SF_propertyNamed:(NSString *)name forClass:(Class)aClass;
 
 /**
  The method performs search for attribute of required class in array of attributes declared for property.

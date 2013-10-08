@@ -1,6 +1,6 @@
 //
 //  SFConcreteWebServiceClient.h
-//  SparkWebservice
+//  SparkWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -26,6 +26,9 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+// See the NOTICE file and the LICENSE file distributed with this work
+// for additional information regarding copyright ownership and licensing
 
 #import "SFWebServiceClient.h"
 #import "SFWebServiceErrorHandler.h"
@@ -64,9 +67,12 @@ SF_ATTRIBUTE(SFWebServiceCall, serializationDisabled = NO, serializationRoot = @
 
 SF_ATTRIBUTE(SFWebServiceCall, serializationDisabled = YES)
 SF_ATTRIBUTE(SFMultipartData, boundary = @"sdfsfsf")
-- (id<SFWebServiceCancellable>)testMultipartDataWithAttachment:(SFFormData *)attachment success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+- (id<SFWebServiceCancellable>)testMultipartDataWithAttachment:(SFFormData *)attachment success:(id)successBlock failure:(void(^)(NSError *error))failureBlock;
 
 SF_ATTRIBUTE(SFWebServiceCall, serializationDisabled = YES)
 - (id<SFWebServiceCancellable>)testMultipartDataWithAttachments:(NSArray *)attachments success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+SF_ATTRIBUTE(SFWebServiceCall, serializationDisabled = YES)
+- (id<SFWebServiceCancellable>)testMethodWithoutBlocks;
 
 @end

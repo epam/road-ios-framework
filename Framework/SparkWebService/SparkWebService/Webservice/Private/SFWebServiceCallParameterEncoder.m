@@ -1,6 +1,6 @@
 //
 //  SFWebServiceCallParameterEncoder.m
-//  SparkWebservice
+//  SparkWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -26,6 +26,9 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+// See the NOTICE file and the LICENSE file distributed with this work
+// for additional information regarding copyright ownership and licensing
 
 #import "SFWebServiceCallParameterEncoder.h"
 #import "SFSerializationDelegate.h"
@@ -86,7 +89,8 @@ static NSString * const kSFBoundaryDefaultString = @"AaB03x";
             isMultipartData = YES;
             [self addAttachments:object toBodyData:bodyData boundary:boundary];
         }
-        else if ([[object class] SF_attributeForClassWithAttributeType:[SFWebServiceURLBuilderParameter class]]) {
+        else if ([[object class] SF_attributeForClassWithAttributeType:[SFWebServiceURLBuilderParameter class]]
+                 || object == [NSNull null]) {
             encodedObject = object;
         }
         else {
@@ -97,7 +101,7 @@ static NSString * const kSFBoundaryDefaultString = @"AaB03x";
         }
         
         // store encoded objects
-        [result setObject:encodedObject forKey:key];
+        result[key] = encodedObject;
     }
     
     callbackBlock(result, bodyData, isMultipartData);

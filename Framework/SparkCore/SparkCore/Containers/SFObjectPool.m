@@ -26,6 +26,9 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+// See the NOTICE file and the LICENSE file distributed with this work
+// for additional information regarding copyright ownership and licensing
 
 
 #import "SFObjectPool.h"
@@ -42,7 +45,7 @@
     map = [[NSMutableDictionary alloc] init];
 }
 
-- (void)registerClassNamed:(NSString * const)aClassName forIdentifier:(NSString * const)reuseIdentifier {
+- (void)registerClassNamed:(NSString *)aClassName forIdentifier:(NSString *)reuseIdentifier {
     __unsafe_unretained const Class aClass = NSClassFromString(aClassName);
     
     if (aClass != Nil) {
@@ -51,7 +54,7 @@
     }
 }
 
-- (id)objectForIdentifier:(NSString * const)anIdentifier {
+- (id)objectForIdentifier:(NSString *)anIdentifier {
     NSString *key = _caseSensitive ? anIdentifier : [anIdentifier lowercaseString];
     NSMutableSet *objectSet = pool[key];
     id<SFPooledObject> object = nil;
@@ -85,7 +88,7 @@
     return object;
 }
 
-- (void)repoolObject:(id<SFPooledObject> const)anObject {
+- (void)repoolObject:(id<SFPooledObject>)anObject {
     NSString * const reuseIdentifier = _caseSensitive ? [anObject poolReuseIdentifier] : [[anObject poolReuseIdentifier] lowercaseString];
     NSMutableSet *objectSet = pool[reuseIdentifier];
     

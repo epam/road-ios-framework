@@ -1,6 +1,6 @@
 //
-//  SFWebServiceTest.h
-//  SparkWebservice
+//  SFWebServiceTest.m
+//  SparkWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -26,6 +26,9 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+// See the NOTICE file and the LICENSE file distributed with this work
+// for additional information regarding copyright ownership and licensing
 
 #import <Spark/SparkLogger.h>
 #import "SFWebServiceTest.h"
@@ -216,7 +219,6 @@
     }
     
     STAssertTrue(isSuccess, @"Multipart form data request is failed");
-
 }
 
 - (void)testMultipartDataArray {
@@ -239,6 +241,18 @@
     }
     
     STAssertTrue(isSuccess, @"Multipart form data request is failed");
+}
+
+- (void)testNilsInCompletionBlocks {
+    SFConcreteWebServiceClient *webClient = [[SFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.method.without.blocks"];
+    SFFormData *attachment = [[SFFormData alloc] initWithName:@"image" data:[@"Random data 1" dataUsingEncoding:NSUTF8StringEncoding] fileName:@"imageName.jpg"];
+    [webClient testMultipartDataWithAttachment:attachment success:nil failure:nil];
+    
+    __block BOOL isFinished = NO;
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
+        isFinished = YES;
+    }
 }
 
 @end

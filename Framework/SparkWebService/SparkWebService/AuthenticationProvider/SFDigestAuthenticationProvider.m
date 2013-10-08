@@ -1,6 +1,6 @@
 //
 //  SFBasicAuthenticationProvider.h
-//  SparkWebservice
+//  SparkWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -26,31 +26,18 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+// See the NOTICE file and the LICENSE file distributed with this work
+// for additional information regarding copyright ownership and licensing
 
 
 #import "SFDigestAuthenticationProvider.h"
 #import "NSError+SFSparkWebService.h"
 
-@interface SFDigestAuthenticationProvider ()
-@property (nonatomic, strong) NSURLCredential *credential;
-@end
-
 @implementation SFDigestAuthenticationProvider
 
-- (id)initWithUser:(NSString *)user password:(NSString *)password {
-    self = [super init];
-    if (self) {
-        _user = user;
-        _password = password;
-    }
-    return self;
-}
 
 #pragma mark - SFAuthenticating
-
-- (void)authenticate {
-    _credential = [[NSURLCredential alloc] initWithUser:_user password:_password persistence:NSURLCredentialPersistenceForSession];
-}
 
 - (void)processAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge forConnection:(NSURLConnection *)connection {
     [super processAuthenticationChallenge:challenge forConnection:connection];
@@ -58,41 +45,6 @@
     if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodHTTPDigest]) {
         if (!_credential) [self authenticate];
         [challenge.sender useCredential:_credential forAuthenticationChallenge:challenge];
-    }
-}
-
-- (void)invalidate {
-    
-    if (_credential) {
-        NSDictionary *credentials = [[NSURLCredentialStorage sharedCredentialStorage] allCredentials];
-        
-        if ([credentials count] > 0) {
-            NSEnumerator *protectionSpaceEnumerator = [credentials keyEnumerator];
-            id protectionSpace;
-            while (protectionSpace = [protectionSpaceEnumerator nextObject]) {
-                NSEnumerator *userEnumerator = [[credentials objectForKey:protectionSpace] keyEnumerator];
-                id user;
-                while (user = [userEnumerator nextObject]) {
-                    NSURLCredential *credential = [[credentials objectForKey:protectionSpace] objectForKey:user];
-                    [[NSURLCredentialStorage sharedCredentialStorage] removeCredential:credential forProtectionSpace:protectionSpace];
-                }
-            }
-        }
-        _credential = nil;
-        // Set flag - session is closed
-        _sessionOpened = NO;
-    }
-}
-
-- (void)checkResponse:(NSHTTPURLResponse *)response forConnection:(NSURLConnection *)connection {
-    // Response did not get authentication challenge again
-    // Set flag - session is opened
-    if ([response statusCode] != kSFUnauthorizedCode && [response statusCode] != kSFProxyAuthenticationRequiredCode) {
-        _sessionOpened = YES;
-        [self callSuccessBlocksWithResult:response];
-    }
-    else {
-        [self callFailureBlocksWithError:[NSError errorWithDomain:kSFWebServiceErrorDomain code:[response statusCode] userInfo:nil]];
     }
 }
 

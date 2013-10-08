@@ -26,6 +26,9 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+// See the NOTICE file and the LICENSE file distributed with this work
+// for additional information regarding copyright ownership and licensing
 
 
 #import "NSArray+SFEmptyArrayChecks.h"
@@ -46,7 +49,7 @@
     id object = nil;
     
     if ([self count] > index) {
-        object = [self objectAtIndex:index];
+        object = self[index];
     }
     
     return object;
@@ -56,6 +59,7 @@
     BOOL (^(testingBlock))(id evaludatedObject) = [evaluationBlock copy];
     
     return [[self filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        
         return testingBlock(evaluatedObject);
     }]] SF_lastElementIfNotEmpty];
 }

@@ -26,6 +26,9 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+// See the NOTICE file and the LICENSE file distributed with this work
+// for additional information regarding copyright ownership and licensing
 
 #import <Foundation/Foundation.h>
 #import "SFPropertyInfo.h"
@@ -39,7 +42,7 @@
  Returns an array of property info objects. Does not list superclass properties. Invoked on an instance of a class.
  @result The info objects' array.
  */
-- (NSArray * const)SF_properties;
+- (NSArray *)SF_properties;
 
 /**
  Returns a property info. Invoked on an instance of a class.
@@ -52,7 +55,7 @@
  Returns an array of property info objects. Does not list superclass properties.
  @result The info objects' array.
  */
-+ (NSArray * const)SF_properties;
++ (NSArray *)SF_properties;
 
 /**
  Returns a property info.

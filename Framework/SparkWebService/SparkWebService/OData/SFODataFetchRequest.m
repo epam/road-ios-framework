@@ -1,6 +1,6 @@
 //
-//  SFODataRequest.m
-//  SparkWebservice
+//  SFODataFetchRequest.m
+//  SparkWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -26,6 +26,9 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+// See the NOTICE file and the LICENSE file distributed with this work
+// for additional information regarding copyright ownership and licensing
 
 #import "SFODataFetchRequest.h"
 
@@ -138,7 +141,7 @@
             }
 
             for (int indexOfEntityName = 0; indexOfEntityName < [expandOption count]; indexOfEntityName++) {
-                NSString *entityName = [expandOption objectAtIndex:indexOfEntityName];;
+                NSString *entityName = expandOption[indexOfEntityName];
                 if (indexOfEntityName == 0) {
                     [queryString appendFormat:@"%@", entityName];
                 }

@@ -4,38 +4,42 @@
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
-// Redistribution and use in source and binary forms, with or without 
+// Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
-// 
-//  Redistributions of source code must retain the above copyright notice, this 
+//
+//  Redistributions of source code must retain the above copyright notice, this
 // list of conditions and the following disclaimer.
-//  Redistributions in binary form must reproduce the above copyright notice, this 
-// list of conditions and the following disclaimer in the documentation and/or 
+//  Redistributions in binary form must reproduce the above copyright notice, this
+// list of conditions and the following disclaimer in the documentation and/or
 // other materials provided with the distribution.
-//  Neither the name of the EPAM Systems, Inc.  nor the names of its contributors 
-// may be used to endorse or promote products derived from this software without 
+//  Neither the name of the EPAM Systems, Inc.  nor the names of its contributors
+// may be used to endorse or promote products derived from this software without
 // specific prior written permission.
-// 
-// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-// WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
-// DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE 
-// FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL 
-// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
-// SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
-// CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
-// OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+// WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+// DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+// FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+// SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+// CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+// OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+// See the NOTICE file and the LICENSE file distributed with this work
+// for additional information regarding copyright ownership and licensing
 
-
-#import <SystemConfiguration/SystemConfiguration.h>
 #import "SFNetLogWriter.h"
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <UIKit/UIKit.h>
+
+#include <ifaddrs.h>
+#include <arpa/inet.h>
 #import "SFLogMessage.h"
 #import "SFLogMessageWrapper.h"
 #import "SFStreamWriter.h"
 #import "SFConnection.h"
-#include <ifaddrs.h>
-#include <arpa/inet.h>
 
 static NSString * const kSFNetLogServiceType = @"_appalocalnetwork._tcp.";
 static NSString * const kCFBundleDisplayName = @"CFBundleDisplayName";
@@ -54,8 +58,8 @@ static NSString * const kCFBundleDisplayName = @"CFBundleDisplayName";
 
 @implementation SFNetLogWriter
 
-@synthesize delegate;
-@synthesize streamWriter;
+@synthesize delegate = _delegate;
+@synthesize streamWriter = _streamWriter;
 
 // Initiates a connection to browse for possible network services, creates a unique id for the logging session
 - (id)init {
@@ -64,7 +68,7 @@ static NSString * const kCFBundleDisplayName = @"CFBundleDisplayName";
     
     if (self) {
         
-        applicationName = [[[NSBundle mainBundle] infoDictionary] objectForKey:kCFBundleDisplayName];
+        applicationName = [[NSBundle mainBundle] infoDictionary][kCFBundleDisplayName];
         connection = [[SFConnection alloc] initWithType:kSFNetLogServiceType applicationName:applicationName];
         connection.delegate = self;
         [connection start];
@@ -80,11 +84,7 @@ static NSString * const kCFBundleDisplayName = @"CFBundleDisplayName";
 
 - (void)logValidMessage:(SFLogMessage * const)aMessage {
     SFLogMessageWrapper *wrapper = [[SFLogMessageWrapper alloc] initWithMessage:aMessage deviceName:[self deviceName] applicationName:applicationName uniqueId:uniqueIdForSession];
-    NSMutableData *data = [NSMutableData data];
-    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-    [archiver encodeRootObject:wrapper];
-    [archiver finishEncoding];
-    [streamWriter writeData:data];
+    [self writeObjectWithSteamWriter:wrapper];
 }
 
 - (void)logQueue {
@@ -98,14 +98,17 @@ static NSString * const kCFBundleDisplayName = @"CFBundleDisplayName";
         
         [self.messageQueue removeAllObjects];
         
-        NSMutableData *data = [NSMutableData data];
-        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-        [archiver encodeRootObject:messageWrappers];
-        [archiver finishEncoding];
-        [streamWriter writeData:data];
+        [self writeObjectWithSteamWriter:messageWrappers];
     });
 }
 
+- (void)writeObjectWithSteamWriter:(id)object {
+    NSMutableData *data = [NSMutableData data];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    [archiver encodeRootObject:object];
+    [archiver finishEncoding];
+    [_streamWriter writeData:data];
+}
 
 - (void)dealloc {
     connection.delegate = nil;
@@ -116,16 +119,16 @@ static NSString * const kCFBundleDisplayName = @"CFBundleDisplayName";
 // Updates the streamwriter with the available services and informs the delegate about the names of the connected services
 - (void)connection:(SFConnection *)connection didFindServices:(NSSet *)services {
     
-    streamWriter = [[SFStreamWriter alloc] initWithServices:services];
+    _streamWriter = [[SFStreamWriter alloc] initWithServices:services];
     serviceNames = [NSMutableArray array];
     
     for (NSNetService *aService in services) {
         [serviceNames addObject:[aService name]];
     }
     
-    if ([delegate respondsToSelector:@selector(logWriter:availableServiceNames:)]) {
+    if ([_delegate respondsToSelector:@selector(logWriter:availableServiceNames:)]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [delegate logWriter:self availableServiceNames:serviceNames];
+            [_delegate logWriter:self availableServiceNames:serviceNames];
         });
     }
 }
@@ -134,27 +137,23 @@ static NSString * const kCFBundleDisplayName = @"CFBundleDisplayName";
 - (void)connection:(SFConnection *)connection willRemoveService:(NSNetService *)service {
     [serviceNames removeObject:[service name]];
     
-    if ([delegate respondsToSelector:@selector(logWriter:availableServiceNames:)]) {
+    if ([_delegate respondsToSelector:@selector(logWriter:availableServiceNames:)]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [delegate logWriter:self availableServiceNames:serviceNames];
+            [_delegate logWriter:self availableServiceNames:serviceNames];
         });
     }
     
-    [streamWriter removeService:service];
+    [_streamWriter removeService:service];
 }
 
 // Creates a device name
 - (NSString *)deviceName {
-#warning FIX ME
-    /*
     NSString *result = [[UIDevice currentDevice] name];
     
     if ([result hasSuffix:@"Simulator"]) {
         result = [result stringByAppendingFormat:@"_%@", [self ipAddress]];
     }
     return result;
-     */
-    return @"FIX-ME-NAME";
 }
 
 // Returns the IP address of the device
@@ -172,13 +171,15 @@ static NSString * const kCFBundleDisplayName = @"CFBundleDisplayName";
         temp_addr = interfaces; 
         while(temp_addr != NULL) { 
             
-            if(temp_addr->ifa_addr->sa_family == AF_INET) {
-                // Check if interface is en0 which is the wifi connection on the iPhone
-                // it may also be en1 on your ipad3.
-                if([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"]) { 
-                    // Get NSString from C String 
-                    address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)]; 
-                } 
+            BOOL checkAddr = (temp_addr->ifa_addr->sa_family == AF_INET);
+            
+            // Check if interface is en0 which is the wifi connection on the iPhone
+            // it may also be en1 on your ipad3.
+            BOOL checkIntreface = ([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"]);
+            
+            if(checkAddr && checkIntreface) {
+                // Get NSString from C String
+                address = @(inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr));
             }
             
             temp_addr = temp_addr->ifa_next; 

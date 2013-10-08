@@ -26,17 +26,19 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+// See the NOTICE file and the LICENSE file distributed with this work
+// for additional information regarding copyright ownership and licensing
 
 
 #ifndef SparkReflection_SparkReflection_h
 #define SparkReflection_SparkReflection_h
 
+#import "NSObject+SFMemberVariableReflection.h"
+#import "NSObject+SFMethodReflection.h"
+#import "NSObject+SFPropertyReflection.h"
 #import "SFIvarInfo.h"
 #import "SFMethodInfo.h"
 #import "SFPropertyInfo.h"
-#import "NSObject+SFPropertyReflection.h"
-#import "NSObject+SFMemberVariableReflection.h"
-#import "NSObject+SFMethodReflection.h"
-#import "NSCharacterSet+SFEncodingCharacterSet.h"
 
 #endif

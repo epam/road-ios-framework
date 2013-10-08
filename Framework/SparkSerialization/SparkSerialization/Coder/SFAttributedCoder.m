@@ -26,6 +26,9 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+// See the NOTICE file and the LICENSE file distributed with this work
+// for additional information regarding copyright ownership and licensing
 
 
 #import "SFAttributedCoder.h"
@@ -45,20 +48,27 @@
 
 @implementation SFAttributedCoder {
     NSString * _dateFormat;
-    NSDateFormatter * _dateFormatter;
+    NSMutableDictionary * _dateFormatters;
 }
+
+
+#pragma mark - Initialization
 
 - (id)init {
     self = [super init];
     
     if (self) {
         self.archive = [[NSMutableDictionary alloc] init];
+        _dateFormatters = [[NSMutableDictionary alloc] init];
     }
     
     return self;
 }
 
-+ (NSString*)encodeRootObject:(id)rootObject {
+
+#pragma mark - Encoding
+
++ (id)encodeRootObject:(id)rootObject {
     NSData *data = [self encodedDataOfRootObject:rootObject];    
     return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
@@ -175,7 +185,7 @@
     
     for (id aKey in aDict) {
         id aValue = aDict[aKey];
-        [dict setObject:[self encodeValue:aValue] forKey:aKey];
+        dict[aKey] = [self encodeValue:aValue];
     }
     
     return [NSDictionary dictionaryWithDictionary:dict];
@@ -185,16 +195,14 @@
 #pragma mark - Support methods
 
 - (NSDateFormatter *)dataFormatterWithFormatString:(NSString *)formatString {
-    if (!_dateFormatter) {
-        _dateFormatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *dateFormatter = [_dateFormatters objectForKey:formatString];
+    if (!dateFormatter) {
+        dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = formatString;
+        [_dateFormatters setObject:dateFormatter forKey:formatString];
     }
-    
-    if (![formatString isEqualToString:_dateFormat]) {
-        _dateFormatter.dateFormat = formatString;
-        _dateFormat = formatString;
-    }
-    
-    return _dateFormatter;
+
+    return dateFormatter;
 }
 
 @end
