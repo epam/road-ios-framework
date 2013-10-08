@@ -26,6 +26,9 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+// See the NOTICE file and the LICENSE file distributed with this work
+// for additional information regarding copyright ownership and licensing
 
 #ifndef SparkLogger_SparkLogger_h
 #define SparkLogger_SparkLogger_h
@@ -41,13 +44,11 @@
 #import "SFLogBlockFormatter.h"
 #import "SFLogPlainFormatter.h"
 #import "SFLogFilter.h"
-#import "SFLoggerWebServicePath.h"
 #import "SFLogMessageWrapper.h"
 #import "SFServiceProvider+LoggingService.h"
 
 #define SFLogInternalError(...) \
-    [[SFServiceProvider logger] logInternalErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
-
+        [[SFServiceProvider logger] logInternalErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
 
 #define SFLogInfo(...) \
         if ([SFServiceProvider logger].logLevel >= SFLogLevelInfo) [[SFServiceProvider logger] logInfoMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]];

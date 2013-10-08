@@ -26,17 +26,17 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+// See the NOTICE file and the LICENSE file distributed with this work
+// for additional information regarding copyright ownership and licensing
 
 #import "SFStreamWriter.h"
-#import "SFStreamDelegate.h"
-
 #include <zlib.h>
 
+#import "SFStreamDelegate.h"
+
 @implementation SFStreamWriter {
-    
-    uint32_t            trailer;
-    uint64_t            header;
-    NSMutableSet        *streamDelegates;
+    NSMutableSet *_streamDelegates;
 }
 
 - (id)initWithServices:(NSSet *)services {
@@ -45,7 +45,7 @@
     
     if (self) {
         
-        streamDelegates = [NSMutableSet set];
+        _streamDelegates = [NSMutableSet set];
         
         for (NSNetService *aService in services) {
 
@@ -57,17 +57,16 @@
 
 // Assembles the data packet from an archived log message and distributes it among all established connections
 - (void)writeData:(NSData *)data {
-
-    header = OSSwapHostToBigInt64([data length]);
+    uint64_t header = OSSwapHostToBigInt64([data length]);
     NSMutableData *buffer = [NSMutableData dataWithLength:0];
     [buffer appendBytes:&header length:sizeof(header)];
     [buffer appendData:data];
     
     uLong crc = crc32(0L, [data bytes], (uInt)[data length]);
-    trailer = OSSwapHostToBigInt32((uint32_t)crc);
+    uint32_t trailer = OSSwapHostToBigInt32((uint32_t)crc);
     [buffer appendBytes:&trailer length:sizeof(trailer)];
     
-    for (SFStreamDelegate *aDelegate in streamDelegates) {
+    for (SFStreamDelegate *aDelegate in _streamDelegates) {
         
         [aDelegate addData:buffer];
     }
@@ -79,7 +78,7 @@
     [service getInputStream:nil outputStream:&stream];
     SFStreamDelegate *delegateToRemove = nil;
     
-    for (SFStreamDelegate *aDelegate in streamDelegates) {
+    for (SFStreamDelegate *aDelegate in _streamDelegates) {
         
         if ([[aDelegate stream] isEqual:stream]) {
             
@@ -90,7 +89,7 @@
     if (delegateToRemove) {
 
         [delegateToRemove stop];
-        [streamDelegates removeObject:delegateToRemove];
+        [_streamDelegates removeObject:delegateToRemove];
     }
 }
 
@@ -100,14 +99,14 @@
     if ([service getInputStream:nil outputStream:&stream]) {
         
         SFStreamDelegate *aDelegate = [[SFStreamDelegate alloc] initWithOutputStream:stream];
-        [streamDelegates addObject:aDelegate];
+        [_streamDelegates addObject:aDelegate];
         [aDelegate start];
     }
 }
 
 - (void)dealloc {
     
-    for (SFStreamDelegate *aDelegate in streamDelegates) {
+    for (SFStreamDelegate *aDelegate in _streamDelegates) {
         
         [aDelegate stop];
     }

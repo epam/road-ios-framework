@@ -26,11 +26,17 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+// See the NOTICE file and the LICENSE file distributed with this work
+// for additional information regarding copyright ownership and licensing
 
 #import "SFLogWriter.h"
 
 #import "SFFileLogWriter.h"
 #import "SFConsoleLogWriter.h"
+#import "SFLogMessage.h"
+#import "SFLogFilter.h"
+#import "SFLogFormatter.h"
 
 #if (TARGET_OS_IPHONE)
 #import <UIKit/UIKit.h>
@@ -39,20 +45,21 @@
 #endif
 
 @implementation SFLogWriter {
-    NSMutableSet *filters;
+    NSMutableSet *_filters;
 }
 
-- (id)init
-{
+#pragma mark - Initialization
+
+- (id)init {
     self = [super init];
     if (self) {
-        filters = [[NSMutableSet alloc] init];
+        _filters = [[NSMutableSet alloc] init];
         _queueSize = 1;
         _messageQueue = [[NSMutableArray alloc] initWithCapacity:_queueSize];
         _queue = dispatch_queue_create(NULL, DISPATCH_QUEUE_SERIAL);
 #if (TARGET_OS_IPHONE)
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logQueueBeforeExit) name:UIApplicationWillResignActiveNotification object:nil];
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logQueueBeforeExit) name:UIApplicationWillTerminateNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logQueueBeforeExit) name:UIApplicationWillResignActiveNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logQueueBeforeExit) name:UIApplicationWillTerminateNotification object:nil];
 #elif (TARGET_OS_MAC)
         // Data saving strategy according to
         // https://developer.apple.com/library/mac/#documentation/General/Conceptual/MOSXAppProgrammingGuide/CoreAppDesign/CoreAppDesign.html#//apple_ref/doc/uid/TP40010543-CH3-SW27
@@ -64,22 +71,28 @@
     return self;
 }
 
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Main functionality
+
 - (void)addFilter:(SFLogFilter *const)aFilter {
     dispatch_async(self.queue, ^{
-       [filters addObject:aFilter];
+       [_filters addObject:aFilter];
     });
 }
 
 - (void)removeFilter:(SFLogFilter *const)aFilter {
     dispatch_async(self.queue, ^{
-        [filters removeObject:aFilter];
+        [_filters removeObject:aFilter];
     });
 }
 
 - (BOOL)hasMessagePassedFilters:(SFLogMessage *const)message {
     __block BOOL hasPassedTest = YES;
     dispatch_sync(self.queue, ^{
-        for (SFLogFilter * const aFilter in filters) {
+        for (SFLogFilter * const aFilter in _filters) {
             hasPassedTest = hasPassedTest && [aFilter hasMessagePassedTest:message];
         }
     });
@@ -139,11 +152,6 @@
 
 + (SFLogWriter *)plainConsoleWriter {
     return [SFConsoleLogWriter plainConsoleWriter];
-}
-
--(void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

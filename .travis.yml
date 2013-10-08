@@ -13,9 +13,13 @@ env:
 before_script:
     - chmod +x ./script_simian.sh
     - chmod +x ./script_general.sh
+    - chmod +x ./coveralls.rb
 
 script:
     - if [[ $SPARK_SCHEME == Simian ]]; then ./script_simian.sh; else ./script_general.sh; fi
+
+after_success:
+    - if [[ $SPARK_SCHEME != Simian && $SPARK_SCHEME != SparkAttributesCodeGenerator ]]; then ./coveralls.rb --extension m; fi
 
 notifications:
   email:

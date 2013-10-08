@@ -26,6 +26,9 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+// See the NOTICE file and the LICENSE file distributed with this work
+// for additional information regarding copyright ownership and licensing
 
 
 #import "SFAttributedCoder.h"
@@ -71,10 +74,10 @@
 
 + (id)encodeRootObjectToSerializableObject:(id)rootObject {
     SFLogInfo(@"Coder(%@ %p) started processing object(%@)", self, self, rootObject);
-    SFAttributedCoder *decoder = [[self alloc] init];
-    [decoder encodeRootObject:rootObject];
+    SFAttributedCoder *coder = [[self alloc] init];
+    [coder encodeRootObject:rootObject];
     SFLogInfo(@"Coder(%@ %p) ended processing", self, self);
-    return decoder->_archive;
+    return coder->_archive;
 }
 
 - (void)encodeRootObject:(id)rootObject {

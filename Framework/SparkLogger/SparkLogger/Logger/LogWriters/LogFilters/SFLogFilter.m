@@ -26,6 +26,9 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+// See the NOTICE file and the LICENSE file distributed with this work
+// for additional information regarding copyright ownership and licensing
 
 #import "SFLogFilter.h"
 
@@ -39,14 +42,6 @@
     return [predicate evaluateWithObject:message];
 }
 
-+ (SFLogFilter *)filterForLevel:(const SFLogLevel)level {
-    SFLogFilter *filter = [[SFLogFilter alloc] init];
-    filter->predicate = [NSPredicate predicateWithBlock:^BOOL(SFLogMessage * const evaluatedObject, NSDictionary *bindings) {
-        return evaluatedObject.level >= level;
-    }];
-    return filter;
-}
-
 + (SFLogFilter *)filterWithPrediate:(NSPredicate * const)predicate {
     SFLogFilter *filter = [[SFLogFilter alloc] init];
     filter->predicate = predicate;
@@ -56,7 +51,7 @@
 + (SFLogFilter *)consoleFilter {
     NSPredicate * const predicate = [NSPredicate predicateWithBlock:^BOOL(SFLogMessage * const evaluatedObject, NSDictionary *bindings) {
         return [evaluatedObject.type isEqualToString:kSFLogMessageTypeAllLoggers]
-            || [evaluatedObject.type isEqualToString:kSFLogMessageTypeConsoleOnly];
+        || [evaluatedObject.type isEqualToString:kSFLogMessageTypeConsoleOnly];
     }];
     return [self filterWithPrediate:predicate];
 }

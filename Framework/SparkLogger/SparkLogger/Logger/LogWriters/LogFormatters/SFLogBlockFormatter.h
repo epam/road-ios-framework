@@ -26,15 +26,24 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+// See the NOTICE file and the LICENSE file distributed with this work
+// for additional information regarding copyright ownership and licensing
 
 #import "SFLogFormatter.h"
-#import "SFLogMessage.h"
+
+@class SFLogMessage;
 
 /**
  Concrete subclass of the SFLogFormatter class.
  */
 @interface SFLogBlockFormatter : SFLogFormatter
 
+/**
+ * Creates formatter with specified block.
+ * @param formatterBlock The block that format message.
+ * @return The log formatter initialized with block.
+ */
 + (SFLogBlockFormatter *)formatterWithBlock:(NSString * (^)(SFLogMessage *))formatterBlock;
 
 @end

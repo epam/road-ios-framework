@@ -26,8 +26,12 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+// See the NOTICE file and the LICENSE file distributed with this work
+// for additional information regarding copyright ownership and licensing
 
 #import "SFLogMessage.h"
+
 
 static NSString * const kMessage = @"kMessage";
 static NSString * const kMessageType = @"kMessageType";
@@ -41,6 +45,7 @@ NSString * const kSFLogMessageTypeWebServiceOnly = @"SFLogMessageTypeWebServiceO
 NSString * const kSFLogMessageTypeConsoleOnly = @"SFLogMessageTypeConsoleOnly";
 NSString * const kSFLogMessageTypeFileOnly = @"SFLogMessageTypeFileOnly";
 NSString * const kSFLogMessageTypeNoLogging = @"SFLogMessageTypeNoLogging";
+
 
 @implementation SFLogMessage
 
@@ -103,7 +108,7 @@ NSString * const kSFLogMessageTypeNoLogging = @"SFLogMessageTypeNoLogging";
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
-
+    
     if (self) {
         _message = [[aDecoder decodeObjectForKey:kMessage] copy];
         _type = [[aDecoder decodeObjectForKey:kMessageType] copy];
