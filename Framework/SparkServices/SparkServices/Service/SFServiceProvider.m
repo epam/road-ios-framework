@@ -45,18 +45,21 @@ static NSMutableDictionary *services;
 #pragma mark - Method resolution
 
 + (BOOL)resolveClassMethod:(SEL)sel {
-    BOOL result;
-    NSString *selectorName = NSStringFromSelector(sel);
-    SFService *serviceAttribute = [SFServiceProvider SF_attributeForMethod:selectorName withAttributeType:[SFService class]];
-    
-    if (serviceAttribute != nil) {
-        result = YES;
-        IMP const implementation = [self methodForSelector:@selector(fetchService)];
-        Class metaClass = object_getClass(self);
-        class_addMethod(metaClass, sel, implementation, SFServiceMethodEncoding);
-    }
-    else {
-        result = [super resolveInstanceMethod:sel];
+    BOOL result = [super resolveClassMethod:sel];
+
+    if (!result) {
+        NSString *selectorName = NSStringFromSelector(sel);
+        // Framework's calls must not be checked on service attriutes
+        if (![selectorName hasPrefix:@"SF_"]) {
+            SFService *serviceAttribute = [SFServiceProvider SF_attributeForMethod:selectorName withAttributeType:[SFService class]];
+            
+            if (serviceAttribute != nil) {
+                result = YES;
+                IMP const implementation = [self methodForSelector:@selector(fetchService)];
+                Class metaClass = object_getClass(self);
+                class_addMethod(metaClass, sel, implementation, SFServiceMethodEncoding);
+            }
+        }
     }
     
     return result;
