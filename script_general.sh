@@ -17,12 +17,12 @@ wget http://archives.oclint.org/releases/0.7/oclint-0.7-x86_64-apple-darwin-10.t
 tar xzf oclint-0.7-x86_64-apple-darwin-10.tar.gz > /dev/null
 
 # =================     Remove necessary rules from "lib/oclint/rules/" folder of oclint     ===========
-#- rm $('pwd')/oclint-0.7-x86_64-apple-darwin-10/lib/oclint/rules/libUnusedMethodParameterRule.dylib
-# ======================================================================================================
+rm $('pwd')/oclint-0.7-x86_64-apple-darwin-10/lib/oclint/rules/libUnusedMethodParameterRule.dylib
+
 
 # =================     Setup oclint    ===========
 OCLINT_HOME=$('pwd')/oclint-0.7-x86_64-apple-darwin-10
 PATH=$OCLINT_HOME/bin:$PATH
 
 # =================     Run oclint    ===========
-oclint-json-compilation-database -- -rc=LONG_LINE=300 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 30 -max-priority-3 80
+oclint-json-compilation-database -- -rc=LONG_LINE=500 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 30 -max-priority-3 80
