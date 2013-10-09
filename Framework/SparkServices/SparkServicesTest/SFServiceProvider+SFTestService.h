@@ -40,4 +40,13 @@
 SF_ATTRIBUTE(SFService, serviceClass = [SFTestService class])
 + (SFTestService *)serviceInstance;
 
++ (id)serviceWithoutAttributes;
+
+SF_ATTRIBUTE(SFService)
++ (id)serviceWithMissingPropertyOfAttribute;
+
+SF_ATTRIBUTE(NSObject)
++ (id)serviceWithWrongAttribute;
+
+
 @end
