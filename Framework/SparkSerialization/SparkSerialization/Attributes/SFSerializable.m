@@ -1,5 +1,5 @@
 //
-//  SFSerializable.m
+//  RFSerializable.m
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,10 +31,10 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFSerializable.h"
+#import "RFSerializable.h"
 
-NSString * const SFSerializedObjectClassName = @"SFSerializedObjectClassName";
+NSString * const RFSerializedObjectClassName = @"RFSerializedObjectClassName";
 
-@implementation SFSerializable
+@implementation RFSerializable
 
 @end

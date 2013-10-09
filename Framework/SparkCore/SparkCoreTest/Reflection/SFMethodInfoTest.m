@@ -1,5 +1,5 @@
 //
-//  SFMethodInfoTest.m
+//  RFMethodInfoTest.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,16 +32,16 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import <objc/runtime.h>
-#import "SFMethodInfo.h"
-#import "SFTypeDecoder.h"
+#import "RFMethodInfo.h"
+#import "RFTypeDecoder.h"
 
-@interface SFMethodInfoTest : SenTestCase {
+@interface RFMethodInfoTest : SenTestCase {
     Class _testClass;
 }
 
 @end
 
-@implementation SFMethodInfoTest
+@implementation RFMethodInfoTest
 
 const static NSUInteger numberOfMethods = 145;
 const static char *testClassName = "testClassName";
@@ -60,7 +60,7 @@ const static char *testClassName = "testClassName";
         class_addMethod(_testClass, methodSelector, nil, "v@:i");
         inc++;
     }
-    STAssertTrue(inc == [[SFMethodInfo methodsOfClass:_testClass] count], @"It's not equals a sum of methods");
+    STAssertTrue(inc == [[RFMethodInfo methodsOfClass:_testClass] count], @"It's not equals a sum of methods");
 }
 
 - (void)testMethodByName
@@ -69,7 +69,7 @@ const static char *testClassName = "testClassName";
     SEL methodSelector = NSSelectorFromString(methodName);
     class_addMethod(_testClass, methodSelector, nil, "@@");
     
-    SFMethodInfo *result = [SFMethodInfo instanceMethodNamed:methodName forClass:_testClass];
+    RFMethodInfo *result = [RFMethodInfo instanceMethodNamed:methodName forClass:_testClass];
     STAssertNotNil(result, @"Can't find metadata of method by name");
 }
 
@@ -82,10 +82,10 @@ const static char *testClassName = "testClassName";
     
     class_addMethod(_testClass, methodSelector, nil, [[NSString stringWithFormat:@"%@@:%@", encodeReturn, encodeParam] UTF8String]);
     
-    SFMethodInfo *methodInfo = [SFMethodInfo instanceMethodNamed:methodName forClass:_testClass];
+    RFMethodInfo *methodInfo = [RFMethodInfo instanceMethodNamed:methodName forClass:_testClass];
     NSString *type = [methodInfo typeOfArgumentAtIndex:0];
 
-    STAssertTrue([[SFTypeDecoder nameFromTypeEncoding:encodeParam] isEqualToString:type], @"Resulting constants aren't equal");
+    STAssertTrue([[RFTypeDecoder nameFromTypeEncoding:encodeParam] isEqualToString:type], @"Resulting constants aren't equal");
 }
 
 - (void)tearDown {

@@ -1,5 +1,5 @@
 //
-//  SFNetLogWriter.h
+//  RFNetLogWriter.h
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,23 +30,23 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFLogWriter.h"
-#import "SFConnectionDelegate.h"
+#import "RFLogWriter.h"
+#import "RFConnectionDelegate.h"
 
-@class SFLogMessage;
-@class SFNetLogWriter;
+@class RFLogMessage;
+@class RFNetLogWriter;
 
 /**
  Delegate protocol about available connections.
  */
-@protocol SFNetLogWriterDelegate <NSObject>
+@protocol RFNetLogWriterDelegate <NSObject>
 
 /**
  Informs the delegate that the following possible services has been found to send log messages to.
  @param logWriter The log writer
  @param serviceNames The array of service names.
  */
-- (void)logWriter:(SFNetLogWriter *)logWriter availableServiceNames:(NSArray *)serviceNames;
+- (void)logWriter:(RFNetLogWriter *)logWriter availableServiceNames:(NSArray *)serviceNames;
 
 @end
 
@@ -54,11 +54,11 @@
 /**
  A network log writer class to send log messages over the network to dedicated log listener apps.
  */
-@interface SFNetLogWriter : SFLogWriter <SFConnectionDelegate>
+@interface RFNetLogWriter : RFLogWriter <RFConnectionDelegate>
 
 /**
  The delegate property.
  */
-@property (weak, nonatomic) id<SFNetLogWriterDelegate> delegate;
+@property (weak, nonatomic) id<RFNetLogWriterDelegate> delegate;
 
 @end

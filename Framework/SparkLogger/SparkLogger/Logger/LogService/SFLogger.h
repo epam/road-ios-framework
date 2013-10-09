@@ -1,5 +1,5 @@
 //
-//  SFLogger.h
+//  RFLogger.h
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,8 +30,8 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFLogging.h"
+#import "RFLogging.h"
 
-@interface SFLogger : NSObject <SFLogging>
+@interface RFLogger : NSObject <RFLogging>
 
 @end

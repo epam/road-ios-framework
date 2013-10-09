@@ -1,5 +1,5 @@
 //
-//  SFObject.m
+//  RFObject.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,9 +31,9 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFObject.h"
+#import "RFObject.h"
 
-@implementation SFObject
+@implementation RFObject
 
 - (id)init {
     self = [super init];

@@ -37,7 +37,7 @@
  This macro is used to declare attributes.
  The below is an example of macro usage:
  
-    SF_ATTRIBUTE (CustomSFTestAttribute, property1 = @ "Text1", property2 = @ "Text2")
+    RF_ATTRIBUTE (CustomRFTestAttribute, property1 = @ "Text1", property2 = @ "Text2")
  
  The first parameter specifies the class of the declared object.
  The following parameters (if necessary) is a comma separated list of the properties and values, 
@@ -46,9 +46,9 @@
  *Technical note: ROADAttributesCodeGenerator interprets this macro and generates appropriate code for creating attribute's objects,
   therefore the macro doesn't produce any code themselves.*
  */
-#define SF_ATTRIBUTE(AttrObject, ...)
+#define RF_ATTRIBUTE(AttrObject, ...)
 
 #endif
 
-#import "NSObject+SFAttributes.h"
-#import "SFAttributeCacheManager.h"
+#import "NSObject+RFAttributes.h"
+#import "RFAttributeCacheManager.h"

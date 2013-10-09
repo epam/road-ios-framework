@@ -1,5 +1,5 @@
 //
-//  SFLogBlockFormatter.h
+//  RFLogBlockFormatter.h
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,20 +30,20 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFLogFormatter.h"
+#import "RFLogFormatter.h"
 
-@class SFLogMessage;
+@class RFLogMessage;
 
 /**
- Concrete subclass of the SFLogFormatter class.
+ Concrete subclass of the RFLogFormatter class.
  */
-@interface SFLogBlockFormatter : SFLogFormatter
+@interface RFLogBlockFormatter : RFLogFormatter
 
 /**
  * Creates formatter with specified block.
  * @param formatterBlock The block that format message.
  * @return The log formatter initialized with block.
  */
-+ (SFLogBlockFormatter *)formatterWithBlock:(NSString * (^)(SFLogMessage *))formatterBlock;
++ (RFLogBlockFormatter *)formatterWithBlock:(NSString * (^)(RFLogMessage *))formatterBlock;
 
 @end

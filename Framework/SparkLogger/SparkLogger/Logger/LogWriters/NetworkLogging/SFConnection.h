@@ -1,5 +1,5 @@
 //
-//  SFConnection.h
+//  RFConnection.h
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,19 +30,19 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFConnectionDelegate.h"
+#import "RFConnectionDelegate.h"
 
 #define kNLConnectionNameSuffix @"_netLog_srv"
 
 /**
  A connection class browsing for possible network services and initiating background threads to broadcast log messages.
  */
-@interface SFConnection : NSObject <NSNetServiceBrowserDelegate, NSPortDelegate>
+@interface RFConnection : NSObject <NSNetServiceBrowserDelegate, NSPortDelegate>
 
 /**
  The delegate property.
  */
-@property (weak, nonatomic) id<SFConnectionDelegate> delegate;
+@property (weak, nonatomic) id<RFConnectionDelegate> delegate;
 
 /**
  Designated initializer.

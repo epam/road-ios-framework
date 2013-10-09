@@ -1,5 +1,5 @@
 //
-//  SFServiceProvider.h
+//  RFServiceProvider.h
 //  ROADServices
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,8 +32,8 @@
 
 
 #import <Foundation/Foundation.h>
-#import "SFService.h"
+#import "RFService.h"
 
-@interface SFServiceProvider : NSObject
+@interface RFServiceProvider : NSObject
 
 @end

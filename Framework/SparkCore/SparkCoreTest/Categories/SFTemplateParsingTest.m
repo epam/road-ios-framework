@@ -1,5 +1,5 @@
 //
-//  SFTemplateParsingTest.m
+//  RFTemplateParsingTest.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,10 +31,10 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFTemplateParsingTest.h"
-#import "NSMutableString+SFStringFormatter.h"
+#import "RFTemplateParsingTest.h"
+#import "NSMutableString+RFStringFormatter.h"
 
-@implementation SFTemplateParsingTest {
+@implementation RFTemplateParsingTest {
     NSMutableString *template;
     NSString *escape;
     NSDictionary *values;
@@ -57,7 +57,7 @@
 }
 
 - (void)testTemplateParsing {
-    [template SF_formatStringUsingValues:values withEscape:escape];
+    [template RF_formatStringUsingValues:values withEscape:escape];
     NSRange rangeOfKey = [template rangeOfString:@"key"];
     NSRange rangeOfEscape = [template rangeOfString:escape];
     NSRange rangeOfValue1 = [template rangeOfString:@"value1"];

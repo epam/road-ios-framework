@@ -1,5 +1,5 @@
 //
-//  SFPoolTest.h
+//  RFPoolTest.h
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -33,6 +33,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface SFPoolTest : SenTestCase
+@interface RFPoolTest : SenTestCase
 
 @end

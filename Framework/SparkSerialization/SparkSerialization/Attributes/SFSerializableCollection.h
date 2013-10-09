@@ -1,5 +1,5 @@
 //
-//  SFSerializableCollection.h
+//  RFSerializableCollection.h
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -35,7 +35,7 @@
 /**
  Indicates if a serializable property is a weak-typed collection, such as NSArray, NSDictionary or NSSet. You can indicate with the defaultValue of this attribute the class names of the elements inside the collection, allowing the annotated decoder to restore these.
 */
-@interface SFSerializableCollection : NSObject
+@interface RFSerializableCollection : NSObject
 
 @property(nonatomic, assign) Class collectionClass;
 

@@ -555,8 +555,8 @@
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SparkServicesTest/ROADServicesTest-Prefix.pch";
-				INFOPLIST_FILE = "SparkServicesTest/ROADServicesTest-Info.plist";
+				GCC_PREFIX_HEADER = "ROADServicesTest/ROADServicesTest-Prefix.pch";
+				INFOPLIST_FILE = "ROADServicesTest/ROADServicesTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -581,8 +581,8 @@
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SparkServicesTest/ROADServicesTest-Prefix.pch";
-				INFOPLIST_FILE = "SparkServicesTest/ROADServicesTest-Info.plist";
+				GCC_PREFIX_HEADER = "ROADServicesTest/ROADServicesTest-Prefix.pch";
+				INFOPLIST_FILE = "ROADServicesTest/ROADServicesTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -643,9 +643,9 @@
 		7869945C16AEBF3E00B28760 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DSTROOT = /tmp/SparkServices.dst;
+				DSTROOT = /tmp/ROADServices.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SparkServices/ROADServices-Prefix.pch";
+				GCC_PREFIX_HEADER = "ROADServices/ROADServices-Prefix.pch";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -659,9 +659,9 @@
 		7869945D16AEBF3E00B28760 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DSTROOT = /tmp/SparkServices.dst;
+				DSTROOT = /tmp/ROADServices.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SparkServices/ROADServices-Prefix.pch";
+				GCC_PREFIX_HEADER = "ROADServices/ROADServices-Prefix.pch";
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -685,9 +685,9 @@
 				FRAMEWORK_VERSION = A;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SparkServicesMac/ROADServicesMac-Prefix.pch";
+				GCC_PREFIX_HEADER = "ROADServicesMac/ROADServicesMac-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				INFOPLIST_FILE = "SparkServicesMac/ROADServicesMac-Info.plist";
+				INFOPLIST_FILE = "ROADServicesMac/ROADServicesMac-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = ROADServices;
 				SDKROOT = macosx;
@@ -710,9 +710,9 @@
 				FRAMEWORK_VERSION = A;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SparkServicesMac/ROADServicesMac-Prefix.pch";
+				GCC_PREFIX_HEADER = "ROADServicesMac/ROADServicesMac-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				INFOPLIST_FILE = "SparkServicesMac/ROADServicesMac-Info.plist";
+				INFOPLIST_FILE = "ROADServicesMac/ROADServicesMac-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = ROADServices;
 				SDKROOT = macosx;

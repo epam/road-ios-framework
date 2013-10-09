@@ -1,5 +1,5 @@
 //
-//  SFODataPredicate.m
+//  RFODataPredicate.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,17 +30,17 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFODataPredicate.h"
+#import "RFODataPredicate.h"
 
-#import "SFODataExpression.h"
+#import "RFODataExpression.h"
 
-@implementation SFODataPredicate
+@implementation RFODataPredicate
 
-static NSArray * kSFPredicateOperatorTypes;
+static NSArray * kRFPredicateOperatorTypes;
 
 #pragma mark  - Initialization
 
-- (id)initWithLeftExpression:(SFODataExpression *)leftExpression rightExpression:(SFODataExpression *)rightExpression type:(SFODataPredicateOperatorType)type {
+- (id)initWithLeftExpression:(RFODataExpression *)leftExpression rightExpression:(RFODataExpression *)rightExpression type:(RFODataPredicateOperatorType)type {
     self = [super init];
     
     if (self) {
@@ -50,7 +50,7 @@ static NSArray * kSFPredicateOperatorTypes;
         
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            kSFPredicateOperatorTypes = @[@"",
+            kRFPredicateOperatorTypes = @[@"",
                                            @"eq",
                                            @"ne",
                                            @"gt",
@@ -71,14 +71,14 @@ static NSArray * kSFPredicateOperatorTypes;
     return self;
 }
 
-- (id)initWithExpression:(SFODataExpression *)expression type:(SFODataPredicateOperatorType)type {
+- (id)initWithExpression:(RFODataExpression *)expression type:(RFODataPredicateOperatorType)type {
     self = [self initWithLeftExpression:expression rightExpression:nil type:type];
     
     return self;
 }
 
 - (id)initWithFilterString:(NSString *)filterString {
-    self = [self initWithLeftExpression:nil rightExpression:nil type:SFNotSpecifiedODataPredicateOperatorType];
+    self = [self initWithLeftExpression:nil rightExpression:nil type:RFNotSpecifiedODataPredicateOperatorType];
     
     if (self) {
         _filter = filterString;
@@ -87,8 +87,8 @@ static NSArray * kSFPredicateOperatorTypes;
     return self;
 }
 
-- (SFODataExpression *)expression {
-    return [[SFODataExpression alloc] initWithPredicate:self];
+- (RFODataExpression *)expression {
+    return [[RFODataExpression alloc] initWithPredicate:self];
 }
 
 
@@ -107,11 +107,11 @@ static NSArray * kSFPredicateOperatorTypes;
     
     NSString *description;
     
-    if (_type == SFNotEqualToODataPredicateOperatorType) {
-        description = [NSString stringWithFormat:@"%@ %@", kSFPredicateOperatorTypes[_type], _leftExpression];
+    if (_type == RFNotEqualToODataPredicateOperatorType) {
+        description = [NSString stringWithFormat:@"%@ %@", kRFPredicateOperatorTypes[_type], _leftExpression];
     }
     else {
-        description = [NSString stringWithFormat:@"%@ %@ %@", _leftExpression, kSFPredicateOperatorTypes[_type], _rightExpression];
+        description = [NSString stringWithFormat:@"%@ %@ %@", _leftExpression, kRFPredicateOperatorTypes[_type], _rightExpression];
     }
     
     return description;

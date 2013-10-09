@@ -1,5 +1,5 @@
 //
-//  SFLogFilter.h
+//  RFLogFilter.h
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,44 +30,44 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-@class SFLogMessage;
+@class RFLogMessage;
 
 /**
  Abstract base class of the log filters - implementing log message checks.
  */
-@interface SFLogFilter : NSObject
+@interface RFLogFilter : NSObject
 
 /**
  * Invoked by the writer to check if a specific log message passes the test implemented by the filter.
  * @param message The message to test.
  * @result The result of the message test.
  */
-- (BOOL)hasMessagePassedTest:(SFLogMessage * const)message;
+- (BOOL)hasMessagePassedTest:(RFLogMessage * const)message;
 
 /**
  * Creates a filter with the specified predicate.
- * @param predicate The predicate against which the log message (SFLogMessage instance) is evaluated.
+ * @param predicate The predicate against which the log message (RFLogMessage instance) is evaluated.
  * @result The log filter that was initialized with predicate.
  */
-+ (SFLogFilter *)filterWithPrediate:(NSPredicate * const)predicate;
++ (RFLogFilter *)filterWithPrediate:(NSPredicate * const)predicate;
 
 /**
  * Provides pre - configured filter for only file type messages
  * @result Filter for only file type messages
  */
-+ (SFLogFilter *)fileFilter;
++ (RFLogFilter *)fileFilter;
 
 /**
  * Provides pre - configured filter for only network type messages
  * @result Filter for only network type messages
  */
-+ (SFLogFilter *)networkFilter;
++ (RFLogFilter *)networkFilter;
 
 /**
  * Provides pre - configured filter for only console type messages
  * @result Filter for only console type messages
  */
-+ (SFLogFilter *)consoleFilter;
++ (RFLogFilter *)consoleFilter;
 
 
 @end

@@ -1,5 +1,5 @@
 //
-//  SFWebServiceLogger.h
+//  RFWebServiceLogger.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,7 +32,7 @@
 
 #import <ROAD/ROADAttribute.h>
 
-@interface SFWebServiceLogger : NSObject
+@interface RFWebServiceLogger : NSObject
 
 @property (strong, nonatomic) NSString *loggerType;
 

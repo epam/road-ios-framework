@@ -1,5 +1,5 @@
 //
-//  SFDefaultSerializer.h
+//  RFDefaultSerializer.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,11 +32,11 @@
 
 
 #import <Foundation/Foundation.h>
-#import "SFSerializationDelegate.h"
+#import "RFSerializationDelegate.h"
 /**
  The default serializer for web service
  */
-@interface SFDefaultSerializer : NSObject <SFSerializationDelegate>
+@interface RFDefaultSerializer : NSObject <RFSerializationDelegate>
 
 
 @end

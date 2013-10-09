@@ -1,5 +1,5 @@
 //
-//  SFSerializationAssistant.h
+//  RFSerializationAssistant.h
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -33,9 +33,9 @@
 #import <Foundation/Foundation.h>
 #import <ROAD/ROADReflection.h>
 
-@interface SFSerializationAssistant : NSObject
+@interface RFSerializationAssistant : NSObject
 
-+ (NSString *)serializationKeyForProperty:(SFPropertyInfo *)propertyInfo;
-+ (NSString *)collectionItemClassNameForProperty:(SFPropertyInfo *)propertyInfo;
++ (NSString *)serializationKeyForProperty:(RFPropertyInfo *)propertyInfo;
++ (NSString *)collectionItemClassNameForProperty:(RFPropertyInfo *)propertyInfo;
 
 @end

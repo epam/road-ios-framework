@@ -1,5 +1,5 @@
 //
-//  SFLogWriter.h
+//  RFLogWriter.h
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,14 +32,14 @@
 
 #import <Foundation/Foundation.h>
 
-@class SFLogFilter;
-@class SFLogMessage;
-@class SFLogFormatter;
+@class RFLogFilter;
+@class RFLogMessage;
+@class RFLogFormatter;
 
 /**
  Abstract base class of all log writers, contains all the methods and the necessary implementations to make this class and its subclass function as log writers.
  */
-@interface SFLogWriter : NSObject
+@interface RFLogWriter : NSObject
 
 /**
  The queue to work on. http://stackoverflow.com/questions/12511976/app-crashes-after-xcode-upgrade-to-4-5-assigning-retained-object-to-unsafe-unre
@@ -65,32 +65,32 @@
  Adds a filter to the filter list of this writer.
  @param aFilter The filter to be added.
  */
-- (void)addFilter:(SFLogFilter * const)aFilter;
+- (void)addFilter:(RFLogFilter * const)aFilter;
 
 /**
  Removes a filter from the filter list of this writer.
  @param aFilter The filter to be removed.
  */
-- (void)removeFilter:(SFLogFilter * const)aFilter;
+- (void)removeFilter:(RFLogFilter * const)aFilter;
 
 /**
  Checks a message with list of defined filters.
  @param aMessage The message to be checked.
  @result Whether message has passed the filters.
  */
-- (BOOL)hasMessagePassedFilters:(SFLogMessage *const)aMessage;
+- (BOOL)hasMessagePassedFilters:(RFLogMessage *const)aMessage;
 
 /**
  Logs a message to this writer. Method has to be implemented in subclasses.
  @param aMessage The message to be logged.
  */
-- (void)logValidMessage:(SFLogMessage * const)aMessage;
+- (void)logValidMessage:(RFLogMessage * const)aMessage;
 
 /**
  Enqueues message that passed filters. If queue reaches queueSize limit, it invokes logQueue method.
  @param aMessage The message to be enqueued
  */
-- (void)enqueueValidMessage:(SFLogMessage * const)aMessage;
+- (void)enqueueValidMessage:(RFLogMessage * const)aMessage;
 
 /**
  Logs all messages in queue and clear queue
@@ -101,23 +101,23 @@
  Returns the formatted message from the log message object.
  @param aMessage The log message to format.
  */
-- (NSString *)formattedMessage:(SFLogMessage * const)aMessage;
+- (NSString *)formattedMessage:(RFLogMessage * const)aMessage;
 
 /**
  The log formatter property for the specific writer. Optional, in its absence, the bare log message will be logged.
  */
-@property (retain, nonatomic) SFLogFormatter *formatter;
+@property (retain, nonatomic) RFLogFormatter *formatter;
 
 /**
  Returns a file writer for the specified path.
  @param path The NSString representation of the file path.
  @result The writer instance.
  */
-+ (SFLogWriter *)fileWriterWithPath:(NSString * const)path;
++ (RFLogWriter *)fileWriterWithPath:(NSString * const)path;
 
 /**
  Returns a console log writer with plain formatter.
  */
-+ (SFLogWriter *)plainConsoleWriter;
++ (RFLogWriter *)plainConsoleWriter;
 
 @end

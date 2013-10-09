@@ -1,5 +1,5 @@
 //
-//  NSInvocation+SFSparkExtension.m
+//  NSInvocation+RFROADExtension.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,11 +30,11 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "NSInvocation+SFSparkExtension.h"
+#import "NSInvocation+RFROADExtension.h"
 
-@implementation NSInvocation (SFSparkExtension)
+@implementation NSInvocation (RFROADExtension)
 
-+ (NSInvocation *)SF_invocationForSelector:(SEL)selector target:(id)target  {
++ (NSInvocation *)RF_invocationForSelector:(SEL)selector target:(id)target  {
     NSMethodSignature *methodSig = [target methodSignatureForSelector:selector];
     if (methodSig == nil) {
         return nil;

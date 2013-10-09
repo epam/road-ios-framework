@@ -1,5 +1,5 @@
 //
-//  SFWebServiceClient.h
+//  RFWebServiceClient.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,20 +32,20 @@
 
 #import <ROAD/ROADServices.h>
 
-@protocol SFSerializationDelegate;
-@protocol SFAuthenticating;
+@protocol RFSerializationDelegate;
+@protocol RFAuthenticating;
 
-typedef void (^SFWebServiceClientPrepareForSendRequestBlock)(NSMutableURLRequest* serviceRequest);
+typedef void (^RFWebServiceClientPrepareForSendRequestBlock)(NSMutableURLRequest* serviceRequest);
 
 /**
  The webservice client class. It can submit a request. It uses dynamic method resolution to implement various methods based on the annotations.
  */
-@interface SFWebServiceClient : SFService
+@interface RFWebServiceClient : RFService
 
 /**
  The serialization delegate.
  */
-@property (strong, nonatomic) id<SFSerializationDelegate> serializationDelegate;
+@property (strong, nonatomic) id<RFSerializationDelegate> serializationDelegate;
 
 /**
  * The Web Service host url.
@@ -60,7 +60,7 @@ typedef void (^SFWebServiceClientPrepareForSendRequestBlock)(NSMutableURLRequest
 /*
  * Authentication provider which will be used in case of authentication challenge from server
  */
-@property (strong, nonatomic) id<SFAuthenticating> authenticationProvider;
+@property (strong, nonatomic) id<RFAuthenticating> authenticationProvider;
 
 /**
  Designated initializer.

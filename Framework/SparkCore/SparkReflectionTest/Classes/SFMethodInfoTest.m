@@ -1,5 +1,5 @@
 //
-//  SFMethodInfoTest.m
+//  RFMethodInfoTest.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,11 +31,11 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFMethodInfoTest.h"
-#import "SFMethodInfo.h"
-#import "NSObject+SFMethodReflection.h"
+#import "RFMethodInfoTest.h"
+#import "RFMethodInfo.h"
+#import "NSObject+RFMethodReflection.h"
 
-@implementation SFMethodInfoTest
+@implementation RFMethodInfoTest
 
 - (void)instanceMethod {
 }
@@ -44,13 +44,13 @@
 }
 
 - (void)testInstanceMethodDescriptor {
-    SFMethodInfo *desc = [self SF_instanceMethodNamed:@"instanceMethod"];
+    RFMethodInfo *desc = [self RF_instanceMethodNamed:@"instanceMethod"];
     STAssertTrue([[desc className] isEqualToString:NSStringFromClass([self class])],@"Assertion: classname is correct for method descriptor.");
     STAssertTrue([desc isClassMethod] == NO, @"Assertion: method is instance method.");
 }
 
 - (void)testClassMethodDescriptor {
-    SFMethodInfo *desc = [self SF_classMethodNamed:@"classMethod"];
+    RFMethodInfo *desc = [self RF_classMethodNamed:@"classMethod"];
     STAssertTrue([desc isClassMethod] == YES, @"Assertion: method is class method");
 }
 

@@ -1,5 +1,5 @@
 //
-//  SFLooper.m
+//  RFLooper.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,9 +31,9 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFLooper.h"
+#import "RFLooper.h"
 
-@implementation SFLooper {
+@implementation RFLooper {
     BOOL looping;
 }
 

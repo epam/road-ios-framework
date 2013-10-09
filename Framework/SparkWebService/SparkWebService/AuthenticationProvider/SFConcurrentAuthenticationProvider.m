@@ -1,5 +1,5 @@
 //
-//  SFConcurrentAuthenticationProvider.m
+//  RFConcurrentAuthenticationProvider.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,10 +30,10 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFConcurrentAuthenticationProvider.h"
+#import "RFConcurrentAuthenticationProvider.h"
 #import <objc/runtime.h>
 
-@implementation SFConcurrentAuthenticationProvider
+@implementation RFConcurrentAuthenticationProvider
 
 - (id)init {
     self = [super init];

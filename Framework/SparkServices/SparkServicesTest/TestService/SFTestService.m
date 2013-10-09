@@ -1,5 +1,5 @@
 //
-//  SFTestService.m
+//  RFTestService.m
 //  ROADServices
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,8 +30,8 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFTestService.h"
+#import "RFTestService.h"
 
-@implementation SFTestService
+@implementation RFTestService
 
 @end

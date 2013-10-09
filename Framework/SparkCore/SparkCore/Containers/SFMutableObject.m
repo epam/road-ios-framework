@@ -1,5 +1,5 @@
 //
-//  SFMutableObject.m
+//  RFMutableObject.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,15 +31,15 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFMutableObject.h"
-#import "NSString+SFAccessorUtilities.h"
+#import "RFMutableObject.h"
+#import "NSString+RFAccessorUtilities.h"
 #import <objc/runtime.h>
 #import "ROADReflection.h"
 
-const char *SFMutableObjectSetterEncoding = "v@:@";
-const char *SFMutableObjectGetterEncoding = "@@:";
+const char *RFMutableObjectSetterEncoding = "v@:@";
+const char *RFMutableObjectGetterEncoding = "@@:";
 
-@implementation SFMutableObject
+@implementation RFMutableObject
 
 - (void)initialize {
     [super initialize];
@@ -62,20 +62,20 @@ const char *SFMutableObjectGetterEncoding = "@@:";
 
 + (BOOL)resolveInstanceMethod:(SEL)sel {
     BOOL result;
-    NSString * const getterName = [NSStringFromSelector(sel) SF_stringByTransformingToGetterAccessor];
-    NSString * const setterName = [getterName SF_stringByTransformingToSetterAccessor];
-    SFPropertyInfo * const desc = [self SF_propertyNamed:getterName];
+    NSString * const getterName = [NSStringFromSelector(sel) RF_stringByTransformingToGetterAccessor];
+    NSString * const setterName = [getterName RF_stringByTransformingToSetterAccessor];
+    RFPropertyInfo * const desc = [self RF_propertyNamed:getterName];
     
     
     if ([desc isDynamic]) {
         SEL getter = sel_registerName([getterName cStringUsingEncoding:NSUTF8StringEncoding]);
         SEL setter = sel_registerName([setterName cStringUsingEncoding:NSUTF8StringEncoding]);
         
-        const char *encoding = SFMutableObjectGetterEncoding;
+        const char *encoding = RFMutableObjectGetterEncoding;
         IMP implementation = [self instanceMethodForSelector:@selector(genericValueGetter)];
         class_addMethod(self, getter, implementation, encoding);
         
-        encoding = SFMutableObjectSetterEncoding;
+        encoding = RFMutableObjectSetterEncoding;
         implementation = [self instanceMethodForSelector:@selector(setGenericValueSetter:)];
         class_addMethod(self, setter, implementation, encoding);
         
@@ -89,7 +89,7 @@ const char *SFMutableObjectGetterEncoding = "@@:";
 }
 
 - (void)setGenericValueSetter:(id)value {
-    NSString * const key = [NSStringFromSelector(_cmd) SF_stringByTransformingToGetterAccessor];
+    NSString * const key = [NSStringFromSelector(_cmd) RF_stringByTransformingToGetterAccessor];
     [self setValue:value forUndefinedKey:key];
 }
 

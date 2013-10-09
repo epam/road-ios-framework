@@ -1,5 +1,5 @@
 //
-//  SFXMLParser.m
+//  RFXMLParser.m
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,21 +31,21 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFXMLParser.h"
+#import "RFXMLParser.h"
 #import <ROAD/ROADLogger.h>
 
-#import "SFXMLParsing.h"
-#import "SFXMLElement.h"
-#import "SFXMLSpecificParser.h"
+#import "RFXMLParsing.h"
+#import "RFXMLElement.h"
+#import "RFXMLSpecificParser.h"
 
-@implementation SFXMLParser {
-    SFObjectPool * _pool;
+@implementation RFXMLParser {
+    RFObjectPool * _pool;
     NSMutableArray * _parserStack;
-    SFXMLElement * _rootElement;
+    RFXMLElement * _rootElement;
 }
 
 + (void)parseXMLData:(NSData * const)xmlData completion:(parseHandler)completionBlock {
-    SFXMLParser * const parserDelegate = [[self alloc] init];
+    RFXMLParser * const parserDelegate = [[self alloc] init];
     NSXMLParser * const theParser = [[NSXMLParser alloc] initWithData:xmlData];
     theParser.delegate = parserDelegate;
     [theParser parse];
@@ -55,28 +55,28 @@
 - (void)initialize {
     [super initialize];
     _parserStack = [[NSMutableArray alloc] init];
-    _pool = [[SFObjectPool alloc] init];
+    _pool = [[RFObjectPool alloc] init];
     _pool.delegate = self;
 }
 
 - (void)registerParserClassNamed:(NSString * const)aParserClassName forElementName:(NSString * const)elementName {
-    SFLogDebug(@"Parser(%@) are registered on element with name: %@", aParserClassName, elementName);
+    RFLogDebug(@"Parser(%@) are registered on element with name: %@", aParserClassName, elementName);
     [_pool registerClassNamed:aParserClassName forIdentifier:elementName];
 }
 
-- (id<SFXMLParsing>)parserForElementName:(NSString * const)elementName {
-    id<SFXMLParsing> parser = [_pool objectForIdentifier:elementName];
+- (id<RFXMLParsing>)parserForElementName:(NSString * const)elementName {
+    id<RFXMLParsing> parser = [_pool objectForIdentifier:elementName];
     
     if (parser == nil && [self canUseDefaultParser]) {
-        [_pool registerClassNamed:NSStringFromClass([SFXMLSpecificParser class]) forIdentifier:elementName];
+        [_pool registerClassNamed:NSStringFromClass([RFXMLSpecificParser class]) forIdentifier:elementName];
         parser = [_pool objectForIdentifier:elementName];
     }
     
     return parser;
 }
 
-- (id<SFXMLParsing>)currentDelegate {
-    return [_parserStack SF_lastElementIfNotEmpty];
+- (id<RFXMLParsing>)currentDelegate {
+    return [_parserStack RF_lastElementIfNotEmpty];
 }
 
 - (BOOL)canUseDefaultParser {
@@ -85,11 +85,11 @@
 
 #pragma mark - Pool delegate methods
 
-- (void)pool:(SFObjectPool *const)pool didInstantiateObject:(const id<SFXMLParsing>)anObject forIdentifier:(NSString *const)anIdentifier {
+- (void)pool:(RFObjectPool *const)pool didInstantiateObject:(const id<RFXMLParsing>)anObject forIdentifier:(NSString *const)anIdentifier {
     [anObject setParent:[self currentDelegate]];
 }
 
-- (void)pool:(SFObjectPool *const)pool didLendObject:(const id<SFXMLParsing>)anObject forIdentifier:(NSString *const)anIdentifier {
+- (void)pool:(RFObjectPool *const)pool didLendObject:(const id<RFXMLParsing>)anObject forIdentifier:(NSString *const)anIdentifier {
     [anObject setParent:[self currentDelegate]];
 }
 
@@ -97,7 +97,7 @@
 #pragma mark - Parsing delegate methods
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
-    id<SFXMLParsing> aParser = [self parserForElementName:elementName];
+    id<RFXMLParsing> aParser = [self parserForElementName:elementName];
     [_parserStack addObject:aParser];
     [aParser parser:parser didStartElement:elementName namespaceURI:namespaceURI qualifiedName:qName attributes:attributeDict];
     

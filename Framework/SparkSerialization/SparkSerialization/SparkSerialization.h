@@ -33,19 +33,19 @@
 #ifndef ROADSerialization_ROADSerialization_h
 #define ROADSerialization_ROADSerialization_h
 
-#import "NSJSONSerialization+SFJSONStringHandling.h"
-#import "SFSerializable.h"
-#import "SFDerived.h"
-#import "SFSerializableCollection.h"
-#import "SFSerializableDate.h"
-#import "SFAttributedCoder.h"
-#import "SFAttributedDecoder.h"
-#import "SFXMLParser.h"
-#import "SFXMLElement.h"
-#import "SFXMLSpecificParser.h"
-#import "SFXMLModelParser.h"
-#import "SFEntityElement.h"
-#import "SFPropertyElement.h"
-#import "SFRelationshipElement.h"
+#import "NSJSONSerialization+RFJSONStringHandling.h"
+#import "RFSerializable.h"
+#import "RFDerived.h"
+#import "RFSerializableCollection.h"
+#import "RFSerializableDate.h"
+#import "RFAttributedCoder.h"
+#import "RFAttributedDecoder.h"
+#import "RFXMLParser.h"
+#import "RFXMLElement.h"
+#import "RFXMLSpecificParser.h"
+#import "RFXMLModelParser.h"
+#import "RFEntityElement.h"
+#import "RFPropertyElement.h"
+#import "RFRelationshipElement.h"
 
 #endif

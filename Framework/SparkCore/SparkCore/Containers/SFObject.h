@@ -1,5 +1,5 @@
 //
-//  SFObject.h
+//  RFObject.h
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -34,9 +34,9 @@
 #import <Foundation/Foundation.h>
 
 /**
- Generic root class for the Epam Spark framework. Contains convenience methods and solutions for object initialization.
+ Generic root class for the Epam ROAD framework. Contains convenience methods and solutions for object initialization.
  */
-@interface SFObject : NSObject
+@interface RFObject : NSObject
 
 /**
  Method invoked when the -init method of this class is executed. Call super in subclasses if you indend to use this shorter form of initialization.

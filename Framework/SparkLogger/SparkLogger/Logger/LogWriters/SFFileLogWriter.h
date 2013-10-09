@@ -1,5 +1,5 @@
 //
-//  SFFileLogWriter.h
+//  RFFileLogWriter.h
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,16 +30,16 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFLogWriter.h"
+#import "RFLogWriter.h"
 
 /**
  The file log writer.
  */
-@interface SFFileLogWriter : SFLogWriter
+@interface RFFileLogWriter : RFLogWriter
 /**
  Returns a filewriter with the specified path.
  @param path The output file path.
  */
-+ (SFFileLogWriter *)writerWithPath:(NSString * const)path;
++ (RFFileLogWriter *)writerWithPath:(NSString * const)path;
 
 @end

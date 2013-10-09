@@ -1,5 +1,5 @@
 //
-//  SFWebServiceCall.m
+//  RFWebServiceCall.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,9 +31,9 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFWebServiceCall.h"
+#import "RFWebServiceCall.h"
 
-@implementation SFWebServiceCall
+@implementation RFWebServiceCall
 
 - (id)init
 {

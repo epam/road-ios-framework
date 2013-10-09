@@ -1,5 +1,5 @@
 //
-//  SFPropertyNameMethodTest.m
+//  RFPropertyNameMethodTest.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,10 +31,10 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFPropertyNameMethodTest.h"
-#import "NSString+SFAccessorUtilities.h"
+#import "RFPropertyNameMethodTest.h"
+#import "NSString+RFAccessorUtilities.h"
 
-@implementation SFPropertyNameMethodTest {
+@implementation RFPropertyNameMethodTest {
     NSString *setter;
     NSString *getter;
 }
@@ -54,12 +54,12 @@
 }
 
 - (void)testSetterName {
-    NSString * const aSetterName = [getter SF_stringByTransformingToSetterAccessor];
+    NSString * const aSetterName = [getter RF_stringByTransformingToSetterAccessor];
     STAssertTrue([aSetterName isEqualToString:setter], @"Assertion: setter value is constructed properly. Expected: %@, result: %@", setter, aSetterName);
 }
 
 - (void)testGetterName {
-    NSString * const aGetterName = [setter SF_stringByTransformingToGetterAccessor];
+    NSString * const aGetterName = [setter RF_stringByTransformingToGetterAccessor];
     STAssertTrue([aGetterName isEqualToString:getter], @"Assertion: getter value is constructed properly. Expected: %@, result: %@", getter, aGetterName);
 }
 

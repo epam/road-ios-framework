@@ -1,5 +1,5 @@
 //
-//  NSSortDescriptor+SFOData.h
+//  NSSortDescriptor+RFOData.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,15 +32,15 @@
 
 #import <Foundation/Foundation.h>
 
-@class SFPropertyInfo;
+@class RFPropertyInfo;
 
-@interface NSSortDescriptor (SFOData)
+@interface NSSortDescriptor (RFOData)
 
 /**
  * Initializes sort descriptor with property info to recieve OData sorted by it.
  * @param property The property info of property you want to sort with.
  * @param ascending The direction of sorting
  */
-- (id)initWithProperty:(SFPropertyInfo *)property ascending:(BOOL)ascending;
+- (id)initWithProperty:(RFPropertyInfo *)property ascending:(BOOL)ascending;
 
 @end

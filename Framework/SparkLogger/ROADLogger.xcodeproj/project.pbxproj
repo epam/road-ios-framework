@@ -190,7 +190,7 @@
 		8D6007D917D014A00095E17D /* SFServiceProvider+LoggingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SFServiceProvider+LoggingService.m"; sourceTree = "<group>"; };
 		D757824A17CCB91000BD85DA /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		D771947C17CF43630011047F /* SparkGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparkGeneratedAttribute.m; path = SparkGeneratedAttributes/SparkGeneratedAttribute.m; sourceTree = "<group>"; };
-		D771948917CF4DED0011047F /* SparkLoggerTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SparkLoggerTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D771948917CF4DED0011047F /* ROADLoggerTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ROADLoggerTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D771948F17CF4DED0011047F /* SparkLoggerTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SparkLoggerTest-Info.plist"; sourceTree = "<group>"; };
 		D771949117CF4DED0011047F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D771949317CF4DED0011047F /* SparkLoggerTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SparkLoggerTest.h; sourceTree = "<group>"; };
@@ -295,7 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				789AAE3216C4E3FA00FF7FB0 /* libROADLogger.a */,
-				D771948917CF4DED0011047F /* SparkLoggerTest.octest */,
+				D771948917CF4DED0011047F /* ROADLoggerTest.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -443,7 +443,7 @@
 			);
 			name = ROADLoggerTest;
 			productName = SparkLoggerTest;
-			productReference = D771948917CF4DED0011047F /* SparkLoggerTest.octest */;
+			productReference = D771948917CF4DED0011047F /* ROADLoggerTest.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */

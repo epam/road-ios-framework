@@ -1,5 +1,5 @@
 //
-//  SFObjectPool.h
+//  RFObjectPool.h
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,15 +32,15 @@
 
 
 #import <Foundation/Foundation.h>
-#import "SFObject.h"
+#import "RFObject.h"
 
-@protocol SFPooledObject;
-@class SFObjectPool;
+@protocol RFPooledObject;
+@class RFObjectPool;
 
 /**
  Object pool delegate protocol. Contains notification methods to inform its delegate about pooled object management. All methods in this protocol are optional.
  */
-@protocol SFObjectPoolDelegate <NSObject>
+@protocol RFObjectPoolDelegate <NSObject>
 
 @optional
 /**
@@ -48,7 +48,7 @@
  @param pool The pool sending the message.
  @param anIdentifier The identifier for which the object was repooled.
  */
-- (void)pool:(SFObjectPool *)pool didRepoolObjectForIdentifier:(NSString *)anIdentifier;
+- (void)pool:(RFObjectPool *)pool didRepoolObjectForIdentifier:(NSString *)anIdentifier;
 
 /**
  Informs the delegate that a new object was created for an identifier.
@@ -56,7 +56,7 @@
  @param anObject The newly created object.
  @param anIdentifier The identifier for which the object was created.
  */
-- (void)pool:(SFObjectPool *)pool didInstantiateObject:(id<SFPooledObject>)anObject forIdentifier:(NSString *)anIdentifier;
+- (void)pool:(RFObjectPool *)pool didInstantiateObject:(id<RFPooledObject>)anObject forIdentifier:(NSString *)anIdentifier;
 
 /**
  Informs the delegate that an object was removed from the pool as it was requested.
@@ -65,19 +65,19 @@
  @param anObject The newly created object.
 
  */
-- (void)pool:(SFObjectPool *)pool didLendObject:(id<SFPooledObject>)anObject forIdentifier:(NSString *)anIdentifier;
+- (void)pool:(RFObjectPool *)pool didLendObject:(id<RFPooledObject>)anObject forIdentifier:(NSString *)anIdentifier;
 
 @end
 
 /**
  Generic object pool solution to provide reusing of objects that are either heavy to create, or are reused frequently.
  */
-@interface SFObjectPool : SFObject
+@interface RFObjectPool : RFObject
 
 /**
  The pool's delegate.
  */
-@property (weak, nonatomic) id<SFObjectPoolDelegate> delegate;
+@property (weak, nonatomic) id<RFObjectPoolDelegate> delegate;
 
 /**
  Indicates if the reuse identifiers are case sensitive or not.
@@ -88,7 +88,7 @@
  Puts an object instance of a registered class back into the object pool.
  @param anObject The object to put back into the appropriate object pool.
  */
-- (void)repoolObject:(id<SFPooledObject>)anObject;
+- (void)repoolObject:(id<RFPooledObject>)anObject;
 
 /**
  Returns an object for the specified pool reuse identifier. Note, this also removes the object from the pool until it is repooled, therefore you have to make sure to keep it alive via a strong reference.

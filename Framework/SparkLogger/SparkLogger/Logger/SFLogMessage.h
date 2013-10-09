@@ -1,5 +1,5 @@
 //
-//  SFLogMessage.h
+//  RFLogMessage.h
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,26 +30,26 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-extern NSString * const kSFLogMessageTypeAllLoggers;
-extern NSString * const kSFLogMessageTypeNetworkOnly;
-extern NSString * const kSFLogMessageTypeConsoleOnly;
-extern NSString * const kSFLogMessageTypeWebServiceOnly;
-extern NSString * const kSFLogMessageTypeFileOnly;
-extern NSString * const kSFLogMessageTypeNoLogging;
+extern NSString * const kRFLogMessageTypeAllLoggers;
+extern NSString * const kRFLogMessageTypeNetworkOnly;
+extern NSString * const kRFLogMessageTypeConsoleOnly;
+extern NSString * const kRFLogMessageTypeWebServiceOnly;
+extern NSString * const kRFLogMessageTypeFileOnly;
+extern NSString * const kRFLogMessageTypeNoLogging;
 
-typedef NS_ENUM(NSInteger, SFLogLevel) {
+typedef NS_ENUM(NSInteger, RFLogLevel) {
     
-    SFLogLevelInfo = -1000,
-    SFLogLevelDebug = -1001,
-    SFLogLevelWarning = -1002,
-    SFLogLevelError = -1003
+    RFLogLevelInfo = -1000,
+    RFLogLevelDebug = -1001,
+    RFLogLevelWarning = -1002,
+    RFLogLevelError = -1003
     
 };
 
 /**
  The log message encapsulation object.
  */
-@interface SFLogMessage : NSObject <NSCoding, NSCopying>
+@interface RFLogMessage : NSObject <NSCoding, NSCopying>
 
 /**
  The actual log message string.
@@ -74,7 +74,7 @@ typedef NS_ENUM(NSInteger, SFLogLevel) {
 /**
  The level of the log - info, debug, warning, or error.
  */
-@property (assign, nonatomic) SFLogLevel level;
+@property (assign, nonatomic) RFLogLevel level;
 
 /**
  Factory method for creating a log message.
@@ -83,58 +83,58 @@ typedef NS_ENUM(NSInteger, SFLogLevel) {
  @param level The log level of the message.
  @param userInfo The userInfo dictionary for the log message.
  */
-+ (SFLogMessage *)logMessage:(NSString * const)messageText type:(NSString * const)type level:(SFLogLevel const)level userInfo:(NSDictionary * const)userInfo;
++ (RFLogMessage *)logMessage:(NSString * const)messageText type:(NSString * const)type level:(RFLogLevel const)level userInfo:(NSDictionary * const)userInfo;
 
 /**
- * Creates log message with predefined log type SFLogLevelInfo and specified message text.
+ * Creates log message with predefined log type RFLogLevelInfo and specified message text.
  * @param messageText The text of message for intialization message object.
  */
-+ (SFLogMessage *)infoMessage:(NSString * const)messageText;
++ (RFLogMessage *)infoMessage:(NSString * const)messageText;
 
 /**
- * Creates log message with predefined log type SFLogLevelDebug and specified message text.
+ * Creates log message with predefined log type RFLogLevelDebug and specified message text.
  * @param messageText The text of message for intialization message object.
  */
-+ (SFLogMessage *)debugMessage:(NSString * const)messageText;
++ (RFLogMessage *)debugMessage:(NSString * const)messageText;
 
 /**
- * Creates log message with predefined log type SFLogLevelWarning and specified message text.
+ * Creates log message with predefined log type RFLogLevelWarning and specified message text.
  * @param messageText The text of message for intialization message object.
  */
-+ (SFLogMessage *)warningMessage:(NSString * const)messageText;
++ (RFLogMessage *)warningMessage:(NSString * const)messageText;
 
 /**
- * Creates log message with predefined log type SFLogLevelError and specified message text.
+ * Creates log message with predefined log type RFLogLevelError and specified message text.
  * @param messageText The text of message for intialization message object.
  */
-+ (SFLogMessage *)errorMessage:(NSString * const)messageText;
++ (RFLogMessage *)errorMessage:(NSString * const)messageText;
 
 /**
- * Creates log message with predefined log type SFLogLevelInfo and specified message text and type.
- * @param messageText The text of message for intialization message object.
- * @param type The type of message for initialization message object.
- */
-+ (SFLogMessage *)infoMessage:(NSString * const)messageText type:(NSString *)type;
-
-/**
- * Creates log message with predefined log type SFLogLevelDebug and specified message text and type.
+ * Creates log message with predefined log type RFLogLevelInfo and specified message text and type.
  * @param messageText The text of message for intialization message object.
  * @param type The type of message for initialization message object.
  */
-+ (SFLogMessage *)debugMessage:(NSString * const)messageText type:(NSString *)type;
++ (RFLogMessage *)infoMessage:(NSString * const)messageText type:(NSString *)type;
 
 /**
- * Creates log message with predefined log type SFLogLevelWarning and specified message text and type.
+ * Creates log message with predefined log type RFLogLevelDebug and specified message text and type.
  * @param messageText The text of message for intialization message object.
  * @param type The type of message for initialization message object.
  */
-+ (SFLogMessage *)warningMessage:(NSString * const)messageText type:(NSString *)type;
++ (RFLogMessage *)debugMessage:(NSString * const)messageText type:(NSString *)type;
 
 /**
- * Creates log message with predefined log type SFLogLevelError and specified message text and type.
+ * Creates log message with predefined log type RFLogLevelWarning and specified message text and type.
  * @param messageText The text of message for intialization message object.
  * @param type The type of message for initialization message object.
  */
-+ (SFLogMessage *)errorMessage:(NSString * const)messageText type:(NSString *)type;
++ (RFLogMessage *)warningMessage:(NSString * const)messageText type:(NSString *)type;
+
+/**
+ * Creates log message with predefined log type RFLogLevelError and specified message text and type.
+ * @param messageText The text of message for intialization message object.
+ * @param type The type of message for initialization message object.
+ */
++ (RFLogMessage *)errorMessage:(NSString * const)messageText type:(NSString *)type;
 
 @end

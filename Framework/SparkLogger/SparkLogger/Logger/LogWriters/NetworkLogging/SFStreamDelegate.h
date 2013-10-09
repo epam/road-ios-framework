@@ -1,5 +1,5 @@
 //
-//  SFStreamDelegate.h
+//  RFStreamDelegate.h
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -34,7 +34,7 @@
  Represents a single delegate for an output stream to broadcast log messages to. The broadcasting is performed on a background thread to save
  resources for the rest of the application.
  */
-@interface SFStreamDelegate : NSObject <NSStreamDelegate>
+@interface RFStreamDelegate : NSObject <NSStreamDelegate>
 
 /**
  Indicates whether the stream has space available and ready to accept data.

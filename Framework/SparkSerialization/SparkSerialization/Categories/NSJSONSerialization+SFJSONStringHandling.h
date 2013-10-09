@@ -36,7 +36,7 @@
 /**
  Convenience methods to return JSON dictionary from strings.
  */
-@interface NSJSONSerialization (SFJSONStringHandling)
+@interface NSJSONSerialization (RFJSONStringHandling)
 
 /**
  Returns a JSON object from a JSON string with the specified options.
@@ -44,12 +44,12 @@
  @param options The NSJSONReadingOptions.
  @param error The error of the parsing.
  */
-+ (id)SF_JSONObjectWithString:(NSString * const)string options:(const NSJSONReadingOptions)options error:(NSError * __autoreleasing *)error;
++ (id)RF_JSONObjectWithString:(NSString * const)string options:(const NSJSONReadingOptions)options error:(NSError * __autoreleasing *)error;
 
 /**
  Returns a JSON object from a JSON string with default options. In case of error, it returns nil, but no error information.
  @param string The JSON string.
  */
-+ (id)SF_JSONObjectWithString:(NSString * const)string;
++ (id)RF_JSONObjectWithString:(NSString * const)string;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  SFXMLParsing.h
+//  RFXMLParsing.h
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -37,12 +37,12 @@
 /**
  Extension of the Apple-provided XML parser delegate protocol to allow chaining of parser delegates into a hierarchy.
  */
-@protocol SFXMLParsing <NSXMLParserDelegate, SFPooledObject>
+@protocol RFXMLParsing <NSXMLParserDelegate, RFPooledObject>
 
 /**
  The parent of this parser.
  */
-@property (weak, nonatomic) id<SFXMLParsing> parent;
+@property (weak, nonatomic) id<RFXMLParsing> parent;
 
 /**
  The element parsed by this parser.

@@ -33,7 +33,7 @@
 #import "ROADLoggerTest.h"
 #import <ROAD/ROADServices.h>
 #import <ROAD/ROADLogger.h>
-#import <ROAD/SFServiceProvider+LoggingService.h>
+#import <ROAD/RFServiceProvider+LoggingService.h>
 
 @implementation ROADLoggerTest
 
@@ -49,29 +49,29 @@
 
 - (void)testInstanceAsService {
     
-    id <SFLogging> logger = [SFServiceProvider logger];
+    id <RFLogging> logger = [RFServiceProvider logger];
     STAssertNotNil(logger, @"Logger as service has not been initialised.");
 }
 
 - (void)testInstanceWriters {
     // reset queue of writers
-    [[SFServiceProvider logger] setWriters:@[]];
+    [[RFServiceProvider logger] setWriters:@[]];
     
-    [[SFServiceProvider logger] addWriter:[SFConsoleLogWriter new]];
-    [[SFServiceProvider logger] addWriter:[SFConsoleLogWriter plainConsoleWriter]];
-    [[SFServiceProvider logger] addWriter:[SFConsoleLogWriter plainConsoleWriter]];
+    [[RFServiceProvider logger] addWriter:[RFConsoleLogWriter new]];
+    [[RFServiceProvider logger] addWriter:[RFConsoleLogWriter plainConsoleWriter]];
+    [[RFServiceProvider logger] addWriter:[RFConsoleLogWriter plainConsoleWriter]];
     
-    STAssertTrue([[[SFServiceProvider logger] writers] count] == 3, @"The number of the writers (added) doesn't coincide");
+    STAssertTrue([[[RFServiceProvider logger] writers] count] == 3, @"The number of the writers (added) doesn't coincide");
 }
 
 - (void)testFilters {
-    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(SFLogMessage *evaluatedObject, NSDictionary *bindings) {
-        return [evaluatedObject.type isEqualToString:kSFLogMessageTypeNetworkOnly];
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(RFLogMessage *evaluatedObject, NSDictionary *bindings) {
+        return [evaluatedObject.type isEqualToString:kRFLogMessageTypeNetworkOnly];
     }];
-    SFLogFilter *logFilter = [SFLogFilter filterWithPrediate:predicate];
+    RFLogFilter *logFilter = [RFLogFilter filterWithPrediate:predicate];
     
-    SFLogMessage *validLogMessage = [SFLogMessage logMessage:@"Simple message" type:kSFLogMessageTypeNetworkOnly level:SFLogLevelWarning userInfo:nil];
-    SFLogMessage *invalidLogMessage = [SFLogMessage logMessage:@"Simple message" type:kSFLogMessageTypeFileOnly level:SFLogLevelWarning userInfo:nil];
+    RFLogMessage *validLogMessage = [RFLogMessage logMessage:@"Simple message" type:kRFLogMessageTypeNetworkOnly level:RFLogLevelWarning userInfo:nil];
+    RFLogMessage *invalidLogMessage = [RFLogMessage logMessage:@"Simple message" type:kRFLogMessageTypeFileOnly level:RFLogLevelWarning userInfo:nil];
     
     STAssertTrue([logFilter hasMessagePassedTest:validLogMessage], @"Valid message have not passed test!");
     STAssertFalse([logFilter hasMessagePassedTest:invalidLogMessage], @"Invalid message have passed test!");
@@ -79,22 +79,22 @@
 
 - (void)testMacroses {
     // reset queue of writers
-    [[SFServiceProvider logger] setWriters:@[]];
+    [[RFServiceProvider logger] setWriters:@[]];
     
-    SFLogWriter *writer = [SFConsoleLogWriter new];
+    RFLogWriter *writer = [RFConsoleLogWriter new];
     // add console writer
-    [[SFServiceProvider logger] addWriter:writer];
-    [[SFServiceProvider logger] setLogLevel:SFLogLevelWarning];
+    [[RFServiceProvider logger] addWriter:writer];
+    [[RFServiceProvider logger] setLogLevel:RFLogLevelWarning];
     
-    SFLogInfo(@"I 234242%@", @"87686");
-    SFLogDebug(@"D 098765, %d", 2342);
-    SFLogWarning(@"W 12345%@", [[NSObject alloc] init]);
-    SFLogError(@"E 345678%2.6f", 234.234626);
+    RFLogInfo(@"I 234242%@", @"87686");
+    RFLogDebug(@"D 098765, %d", 2342);
+    RFLogWarning(@"W 12345%@", [[NSObject alloc] init]);
+    RFLogError(@"E 345678%2.6f", 234.234626);
     
-    SFLogTypedInfo(kSFLogMessageTypeAllLoggers, @"I 234242%2.6f", 234.234626);
-    SFLogTypedDebug(kSFLogMessageTypeAllLoggers, @"D 234242%@", [[NSObject alloc] init]);
-    SFLogTypedWarning(kSFLogMessageTypeAllLoggers, @"W 234242%@", @"87686");
-    SFLogTypedError(kSFLogMessageTypeAllLoggers, @"E 234242");
+    RFLogTypedInfo(kRFLogMessageTypeAllLoggers, @"I 234242%2.6f", 234.234626);
+    RFLogTypedDebug(kRFLogMessageTypeAllLoggers, @"D 234242%@", [[NSObject alloc] init]);
+    RFLogTypedWarning(kRFLogMessageTypeAllLoggers, @"W 234242%@", @"87686");
+    RFLogTypedError(kRFLogMessageTypeAllLoggers, @"E 234242");
     
     BOOL isFinished = NO;
     while (!isFinished) {
@@ -107,15 +107,15 @@
 
 - (void)testSimpleSendInfoMessage {
     // reset queue of writers
-    [[SFServiceProvider logger] setWriters:@[]];
+    [[RFServiceProvider logger] setWriters:@[]];
 
-    SFLogWriter *writer = [SFConsoleLogWriter new];
+    RFLogWriter *writer = [RFConsoleLogWriter new];
     // add console writer
-    [[SFServiceProvider logger] addWriter:writer];
+    [[RFServiceProvider logger] addWriter:writer];
     
     NSString *simpleMessage = @"Simple test message";
     
-    [[SFServiceProvider logger] logInfoMessage:simpleMessage];
+    [[RFServiceProvider logger] logInfoMessage:simpleMessage];
     
     STAssertFalse([[writer messageQueue] count] == 0, @"The queue of messages is empty");
     STAssertEquals(simpleMessage, [[[writer messageQueue] objectAtIndex:0] message], @"Values are not equals");
@@ -134,8 +134,8 @@
     NSString *message2 = @"It's not right";
     NSString *symbol = @"not ";
 
-    SFLogWriter *writer = [SFConsoleLogWriter new];
-    writer.formatter = [SFLogFormatter formatterWithBlock:^NSString *(SFLogMessage *const message) {
+    RFLogWriter *writer = [RFConsoleLogWriter new];
+    writer.formatter = [RFLogFormatter formatterWithBlock:^NSString *(RFLogMessage *const message) {
         
         if ([message.message rangeOfString:symbol].location == NSNotFound) {
             return message.message;
@@ -144,7 +144,7 @@
         }
     }];
     
-    STAssertTrue([[writer formattedMessage:[SFLogMessage infoMessage:message2]] isEqualToString:message1] , @"Values are not equals");
+    STAssertTrue([[writer formattedMessage:[RFLogMessage infoMessage:message2]] isEqualToString:message1] , @"Values are not equals");
 }
 
 @end

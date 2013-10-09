@@ -1,5 +1,5 @@
 //
-//  SFLogMessageWrapper.h
+//  RFLogMessageWrapper.h
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,18 +30,18 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-@class SFLogMessage;
+@class RFLogMessage;
 
 /**
  Message wrapper container class to encapsulate log messages and other relevant pieces of information for network broadcasting.
  */
-@interface SFLogMessageWrapper : NSObject <NSCoding>
+@interface RFLogMessageWrapper : NSObject <NSCoding>
 
 @property (nonatomic, copy) NSString *deviceName;
 @property (nonatomic, copy) NSString *applicationName;
 @property (nonatomic, copy) NSString *uniqueId;
-@property (nonatomic, strong) SFLogMessage *message;
+@property (nonatomic, strong) RFLogMessage *message;
 
--(id)initWithMessage:(SFLogMessage *)message deviceName:(NSString *)deviceName applicationName:(NSString *)applicationName uniqueId:(NSString *)uniqueId;
+-(id)initWithMessage:(RFLogMessage *)message deviceName:(NSString *)deviceName applicationName:(NSString *)applicationName uniqueId:(NSString *)uniqueId;
 
 @end

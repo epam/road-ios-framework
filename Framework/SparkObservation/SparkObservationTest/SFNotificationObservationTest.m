@@ -1,5 +1,5 @@
 //
-//  SFNotificationObservation.m
+//  RFNotificationObservation.m
 //  ROADObservation
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,21 +30,21 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFNotificationObservationTest.h"
-#import "SFObserverWrapper.h"
+#import "RFNotificationObservationTest.h"
+#import "RFObserverWrapper.h"
 
-NSString * const kSFTestNotificationName = @"TestNotification";
+NSString * const kRFTestNotificationName = @"TestNotification";
 
-@implementation SFNotificationObservationTest {
+@implementation RFNotificationObservationTest {
     BOOL received;
-    SFObserverWrapper *obs;
+    RFObserverWrapper *obs;
 }
 
 - (void)testBlockNotification {
     received = NO;
     NSCondition * const condition = [[NSCondition alloc] init];
     
-    obs = [SFObserverWrapper observerForName:kSFTestNotificationName
+    obs = [RFObserverWrapper observerForName:kRFTestNotificationName
                                        object:self
                                         queue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)
                                       handler:^(NSNotification *const notification) {
@@ -55,7 +55,7 @@ NSString * const kSFTestNotificationName = @"TestNotification";
                                       }];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:kSFTestNotificationName object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kRFTestNotificationName object:self];
     });
     
     [condition lock];
@@ -71,7 +71,7 @@ NSString * const kSFTestNotificationName = @"TestNotification";
     received = NO;
     NSCondition * const condition = [[NSCondition alloc] init];
     
-    obs = [SFObserverWrapper observerForName:@"NoMatterWhatName"
+    obs = [RFObserverWrapper observerForName:@"NoMatterWhatName"
                                        object:self
                                         queue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)
                                       handler:^(NSNotification *const notification) {
@@ -80,10 +80,10 @@ NSString * const kSFTestNotificationName = @"TestNotification";
                                           [condition signal];
                                           [condition unlock];
                                       }];
-    obs.name = kSFTestNotificationName;
+    obs.name = kRFTestNotificationName;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:kSFTestNotificationName object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kRFTestNotificationName object:self];
     });
     
     [condition lock];

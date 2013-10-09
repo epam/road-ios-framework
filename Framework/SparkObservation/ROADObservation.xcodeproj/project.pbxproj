@@ -439,9 +439,9 @@
 		7867EB5116C3C81600A93194 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DSTROOT = /tmp/SparkObservation.dst;
+				DSTROOT = /tmp/ROADObservation.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SparkObservation/ROADObservation-Prefix.pch";
+				GCC_PREFIX_HEADER = "ROADObservation/ROADObservation-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
@@ -453,9 +453,9 @@
 		7867EB5216C3C81600A93194 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DSTROOT = /tmp/SparkObservation.dst;
+				DSTROOT = /tmp/ROADObservation.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SparkObservation/ROADObservation-Prefix.pch";
+				GCC_PREFIX_HEADER = "ROADObservation/ROADObservation-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ROADObservation;
@@ -477,9 +477,9 @@
 				FRAMEWORK_VERSION = A;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SparkObservationMac/ROADObservationMac-Prefix.pch";
+				GCC_PREFIX_HEADER = "ROADObservationMac/ROADObservationMac-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				INFOPLIST_FILE = "SparkObservationMac/ROADObservationMac-Info.plist";
+				INFOPLIST_FILE = "ROADObservationMac/ROADObservationMac-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = ROADObservation;
 				SDKROOT = macosx;
@@ -502,9 +502,9 @@
 				FRAMEWORK_VERSION = A;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SparkObservationMac/ROADObservationMac-Prefix.pch";
+				GCC_PREFIX_HEADER = "ROADObservationMac/ROADObservationMac-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				INFOPLIST_FILE = "SparkObservationMac/ROADObservationMac-Info.plist";
+				INFOPLIST_FILE = "ROADObservationMac/ROADObservationMac-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = ROADObservation;
 				SDKROOT = macosx;
@@ -522,8 +522,8 @@
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SparkObservationTest/ROADObservationTest-Prefix.pch";
-				INFOPLIST_FILE = "SparkObservationTest/ROADObservationTest-Info.plist";
+				GCC_PREFIX_HEADER = "ROADObservationTest/ROADObservationTest-Prefix.pch";
+				INFOPLIST_FILE = "ROADObservationTest/ROADObservationTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -545,8 +545,8 @@
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SparkObservationTest/ROADObservationTest-Prefix.pch";
-				INFOPLIST_FILE = "SparkObservationTest/ROADObservationTest-Info.plist";
+				GCC_PREFIX_HEADER = "ROADObservationTest/ROADObservationTest-Prefix.pch";
+				INFOPLIST_FILE = "ROADObservationTest/ROADObservationTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-all_load",

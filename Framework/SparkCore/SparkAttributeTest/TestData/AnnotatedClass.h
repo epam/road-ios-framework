@@ -32,16 +32,16 @@
 
 #import <Foundation/Foundation.h>
 #import "ROADAttribute.h"
-#import "SFTestAttribute.h"
-#import "CustomSFTestAttribute.h"
+#import "RFTestAttribute.h"
+#import "CustomRFTestAttribute.h"
 
 @interface AnnotatedClass : NSObject {
     NSObject* _someField;
 }
 
 ///Testing of method with attributes
-SF_ATTRIBUTE(SFTestAttribute)
-SF_ATTRIBUTE(CustomSFTestAttribute, property1 = @"Text1", property2 = @"Text2")
+RF_ATTRIBUTE(RFTestAttribute)
+RF_ATTRIBUTE(CustomRFTestAttribute, property1 = @"Text1", property2 = @"Text2")
 - (void)viewDidLoad;
 
 - (void)viewDidLoad:(BOOL)param1;

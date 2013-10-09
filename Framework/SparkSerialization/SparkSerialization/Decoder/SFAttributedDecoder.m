@@ -1,5 +1,5 @@
 //
-//  SFAnnotatedDecoder.m
+//  RFAnnotatedDecoder.m
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,23 +30,23 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFAttributedDecoder.h"
+#import "RFAttributedDecoder.h"
 #import <ROAD/ROADReflection.h>
-#import "SFSerializationAssistant.h"
+#import "RFSerializationAssistant.h"
 #import <ROAD/ROADLogger.h>
 
-#import "SFSerializable.h"
-#import "SFDerived.h"
-#import "SFSerializableCollection.h"
-#import "NSJSONSerialization+SFJSONStringHandling.h"
-#import "SFSerializableDate.h"
+#import "RFSerializable.h"
+#import "RFDerived.h"
+#import "RFSerializableCollection.h"
+#import "NSJSONSerialization+RFJSONStringHandling.h"
+#import "RFSerializableDate.h"
 
-@interface SFAttributedDecoder ()
+@interface RFAttributedDecoder ()
 
 @end
 
 
-@implementation SFAttributedDecoder {
+@implementation RFAttributedDecoder {
     NSString * _dateFormat;
     NSMutableDictionary * _dateFormatters;
 }
@@ -68,8 +68,8 @@
 #pragma mark - Decoding
 
 + (id)decodeJSONString:(NSString *const)jsonString {
-    NSDictionary *dict = [NSJSONSerialization SF_JSONObjectWithString:jsonString];
-    NSString * const className = dict[SFSerializedObjectClassName];
+    NSDictionary *dict = [NSJSONSerialization RF_JSONObjectWithString:jsonString];
+    NSString * const className = dict[RFSerializedObjectClassName];
     return [self decodeJSONString:jsonString withRootClassNamed:className];
 }
 
@@ -98,7 +98,7 @@
     if (rootClassName == nil) {
         result = jsonObject;
     } else {
-        SFLogDebug(@"Decoder(%@ %p) started processing object(%@)", self, self, jsonObject);
+        RFLogDebug(@"Decoder(%@ %p) started processing object(%@)", self, self, jsonObject);
 
         id decoder = [[self alloc] init];
         
@@ -112,16 +112,16 @@
         else if ([jsonObject isKindOfClass:[NSDictionary class]]) {
             result = [decoder decodeRootObject:jsonObject withRootClassNamed:rootClassName];
         }
-        SFLogDebug(@"Decoder(%@ %p) ended processing", self, self);
+        RFLogDebug(@"Decoder(%@ %p) ended processing", self, self);
     }
     
     return result;
 }
 
-- (id)decodeJSONDictionary:(NSDictionary * const)jsonDict forProperty:(SFPropertyInfo * const)aDesc {
+- (id)decodeJSONDictionary:(NSDictionary * const)jsonDict forProperty:(RFPropertyInfo * const)aDesc {
     NSString * rootClassName;
     
-    rootClassName = jsonDict[SFSerializedObjectClassName];
+    rootClassName = jsonDict[RFSerializedObjectClassName];
 
     if ([rootClassName length] == 0) {
         rootClassName = NSStringFromClass(aDesc.typeClass);
@@ -136,19 +136,19 @@
     __unsafe_unretained Class const rootObjectClass = NSClassFromString(rootClassName);
     rootObject = [[rootObjectClass alloc] init];
     NSArray *properties;
-    if ([rootObjectClass SF_attributeForClassWithAttributeType:[SFSerializable class]]) {
-        properties = [[rootObjectClass SF_properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(SFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
-            return (![evaluatedObject attributeWithType:[SFDerived class]]);
+    if ([rootObjectClass RF_attributeForClassWithAttributeType:[RFSerializable class]]) {
+        properties = [[rootObjectClass RF_properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(RFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
+            return (![evaluatedObject attributeWithType:[RFDerived class]]);
         }]];
     }
     else {
-        properties = [rootObjectClass SF_propertiesWithAttributeType:[SFSerializable class]];
+        properties = [rootObjectClass RF_propertiesWithAttributeType:[RFSerializable class]];
     }
 
     NSString *aKey;
     @autoreleasepool {
-        for (SFPropertyInfo * const aDesc in properties) {
-            aKey = [SFSerializationAssistant serializationKeyForProperty:aDesc];
+        for (RFPropertyInfo * const aDesc in properties) {
+            aKey = [RFSerializationAssistant serializationKeyForProperty:aDesc];
             
             id result = [self decodeValue:jsonDict[aKey] forProperty:aDesc];
             [rootObject setValue:result forKey:[aDesc propertyName]];
@@ -158,7 +158,7 @@
     return rootObject;
 }
 
-- (id)decodeValue:(id const)aValue forProperty:(SFPropertyInfo * const)aDesc {
+- (id)decodeValue:(id const)aValue forProperty:(RFPropertyInfo * const)aDesc {
     id value = aValue;
     if ([value isKindOfClass:[NSArray class]]) {
         value = [self decodeArray:value forProperty:aDesc];
@@ -171,14 +171,14 @@
             value = [self decodeDictionary:value forProperty:aDesc];
         }
     }
-    else if ([aDesc attributeWithType:[SFSerializableDate class]]
-             || [[self class] SF_attributeForClassWithAttributeType:[SFSerializableDate class]]) {
+    else if ([aDesc attributeWithType:[RFSerializableDate class]]
+             || [[self class] RF_attributeForClassWithAttributeType:[RFSerializableDate class]]) {
         value = [self decodeDateString:aValue forProperty:aDesc];
     }
     return value;
 }
 
-- (id)decodeArray:(NSArray * const)anArray forProperty:(SFPropertyInfo * const)aDesc {
+- (id)decodeArray:(NSArray * const)anArray forProperty:(RFPropertyInfo * const)aDesc {
     NSMutableArray *array = [[NSMutableArray alloc] init];
     for (id aValue in anArray) {
         [array addObject:[self decodeCollectionElement:aValue forProperty:aDesc]];
@@ -186,7 +186,7 @@
     return [array copy];
 }
 
-- (id)decodeDictionary:(NSDictionary * const)aDictionary forProperty:(SFPropertyInfo * const)aDesc {
+- (id)decodeDictionary:(NSDictionary * const)aDictionary forProperty:(RFPropertyInfo * const)aDesc {
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [aDictionary enumerateKeysAndObjectsUsingBlock:^(id aKey, id aValue, BOOL *stop) {
         [dict setObject:[self decodeCollectionElement:aValue forProperty:aDesc] forKey:aKey];
@@ -195,7 +195,7 @@
     return [dict copy];
 }
 
-- (id)decodeCollectionElement:(id const)aValue forProperty:(SFPropertyInfo * const)aDesc {
+- (id)decodeCollectionElement:(id const)aValue forProperty:(RFPropertyInfo * const)aDesc {
     id value = aValue;
     if ([aValue isKindOfClass:[NSArray class]]) {
         NSMutableArray *subArray = [[NSMutableArray alloc] init];
@@ -207,10 +207,10 @@
         value = [subArray copy];
     }
     else if ([aValue isKindOfClass:[NSDictionary class]]) {
-        NSString *decodeClassName = [SFSerializationAssistant collectionItemClassNameForProperty:aDesc];
+        NSString *decodeClassName = [RFSerializationAssistant collectionItemClassNameForProperty:aDesc];
         
         if (decodeClassName == nil) {
-            decodeClassName = aValue[SFSerializedObjectClassName];
+            decodeClassName = aValue[RFSerializedObjectClassName];
         }
         
         if ([decodeClassName length] > 0) {
@@ -223,10 +223,10 @@
     return value;
 }
 
-- (id)decodeDateString:(id const)value forProperty:(SFPropertyInfo * const)propertyInfo {
+- (id)decodeDateString:(id const)value forProperty:(RFPropertyInfo * const)propertyInfo {
     id decodedValue = nil;
 
-    SFSerializableDate *serializableDateAttribute = [propertyInfo attributeWithType:[SFSerializableDate class]];
+    RFSerializableDate *serializableDateAttribute = [propertyInfo attributeWithType:[RFSerializableDate class]];
 
     if (serializableDateAttribute.unixTimestamp) {
         if (![value isKindOfClass:[NSNumber class]]) {
@@ -243,7 +243,7 @@
         }
         else {
             NSString *dateFormat = ([serializableDateAttribute.decodingFormat length] == 0) ? serializableDateAttribute.format: serializableDateAttribute.decodingFormat;
-            NSAssert(dateFormat, @"SFSerializableDate must have either format or encodingFormat specified");
+            NSAssert(dateFormat, @"RFSerializableDate must have either format or encodingFormat specified");
             
             NSDateFormatter *dateFormatter = [self dateFormatterWithFormatString:dateFormat];
             decodedValue = [dateFormatter dateFromString:value];
@@ -290,7 +290,7 @@
             || ([nestedJsonObject isKindOfClass:[NSArray class]] && [nestedJsonObject count] == 1 && nestedJsonObject[0] == [NSNull null])) {
             nestedJsonObject = nil;
             
-            SFLogWarning(@"Serialization failed because part ( %@ ) of serialization root ( %@ ) is not founded or equal nil", currentKeyPath, keyPath);
+            RFLogWarning(@"Serialization failed because part ( %@ ) of serialization root ( %@ ) is not founded or equal nil", currentKeyPath, keyPath);
             break;
         }
         else {

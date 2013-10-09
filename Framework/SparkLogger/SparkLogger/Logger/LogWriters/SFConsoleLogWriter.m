@@ -1,5 +1,5 @@
 //
-//  SFConsoleLogWriter.m
+//  RFConsoleLogWriter.m
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,19 +30,19 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFConsoleLogWriter.h"
+#import "RFConsoleLogWriter.h"
 
-#import "SFLogFormatter.h"
+#import "RFLogFormatter.h"
 
-@implementation SFConsoleLogWriter
+@implementation RFConsoleLogWriter
 
-- (void)logValidMessage:(SFLogMessage * const)aMessage {
+- (void)logValidMessage:(RFLogMessage * const)aMessage {
     [self printMessage:aMessage];
 }
 
 - (void)logQueue {
     dispatch_async(self.queue, ^{
-        for (SFLogMessage *message in self.messageQueue) {
+        for (RFLogMessage *message in self.messageQueue) {
             [self printMessage:message];
         }
         
@@ -50,14 +50,14 @@
     });
 }
 
-- (void)printMessage:(SFLogMessage *)message {
+- (void)printMessage:(RFLogMessage *)message {
     NSString * const result = [self formattedMessage:message];
     printf("%s\n", [result cStringUsingEncoding:NSUTF8StringEncoding]);
 }
 
-+ (SFLogWriter *)plainConsoleWriter {
-    SFConsoleLogWriter * const writer = [[SFConsoleLogWriter alloc] init];
-    writer.formatter = [SFLogFormatter plainFormatter];
++ (RFLogWriter *)plainConsoleWriter {
+    RFConsoleLogWriter * const writer = [[RFConsoleLogWriter alloc] init];
+    writer.formatter = [RFLogFormatter plainFormatter];
     return writer;
 }
 

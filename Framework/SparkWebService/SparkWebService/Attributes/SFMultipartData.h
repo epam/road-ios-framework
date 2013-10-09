@@ -1,5 +1,5 @@
 //
-//  SFMultipartData.h
+//  RFMultipartData.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,7 +32,7 @@
 
 #import <ROAD/ROADAttribute.h>
 
-@interface SFMultipartData : NSObject
+@interface RFMultipartData : NSObject
 
 @property (nonatomic, strong) NSString *boundary;
 

@@ -1,5 +1,5 @@
 //
-//  NSRegularExpression+SFSparkExtension.m
+//  NSRegularExpression+RFROADExtension.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,32 +30,32 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "NSRegularExpression+SFSparkExtension.h"
+#import "NSRegularExpression+RFROADExtension.h"
 
-@implementation NSRegularExpression (SFSparkExtension)
+@implementation NSRegularExpression (RFROADExtension)
 
-+ (NSRegularExpression *)SF_regexFromString:(NSString *)regexString {
++ (NSRegularExpression *)RF_regexFromString:(NSString *)regexString {
     NSError *error = NULL;
     NSRegularExpression *result = [NSRegularExpression regularExpressionWithPattern:regexString options:0 error:&error];
     
     return result;
 }
 
-+ (NSString *)SF_stringByReplacingRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSString *)sourceString {
-    NSRegularExpression *regex = [NSRegularExpression SF_regexFromString:regexString];
++ (NSString *)RF_stringByReplacingRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSString *)sourceString {
+    NSRegularExpression *regex = [NSRegularExpression RF_regexFromString:regexString];
     
     NSString *result = [regex stringByReplacingMatchesInString:sourceString options:0 range:NSMakeRange(0, [sourceString length]) withTemplate:template];
     return result;
 }
 
-+ (void)SF_replaceRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSMutableString *)sourceString {
-    NSRegularExpression *regex = [NSRegularExpression SF_regexFromString:regexString];
++ (void)RF_replaceRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSMutableString *)sourceString {
+    NSRegularExpression *regex = [NSRegularExpression RF_regexFromString:regexString];
     
     [regex replaceMatchesInString:sourceString options:0 range:NSMakeRange(0, [sourceString length]) withTemplate:template];
 }
 
-+ (NSUInteger)SF_numberOfMatchesToRegex:(NSString *)regexString inString:(NSString *)sourceString {
-    NSRegularExpression *regex = [NSRegularExpression SF_regexFromString:regexString];
++ (NSUInteger)RF_numberOfMatchesToRegex:(NSString *)regexString inString:(NSString *)sourceString {
+    NSRegularExpression *regex = [NSRegularExpression RF_regexFromString:regexString];
     NSUInteger result = [regex numberOfMatchesInString:sourceString options:0 range:NSMakeRange(0, [sourceString length])];
     
     return result;

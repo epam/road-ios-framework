@@ -1,5 +1,5 @@
 //
-//  SFWebServiceClientTest+DynamicTest.h
+//  RFWebServiceClientTest+DynamicTest.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,35 +31,35 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFWebServiceClient.h"
-#import <ROAD/SFWebServiceLogger.h>
+#import "RFWebServiceClient.h"
+#import <ROAD/RFWebServiceLogger.h>
 
-@protocol SFWebServiceCancellable;
+@protocol RFWebServiceCancellable;
 
-@interface SFWebServiceClient (DynamicTest)
+@interface RFWebServiceClient (DynamicTest)
 
-SF_ATTRIBUTE(SFWebServiceCall, serializationDisabled = YES, method = @"GET", relativePath = @"%%0%%")
-- (id<SFWebServiceCancellable>)dynamicTestHttpRequestPath:(NSString *)path success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, method = @"GET", relativePath = @"%%0%%")
+- (id<RFWebServiceCancellable>)dynamicTestHttpRequestPath:(NSString *)path success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
-SF_ATTRIBUTE(SFWebServiceCall, serializationDisabled = NO, method = @"GET", relativePath = @"%%0%%")
-- (id<SFWebServiceCancellable>)dynamicTestHttpsRequestPath:(NSString *)path success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO, method = @"GET", relativePath = @"%%0%%")
+- (id<RFWebServiceCancellable>)dynamicTestHttpsRequestPath:(NSString *)path success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
-SF_ATTRIBUTE(SFWebServiceCall, relativePath = @"/example=%%0%%")
-- (id<SFWebServiceCancellable>)dynamicDownloadTest:(NSString *)object success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+RF_ATTRIBUTE(RFWebServiceCall, relativePath = @"/example=%%0%%")
+- (id<RFWebServiceCancellable>)dynamicDownloadTest:(NSString *)object success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
-SF_ATTRIBUTE(SFWebServiceCall, serializationDisabled= YES, relativePath = @"/?time=1")
-SF_ATTRIBUTE(SFWebServiceLogger, loggerType = @"SFLogMessageTypeConsoleOnly")
-SF_ATTRIBUTE(SFWebServiceHeader, hearderFields = @{@"authorization" : @"Basic ZXBhbTplcGFt"})
-- (id<SFWebServiceCancellable>)downloadJSONWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled= YES, relativePath = @"/?time=1")
+RF_ATTRIBUTE(RFWebServiceLogger, loggerType = @"RFLogMessageTypeConsoleOnly")
+RF_ATTRIBUTE(RFWebServiceHeader, hearderFields = @{@"authorization" : @"Basic ZXBhbTplcGFt"})
+- (id<RFWebServiceCancellable>)downloadJSONWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
-SF_ATTRIBUTE(SFWebServiceCall, method = @"GET", relativePath = @"/?time=1")
-- (id<SFWebServiceCancellable>)loadSmallListWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+RF_ATTRIBUTE(RFWebServiceCall, method = @"GET", relativePath = @"/?time=1")
+- (id<RFWebServiceCancellable>)loadSmallListWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
-SF_ATTRIBUTE(SFWebServiceCall, method = @"GET", relativePath = @"/?time=10")
-- (id<SFWebServiceCancellable>)loadBigListWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+RF_ATTRIBUTE(RFWebServiceCall, method = @"GET", relativePath = @"/?time=10")
+- (id<RFWebServiceCancellable>)loadBigListWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
-SF_ATTRIBUTE(SFWebServiceCall, method = @"GET", relativePath = @"/?time=1")
-SF_ATTRIBUTE(SFWebServiceHeader, hearderFields = @{@"testKey1" : @"%%0%%"})
-- (id<SFWebServiceCancellable>)loadListWithHeaderValueForTestKey1:(NSString*)headerValue prepareBlock:(SFWebServiceClientPrepareForSendRequestBlock)block success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+RF_ATTRIBUTE(RFWebServiceCall, method = @"GET", relativePath = @"/?time=1")
+RF_ATTRIBUTE(RFWebServiceHeader, hearderFields = @{@"testKey1" : @"%%0%%"})
+- (id<RFWebServiceCancellable>)loadListWithHeaderValueForTestKey1:(NSString*)headerValue prepareBlock:(RFWebServiceClientPrepareForSendRequestBlock)block success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
 @end

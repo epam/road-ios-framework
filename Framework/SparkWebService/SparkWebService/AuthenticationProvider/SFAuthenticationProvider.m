@@ -1,6 +1,6 @@
 //
-//  SFAuthenticationProvider.m
-//  SparkWebservice
+//  RFAuthenticationProvider.m
+//  ROADWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,15 +30,15 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFAuthenticationProvider.h"
-#import "NSError+SFROADWebService.h"
+#import "RFAuthenticationProvider.h"
+#import "NSError+RFROADWebService.h"
 
-NSString * const kSFAuthorizationKey = @"authorization";
+NSString * const kRFAuthorizationKey = @"authorization";
 
-const int kSFUnauthorizedCode =  401;
-const int kSFProxyAuthenticationRequiredCode =  407;
+const int kRFUnauthorizedCode =  401;
+const int kRFProxyAuthenticationRequiredCode =  407;
 
-@implementation SFAuthenticationProvider
+@implementation RFAuthenticationProvider
 
 @synthesize webServiceClient = _webServiceClient;
 @synthesize successBlocks = _successBlocks;
@@ -56,7 +56,7 @@ const int kSFProxyAuthenticationRequiredCode =  407;
     return self;
 }
 
-#pragma mark - SFAuthenticating
+#pragma mark - RFAuthenticating
 
 - (void)authenticate {
     @throw [NSException exceptionWithName:@"AbstractMethodInvocationException"
@@ -64,7 +64,7 @@ const int kSFProxyAuthenticationRequiredCode =  407;
                                  userInfo:nil];
 }
 
-- (void)authenticateWithSuccessBlock:(SFAuthenticationSuccessBlock)successBlock failureBlock:(SFAuthenticationFailureBlock)failureBlock {
+- (void)authenticateWithSuccessBlock:(RFAuthenticationSuccessBlock)successBlock failureBlock:(RFAuthenticationFailureBlock)failureBlock {
     [_successBlocks addObject:successBlock];
     [_failureBlocks addObject:failureBlock];
     
@@ -80,7 +80,7 @@ const int kSFProxyAuthenticationRequiredCode =  407;
 - (void)processAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge forConnection:(NSURLConnection *)connection {
 
     if (challenge.previousFailureCount) {
-        [self callFailureBlocksWithError:[NSError errorWithDomain:kSFWebServiceErrorDomain code:kSFUnauthorizedCode userInfo:nil]];
+        [self callFailureBlocksWithError:[NSError errorWithDomain:kRFWebServiceErrorDomain code:kRFUnauthorizedCode userInfo:nil]];
     }
     else if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
         [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
@@ -90,14 +90,14 @@ const int kSFProxyAuthenticationRequiredCode =  407;
 #pragma mark - Support methods
 
 - (void)callFailureBlocksWithError:(NSError *)error {
-    for (SFAuthenticationFailureBlock failureBlock in _failureBlocks) {
+    for (RFAuthenticationFailureBlock failureBlock in _failureBlocks) {
         failureBlock(error);
     }
     [self releaseCompletionBlocks];
 }
 
 - (void)callSuccessBlocksWithResult:(id)result {
-    for (SFAuthenticationSuccessBlock successBlock in _successBlocks) {
+    for (RFAuthenticationSuccessBlock successBlock in _successBlocks) {
         successBlock(result);
     }
     [self releaseCompletionBlocks];

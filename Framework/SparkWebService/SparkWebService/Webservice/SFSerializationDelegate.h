@@ -1,5 +1,5 @@
 //
-//  SFSerializationDelegate.h
+//  RFSerializationDelegate.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -34,7 +34,7 @@
 /**
  * The serialization delegate for the webservice call.
  */
-@protocol SFSerializationDelegate <NSObject>
+@protocol RFSerializationDelegate <NSObject>
 
 /**
  Should serialize the object specified.

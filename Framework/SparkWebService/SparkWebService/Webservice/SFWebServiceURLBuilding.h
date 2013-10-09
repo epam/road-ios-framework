@@ -1,5 +1,5 @@
 //
-//  SFWebServiceURLBuilding.h
+//  RFWebServiceURLBuilding.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,7 +32,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol SFWebServiceURLBuilding <NSObject>
+@protocol RFWebServiceURLBuilding <NSObject>
 
 /**
  Create an NSURL from the template and the serviceRoot string, inserting the values into the template string.

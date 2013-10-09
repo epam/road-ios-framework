@@ -1,5 +1,5 @@
 //
-//  NSError+SFROADWebService.m
+//  NSError+RFROADWebService.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,21 +30,21 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "NSError+SFROADWebService.h"
+#import "NSError+RFROADWebService.h"
 
-NSString * const kSFWebServiceErrorDomain = @"SFWebServiceError";
-NSString *const kSFWebServiceRecievedDataKey = @"RecievedData";
+NSString * const kRFWebServiceErrorDomain = @"RFWebServiceError";
+NSString *const kRFWebServiceRecievedDataKey = @"RecievedData";
 
-@implementation NSError (SFROADWebService)
+@implementation NSError (RFROADWebService)
 
-+(NSError *)SF_sparkWS_deserializationErrorWithData:(NSData*)data
++(NSError *)RF_sparkWS_deserializationErrorWithData:(NSData*)data
 {
-    return [NSError errorWithDomain:kSFWebServiceErrorDomain code:1000 userInfo:@{ NSLocalizedDescriptionKey : @"Error during the deserialization",kSFWebServiceRecievedDataKey : data }];
+    return [NSError errorWithDomain:kRFWebServiceErrorDomain code:1000 userInfo:@{ NSLocalizedDescriptionKey : @"Error during the deserialization",kRFWebServiceRecievedDataKey : data }];
 }
 
-+(NSError *)SF_sparkWS_cancellError
++(NSError *)RF_sparkWS_cancellError
 {
-    return [NSError errorWithDomain:kSFWebServiceErrorDomain code:1001 userInfo:@{ NSLocalizedDescriptionKey : @"The request has been cancelled." }];
+    return [NSError errorWithDomain:kRFWebServiceErrorDomain code:1001 userInfo:@{ NSLocalizedDescriptionKey : @"The request has been cancelled." }];
 }
 
 @end

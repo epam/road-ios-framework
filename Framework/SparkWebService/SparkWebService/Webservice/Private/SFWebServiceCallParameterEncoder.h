@@ -1,5 +1,5 @@
 //
-//  SFWebServiceCallParameterEncoder.h
+//  RFWebServiceCallParameterEncoder.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,15 +31,15 @@
 // for additional information regarding copyright ownership and licensing
 
 #import <Foundation/Foundation.h>
-@protocol SFSerializationDelegate;
-@class SFWebServiceClient;
+@protocol RFSerializationDelegate;
+@class RFWebServiceClient;
 
-static NSString * const kSFBoundaryDefaultString;
+static NSString * const kRFBoundaryDefaultString;
 
 /**
  Parameter encoder to create parameters for the webservice.
  */
-@interface SFWebServiceCallParameterEncoder : NSObject
+@interface RFWebServiceCallParameterEncoder : NSObject
 
 /**
  It will create a parameter dictionary based on the parameter list array. If it needs to be serialized, the serializator object will be used. If one object is NSData, it will be sent back as a post data.
@@ -49,6 +49,6 @@ static NSString * const kSFBoundaryDefaultString;
  @param serializator The serializator object
  @param callbackBlock The callback block which will be called.
  */
-+ (void)encodeParameters:(NSArray *)parameterList forClient:(SFWebServiceClient *)webClient methodName:(NSString *)methodName withSerializator:(id<SFSerializationDelegate>)serializator callbackBlock:(void(^)(NSDictionary *parameters, NSData *postData, BOOL isMultipartData))callbackBlock;
++ (void)encodeParameters:(NSArray *)parameterList forClient:(RFWebServiceClient *)webClient methodName:(NSString *)methodName withSerializator:(id<RFSerializationDelegate>)serializator callbackBlock:(void(^)(NSDictionary *parameters, NSData *postData, BOOL isMultipartData))callbackBlock;
 
 @end

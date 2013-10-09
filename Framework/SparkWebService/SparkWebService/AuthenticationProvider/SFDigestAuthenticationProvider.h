@@ -1,5 +1,5 @@
 //
-//  SFBasicAuthenticationProvider.h
+//  RFBasicAuthenticationProvider.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,12 +30,12 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFBasicAuthenticationProvider.h"
+#import "RFBasicAuthenticationProvider.h"
 
 /**
  There is provider which provide HTTP(S) Digest Authentication.
- Note: supported opportunities over SSL (see here: SFAuthenticationProvider)
+ Note: supported opportunities over SSL (see here: RFAuthenticationProvider)
  */
-@interface SFDigestAuthenticationProvider : SFBasicAuthenticationProvider
+@interface RFDigestAuthenticationProvider : RFBasicAuthenticationProvider
 
 @end

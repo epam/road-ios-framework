@@ -1,5 +1,5 @@
 //
-//  NSObject+SFMemberVariableReflection.m
+//  NSObject+RFMemberVariableReflection.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,24 +31,24 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "NSObject+SFMemberVariableReflection.h"
+#import "NSObject+RFMemberVariableReflection.h"
 
-@implementation NSObject (SFMemberVariableReflection)
+@implementation NSObject (RFMemberVariableReflection)
 
-- (SFIvarInfo *)SF_ivarNamed:(NSString *)name {
-    return [SFIvarInfo SF_ivarNamed:name ofClass:[self class]];
+- (RFIvarInfo *)RF_ivarNamed:(NSString *)name {
+    return [RFIvarInfo RF_ivarNamed:name ofClass:[self class]];
 }
 
-- (NSArray *)SF_ivars {
-    return [SFIvarInfo ivarsOfClass:[self class]];
+- (NSArray *)RF_ivars {
+    return [RFIvarInfo ivarsOfClass:[self class]];
 }
 
-+ (SFIvarInfo *)SF_ivarNamed:(NSString *)name {
-    return [SFIvarInfo SF_ivarNamed:name ofClass:self];
++ (RFIvarInfo *)RF_ivarNamed:(NSString *)name {
+    return [RFIvarInfo RF_ivarNamed:name ofClass:self];
 }
 
-+ (NSArray *)SF_ivars {
-    return [SFIvarInfo ivarsOfClass:self];
++ (NSArray *)RF_ivars {
+    return [RFIvarInfo ivarsOfClass:self];
 }
 
 @end

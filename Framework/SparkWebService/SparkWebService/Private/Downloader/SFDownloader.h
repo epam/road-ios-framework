@@ -30,16 +30,16 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFWebServiceCancellable.h"
+#import "RFWebServiceCancellable.h"
 
-@protocol SFAuthenticating;
-@class SFWebServiceClient;
+@protocol RFAuthenticating;
+@class RFWebServiceClient;
 
-@interface SFDownloader : NSObject <SFWebServiceCancellable, NSURLConnectionDelegate, NSURLConnectionDataDelegate>
+@interface RFDownloader : NSObject <RFWebServiceCancellable, NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 
 @property (strong, nonatomic) NSString *loggerType;
 @property (readonly, nonatomic, readonly) NSMutableArray *successCodes;
-@property (strong, nonatomic) id<SFAuthenticating> authenticationProvider;
+@property (strong, nonatomic) id<RFAuthenticating> authenticationProvider;
 @property (strong, nonatomic, readonly) NSMutableURLRequest *request;
 
 /**
@@ -47,7 +47,7 @@
  */
 @property (assign, nonatomic, getter = isMultipartData) BOOL multipartData;
 
-@property (nonatomic, strong, readonly) SFWebServiceClient *webServiceClient;
+@property (nonatomic, strong, readonly) RFWebServiceClient *webServiceClient;
 @property (nonatomic, strong, readonly) NSString *methodName;
 /**
  The serialized data from the request,
@@ -66,7 +66,7 @@
  */
 @property (atomic, assign, readonly, getter = isRequestCancelled) BOOL requestCancelled;
 
-- (id)initWithClient:(SFWebServiceClient *)webServiceClient methodName:(NSString *)methodName authenticationProvider:(id<SFAuthenticating>)authenticaitonProvider;
+- (id)initWithClient:(RFWebServiceClient *)webServiceClient methodName:(NSString *)methodName authenticationProvider:(id<RFAuthenticating>)authenticaitonProvider;
 
 - (void)configureRequestForUrl:(NSURL * const)anUrl body:(NSData * const)httpBody sharedHeaders:(NSDictionary *)sharedHeaders values:(NSDictionary *)values;
 

@@ -1,5 +1,5 @@
 //
-//  SFWebServiceClient+DynamicMethod.m
+//  RFWebServiceClient+DynamicMethod.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,29 +32,29 @@
 
 
 #import <objc/runtime.h>
-#import "SFWebServiceCall.h"
-#import "SFWebServiceClient+DynamicMethod.h"
+#import "RFWebServiceCall.h"
+#import "RFWebServiceClient+DynamicMethod.h"
 #import <ROAD/ROADSerialization.h>
 #import <ROAD/ROADServices.h>
-#import "SFWebServiceCancellable.h"
-#import "SFSerializationDelegate.h"
-#import "SFWebServiceCallParameterEncoder.h"
-#import "SFWebServiceHeader.h"
-#import "SFDownloader.h"
-#import "SFWebServiceLogger.h"
-#import "SFWebServiceURLBuilder.h"
-#import "SFWebServiceSerializationHandler.h"
-#import "SFWebServiceClientStatusCodes.h"
-#import "SFBasicAuthenticationProvider.h"
-#import "SFAuthenticating.h"
-#import "SFWebServiceBasicURLBuilder.h"
+#import "RFWebServiceCancellable.h"
+#import "RFSerializationDelegate.h"
+#import "RFWebServiceCallParameterEncoder.h"
+#import "RFWebServiceHeader.h"
+#import "RFDownloader.h"
+#import "RFWebServiceLogger.h"
+#import "RFWebServiceURLBuilder.h"
+#import "RFWebServiceSerializationHandler.h"
+#import "RFWebServiceClientStatusCodes.h"
+#import "RFBasicAuthenticationProvider.h"
+#import "RFAuthenticating.h"
+#import "RFWebServiceBasicURLBuilder.h"
 
-@implementation SFWebServiceClient (DynamicMethod)
+@implementation RFWebServiceClient (DynamicMethod)
 
 + (BOOL)resolveInstanceMethod:(SEL)sel {
     
     // retrieves the attribute for the selector
-    SFWebServiceCall *attribute = [self SF_attributeForMethod:NSStringFromSelector(sel) withAttributeType:[SFWebServiceCall class]];
+    RFWebServiceCall *attribute = [self RF_attributeForMethod:NSStringFromSelector(sel) withAttributeType:[RFWebServiceCall class]];
     BOOL result;
     
     // if the attribute is found, attempt to add a dynamic implementation
@@ -80,7 +80,7 @@
     class_replaceMethod([self class], selector, implementation, encoding);
 }
 
-- (id<SFWebServiceCancellable>)dynamicWebServiceCall:(id)firstParameter, ... {
+- (id<RFWebServiceCancellable>)dynamicWebServiceCall:(id)firstParameter, ... {
     
     int parameterCount = [[NSStringFromSelector(_cmd) componentsSeparatedByString:@":"] count] - 1;
     NSMutableArray *parameterList = [NSMutableArray array];
@@ -125,10 +125,10 @@
     return [self executeDynamicInstanceMethodForSelector:_cmd parameters:parameterList prepareToLoadBlock:prepareToLoadBlock success:successBlock failure:failureBlock];
 }
 
-- (id<SFWebServiceCancellable>)executeDynamicInstanceMethodForSelector:(SEL)selector parameters:(NSArray *)parameterList prepareToLoadBlock:(SFWebServiceClientPrepareForSendRequestBlock)prepareToLoadBlock success:(id)successBlock failure:(id)failureBlock {
+- (id<RFWebServiceCancellable>)executeDynamicInstanceMethodForSelector:(SEL)selector parameters:(NSArray *)parameterList prepareToLoadBlock:(RFWebServiceClientPrepareForSendRequestBlock)prepareToLoadBlock success:(id)successBlock failure:(id)failureBlock {
     NSString *methodName = NSStringFromSelector(selector);
 
-    __block SFDownloader *downloader = [[SFDownloader alloc] initWithClient:self methodName:methodName authenticationProvider:self.authenticationProvider];
+    __block RFDownloader *downloader = [[RFDownloader alloc] initWithClient:self methodName:methodName authenticationProvider:self.authenticationProvider];
     downloader.successBlock = successBlock;
     downloader.failureBlock = failureBlock;
 
@@ -137,7 +137,7 @@
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
     dispatch_async(queue, ^{
         
-        [SFWebServiceCallParameterEncoder encodeParameters:parameterList forClient:self methodName:methodName withSerializator:self.serializationDelegate callbackBlock:^(NSDictionary *parameters, NSData *postData, BOOL isMultipartData) {
+        [RFWebServiceCallParameterEncoder encodeParameters:parameterList forClient:self methodName:methodName withSerializator:self.serializationDelegate callbackBlock:^(NSDictionary *parameters, NSData *postData, BOOL isMultipartData) {
             parametersDictionary = parameters;
             bodyData = postData;
             downloader.multipartData = isMultipartData;
@@ -152,23 +152,23 @@
 - (void)performCall:(SEL)selector
              values:(NSDictionary *const)values
                body:(NSData *const)httpBody
-            request:(SFDownloader *)downloader
+            request:(RFDownloader *)downloader
     processingQueue:(dispatch_queue_t)processingQueue
-prepareForSendRequestBlock:(SFWebServiceClientPrepareForSendRequestBlock)prepareForSendRequestBlock {
+prepareForSendRequestBlock:(RFWebServiceClientPrepareForSendRequestBlock)prepareForSendRequestBlock {
     dispatch_async(processingQueue, ^{
         NSString *methodName = NSStringFromSelector(selector);
         
-        SFWebServiceCall *callAttribute = [[self class] SF_attributeForMethod:methodName withAttributeType:[SFWebServiceCall class]];
+        RFWebServiceCall *callAttribute = [[self class] RF_attributeForMethod:methodName withAttributeType:[RFWebServiceCall class]];
         
         // Getting url parser from attribute or using default one
-        SFWebServiceURLBuilder *urlParserAttribute = [[self class] SF_attributeForMethod:methodName withAttributeType:[SFWebServiceURLBuilder class]];
+        RFWebServiceURLBuilder *urlParserAttribute = [[self class] RF_attributeForMethod:methodName withAttributeType:[RFWebServiceURLBuilder class]];
         Class urlParserClass = urlParserAttribute.builderClass;
         if (urlParserClass == nil) {
-            urlParserClass = [SFWebServiceBasicURLBuilder class];
+            urlParserClass = [RFWebServiceBasicURLBuilder class];
         }
         
         NSURL *apiUrl = nil;
-        if ([urlParserClass conformsToProtocol:@protocol(SFWebServiceURLBuilding)]) {
+        if ([urlParserClass conformsToProtocol:@protocol(RFWebServiceURLBuilding)]) {
             apiUrl = [urlParserClass urlFromTemplate:callAttribute.relativePath withServiceRoot:self.serviceRoot values:values];
         }
         

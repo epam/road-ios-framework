@@ -1,5 +1,5 @@
 //
-//  SFDerived.h
+//  RFDerived.h
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -35,6 +35,6 @@
 /**
  Serialization attribute for properties. If a class was flagged as serializable, one can add this attribute to individual properties to indicate if the property should be skipped and disregarded during serialization.
  */
-@interface SFDerived : NSObject
+@interface RFDerived : NSObject
 
 @end

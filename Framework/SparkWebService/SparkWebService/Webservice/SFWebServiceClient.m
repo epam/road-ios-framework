@@ -1,6 +1,6 @@
 //
 //
-//  SFWebServiceClient.m
+//  RFWebServiceClient.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,11 +31,11 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFWebServiceClient.h"
-#import "SFDefaultSerializer.h"
-#import "SFAuthenticating.h"
+#import "RFWebServiceClient.h"
+#import "RFDefaultSerializer.h"
+#import "RFAuthenticating.h"
 
-@implementation SFWebServiceClient
+@implementation RFWebServiceClient
 
 - (id)init {
     self = [self initWithServiceRoot:nil];
@@ -48,14 +48,14 @@
     
     if (self) {
         _serviceRoot = serviceRoot;
-        _serializationDelegate = [[SFDefaultSerializer alloc] init];
+        _serializationDelegate = [[RFDefaultSerializer alloc] init];
         _sharedHeaders = [[NSMutableDictionary alloc] init];
     }
     
     return self;
 }
 
-- (void)setAuthenticationProvider:(id<SFAuthenticating>)authenticationProvider {
+- (void)setAuthenticationProvider:(id<RFAuthenticating>)authenticationProvider {
     // Managing authentication provider webServiceClient property
     _authenticationProvider.webServiceClient = nil;
     authenticationProvider.webServiceClient = self;

@@ -1,5 +1,5 @@
 //
-//  SFDownloader.m
+//  RFDownloader.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,25 +31,25 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFDownloader.h"
-#import "SFLooper.h"
+#import "RFDownloader.h"
+#import "RFLooper.h"
 #import <ROAD/ROADLogger.h>
 #import <ROAD/ROADCore.h>
-#import "NSError+SFROADWebService.h"
+#import "NSError+RFROADWebService.h"
 
-#import "SFWebServiceCall.h"
-#import "SFWebServiceHeader.h"
-#import "SFWebServiceClientStatusCodes.h"
-#import "SFAuthenticating.h"
-#import "SFWebServiceSerializationHandler.h"
-#import "SFWebServiceClient.h"
-#import "SFWebServiceLogger.h"
-#import "SFMultipartData.h"
-#import "SFWebServiceCallParameterEncoder.h"
+#import "RFWebServiceCall.h"
+#import "RFWebServiceHeader.h"
+#import "RFWebServiceClientStatusCodes.h"
+#import "RFAuthenticating.h"
+#import "RFWebServiceSerializationHandler.h"
+#import "RFWebServiceClient.h"
+#import "RFWebServiceLogger.h"
+#import "RFMultipartData.h"
+#import "RFWebServiceCallParameterEncoder.h"
 
-@interface SFDownloader () {
+@interface RFDownloader () {
     NSURLConnection * _connection;
-    SFLooper * _looper;
+    RFLooper * _looper;
     NSMutableArray * _successCodes;
 }
 
@@ -57,15 +57,15 @@
 @property (strong, nonatomic) NSMutableData *data;
 @property (strong, nonatomic) NSHTTPURLResponse *response;
 @property (assign, nonatomic) NSUInteger expectedContentLenght;
-@property (strong, nonatomic) SFWebServiceCall * callAttribute;
+@property (strong, nonatomic) RFWebServiceCall * callAttribute;
 
 - (void)stop;
 
 @end
 
-@implementation SFDownloader
+@implementation RFDownloader
 
-- (id)initWithClient:(SFWebServiceClient *)webServiceClient methodName:(NSString *)methodName authenticationProvider:(id<SFAuthenticating>)authenticaitonProvider {
+- (id)initWithClient:(RFWebServiceClient *)webServiceClient methodName:(NSString *)methodName authenticationProvider:(id<RFAuthenticating>)authenticaitonProvider {
     self = [super init];
     
     if (self) {
@@ -73,12 +73,12 @@
         _methodName = methodName;
         _authenticationProvider = authenticaitonProvider;
         _successCodes = [NSMutableArray arrayWithObjects:[NSValue valueWithRange:NSMakeRange(200, 100)], nil];
-        SFWebServiceLogger *loggerTypeAttribute = [[webServiceClient class] SF_attributeForMethod:_methodName withAttributeType:[SFWebServiceLogger class]];
+        RFWebServiceLogger *loggerTypeAttribute = [[webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceLogger class]];
         if (!loggerTypeAttribute) {
-            loggerTypeAttribute = [[self class] SF_attributeForClassWithAttributeType:[SFWebServiceLogger class]];
+            loggerTypeAttribute = [[self class] RF_attributeForClassWithAttributeType:[RFWebServiceLogger class]];
         }
         _loggerType = loggerTypeAttribute.loggerType;
-        _callAttribute = [[_webServiceClient class] SF_attributeForMethod:_methodName withAttributeType:[SFWebServiceCall class]];
+        _callAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceCall class]];
     }
     
     return self;
@@ -94,17 +94,17 @@
     // For multipart form data we have to add specific header
     if (_multipartData) {
         NSString *boundary;
-        SFMultipartData *multipartDataAttribute = [[self.webServiceClient class] SF_attributeForMethod:self.methodName withAttributeType:[SFMultipartData class]];
+        RFMultipartData *multipartDataAttribute = [[self.webServiceClient class] RF_attributeForMethod:self.methodName withAttributeType:[RFMultipartData class]];
         boundary = multipartDataAttribute.boundary;
         if (!boundary.length) {
             // Some random default boundary
-            boundary = kSFBoundaryDefaultString;
+            boundary = kRFBoundaryDefaultString;
         }
         NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
         [_request addValue:contentType forHTTPHeaderField:@"Content-Type"];
     }
     
-    SFWebServiceHeader * const headerAttribute = [[_webServiceClient class] SF_attributeForMethod:_methodName withAttributeType:[SFWebServiceHeader class]];
+    RFWebServiceHeader * const headerAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceHeader class]];
     
     // Adding shared headers to request
     NSMutableDictionary *headerFields = [sharedHeaders mutableCopy];
@@ -121,7 +121,7 @@
         [self.successCodes removeAllObjects];
         [self.successCodes addObjectsFromArray:_callAttribute.successCodes];
     } else {
-        SFWebServiceClientStatusCodes* wsca = [[self.webServiceClient class] SF_attributeForClassWithAttributeType:[SFWebServiceClientStatusCodes class]];
+        RFWebServiceClientStatusCodes* wsca = [[self.webServiceClient class] RF_attributeForClassWithAttributeType:[RFWebServiceClientStatusCodes class]];
 
         if ([wsca.successCodes count] > 0) {
             [self.successCodes removeAllObjects];
@@ -139,11 +139,11 @@
     _connection = [[NSURLConnection alloc] initWithRequest:_request delegate:self startImmediately:NO];
     
     if (_looper == nil) {
-        _looper = [[SFLooper alloc] init];
+        _looper = [[RFLooper alloc] init];
         _data = [NSMutableData data];
         [_connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
         [_connection start];
-        SFLogTypedDebug(self.loggerType, @"URL connection(%p) has started. Method: %@. URL: %@\nHeader fields: %@", _connection, _connection.currentRequest.HTTPMethod, [_connection.currentRequest.URL absoluteString], [_connection.currentRequest allHTTPHeaderFields]);
+        RFLogTypedDebug(self.loggerType, @"URL connection(%p) has started. Method: %@. URL: %@\nHeader fields: %@", _connection, _connection.currentRequest.HTTPMethod, [_connection.currentRequest.URL absoluteString], [_connection.currentRequest allHTTPHeaderFields]);
         [_looper start];
     }
 }
@@ -154,7 +154,7 @@
     self.response = response;
     
     if (!resultError && !_callAttribute.serializationDisabled) {
-        [SFWebServiceSerializationHandler deserializeData:result withSerializator:_webServiceClient.serializationDelegate serializatinRoot:_callAttribute.serializationRoot toDeserializationClass:_callAttribute.prototypeClass withCompletitionBlock:^(id serializedData, NSError *error) {
+        [RFWebServiceSerializationHandler deserializeData:result withSerializator:_webServiceClient.serializationDelegate serializatinRoot:_callAttribute.serializationRoot toDeserializationClass:_callAttribute.prototypeClass withCompletitionBlock:^(id serializedData, NSError *error) {
             resultData = serializedData;
             resultError = error;
         }];
@@ -191,9 +191,9 @@
 - (void)cancel {
     _requestCancelled = YES;
     [_connection cancel];
-     SFLogTypedDebug(self.loggerType, @"URL connection(%p) is canceled. URL: %@", _connection, [_connection.currentRequest.URL absoluteString]);
+     RFLogTypedDebug(self.loggerType, @"URL connection(%p) is canceled. URL: %@", _connection, [_connection.currentRequest.URL absoluteString]);
     self.data = nil;
-    self.downloadError = [NSError SF_sparkWS_cancellError];
+    self.downloadError = [NSError RF_sparkWS_cancellError];
     [self stop];
    
 }
@@ -231,13 +231,13 @@
 
 #pragma mark - Utitlity
 
-NSString * const SFAttributeTemplateEscape = @"%%";
+NSString * const RFAttributeTemplateEscape = @"%%";
 
-- (NSMutableDictionary*)dynamicPropertyValuesFromAttribute:(SFWebServiceHeader *)serviceHeaderAttribute WithPropertyValues:(NSDictionary*)values {
+- (NSMutableDictionary*)dynamicPropertyValuesFromAttribute:(RFWebServiceHeader *)serviceHeaderAttribute WithPropertyValues:(NSDictionary*)values {
     NSMutableDictionary* result = [NSMutableDictionary new];
     [serviceHeaderAttribute.hearderFields enumerateKeysAndObjectsUsingBlock:^(id key, NSString* obj, BOOL *stop) {
         NSMutableString* value = [obj mutableCopy];
-        [value SF_formatStringUsingValues:values withEscape:SFAttributeTemplateEscape];
+        [value RF_formatStringUsingValues:values withEscape:RFAttributeTemplateEscape];
         result[key] = [value copy];
     }];
     return result;

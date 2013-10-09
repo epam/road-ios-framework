@@ -1,5 +1,5 @@
 //
-//  NSBundle+SFParameterList.h
+//  NSBundle+RFParameterList.h
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -33,31 +33,31 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString * const kSFPlistFileExtension;
+extern NSString * const kRFPlistFileExtension;
 
 /**
  Convenience methods to fetch plist file paths with less code.
  */
-@interface NSBundle (SFParameterList)
+@interface NSBundle (RFParameterList)
 
 /**
  Convenience method to return a path for a plist file of a given name.
  @param plistResourceName The name of the plist file.
  @result The string representation for the path pointing to the plist file.
  */
-- (NSString *)SF_pathForPlistResource:(NSString *)plistResourceName;
+- (NSString *)RF_pathForPlistResource:(NSString *)plistResourceName;
 
 /**
  Returns the resource path for the plist file with the same name as the receiver's class name.
  @result Returns the path string for the plist file.
  */
-- (NSString *)SF_pathForOwnedPlist;
+- (NSString *)RF_pathForOwnedPlist;
 
 /**
  Convenience method to return an NSURL representation of the path to a plist file in the bundle of a specified name.
  @param plistResourceName The name of the plist file.
  @result The url object containing the path.
  */
-- (NSURL *)SF_urlForPlistResource:(NSString *)plistResourceName;
+- (NSURL *)RF_urlForPlistResource:(NSString *)plistResourceName;
 
 @end

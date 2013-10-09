@@ -1,5 +1,5 @@
 //
-//  SFODataFetchRequest.h
+//  RFODataFetchRequest.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,19 +30,19 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFODataPrioritizedPredicate.h"
-#import "SFODataExpression.h"
-#import "NSSortDescriptor+SFOData.h"
-#import "SFWebServiceURLBuilderParameter.h"
+#import "RFODataPrioritizedPredicate.h"
+#import "RFODataExpression.h"
+#import "NSSortDescriptor+RFOData.h"
+#import "RFWebServiceURLBuilderParameter.h"
 
-@class SFODataPredicate;
+@class RFODataPredicate;
 
-SF_ATTRIBUTE(SFWebServiceURLBuilderParameter)
-@interface SFODataFetchRequest : NSObject
+RF_ATTRIBUTE(RFWebServiceURLBuilderParameter)
+@interface RFODataFetchRequest : NSObject
 
 - (id)initWithEntityName:(NSString *)entityName;
-- (id)initWithEntityName:(NSString *)entityName predicate:(SFODataPredicate *)predicate;
-- (id)initWithEntityName:(NSString *)entityName predicate:(SFODataPredicate *)predicate sortDescriptors:(NSArray *)sortDescriptors;
+- (id)initWithEntityName:(NSString *)entityName predicate:(RFODataPredicate *)predicate;
+- (id)initWithEntityName:(NSString *)entityName predicate:(RFODataPredicate *)predicate sortDescriptors:(NSArray *)sortDescriptors;
 
 /**
  * Adds to request indication that specified entity have to be included inline in response.
@@ -77,7 +77,7 @@ SF_ATTRIBUTE(SFWebServiceURLBuilderParameter)
 /**
  * The filtration option that will be apply to all record.
  */
-@property (nonatomic, strong) SFODataPredicate *predicate;
+@property (nonatomic, strong) RFODataPredicate *predicate;
 
 /**
  * Array of entity names that will be included inline in response.

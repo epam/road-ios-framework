@@ -1,5 +1,5 @@
 //
-//  SFPropertyInfo.m
+//  RFPropertyInfo.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,13 +31,13 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFPropertyInfo.h"
+#import "RFPropertyInfo.h"
 
-#import "SFTypeDecoder.h"
+#import "RFTypeDecoder.h"
 #import <objc/runtime.h>
 #import "ROADAttribute.h"
 
-@interface SFPropertyInfo () {
+@interface RFPropertyInfo () {
     NSString *_propertyName;
     NSString *_className;
     Class _hostClass;
@@ -64,7 +64,7 @@
 
 @end
 
-@implementation SFPropertyInfo
+@implementation RFPropertyInfo
 
 @dynamic attributes;
 
@@ -84,9 +84,9 @@
     return result;
 }
 
-+ (SFPropertyInfo *)SF_propertyNamed:(NSString *)name forClass:(Class)aClass {
++ (RFPropertyInfo *)RF_propertyNamed:(NSString *)name forClass:(Class)aClass {
     objc_property_t prop = class_getProperty(aClass, [name cStringUsingEncoding:NSUTF8StringEncoding]);
-    SFPropertyInfo *result = nil;
+    RFPropertyInfo *result = nil;
     
     if (prop != NULL) {
         result = [self property:prop forClass:aClass];
@@ -102,8 +102,8 @@
 
 // For reference see apple's documetation about declared properties:
 // https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtPropertyIntrospection.html
-+ (SFPropertyInfo *)property:(objc_property_t)property forClass:(Class)class {
-    SFPropertyInfo * const info = [[SFPropertyInfo alloc] initWithProperty:property];
++ (RFPropertyInfo *)property:(objc_property_t)property forClass:(Class)class {
+    RFPropertyInfo * const info = [[RFPropertyInfo alloc] initWithProperty:property];
     info.hostClass = class;
     
     return info;
@@ -139,11 +139,11 @@
 }
 
 - (NSArray *)attributes {
-    return [self.hostClass SF_attributesForProperty:self.propertyName];
+    return [self.hostClass RF_attributesForProperty:self.propertyName];
 }
 
 - (id)attributeWithType:(Class)requiredClassOfAttribute {
-    return [self.hostClass SF_attributeForProperty:self.propertyName withAttributeType:requiredClassOfAttribute];
+    return [self.hostClass RF_attributeForProperty:self.propertyName withAttributeType:requiredClassOfAttribute];
 }
 
 #pragma mark - Specifiers
@@ -175,7 +175,7 @@
 - (Class)typeClass {
     if (!_isAttributeNameFilled) {
         [self fillAttributeName];
-        _typeClass = NSClassFromString([SFTypeDecoder SF_classNameFromTypeName:_typeName]);
+        _typeClass = NSClassFromString([RFTypeDecoder RF_classNameFromTypeName:_typeName]);
     }
     
     return _typeClass;
@@ -268,8 +268,8 @@
 
 - (void)fillAttributeName {
     NSString *attributeName = [[self class] propertyAttributeNameForField:"T" property:_property];
-    _typeName = [SFTypeDecoder nameFromTypeEncoding:attributeName];
-    _primitive = [SFTypeDecoder SF_isPrimitiveType:attributeName];
+    _typeName = [RFTypeDecoder nameFromTypeEncoding:attributeName];
+    _primitive = [RFTypeDecoder RF_isPrimitiveType:attributeName];
     
     _isAttributeNameFilled = YES;
 }

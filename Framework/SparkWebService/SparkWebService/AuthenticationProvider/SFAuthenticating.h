@@ -1,5 +1,5 @@
 //
-//  SFAuthenticating.h
+//  RFAuthenticating.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,17 +32,17 @@
 
 #import <Foundation/Foundation.h>
 
-@class SFWebServiceClient;
+@class RFWebServiceClient;
 
-typedef void (^SFAuthenticationSuccessBlock)(id result);
-typedef void (^SFAuthenticationFailureBlock)(NSError *error);
+typedef void (^RFAuthenticationSuccessBlock)(id result);
+typedef void (^RFAuthenticationFailureBlock)(NSError *error);
 
-@protocol SFAuthenticating <NSObject>
+@protocol RFAuthenticating <NSObject>
 
 /**
  * Web service client related to this provider
  */
-@property (nonatomic, weak) SFWebServiceClient *webServiceClient;
+@property (nonatomic, weak) RFWebServiceClient *webServiceClient;
 
 /**
  * Blocks, that will be invoked after confirmation of success authentication

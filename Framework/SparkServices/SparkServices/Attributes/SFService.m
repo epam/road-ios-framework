@@ -1,5 +1,5 @@
 //
-//  SFService.m
+//  RFService.m
 //  ROADServices
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,8 +30,8 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFService.h"
+#import "RFService.h"
 
-@implementation SFService
+@implementation RFService
 
 @end

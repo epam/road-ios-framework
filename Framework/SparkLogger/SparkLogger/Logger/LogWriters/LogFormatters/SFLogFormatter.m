@@ -1,5 +1,5 @@
 //
-//  SFLogFormatter.m
+//  RFLogFormatter.m
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,26 +30,26 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFLogFormatter.h"
+#import "RFLogFormatter.h"
 
-#import "SFLogBlockFormatter.h"
-#import "SFLogPlainFormatter.h"
-#import "SFLogMessage.h"
+#import "RFLogBlockFormatter.h"
+#import "RFLogPlainFormatter.h"
+#import "RFLogMessage.h"
 
-@implementation SFLogFormatter
+@implementation RFLogFormatter
 
-- (NSString *)formatMessage:(SFLogMessage *const)message {
+- (NSString *)formatMessage:(RFLogMessage *const)message {
     return message.message;
 }
 
 #pragma mark - Class cluster factory methods
 
-+ (SFLogFormatter *)formatterWithBlock:(NSString *(^)(SFLogMessage *const))formatterBlock {
-    return [SFLogBlockFormatter formatterWithBlock:formatterBlock];
++ (RFLogFormatter *)formatterWithBlock:(NSString *(^)(RFLogMessage *const))formatterBlock {
+    return [RFLogBlockFormatter formatterWithBlock:formatterBlock];
 }
 
-+ (SFLogFormatter *)plainFormatter {
-    return [[SFLogPlainFormatter alloc] init];
++ (RFLogFormatter *)plainFormatter {
+    return [[RFLogPlainFormatter alloc] init];
 }
 
 @end

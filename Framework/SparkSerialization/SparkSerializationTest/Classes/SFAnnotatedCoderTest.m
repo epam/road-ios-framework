@@ -1,5 +1,5 @@
 //
-//  SFAnnotatedCoderTest.m
+//  RFAnnotatedCoderTest.m
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,32 +31,32 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFAnnotatedCoderTest.h"
-#import "SFSerializationTestObject.h"
-#import "SFAttributedDecoder.h"
-#import "SFAttributedCoder.h"
+#import "RFAnnotatedCoderTest.h"
+#import "RFSerializationTestObject.h"
+#import "RFAttributedDecoder.h"
+#import "RFAttributedCoder.h"
 
-@implementation SFAnnotatedCoderTest {
-    SFSerializationTestObject *object;
+@implementation RFAnnotatedCoderTest {
+    RFSerializationTestObject *object;
 }
 
 - (void)setUp {
-    SFSerializationTestObject *object3 = [[SFSerializationTestObject alloc] init];
+    RFSerializationTestObject *object3 = [[RFSerializationTestObject alloc] init];
     object3.string1 = @"value31";
     object3.string2 = @"value32";
     object3.integer = 5;
-    SFSerializationTestObject *object4 = [[SFSerializationTestObject alloc] init];
+    RFSerializationTestObject *object4 = [[RFSerializationTestObject alloc] init];
     object4.string2 = @"value42";
     object4.string1 = @"value41";
     object4.number = @(3);
     
-    object = [[SFSerializationTestObject alloc] init];
+    object = [[RFSerializationTestObject alloc] init];
     object.string1 = @"value1";
     object.string2 = @"value2";
     object.strings = @[@"value3", @"value4"];
     object.boolean = YES;
     object.subDictionary = @{@"object3" : object3};
-    object.child = [[SFSerializationTestObject alloc] init];
+    object.child = [[RFSerializationTestObject alloc] init];
     object.child.boolean = NO;
     object.child.string1 = @"value5";
     object.child.string2 = @"value6";
@@ -78,7 +78,7 @@
 }
 
 - (void)testSerialization {
-    NSString *result = [SFAttributedCoder encodeRootObject:object];
+    NSString *result = [RFAttributedCoder encodeRootObject:object];
     STAssertTrue([result length] > 0, @"Assertion: serialization is successful.");
 }
 
@@ -90,11 +90,11 @@
     STAssertTrue(!error, @"Deserialisation content is not available, error: %@", error);
     STAssertTrue([deserialisationTestString length] > 0, @"Deserialisation content is missing");
     
-    SFSerializationTestObject *restored = [SFAttributedDecoder decodeJSONString:deserialisationTestString];
-    STAssertTrue([restored isKindOfClass:[SFSerializationTestObject class]], @"Assertion: the restored object is of the correct class:", NSStringFromClass([restored class]));
+    RFSerializationTestObject *restored = [RFAttributedDecoder decodeJSONString:deserialisationTestString];
+    STAssertTrue([restored isKindOfClass:[RFSerializationTestObject class]], @"Assertion: the restored object is of the correct class:", NSStringFromClass([restored class]));
     STAssertTrue([restored.string1 isEqualToString:@"value1"] && [restored.child.string1 isEqualToString:@"value5"], @"Assertion: strings are restored to the correct value.");
     STAssertTrue([restored.strings[1] isEqualToString:@"value4"], @"Assertion: stringarray is restored correctly.");
-    STAssertTrue([restored.subDictionary[@"object3"] isKindOfClass:[SFSerializationTestObject class]], @"Assertion: dictionary value is of the correct class");
+    STAssertTrue([restored.subDictionary[@"object3"] isKindOfClass:[RFSerializationTestObject class]], @"Assertion: dictionary value is of the correct class");
     STAssertTrue([[restored.subDictionary[@"object3"] string1] isEqualToString:@"value31"], @"Assertion: object embedded in dictionary is restored correctly.");
     STAssertTrue([restored.string2 length] == 0 && [restored.child.string2 length] == 0, @"Assertion: derived properties are ignored.");
     STAssertTrue([[restored.child.subObjects[0] string1] isEqualToString:@"value31"], @"Assertion: embedded objects in array are restored properly.");

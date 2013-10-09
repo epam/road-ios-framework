@@ -1,5 +1,5 @@
 //
-//  SFPropertyInfoTest.m
+//  RFPropertyInfoTest.m
 //  ROADCore
 //
 //  Created by Eduard Beleninik on 9/30/13.
@@ -8,15 +8,15 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import <objc/runtime.h>
-#import "SFPropertyInfo.h"
+#import "RFPropertyInfo.h"
 
-@interface SFPropertyInfoTest : SenTestCase {
+@interface RFPropertyInfoTest : SenTestCase {
     Class _testClass;
 }
 
 @end
 
-@implementation SFPropertyInfoTest
+@implementation RFPropertyInfoTest
 
 const static NSUInteger numberOfProperties = 76;
 const static char *testClassName = "testClassName";
@@ -46,7 +46,7 @@ const static char *testClassName = "testClassName";
 
         inc++;
     }
-    STAssertTrue(inc == [[SFPropertyInfo propertiesForClass:_testClass] count], @"It's not equals a sum of properties");
+    STAssertTrue(inc == [[RFPropertyInfo propertiesForClass:_testClass] count], @"It's not equals a sum of properties");
 }
 
 - (void)testPropertyByName {
@@ -62,7 +62,7 @@ const static char *testClassName = "testClassName";
     class_addProperty(_testClass, "name", attrs, 3);
     class_addMethod(_testClass, methodSelector, nil, "@@:");
     
-    SFPropertyInfo *propertyInfo = [SFPropertyInfo SF_propertyNamed:propertyName forClass:_testClass];
+    RFPropertyInfo *propertyInfo = [RFPropertyInfo RF_propertyNamed:propertyName forClass:_testClass];
 
     STAssertNotNil(propertyInfo, @"Can't find metadata of property by name");
 }

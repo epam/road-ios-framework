@@ -1,5 +1,5 @@
 //
-//  NSArray+SFEmptyArrayChecks.m
+//  NSArray+RFEmptyArrayChecks.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,11 +31,11 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "NSArray+SFEmptyArrayChecks.h"
+#import "NSArray+RFEmptyArrayChecks.h"
 
-@implementation NSArray (SFEmptyArrayChecks)
+@implementation NSArray (RFEmptyArrayChecks)
 
-- (id)SF_lastElementIfNotEmpty {
+- (id)RF_lastElementIfNotEmpty {
     id lastObject = nil;
     
     if ([self count] > 0) {
@@ -45,7 +45,7 @@
     return lastObject;
 }
 
-- (id)SF_elementAtIndexIfInRange:(NSUInteger)index {
+- (id)RF_elementAtIndexIfInRange:(NSUInteger)index {
     id object = nil;
     
     if ([self count] > index) {
@@ -55,13 +55,13 @@
     return object;
 }
 
-- (id)SF_elementWithPredicateBlock:(BOOL (^)(id evaluatedObject))evaluationBlock {
+- (id)RF_elementWithPredicateBlock:(BOOL (^)(id evaluatedObject))evaluationBlock {
     BOOL (^(testingBlock))(id evaludatedObject) = [evaluationBlock copy];
     
     return [[self filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
         
         return testingBlock(evaluatedObject);
-    }]] SF_lastElementIfNotEmpty];
+    }]] RF_lastElementIfNotEmpty];
 }
 
 @end

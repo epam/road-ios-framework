@@ -1,5 +1,5 @@
 //
-//  SFMethodInfoTest.h
+//  RFMethodInfoTest.h
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -33,6 +33,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface SFMethodInfoTest : SenTestCase
+@interface RFMethodInfoTest : SenTestCase
 
 @end

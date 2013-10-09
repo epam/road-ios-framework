@@ -1,5 +1,5 @@
 //
-//  SFLogFormatter.h
+//  RFLogFormatter.h
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,31 +30,31 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-@class SFLogMessage;
+@class RFLogMessage;
 
 /**
  Formatter object that will format the log message.
  */
-@interface SFLogFormatter : NSObject
+@interface RFLogFormatter : NSObject
 
 /**
  Message formatter method.
  @param message The log message to format.
  @result The string representation of the formatted message.
  */
-- (NSString *)formatMessage:(SFLogMessage * const)message;
+- (NSString *)formatMessage:(RFLogMessage * const)message;
 
 /**
  Block formatter.
  @param formatterBlock A block to format the incoming log message.
  @result The formatter instance.
  */
-+ (SFLogFormatter *)formatterWithBlock:(NSString * (^)(SFLogMessage * const message))formatterBlock;
++ (RFLogFormatter *)formatterWithBlock:(NSString * (^)(RFLogMessage * const message))formatterBlock;
 
 /**
  Plain formatter.
  @result A plain formatter returning a string containing the timestamp and the log's message contents.
  */
-+ (SFLogFormatter *)plainFormatter;
++ (RFLogFormatter *)plainFormatter;
 
 @end

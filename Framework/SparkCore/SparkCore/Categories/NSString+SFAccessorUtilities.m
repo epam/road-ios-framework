@@ -1,5 +1,5 @@
 //
-//  NSString+SFAccessorUtilities.m
+//  NSString+RFAccessorUtilities.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,50 +31,50 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "NSString+SFAccessorUtilities.h"
+#import "NSString+RFAccessorUtilities.h"
 
-static NSString * const kSFSetterNameFormat = @"set%@:";
-static NSString * const kSFSetterPrefix = @"set";
-static NSString * const kSFBooleanGetterPrefix = @"is";
-static NSString * const kSFCaseTransformationFormat = @"%@%@%@";
+static NSString * const kRFSetterNameFormat = @"set%@:";
+static NSString * const kRFSetterPrefix = @"set";
+static NSString * const kRFBooleanGetterPrefix = @"is";
+static NSString * const kRFCaseTransformationFormat = @"%@%@%@";
 
-@implementation NSString (SFAccessorUtilities)
+@implementation NSString (RFAccessorUtilities)
 
-- (NSString *)SF_stringByTransformingToSetterAccessor {
-    return [NSString stringWithFormat:kSFSetterNameFormat, [self SF_stringWithUpperCaseFirstCharacter]];
+- (NSString *)RF_stringByTransformingToSetterAccessor {
+    return [NSString stringWithFormat:kRFSetterNameFormat, [self RF_stringWithUpperCaseFirstCharacter]];
 }
 
-- (NSString *)SF_stringByTransformingToGetterAccessor {
+- (NSString *)RF_stringByTransformingToGetterAccessor {
     NSString *result;
     
-    if ([self hasPrefix:kSFSetterPrefix]) {
-        result = [[self substringWithRange:NSMakeRange([kSFSetterPrefix length], [self length]-([kSFSetterPrefix length] + 1))] SF_stringWithLowerCaseFirstCharacter];
+    if ([self hasPrefix:kRFSetterPrefix]) {
+        result = [[self substringWithRange:NSMakeRange([kRFSetterPrefix length], [self length]-([kRFSetterPrefix length] + 1))] RF_stringWithLowerCaseFirstCharacter];
     }
-    else if ([self hasPrefix:kSFBooleanGetterPrefix]) {
-        result = [[self substringWithRange:NSMakeRange([kSFBooleanGetterPrefix length], [self length]-([kSFBooleanGetterPrefix length] + 1))] SF_stringWithLowerCaseFirstCharacter];
+    else if ([self hasPrefix:kRFBooleanGetterPrefix]) {
+        result = [[self substringWithRange:NSMakeRange([kRFBooleanGetterPrefix length], [self length]-([kRFBooleanGetterPrefix length] + 1))] RF_stringWithLowerCaseFirstCharacter];
     }
     return result;
 }
 
 // Creates a string from the receiver by transforming its first letter character into upper case
-- (NSString *)SF_stringWithUpperCaseFirstCharacter {
+- (NSString *)RF_stringWithUpperCaseFirstCharacter {
     NSRange const range = [self rangeOfCharacterFromSet:[NSCharacterSet letterCharacterSet]];
     NSString * const subString = [[self substringWithRange:range] uppercaseString];
     NSString * const firstPart = [self substringToIndex:range.location];
     NSString * const lastPart = [self substringFromIndex:range.location + range.length];
     
-    NSString * const result = [NSString stringWithFormat:kSFCaseTransformationFormat, firstPart, subString, lastPart];
+    NSString * const result = [NSString stringWithFormat:kRFCaseTransformationFormat, firstPart, subString, lastPart];
     return result;
 }
 
 // Creates a string from the receiver by transforming its first letter character into lower case
-- (NSString *)SF_stringWithLowerCaseFirstCharacter {
+- (NSString *)RF_stringWithLowerCaseFirstCharacter {
     NSRange const range = [self rangeOfCharacterFromSet:[NSCharacterSet letterCharacterSet]];
     NSString * const subString = [[self substringWithRange:range] lowercaseString];
     NSString * const firstPart = [self substringToIndex:range.location];
     NSString * const lastPart = [self substringFromIndex:range.location + range.length];
     
-    NSString * const result = [NSString stringWithFormat:kSFCaseTransformationFormat, firstPart, subString, lastPart];
+    NSString * const result = [NSString stringWithFormat:kRFCaseTransformationFormat, firstPart, subString, lastPart];
     return result;
 }
 

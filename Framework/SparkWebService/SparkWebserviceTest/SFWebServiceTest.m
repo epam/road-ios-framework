@@ -1,5 +1,5 @@
 //
-//  SFWebServiceTest.m
+//  RFWebServiceTest.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,32 +31,32 @@
 // for additional information regarding copyright ownership and licensing
 
 #import <ROAD/ROADLogger.h>
-#import "SFWebServiceTest.h"
-#import "SFWebServiceClient+DynamicTest.h"
-#import "SFAuthenticating.h"
-#import "SFServiceProvider+ConcreteWebServiceClient.h"
-#import "SFDownloader+FakeRequest.h"
+#import "RFWebServiceTest.h"
+#import "RFWebServiceClient+DynamicTest.h"
+#import "RFAuthenticating.h"
+#import "RFServiceProvider+ConcreteWebServiceClient.h"
+#import "RFDownloader+FakeRequest.h"
 
-#import "SFBasicAuthenticationProvider.h"
-#import "SFDigestAuthenticationProvider.h"
+#import "RFBasicAuthenticationProvider.h"
+#import "RFDigestAuthenticationProvider.h"
 #import <objc/runtime.h>
 
-@interface SFWebServiceTest ()
+@interface RFWebServiceTest ()
 {
     NSCondition * condition;
     BOOL authenticationFinished;
 }
 @end
 
-@implementation SFWebServiceTest
+@implementation RFWebServiceTest
 
 + (void)setUp {
-    [[SFServiceProvider logger] addWriter:[SFConsoleLogWriter new]];
+    [[RFServiceProvider logger] addWriter:[RFConsoleLogWriter new]];
     
     SEL originalSelector = @selector(start);
     SEL overrideSelector = @selector(fakeStart);
-    Method originalMethod = class_getInstanceMethod([SFDownloader class], originalSelector);
-    Method overrideMethod = class_getInstanceMethod([SFDownloader class], overrideSelector);
+    Method originalMethod = class_getInstanceMethod([RFDownloader class], originalSelector);
+    Method overrideMethod = class_getInstanceMethod([RFDownloader class], overrideSelector);
     method_exchangeImplementations(originalMethod, overrideMethod);
 }
 
@@ -64,8 +64,8 @@
     authenticationFinished = NO;
     __block BOOL isFinished = NO;
     
-    SFWebServiceClient *client = [[SFWebServiceClient alloc] initWithServiceRoot:@"http://httpbin.org/"];
-    client.authenticationProvider = [[SFBasicAuthenticationProvider alloc] initWithUser:@"user" password:@"passwd"];
+    RFWebServiceClient *client = [[RFWebServiceClient alloc] initWithServiceRoot:@"http://httpbin.org/"];
+    client.authenticationProvider = [[RFBasicAuthenticationProvider alloc] initWithUser:@"user" password:@"passwd"];
     [client dynamicTestHttpRequestPath:@"basic-auth/user/passwd" success:^(id result) {
         isFinished = YES; /* reveived data ... */ 
     } failure:^(NSError *error) {
@@ -82,8 +82,8 @@
     authenticationFinished = NO;
     __block BOOL isFinished = NO;
     
-    SFWebServiceClient *client = [[SFWebServiceClient alloc] initWithServiceRoot:@"https://httpbin.org/"];
-    client.authenticationProvider = [[SFBasicAuthenticationProvider alloc] initWithUser:@"user" password:@"passwd"];
+    RFWebServiceClient *client = [[RFWebServiceClient alloc] initWithServiceRoot:@"https://httpbin.org/"];
+    client.authenticationProvider = [[RFBasicAuthenticationProvider alloc] initWithUser:@"user" password:@"passwd"];
 
     [client dynamicTestHttpsRequestPath:@"basic-auth/user/passwd" success:^(id result) {
         isFinished = YES; /* reveived data ... */
@@ -101,8 +101,8 @@
     authenticationFinished = NO;
     __block BOOL isFinished = false;
     
-    SFWebServiceClient *client = [[SFWebServiceClient alloc] initWithServiceRoot:@"http://httpbin.org/"];
-    client.authenticationProvider = [[SFDigestAuthenticationProvider alloc] initWithUser:@"user" password:@"passwd"];
+    RFWebServiceClient *client = [[RFWebServiceClient alloc] initWithServiceRoot:@"http://httpbin.org/"];
+    client.authenticationProvider = [[RFDigestAuthenticationProvider alloc] initWithUser:@"user" password:@"passwd"];
     
     [client dynamicTestHttpRequestPath:@"digest-auth/auth/user/passwd" success:^(id result) {
         isFinished = YES; /* reveived data ... */
@@ -120,8 +120,8 @@
     authenticationFinished = NO;
     __block BOOL isFinished = NO;
     
-    SFWebServiceClient *client = [[SFWebServiceClient alloc] initWithServiceRoot:@"https://httpbin.org/"];
-    client.authenticationProvider = [[SFDigestAuthenticationProvider alloc] initWithUser:@"user" password:@"passwd"];
+    RFWebServiceClient *client = [[RFWebServiceClient alloc] initWithServiceRoot:@"https://httpbin.org/"];
+    client.authenticationProvider = [[RFDigestAuthenticationProvider alloc] initWithUser:@"user" password:@"passwd"];
     
     [client dynamicTestHttpsRequestPath:@"digest-auth/auth/user/passwd" success:^(id result) {
         isFinished = YES; /* reveived data ... */
@@ -136,11 +136,11 @@
 }
 
 - (void)testWebServiceManagement {
-    SFConcreteWebServiceClient *client = [SFServiceProvider concreteWebServiceClient];
+    RFConcreteWebServiceClient *client = [RFServiceProvider concreteWebServiceClient];
     STAssertTrue(client != nil, @"Concrete web service client was not created properly.");
     
     client.sharedHeaders = [@{@"key1" : @"value1"} mutableCopy];
-    SFConcreteWebServiceClient *theSameClient = [SFServiceProvider concreteWebServiceClient];
+    RFConcreteWebServiceClient *theSameClient = [RFServiceProvider concreteWebServiceClient];
     STAssertTrue([theSameClient.sharedHeaders count], @"Shared headers has not been saved.");
 }
 
@@ -148,7 +148,7 @@
     __block BOOL isFinished = NO;
     __block id requestResult = nil;
     
-    SFConcreteWebServiceClient *webClient = [[SFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://api.openweathermap.org/data/2.5/weather?q=London,uk"];
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://api.openweathermap.org/data/2.5/weather?q=London,uk"];
     [webClient testSerializationRootWithSuccess:^(id result) {
         requestResult = result;
         isFinished = YES;
@@ -166,7 +166,7 @@
     __block BOOL isFinished = NO;
     __block id requestResult = nil;
     
-    SFConcreteWebServiceClient *webClient = [[SFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://api.openweathermap.org/data/2.5/weather?q=London,uk"];
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://api.openweathermap.org/data/2.5/weather?q=London,uk"];
     [webClient testWrongSerializationRootWithSuccess:^(id result) {
         requestResult = result;
         isFinished = YES;
@@ -184,7 +184,7 @@
     __block BOOL isFinished = NO;
     __block NSError *receivedError;
     
-    SFConcreteWebServiceClient *webClient = [[SFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://services.odata.org/V3/(S(plcxuejnllfvrrecpvqbehxz))/OData/OData.svc/Product(1)"];
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://services.odata.org/V3/(S(plcxuejnllfvrrecpvqbehxz))/OData/OData.svc/Product(1)"];
     [webClient testErrorHandlerRootWithSuccess:^(id result) {
         isFinished = YES;
     } failure:^(NSError *error) {
@@ -205,8 +205,8 @@
     __block BOOL isFinished = NO;
     __block BOOL isSuccess = NO;
     
-    SFConcreteWebServiceClient *webClient = [[SFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.multipart.data"];
-    SFFormData *attachment = [[SFFormData alloc] initWithName:@"image" data:[@"Random data 1" dataUsingEncoding:NSUTF8StringEncoding] fileName:@"imageName.jpg"];
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.multipart.data"];
+    RFFormData *attachment = [[RFFormData alloc] initWithName:@"image" data:[@"Random data 1" dataUsingEncoding:NSUTF8StringEncoding] fileName:@"imageName.jpg"];
     [webClient testMultipartDataWithAttachment:attachment success:^(id result) {
         isFinished = YES;
         isSuccess = YES;
@@ -225,10 +225,10 @@
     __block BOOL isFinished = NO;
     __block BOOL isSuccess = NO;
     
-    SFConcreteWebServiceClient *webClient = [[SFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.multipart.data"];
-    NSArray *attachments = @[[[SFFormData alloc] initWithName:@"image" data:[@"Random data 1" dataUsingEncoding:NSUTF8StringEncoding] fileName:@"imageName.jpg"],
-                             [[SFFormData alloc] initWithName:@"image" data:[@"Random data 2" dataUsingEncoding:NSUTF8StringEncoding]],
-                             [[SFFormData alloc] initWithName:@"image" data:[@"Random data 3" dataUsingEncoding:NSUTF8StringEncoding] fileName:@"imageName2.jpg"]];
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.multipart.data"];
+    NSArray *attachments = @[[[RFFormData alloc] initWithName:@"image" data:[@"Random data 1" dataUsingEncoding:NSUTF8StringEncoding] fileName:@"imageName.jpg"],
+                             [[RFFormData alloc] initWithName:@"image" data:[@"Random data 2" dataUsingEncoding:NSUTF8StringEncoding]],
+                             [[RFFormData alloc] initWithName:@"image" data:[@"Random data 3" dataUsingEncoding:NSUTF8StringEncoding] fileName:@"imageName2.jpg"]];
     [webClient testMultipartDataWithAttachments:attachments success:^(id result) {
         isFinished = YES;
         isSuccess = YES;
@@ -244,8 +244,8 @@
 }
 
 - (void)testNilsInCompletionBlocks {
-    SFConcreteWebServiceClient *webClient = [[SFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.method.without.blocks"];
-    SFFormData *attachment = [[SFFormData alloc] initWithName:@"image" data:[@"Random data 1" dataUsingEncoding:NSUTF8StringEncoding] fileName:@"imageName.jpg"];
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.method.without.blocks"];
+    RFFormData *attachment = [[RFFormData alloc] initWithName:@"image" data:[@"Random data 1" dataUsingEncoding:NSUTF8StringEncoding] fileName:@"imageName.jpg"];
     [webClient testMultipartDataWithAttachment:attachment success:nil failure:nil];
     
     __block BOOL isFinished = NO;

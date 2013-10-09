@@ -31,17 +31,17 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#ifndef SparkWebservice_ROADWebServiceAnnotations_h
-#define SparkWebservice_ROADWebServiceAnnotations_h
+#ifndef ROADWebservice_ROADWebServiceAnnotations_h
+#define ROADWebservice_ROADWebServiceAnnotations_h
 
-#import "SFWebServiceCall.h"
-#import "SFWebServiceClientStatusCodes.h"
-#import "SFWebServiceHeader.h"
-#import "SFWebServiceLogger.h"
-#import "SFWebServiceErrorHandler.h"
-#import "SFWebServiceURLBuilder.h"
-#import "SFWebServiceURLBuilderParameter.h"
-#import "SFMultipartData.h"
-#import "SFLoggerWebServicePath.h"
+#import "RFWebServiceCall.h"
+#import "RFWebServiceClientStatusCodes.h"
+#import "RFWebServiceHeader.h"
+#import "RFWebServiceLogger.h"
+#import "RFWebServiceErrorHandler.h"
+#import "RFWebServiceURLBuilder.h"
+#import "RFWebServiceURLBuilderParameter.h"
+#import "RFMultipartData.h"
+#import "RFLoggerWebServicePath.h"
 
 #endif

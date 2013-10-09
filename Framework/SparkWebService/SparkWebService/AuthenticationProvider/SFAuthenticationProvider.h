@@ -1,5 +1,5 @@
 //
-//  SFAuthenticationProvider.h
+//  RFAuthenticationProvider.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,23 +30,23 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFAuthenticating.h"
+#import "RFAuthenticating.h"
 
-FOUNDATION_EXPORT NSString *const kSFAuthorizationKey;
+FOUNDATION_EXPORT NSString *const kRFAuthorizationKey;
 
-extern const int kSFUnauthorizedCode;
-extern const int kSFProxyAuthenticationRequiredCode;
+extern const int kRFUnauthorizedCode;
+extern const int kRFProxyAuthenticationRequiredCode;
 
 /**
  The general provider who support opportunities secure connection SSL 
  (without support certificates) using trusted hosts
  */
-@interface SFAuthenticationProvider : NSObject <SFAuthenticating> {
+@interface RFAuthenticationProvider : NSObject <RFAuthenticating> {
 @protected
     BOOL _sessionOpened;
     NSMutableSet * _successBlocks;
     NSMutableSet * _failureBlocks;
-    __weak SFWebServiceClient * _webServiceClient;
+    __weak RFWebServiceClient * _webServiceClient;
 }
 
 @property (nonatomic, strong) NSString *authenticationProtectedMethod;

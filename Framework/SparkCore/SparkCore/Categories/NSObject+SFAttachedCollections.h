@@ -1,5 +1,5 @@
 //
-//  NSObject+SFAttachedCollections.h
+//  NSObject+RFAttachedCollections.h
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -36,18 +36,18 @@
 /**
  This category allows quick access to the collections created from plist files.
  */
-@interface NSObject (SFAttachedCollections)
+@interface NSObject (RFAttachedCollections)
 
 /**
  Returns the dictionary representation of the plist file with the same classname as of the receiver.
  @return The dictionary initialized with the contents of the plist file.
  */
-- (NSDictionary *)SF_attachedDictionary;
+- (NSDictionary *)RF_attachedDictionary;
 
 /**
  Returns the array representation of the plist file with the same classname as of the receiver.
  @return The array initialized with the contents of the plist file.
  */
-- (NSArray *)SF_attachedArray;
+- (NSArray *)RF_attachedArray;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  SFAttributeCacheManager.m
+//  RFAttributeCacheManager.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,10 +30,10 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFAttributeCacheManager.h"
+#import "RFAttributeCacheManager.h"
 #import <UIKit/UIKit.h>
 
-@implementation SFAttributeCacheManager {
+@implementation RFAttributeCacheManager {
     NSMutableDictionary * _sharedCache;
     /**
      The queue to work on. http://stackoverflow.com/questions/12511976/app-crashes-after-xcode-upgrade-to-4-5-assigning-retained-object-to-unsafe-unre

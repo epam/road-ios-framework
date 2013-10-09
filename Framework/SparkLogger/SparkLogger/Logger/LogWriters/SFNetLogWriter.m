@@ -1,5 +1,5 @@
 //
-//  SFNetLogWriter.m
+//  RFNetLogWriter.m
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,33 +30,33 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFNetLogWriter.h"
+#import "RFNetLogWriter.h"
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <UIKit/UIKit.h>
 
 #include <ifaddrs.h>
 #include <arpa/inet.h>
-#import "SFLogMessage.h"
-#import "SFLogMessageWrapper.h"
-#import "SFStreamWriter.h"
-#import "SFConnection.h"
+#import "RFLogMessage.h"
+#import "RFLogMessageWrapper.h"
+#import "RFStreamWriter.h"
+#import "RFConnection.h"
 
-static NSString * const kSFNetLogServiceType = @"_appalocalnetwork._tcp.";
+static NSString * const kRFNetLogServiceType = @"_appalocalnetwork._tcp.";
 static NSString * const kCFBundleDisplayName = @"CFBundleDisplayName";
 
-@interface SFNetLogWriter () {
-    SFConnection *connection;
+@interface RFNetLogWriter () {
+    RFConnection *connection;
     NSMutableArray *serviceNames;
     NSString *uniqueIdForSession;
     NSString *ipAddress;
     NSString *applicationName;
 }
 
-@property (strong, nonatomic) SFStreamWriter *streamWriter;
+@property (strong, nonatomic) RFStreamWriter *streamWriter;
 
 @end
 
-@implementation SFNetLogWriter
+@implementation RFNetLogWriter
 
 @synthesize delegate = _delegate;
 @synthesize streamWriter = _streamWriter;
@@ -69,7 +69,7 @@ static NSString * const kCFBundleDisplayName = @"CFBundleDisplayName";
     if (self) {
         
         applicationName = [[NSBundle mainBundle] infoDictionary][kCFBundleDisplayName];
-        connection = [[SFConnection alloc] initWithType:kSFNetLogServiceType applicationName:applicationName];
+        connection = [[RFConnection alloc] initWithType:kRFNetLogServiceType applicationName:applicationName];
         connection.delegate = self;
         [connection start];
         
@@ -82,8 +82,8 @@ static NSString * const kCFBundleDisplayName = @"CFBundleDisplayName";
     return self;
 }
 
-- (void)logValidMessage:(SFLogMessage * const)aMessage {
-    SFLogMessageWrapper *wrapper = [[SFLogMessageWrapper alloc] initWithMessage:aMessage deviceName:[self deviceName] applicationName:applicationName uniqueId:uniqueIdForSession];
+- (void)logValidMessage:(RFLogMessage * const)aMessage {
+    RFLogMessageWrapper *wrapper = [[RFLogMessageWrapper alloc] initWithMessage:aMessage deviceName:[self deviceName] applicationName:applicationName uniqueId:uniqueIdForSession];
     [self writeObjectWithSteamWriter:wrapper];
 }
 
@@ -91,8 +91,8 @@ static NSString * const kCFBundleDisplayName = @"CFBundleDisplayName";
     dispatch_async(self.queue, ^{
         NSMutableArray *messageWrappers = [[NSMutableArray alloc] initWithCapacity:[self.messageQueue count]];
                 
-        for (SFLogMessage *message in self.messageQueue) {
-            SFLogMessageWrapper *wrapper = [[SFLogMessageWrapper alloc] initWithMessage:message deviceName:[self deviceName] applicationName:applicationName uniqueId:uniqueIdForSession];            
+        for (RFLogMessage *message in self.messageQueue) {
+            RFLogMessageWrapper *wrapper = [[RFLogMessageWrapper alloc] initWithMessage:message deviceName:[self deviceName] applicationName:applicationName uniqueId:uniqueIdForSession];            
             [messageWrappers addObject:wrapper];
         }
         
@@ -117,9 +117,9 @@ static NSString * const kCFBundleDisplayName = @"CFBundleDisplayName";
 #pragma mark - Connection delegates
 
 // Updates the streamwriter with the available services and informs the delegate about the names of the connected services
-- (void)connection:(SFConnection *)connection didFindServices:(NSSet *)services {
+- (void)connection:(RFConnection *)connection didFindServices:(NSSet *)services {
     
-    _streamWriter = [[SFStreamWriter alloc] initWithServices:services];
+    _streamWriter = [[RFStreamWriter alloc] initWithServices:services];
     serviceNames = [NSMutableArray array];
     
     for (NSNetService *aService in services) {
@@ -134,7 +134,7 @@ static NSString * const kCFBundleDisplayName = @"CFBundleDisplayName";
 }
 
 // Removes a service when it is no longer available
-- (void)connection:(SFConnection *)connection willRemoveService:(NSNetService *)service {
+- (void)connection:(RFConnection *)connection willRemoveService:(NSNetService *)service {
     [serviceNames removeObject:[service name]];
     
     if ([_delegate respondsToSelector:@selector(logWriter:availableServiceNames:)]) {

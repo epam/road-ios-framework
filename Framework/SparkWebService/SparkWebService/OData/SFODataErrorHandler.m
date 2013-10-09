@@ -1,5 +1,5 @@
 //
-//  SFODataErrorHandler.m
+//  RFODataErrorHandler.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,12 +30,12 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFODataErrorHandler.h"
+#import "RFODataErrorHandler.h"
 
 #import <ROAD/ROADSerialization.h>
-#import "NSError+SFROADWebService.h"
+#import "NSError+RFROADWebService.h"
 
-@implementation SFODataErrorHandler
+@implementation RFODataErrorHandler
 
 + (id)validateResponse:(NSURLResponse *)response withData:(NSData *)data {
     NSError *error = nil;
@@ -59,7 +59,7 @@
 + (id)generateErrorForResponse:(NSHTTPURLResponse *)response withData:(NSData *)data {
     NSError *error = nil;
     
-    id jsonObject = [SFAttributedDecoder decodeJSONData:data withRootClassNamed:nil];
+    id jsonObject = [RFAttributedDecoder decodeJSONData:data withRootClassNamed:nil];
     
     if ([jsonObject isKindOfClass:[NSDictionary class]]) {
         NSDictionary *errorInfo = [jsonObject valueForKey:@"odata.error"];
@@ -75,7 +75,7 @@
             localizedDescription = @"";
         }
         
-        error = [NSError errorWithDomain:kSFWebServiceErrorDomain code:code userInfo:@{NSLocalizedDescriptionKey: localizedDescription}];
+        error = [NSError errorWithDomain:kRFWebServiceErrorDomain code:code userInfo:@{NSLocalizedDescriptionKey: localizedDescription}];
     }
 
     return error;

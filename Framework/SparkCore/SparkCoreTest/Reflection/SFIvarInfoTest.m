@@ -1,5 +1,5 @@
 //
-//  SFIvarInfoTest.m
+//  RFIvarInfoTest.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,15 +32,15 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import <objc/runtime.h>
-#import "SFIvarInfo.h"
+#import "RFIvarInfo.h"
 
 
-@interface SFIvarInfoTest : SenTestCase {
+@interface RFIvarInfoTest : SenTestCase {
     Class _testClass;
 }
 @end
 
-@implementation SFIvarInfoTest
+@implementation RFIvarInfoTest
 
 const static NSUInteger numberOfIVars = 352;
 const static char *testClassName = "testClassName";
@@ -59,7 +59,7 @@ const static char *testClassName = "testClassName";
         class_addIvar(_testClass, cstring, sizeof(id), rint(log2(sizeof(id))), @encode(id));
         inc++;
     }
-    STAssertTrue(inc == [[SFIvarInfo ivarsOfClass:_testClass] count], @"It's not equals a sum of ivars");
+    STAssertTrue(inc == [[RFIvarInfo ivarsOfClass:_testClass] count], @"It's not equals a sum of ivars");
 }
 
 - (void)testIVarByName
@@ -69,7 +69,7 @@ const static char *testClassName = "testClassName";
     class_addIvar(_testClass, ivarName, sizeof(type), log2(sizeof(type)), type);
     
     NSString *tempIvar = [NSString stringWithCString:ivarName encoding:NSUTF8StringEncoding];
-    SFIvarInfo *result = [SFIvarInfo SF_ivarNamed:tempIvar ofClass:_testClass];
+    RFIvarInfo *result = [RFIvarInfo RF_ivarNamed:tempIvar ofClass:_testClass];
     STAssertNotNil(result, @"Can't find data by ivar name");
 }
 

@@ -1,5 +1,5 @@
 //
-//  SFODataPredicate.h
+//  RFODataPredicate.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,42 +32,42 @@
 
 #import <Foundation/Foundation.h>
 
-@class SFODataExpression;
+@class RFODataExpression;
 
-typedef NS_ENUM(NSUInteger, SFODataPredicateOperatorType) {
-    SFNotSpecifiedODataPredicateOperatorType,
+typedef NS_ENUM(NSUInteger, RFODataPredicateOperatorType) {
+    RFNotSpecifiedODataPredicateOperatorType,
     // Logical Operators
-    SFEqualToODataPredicateOperatorType,
-    SFNotEqualToODataPredicateOperatorType,
-    SFGreaterThanODataPredicateOperatorType,
-    SFGreaterThanOrEqualToODataPredicateOperatorType,
-    SFLessThanODataPredicateOperatorType,
-    SFLessThanOrEqualToODataPredicateOperatorType,
-    SFLogicalAndODataPredicateOperatorType,
-    SFLogicalOrODataPredicateOperatorType,
-    SFLogicalNegationODataPredicateOperatorType,
+    RFEqualToODataPredicateOperatorType,
+    RFNotEqualToODataPredicateOperatorType,
+    RFGreaterThanODataPredicateOperatorType,
+    RFGreaterThanOrEqualToODataPredicateOperatorType,
+    RFLessThanODataPredicateOperatorType,
+    RFLessThanOrEqualToODataPredicateOperatorType,
+    RFLogicalAndODataPredicateOperatorType,
+    RFLogicalOrODataPredicateOperatorType,
+    RFLogicalNegationODataPredicateOperatorType,
     // Arithmetic Operators
-    SFAdditionODataPredicateOperatorType,
-    SFSubstractionODataPredicateOperatorType,
-    SFMultiplicationODataPredicateOperatorType,
-    SFDivisionODataPredicateOperatorType,
-    SFModuloODataPredicateOperatorType,
+    RFAdditionODataPredicateOperatorType,
+    RFSubstractionODataPredicateOperatorType,
+    RFMultiplicationODataPredicateOperatorType,
+    RFDivisionODataPredicateOperatorType,
+    RFModuloODataPredicateOperatorType,
 };
 
-@interface SFODataPredicate : NSObject
+@interface RFODataPredicate : NSObject
 
 /**
  * Left expression in case of two expression predicate or the one expression if operation does not need second one.
  */
-@property (nonatomic, strong) SFODataExpression *leftExpression;
+@property (nonatomic, strong) RFODataExpression *leftExpression;
 /**
  * Right expression to operate with specified operation
  */
-@property (nonatomic, strong) SFODataExpression *rightExpression;
+@property (nonatomic, strong) RFODataExpression *rightExpression;
 /**
  * Operation type that defines operation.
  */
-@property (nonatomic, assign) SFODataPredicateOperatorType type;
+@property (nonatomic, assign) RFODataPredicateOperatorType type;
 
 /**
  * Filter string that will return as predicate query.
@@ -81,7 +81,7 @@ typedef NS_ENUM(NSUInteger, SFODataPredicateOperatorType) {
  * @param type The type of operation between expressions.
  * @return Initialized predicate.
  */
-- (id)initWithLeftExpression:(SFODataExpression *)leftExpression rightExpression:(SFODataExpression *)rightExpression type:(SFODataPredicateOperatorType)type;
+- (id)initWithLeftExpression:(RFODataExpression *)leftExpression rightExpression:(RFODataExpression *)rightExpression type:(RFODataPredicateOperatorType)type;
 
 /**
  * Initializes predicate with expression and operator.
@@ -89,7 +89,7 @@ typedef NS_ENUM(NSUInteger, SFODataPredicateOperatorType) {
  * @param type The type of operation that will be performed on expression.
  * @return Initialized predicate.
  */
-- (id)initWithExpression:(SFODataExpression *)expression type:(SFODataPredicateOperatorType)type;
+- (id)initWithExpression:(RFODataExpression *)expression type:(RFODataPredicateOperatorType)type;
 
 /**
  * Initializes predicate with filter string without any objects.
@@ -101,6 +101,6 @@ typedef NS_ENUM(NSUInteger, SFODataPredicateOperatorType) {
 /**
  * Returns expression that equals this predicate.
  */
-- (SFODataExpression *)expression;
+- (RFODataExpression *)expression;
 
 @end

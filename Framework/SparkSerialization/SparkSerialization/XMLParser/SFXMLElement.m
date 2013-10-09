@@ -1,5 +1,5 @@
 //
-//  SFXMLElement.m
+//  RFXMLElement.m
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,9 +31,9 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFXMLElement.h"
+#import "RFXMLElement.h"
 
-@implementation SFXMLElement
+@implementation RFXMLElement
 
 - (void)appendString:(NSString * const)aString {
 
@@ -44,7 +44,7 @@
     [_value appendString:aString];
 }
 
-- (void)addChild:(SFXMLElement *const)aChild {
+- (void)addChild:(RFXMLElement *const)aChild {
 
     if (_children == nil) {
         _children = [[NSMutableArray alloc] init];
@@ -57,7 +57,7 @@
     
     if (isCascade) {
         
-        for (SFXMLElement * const aChild in [_children copy]) {
+        for (RFXMLElement * const aChild in [_children copy]) {
             [aChild removeFromParentRecursively:YES];
         }
     }
@@ -65,7 +65,7 @@
     [_parent removeChild:self];
 }
 
-- (void)removeChild:(SFXMLElement * const)anElement {
+- (void)removeChild:(RFXMLElement * const)anElement {
     [_children removeObject:anElement];
 }
 
@@ -73,7 +73,7 @@
     
     NSMutableString * const childDescriptions = [[NSMutableString alloc] init];
 
-    for (SFXMLElement * const aChild in _children) {
+    for (RFXMLElement * const aChild in _children) {
         [childDescriptions appendFormat:@"%@\n", [aChild description]];
     }
     

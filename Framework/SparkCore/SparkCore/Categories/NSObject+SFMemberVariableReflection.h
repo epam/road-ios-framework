@@ -1,5 +1,5 @@
 //
-//  NSObject+SFMemberVariableReflection.h
+//  NSObject+RFMemberVariableReflection.h
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,37 +32,37 @@
 
 
 #import <Foundation/Foundation.h>
-#import "SFIvarInfo.h"
+#import "RFIvarInfo.h"
 
 /**
  Category to retrieve member variable info objects from either a class or an instance of a class.
  */
-@interface NSObject (SFMemberVariableReflection)
+@interface NSObject (RFMemberVariableReflection)
 
 /**
  Returns the info object corresponding to the instance variable of the given name.
  @param name The name of the ivar.
  @result The info object.
  */
-+ (SFIvarInfo *)SF_ivarNamed:(NSString *)name;
++ (RFIvarInfo *)RF_ivarNamed:(NSString *)name;
 
 /**
  Returns all info objects corresponding to the instance variable of the given name.
  @result The ivar info objects.
  */
-+ (NSArray *)SF_ivars;
++ (NSArray *)RF_ivars;
 
 /**
  Returns the info object corresponding to the instance variable of the given name. Invoked on an instance of a class.
  @param name The name of the ivar.
  @result The info object.
  */
-- (SFIvarInfo *)SF_ivarNamed:(NSString *)name;
+- (RFIvarInfo *)RF_ivarNamed:(NSString *)name;
 
 /**
  Returns all info objects corresponding to the instance variable of the given name. Invoked on an instance of a class.
  @result The ivar info objects.
  */
-- (NSArray *)SF_ivars;
+- (NSArray *)RF_ivars;
 
 @end

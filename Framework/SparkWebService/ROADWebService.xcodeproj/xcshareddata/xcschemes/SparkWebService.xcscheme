@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "78FB204115BD336B00C2137A"
-               BuildableName = "libSparkWebService.a"
-               BlueprintName = "SparkWebService"
+               BuildableName = "libROADWebService.a"
+               BlueprintName = "ROADWebService"
                ReferencedContainer = "container:ROADWebService.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "783AF1A21650FAF800AD247E"
-               BuildableName = "SparkWebService.temp_caseinsensitive_renameTest.octest"
-               BlueprintName = "SparkWebServiceTest"
+               BuildableName = "ROADWebService.temp_caseinsensitive_renameTest.octest"
+               BlueprintName = "ROADWebServiceTest"
                ReferencedContainer = "container:ROADWebService.xcodeproj">
             </BuildableReference>
          </TestableReference>

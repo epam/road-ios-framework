@@ -31,30 +31,30 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFROADServicesTest.h"
+#import "RFROADServicesTest.h"
 #import "ROADServices.h"
-#import "SFTestService.h"
-#import "SFServiceProvider+SFTestService.h"
+#import "RFTestService.h"
+#import "RFServiceProvider+RFTestService.h"
 
-@implementation SFROADServicesTest
+@implementation RFROADServicesTest
 
 - (void)testInstanceFakeService
 {
-    SFTestService *databaseManager = [SFServiceProvider serviceInstance];
+    RFTestService *databaseManager = [RFServiceProvider serviceInstance];
     STAssertNotNil(databaseManager, @"Service has not been initialised.");
 }
 
 - (void)testServiceWithoutAnnotations {
-    STAssertFalse([SFServiceProvider resolveClassMethod:@selector(serviceWithoutAttributes)], @"Service provider respond with undefined result on wrong specified method");
+    STAssertFalse([RFServiceProvider resolveClassMethod:@selector(serviceWithoutAttributes)], @"Service provider respond with undefined result on wrong specified method");
 }
 
 - (void)testServiceWithMissingPropertyOfAttribute {
-    id service = [SFServiceProvider serviceWithMissingPropertyOfAttribute];
+    id service = [RFServiceProvider serviceWithMissingPropertyOfAttribute];
     STAssertNil(service, @"Service provider respond with undefined result on method with wrong attribute");
 }
 
 - (void)testServiceWithWrongAnnotations {
-    id service = [SFServiceProvider serviceWithWrongAttribute];
+    id service = [RFServiceProvider serviceWithWrongAttribute];
     STAssertNil(service, @"Service provider respond with undefined result on method with wrong attribute");
 }
 

@@ -1,5 +1,5 @@
 //
-//  SFLogDebugFormatter.m
+//  RFLogDebugFormatter.m
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,11 +30,11 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFLogPlainFormatter.h"
+#import "RFLogPlainFormatter.h"
 
-#import "SFLogMessage.h"
+#import "RFLogMessage.h"
 
-@implementation SFLogPlainFormatter {
+@implementation RFLogPlainFormatter {
     NSDateFormatter *formatter;
 }
 
@@ -48,7 +48,7 @@
     return self;
 }
 
-- (NSString *)formatMessage:(SFLogMessage *const)message {
+- (NSString *)formatMessage:(RFLogMessage *const)message {
     return [NSString stringWithFormat:@"<%@> %@", [formatter stringFromDate:message.timeStamp], message.message];
 }
 

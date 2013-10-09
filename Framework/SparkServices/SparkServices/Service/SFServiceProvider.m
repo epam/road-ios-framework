@@ -1,5 +1,5 @@
 //
-//  SFServiceProvider.m
+//  RFServiceProvider.m
 //  ROADServices
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,13 +31,13 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFServiceProvider.h"
+#import "RFServiceProvider.h"
 #import <objc/runtime.h>
 #import <ROAD/ROADReflection.h>
 
-const char *SFServiceMethodEncoding = "@@:";
+const char *RFServiceMethodEncoding = "@@:";
 
-@implementation SFServiceProvider
+@implementation RFServiceProvider
 
 static NSMutableDictionary *services;
 
@@ -50,14 +50,14 @@ static NSMutableDictionary *services;
     if (!result) {
         NSString *selectorName = NSStringFromSelector(sel);
         // Framework's calls must not be checked on service attriutes
-        if (![selectorName hasPrefix:@"SF_"]) {
-            SFService *serviceAttribute = [SFServiceProvider SF_attributeForMethod:selectorName withAttributeType:[SFService class]];
+        if (![selectorName hasPrefix:@"RF_"]) {
+            RFService *serviceAttribute = [RFServiceProvider RF_attributeForMethod:selectorName withAttributeType:[RFService class]];
             
             if (serviceAttribute != nil) {
                 result = YES;
                 IMP const implementation = [self methodForSelector:@selector(fetchService)];
                 Class metaClass = object_getClass(self);
-                class_addMethod(metaClass, sel, implementation, SFServiceMethodEncoding);
+                class_addMethod(metaClass, sel, implementation, RFServiceMethodEncoding);
             }
         }
     }
@@ -70,7 +70,7 @@ static NSMutableDictionary *services;
     id theService = services[serviceName];
     
     if (theService == nil) {
-        SFService * const serviceAttribute = [[self class] SF_attributeForMethod:serviceName withAttributeType:[SFService class]];
+        RFService * const serviceAttribute = [[self class] RF_attributeForMethod:serviceName withAttributeType:[RFService class]];
         __unsafe_unretained Class const serviceClass = serviceAttribute.serviceClass;
         theService = [[(id)serviceClass alloc] init];
         [self registerService:theService forServiceName:serviceName];

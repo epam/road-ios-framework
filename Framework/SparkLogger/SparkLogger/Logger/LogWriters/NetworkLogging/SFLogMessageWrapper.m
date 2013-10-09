@@ -1,5 +1,5 @@
 //
-//  SFLogMessageWrapper.m
+//  RFLogMessageWrapper.m
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,14 +30,14 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFLogMessageWrapper.h"
+#import "RFLogMessageWrapper.h"
 
 NSString *kDeviceName = @"kDeviceName";
 NSString *kApplicationName = @"kApplicationName";
 NSString *kOriginalMessage = @"kOriginalMessage";
 NSString *kUniqueId = @"kUniqueId";
 
-@implementation SFLogMessageWrapper
+@implementation RFLogMessageWrapper
 
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
@@ -60,7 +60,7 @@ NSString *kUniqueId = @"kUniqueId";
     return self;
 }
 
--(id)initWithMessage:(SFLogMessage *)message deviceName:(NSString *)deviceName applicationName:(NSString *)applicationName uniqueId:(NSString *)uniqueId {
+-(id)initWithMessage:(RFLogMessage *)message deviceName:(NSString *)deviceName applicationName:(NSString *)applicationName uniqueId:(NSString *)uniqueId {
     self = [super init];
     if (self) {
         

@@ -1,5 +1,5 @@
 //
-//  SFPropertyInfo.h
+//  RFPropertyInfo.h
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -34,7 +34,7 @@
 /**
  Contains information about a declared property.
  */
-@interface SFPropertyInfo : NSObject
+@interface RFPropertyInfo : NSObject
 
 /**
  The property's name.
@@ -133,7 +133,7 @@
  @param aClass The class to fetch the result for.
  @result The info object.
  */
-+ (SFPropertyInfo *)SF_propertyNamed:(NSString *)name forClass:(Class)aClass;
++ (RFPropertyInfo *)RF_propertyNamed:(NSString *)name forClass:(Class)aClass;
 
 /**
  The method performs search for attribute of required class in array of attributes declared for property.

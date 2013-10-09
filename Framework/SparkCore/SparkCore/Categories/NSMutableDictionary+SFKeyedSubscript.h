@@ -1,5 +1,5 @@
 //
-//  NSMutableDictionary+SFKeyedSubscript.h
+//  NSMutableDictionary+RFKeyedSubscript.h
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -38,9 +38,9 @@
  */
 #ifndef __IPHONE_6_0
 
-@interface NSMutableDictionary (SFKeyedSubscript)
+@interface NSMutableDictionary (RFKeyedSubscript)
 
-- (void)SF_setObject:(id)obj forKeyedSubscript:(id<NSCopying>)key;
+- (void)RF_setObject:(id)obj forKeyedSubscript:(id<NSCopying>)key;
 
 @end
 

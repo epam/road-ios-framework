@@ -1,5 +1,5 @@
 //
-//  SFServiceProvider+LoggingService.h
+//  RFServiceProvider+LoggingService.h
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,11 +31,11 @@
 // for additional information regarding copyright ownership and licensing
 
 #import <ROAD/ROADServices.h>
-#import "SFLogger.h"
+#import "RFLogger.h"
 
-@interface SFServiceProvider (LoggingService)
+@interface RFServiceProvider (LoggingService)
 
-SF_ATTRIBUTE(SFService, serviceClass = [SFLogger class])
-+ (id<SFLogging>)logger;
+RF_ATTRIBUTE(RFService, serviceClass = [RFLogger class])
++ (id<RFLogging>)logger;
 
 @end

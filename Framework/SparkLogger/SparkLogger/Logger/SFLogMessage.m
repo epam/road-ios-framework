@@ -1,5 +1,5 @@
 //
-//  SFLogMessage.m
+//  RFLogMessage.m
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,7 +30,7 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFLogMessage.h"
+#import "RFLogMessage.h"
 
 
 static NSString * const kMessage = @"kMessage";
@@ -39,24 +39,24 @@ static NSString * const kUserInfo = @"kUserInfo";
 static NSString * const kLogLevel = @"kLogLevel";
 static NSString * const kTimeStamp = @"kTimeStamp";
 
-NSString * const kSFLogMessageTypeAllLoggers = @"SFLogMessageTypeAllLoggers";
-NSString * const kSFLogMessageTypeNetworkOnly = @"SFLogMessageTypeNetworkOnly";
-NSString * const kSFLogMessageTypeWebServiceOnly = @"SFLogMessageTypeWebServiceOnly";
-NSString * const kSFLogMessageTypeConsoleOnly = @"SFLogMessageTypeConsoleOnly";
-NSString * const kSFLogMessageTypeFileOnly = @"SFLogMessageTypeFileOnly";
-NSString * const kSFLogMessageTypeNoLogging = @"SFLogMessageTypeNoLogging";
+NSString * const kRFLogMessageTypeAllLoggers = @"RFLogMessageTypeAllLoggers";
+NSString * const kRFLogMessageTypeNetworkOnly = @"RFLogMessageTypeNetworkOnly";
+NSString * const kRFLogMessageTypeWebServiceOnly = @"RFLogMessageTypeWebServiceOnly";
+NSString * const kRFLogMessageTypeConsoleOnly = @"RFLogMessageTypeConsoleOnly";
+NSString * const kRFLogMessageTypeFileOnly = @"RFLogMessageTypeFileOnly";
+NSString * const kRFLogMessageTypeNoLogging = @"RFLogMessageTypeNoLogging";
 
 
-@implementation SFLogMessage
+@implementation RFLogMessage
 
-+ (SFLogMessage *)logMessage:(NSString * const)messageText type:(NSString * const)type level:(SFLogLevel const)level userInfo:(NSDictionary * const)userInfo {
-    SFLogMessage * const message = [[SFLogMessage alloc] init];
++ (RFLogMessage *)logMessage:(NSString * const)messageText type:(NSString * const)type level:(RFLogLevel const)level userInfo:(NSDictionary * const)userInfo {
+    RFLogMessage * const message = [[RFLogMessage alloc] init];
     message.message = messageText;
     if (type) {
         message.type = type;
     }
     else {
-        message.type = kSFLogMessageTypeConsoleOnly;
+        message.type = kRFLogMessageTypeConsoleOnly;
     }
     message.level = level;
     message.userInfo = userInfo;
@@ -64,36 +64,36 @@ NSString * const kSFLogMessageTypeNoLogging = @"SFLogMessageTypeNoLogging";
     return message;
 }
 
-+ (SFLogMessage *)infoMessage:(NSString * const)messageText {
-    return [self logMessage:messageText type:kSFLogMessageTypeConsoleOnly level:SFLogLevelInfo userInfo:nil];
++ (RFLogMessage *)infoMessage:(NSString * const)messageText {
+    return [self logMessage:messageText type:kRFLogMessageTypeConsoleOnly level:RFLogLevelInfo userInfo:nil];
 }
 
-+ (SFLogMessage *)warningMessage:(NSString * const)messageText {
-    return [self logMessage:messageText type:kSFLogMessageTypeConsoleOnly level:SFLogLevelWarning userInfo:nil];
++ (RFLogMessage *)warningMessage:(NSString * const)messageText {
+    return [self logMessage:messageText type:kRFLogMessageTypeConsoleOnly level:RFLogLevelWarning userInfo:nil];
 }
 
-+ (SFLogMessage *)errorMessage:(NSString * const)messageText {
-    return [self logMessage:messageText type:kSFLogMessageTypeConsoleOnly level:SFLogLevelError userInfo:nil];
++ (RFLogMessage *)errorMessage:(NSString * const)messageText {
+    return [self logMessage:messageText type:kRFLogMessageTypeConsoleOnly level:RFLogLevelError userInfo:nil];
 }
 
-+ (SFLogMessage *)debugMessage:(NSString * const)messageText {
-    return [self logMessage:messageText type:kSFLogMessageTypeConsoleOnly level:SFLogLevelDebug userInfo:nil];
++ (RFLogMessage *)debugMessage:(NSString * const)messageText {
+    return [self logMessage:messageText type:kRFLogMessageTypeConsoleOnly level:RFLogLevelDebug userInfo:nil];
 }
 
-+ (SFLogMessage *)infoMessage:(NSString * const)messageText type:(NSString *)type {
-    return [self logMessage:messageText type:type level:SFLogLevelInfo userInfo:nil];
++ (RFLogMessage *)infoMessage:(NSString * const)messageText type:(NSString *)type {
+    return [self logMessage:messageText type:type level:RFLogLevelInfo userInfo:nil];
 }
 
-+ (SFLogMessage *)warningMessage:(NSString * const)messageText type:(NSString *)type {
-    return [self logMessage:messageText type:type level:SFLogLevelWarning userInfo:nil];
++ (RFLogMessage *)warningMessage:(NSString * const)messageText type:(NSString *)type {
+    return [self logMessage:messageText type:type level:RFLogLevelWarning userInfo:nil];
 }
 
-+ (SFLogMessage *)errorMessage:(NSString * const)messageText type:(NSString *)type {
-    return [self logMessage:messageText type:type level:SFLogLevelError userInfo:nil];
++ (RFLogMessage *)errorMessage:(NSString * const)messageText type:(NSString *)type {
+    return [self logMessage:messageText type:type level:RFLogLevelError userInfo:nil];
 }
 
-+ (SFLogMessage *)debugMessage:(NSString * const)messageText type:(NSString *)type {
-    return [self logMessage:messageText type:type level:SFLogLevelDebug userInfo:nil];
++ (RFLogMessage *)debugMessage:(NSString * const)messageText type:(NSString *)type {
+    return [self logMessage:messageText type:type level:RFLogLevelDebug userInfo:nil];
 }
 
 #pragma mark - NSCoding

@@ -1,5 +1,5 @@
 //
-//  SFODataAbstractEntity.m
+//  RFODataAbstractEntity.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,13 +30,13 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFODataAbstractEntity.h"
-#import "SFODataEntity.h"
+#import "RFODataAbstractEntity.h"
+#import "RFODataEntity.h"
 
-@implementation SFODataAbstractEntity
+@implementation RFODataAbstractEntity
 
 + (NSString *)entityName {
-    SFODataEntity *entityAttribute = [self SF_attributeForClassWithAttributeType:[SFODataEntity class]];
+    RFODataEntity *entityAttribute = [self RF_attributeForClassWithAttributeType:[RFODataEntity class]];
     NSString *entityName = [entityAttribute entityName];
     if (!entityName.length) {
         entityName = NSStringFromClass(self);

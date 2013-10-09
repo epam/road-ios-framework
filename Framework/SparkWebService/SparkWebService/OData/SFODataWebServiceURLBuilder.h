@@ -1,5 +1,5 @@
 //
-//  SFODataWebServiceURLBuilder.h
+//  RFODataWebServiceURLBuilder.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,8 +30,8 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFWebServiceBasicURLBuilder.h"
+#import "RFWebServiceBasicURLBuilder.h"
 
-@interface SFODataWebServiceURLBuilder : SFWebServiceBasicURLBuilder
+@interface RFODataWebServiceURLBuilder : RFWebServiceBasicURLBuilder
 
 @end

@@ -1,5 +1,5 @@
 //
-//  SFWebServiceErrorHandler.h
+//  RFWebServiceErrorHandler.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,7 +32,7 @@
 
 #import <ROAD/ROADAttribute.h>
 
-@interface SFWebServiceErrorHandler : NSObject
+@interface RFWebServiceErrorHandler : NSObject
 
 @property (nonatomic, strong) NSString *handlerClass;
 

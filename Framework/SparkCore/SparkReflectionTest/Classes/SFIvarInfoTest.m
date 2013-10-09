@@ -1,5 +1,5 @@
 //
-//  SFIvarInfoTest.m
+//  RFIvarInfoTest.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,21 +31,21 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFIvarInfo.h"
-#import "SFIvarInfoTest.h"
-#import "NSObject+SFMemberVariableReflection.h"
+#import "RFIvarInfo.h"
+#import "RFIvarInfoTest.h"
+#import "NSObject+RFMemberVariableReflection.h"
 #import <objc/runtime.h>
 
-@implementation SFIvarInfoTest {
-    SFIvarInfo *integerDescriptor;
-    SFIvarInfo *stringDescriptor;
+@implementation RFIvarInfoTest {
+    RFIvarInfo *integerDescriptor;
+    RFIvarInfo *stringDescriptor;
 }
 
 - (void)setUp {
     integer = 3;
     string = @"value";
-    integerDescriptor = [self SF_ivarNamed:@"integer"];
-    stringDescriptor = [self SF_ivarNamed:@"string"];
+    integerDescriptor = [self RF_ivarNamed:@"integer"];
+    stringDescriptor = [self RF_ivarNamed:@"string"];
 }
 
 - (void)tearDown {

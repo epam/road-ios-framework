@@ -1,5 +1,5 @@
 //
-//  SFWebServiceHeader.h
+//  RFWebServiceHeader.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,7 +32,7 @@
 
 #import <ROAD/ROADAttribute.h>
 
-@interface SFWebServiceHeader : NSObject
+@interface RFWebServiceHeader : NSObject
 
 @property (strong, nonatomic) NSDictionary *hearderFields;
 

@@ -1,5 +1,5 @@
 //
-//  SFXMLElement.h
+//  RFXMLElement.h
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -35,7 +35,7 @@
 /**
  Representation of an xml element in an xml document.
  */
-@interface SFXMLElement : SFObject
+@interface RFXMLElement : RFObject
 
 /**
  The string value of the xml element.
@@ -60,7 +60,7 @@
 /**
  The parent element.
  */
-@property (weak, nonatomic) SFXMLElement *parent;
+@property (weak, nonatomic) RFXMLElement *parent;
 
 /**
  Appends the string to the value string.
@@ -72,7 +72,7 @@
  Adds a child element.
  @param aChild The child to add.
  */
-- (void)addChild:(SFXMLElement * const)aChild;
+- (void)addChild:(RFXMLElement * const)aChild;
 
 /**
  Removes the element from its parent.

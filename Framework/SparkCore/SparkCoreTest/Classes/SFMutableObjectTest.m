@@ -1,5 +1,5 @@
 //
-//  SFMutableObjectTest.m
+//  RFMutableObjectTest.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,13 +31,13 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFMutableObjectTest.h"
-#import "SFMutableObject.h"
+#import "RFMutableObjectTest.h"
+#import "RFMutableObject.h"
 
-@implementation SFMutableObjectTest
+@implementation RFMutableObjectTest
 
 - (void)testMutableObjectProperty {
-    SFMutableObject *object = [[SFMutableObject alloc] init];
+    RFMutableObject *object = [[RFMutableObject alloc] init];
     [object setValue:@"some string" forKey:@"myNewKey"];
     
     NSString * const result = [object valueForKey:@"myNewKey"];
@@ -45,7 +45,7 @@
 }
 
 - (void)testMutableObjectUnusedProperty {
-    SFMutableObject *object = [[SFMutableObject alloc] init];
+    RFMutableObject *object = [[RFMutableObject alloc] init];
     id const someResult = [object valueForKey:@"myKey"];
     STAssertTrue(someResult == nil, @"Assertion: unused properties should return nil.");
 }

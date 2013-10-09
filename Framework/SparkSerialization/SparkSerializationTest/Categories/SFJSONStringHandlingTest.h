@@ -1,5 +1,5 @@
 //
-//  SFJSONStringHandlingTest.h
+//  RFJSONStringHandlingTest.h
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -33,6 +33,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface SFJSONStringHandlingTest : SenTestCase
+@interface RFJSONStringHandlingTest : SenTestCase
 
 @end

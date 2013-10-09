@@ -1,5 +1,5 @@
 //
-//  SFStreamDelegate.m
+//  RFStreamDelegate.m
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,9 +30,9 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFStreamDelegate.h"
+#import "RFStreamDelegate.h"
 
-@implementation SFStreamDelegate {
+@implementation RFStreamDelegate {
     
     NSOutputStream *stream;
     NSMutableSet *bufferedData;

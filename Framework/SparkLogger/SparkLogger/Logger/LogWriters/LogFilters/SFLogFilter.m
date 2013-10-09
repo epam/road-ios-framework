@@ -1,5 +1,5 @@
 //
-//  SFLogFilter.m
+//  RFLogFilter.m
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,44 +30,44 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFLogFilter.h"
+#import "RFLogFilter.h"
 
-#import "SFLogMessage.h"
+#import "RFLogMessage.h"
 
-@implementation SFLogFilter {
+@implementation RFLogFilter {
     NSPredicate *predicate;
 }
 
-- (BOOL)hasMessagePassedTest:(SFLogMessage *const)message {
+- (BOOL)hasMessagePassedTest:(RFLogMessage *const)message {
     return [predicate evaluateWithObject:message];
 }
 
-+ (SFLogFilter *)filterWithPrediate:(NSPredicate * const)predicate {
-    SFLogFilter *filter = [[SFLogFilter alloc] init];
++ (RFLogFilter *)filterWithPrediate:(NSPredicate * const)predicate {
+    RFLogFilter *filter = [[RFLogFilter alloc] init];
     filter->predicate = predicate;
     return filter;
 }
 
-+ (SFLogFilter *)consoleFilter {
-    NSPredicate * const predicate = [NSPredicate predicateWithBlock:^BOOL(SFLogMessage * const evaluatedObject, NSDictionary *bindings) {
-        return [evaluatedObject.type isEqualToString:kSFLogMessageTypeAllLoggers]
-        || [evaluatedObject.type isEqualToString:kSFLogMessageTypeConsoleOnly];
++ (RFLogFilter *)consoleFilter {
+    NSPredicate * const predicate = [NSPredicate predicateWithBlock:^BOOL(RFLogMessage * const evaluatedObject, NSDictionary *bindings) {
+        return [evaluatedObject.type isEqualToString:kRFLogMessageTypeAllLoggers]
+        || [evaluatedObject.type isEqualToString:kRFLogMessageTypeConsoleOnly];
     }];
     return [self filterWithPrediate:predicate];
 }
 
-+ (SFLogFilter *)networkFilter {
-    NSPredicate * const predicate = [NSPredicate predicateWithBlock:^BOOL(SFLogMessage * const evaluatedObject, NSDictionary *bindings) {
-        return [evaluatedObject.type isEqualToString:kSFLogMessageTypeAllLoggers]
-        || [evaluatedObject.type isEqualToString:kSFLogMessageTypeNetworkOnly];
++ (RFLogFilter *)networkFilter {
+    NSPredicate * const predicate = [NSPredicate predicateWithBlock:^BOOL(RFLogMessage * const evaluatedObject, NSDictionary *bindings) {
+        return [evaluatedObject.type isEqualToString:kRFLogMessageTypeAllLoggers]
+        || [evaluatedObject.type isEqualToString:kRFLogMessageTypeNetworkOnly];
     }];
     return [self filterWithPrediate:predicate];
 }
 
-+ (SFLogFilter *)fileFilter {
-    NSPredicate * const predicate = [NSPredicate predicateWithBlock:^BOOL(SFLogMessage * const evaluatedObject, NSDictionary *bindings) {
-        return [evaluatedObject.type isEqualToString:kSFLogMessageTypeAllLoggers]
-        || [evaluatedObject.type isEqualToString:kSFLogMessageTypeFileOnly];
++ (RFLogFilter *)fileFilter {
+    NSPredicate * const predicate = [NSPredicate predicateWithBlock:^BOOL(RFLogMessage * const evaluatedObject, NSDictionary *bindings) {
+        return [evaluatedObject.type isEqualToString:kRFLogMessageTypeAllLoggers]
+        || [evaluatedObject.type isEqualToString:kRFLogMessageTypeFileOnly];
     }];
     return [self filterWithPrediate:predicate];
 }

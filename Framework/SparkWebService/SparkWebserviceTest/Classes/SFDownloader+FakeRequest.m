@@ -1,5 +1,5 @@
 //
-//  SFDownloader+FakeRequest.m
+//  RFDownloader+FakeRequest.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,12 +30,12 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFDownloader+FakeRequest.h"
+#import "RFDownloader+FakeRequest.h"
 
-@implementation SFDownloader (FakeRequest)
+@implementation RFDownloader (FakeRequest)
 
 - (void)fakeStart {
-    NSMethodSignature * downloaderFinishMethodSignature = [SFDownloader
+    NSMethodSignature * downloaderFinishMethodSignature = [RFDownloader
                                                            instanceMethodSignatureForSelector:@selector(downloaderFinishedWithResult:response:error:)];
     NSInvocation * downloaderFinishMethodInvocation = [NSInvocation
                                    invocationWithMethodSignature:downloaderFinishMethodSignature];

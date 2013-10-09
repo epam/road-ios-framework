@@ -1,5 +1,5 @@
 //
-//  SFWebServiceURLBuilder.h
+//  RFWebServiceURLBuilder.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,7 +32,7 @@
 
 #import <ROAD/ROADAttribute.h>
 
-@interface SFWebServiceURLBuilder : NSObject
+@interface RFWebServiceURLBuilder : NSObject
 
 @property (strong, nonatomic) Class builderClass;
 

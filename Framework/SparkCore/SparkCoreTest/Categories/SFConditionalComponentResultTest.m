@@ -1,5 +1,5 @@
 //
-//  SFConditionalComponentResultTest.m
+//  RFConditionalComponentResultTest.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,42 +31,42 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFConditionalComponentResultTest.h"
-#import "NSArray+SFEmptyArrayChecks.h"
+#import "RFConditionalComponentResultTest.h"
+#import "NSArray+RFEmptyArrayChecks.h"
 
-@implementation SFConditionalComponentResultTest
+@implementation RFConditionalComponentResultTest
 
 - (void)testConditionalLastObjectNotExisting {
     NSArray * const array = @[];
-    id lastObject = [array SF_lastElementIfNotEmpty];
+    id lastObject = [array RF_lastElementIfNotEmpty];
     
     STAssertTrue(lastObject == nil, @"Assertion: empty array's last object is nil with this method.");
 }
 
 - (void)testConditionalLastObjectExisting {
     NSArray * const array = @[@"first", @"second"];
-    id lastObject = [array SF_lastElementIfNotEmpty];
+    id lastObject = [array RF_lastElementIfNotEmpty];
     
     STAssertTrue([lastObject isEqual:[array lastObject]], @"Assertion: lastObject method returns the same as the conditional version.");
 }
 
 - (void)testConditionalObjectAtIndexNotExisting {
     NSArray * const array = @[];
-    id object = [array SF_elementAtIndexIfInRange:[array count]];
+    id object = [array RF_elementAtIndexIfInRange:[array count]];
     
     STAssertTrue(object == nil, @"Assertion: conditional returns nil for invalid index");
 }
 
 - (void)testConditionalObjectAtIndexExisting {
     NSArray * const array = @[@"first", @"second"];
-    id object = [array SF_elementAtIndexIfInRange:0];
+    id object = [array RF_elementAtIndexIfInRange:0];
     
     STAssertTrue([object isEqual:[array objectAtIndex:0]], @"Assertion: objectAtIndex method returns the same as the conditional version.");
 }
 
 - (void)testObjectMatching {
     NSArray * const array = @[@"first", @"second"];
-    id object = [array SF_elementWithPredicateBlock:^BOOL(NSString *evaluatedObject) {
+    id object = [array RF_elementWithPredicateBlock:^BOOL(NSString *evaluatedObject) {
         return [evaluatedObject isEqualToString:@"first"];
     }];
     

@@ -1,5 +1,5 @@
 //
-//  SFODataPrioritizedPredicate.h
+//  RFODataPrioritizedPredicate.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,8 +30,8 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFODataPredicate.h"
+#import "RFODataPredicate.h"
 
-@interface SFODataPrioritizedPredicate : SFODataPredicate
+@interface RFODataPrioritizedPredicate : RFODataPredicate
 
 @end

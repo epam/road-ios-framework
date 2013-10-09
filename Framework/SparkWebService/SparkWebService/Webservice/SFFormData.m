@@ -1,5 +1,5 @@
 //
-//  SFFormData.m
+//  RFFormData.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,9 +30,9 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFFormData.h"
+#import "RFFormData.h"
 
-@implementation SFFormData
+@implementation RFFormData
 
 - (id)initWithName:(NSString *)name data:(NSData *)data {
     self = [self initWithName:name data:data fileName:nil contentType:nil];

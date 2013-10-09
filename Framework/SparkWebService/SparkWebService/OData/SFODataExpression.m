@@ -1,5 +1,5 @@
 //
-//  SFODataExpression.m
+//  RFODataExpression.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,13 +30,13 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFODataExpression.h"
+#import "RFODataExpression.h"
 
-#import "SFODataPredicate.h"
-#import "SFODataProperty.h"
+#import "RFODataPredicate.h"
+#import "RFODataProperty.h"
 #import <ROAD/ROADSerialization.h>
 
-@implementation SFODataExpression
+@implementation RFODataExpression
 
 - (id)initWithValue:(NSString *)value {
     self = [super init];
@@ -48,7 +48,7 @@
     return self;
 }
 
-- (id)initWithProperty:(SFPropertyInfo *)property {
+- (id)initWithProperty:(RFPropertyInfo *)property {
 
     self = [self initWithMultiLevelProperty:@[property]];
     
@@ -57,8 +57,8 @@
 
 - (id)initWithMultiLevelProperty:(NSArray *)properties {
     NSMutableString *propertyName = nil;
-    for (SFPropertyInfo *propertyInfo in properties) {
-        NSString *propertyAttributeName = [SFODataExpression propertyAttributeNameFromInfo:propertyInfo];
+    for (RFPropertyInfo *propertyInfo in properties) {
+        NSString *propertyAttributeName = [RFODataExpression propertyAttributeNameFromInfo:propertyInfo];
         if (propertyName) {
             [propertyName appendFormat:@"/%@", propertyAttributeName];
         }
@@ -74,7 +74,7 @@
 
 
 
-- (id)initWithPredicate:(SFODataPredicate *)predicate {
+- (id)initWithPredicate:(RFODataPredicate *)predicate {
     self = [self initWithValue:[predicate description]];
     
     return self;
@@ -84,13 +84,13 @@
     return _expression;
 }
 
-+ (NSString *)propertyAttributeNameFromInfo:(SFPropertyInfo *)propertyInfo {
-    SFODataProperty *dataPropertyAttribute = [propertyInfo attributeWithType:[SFODataProperty class]];
++ (NSString *)propertyAttributeNameFromInfo:(RFPropertyInfo *)propertyInfo {
+    RFODataProperty *dataPropertyAttribute = [propertyInfo attributeWithType:[RFODataProperty class]];
     if (dataPropertyAttribute) {
         return [dataPropertyAttribute serializationKey];
     }
     
-    SFSerializable *serializablePropertyAttribute = [propertyInfo attributeWithType:[SFSerializable class]];
+    RFSerializable *serializablePropertyAttribute = [propertyInfo attributeWithType:[RFSerializable class]];
     if (serializablePropertyAttribute) {
         return [serializablePropertyAttribute serializationKey];
     }

@@ -1,5 +1,5 @@
 //
-//  NSSortDescriptor+SFOData.m
+//  NSSortDescriptor+RFOData.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,18 +30,18 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "NSSortDescriptor+SFOData.h"
+#import "NSSortDescriptor+RFOData.h"
 #import <ROAD/ROADAttribute.h>
 #import <ROAD/ROADSerialization.h>
 #import <ROAD/ROADReflection.h>
-#import "SFODataExpression.h"
+#import "RFODataExpression.h"
 
-#import "SFODataProperty.h"
+#import "RFODataProperty.h"
 
-@implementation NSSortDescriptor (SFOData)
+@implementation NSSortDescriptor (RFOData)
 
-- (id)initWithProperty:(SFPropertyInfo *)propertyInfo ascending:(BOOL)ascending {
-    NSString *propertyAttributeName = [SFODataExpression propertyAttributeNameFromInfo:propertyInfo];
+- (id)initWithProperty:(RFPropertyInfo *)propertyInfo ascending:(BOOL)ascending {
+    NSString *propertyAttributeName = [RFODataExpression propertyAttributeNameFromInfo:propertyInfo];
     self = [self initWithKey:propertyAttributeName ascending:ascending];
     
     return self;

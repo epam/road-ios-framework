@@ -1,5 +1,5 @@
 //
-//  SFWebServiceSerializationHandler.h
+//  RFWebServiceSerializationHandler.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,11 +32,11 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol SFSerializationDelegate;
+@protocol RFSerializationDelegate;
 /**
  Serialization handler. It will perform the deserialization.
  */
-@interface SFWebServiceSerializationHandler : NSObject
+@interface RFWebServiceSerializationHandler : NSObject
 
 /**
  Deserialize data to a class with the given serializator object. 
@@ -45,7 +45,7 @@
  @param deserializationClass The class to  deserialize.
  @param callbackBlock The callback block to call.
  */
-+(void)deserializeData:(NSData * const)data withSerializator:(id<SFSerializationDelegate>)serializationObject serializatinRoot:(NSString *)serializationRoot toDeserializationClass:(Class)deserializationClass withCompletitionBlock:(void(^)(id serializedData, NSError *error))callbackBlock;
++(void)deserializeData:(NSData * const)data withSerializator:(id<RFSerializationDelegate>)serializationObject serializatinRoot:(NSString *)serializationRoot toDeserializationClass:(Class)deserializationClass withCompletitionBlock:(void(^)(id serializedData, NSError *error))callbackBlock;
 
 @end
 

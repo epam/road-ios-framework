@@ -1,5 +1,5 @@
 //
-//  NSObject+SFAttributesInternal.h
+//  NSObject+RFAttributesInternal.h
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -39,7 +39,7 @@
  
 */
 
-@interface NSObject (SFAttributesInternal)
+@interface NSObject (RFAttributesInternal)
 
 #pragma mark Internal API
 /**
@@ -47,7 +47,7 @@
  @param selector A selector for NSInvocation object
  @return NSInvocation object for given selector.
  */
-+ (NSInvocation *)SF_invocationForSelector:(SEL)selector;
++ (NSInvocation *)RF_invocationForSelector:(SEL)selector;
 
 #pragma mark Will be overridden in generated code
 /**
@@ -55,19 +55,19 @@
  NSInvocation object points to a method which creates array of attribute objects declared for method specified in dictionary.
  @return a dictionary which consists from method's names as keys and NSInvocation objects as values. Or nil if methods have no declarations
  */
-+ (NSMutableDictionary *)SF_attributesFactoriesForMethods;
++ (NSMutableDictionary *)RF_attributesFactoriesForMethods;
 /**
  Returns a dictionary which consists from property's names as keys and NSInvocation objects as values.
  NSInvocation object points to a method which creates array of attribute objects declared for property specified in dictionary.
  @return a dictionary which consists from property's names as keys and NSInvocation objects as values. Or nil if properties have no declarations
  */
-+ (NSMutableDictionary *)SF_attributesFactoriesForProperties;
++ (NSMutableDictionary *)RF_attributesFactoriesForProperties;
 /**
  Returns a dictionary which consists from instance variable's names as keys and NSInvocation objects as values.
  NSInvocation object points to a method which creates array of attribute objects declared for instance variable specified in dictionary.
  @return a dictionary which consists from instance variable's names as keys and NSInvocation objects as values. Or nil if instance variables have no declarations
  */
-+ (NSMutableDictionary *)SF_attributesFactoriesForIvars;
++ (NSMutableDictionary *)RF_attributesFactoriesForIvars;
 
 #pragma mark -
 

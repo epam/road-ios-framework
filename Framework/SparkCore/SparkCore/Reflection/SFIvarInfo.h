@@ -1,5 +1,5 @@
 //
-//  SFIvarInfo.h
+//  RFIvarInfo.h
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -34,7 +34,7 @@
 /**
  Represents an ivar in any given class.
  */
-@interface SFIvarInfo : NSObject
+@interface RFIvarInfo : NSObject
 
 /**
  The name of the ivar.
@@ -79,7 +79,7 @@
  @param aClass The class to which the ivar belongs to.
  @result The info object.
  */
-+ (SFIvarInfo *)SF_ivarNamed:(NSString *)ivarName ofClass:(Class)aClass;
++ (RFIvarInfo *)RF_ivarNamed:(NSString *)ivarName ofClass:(Class)aClass;
 
 /**
  The method performs search for attribute of required class in array of attributes declared for instance variable.

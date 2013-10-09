@@ -1,5 +1,5 @@
 //
-//  SFPoolObject.h
+//  RFPoolObject.h
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,12 +32,12 @@
 
 
 #import <Foundation/Foundation.h>
-#import "SFPooledObject.h"
-#import "SFObject.h"
+#import "RFPooledObject.h"
+#import "RFObject.h"
 
 /**
- Basic implementation of the SFPooledObject procotol. One can either subclass this class or implement the protocol on their own to use it with the object pool.
+ Basic implementation of the RFPooledObject procotol. One can either subclass this class or implement the protocol on their own to use it with the object pool.
  */
-@interface SFPoolObject : SFObject <SFPooledObject>
+@interface RFPoolObject : RFObject <RFPooledObject>
 
 @end

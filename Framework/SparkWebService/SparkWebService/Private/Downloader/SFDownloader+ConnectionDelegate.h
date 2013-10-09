@@ -1,5 +1,5 @@
 //
-//  SFDownloader+ConnectionDelegate.h
+//  RFDownloader+ConnectionDelegate.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,8 +31,8 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFDownloader.h"
+#import "RFDownloader.h"
 
-@interface SFDownloader (ConnectionDelegate)
+@interface RFDownloader (ConnectionDelegate)
 
 @end

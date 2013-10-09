@@ -1,5 +1,5 @@
 //
-//  SFWebServiceSerializationHandler.m
+//  RFWebServiceSerializationHandler.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,13 +31,13 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFWebServiceSerializationHandler.h"
-#import "SFSerializationDelegate.h"
-#import "NSError+SFROADWebService.h"
+#import "RFWebServiceSerializationHandler.h"
+#import "RFSerializationDelegate.h"
+#import "NSError+RFROADWebService.h"
 
-@implementation SFWebServiceSerializationHandler
+@implementation RFWebServiceSerializationHandler
 
-+ (void)deserializeData:(NSData * const)data withSerializator:(id<SFSerializationDelegate>)serializationObject serializatinRoot:(NSString *)serializationRoot toDeserializationClass:(Class)deserializationClass withCompletitionBlock:(void(^)(id serializedData, NSError *error))callbackBlock
++ (void)deserializeData:(NSData * const)data withSerializator:(id<RFSerializationDelegate>)serializationObject serializatinRoot:(NSString *)serializationRoot toDeserializationClass:(Class)deserializationClass withCompletitionBlock:(void(^)(id serializedData, NSError *error))callbackBlock
 {
     id serializedData = data;
     NSError *error;
@@ -46,7 +46,7 @@
         serializedData = [serializationObject deserializeData:data serializatinRoot:serializationRoot withDeserializationClass:deserializationClass error:nil];
         
         if (serializedData == nil) {
-            error = [NSError SF_sparkWS_deserializationErrorWithData:data];
+            error = [NSError RF_sparkWS_deserializationErrorWithData:data];
         }
     }
     

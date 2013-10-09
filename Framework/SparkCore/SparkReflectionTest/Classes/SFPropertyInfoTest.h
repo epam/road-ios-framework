@@ -1,5 +1,5 @@
 //
-//  SFPropertyInfoTest.h
+//  RFPropertyInfoTest.h
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -33,7 +33,7 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface SFPropertyInfoTest : SenTestCase
+@interface RFPropertyInfoTest : SenTestCase
 
 @property (strong, nonatomic) NSString *strong;
 @property (weak, nonatomic) NSString *weak;

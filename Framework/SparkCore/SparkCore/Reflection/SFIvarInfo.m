@@ -1,5 +1,5 @@
 //
-//  SFIvarInfo.m
+//  RFIvarInfo.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,13 +30,13 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFIvarInfo.h"
+#import "RFIvarInfo.h"
 
-#import "SFTypeDecoder.h"
+#import "RFTypeDecoder.h"
 #import <objc/runtime.h>
 #import "ROADAttribute.h"
 
-@interface SFIvarInfo () {
+@interface RFIvarInfo () {
     NSString *_name;
     NSString *_typeName;
     BOOL _primitive;
@@ -56,7 +56,7 @@
 @end
 
 
-@implementation SFIvarInfo
+@implementation RFIvarInfo
 
 @synthesize name = _name;
 @synthesize typeName = _typeName;
@@ -72,7 +72,7 @@
     NSMutableArray *array = [NSMutableArray array];
     
     for (unsigned int index = 0; index < memberCount; index++) {
-        SFIvarInfo *descriptor = [self SF_infoFromIvar:ivarList[index]];
+        RFIvarInfo *descriptor = [self RF_infoFromIvar:ivarList[index]];
         descriptor.className = NSStringFromClass(aClass);
         descriptor.hostClass = aClass;
         [array addObject:descriptor];
@@ -82,16 +82,16 @@
     return array;
 }
 
-+ (SFIvarInfo *)SF_ivarNamed:(NSString *const)ivarName ofClass:(Class)aClass {
++ (RFIvarInfo *)RF_ivarNamed:(NSString *const)ivarName ofClass:(Class)aClass {
     Ivar anIvar = class_getInstanceVariable(aClass, [ivarName cStringUsingEncoding:NSUTF8StringEncoding]);
-    SFIvarInfo *descriptor = [self SF_infoFromIvar:anIvar];
+    RFIvarInfo *descriptor = [self RF_infoFromIvar:anIvar];
     descriptor.className = NSStringFromClass(aClass);
     descriptor.hostClass = aClass;
     return descriptor;
 }
 
-+ (SFIvarInfo *)SF_infoFromIvar:(Ivar)anIvar {
-    SFIvarInfo * const info = [[SFIvarInfo alloc] initWithIvar:anIvar];
++ (RFIvarInfo *)RF_infoFromIvar:(Ivar)anIvar {
+    RFIvarInfo * const info = [[RFIvarInfo alloc] initWithIvar:anIvar];
     info.name = [NSString stringWithCString:ivar_getName(anIvar) encoding:NSUTF8StringEncoding];
     
     return info;
@@ -107,17 +107,17 @@
 }
 
 - (NSArray *)attributes {
-    return [self.hostClass SF_attributesForIvar:self.name];
+    return [self.hostClass RF_attributesForIvar:self.name];
 }
 
 - (id)attributeWithType:(Class)requiredClassOfAttribute {
-    return [self.hostClass SF_attributeForIvar:self.name withAttributeType:requiredClassOfAttribute];
+    return [self.hostClass RF_attributeForIvar:self.name withAttributeType:requiredClassOfAttribute];
 }
 
 - (BOOL)isPrimitive {
     if (!_isPrimitiveFilled) {
         NSString *typeEncoding = [NSString stringWithCString:ivar_getTypeEncoding(_ivar) encoding:NSUTF8StringEncoding];
-        _primitive = [SFTypeDecoder SF_isPrimitiveType:typeEncoding];
+        _primitive = [RFTypeDecoder RF_isPrimitiveType:typeEncoding];
         _isPrimitiveFilled = YES;
     }
     
@@ -127,7 +127,7 @@
 - (NSString *)typeName {
     if (!_typeName) {
         NSString *typeEncoding = [NSString stringWithCString:ivar_getTypeEncoding(_ivar) encoding:NSUTF8StringEncoding];
-        _typeName = [SFTypeDecoder nameFromTypeEncoding:typeEncoding];
+        _typeName = [RFTypeDecoder nameFromTypeEncoding:typeEncoding];
     }
     
     return _typeName;

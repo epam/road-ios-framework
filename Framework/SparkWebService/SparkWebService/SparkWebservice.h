@@ -1,5 +1,5 @@
 //
-//  SparkWebservice.h
+//  ROADWebservice.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,20 +31,20 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#ifndef SparkWebservice_SparkWebservice_h
-#define SparkWebservice_SparkWebservice_h
+#ifndef ROADWebservice_ROADWebservice_h
+#define ROADWebservice_ROADWebservice_h
 
 #include "ROADWebServiceAnnotations.h"
-#import "SFWebserviceClient.h"
-#import "SFWebServiceCancellable.h"
-#import "SFSerializationDelegate.h"
-#import "SFBasicAuthenticationProvider.h"
-#import "SFAuthenticationProvider.h"
-#import "SFAuthenticating.h"
-#import "SFConcurrentAuthenticationProvider.h"
-#import "SFWebServiceURLBuilding.h"
-#import "SFFormData.h"
+#import "RFWebserviceClient.h"
+#import "RFWebServiceCancellable.h"
+#import "RFSerializationDelegate.h"
+#import "RFBasicAuthenticationProvider.h"
+#import "RFAuthenticationProvider.h"
+#import "RFAuthenticating.h"
+#import "RFConcurrentAuthenticationProvider.h"
+#import "RFWebServiceURLBuilding.h"
+#import "RFFormData.h"
 
-#import "SFWebServiceOData.h"
+#import "RFWebServiceOData.h"
 
 #endif

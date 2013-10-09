@@ -1,5 +1,5 @@
 //
-//  NSObject+SFAttributesInternal.m
+//  NSObject+RFAttributesInternal.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,21 +30,21 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "NSObject+SFAttributesInternal.h"
-#import <ROAD/NSInvocation+SFSparkExtension.h>
+#import "NSObject+RFAttributesInternal.h"
+#import <ROAD/NSInvocation+RFROADExtension.h>
 
-@implementation NSObject (SFAttributesInternal)
+@implementation NSObject (RFAttributesInternal)
 
 #pragma mark Will be overridden by annotated class
 
-+ (NSMutableDictionary *)SF_attributesFactoriesForMethods { return nil; }
-+ (NSMutableDictionary *)SF_attributesFactoriesForProperties { return nil; }
-+ (NSMutableDictionary *)SF_attributesFactoriesForIvars { return nil; }
++ (NSMutableDictionary *)RF_attributesFactoriesForMethods { return nil; }
++ (NSMutableDictionary *)RF_attributesFactoriesForProperties { return nil; }
++ (NSMutableDictionary *)RF_attributesFactoriesForIvars { return nil; }
 
 #pragma mark Internal API
 
-+ (NSInvocation *)SF_invocationForSelector:(SEL)selector {
-    return [NSInvocation SF_invocationForSelector:selector target:self];
++ (NSInvocation *)RF_invocationForSelector:(SEL)selector {
+    return [NSInvocation RF_invocationForSelector:selector target:self];
 }
 
 

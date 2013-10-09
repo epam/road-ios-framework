@@ -1,5 +1,5 @@
 //
-//  AnnotatedClass+SFAttributes.m
+//  AnnotatedClass+RFAttributes.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,13 +30,13 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 #import "AnnotatedClass.h"
-#import "NSObject+SFAttributesInternal.h"
+#import "NSObject+RFAttributesInternal.h"
  
-@interface AnnotatedClass(SFAttribute)
+@interface AnnotatedClass(RFAttribute)
  
 @end
  
-@implementation AnnotatedClass(SFAttribute)
+@implementation AnnotatedClass(RFAttribute)
  
 #pragma mark - Fill Attributes generated code (Ivars section)
 
@@ -49,7 +49,7 @@ static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_ivar__someField 
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
     
-    SFTestAttribute *attr1 = [[SFTestAttribute alloc] init];
+    RFTestAttribute *attr1 = [[RFTestAttribute alloc] init];
     [attributesArray addObject:attr1];
 
     sf_attributes_list_AnnotatedClass_ivar__someField = attributesArray;
@@ -59,18 +59,18 @@ static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_ivar__someField 
 
 static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForIvarsDict = nil;
     
-+ (NSDictionary *)SF_attributesFactoriesForIvars {
++ (NSDictionary *)RF_attributesFactoriesForIvars {
     if (attributesAnnotatedClassFactoriesForIvarsDict != nil) {
         return attributesAnnotatedClassFactoriesForIvarsDict;
     }
     
-    NSMutableDictionary *dictionaryHolder = [super SF_attributesFactoriesForIvars];
+    NSMutableDictionary *dictionaryHolder = [super RF_attributesFactoriesForIvars];
     
     if (!dictionaryHolder) {
         dictionaryHolder = [NSMutableDictionary dictionary];
     }
     
-    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(sf_attributes_AnnotatedClass_ivar__someField)] forKey:@"_someField"];
+    [dictionaryHolder setObject:[self RF_invocationForSelector:@selector(sf_attributes_AnnotatedClass_ivar__someField)] forKey:@"_someField"];
     attributesAnnotatedClassFactoriesForIvarsDict = dictionaryHolder;  
     
     return attributesAnnotatedClassFactoriesForIvarsDict;
@@ -90,10 +90,10 @@ static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_property_window 
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:2];
     
-    SFTestAttribute *attr1 = [[SFTestAttribute alloc] init];
+    RFTestAttribute *attr1 = [[RFTestAttribute alloc] init];
     [attributesArray addObject:attr1];
 
-    CustomSFTestAttribute *attr2 = [[CustomSFTestAttribute alloc] init];
+    CustomRFTestAttribute *attr2 = [[CustomRFTestAttribute alloc] init];
     attr2.property2 = @"Text2";
     attr2.intProperty = (2+2)*2;
     [attributesArray addObject:attr2];
@@ -105,18 +105,18 @@ static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_property_window 
 
 static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForPropertiesDict = nil;
     
-+ (NSDictionary *)SF_attributesFactoriesForProperties {
++ (NSDictionary *)RF_attributesFactoriesForProperties {
     if (attributesAnnotatedClassFactoriesForPropertiesDict != nil) {
         return attributesAnnotatedClassFactoriesForPropertiesDict;
     }
     
-    NSMutableDictionary *dictionaryHolder = [super SF_attributesFactoriesForProperties];
+    NSMutableDictionary *dictionaryHolder = [super RF_attributesFactoriesForProperties];
     
     if (!dictionaryHolder) {
         dictionaryHolder = [NSMutableDictionary dictionary];
     }
     
-    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(sf_attributes_AnnotatedClass_property_window)] forKey:@"window"];
+    [dictionaryHolder setObject:[self RF_invocationForSelector:@selector(sf_attributes_AnnotatedClass_property_window)] forKey:@"window"];
     attributesAnnotatedClassFactoriesForPropertiesDict = dictionaryHolder;  
     
     return attributesAnnotatedClassFactoriesForPropertiesDict;
@@ -136,10 +136,10 @@ static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_method_viewDidLo
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:2];
     
-    SFTestAttribute *attr1 = [[SFTestAttribute alloc] init];
+    RFTestAttribute *attr1 = [[RFTestAttribute alloc] init];
     [attributesArray addObject:attr1];
 
-    CustomSFTestAttribute *attr2 = [[CustomSFTestAttribute alloc] init];
+    CustomRFTestAttribute *attr2 = [[CustomRFTestAttribute alloc] init];
     attr2.property1 = @"Text1";
     attr2.property2 = @"Text2";
     [attributesArray addObject:attr2];
@@ -158,7 +158,7 @@ static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_method_viewDidLo
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
     
-    SFTestAttribute *attr1 = [[SFTestAttribute alloc] init];
+    RFTestAttribute *attr1 = [[RFTestAttribute alloc] init];
     [attributesArray addObject:attr1];
 
     sf_attributes_list_AnnotatedClass_method_viewDidLoad_p1 = attributesArray;
@@ -168,19 +168,19 @@ static NSMutableArray __weak *sf_attributes_list_AnnotatedClass_method_viewDidLo
 
 static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForMethodsDict = nil;
     
-+ (NSDictionary *)SF_attributesFactoriesForMethods {
++ (NSDictionary *)RF_attributesFactoriesForMethods {
     if (attributesAnnotatedClassFactoriesForMethodsDict != nil) {
         return attributesAnnotatedClassFactoriesForMethodsDict;
     }
     
-    NSMutableDictionary *dictionaryHolder = [super SF_attributesFactoriesForMethods];
+    NSMutableDictionary *dictionaryHolder = [super RF_attributesFactoriesForMethods];
     
     if (!dictionaryHolder) {
         dictionaryHolder = [NSMutableDictionary dictionary];
     }
         
-    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(sf_attributes_AnnotatedClass_method_viewDidLoad_p0)] forKey:@"viewDidLoad"];
-    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(sf_attributes_AnnotatedClass_method_viewDidLoad_p1)] forKey:@"viewDidLoad:"];
+    [dictionaryHolder setObject:[self RF_invocationForSelector:@selector(sf_attributes_AnnotatedClass_method_viewDidLoad_p0)] forKey:@"viewDidLoad"];
+    [dictionaryHolder setObject:[self RF_invocationForSelector:@selector(sf_attributes_AnnotatedClass_method_viewDidLoad_p1)] forKey:@"viewDidLoad:"];
     attributesAnnotatedClassFactoriesForMethodsDict = dictionaryHolder;  
     
     return attributesAnnotatedClassFactoriesForMethodsDict;
@@ -193,17 +193,17 @@ static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForMethodsDi
 
 static NSMutableArray __weak *sf_attributes_list__class_AnnotatedClass = nil;
 
-+ (NSArray *)SF_attributesForClass {
++ (NSArray *)RF_attributesForClass {
     if (sf_attributes_list__class_AnnotatedClass != nil) {
         return sf_attributes_list__class_AnnotatedClass;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:2];
     
-    SFTestAttribute *attr1 = [[SFTestAttribute alloc] init];
+    RFTestAttribute *attr1 = [[RFTestAttribute alloc] init];
     [attributesArray addObject:attr1];
 
-    CustomSFTestAttribute *attr2 = [[CustomSFTestAttribute alloc] init];
+    CustomRFTestAttribute *attr2 = [[CustomRFTestAttribute alloc] init];
     attr2.property1 = @"Text1";
     attr2.dictionaryProperty = @{
                 @"key1" : @"[value1",

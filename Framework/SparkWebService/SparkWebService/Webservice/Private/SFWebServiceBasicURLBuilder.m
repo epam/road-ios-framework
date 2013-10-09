@@ -1,5 +1,5 @@
 //
-//  SFWebServiceBasicURLBuilder.m
+//  RFWebServiceBasicURLBuilder.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,15 +30,15 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFWebServiceBasicURLBuilder.h"
+#import "RFWebServiceBasicURLBuilder.h"
 #import <ROAD/ROADCore.h>
 
-NSString * const SFApiCallTemplateEscapeString = @"%%";
+NSString * const RFApiCallTemplateEscapeString = @"%%";
 
-@implementation SFWebServiceBasicURLBuilder
+@implementation RFWebServiceBasicURLBuilder
 
 + (NSString *)urlTemplateEscapeString {
-    return SFApiCallTemplateEscapeString;
+    return RFApiCallTemplateEscapeString;
 }
 
 
@@ -47,15 +47,15 @@ NSString * const SFApiCallTemplateEscapeString = @"%%";
     
     NSMutableString * const root = [serviceRoot mutableCopy];
     NSMutableString * const suffix = urlTemplate.length > 0 ? [urlTemplate mutableCopy] : [@"" mutableCopy];
-    [root SF_formatStringUsingValues:values withEscape:[self urlTemplateEscapeString]];
-    [suffix SF_formatStringUsingValues:values withEscape:[self urlTemplateEscapeString]];
+    [root RF_formatStringUsingValues:values withEscape:[self urlTemplateEscapeString]];
+    [suffix RF_formatStringUsingValues:values withEscape:[self urlTemplateEscapeString]];
     
-    NSString *urlParameterStringPattern = [NSString stringWithFormat:@"&.+?=%@.+?%@", SFApiCallTemplateEscapeString, SFApiCallTemplateEscapeString];
+    NSString *urlParameterStringPattern = [NSString stringWithFormat:@"&.+?=%@.+?%@", RFApiCallTemplateEscapeString, RFApiCallTemplateEscapeString];
     
     NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:urlParameterStringPattern options:0 error:nil];
     [regexp replaceMatchesInString:suffix options:0 range:NSMakeRange(0, [suffix length]) withTemplate:@""];
     
-    urlParameterStringPattern = [NSString stringWithFormat:@"\\?.+?=%@.+?%@&", SFApiCallTemplateEscapeString, SFApiCallTemplateEscapeString];
+    urlParameterStringPattern = [NSString stringWithFormat:@"\\?.+?=%@.+?%@&", RFApiCallTemplateEscapeString, RFApiCallTemplateEscapeString];
     regexp = [NSRegularExpression regularExpressionWithPattern:urlParameterStringPattern options:0 error:nil];
     [regexp replaceMatchesInString:suffix options:0 range:NSMakeRange(0, [suffix length]) withTemplate:@"?"];
     

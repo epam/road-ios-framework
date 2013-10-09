@@ -31,18 +31,18 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "NSJSONSerialization+SFJSONStringHandling.h"
+#import "NSJSONSerialization+RFJSONStringHandling.h"
 
-@implementation NSJSONSerialization (SFJSONStringHandling)
+@implementation NSJSONSerialization (RFJSONStringHandling)
 
-+ (id)SF_JSONObjectWithString:(NSString * const)string options:(const NSJSONReadingOptions)options error:(NSError * __autoreleasing *)error {
++ (id)RF_JSONObjectWithString:(NSString * const)string options:(const NSJSONReadingOptions)options error:(NSError * __autoreleasing *)error {
     NSData * const jsonData = [string dataUsingEncoding:NSUTF8StringEncoding];
     id result = [self JSONObjectWithData:jsonData options:options error:error];
     return result;
 }
 
-+ (id)SF_JSONObjectWithString:(NSString * const)string {
-    return [self SF_JSONObjectWithString:string options:NSJSONReadingAllowFragments error:nil];
++ (id)RF_JSONObjectWithString:(NSString * const)string {
+    return [self RF_JSONObjectWithString:string options:NSJSONReadingAllowFragments error:nil];
 }
 
 @end

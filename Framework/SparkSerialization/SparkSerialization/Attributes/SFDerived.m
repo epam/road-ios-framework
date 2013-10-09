@@ -1,5 +1,5 @@
 //
-//  SFDerived.m
+//  RFDerived.m
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,8 +31,8 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFDerived.h"
+#import "RFDerived.h"
 
-@implementation SFDerived
+@implementation RFDerived
 
 @end

@@ -1,5 +1,5 @@
 //
-//  SFAnnotatedCoder.m
+//  RFAnnotatedCoder.m
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,15 +31,15 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFAttributedCoder.h"
+#import "RFAttributedCoder.h"
 #import <ROAD/ROADReflection.h>
-#import "SFSerializationAssistant.h"
+#import "RFSerializationAssistant.h"
 #import <ROAD/ROADLogger.h>
-#import "SFSerializable.h"
-#import "SFDerived.h"
-#import "SFSerializableDate.h"
+#import "RFSerializable.h"
+#import "RFDerived.h"
+#import "RFSerializableDate.h"
 
-@implementation SFAttributedCoder {
+@implementation RFAttributedCoder {
     NSString * _dateFormat;
     NSMutableDictionary * _dateFormatters;
     id _archive;
@@ -73,10 +73,10 @@
 }
 
 + (id)encodeRootObjectToSerializableObject:(id)rootObject {
-    SFLogInfo(@"Coder(%@ %p) started processing object(%@)", self, self, rootObject);
-    SFAttributedCoder *coder = [[self alloc] init];
+    RFLogInfo(@"Coder(%@ %p) started processing object(%@)", self, self, rootObject);
+    RFAttributedCoder *coder = [[self alloc] init];
     [coder encodeRootObject:rootObject];
-    SFLogInfo(@"Coder(%@ %p) ended processing", self, self);
+    RFLogInfo(@"Coder(%@ %p) ended processing", self, self);
     return coder->_archive;
 }
 
@@ -87,28 +87,28 @@
         _archive = [self encodeDictionary:rootObject];
     }
     else {
-        [_archive setObject:NSStringFromClass([rootObject class]) forKey:SFSerializedObjectClassName];
+        [_archive setObject:NSStringFromClass([rootObject class]) forKey:RFSerializedObjectClassName];
         NSArray *properties;
         @autoreleasepool {            
             Class rootObjectClass = [rootObject class];
             
-            if ([rootObjectClass SF_attributeForClassWithAttributeType:[SFSerializable class]]) {
-                properties = [[rootObjectClass SF_properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(SFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
-                    return (![evaluatedObject attributeWithType:[SFDerived class]]);
+            if ([rootObjectClass RF_attributeForClassWithAttributeType:[RFSerializable class]]) {
+                properties = [[rootObjectClass RF_properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(RFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
+                    return (![evaluatedObject attributeWithType:[RFDerived class]]);
                 }]];
             }
             else {
-                properties = [rootObjectClass SF_propertiesWithAttributeType:[SFSerializable class]];
+                properties = [rootObjectClass RF_propertiesWithAttributeType:[RFSerializable class]];
             }
             
             
         }        
         @autoreleasepool {
-            for (SFPropertyInfo * const aDesc in properties) {
+            for (RFPropertyInfo * const aDesc in properties) {
                 id value = [rootObject valueForKey:[aDesc propertyName]];
                 value = [self encodeValue:value forProperty:aDesc];
                 
-                NSString *key = [SFSerializationAssistant serializationKeyForProperty:aDesc];
+                NSString *key = [RFSerializationAssistant serializationKeyForProperty:aDesc];
                 
                 if (value != nil) {
                     [_archive setObject:value forKey:key];
@@ -118,11 +118,11 @@
     }
 }
 
-- (id)encodeValue:(id)value forProperty:(SFPropertyInfo *)propertyInfo {
+- (id)encodeValue:(id)value forProperty:(RFPropertyInfo *)propertyInfo {
     id encodedValue = nil;
     
     if ([value isKindOfClass:[NSDate class]]) {
-        SFSerializableDate *serializableDateAttribute = [propertyInfo.hostClass SF_attributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializableDate class]];
+        RFSerializableDate *serializableDateAttribute = [propertyInfo.hostClass RF_attributeForProperty:propertyInfo.propertyName withAttributeType:[RFSerializableDate class]];
         
         if (serializableDateAttribute.unixTimestamp) {
             NSDate *date = value;
@@ -130,7 +130,7 @@
         }
         else {
             NSString *dateFormat = ([serializableDateAttribute.encodingFormat length] == 0) ? serializableDateAttribute.format: serializableDateAttribute.encodingFormat;
-            NSAssert(dateFormat, @"SFSerializableDate must have either defaultValue or encodingFormat specified");
+            NSAssert(dateFormat, @"RFSerializableDate must have either defaultValue or encodingFormat specified");
             
             NSDateFormatter *dateFormatter = [self dataFormatterWithFormatString:dateFormat];
             encodedValue = [dateFormatter stringFromDate:value];
@@ -146,7 +146,7 @@
 - (id)encodeValue:(id)aValue {
     id value = aValue;
     
-    if ([[value class] SF_attributeForClassWithAttributeType:[SFSerializable class]] || [[[value class] SF_propertiesWithAttributeType:[SFSerializable class]] count] > 0) {
+    if ([[value class] RF_attributeForClassWithAttributeType:[RFSerializable class]] || [[[value class] RF_propertiesWithAttributeType:[RFSerializable class]] count] > 0) {
         value = [[self class] encodeRootObjectToSerializableObject:value];
     }
     else if ([value isKindOfClass:[NSArray class]]) {

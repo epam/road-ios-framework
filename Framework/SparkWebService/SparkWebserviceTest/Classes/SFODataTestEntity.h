@@ -1,5 +1,5 @@
 //
-//  SFODataTestEntity.h
+//  RFODataTestEntity.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,20 +30,20 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFODataAbstractEntity.h"
-#import "SFODataEntity.h"
-#import "SFODataProperty.h"
+#import "RFODataAbstractEntity.h"
+#import "RFODataEntity.h"
+#import "RFODataProperty.h"
 
-SF_ATTRIBUTE(SFODataEntity, entityName = @"TestEntity")
-@interface SFODataTestEntity : SFODataAbstractEntity
+RF_ATTRIBUTE(RFODataEntity, entityName = @"TestEntity")
+@interface RFODataTestEntity : RFODataAbstractEntity
 
-SF_ATTRIBUTE(SFODataProperty, serializationKey = @"Name")
+RF_ATTRIBUTE(RFODataProperty, serializationKey = @"Name")
 @property (nonatomic, strong) NSString *name;
-SF_ATTRIBUTE(SFODataProperty, serializationKey = @"Date")
+RF_ATTRIBUTE(RFODataProperty, serializationKey = @"Date")
 @property (nonatomic, strong) NSDate *date;
-SF_ATTRIBUTE(SFODataProperty, serializationKey = @"Cost")
+RF_ATTRIBUTE(RFODataProperty, serializationKey = @"Cost")
 @property (nonatomic, strong) NSNumber *cost;
-SF_ATTRIBUTE(SFODataProperty, serializationKey = @"TotalCost")
+RF_ATTRIBUTE(RFODataProperty, serializationKey = @"TotalCost")
 @property (nonatomic, strong) NSNumber *total;
 
 @end

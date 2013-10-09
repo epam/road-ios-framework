@@ -1,5 +1,5 @@
 //
-//  SFODataAbstractEntity.h
+//  RFODataAbstractEntity.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,7 +32,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SFODataAbstractEntity : NSObject
+@interface RFODataAbstractEntity : NSObject
 
 /**
  * Returns entity name of OData entity to use it in request to OData web service. It has to be defined in attribute or standart implementation will use class name instead

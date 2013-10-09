@@ -1,5 +1,5 @@
 //
-//  SFObservationTest.m
+//  RFObservationTest.m
 //  ROADObservation
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,17 +30,17 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFObservationTest.h"
-#import "SFObserver.h"
+#import "RFObservationTest.h"
+#import "RFObserver.h"
 
-@implementation SFObservationTest {
-    SFObserver *observer;
+@implementation RFObservationTest {
+    RFObserver *observer;
     NSString *old;
     NSString *new;
 }
 
 - (void)setUp {
-    observer = [[SFObserver alloc] initWithTarget:self keyPath:@"string" handler:^(id oldValue, id newValue) {
+    observer = [[RFObserver alloc] initWithTarget:self keyPath:@"string" handler:^(id oldValue, id newValue) {
         old = [oldValue copy];
         new = [newValue copy];
     }];

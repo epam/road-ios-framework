@@ -1,5 +1,5 @@
 //
-//  NSObject+SFMethodReflection.h
+//  NSObject+RFMethodReflection.h
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,45 +32,45 @@
 
 
 #import <Foundation/Foundation.h>
-#import "SFMethodInfo.h"
+#import "RFMethodInfo.h"
 
 /**
- Convenience methods to fetch SFMethodDescriptors for the current object.
+ Convenience methods to fetch RFMethodDescriptors for the current object.
  */
-@interface NSObject (SFMethodReflection)
+@interface NSObject (RFMethodReflection)
 
 /**
  Returns a specific descriptor of the given name matching class methods for the current object.
  @param methodName The name of the method.
  */
-- (SFMethodInfo *)SF_classMethodNamed:(NSString *)methodName;
+- (RFMethodInfo *)RF_classMethodNamed:(NSString *)methodName;
 
 /**
  Returns a specific descriptor of the given name matching instance methods for the current object.
  @param methodName The name of the method.
  */
-- (SFMethodInfo *)SF_instanceMethodNamed:(NSString *)methodName;
+- (RFMethodInfo *)RF_instanceMethodNamed:(NSString *)methodName;
 
 /**
  Returns all method descriptor for the current object.
  */
-- (NSArray *)SF_methods;
+- (NSArray *)RF_methods;
 
 /**
  Returns a specific descriptor of the given name matching class methods for the current class.
   @param methodName The name of the method.
  */
-+ (SFMethodInfo *)SF_classMethodNamed:(NSString *)methodName;
++ (RFMethodInfo *)RF_classMethodNamed:(NSString *)methodName;
 
 /**
  Returns all method descriptor for the current class.
  */
-+ (NSArray *)SF_methods;
++ (NSArray *)RF_methods;
 
 /**
  Returns a specific descriptor of the given name matching instance methods for the current class.
   @param methodName The name of the method.
  */
-+ (SFMethodInfo *)SF_instanceMethodNamed:(NSString *)methodName;
++ (RFMethodInfo *)RF_instanceMethodNamed:(NSString *)methodName;
 
 @end

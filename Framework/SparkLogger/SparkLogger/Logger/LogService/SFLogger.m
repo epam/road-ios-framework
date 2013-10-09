@@ -1,5 +1,5 @@
 //
-//  SFLogger.m
+//  RFLogger.m
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,15 +30,15 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFLogger.h"
+#import "RFLogger.h"
 
-#import "SFLogMessage.h"
-#import "SFLogWriter.h"
-#import "SFConsoleLogWriter.h"
+#import "RFLogMessage.h"
+#import "RFLogWriter.h"
+#import "RFConsoleLogWriter.h"
 
-@implementation SFLogger {
+@implementation RFLogger {
     NSMutableArray *writers;
-    SFConsoleLogWriter *internalWriter;
+    RFConsoleLogWriter *internalWriter;
 }
 
 @synthesize logLevel = _logLevel;
@@ -48,23 +48,23 @@
     self = [super init];
     if (self) {
         writers = [[NSMutableArray alloc] init];
-        internalWriter = [[SFConsoleLogWriter alloc] init];
+        internalWriter = [[RFConsoleLogWriter alloc] init];
     }
     return self;
 }
 
-- (void)addWriter:(SFLogWriter *const)aWriter {
+- (void)addWriter:(RFLogWriter *const)aWriter {
     [writers addObject:aWriter];
 }
 
-- (void)removeWriter:(SFLogWriter *const)aWriter {
+- (void)removeWriter:(RFLogWriter *const)aWriter {
     [writers removeObject:aWriter];
 }
 
-- (void)logMessage:(SFLogMessage *const)message {
+- (void)logMessage:(RFLogMessage *const)message {
     NSArray * const immutable = [NSArray arrayWithArray:writers];
     
-    for (SFLogWriter * const aWriter in immutable) {
+    for (RFLogWriter * const aWriter in immutable) {
         if ([aWriter hasMessagePassedFilters:message]) {
             [aWriter enqueueValidMessage:message];
         }
@@ -83,42 +83,42 @@
 #pragma mark - Logging methods
 
 - (void)logInfoMessage:(NSString *const)messageText {
-    [self logMessage:[SFLogMessage infoMessage:messageText]];
+    [self logMessage:[RFLogMessage infoMessage:messageText]];
 }
 
 - (void)logDebugMessage:(NSString *const)messageText {
-    [self logMessage:[SFLogMessage debugMessage:messageText]];
+    [self logMessage:[RFLogMessage debugMessage:messageText]];
 }
 
 - (void)logWarningMessage:(NSString *const)messageText {
-    [self logMessage:[SFLogMessage warningMessage:messageText]];
+    [self logMessage:[RFLogMessage warningMessage:messageText]];
 }
 
 - (void)logErrorMessage:(NSString *const)messageText {
-    [self logMessage:[SFLogMessage errorMessage:messageText]];
+    [self logMessage:[RFLogMessage errorMessage:messageText]];
 }
 
 - (void)logInternalErrorMessage:(NSString *const)messageText {
-    [internalWriter logValidMessage:[SFLogMessage errorMessage:messageText]];
+    [internalWriter logValidMessage:[RFLogMessage errorMessage:messageText]];
 }
 
 - (void)logInfoMessage:(NSString *const)messageText type:(NSString *)type {
-    SFLogMessage *message = [SFLogMessage infoMessage:messageText type:type];
+    RFLogMessage *message = [RFLogMessage infoMessage:messageText type:type];
     [self logMessage:message];
 }
 
 - (void)logDebugMessage:(NSString *const)messageText type:(NSString *)type {
-    SFLogMessage *message = [SFLogMessage debugMessage:messageText type:type];
+    RFLogMessage *message = [RFLogMessage debugMessage:messageText type:type];
     [self logMessage:message];
 }
 
 - (void)logWarningMessage:(NSString *const)messageText type:(NSString *)type {
-    SFLogMessage *message = [SFLogMessage warningMessage:messageText type:type];
+    RFLogMessage *message = [RFLogMessage warningMessage:messageText type:type];
     [self logMessage:message];
 }
 
 - (void)logErrorMessage:(NSString *const)messageText type:(NSString *)type {
-    SFLogMessage *message = [SFLogMessage infoMessage:messageText type:type];
+    RFLogMessage *message = [RFLogMessage infoMessage:messageText type:type];
     [self logMessage:message];
 }
 

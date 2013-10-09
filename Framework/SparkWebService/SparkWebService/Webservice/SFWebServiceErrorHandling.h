@@ -1,6 +1,6 @@
 //
-//  SFWebServiceErrorHandling.h
-//  SparkWebservice
+//  RFWebServiceErrorHandling.h
+//  ROADWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -32,7 +32,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol SFWebServiceErrorHandling <NSObject>
+@protocol RFWebServiceErrorHandling <NSObject>
 
 /**
  * Method validates response and return error object if response is not valid.

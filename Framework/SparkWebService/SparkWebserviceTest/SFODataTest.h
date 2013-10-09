@@ -1,5 +1,5 @@
 //
-//  SFODataTest.h
+//  RFODataTest.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,6 +32,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface SFODataTest : SenTestCase
+@interface RFODataTest : SenTestCase
 
 @end

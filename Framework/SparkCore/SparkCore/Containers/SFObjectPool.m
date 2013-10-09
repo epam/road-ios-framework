@@ -1,5 +1,5 @@
 //
-//  SFObjectPool.m
+//  RFObjectPool.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,10 +31,10 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFObjectPool.h"
-#import "SFPooledObject.h"
+#import "RFObjectPool.h"
+#import "RFPooledObject.h"
 
-@implementation SFObjectPool {
+@implementation RFObjectPool {
     NSMutableDictionary *pool;
     NSMutableDictionary *map;
 }
@@ -57,7 +57,7 @@
 - (id)objectForIdentifier:(NSString *)anIdentifier {
     NSString *key = _caseSensitive ? anIdentifier : [anIdentifier lowercaseString];
     NSMutableSet *objectSet = pool[key];
-    id<SFPooledObject> object = nil;
+    id<RFPooledObject> object = nil;
     
     if (objectSet == nil) {
         objectSet = [[NSMutableSet alloc] init];
@@ -88,7 +88,7 @@
     return object;
 }
 
-- (void)repoolObject:(id<SFPooledObject>)anObject {
+- (void)repoolObject:(id<RFPooledObject>)anObject {
     NSString * const reuseIdentifier = _caseSensitive ? [anObject poolReuseIdentifier] : [[anObject poolReuseIdentifier] lowercaseString];
     NSMutableSet *objectSet = pool[reuseIdentifier];
     

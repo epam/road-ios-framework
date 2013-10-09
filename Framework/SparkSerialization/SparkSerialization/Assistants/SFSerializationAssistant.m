@@ -1,5 +1,5 @@
 //
-//  SFSerializationAssistant.m
+//  RFSerializationAssistant.m
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,14 +30,14 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFSerializationAssistant.h"
-#import "SFSerializable.h"
-#import "SFSerializableCollection.h"
+#import "RFSerializationAssistant.h"
+#import "RFSerializable.h"
+#import "RFSerializableCollection.h"
 
-@implementation SFSerializationAssistant
+@implementation RFSerializationAssistant
 
-+ (NSString *)serializationKeyForProperty:(SFPropertyInfo *)propertyInfo {
-    SFSerializable *propertySerializableAttribute = [propertyInfo attributeWithType:[SFSerializable class]];
++ (NSString *)serializationKeyForProperty:(RFPropertyInfo *)propertyInfo {
+    RFSerializable *propertySerializableAttribute = [propertyInfo attributeWithType:[RFSerializable class]];
     
     if ([propertySerializableAttribute.serializationKey length] == 0) {
         return propertyInfo.propertyName;
@@ -46,8 +46,8 @@
     return propertySerializableAttribute.serializationKey;
 }
 
-+ (NSString *)collectionItemClassNameForProperty:(SFPropertyInfo *)propertyInfo {
-    SFSerializableCollection *collectionAttribute = [propertyInfo attributeWithType:[SFSerializableCollection class]];
++ (NSString *)collectionItemClassNameForProperty:(RFPropertyInfo *)propertyInfo {
+    RFSerializableCollection *collectionAttribute = [propertyInfo attributeWithType:[RFSerializableCollection class]];
     return (collectionAttribute == nil || collectionAttribute.collectionClass == nil) ? nil : NSStringFromClass(collectionAttribute.collectionClass);
 }
 

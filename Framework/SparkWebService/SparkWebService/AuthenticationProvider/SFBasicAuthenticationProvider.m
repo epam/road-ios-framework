@@ -1,5 +1,5 @@
 //
-//  SFBasicAuthenticationProvider.m
+//  RFBasicAuthenticationProvider.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,10 +30,10 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFBasicAuthenticationProvider.h"
-#import "NSError+SFROADWebService.h"
+#import "RFBasicAuthenticationProvider.h"
+#import "NSError+RFROADWebService.h"
 
-@implementation SFBasicAuthenticationProvider
+@implementation RFBasicAuthenticationProvider
 
 
 #pragma mark - Initialization
@@ -47,7 +47,7 @@
     return self;
 }
 
-#pragma mark - SFAuthenticating
+#pragma mark - RFAuthenticating
 
 - (void)authenticate {
     _credential = [[NSURLCredential alloc] initWithUser:_user password:_password persistence:NSURLCredentialPersistenceForSession];
@@ -88,12 +88,12 @@
 - (void)checkResponse:(NSHTTPURLResponse *)response forConnection:(NSURLConnection *)connection {
     // Response did not get authentication challenge again
     // Set flag - session is opened
-    if ([response statusCode] != kSFUnauthorizedCode && [response statusCode] != kSFProxyAuthenticationRequiredCode) {
+    if ([response statusCode] != kRFUnauthorizedCode && [response statusCode] != kRFProxyAuthenticationRequiredCode) {
         _sessionOpened = YES;
         [self callSuccessBlocksWithResult:response];
     }
     else {
-        [self callFailureBlocksWithError:[NSError errorWithDomain:kSFWebServiceErrorDomain code:[response statusCode] userInfo:nil]];
+        [self callFailureBlocksWithError:[NSError errorWithDomain:kRFWebServiceErrorDomain code:[response statusCode] userInfo:nil]];
     }
 }
 

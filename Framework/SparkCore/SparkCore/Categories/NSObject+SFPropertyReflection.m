@@ -1,5 +1,5 @@
 //
-//  NSObject+SFPropertyReflection.m
+//  NSObject+RFPropertyReflection.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,25 +31,25 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "NSObject+SFPropertyReflection.h"
+#import "NSObject+RFPropertyReflection.h"
 #import <objc/runtime.h>
 
-@implementation NSObject (SFPropertyReflection)
+@implementation NSObject (RFPropertyReflection)
 
-- (NSArray *)SF_properties {
-    return [SFPropertyInfo propertiesForClass:[self class]];
+- (NSArray *)RF_properties {
+    return [RFPropertyInfo propertiesForClass:[self class]];
 }
 
-- (SFPropertyInfo *)SF_propertyNamed:(NSString *)name {
-    return [SFPropertyInfo SF_propertyNamed:name forClass:[self class]];
+- (RFPropertyInfo *)RF_propertyNamed:(NSString *)name {
+    return [RFPropertyInfo RF_propertyNamed:name forClass:[self class]];
 }
 
-+ (NSArray *)SF_properties {
-    return [SFPropertyInfo propertiesForClass:self];
++ (NSArray *)RF_properties {
+    return [RFPropertyInfo propertiesForClass:self];
 }
 
-+ (SFPropertyInfo *)SF_propertyNamed:(NSString *)name {
-    return [SFPropertyInfo SF_propertyNamed:name forClass:self];
++ (RFPropertyInfo *)RF_propertyNamed:(NSString *)name {
+    return [RFPropertyInfo RF_propertyNamed:name forClass:self];
 }
 
 @end

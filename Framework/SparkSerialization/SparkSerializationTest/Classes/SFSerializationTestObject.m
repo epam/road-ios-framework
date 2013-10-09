@@ -1,5 +1,5 @@
 //
-//  SFSerializationTestObject.m
+//  RFSerializationTestObject.m
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,8 +31,8 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFSerializationTestObject.h"
+#import "RFSerializationTestObject.h"
 
-@implementation SFSerializationTestObject
+@implementation RFSerializationTestObject
 
 @end

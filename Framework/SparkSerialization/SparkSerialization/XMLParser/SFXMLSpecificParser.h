@@ -1,5 +1,5 @@
 //
-//  SFXMLSpecificParser.h
+//  RFXMLSpecificParser.h
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,31 +32,31 @@
 
 
 #import <Foundation/Foundation.h>
-#import "SFXMLParsing.h"
+#import "RFXMLParsing.h"
 #import <ROAD/ROADCore.h>
 
-@class SFXMLElement;
+@class RFXMLElement;
 
 /**
  Base class of the specific xml parsers.
  */
-@interface SFXMLSpecificParser : SFPoolObject <SFXMLParsing>
+@interface RFXMLSpecificParser : RFPoolObject <RFXMLParsing>
 
 /**
  The parsed element.
  */
-@property (strong, nonatomic) SFXMLElement *element;
+@property (strong, nonatomic) RFXMLElement *element;
 
 /**
  The parent parser.
  */
-@property (weak, nonatomic) SFXMLSpecificParser *parent;
+@property (weak, nonatomic) RFXMLSpecificParser *parent;
 
 /**
  Template method, invoked when a child parser has finished parsing its content.
  @param aChild The child finished parsing.
  */
-- (void)childDidFinishParsing:(id<SFXMLParsing> const)aChild;
+- (void)childDidFinishParsing:(id<RFXMLParsing> const)aChild;
 
 /**
  The array of the children parsers.
@@ -68,6 +68,6 @@
  Adds a child parser.
  @param aChild The child to add.
  */
-- (void)addChild:(id<SFXMLParsing> const)aChild;
+- (void)addChild:(id<RFXMLParsing> const)aChild;
 
 @end

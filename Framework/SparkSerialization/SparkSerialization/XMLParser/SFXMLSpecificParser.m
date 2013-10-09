@@ -1,5 +1,5 @@
 //
-//  SFXMLSpecificParser.m
+//  RFXMLSpecificParser.m
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,14 +31,14 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFXMLSpecificParser.h"
-#import "SFXMLElement.h"
+#import "RFXMLSpecificParser.h"
+#import "RFXMLElement.h"
 #import <ROAD/ROADReflection.h>
 #import <ROAD/ROADLogger.h>
 
-static NSString * const kSFElementName = @"element";
+static NSString * const kRFElementName = @"element";
 
-@implementation SFXMLSpecificParser {
+@implementation RFXMLSpecificParser {
     NSMutableArray *children;
 }
 
@@ -59,7 +59,7 @@ static NSString * const kSFElementName = @"element";
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     [self allocateElement];
-    SFLogInfo(@"Parser(%p) found element with name: %@", parser, elementName);
+    RFLogInfo(@"Parser(%p) found element with name: %@", parser, elementName);
     _element.name = elementName;
     NSMutableDictionary * const attributeMutableDictionary = [[NSMutableDictionary alloc] init];
 
@@ -78,7 +78,7 @@ static NSString * const kSFElementName = @"element";
     [_element appendString:string];
 }
 
-- (void)addChild:(const id<SFXMLParsing>)aChild {
+- (void)addChild:(const id<RFXMLParsing>)aChild {
     [children addObject:aChild];
 }
 
@@ -86,11 +86,11 @@ static NSString * const kSFElementName = @"element";
     return [NSArray arrayWithArray:children];
 }
 
-- (void)childDidFinishParsing:(const id<SFXMLParsing>)aChild {
+- (void)childDidFinishParsing:(const id<RFXMLParsing>)aChild {
 }
 
 - (void)allocateElement {
-    SFPropertyInfo * const prop = [self SF_propertyNamed:kSFElementName];
+    RFPropertyInfo * const prop = [self RF_propertyNamed:kRFElementName];
     __unsafe_unretained const Class elementClass = prop.typeClass;
     _element = [[elementClass alloc] init];
 }

@@ -1,5 +1,5 @@
 //
-//  SFObserver.m
+//  RFObserver.m
 //  ROADObservation
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,16 +30,16 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFObserver.h"
+#import "RFObserver.h"
 
-static NSString * const kSFObserverTargetKeyPath = @"target";
+static NSString * const kRFObserverTargetKeyPath = @"target";
 
-@implementation SFObserver {
-    SFKeyValueHandlerBlock _callback;
+@implementation RFObserver {
+    RFKeyValueHandlerBlock _callback;
     void (^_deallocHandler)(void);
 }
 
-- (id)initWithTarget:(id const)aTarget keyPath:(NSString *const)aKeyPath handler:(SFKeyValueHandlerBlock)aHandler deallocatonHanlder:(void (^)(void))aDeallocBlock {
+- (id)initWithTarget:(id const)aTarget keyPath:(NSString *const)aKeyPath handler:(RFKeyValueHandlerBlock)aHandler deallocatonHanlder:(void (^)(void))aDeallocBlock {
     self = [super init];
     
     if (self) {
@@ -47,24 +47,24 @@ static NSString * const kSFObserverTargetKeyPath = @"target";
         _deallocHandler = [aDeallocBlock copy];
         _keyPath = [aKeyPath copy];
         [aTarget addObserver:self forKeyPath:aKeyPath options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-        [self addObserver:self forKeyPath:kSFObserverTargetKeyPath options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
+        [self addObserver:self forKeyPath:kRFObserverTargetKeyPath options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
         _observationTarget = aTarget;
     }
     
     return self;
 }
 
-- (id)initWithTarget:(id const)aTarget keyPath:(NSString *const)aKeyPath handler:(SFKeyValueHandlerBlock)aHandler {
+- (id)initWithTarget:(id const)aTarget keyPath:(NSString *const)aKeyPath handler:(RFKeyValueHandlerBlock)aHandler {
     return [self initWithTarget:aTarget keyPath:aKeyPath handler:aHandler deallocatonHanlder:NULL];
 }
 
-+ (SFObserver *)observerForTarget:(id const)aTarget keyPath:(NSString * const)aKeypath handler:(SFKeyValueHandlerBlock)aHandler {
++ (RFObserver *)observerForTarget:(id const)aTarget keyPath:(NSString * const)aKeypath handler:(RFKeyValueHandlerBlock)aHandler {
     return [[self alloc] initWithTarget:aTarget keyPath:aKeypath handler:aHandler];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     
-    if ([keyPath isEqualToString:kSFObserverTargetKeyPath] && [object isEqual:self]) {
+    if ([keyPath isEqualToString:kRFObserverTargetKeyPath] && [object isEqual:self]) {
         [change[NSKeyValueChangeOldKey] removeObserver:self forKeyPath:_keyPath];
         
         if (change[NSKeyValueChangeNewKey] == nil && _deallocHandler != NULL) {
@@ -81,7 +81,7 @@ static NSString * const kSFObserverTargetKeyPath = @"target";
 
 - (void)dealloc {
     [_observationTarget removeObserver:self forKeyPath:_keyPath];
-    [self removeObserver:self forKeyPath:kSFObserverTargetKeyPath];
+    [self removeObserver:self forKeyPath:kRFObserverTargetKeyPath];
 }
 
 @end

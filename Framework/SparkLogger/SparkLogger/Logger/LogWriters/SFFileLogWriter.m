@@ -1,5 +1,5 @@
 //
-//  SFFileLogWriter.m
+//  RFFileLogWriter.m
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,15 +30,15 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFFileLogWriter.h"
+#import "RFFileLogWriter.h"
 
-@implementation SFFileLogWriter {
-    NSFileHandle *handle;
+@implementation RFFileLogWriter {
+    NRFileHandle *handle;
     NSString *filePath;
 }
 
-+ (SFFileLogWriter *)writerWithPath:(NSString * const)path {
-    SFFileLogWriter *writer = [[SFFileLogWriter alloc] init];
++ (RFFileLogWriter *)writerWithPath:(NSString * const)path {
+    RFFileLogWriter *writer = [[RFFileLogWriter alloc] init];
     writer->filePath = [path copy];
     return writer;
 }
@@ -51,7 +51,7 @@
         NSArray *queueCopy = [self.messageQueue copy];
         
         NSMutableString *packet = [NSMutableString string];
-        for (SFLogMessage *message in queueCopy) {
+        for (RFLogMessage *message in queueCopy) {
             [packet appendFormat:@"%@\n", [self formattedMessage:message]];
         }
         
@@ -62,7 +62,7 @@
     });
 }
 
-- (void)logValidMessage:(SFLogMessage * const)aMessage {
+- (void)logValidMessage:(RFLogMessage * const)aMessage {
     dispatch_async(self.queue, ^{
         [self openFile];
         [handle seekToEndOfFile];
@@ -74,10 +74,10 @@
 
 - (void)openFile {
     
-    if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
-        [[NSFileManager defaultManager] createFileAtPath:filePath contents:nil attributes:nil];
+    if (![[NRFileManager defaultManager] fileExistsAtPath:filePath]) {
+        [[NRFileManager defaultManager] createFileAtPath:filePath contents:nil attributes:nil];
     }
-    handle = [NSFileHandle fileHandleForUpdatingAtPath:filePath];
+    handle = [NRFileHandle fileHandleForUpdatingAtPath:filePath];
 }
 
 - (void)closeFile {

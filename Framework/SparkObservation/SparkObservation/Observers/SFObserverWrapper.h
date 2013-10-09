@@ -1,5 +1,5 @@
 //
-//  SFObserverWrapper.h
+//  RFObserverWrapper.h
 //  ROADObservation
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,20 +30,20 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-extern NSString * const kSFNotificationNameViolationException;
-extern NSString * const kSFNotificationNameViolationExceptionReason;
-extern NSString * const kSFNotificationOldNameKey;
-extern NSString * const kSFNotificationNewNameKey;
+extern NSString * const kRFNotificationNameViolationException;
+extern NSString * const kRFNotificationNameViolationExceptionReason;
+extern NSString * const kRFNotificationOldNameKey;
+extern NSString * const kRFNotificationNewNameKey;
 
 /**
  The notification handler block. It takes a notification as an argument, and has no return value.
  */
-typedef void (^SFNotificationHandlerBlock)(NSNotification * const notification);
+typedef void (^RFNotificationHandlerBlock)(NSNotification * const notification);
 
 /**
  Wrapper around the observer pattern implementation for notifications. The class handles automatic unsubscription.
  */
-@interface SFObserverWrapper : NSObject
+@interface RFObserverWrapper : NSObject
 
 /**
  References to the object specified (if any) from which the notification should be accepted. If no object-based filtering is applied, this property is nil.
@@ -68,7 +68,7 @@ typedef void (^SFNotificationHandlerBlock)(NSNotification * const notification);
  @param handler The handler block to execute when a notification is receiver.
  @result The initialized observer instance.
  */
-- (id)initWithName:(NSString *const)aName object:(const id)anObject queue:(const dispatch_queue_t)aQueue handler:(SFNotificationHandlerBlock)handler;
+- (id)initWithName:(NSString *const)aName object:(const id)anObject queue:(const dispatch_queue_t)aQueue handler:(RFNotificationHandlerBlock)handler;
 
 
 /**
@@ -78,7 +78,7 @@ typedef void (^SFNotificationHandlerBlock)(NSNotification * const notification);
  @param handler The handler block to invoke in case a notification is received.
  @result An observer subscribed to the notification.
  */
-+ (SFObserverWrapper *)observerForName:(NSString * const)aName object:(const id)anObject handler:(SFNotificationHandlerBlock const)handler;
++ (RFObserverWrapper *)observerForName:(NSString * const)aName object:(const id)anObject handler:(RFNotificationHandlerBlock const)handler;
 
 /**
  Factory method to create a wrapper for a given notification.
@@ -88,7 +88,7 @@ typedef void (^SFNotificationHandlerBlock)(NSNotification * const notification);
  @param handler The handler block to invoke in case a notification is received.
  @result An observer subscribed to the notification.
  */
-+ (SFObserverWrapper *)observerForName:(NSString * const)aName object:(const id)anObject queue:(const dispatch_queue_t)aQueue handler:(SFNotificationHandlerBlock const)handler;
++ (RFObserverWrapper *)observerForName:(NSString * const)aName object:(const id)anObject queue:(const dispatch_queue_t)aQueue handler:(RFNotificationHandlerBlock const)handler;
 
 /**
  Factory method to create a wrapper for a given notification. The results are the same as if one would invoke the +observerForName:object:handler: method with the object argument as nil.
@@ -96,7 +96,7 @@ typedef void (^SFNotificationHandlerBlock)(NSNotification * const notification);
  @param handler The handler block to invoke in case a notification is received.
  @result An observer subscribed to the notification.
  */
-+ (SFObserverWrapper *)observerForName:(NSString * const)aName handler:(SFNotificationHandlerBlock const)handler;
++ (RFObserverWrapper *)observerForName:(NSString * const)aName handler:(RFNotificationHandlerBlock const)handler;
 
 /**
  Factory method to create a wrapper for a given notification. The results are the same as if one would invoke the +observerForName:object:queue:handler: method with the object argument as nil.
@@ -105,6 +105,6 @@ typedef void (^SFNotificationHandlerBlock)(NSNotification * const notification);
  @param handler The handler block to invoke in case a notification is received.
  @result An observer subscribed to the notification.
  */
-+ (SFObserverWrapper *)observerForName:(NSString *const)aName queue:(const dispatch_queue_t)aQueue handler:(SFNotificationHandlerBlock const)handler;
++ (RFObserverWrapper *)observerForName:(NSString *const)aName queue:(const dispatch_queue_t)aQueue handler:(RFNotificationHandlerBlock const)handler;
 
 @end

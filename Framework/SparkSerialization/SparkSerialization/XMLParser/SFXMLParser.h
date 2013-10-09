@@ -1,5 +1,5 @@
 //
-//  SFXMLParser.h
+//  RFXMLParser.h
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,14 +32,14 @@
 
 #import <ROAD/ROADCore.h>
 
-@class SFXMLElement;
+@class RFXMLElement;
 
-typedef void (^parseHandler)(SFXMLElement *rootElement, NSError *error);
+typedef void (^parseHandler)(RFXMLElement *rootElement, NSError *error);
 
 /**
  Main XML parser delegate object. Distributes the parsing of individual elements to different specialized objects.
  */
-@interface SFXMLParser : SFObject <NSXMLParserDelegate, SFObjectPoolDelegate>
+@interface RFXMLParser : RFObject <NSXMLParserDelegate, RFObjectPoolDelegate>
 
 /**
  Starts the parsing of an xml data source.
@@ -56,7 +56,7 @@ typedef void (^parseHandler)(SFXMLElement *rootElement, NSError *error);
 - (void)registerParserClassNamed:(NSString * const)aParserClassName forElementName:(NSString * const)elementName;
 
 /**
- Returns wether the parser can have the SFXMLSpecificParser generic base parser to process xml elements for which there are no registered types. The default value returned is YES, you can override it in subclasses.
+ Returns wether the parser can have the RFXMLSpecificParser generic base parser to process xml elements for which there are no registered types. The default value returned is YES, you can override it in subclasses.
  @result The boolean value indicating if the specific parser can be used in general cases where there are no registered classes available.
  */
 - (BOOL)canUseDefaultParser;

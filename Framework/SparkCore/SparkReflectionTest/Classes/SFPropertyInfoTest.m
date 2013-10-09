@@ -1,5 +1,5 @@
 //
-//  SFPropertyInfoTest.m
+//  RFPropertyInfoTest.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,12 +31,12 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFPropertyInfoTest.h"
-#import "SFPropertyInfo.h"
-#import "NSObject+SFPropertyReflection.h"
+#import "RFPropertyInfoTest.h"
+#import "RFPropertyInfo.h"
+#import "NSObject+RFPropertyReflection.h"
 
-@implementation SFPropertyInfoTest {
-    SFPropertyInfo *desc;
+@implementation RFPropertyInfoTest {
+    RFPropertyInfo *desc;
 }
 
 @dynamic copy;
@@ -47,29 +47,29 @@
 }
 
 - (void)testStrong {
-    desc = [self SF_propertyNamed:@"strong"];
+    desc = [self RF_propertyNamed:@"strong"];
     STAssertTrue([desc isWeak] == NO && [desc isCopied] == NO && [desc isDynamic] == NO, @"Assertion: property is strong.");
 }
 
 - (void)testWeak {
-    desc = [self SF_propertyNamed:@"weak"];
+    desc = [self RF_propertyNamed:@"weak"];
     STAssertTrue([desc isWeak] && [desc isCopied] == NO && [desc isDynamic] == NO, @"Assertion: property is weak");
 }
 
 - (void)testCopyDynamic {
-    desc = [self SF_propertyNamed:@"copy"];
+    desc = [self RF_propertyNamed:@"copy"];
     STAssertTrue([desc isCopied] && [desc isDynamic] && [desc isWeak] == NO, @"Assertion: property is declared copy, and is dynamically implemented.");
 }
 
 - (void)testBoolAssign {
-    desc = [self SF_propertyNamed:@"valid"];
+    desc = [self RF_propertyNamed:@"valid"];
     STAssertTrue([desc isCopied] == NO && [desc isDynamic] == NO && [desc isWeak] == NO && [desc isNonatomic], @"Assertion: property is assigned and nonatomic");
     STAssertTrue([[desc getterName] isEqualToString:@"isValid"], @"Assertion: custom getter name (isValid) is correct (%@)", [desc getterName]);
     STAssertTrue([[desc setterName] isEqualToString:@"setToValid:"], @"Assertion: custom setter name (setToValid:) is correct (%@)", [desc setterName]);
 }
 
 - (void)testReadonlyAssignAtomic {
-    desc = [self SF_propertyNamed:@"readonly"];
+    desc = [self RF_propertyNamed:@"readonly"];
     STAssertTrue([desc isNonatomic] == NO && [desc isReadonly], @"Assertion: property is atomic and readonly.");
 }
 

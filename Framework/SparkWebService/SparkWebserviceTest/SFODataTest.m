@@ -1,5 +1,5 @@
 //
-//  SFODataTest.m
+//  RFODataTest.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,46 +30,46 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFODataTest.h"
+#import "RFODataTest.h"
 
-#import "SFODataTestEntity.h"
-#import "SFODataFetchRequest.h"
-#import "SFODataTestEntity.h"
-#import "SFConcreteWebServiceClient.h"
-#import "SFWebServiceCancellable.h"
-#import "SFDownloader.h"
+#import "RFODataTestEntity.h"
+#import "RFODataFetchRequest.h"
+#import "RFODataTestEntity.h"
+#import "RFConcreteWebServiceClient.h"
+#import "RFWebServiceCancellable.h"
+#import "RFDownloader.h"
 
-@implementation SFODataTest {
-    SFConcreteWebServiceClient * _webClient;
+@implementation RFODataTest {
+    RFConcreteWebServiceClient * _webClient;
 }
 
 - (void)setUp {
-    _webClient = [[SFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://fakeurl.com/mashups/mashupengine"];
+    _webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://fakeurl.com/mashups/mashupengine"];
 }
 
 - (void)testODataFetchRequest {
-    SFODataExpression *leftExpression = [[SFODataExpression alloc] initWithProperty:[SFODataTestEntity SF_propertyNamed:@"name"]];
-    SFODataExpression *rightExpression = [[SFODataExpression alloc] initWithValue:@"Paul"];
-    SFODataPredicate *firstPredicate = [[SFODataPrioritizedPredicate alloc] initWithLeftExpression:leftExpression rightExpression:rightExpression type:SFEqualToODataPredicateOperatorType];
+    RFODataExpression *leftExpression = [[RFODataExpression alloc] initWithProperty:[RFODataTestEntity RF_propertyNamed:@"name"]];
+    RFODataExpression *rightExpression = [[RFODataExpression alloc] initWithValue:@"Paul"];
+    RFODataPredicate *firstPredicate = [[RFODataPrioritizedPredicate alloc] initWithLeftExpression:leftExpression rightExpression:rightExpression type:RFEqualToODataPredicateOperatorType];
     
-    leftExpression = [[SFODataExpression alloc] initWithProperty:[SFODataTestEntity SF_propertyNamed:@"total"]];
-    rightExpression = [[SFODataExpression alloc] initWithValue:@"32"];
-    SFODataPredicate *secondPredicate = [[SFODataPrioritizedPredicate alloc] initWithLeftExpression:leftExpression rightExpression:rightExpression type:SFLessThanOrEqualToODataPredicateOperatorType];
+    leftExpression = [[RFODataExpression alloc] initWithProperty:[RFODataTestEntity RF_propertyNamed:@"total"]];
+    rightExpression = [[RFODataExpression alloc] initWithValue:@"32"];
+    RFODataPredicate *secondPredicate = [[RFODataPrioritizedPredicate alloc] initWithLeftExpression:leftExpression rightExpression:rightExpression type:RFLessThanOrEqualToODataPredicateOperatorType];
     
-    SFODataPredicate *predicate = [[SFODataPredicate alloc] initWithLeftExpression:[firstPredicate expression] rightExpression:[secondPredicate expression] type:SFLogicalOrODataPredicateOperatorType];
+    RFODataPredicate *predicate = [[RFODataPredicate alloc] initWithLeftExpression:[firstPredicate expression] rightExpression:[secondPredicate expression] type:RFLogicalOrODataPredicateOperatorType];
     
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithProperty:[SFODataTestEntity SF_propertyNamed:@"total"] ascending:YES];
-    SFODataFetchRequest *fetchRequest = [[SFODataFetchRequest alloc] initWithEntityName:[SFODataTestEntity entityName] predicate:predicate sortDescriptors:@[sortDescriptor]];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithProperty:[RFODataTestEntity RF_propertyNamed:@"total"] ascending:YES];
+    RFODataFetchRequest *fetchRequest = [[RFODataFetchRequest alloc] initWithEntityName:[RFODataTestEntity entityName] predicate:predicate sortDescriptors:@[sortDescriptor]];
     
     STAssertTrue([[fetchRequest generateQueryString] isEqualToString:@"$orderby=TotalCost asc&$filter=(Name eq Paul) or (TotalCost le 32)"], @"OData fetch request generated incorrect result");
 }
 
 - (void)testODataRequestClearURL {
-    SFODataFetchRequest *fetchRequest = [[SFODataFetchRequest alloc] initWithEntityName:[SFODataTestEntity entityName]];
+    RFODataFetchRequest *fetchRequest = [[RFODataFetchRequest alloc] initWithEntityName:[RFODataTestEntity entityName]];
     
     __block BOOL isFinished = NO;
     
-    __block SFDownloader *downloader = (SFDownloader *)[_webClient loadDataWithFetchRequest:fetchRequest success:^(id result) {
+    __block RFDownloader *downloader = (RFDownloader *)[_webClient loadDataWithFetchRequest:fetchRequest success:^(id result) {
         NSLog(@"%@", downloader.request.URL);
         STAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity"], @"URL was built incorrectly");
         isFinished = YES;
@@ -86,15 +86,15 @@
 }
 
 - (void)testODataRequestURL {
-    SFODataExpression *leftExpression = [[SFODataExpression alloc] initWithProperty:[SFODataTestEntity SF_propertyNamed:@"name"]];
-    SFODataExpression *rightExpression = [[SFODataExpression alloc] initWithValue:@"Paul"];
-    SFODataPrioritizedPredicate *predicate = [[SFODataPrioritizedPredicate alloc] initWithLeftExpression:leftExpression rightExpression:rightExpression type:SFEqualToODataPredicateOperatorType];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithProperty:[SFODataTestEntity SF_propertyNamed:@"total"] ascending:YES];
-    SFODataFetchRequest *fetchRequest = [[SFODataFetchRequest alloc] initWithEntityName:[SFODataTestEntity entityName] predicate:predicate sortDescriptors:@[sortDescriptor]];
+    RFODataExpression *leftExpression = [[RFODataExpression alloc] initWithProperty:[RFODataTestEntity RF_propertyNamed:@"name"]];
+    RFODataExpression *rightExpression = [[RFODataExpression alloc] initWithValue:@"Paul"];
+    RFODataPrioritizedPredicate *predicate = [[RFODataPrioritizedPredicate alloc] initWithLeftExpression:leftExpression rightExpression:rightExpression type:RFEqualToODataPredicateOperatorType];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithProperty:[RFODataTestEntity RF_propertyNamed:@"total"] ascending:YES];
+    RFODataFetchRequest *fetchRequest = [[RFODataFetchRequest alloc] initWithEntityName:[RFODataTestEntity entityName] predicate:predicate sortDescriptors:@[sortDescriptor]];
     
     __block BOOL isFinished = NO;
     
-    __block SFDownloader *downloader = (SFDownloader *)[_webClient loadDataWithFetchRequest:fetchRequest success:^(id result) {
+    __block RFDownloader *downloader = (RFDownloader *)[_webClient loadDataWithFetchRequest:fetchRequest success:^(id result) {
         NSLog(@"%@", downloader.request.URL);
         STAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity?$orderby=TotalCost%20asc&$filter=(Name%20eq%20Paul)"], @"URL was built incorrectly");
         isFinished = YES;
@@ -111,15 +111,15 @@
 }
 
 - (void)testODataRequestURLWithParams {
-    SFODataExpression *leftExpression = [[SFODataExpression alloc] initWithProperty:[SFODataTestEntity SF_propertyNamed:@"name"]];
-    SFODataExpression *rightExpression = [[SFODataExpression alloc] initWithValue:@"Paul"];
-    SFODataPrioritizedPredicate *predicate = [[SFODataPrioritizedPredicate alloc] initWithLeftExpression:leftExpression rightExpression:rightExpression type:SFEqualToODataPredicateOperatorType];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithProperty:[SFODataTestEntity SF_propertyNamed:@"total"] ascending:YES];
-    SFODataFetchRequest *fetchRequest = [[SFODataFetchRequest alloc] initWithEntityName:[SFODataTestEntity entityName] predicate:predicate sortDescriptors:@[sortDescriptor]];
+    RFODataExpression *leftExpression = [[RFODataExpression alloc] initWithProperty:[RFODataTestEntity RF_propertyNamed:@"name"]];
+    RFODataExpression *rightExpression = [[RFODataExpression alloc] initWithValue:@"Paul"];
+    RFODataPrioritizedPredicate *predicate = [[RFODataPrioritizedPredicate alloc] initWithLeftExpression:leftExpression rightExpression:rightExpression type:RFEqualToODataPredicateOperatorType];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithProperty:[RFODataTestEntity RF_propertyNamed:@"total"] ascending:YES];
+    RFODataFetchRequest *fetchRequest = [[RFODataFetchRequest alloc] initWithEntityName:[RFODataTestEntity entityName] predicate:predicate sortDescriptors:@[sortDescriptor]];
     
     __block BOOL isFinished = NO;
     
-    __block SFDownloader *downloader = (SFDownloader *)[_webClient loadDataWithFetchRequest:fetchRequest someImportantParameter:@"value1" success:^(id result) {
+    __block RFDownloader *downloader = (RFDownloader *)[_webClient loadDataWithFetchRequest:fetchRequest someImportantParameter:@"value1" success:^(id result) {
         NSLog(@"%@", downloader.request.URL);
         STAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity?importantParameter=value1&$orderby=TotalCost%20asc&$filter=(Name%20eq%20Paul)"], @"URL with parameter was built incorrectly");
         isFinished = YES;
@@ -136,16 +136,16 @@
 }
 
 - (void)testODataRequestURLWithPagination {
-    SFODataExpression *leftExpression = [[SFODataExpression alloc] initWithProperty:[SFODataTestEntity SF_propertyNamed:@"name"]];
-    SFODataExpression *rightExpression = [[SFODataExpression alloc] initWithValue:@"Paul"];
-    SFODataPredicate *predicate = [[SFODataPredicate alloc] initWithLeftExpression:leftExpression rightExpression:rightExpression type:SFEqualToODataPredicateOperatorType];
-    SFODataFetchRequest *fetchRequest = [[SFODataFetchRequest alloc] initWithEntityName:[SFODataTestEntity entityName] predicate:predicate];
+    RFODataExpression *leftExpression = [[RFODataExpression alloc] initWithProperty:[RFODataTestEntity RF_propertyNamed:@"name"]];
+    RFODataExpression *rightExpression = [[RFODataExpression alloc] initWithValue:@"Paul"];
+    RFODataPredicate *predicate = [[RFODataPredicate alloc] initWithLeftExpression:leftExpression rightExpression:rightExpression type:RFEqualToODataPredicateOperatorType];
+    RFODataFetchRequest *fetchRequest = [[RFODataFetchRequest alloc] initWithEntityName:[RFODataTestEntity entityName] predicate:predicate];
     fetchRequest.fetchOffset = 2;
     fetchRequest.fetchLimit = 3;
     
     __block BOOL isFinished = NO;
     
-    __block SFDownloader *downloader = (SFDownloader *)[_webClient loadDataWithFetchRequest:fetchRequest someImportantParameter:@"value1" success:^(id result) {
+    __block RFDownloader *downloader = (RFDownloader *)[_webClient loadDataWithFetchRequest:fetchRequest someImportantParameter:@"value1" success:^(id result) {
         NSLog(@"%@", downloader.request.URL);
         STAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity?importantParameter=value1&$top=3&$skip=2&$filter=Name%20eq%20Paul"], @"URL with pagination was built incorrectly");
         isFinished = YES;
@@ -162,14 +162,14 @@
 }
 
 - (void)testODataRequestURLWithExpandOption {
-    SFODataFetchRequest *fetchRequest = [[SFODataFetchRequest alloc] initWithEntityName:[SFODataTestEntity entityName]];
-    [fetchRequest expandWithEntity:[SFODataTestEntity entityName]];
+    RFODataFetchRequest *fetchRequest = [[RFODataFetchRequest alloc] initWithEntityName:[RFODataTestEntity entityName]];
+    [fetchRequest expandWithEntity:[RFODataTestEntity entityName]];
     [fetchRequest expandWithEntity:@"SomeEntity"];
     [fetchRequest expandWithEntity:@"AnotheEntity"];
     
     __block BOOL isFinished = NO;
     
-    __block SFDownloader *downloader = (SFDownloader *)[_webClient loadDataWithFetchRequest:fetchRequest someImportantParameter:@"value1" success:^(id result) {
+    __block RFDownloader *downloader = (RFDownloader *)[_webClient loadDataWithFetchRequest:fetchRequest someImportantParameter:@"value1" success:^(id result) {
         NSLog(@"%@", downloader.request.URL);
         STAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity?importantParameter=value1&$expand=TestEntity,SomeEntity,AnotheEntity"], @"URL with expand was built incorrectly");
         isFinished = YES;
@@ -186,12 +186,12 @@
 }
 
 - (void)testODataRequestURLWithMultipleExpandOption {
-    SFODataFetchRequest *fetchRequest = [[SFODataFetchRequest alloc] initWithEntityName:[SFODataTestEntity entityName]];
-    [fetchRequest expandWithMultiLevelEntities:@[[SFODataTestEntity entityName], @"SomeEntity", @"AnotheEntity"]];
+    RFODataFetchRequest *fetchRequest = [[RFODataFetchRequest alloc] initWithEntityName:[RFODataTestEntity entityName]];
+    [fetchRequest expandWithMultiLevelEntities:@[[RFODataTestEntity entityName], @"SomeEntity", @"AnotheEntity"]];
     
     __block BOOL isFinished = NO;
     
-    __block SFDownloader *downloader = (SFDownloader *)[_webClient loadDataWithFetchRequest:fetchRequest someImportantParameter:@"value1" success:^(id result) {
+    __block RFDownloader *downloader = (RFDownloader *)[_webClient loadDataWithFetchRequest:fetchRequest someImportantParameter:@"value1" success:^(id result) {
         NSLog(@"%@", downloader.request.URL);
         STAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity?importantParameter=value1&$expand=TestEntity/SomeEntity/AnotheEntity"], @"URL with multi level expand was built incorrectly");
         isFinished = YES;

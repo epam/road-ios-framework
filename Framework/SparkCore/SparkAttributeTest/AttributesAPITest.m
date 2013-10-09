@@ -39,45 +39,45 @@
 
 #pragma mark - Test Attributes generated code (Methods section)
 
-- (void)test_SF_attributesForInstanceMethod {
-    NSArray *attributesList = [AnnotatedClass SF_attributesForMethod:@"viewDidLoad"];
+- (void)test_RF_attributesForInstanceMethod {
+    NSArray *attributesList = [AnnotatedClass RF_attributesForMethod:@"viewDidLoad"];
     STAssertTrue(attributesList != nil, @"attributesList must contain values");
     STAssertTrue([attributesList count] == 2, @"attributesList must contain 2 items");
     
-    CustomSFTestAttribute *testAttribute = [attributesList lastObject];
+    CustomRFTestAttribute *testAttribute = [attributesList lastObject];
     STAssertTrue(testAttribute != nil, @"testAttribute must not be nil");
     STAssertEquals(testAttribute.property1, @"Text1", @"testAttribute doesn't contains appropriate value");
 }
 
-- (void)test_SF_attributesForInstanceMethodCaching {
-    NSArray *attributesList1 = [AnnotatedClass SF_attributesForMethod:@"viewDidLoad"];
+- (void)test_RF_attributesForInstanceMethodCaching {
+    NSArray *attributesList1 = [AnnotatedClass RF_attributesForMethod:@"viewDidLoad"];
     STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
 
-    NSArray *attributesList2 = [AnnotatedClass SF_attributesForMethod:@"viewDidLoad"];
+    NSArray *attributesList2 = [AnnotatedClass RF_attributesForMethod:@"viewDidLoad"];
     STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
     
     STAssertTrue(attributesList1 == attributesList2, @"attributesList1 and attributesList2 must point at the same array");    
 }
 
-- (void)test_SF_attributesForInstanceMethodCachingAfterAutoreleasePool {
+- (void)test_RF_attributesForInstanceMethodCachingAfterAutoreleasePool {
     NSArray __weak *attributesList1 = nil;
     
     @autoreleasepool {
-        attributesList1 = [AnnotatedClass SF_attributesForMethod:@"viewDidLoad"];
+        attributesList1 = [AnnotatedClass RF_attributesForMethod:@"viewDidLoad"];
         STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
     }
         
-    NSArray *attributesList2 = [AnnotatedClass SF_attributesForMethod:@"viewDidLoad"];
+    NSArray *attributesList2 = [AnnotatedClass RF_attributesForMethod:@"viewDidLoad"];
     STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
     
     STAssertTrue(attributesList1 != attributesList2, @"it seems here is memory leak");
 }
 
 - (void)test_InstanceMethodCachingInterference {    
-    NSArray *attributesList1 = [AnnotatedClass SF_attributesForMethod:@"viewDidLoad"];
+    NSArray *attributesList1 = [AnnotatedClass RF_attributesForMethod:@"viewDidLoad"];
     STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
     
-    NSArray *attributesList2 = [SecondAnnotatedClass SF_attributesForMethod:@"viewDidLoad"];
+    NSArray *attributesList2 = [SecondAnnotatedClass RF_attributesForMethod:@"viewDidLoad"];
     STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
     
     STAssertTrue(attributesList1 != attributesList2, @"attributesList1 and attributesList2 must not point at the same array");
@@ -87,45 +87,45 @@
 
 #pragma mark - Test Attributes generated code (Properties section)
 
-- (void)test_SF_attributesForProperty {
-    NSArray *attributesList = [AnnotatedClass SF_attributesForProperty:@"window"];
+- (void)test_RF_attributesForProperty {
+    NSArray *attributesList = [AnnotatedClass RF_attributesForProperty:@"window"];
     STAssertTrue(attributesList != nil, @"attributesList must contain values");
     STAssertTrue([attributesList count] == 2, @"attributesList must contain 2 items");
     
-    CustomSFTestAttribute *testAttribute = [attributesList lastObject];
+    CustomRFTestAttribute *testAttribute = [attributesList lastObject];
     STAssertTrue(testAttribute != nil, @"testAttribute must not be nil");
     STAssertEquals(testAttribute.property2, @"Text2", @"testAttribute doesn't contains appropriate value");
 }
 
-- (void)test_SF_attributesForPropertyCaching {
-    NSArray *attributesList1 = [AnnotatedClass SF_attributesForProperty:@"window"];
+- (void)test_RF_attributesForPropertyCaching {
+    NSArray *attributesList1 = [AnnotatedClass RF_attributesForProperty:@"window"];
     STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
     
-    NSArray *attributesList2 = [AnnotatedClass SF_attributesForProperty:@"window"];
+    NSArray *attributesList2 = [AnnotatedClass RF_attributesForProperty:@"window"];
     STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
     
     STAssertTrue(attributesList1 == attributesList2, @"attributesList1 and attributesList2 must point at the same array");
 }
 
-- (void)test_SF_attributesForPropertyCachingAfterAutoreleasePool {
+- (void)test_RF_attributesForPropertyCachingAfterAutoreleasePool {
     NSArray __weak *attributesList1 = nil;
     
     @autoreleasepool {
-        attributesList1 = [AnnotatedClass SF_attributesForProperty:@"window"];
+        attributesList1 = [AnnotatedClass RF_attributesForProperty:@"window"];
         STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
     }
     
-    NSArray *attributesList2 = [AnnotatedClass SF_attributesForProperty:@"window"];
+    NSArray *attributesList2 = [AnnotatedClass RF_attributesForProperty:@"window"];
     STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
     
     STAssertTrue(attributesList1 != attributesList2, @"it seems here is memory leak");
 }
 
 - (void)test_PropertyCachingInterference {    
-    NSArray *attributesList1 = [AnnotatedClass SF_attributesForProperty:@"window"];
+    NSArray *attributesList1 = [AnnotatedClass RF_attributesForProperty:@"window"];
     STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
     
-    NSArray *attributesList2 = [SecondAnnotatedClass SF_attributesForProperty:@"window"];
+    NSArray *attributesList2 = [SecondAnnotatedClass RF_attributesForProperty:@"window"];
     STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
     
     STAssertTrue(attributesList1 != attributesList2, @"attributesList1 and attributesList2 must not point at the same array");
@@ -135,112 +135,112 @@
 
 #pragma mark - Test Attributes generated code (Fields section)
 
-- (void)test_SF_attributesForField {
-    NSArray *attributesList = [AnnotatedClass SF_attributesForIvar:@"_someField"];
+- (void)test_RF_attributesForField {
+    NSArray *attributesList = [AnnotatedClass RF_attributesForIvar:@"_someField"];
     STAssertTrue(attributesList != nil, @"attributesList must contain values");
     STAssertTrue([attributesList count] == 1, @"attributesList must contain 2 items");
     
-    CustomSFTestAttribute *testAttribute = [attributesList lastObject];
+    CustomRFTestAttribute *testAttribute = [attributesList lastObject];
     STAssertTrue(testAttribute != nil, @"testAttribute must not be nil");
 }
 
-- (void)test_SF_attributesForFieldCaching {
-    NSArray *attributesList1 = [AnnotatedClass SF_attributesForIvar:@"_someField"];
+- (void)test_RF_attributesForFieldCaching {
+    NSArray *attributesList1 = [AnnotatedClass RF_attributesForIvar:@"_someField"];
     STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
     
-    NSArray *attributesList2 = [AnnotatedClass SF_attributesForIvar:@"_someField"];
+    NSArray *attributesList2 = [AnnotatedClass RF_attributesForIvar:@"_someField"];
     STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
     
     STAssertTrue(attributesList1 == attributesList2, @"attributesList1 and attributesList2 must point at the same array");
 }
 
-- (void)test_SF_attributesForFieldCachingAfterAutoreleasePool {
+- (void)test_RF_attributesForFieldCachingAfterAutoreleasePool {
     NSArray __weak *attributesList1 = nil;
     
     @autoreleasepool {
-        attributesList1 = [AnnotatedClass SF_attributesForIvar:@"_someField"];
+        attributesList1 = [AnnotatedClass RF_attributesForIvar:@"_someField"];
         STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
     }
     
-    NSArray *attributesList2 = [AnnotatedClass SF_attributesForIvar:@"_someField"];
+    NSArray *attributesList2 = [AnnotatedClass RF_attributesForIvar:@"_someField"];
     STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
     
     STAssertTrue(attributesList1 != attributesList2, @"it seems here is memory leak");
 }
 
 - (void)test_FieldCachingInterference {    
-    NSArray *attributesList1 = [AnnotatedClass SF_attributesForIvar:@"_someField"];
+    NSArray *attributesList1 = [AnnotatedClass RF_attributesForIvar:@"_someField"];
     STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
     
-    NSArray *attributesList2 = [SecondAnnotatedClass SF_attributesForIvar:@"_someField"];
+    NSArray *attributesList2 = [SecondAnnotatedClass RF_attributesForIvar:@"_someField"];
     STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
     
     STAssertTrue(attributesList1 != attributesList2, @"attributesList1 and attributesList2 must not point at the same array");
 }
 
-- (void)test_SF_attributesForClass {
-    NSArray *attributesList = [AnnotatedClass SF_attributesForClass];
+- (void)test_RF_attributesForClass {
+    NSArray *attributesList = [AnnotatedClass RF_attributesForClass];
     STAssertTrue(attributesList != nil, @"attributesList must contain values");
     STAssertTrue([attributesList count] == 2, @"attributesList must contain 2 items");
     
-    CustomSFTestAttribute *testAttribute = [AnnotatedClass SF_attributeForClassWithAttributeType:[CustomSFTestAttribute class]];
+    CustomRFTestAttribute *testAttribute = [AnnotatedClass RF_attributeForClassWithAttributeType:[CustomRFTestAttribute class]];
     
     STAssertTrue(testAttribute != nil, @"please check function");
 }
 
-- (void)test_SF_propertiesWithAttributeType_withFiltering {
-    NSArray *properties = [AnnotatedClass SF_propertiesWithAttributeType:[CustomSFTestAttribute class]];
+- (void)test_RF_propertiesWithAttributeType_withFiltering {
+    NSArray *properties = [AnnotatedClass RF_propertiesWithAttributeType:[CustomRFTestAttribute class]];
     STAssertTrue([properties count] == 1, @"properties must contain values");
 
-    SFPropertyInfo *property = [properties lastObject];
+    RFPropertyInfo *property = [properties lastObject];
     STAssertTrue([property.propertyName isEqualToString:@"window"], @"please check function");
 }
 
-- (void)test_SF_propertiesWithAttributeType_withWrongFiltering {
-    NSArray *properties = [AnnotatedClass SF_propertiesWithAttributeType:[AnnotatedClass class]];
+- (void)test_RF_propertiesWithAttributeType_withWrongFiltering {
+    NSArray *properties = [AnnotatedClass RF_propertiesWithAttributeType:[AnnotatedClass class]];
     STAssertTrue([properties count] == 0, @"properties must not contain values");
 }
 
-- (void)test_SF_ivarsWithAttributeType_withFiltering {
-    NSArray *ivars = [AnnotatedClass SF_ivarsWithAttributeType:[SFTestAttribute class]];
+- (void)test_RF_ivarsWithAttributeType_withFiltering {
+    NSArray *ivars = [AnnotatedClass RF_ivarsWithAttributeType:[RFTestAttribute class]];
     STAssertTrue([ivars count] == 1, @"ivars must contain values");
     
-    SFIvarInfo *ivar = [ivars lastObject];
+    RFIvarInfo *ivar = [ivars lastObject];
     STAssertTrue([ivar.name isEqualToString:@"_someField"], @"please check function");
 }
 
-- (void)test_SF_ivarsWithAttributeType_withWrongFiltering {
-    NSArray *ivars = [AnnotatedClass SF_ivarsWithAttributeType:[AnnotatedClass class]];
+- (void)test_RF_ivarsWithAttributeType_withWrongFiltering {
+    NSArray *ivars = [AnnotatedClass RF_ivarsWithAttributeType:[AnnotatedClass class]];
     STAssertTrue([ivars count] == 0, @"ivars must not contain values");
 }
 
-- (void)test_SF_methodsWithAttributeType_withFiltering {
-    NSArray *methods = [AnnotatedClass SF_methodsWithAttributeType:[CustomSFTestAttribute class]];
+- (void)test_RF_methodsWithAttributeType_withFiltering {
+    NSArray *methods = [AnnotatedClass RF_methodsWithAttributeType:[CustomRFTestAttribute class]];
     STAssertTrue([methods count] == 1, @"methods must contain values");
     
-    SFMethodInfo *method = [methods lastObject];
+    RFMethodInfo *method = [methods lastObject];
     STAssertTrue([method.name isEqualToString:@"viewDidLoad"], @"please check function");
 }
 
-- (void)test_SF_methodsWithAttributeType_withWrongFiltering {
-    NSArray *methods = [AnnotatedClass SF_methodsWithAttributeType:[AnnotatedClass class]];
+- (void)test_RF_methodsWithAttributeType_withWrongFiltering {
+    NSArray *methods = [AnnotatedClass RF_methodsWithAttributeType:[AnnotatedClass class]];
     STAssertTrue([methods count] == 0, @"methods must not contain values");
 }
 
-- (void)test_SF_attributeForMethod {
-    STAssertTrue([AnnotatedClass SF_attributeForMethod:@"viewDidLoad" withAttributeType:[CustomSFTestAttribute class]] != nil, @"please check function");
+- (void)test_RF_attributeForMethod {
+    STAssertTrue([AnnotatedClass RF_attributeForMethod:@"viewDidLoad" withAttributeType:[CustomRFTestAttribute class]] != nil, @"please check function");
 }
 
-- (void)test_SF_attributeForProperty {
-    STAssertTrue([AnnotatedClass SF_attributeForProperty:@"window" withAttributeType:[CustomSFTestAttribute class]] != nil, @"please check function");
+- (void)test_RF_attributeForProperty {
+    STAssertTrue([AnnotatedClass RF_attributeForProperty:@"window" withAttributeType:[CustomRFTestAttribute class]] != nil, @"please check function");
 }
 
-- (void)test_SF_attributeForIvar {
-    STAssertTrue([AnnotatedClass SF_attributeForIvar:@"_someField" withAttributeType:[SFTestAttribute class]] != nil, @"please check function");
+- (void)test_RF_attributeForIvar {
+    STAssertTrue([AnnotatedClass RF_attributeForIvar:@"_someField" withAttributeType:[RFTestAttribute class]] != nil, @"please check function");
 }
 
-- (void)test_SF_attributeForClassWithAttributeType {
-    STAssertTrue([AnnotatedClass SF_attributeForClassWithAttributeType:[CustomSFTestAttribute class]] != nil, @"please check function");
+- (void)test_RF_attributeForClassWithAttributeType {
+    STAssertTrue([AnnotatedClass RF_attributeForClassWithAttributeType:[CustomRFTestAttribute class]] != nil, @"please check function");
 }
 
 #pragma mark -

@@ -1,5 +1,5 @@
 //
-//  SFWebServiceHeader.m
+//  RFWebServiceHeader.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,8 +30,8 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFWebServiceHeader.h"
+#import "RFWebServiceHeader.h"
 
-@implementation SFWebServiceHeader
+@implementation RFWebServiceHeader
 
 @end

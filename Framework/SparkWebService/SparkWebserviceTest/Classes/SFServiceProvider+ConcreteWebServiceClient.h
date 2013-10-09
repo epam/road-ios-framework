@@ -1,5 +1,5 @@
 //
-//  SFServiceProvider+ConcreteWebServiceClient.h
+//  RFServiceProvider+ConcreteWebServiceClient.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,11 +31,11 @@
 // for additional information regarding copyright ownership and licensing
 
 #import <ROAD/ROADServices.h>
-#import "SFConcreteWebServiceClient.h"
+#import "RFConcreteWebServiceClient.h"
 
-@interface SFServiceProvider (ConcreteWebServiceClient)
+@interface RFServiceProvider (ConcreteWebServiceClient)
 
-SF_ATTRIBUTE(SFService, serviceClass = [SFConcreteWebServiceClient class])
-+ (SFConcreteWebServiceClient *)concreteWebServiceClient;
+RF_ATTRIBUTE(RFService, serviceClass = [RFConcreteWebServiceClient class])
++ (RFConcreteWebServiceClient *)concreteWebServiceClient;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  NSBundle+SFParameterList.m
+//  NSBundle+RFParameterList.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,22 +31,22 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "NSBundle+SFParameterList.h"
+#import "NSBundle+RFParameterList.h"
 
-NSString * const kSFPlistFileExtension = @"plist";
+NSString * const kRFPlistFileExtension = @"plist";
 
-@implementation NSBundle (SFParameterList)
+@implementation NSBundle (RFParameterList)
 
-- (NSString *)SF_pathForPlistResource:(NSString *)plistResourceName {
-    return [self pathForResource:plistResourceName ofType:kSFPlistFileExtension];
+- (NSString *)RF_pathForPlistResource:(NSString *)plistResourceName {
+    return [self pathForResource:plistResourceName ofType:kRFPlistFileExtension];
 }
 
-- (NSURL *)SF_urlForPlistResource:(NSString *)plistResourceName {
-    return [self URLForResource:plistResourceName withExtension:kSFPlistFileExtension];
+- (NSURL *)RF_urlForPlistResource:(NSString *)plistResourceName {
+    return [self URLForResource:plistResourceName withExtension:kRFPlistFileExtension];
 }
 
-- (NSString *)SF_pathForOwnedPlist {
-    return [self SF_pathForPlistResource:NSStringFromClass([self class])];
+- (NSString *)RF_pathForOwnedPlist {
+    return [self RF_pathForPlistResource:NSStringFromClass([self class])];
 }
 
 @end

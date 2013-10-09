@@ -1,5 +1,5 @@
 //
-//  NSRegularExpression+SFSparkExtension.h
+//  NSRegularExpression+RFROADExtension.h
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,11 +32,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSRegularExpression (SFSparkExtension)
+@interface NSRegularExpression (RFROADExtension)
 
-+ (NSRegularExpression *)SF_regexFromString:(NSString *)regexString;
-+ (NSString *)SF_stringByReplacingRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSString *)sourceString;
-+ (void)SF_replaceRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSMutableString *)sourceString;
-+ (NSUInteger)SF_numberOfMatchesToRegex:(NSString *)regexString inString:(NSString *)sourceString;
++ (NSRegularExpression *)RF_regexFromString:(NSString *)regexString;
++ (NSString *)RF_stringByReplacingRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSString *)sourceString;
++ (void)RF_replaceRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSMutableString *)sourceString;
++ (NSUInteger)RF_numberOfMatchesToRegex:(NSString *)regexString inString:(NSString *)sourceString;
 
 @end

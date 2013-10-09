@@ -1,5 +1,5 @@
 //
-//  SFDownloader+FakeRequest.h
+//  RFDownloader+FakeRequest.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,8 +30,8 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFDownloader.h"
+#import "RFDownloader.h"
 
-@interface SFDownloader (FakeRequest)
+@interface RFDownloader (FakeRequest)
 
 @end

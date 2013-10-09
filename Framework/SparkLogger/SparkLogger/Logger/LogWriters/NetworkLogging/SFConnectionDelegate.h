@@ -1,5 +1,5 @@
 //
-//  SFConnectionDelegate.h
+//  RFConnectionDelegate.h
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,19 +30,19 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-@class SFConnection;
+@class RFConnection;
 
 /**
  The stream connection delegate protocol.
  */
-@protocol SFConnectionDelegate <NSObject>
+@protocol RFConnectionDelegate <NSObject>
 
 /**
  Invoked on the delegate if the connection has found services (using Bonjour protocol)
  @param connection The connection object sending the message.
  @param services The set of services found.
  */
-- (void)connection:(SFConnection *)connection didFindServices:(NSSet *)services;
+- (void)connection:(RFConnection *)connection didFindServices:(NSSet *)services;
 
 @optional
 
@@ -51,13 +51,13 @@
  @param connection The connection object sending the message.
  @param service The service being removed.
  */
-- (void)connection:(SFConnection *)connection didRemoveService:(NSNetService *)service;
+- (void)connection:(RFConnection *)connection didRemoveService:(NSNetService *)service;
 
 /**
  Optional method invoked when a service is about to be removed from the connection.
  @param connection The connection object sending the message.
  @param service The service being removed.
  */
-- (void)connection:(SFConnection *)connection willRemoveService:(NSNetService *)service;
+- (void)connection:(RFConnection *)connection willRemoveService:(NSNetService *)service;
 
 @end

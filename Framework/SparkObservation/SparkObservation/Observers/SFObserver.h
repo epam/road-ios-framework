@@ -1,5 +1,5 @@
 //
-//  SFObserver.h
+//  RFObserver.h
 //  ROADObservation
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -35,12 +35,12 @@
 /**
  The handler block type to execute when the observer is triggered. Receives the old and the new value for the observed keypath.
  */
-typedef void (^SFKeyValueHandlerBlock)(id oldValue, id newValue);
+typedef void (^RFKeyValueHandlerBlock)(id oldValue, id newValue);
 
 /**
  Wrapper class for the KVO observer pattern implementation in cocoa.
  */
-@interface SFObserver : NSObject
+@interface RFObserver : NSObject
 
 /**
  The observed keypath the observer is subscribed to. Read-only.
@@ -58,7 +58,7 @@ typedef void (^SFKeyValueHandlerBlock)(id oldValue, id newValue);
  @param aKeyPath The keypath to observe on the target. Cannot be nil.
  @param aHandler The block to invoke when the observer is triggered.
  */
-- (id)initWithTarget:(id const)aTarget keyPath:(NSString * const)aKeyPath handler:(SFKeyValueHandlerBlock)aHandler;
+- (id)initWithTarget:(id const)aTarget keyPath:(NSString * const)aKeyPath handler:(RFKeyValueHandlerBlock)aHandler;
 
 /**
  Designated initializer.
@@ -67,7 +67,7 @@ typedef void (^SFKeyValueHandlerBlock)(id oldValue, id newValue);
  @param aHandler The block to invoke when the observer is triggered.
  @param aDeallocBlock The block to invoke when the target changes to nil (it is either deallocated or the observer is redirected to a nil target).
  */
-- (id)initWithTarget:(id const)aTarget keyPath:(NSString * const)aKeyPath handler:(SFKeyValueHandlerBlock)aHandler deallocatonHanlder:(void (^)(void))aDeallocBlock;
+- (id)initWithTarget:(id const)aTarget keyPath:(NSString * const)aKeyPath handler:(RFKeyValueHandlerBlock)aHandler deallocatonHanlder:(void (^)(void))aDeallocBlock;
 
 /**
  Factory method.
@@ -75,6 +75,6 @@ typedef void (^SFKeyValueHandlerBlock)(id oldValue, id newValue);
  @param aKeypath The keypath to observe on the target. Cannot be nil.
  @param aHandler The block to invoke when the observer is triggered.
 */
-+ (SFObserver *)observerForTarget:(id const)aTarget keyPath:(NSString * const)aKeypath handler:(SFKeyValueHandlerBlock)aHandler;
++ (RFObserver *)observerForTarget:(id const)aTarget keyPath:(NSString * const)aKeypath handler:(RFKeyValueHandlerBlock)aHandler;
 
 @end

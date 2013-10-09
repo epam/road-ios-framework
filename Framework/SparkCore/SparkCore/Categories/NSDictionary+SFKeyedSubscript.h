@@ -1,5 +1,5 @@
 //
-//  NSDictionary+SFKeyedSubscript.h
+//  NSDictionary+RFKeyedSubscript.h
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -37,9 +37,9 @@
  Category to extend keyed subscript for fetching elements in a dictionary prior to iOS 6.0.
  */
 #ifndef __IPHONE_6_0
-@interface NSDictionary (SFKeyedSubscript)
+@interface NSDictionary (RFKeyedSubscript)
 
-- (id)SF_objectForKeyedSubscript:(id)key;
+- (id)RF_objectForKeyedSubscript:(id)key;
 
 @end
 #endif

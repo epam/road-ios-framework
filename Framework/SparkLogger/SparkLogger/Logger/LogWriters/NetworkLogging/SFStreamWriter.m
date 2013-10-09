@@ -1,5 +1,5 @@
 //
-//  SFStreamWriter.m
+//  RFStreamWriter.m
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,12 +30,12 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFStreamWriter.h"
+#import "RFStreamWriter.h"
 #include <zlib.h>
 
-#import "SFStreamDelegate.h"
+#import "RFStreamDelegate.h"
 
-@implementation SFStreamWriter {
+@implementation RFStreamWriter {
     NSMutableSet *_streamDelegates;
 }
 
@@ -66,7 +66,7 @@
     uint32_t trailer = OSSwapHostToBigInt32((uint32_t)crc);
     [buffer appendBytes:&trailer length:sizeof(trailer)];
     
-    for (SFStreamDelegate *aDelegate in _streamDelegates) {
+    for (RFStreamDelegate *aDelegate in _streamDelegates) {
         
         [aDelegate addData:buffer];
     }
@@ -76,9 +76,9 @@
     
     NSOutputStream *stream = nil;
     [service getInputStream:nil outputStream:&stream];
-    SFStreamDelegate *delegateToRemove = nil;
+    RFStreamDelegate *delegateToRemove = nil;
     
-    for (SFStreamDelegate *aDelegate in _streamDelegates) {
+    for (RFStreamDelegate *aDelegate in _streamDelegates) {
         
         if ([[aDelegate stream] isEqual:stream]) {
             
@@ -98,7 +98,7 @@
     NSOutputStream *stream = nil;
     if ([service getInputStream:nil outputStream:&stream]) {
         
-        SFStreamDelegate *aDelegate = [[SFStreamDelegate alloc] initWithOutputStream:stream];
+        RFStreamDelegate *aDelegate = [[RFStreamDelegate alloc] initWithOutputStream:stream];
         [_streamDelegates addObject:aDelegate];
         [aDelegate start];
     }
@@ -106,7 +106,7 @@
 
 - (void)dealloc {
     
-    for (SFStreamDelegate *aDelegate in _streamDelegates) {
+    for (RFStreamDelegate *aDelegate in _streamDelegates) {
         
         [aDelegate stop];
     }

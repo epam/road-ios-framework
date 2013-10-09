@@ -1,5 +1,5 @@
 //
-//  SFPooledObject.h
+//  RFPooledObject.h
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -33,15 +33,15 @@
 
 #import <Foundation/Foundation.h>
 
-@class SFObjectPool;
+@class RFObjectPool;
 
 /**
  Protocol to implement for pooled object.
  */
-@protocol SFPooledObject <NSObject>
+@protocol RFPooledObject <NSObject>
 
 /**
- The resuse identifier of the object. Managed by the SFObjectPool class.
+ The resuse identifier of the object. Managed by the RFObjectPool class.
  */
 @property (copy, nonatomic) NSString *poolReuseIdentifier;
 
@@ -49,7 +49,7 @@
  The object pool the implementing object is bound to. Convenience weak reference used in conjunction with the repool method, to invoke the pool's -repoolObject: method.
  If this method can be invoked with a different solution, then using this property is optional. Setting this property is the responsibility of the object pool itself.
  */
-@property (weak, nonatomic) SFObjectPool *pool;
+@property (weak, nonatomic) RFObjectPool *pool;
 
 /**
  Invoke this method when you are done with the object and allow the pool to reclaim this instance.

@@ -11,16 +11,16 @@
     "subDictionary" : {
         "object3" : {
             "boolean" : 0,
-            "SFSerializedObjectClassName" : "SFSerializationTestObject",
+            "RFSerializedObjectClassName" : "RFSerializationTestObject",
             "integer" : 5,
             "string1" : "value31"
         }
     },
-    "SFSerializedObjectClassName" : "SFSerializationTestObject",
+    "RFSerializedObjectClassName" : "RFSerializationTestObject",
     "integer" : 0,
     "child" : {
         "boolean" : 0,
-        "SFSerializedObjectClassName" : "SFSerializationTestObject",
+        "RFSerializedObjectClassName" : "RFSerializationTestObject",
         "strings" : [
                      "value7",
                      "value8"
@@ -28,13 +28,13 @@
         "subObjects" : [
                         {
                         "boolean" : 0,
-                        "SFSerializedObjectClassName" : "SFSerializationTestObject",
+                        "RFSerializedObjectClassName" : "RFSerializationTestObject",
                         "integer" : 5,
                         "string1" : "value31"
                         },
                         {
                         "boolean" : 0,
-                        "SFSerializedObjectClassName" : "SFSerializationTestObject",
+                        "RFSerializedObjectClassName" : "RFSerializationTestObject",
                         "integer" : 0,
                         "number" : 3,
                         "string1" : "value41"

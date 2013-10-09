@@ -1,5 +1,5 @@
 //
-//  NSInvocation+SFSparkExtension.h
+//  NSInvocation+RFROADExtension.h
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,8 +32,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSInvocation (SFSparkExtension)
+@interface NSInvocation (RFROADExtension)
 
-+ (NSInvocation *)SF_invocationForSelector:(SEL)selector target:(id)target;
++ (NSInvocation *)RF_invocationForSelector:(SEL)selector target:(id)target;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  NSMutableString+SFStringFormatter.m
+//  NSMutableString+RFStringFormatter.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,11 +31,11 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "NSMutableString+SFStringFormatter.h"
+#import "NSMutableString+RFStringFormatter.h"
 
-@implementation NSMutableString (SFStringFormatter)
+@implementation NSMutableString (RFStringFormatter)
 
-- (void)SF_formatStringUsingValues:(NSDictionary *const)valueDictionary withEscape:(NSString *const)escapeString {
+- (void)RF_formatStringUsingValues:(NSDictionary *const)valueDictionary withEscape:(NSString *const)escapeString {
     @autoreleasepool {
         NSString *pattern = [NSString stringWithFormat:@"%@(.*?)%@", escapeString, escapeString];
         NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionAllowCommentsAndWhitespace error:nil];

@@ -1,5 +1,5 @@
 //
-//  NSObject+SFAttributes.h
+//  NSObject+RFAttributes.h
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -33,9 +33,9 @@
 #import <Foundation/Foundation.h>
 
 /**
- This category constains a set of methods which provides access to attributes declared by macros SF_ATTRIBUTE
+ This category constains a set of methods which provides access to attributes declared by macros RF_ATTRIBUTE
  */
-@interface NSObject (SFAttributes)
+@interface NSObject (RFAttributes)
 
 /**
  The method returns an array of attributes declared for method.
@@ -44,7 +44,7 @@
 
  @return An array of attributes.
 */
-+ (NSArray *)SF_attributesForMethod:(NSString *)methodName;
++ (NSArray *)RF_attributesForMethod:(NSString *)methodName;
 
 /**
  The method returns an array of attributes declared for property.
@@ -53,7 +53,7 @@
  
  @return An array of attributes.
 */
-+ (NSArray *)SF_attributesForProperty:(NSString *)propertyName;
++ (NSArray *)RF_attributesForProperty:(NSString *)propertyName;
 
 /**
  The method returns an array of attributes declared for instance variable.
@@ -62,14 +62,14 @@
  
  @return An array of attributes.
 */
-+ (NSArray *)SF_attributesForIvar:(NSString *)ivarName;
++ (NSArray *)RF_attributesForIvar:(NSString *)ivarName;
 
 /**
  The method returns an array of attributes declared for class.
 
  @return An array of attributes.
 */
-+ (NSArray *)SF_attributesForClass;
++ (NSArray *)RF_attributesForClass;
 
 /**
  The method performs search for attribute of required class in array of attributes declared for method.
@@ -79,7 +79,7 @@
  
  @return An object of attribute. Or nil if attribute was not found.
  */
-+ (id)SF_attributeForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute;
++ (id)RF_attributeForMethod:(NSString *)methodName withAttributeType:(Class)requiredClassOfAttribute;
 
 /**
  The method performs search for attribute of required class in array of attributes declared for property.
@@ -89,7 +89,7 @@
  
  @return An object of attribute. Or nil if attribute was not found.
  */
-+ (id)SF_attributeForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute;
++ (id)RF_attributeForProperty:(NSString *)propertyName withAttributeType:(Class)requiredClassOfAttribute;
 
 /**
  The method performs search for attribute of required class in array of attributes declared for instance variable.
@@ -99,7 +99,7 @@
  
  @return An object of attribute. Or nil if attribute was not found.
  */
-+ (id)SF_attributeForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
++ (id)RF_attributeForIvar:(NSString *)ivarName withAttributeType:(Class)requiredClassOfAttribute;
 
 /**
  The method performs search for attribute of required class in array of attributes declared for class.
@@ -108,7 +108,7 @@
  
  @return An object of attribute. Or nil if attribute was not found.
  */
-+ (id)SF_attributeForClassWithAttributeType:(Class)requiredClassOfAttribute;
++ (id)RF_attributeForClassWithAttributeType:(Class)requiredClassOfAttribute;
 
 /**
  The method returns an array of object's properties where was declared attribute of required class.
@@ -117,7 +117,7 @@
  
  @return An array of properties.
  */
-+ (NSArray *)SF_propertiesWithAttributeType:(Class)requiredClassOfAttribute;
++ (NSArray *)RF_propertiesWithAttributeType:(Class)requiredClassOfAttribute;
 
 /**
  The method returns an array of object's instance variables where was declared attribute of required class.
@@ -126,7 +126,7 @@
  
  @return An array of instance variables.
  */
-+ (NSArray *)SF_ivarsWithAttributeType:(Class)requiredClassOfAttribute;
++ (NSArray *)RF_ivarsWithAttributeType:(Class)requiredClassOfAttribute;
 
 /**
  The method returns an array of object's methods where was declared attribute of required class.
@@ -135,6 +135,6 @@
  
  @return An array of methods.
  */
-+ (NSArray *)SF_methodsWithAttributeType:(Class)requiredClassOfAttribute;
++ (NSArray *)RF_methodsWithAttributeType:(Class)requiredClassOfAttribute;
 
 @end

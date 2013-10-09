@@ -1,5 +1,5 @@
 //
-//  SFNotificationObservation.h
+//  RFNotificationObservation.h
 //  ROADObservation
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,6 +32,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface SFNotificationObservationTest : SenTestCase
+@interface RFNotificationObservationTest : SenTestCase
 
 @end

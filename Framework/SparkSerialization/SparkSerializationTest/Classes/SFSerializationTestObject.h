@@ -1,5 +1,5 @@
 //
-//  SFSerializationTestObject.h
+//  RFSerializationTestObject.h
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,38 +32,38 @@
 
 
 #import <Foundation/Foundation.h>
-#import "SFSerializable.h"
-#import "SFSerializableDate.h"
-#import "SFSerializableCollection.h"
-#import "SFDerived.h"
+#import "RFSerializable.h"
+#import "RFSerializableDate.h"
+#import "RFSerializableCollection.h"
+#import "RFDerived.h"
 
-SF_ATTRIBUTE(SFSerializable)
-@interface SFSerializationTestObject : NSObject
+RF_ATTRIBUTE(RFSerializable)
+@interface RFSerializationTestObject : NSObject
 
 @property (strong, nonatomic) NSString *string1;
 
-SF_ATTRIBUTE(SFDerived)
+RF_ATTRIBUTE(RFDerived)
 @property (copy, nonatomic) NSString *string2;
 
 @property (assign, nonatomic) BOOL boolean;
 
 @property (strong, nonatomic) NSArray *strings;
 
-SF_ATTRIBUTE(SFSerializableDate, format = @"dd/MM/yyyy HH:mm:ss Z", encodingFormat = @"MM.dd.yyyy HH:mm:ss.AAA Z")
+RF_ATTRIBUTE(RFSerializableDate, format = @"dd/MM/yyyy HH:mm:ss Z", encodingFormat = @"MM.dd.yyyy HH:mm:ss.AAA Z")
 @property (strong, nonatomic) NSDate *date1;
 
-SF_ATTRIBUTE(SFSerializableDate, format = @"MM.dd.yyyy HH:mm", decodingFormat = @"MM.dd.yyyy HH:mm:ss")
+RF_ATTRIBUTE(RFSerializableDate, format = @"MM.dd.yyyy HH:mm", decodingFormat = @"MM.dd.yyyy HH:mm:ss")
 @property (strong, nonatomic) NSDate *date2;
 
-SF_ATTRIBUTE(SFSerializableDate, unixTimestamp = YES)
+RF_ATTRIBUTE(RFSerializableDate, unixTimestamp = YES)
 @property (strong, nonatomic) NSDate *unixTimestamp;
 
-@property (strong, nonatomic) SFSerializationTestObject *child;
+@property (strong, nonatomic) RFSerializationTestObject *child;
 
-SF_ATTRIBUTE(SFSerializableCollection, collectionClass = [SFSerializationTestObject class])
+RF_ATTRIBUTE(RFSerializableCollection, collectionClass = [RFSerializationTestObject class])
 @property (strong, nonatomic) NSArray *subObjects;
 
-SF_ATTRIBUTE(SFSerializableCollection, collectionClass = [SFSerializationTestObject class])
+RF_ATTRIBUTE(RFSerializableCollection, collectionClass = [RFSerializationTestObject class])
 @property (strong, nonatomic) NSDictionary *subDictionary;
 
 @property (nonatomic) int integer;

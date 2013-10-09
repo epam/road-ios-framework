@@ -33,39 +33,39 @@
 #ifndef ROADLogger_ROADLogger_h
 #define ROADLogger_ROADLogger_h
 
-#import "SFLogging.h"
-#import "SFLogger.h"
-#import "SFLogMessage.h"
-#import "SFLogWriter.h"
-#import "SFConsoleLogWriter.h"
-#import "SFFileLogWriter.h"
-#import "SFNetLogWriter.h"
-#import "SFLogFormatter.h"
-#import "SFLogBlockFormatter.h"
-#import "SFLogPlainFormatter.h"
-#import "SFLogFilter.h"
-#import "SFLogMessageWrapper.h"
-#import "SFServiceProvider+LoggingService.h"
+#import "RFLogging.h"
+#import "RFLogger.h"
+#import "RFLogMessage.h"
+#import "RFLogWriter.h"
+#import "RFConsoleLogWriter.h"
+#import "RFFileLogWriter.h"
+#import "RFNetLogWriter.h"
+#import "RFLogFormatter.h"
+#import "RFLogBlockFormatter.h"
+#import "RFLogPlainFormatter.h"
+#import "RFLogFilter.h"
+#import "RFLogMessageWrapper.h"
+#import "RFServiceProvider+LoggingService.h"
 
-#define SFLogInternalError(...) \
-        [[SFServiceProvider logger] logInternalErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
+#define RFLogInternalError(...) \
+        [[RFServiceProvider logger] logInternalErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
 
-#define SFLogInfo(...) \
-        if ([SFServiceProvider logger].logLevel >= SFLogLevelInfo) [[SFServiceProvider logger] logInfoMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]];
-#define SFLogDebug(...) \
-        if ([SFServiceProvider logger].logLevel >= SFLogLevelDebug) [[SFServiceProvider logger] logDebugMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
-#define SFLogWarning(...) \
-        if ([SFServiceProvider logger].logLevel >= SFLogLevelWarning) [[SFServiceProvider logger] logWarningMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
-#define SFLogError(...) \
-        if ([SFServiceProvider logger].logLevel >= SFLogLevelError) [[SFServiceProvider logger] logErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
+#define RFLogInfo(...) \
+        if ([RFServiceProvider logger].logLevel >= RFLogLevelInfo) [[RFServiceProvider logger] logInfoMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]];
+#define RFLogDebug(...) \
+        if ([RFServiceProvider logger].logLevel >= RFLogLevelDebug) [[RFServiceProvider logger] logDebugMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
+#define RFLogWarning(...) \
+        if ([RFServiceProvider logger].logLevel >= RFLogLevelWarning) [[RFServiceProvider logger] logWarningMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
+#define RFLogError(...) \
+        if ([RFServiceProvider logger].logLevel >= RFLogLevelError) [[RFServiceProvider logger] logErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__]]
 
-#define SFLogTypedInfo(__type__, ...) \
-        if ([SFServiceProvider logger].logLevel >= SFLogLevelInfo) [[SFServiceProvider logger] logInfoMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
-#define SFLogTypedDebug(__type__, ...) \
-        if ([SFServiceProvider logger].logLevel >= SFLogLevelDebug) [[SFServiceProvider logger] logDebugMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
-#define SFLogTypedWarning(__type__, ...) \
-        if ([SFServiceProvider logger].logLevel >= SFLogLevelWarning) [[SFServiceProvider logger] logWarningMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
-#define SFLogTypedError(__type__, ...) \
-        if ([SFServiceProvider logger].logLevel >= SFLogLevelError) [[SFServiceProvider logger] logErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
+#define RFLogTypedInfo(__type__, ...) \
+        if ([RFServiceProvider logger].logLevel >= RFLogLevelInfo) [[RFServiceProvider logger] logInfoMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
+#define RFLogTypedDebug(__type__, ...) \
+        if ([RFServiceProvider logger].logLevel >= RFLogLevelDebug) [[RFServiceProvider logger] logDebugMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
+#define RFLogTypedWarning(__type__, ...) \
+        if ([RFServiceProvider logger].logLevel >= RFLogLevelWarning) [[RFServiceProvider logger] logWarningMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
+#define RFLogTypedError(__type__, ...) \
+        if ([RFServiceProvider logger].logLevel >= RFLogLevelError) [[RFServiceProvider logger] logErrorMessage:[[NSString alloc] initWithFormat:__VA_ARGS__] type:__type__]
 
 #endif

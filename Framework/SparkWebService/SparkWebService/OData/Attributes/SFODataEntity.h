@@ -1,5 +1,5 @@
 //
-//  SFODataEntity.h
+//  RFODataEntity.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,7 +32,7 @@
 
 #import <ROAD/ROADAttribute.h>
 
-@interface SFODataEntity : NSObject
+@interface RFODataEntity : NSObject
 
 @property (nonatomic, strong) NSString *entityName;
 

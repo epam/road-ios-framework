@@ -1,5 +1,5 @@
 //
-//  SFAnnotatedCoderTest.h
+//  RFAnnotatedCoderTest.h
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -33,6 +33,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface SFAnnotatedCoderTest : SenTestCase
+@interface RFAnnotatedCoderTest : SenTestCase
 
 @end

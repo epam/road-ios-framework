@@ -1,5 +1,5 @@
 //
-//  SFStreamWriter.h
+//  RFStreamWriter.h
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -33,7 +33,7 @@
 /**
  Streamwriter class that manages the logging and broadcasting of log messages to established connections.
  */
-@interface SFStreamWriter : NSObject
+@interface RFStreamWriter : NSObject
 
 /**
  Designated initializer.

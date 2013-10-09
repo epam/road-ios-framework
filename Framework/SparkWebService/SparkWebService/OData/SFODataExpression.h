@@ -1,5 +1,5 @@
 //
-//  SFODataExpression.h
+//  RFODataExpression.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,9 +32,9 @@
 
 #import <ROAD/ROADReflection.h>
 
-@class SFODataPredicate;
+@class RFODataPredicate;
 
-@interface SFODataExpression : NSObject
+@interface RFODataExpression : NSObject
 
 @property (nonatomic, strong) NSString *expression;
 
@@ -52,13 +52,13 @@
  * Initializes expression with property info.
  * @param property The property information about property you want to initialize predicate with.
  */
-- (id)initWithProperty:(SFPropertyInfo *)property;
+- (id)initWithProperty:(RFPropertyInfo *)property;
 /**
  * Initializes expression with predicate to use its result in another predicate.
  * @param predicate The predicate to use it as expression.
  */
-- (id)initWithPredicate:(SFODataPredicate *)predicate;
+- (id)initWithPredicate:(RFODataPredicate *)predicate;
 
-+ (NSString *)propertyAttributeNameFromInfo:(SFPropertyInfo *)propertyInfo;
++ (NSString *)propertyAttributeNameFromInfo:(RFPropertyInfo *)propertyInfo;
 
 @end

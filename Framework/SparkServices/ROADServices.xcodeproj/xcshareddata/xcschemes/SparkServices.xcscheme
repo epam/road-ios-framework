@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7869944C16AEBF3E00B28760"
-               BuildableName = "libSparkServices.a"
+               BuildableName = "libROADServices.a"
                BlueprintName = "ROADServices"
                ReferencedContainer = "container:ROADServices.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5ACD214E1741179500CC61AC"
-               BuildableName = "SparkServicesTest.octest"
+               BuildableName = "ROADServicesTest.octest"
                BlueprintName = "ROADServicesTest"
                ReferencedContainer = "container:ROADServices.xcodeproj">
             </BuildableReference>

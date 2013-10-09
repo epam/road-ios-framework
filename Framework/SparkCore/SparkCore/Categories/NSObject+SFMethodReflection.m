@@ -1,5 +1,5 @@
 //
-//  NSObject+SFMethodReflection.m
+//  NSObject+RFMethodReflection.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,32 +31,32 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "NSObject+SFMethodReflection.h"
+#import "NSObject+RFMethodReflection.h"
 
-@implementation NSObject (SFMethodReflection)
+@implementation NSObject (RFMethodReflection)
 
-- (SFMethodInfo *)SF_classMethodNamed:(NSString *)methodName {
-    return [SFMethodInfo classMethodNamed:methodName forClass:[self class]];
+- (RFMethodInfo *)RF_classMethodNamed:(NSString *)methodName {
+    return [RFMethodInfo classMethodNamed:methodName forClass:[self class]];
 }
 
-- (SFMethodInfo *)SF_instanceMethodNamed:(NSString *)methodName {
-    return [SFMethodInfo instanceMethodNamed:methodName forClass:[self class]];
+- (RFMethodInfo *)RF_instanceMethodNamed:(NSString *)methodName {
+    return [RFMethodInfo instanceMethodNamed:methodName forClass:[self class]];
 }
 
-- (NSArray *)SF_methods {
-    return [SFMethodInfo methodsOfClass:[self class]];
+- (NSArray *)RF_methods {
+    return [RFMethodInfo methodsOfClass:[self class]];
 }
 
-+ (SFMethodInfo *)SF_classMethodNamed:(NSString *)methodName {
-    return [SFMethodInfo classMethodNamed:methodName forClass:self];
++ (RFMethodInfo *)RF_classMethodNamed:(NSString *)methodName {
+    return [RFMethodInfo classMethodNamed:methodName forClass:self];
 }
 
-+ (SFMethodInfo *)SF_instanceMethodNamed:(NSString *)methodName {
-    return [SFMethodInfo instanceMethodNamed:methodName forClass:self];
++ (RFMethodInfo *)RF_instanceMethodNamed:(NSString *)methodName {
+    return [RFMethodInfo instanceMethodNamed:methodName forClass:self];
 }
 
-+ (NSArray *)SF_methods {
-    return [SFMethodInfo methodsOfClass:self];
++ (NSArray *)RF_methods {
+    return [RFMethodInfo methodsOfClass:self];
 }
 
 

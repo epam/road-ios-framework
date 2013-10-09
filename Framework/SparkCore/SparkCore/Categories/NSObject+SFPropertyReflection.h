@@ -1,5 +1,5 @@
 //
-//  NSObject+SFPropertyReflection.h
+//  NSObject+RFPropertyReflection.h
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,37 +31,37 @@
 // for additional information regarding copyright ownership and licensing
 
 #import <Foundation/Foundation.h>
-#import "SFPropertyInfo.h"
+#import "RFPropertyInfo.h"
 
 /**
  Convenience methods to return property descriptors for objects.
  */
-@interface NSObject (SFPropertyReflection)
+@interface NSObject (RFPropertyReflection)
 
 /**
  Returns an array of property info objects. Does not list superclass properties. Invoked on an instance of a class.
  @result The info objects' array.
  */
-- (NSArray *)SF_properties;
+- (NSArray *)RF_properties;
 
 /**
  Returns a property info. Invoked on an instance of a class.
  @param name The name of the property to fetch the info for.
  @result The info object.
  */
-- (SFPropertyInfo *)SF_propertyNamed:(NSString *)name;
+- (RFPropertyInfo *)RF_propertyNamed:(NSString *)name;
 
 /**
  Returns an array of property info objects. Does not list superclass properties.
  @result The info objects' array.
  */
-+ (NSArray *)SF_properties;
++ (NSArray *)RF_properties;
 
 /**
  Returns a property info.
  @param name The name of the property to fetch the info for.
  @result The info object.
  */
-+ (SFPropertyInfo *)SF_propertyNamed:(NSString *)name;
++ (RFPropertyInfo *)RF_propertyNamed:(NSString *)name;
 
 @end

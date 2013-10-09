@@ -1,5 +1,5 @@
 //
-//  SFObserverWrapper.m
+//  RFObserverWrapper.m
 //  ROADObservation
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,21 +30,21 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFObserverWrapper.h"
+#import "RFObserverWrapper.h"
 
-NSString * const kSFNotificationNameViolationException = @"SFNotificationNameViolationException";
-NSString * const kSFNotificationNameViolationExceptionReason = @"Notification name change attempt after subscription.";
-NSString * const kSFNotificationOldNameKey = @"kSFNotificationOldNameKey";
-NSString * const kSFNotificationNewNameKey = @"kSFNotificationNewNameKey";
+NSString * const kRFNotificationNameViolationException = @"RFNotificationNameViolationException";
+NSString * const kRFNotificationNameViolationExceptionReason = @"Notification name change attempt after subscription.";
+NSString * const kRFNotificationOldNameKey = @"kRFNotificationOldNameKey";
+NSString * const kRFNotificationNewNameKey = @"kRFNotificationNewNameKey";
 
-@implementation SFObserverWrapper {
-    SFNotificationHandlerBlock _callback;
+@implementation RFObserverWrapper {
+    RFNotificationHandlerBlock _callback;
     dispatch_queue_t _executionQueue;
     id _actualObserver;
     BOOL isSubscribed;
 }
 
-- (id)initWithName:(NSString *const)name object:(const id)anObject queue:(const dispatch_queue_t)aQueue handler:(SFNotificationHandlerBlock)handler {
+- (id)initWithName:(NSString *const)name object:(const id)anObject queue:(const dispatch_queue_t)aQueue handler:(RFNotificationHandlerBlock)handler {
     self = [super init];
     
     if (self) {
@@ -61,19 +61,19 @@ NSString * const kSFNotificationNewNameKey = @"kSFNotificationNewNameKey";
     return self;
 }
 
-+ (SFObserverWrapper *)observerForName:(NSString *const)aName object:(const id)anObject queue:(const dispatch_queue_t)aQueue handler:(const SFNotificationHandlerBlock)handler {
++ (RFObserverWrapper *)observerForName:(NSString *const)aName object:(const id)anObject queue:(const dispatch_queue_t)aQueue handler:(const RFNotificationHandlerBlock)handler {
     return [[self alloc] initWithName:aName object:anObject queue:aQueue handler:handler];
 }
 
-+ (SFObserverWrapper *)observerForName:(NSString *const)aName object:(const id)anObject handler:(const SFNotificationHandlerBlock)handler {
++ (RFObserverWrapper *)observerForName:(NSString *const)aName object:(const id)anObject handler:(const RFNotificationHandlerBlock)handler {
     return [self observerForName:aName object:anObject queue:dispatch_get_current_queue() handler:handler];
 }
 
-+ (SFObserverWrapper *)observerForName:(NSString *const)aName handler:(const SFNotificationHandlerBlock)handler {
++ (RFObserverWrapper *)observerForName:(NSString *const)aName handler:(const RFNotificationHandlerBlock)handler {
     return [self observerForName:aName object:nil handler:handler];
 }
 
-+ (SFObserverWrapper *)observerForName:(NSString *const)aName queue:(const dispatch_queue_t)aQueue handler:(const SFNotificationHandlerBlock)handler {
++ (RFObserverWrapper *)observerForName:(NSString *const)aName queue:(const dispatch_queue_t)aQueue handler:(const RFNotificationHandlerBlock)handler {
     return [self observerForName:aName object:nil queue:aQueue handler:handler];
 }
 

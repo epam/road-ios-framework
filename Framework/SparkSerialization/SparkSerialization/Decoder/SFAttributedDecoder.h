@@ -1,5 +1,5 @@
 //
-//  SFAnnotatedDecoder.h
+//  RFAnnotatedDecoder.h
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -34,9 +34,9 @@
 #import <Foundation/Foundation.h>
 
 /**
- JSON deserializer. This class is using the SFSerializable and SFDerived attributes to map the JSON string to memory objects.
+ JSON deserializer. This class is using the RFSerializable and RFDerived attributes to map the JSON string to memory objects.
  */
-@interface SFAttributedDecoder : NSObject
+@interface RFAttributedDecoder : NSObject
 
 /**
  Decodes a json string. If the json object contains the base class name information, this method can build up the total object hierarchy encoded.

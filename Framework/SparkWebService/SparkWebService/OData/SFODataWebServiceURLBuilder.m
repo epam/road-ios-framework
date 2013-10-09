@@ -1,5 +1,5 @@
 //
-//  SFODataWebServiceURLBuilder.m
+//  RFODataWebServiceURLBuilder.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,12 +30,12 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFODataWebServiceURLBuilder.h"
+#import "RFODataWebServiceURLBuilder.h"
 #import <ROAD/ROADCore.h>
 
-#import "SFODataFetchRequest.h"
+#import "RFODataFetchRequest.h"
 
-@implementation SFODataWebServiceURLBuilder
+@implementation RFODataWebServiceURLBuilder
 
 + (NSURL *)urlFromTemplate:(NSString *const)urlTemplate withServiceRoot:(NSString *const)serviceRoot values:(NSDictionary *const)values {
     NSURL *url = [super urlFromTemplate:urlTemplate withServiceRoot:serviceRoot values:values];
@@ -44,8 +44,8 @@
     for (int index = 0; index < [values count]; index++) {
         id value = valuesArray[index];
         
-        if ([value isKindOfClass:[SFODataFetchRequest class]]) {
-            SFODataFetchRequest *fetchRequest = value;
+        if ([value isKindOfClass:[RFODataFetchRequest class]]) {
+            RFODataFetchRequest *fetchRequest = value;
             url = [url URLByAppendingPathComponent:fetchRequest.entityName isDirectory:NO];
             
             NSString *queryString = [fetchRequest generateQueryString];

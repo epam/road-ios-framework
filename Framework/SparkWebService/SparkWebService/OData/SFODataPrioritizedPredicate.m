@@ -1,5 +1,5 @@
 //
-//  SFODataPrioritizedPredicate.m
+//  RFODataPrioritizedPredicate.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,9 +30,9 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFODataPrioritizedPredicate.h"
+#import "RFODataPrioritizedPredicate.h"
 
-@implementation SFODataPrioritizedPredicate
+@implementation RFODataPrioritizedPredicate
 
 - (NSString *)description {
     NSString *description = [NSString stringWithFormat:@"(%@)", [super description]];

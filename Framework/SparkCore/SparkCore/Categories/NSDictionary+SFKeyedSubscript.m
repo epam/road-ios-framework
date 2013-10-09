@@ -1,5 +1,5 @@
 //
-//  NSDictionary+SFKeyedSubscript.m
+//  NSDictionary+RFKeyedSubscript.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,14 +31,14 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "NSDictionary+SFKeyedSubscript.h"
+#import "NSDictionary+RFKeyedSubscript.h"
 #import <objc/runtime.h>
 
 #ifndef __IPHONE_6_0
 
-@implementation NSDictionary (SFKeyedSubscript)
+@implementation NSDictionary (RFKeyedSubscript)
 
-- (id)SF_objectForKeyedSubscript:(id)key {
+- (id)RF_objectForKeyedSubscript:(id)key {
     return [self objectForKey:key];
 }
 

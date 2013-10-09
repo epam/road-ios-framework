@@ -1,5 +1,5 @@
 //
-//  SFLooper.h
+//  RFLooper.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,7 +31,7 @@
 // for additional information regarding copyright ownership and licensing
 
 
-@interface SFLooper : NSObject
+@interface RFLooper : NSObject
 
 - (BOOL)isLooping;
 - (void)start;

@@ -1,5 +1,5 @@
 //
-//  NSError+SFROADWebService.h
+//  NSError+RFROADWebService.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,17 +32,17 @@
 
 #import <Foundation/Foundation.h>
 
-NSString * const kSFWebServiceErrorDomain;
+NSString * const kRFWebServiceErrorDomain;
 
-@interface NSError (SFROADWebService)
+@interface NSError (RFROADWebService)
 /**
  Create deserialization error, and insert the original data into the error userinfo.
  @param data The original data.
  */
-+(NSError *)SF_sparkWS_deserializationErrorWithData:(NSData*)data;
++(NSError *)RF_sparkWS_deserializationErrorWithData:(NSData*)data;
 
 /**
  Create cancell error for cancelled webservice calls.
  */
-+(NSError*)SF_sparkWS_cancellError;
++(NSError*)RF_sparkWS_cancellError;
 @end

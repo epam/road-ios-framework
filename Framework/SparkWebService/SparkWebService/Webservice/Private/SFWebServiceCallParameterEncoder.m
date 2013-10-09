@@ -1,5 +1,5 @@
 //
-//  SFWebServiceCallParameterEncoder.m
+//  RFWebServiceCallParameterEncoder.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,18 +30,18 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFWebServiceCallParameterEncoder.h"
-#import "SFSerializationDelegate.h"
-#import "SFWebServiceURLBuilderParameter.h"
-#import "SFFormData.h"
-#import "SFMultipartData.h"
-#import "SFWebServiceClient.h"
+#import "RFWebServiceCallParameterEncoder.h"
+#import "RFSerializationDelegate.h"
+#import "RFWebServiceURLBuilderParameter.h"
+#import "RFFormData.h"
+#import "RFMultipartData.h"
+#import "RFWebServiceClient.h"
 
-static NSString * const kSFBoundaryDefaultString = @"AaB03x";
+static NSString * const kRFBoundaryDefaultString = @"AaB03x";
 
-@implementation SFWebServiceCallParameterEncoder
+@implementation RFWebServiceCallParameterEncoder
 
-+ (void)encodeParameters:(NSArray *)parameterList forClient:(SFWebServiceClient *)webClient methodName:(NSString *)methodName withSerializator:(id<SFSerializationDelegate>)serializator callbackBlock:(void(^)(NSDictionary *parameters, NSData *postData, BOOL isMultipartData))callbackBlock {
++ (void)encodeParameters:(NSArray *)parameterList forClient:(RFWebServiceClient *)webClient methodName:(NSString *)methodName withSerializator:(id<RFSerializationDelegate>)serializator callbackBlock:(void(^)(NSDictionary *parameters, NSData *postData, BOOL isMultipartData))callbackBlock {
     
     NSMutableDictionary *result = [[NSMutableDictionary alloc] initWithCapacity:[parameterList count]];
     NSMutableData *bodyData;
@@ -65,7 +65,7 @@ static NSString * const kSFBoundaryDefaultString = @"AaB03x";
             NSAssert(bodyData == nil,@"The body data can not been setted more than once");
             bodyData = object;
         }
-        else if([object isKindOfClass:[SFFormData class]]) {
+        else if([object isKindOfClass:[RFFormData class]]) {
             
             encodedObject = @"";
             if (!bodyData) {
@@ -78,7 +78,7 @@ static NSString * const kSFBoundaryDefaultString = @"AaB03x";
         }
         else if ([object isKindOfClass:[NSArray class]]
                  && [object count] > 0
-                 && [object[0] isKindOfClass:[SFFormData class]]) {
+                 && [object[0] isKindOfClass:[RFFormData class]]) {
             
             encodedObject = @"";
             if (!bodyData) {
@@ -89,7 +89,7 @@ static NSString * const kSFBoundaryDefaultString = @"AaB03x";
             isMultipartData = YES;
             [self addAttachments:object toBodyData:bodyData boundary:boundary];
         }
-        else if ([[object class] SF_attributeForClassWithAttributeType:[SFWebServiceURLBuilderParameter class]]
+        else if ([[object class] RF_attributeForClassWithAttributeType:[RFWebServiceURLBuilderParameter class]]
                  || object == [NSNull null]) {
             encodedObject = object;
         }
@@ -108,12 +108,12 @@ static NSString * const kSFBoundaryDefaultString = @"AaB03x";
 }
 
 + (void)addAttachments:(NSArray *)attachments toBodyData:(NSMutableData *)bodyData boundary:(NSString *)boundary {
-    for (SFFormData *attachment in attachments) {
+    for (RFFormData *attachment in attachments) {
         [self addAttachment:attachment toBodyData:bodyData boundary:boundary];
     }
 }
 
-+ (void)addAttachment:(SFFormData *)attachment toBodyData:(NSMutableData *)bodyData boundary:(NSString *)boundary {
++ (void)addAttachment:(RFFormData *)attachment toBodyData:(NSMutableData *)bodyData boundary:(NSString *)boundary {
     NSAssert(attachment.name
              && attachment.data, @"Attachment has not filled required properties");
     
@@ -137,11 +137,11 @@ static NSString * const kSFBoundaryDefaultString = @"AaB03x";
 }
 
 + (NSString *)boundaryFromWebServiceClient:(id)webServiceClient withMethodName:(NSString *)methodName {
-    SFMultipartData *multipartDataAttribute = [[webServiceClient class] SF_attributeForMethod:methodName withAttributeType:[SFMultipartData class]];
+    RFMultipartData *multipartDataAttribute = [[webServiceClient class] RF_attributeForMethod:methodName withAttributeType:[RFMultipartData class]];
     NSString *boundary;
     if (!multipartDataAttribute.boundary) {
         // Default boundary
-        boundary = kSFBoundaryDefaultString;
+        boundary = kRFBoundaryDefaultString;
     }
     else {
         boundary = multipartDataAttribute.boundary;

@@ -1,5 +1,5 @@
 //
-//  SFServiceProvider+SFTestService.h
+//  RFServiceProvider+RFTestService.h
 //  ROADServices
 //
 // Redistribution and use in source and binary forms, with or without
@@ -28,24 +28,24 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFServiceProvider.h"
-#import "SFTestService.h"
-#import "SFService.h"
+#import "RFServiceProvider.h"
+#import "RFTestService.h"
+#import "RFService.h"
 
-@interface SFServiceProvider (SFTestService)
+@interface RFServiceProvider (RFTestService)
 
 /**
  The method to return the service instance. The attribute indicates this method returns a service, and which class to use in case the service is not yet initialized.
  */
-SF_ATTRIBUTE(SFService, serviceClass = [SFTestService class])
-+ (SFTestService *)serviceInstance;
+RF_ATTRIBUTE(RFService, serviceClass = [RFTestService class])
++ (RFTestService *)serviceInstance;
 
 + (id)serviceWithoutAttributes;
 
-SF_ATTRIBUTE(SFService)
+RF_ATTRIBUTE(RFService)
 + (id)serviceWithMissingPropertyOfAttribute;
 
-SF_ATTRIBUTE(NSObject)
+RF_ATTRIBUTE(NSObject)
 + (id)serviceWithWrongAttribute;
 
 

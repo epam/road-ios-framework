@@ -1,5 +1,5 @@
 //
-//  NSString+SFAccessorUtilities.h
+//  NSString+RFAccessorUtilities.h
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -34,18 +34,18 @@
 /**
  Category to convert back and forth between default setter and getter names.
  */
-@interface NSString (SFAccessorUtilities)
+@interface NSString (RFAccessorUtilities)
 
 /**
  Creates a setter accessor name from the given string by attaching a set- prefix and a : postfix to the receiver's content.
  @result The setter name.
  */
-- (NSString *)SF_stringByTransformingToSetterAccessor;
+- (NSString *)RF_stringByTransformingToSetterAccessor;
 
 /**
  Creates a getter accessor name from the receiver with the assumption it is a setter accessor method's name.
  @result The getter name.
  */
-- (NSString *)SF_stringByTransformingToGetterAccessor;
+- (NSString *)RF_stringByTransformingToGetterAccessor;
 
 @end

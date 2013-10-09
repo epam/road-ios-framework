@@ -1,5 +1,5 @@
 //
-//  SFWebServiceCancellable.h
+//  RFWebServiceCancellable.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -34,7 +34,7 @@
 /**
  * The cancellable protocol. It has to be implemented if one of the call shoulb be cancellable.
  */
-@protocol SFWebServiceCancellable <NSObject>
+@protocol RFWebServiceCancellable <NSObject>
 
 /**
  * Implementers should cancel the tasks.

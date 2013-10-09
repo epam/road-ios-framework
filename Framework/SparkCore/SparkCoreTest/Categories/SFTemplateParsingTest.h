@@ -1,5 +1,5 @@
 //
-//  SFTemplateParsingTest.h
+//  RFTemplateParsingTest.h
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -33,6 +33,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface SFTemplateParsingTest : SenTestCase
+@interface RFTemplateParsingTest : SenTestCase
 
 @end

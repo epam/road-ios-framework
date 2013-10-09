@@ -1,5 +1,5 @@
 //
-//  SFTestAttribute.h
+//  RFTestAttribute.h
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -33,6 +33,6 @@
 #import <Foundation/Foundation.h>
 #import "ROADAttribute.h"
 
-@interface SFTestAttribute : NSObject
+@interface RFTestAttribute : NSObject
 
 @end

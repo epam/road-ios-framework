@@ -1,5 +1,5 @@
 //
-//  SFConsoleLogWriter.h
+//  RFConsoleLogWriter.h
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,15 +30,15 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFLogWriter.h"
+#import "RFLogWriter.h"
 /**
  The console log writer.
  */
-@interface SFConsoleLogWriter : SFLogWriter
+@interface RFConsoleLogWriter : RFLogWriter
 
 /**
  Returns a console log writer with plain formatter.
  */
-+ (SFLogWriter *)plainConsoleWriter;
++ (RFLogWriter *)plainConsoleWriter;
 
 @end

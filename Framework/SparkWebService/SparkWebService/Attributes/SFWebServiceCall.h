@@ -1,5 +1,5 @@
 //
-//  SFWebServiceCall.h
+//  RFWebServiceCall.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,7 +32,7 @@
 
 #import <ROAD/ROADAttribute.h>
 
-@interface SFWebServiceCall : NSObject
+@interface RFWebServiceCall : NSObject
 
 @property (strong, nonatomic) NSString *relativePath;
 

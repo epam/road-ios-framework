@@ -872,8 +872,8 @@
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SparkSerializationTest/ROADSerializationTest-Prefix.pch";
-				INFOPLIST_FILE = "SparkSerializationTest/ROADSerializationTest-Info.plist";
+				GCC_PREFIX_HEADER = "ROADSerializationTest/ROADSerializationTest-Prefix.pch";
+				INFOPLIST_FILE = "ROADSerializationTest/ROADSerializationTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -899,8 +899,8 @@
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SparkSerializationTest/ROADSerializationTest-Prefix.pch";
-				INFOPLIST_FILE = "SparkSerializationTest/ROADSerializationTest-Info.plist";
+				GCC_PREFIX_HEADER = "ROADSerializationTest/ROADSerializationTest-Prefix.pch";
+				INFOPLIST_FILE = "ROADSerializationTest/ROADSerializationTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -975,7 +975,7 @@
 			buildSettings = {
 				DSTROOT = /tmp/SecondSightSerialization.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SparkSerialization/ROADSerialization-Prefix.pch";
+				GCC_PREFIX_HEADER = "ROADSerialization/ROADSerialization-Prefix.pch";
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -990,7 +990,7 @@
 			buildSettings = {
 				DSTROOT = /tmp/SecondSightSerialization.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SparkSerialization/ROADSerialization-Prefix.pch";
+				GCC_PREFIX_HEADER = "ROADSerialization/ROADSerialization-Prefix.pch";
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -1016,9 +1016,9 @@
 				FRAMEWORK_VERSION = A;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SparkSerializationMac/ROADSerializationMac-Prefix.pch";
+				GCC_PREFIX_HEADER = "ROADSerializationMac/ROADSerializationMac-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				INFOPLIST_FILE = "SparkSerializationMac/ROADSerializationMac-Info.plist";
+				INFOPLIST_FILE = "ROADSerializationMac/ROADSerializationMac-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
@@ -1047,9 +1047,9 @@
 				FRAMEWORK_VERSION = A;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SparkSerializationMac/ROADSerializationMac-Prefix.pch";
+				GCC_PREFIX_HEADER = "ROADSerializationMac/ROADSerializationMac-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				INFOPLIST_FILE = "SparkSerializationMac/ROADSerializationMac-Info.plist";
+				INFOPLIST_FILE = "ROADSerializationMac/ROADSerializationMac-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/PrivateHeaders";

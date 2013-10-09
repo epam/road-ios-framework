@@ -1,5 +1,5 @@
 //
-//  SFWebServiceClientStatusCodes.h
+//  RFWebServiceClientStatusCodes.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,7 +32,7 @@
 
 #import <ROAD/ROADAttribute.h>
 
-@interface SFWebServiceClientStatusCodes : NSObject
+@interface RFWebServiceClientStatusCodes : NSObject
 
 @property (copy, nonatomic) NSArray* successCodes;
 

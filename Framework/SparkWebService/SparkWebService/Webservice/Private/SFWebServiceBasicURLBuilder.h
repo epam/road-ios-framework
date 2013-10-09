@@ -1,5 +1,5 @@
 //
-//  SFWebServiceBasicURLBuilder.h
+//  RFWebServiceBasicURLBuilder.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,11 +30,11 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFWebServiceURLBuilding.h"
+#import "RFWebServiceURLBuilding.h"
 
 /**
  Create the URL based on the template url, values and the root url. 
  */
-@interface SFWebServiceBasicURLBuilder : NSObject <SFWebServiceURLBuilding>
+@interface RFWebServiceBasicURLBuilder : NSObject <RFWebServiceURLBuilding>
 
 @end

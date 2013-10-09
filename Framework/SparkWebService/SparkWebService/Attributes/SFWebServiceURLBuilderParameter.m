@@ -1,5 +1,5 @@
 //
-//  SFWebServiceURLBuilderParameter.m
+//  RFWebServiceURLBuilderParameter.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,8 +30,8 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFWebServiceURLBuilderParameter.h"
+#import "RFWebServiceURLBuilderParameter.h"
 
-@implementation SFWebServiceURLBuilderParameter
+@implementation RFWebServiceURLBuilderParameter
 
 @end

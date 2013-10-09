@@ -1,5 +1,5 @@
 //
-//  NSObject+SFAttachedCollections.m
+//  NSObject+RFAttachedCollections.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,19 +31,19 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "NSObject+SFAttachedCollections.h"
-#import "NSBundle+SFParameterList.h"
+#import "NSObject+RFAttachedCollections.h"
+#import "NSBundle+RFParameterList.h"
 
-@implementation NSObject (SFAttachedCollections)
+@implementation NSObject (RFAttachedCollections)
 
-- (NSArray *)SF_attachedArray {
-    NSString * const path = [[NSBundle bundleForClass:[self class]] SF_pathForOwnedPlist];
+- (NSArray *)RF_attachedArray {
+    NSString * const path = [[NSBundle bundleForClass:[self class]] RF_pathForOwnedPlist];
     NSArray * const array = [NSArray arrayWithContentsOfFile:path];
     return array;
 }
 
-- (NSDictionary *)SF_attachedDictionary {
-    NSString * const path = [[NSBundle bundleForClass:[self class]] SF_pathForOwnedPlist];
+- (NSDictionary *)RF_attachedDictionary {
+    NSString * const path = [[NSBundle bundleForClass:[self class]] RF_pathForOwnedPlist];
     NSDictionary * const dictionary = [NSDictionary dictionaryWithContentsOfFile:path];
     return dictionary;
 }

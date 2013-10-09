@@ -1,5 +1,5 @@
 //
-//  CustomSFTestAttribute.h
+//  CustomRFTestAttribute.h
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,11 +30,11 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFTestAttribute.h"
+#import "RFTestAttribute.h"
 
 typedef void (^AttributesSomeBlock)(NSString* sInfo, int *result);
 
-@interface CustomSFTestAttribute : SFTestAttribute
+@interface CustomRFTestAttribute : RFTestAttribute
 
 @property (strong, nonatomic) NSString* property1;
 @property (strong, nonatomic) NSString* property2;

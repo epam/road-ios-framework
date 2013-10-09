@@ -1,5 +1,5 @@
 //
-//  SFPoolTest.m
+//  RFPoolTest.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,18 +31,18 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFPoolTest.h"
-#import "SFObjectPool.h"
-#import "SFPoolObject.h"
+#import "RFPoolTest.h"
+#import "RFObjectPool.h"
+#import "RFPoolObject.h"
 
-@implementation SFPoolTest {
-    SFObjectPool *pool;
+@implementation RFPoolTest {
+    RFObjectPool *pool;
 }
 
 - (void)setUp {
-    pool = [[SFObjectPool alloc] init];
-    [pool registerClassNamed:@"SFPoolObject" forIdentifier:@"id1"];
-    [pool registerClassNamed:@"SFPoolObject" forIdentifier:@"id2"];
+    pool = [[RFObjectPool alloc] init];
+    [pool registerClassNamed:@"RFPoolObject" forIdentifier:@"id1"];
+    [pool registerClassNamed:@"RFPoolObject" forIdentifier:@"id2"];
 }
 
 - (void)tearDown {

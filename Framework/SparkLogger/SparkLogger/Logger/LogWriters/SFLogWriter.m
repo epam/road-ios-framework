@@ -1,5 +1,5 @@
 //
-//  SFLogWriter.m
+//  RFLogWriter.m
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,13 +30,13 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFLogWriter.h"
+#import "RFLogWriter.h"
 
-#import "SFFileLogWriter.h"
-#import "SFConsoleLogWriter.h"
-#import "SFLogMessage.h"
-#import "SFLogFilter.h"
-#import "SFLogFormatter.h"
+#import "RFFileLogWriter.h"
+#import "RFConsoleLogWriter.h"
+#import "RFLogMessage.h"
+#import "RFLogFilter.h"
+#import "RFLogFormatter.h"
 
 #if (TARGET_OS_IPHONE)
 #import <UIKit/UIKit.h>
@@ -44,7 +44,7 @@
 #import <AppKit/NSApplication.h>
 #endif
 
-@implementation SFLogWriter {
+@implementation RFLogWriter {
     NSMutableSet *_filters;
 }
 
@@ -77,35 +77,35 @@
 
 #pragma mark - Main functionality
 
-- (void)addFilter:(SFLogFilter *const)aFilter {
+- (void)addFilter:(RFLogFilter *const)aFilter {
     dispatch_async(self.queue, ^{
        [_filters addObject:aFilter];
     });
 }
 
-- (void)removeFilter:(SFLogFilter *const)aFilter {
+- (void)removeFilter:(RFLogFilter *const)aFilter {
     dispatch_async(self.queue, ^{
         [_filters removeObject:aFilter];
     });
 }
 
-- (BOOL)hasMessagePassedFilters:(SFLogMessage *const)message {
+- (BOOL)hasMessagePassedFilters:(RFLogMessage *const)message {
     __block BOOL hasPassedTest = YES;
     dispatch_sync(self.queue, ^{
-        for (SFLogFilter * const aFilter in _filters) {
+        for (RFLogFilter * const aFilter in _filters) {
             hasPassedTest = hasPassedTest && [aFilter hasMessagePassedTest:message];
         }
     });
     return hasPassedTest;
 }
 
-- (void)logValidMessage:(SFLogMessage * const)aMessage {
+- (void)logValidMessage:(RFLogMessage * const)aMessage {
     @throw [NSException exceptionWithName:@"AbstractMethodInvocationException"
                                    reason:@"Override method in subclasses, invoke this method on concrete subclasses."
                                  userInfo:nil];
 }
 
-- (void)enqueueValidMessage:(SFLogMessage * const)aMessage {
+- (void)enqueueValidMessage:(RFLogMessage * const)aMessage {
     dispatch_sync(self.queue, ^{
         [self.messageQueue addObject:aMessage];
     });
@@ -134,24 +134,24 @@
 #endif
 }
 
-- (NSString *)formattedMessage:(SFLogMessage *const)aMessage {
+- (NSString *)formattedMessage:(RFLogMessage *const)aMessage {
     return [self.formatter formatMessage:aMessage];
 }
 
-- (SFLogFormatter *)formatter {
+- (RFLogFormatter *)formatter {
     if (!_formatter) {
-        _formatter = [SFLogFormatter plainFormatter];
+        _formatter = [RFLogFormatter plainFormatter];
     }
     
     return _formatter;
 }
 
-+ (SFLogWriter *)fileWriterWithPath:(NSString * const)path {
-    return [SFFileLogWriter writerWithPath:path];
++ (RFLogWriter *)fileWriterWithPath:(NSString * const)path {
+    return [RFFileLogWriter writerWithPath:path];
 }
 
-+ (SFLogWriter *)plainConsoleWriter {
-    return [SFConsoleLogWriter plainConsoleWriter];
++ (RFLogWriter *)plainConsoleWriter {
+    return [RFConsoleLogWriter plainConsoleWriter];
 }
 
 @end

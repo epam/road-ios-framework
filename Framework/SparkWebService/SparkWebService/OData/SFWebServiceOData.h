@@ -1,5 +1,5 @@
 //
-//  SFWebServiceOData.h
+//  RFWebServiceOData.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,19 +30,19 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#ifndef SparkWebservice_SFWebServiceOData_h
-#define SparkWebservice_SFWebServiceOData_h
+#ifndef ROADWebservice_RFWebServiceOData_h
+#define ROADWebservice_RFWebServiceOData_h
 
-#import "SFODataProperty.h"
-#import "SFODataEntity.h"
+#import "RFODataProperty.h"
+#import "RFODataEntity.h"
 
-#import "SFODataFetchRequest.h"
-#import "SFODataPredicate.h"
-#import "SFODataPrioritizedPredicate.h"
-#import "SFODataExpression.h"
-#import "SFODataAbstractEntity.h"
-#import "NSSortDescriptor+SFOData.h"
-#import "SFODataWebServiceURLBuilder.h"
-#import "SFODataErrorHandler.h"
+#import "RFODataFetchRequest.h"
+#import "RFODataPredicate.h"
+#import "RFODataPrioritizedPredicate.h"
+#import "RFODataExpression.h"
+#import "RFODataAbstractEntity.h"
+#import "NSSortDescriptor+RFOData.h"
+#import "RFODataWebServiceURLBuilder.h"
+#import "RFODataErrorHandler.h"
 
 #endif

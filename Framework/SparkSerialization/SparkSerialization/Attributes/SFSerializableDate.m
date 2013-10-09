@@ -1,5 +1,5 @@
 //
-//  SFSerializableDate.m
+//  RFSerializableDate.m
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,9 +30,9 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFSerializableDate.h"
+#import "RFSerializableDate.h"
 
-@implementation SFSerializableDate
+@implementation RFSerializableDate
 
 - (id)init
 {

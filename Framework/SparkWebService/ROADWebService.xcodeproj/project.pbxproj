@@ -1031,8 +1031,8 @@
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SparkWebserviceTest/SparkWebserviceTest-Prefix.pch";
-				INFOPLIST_FILE = "SparkWebserviceTest/SparkWebserviceTest-Info.plist";
+				GCC_PREFIX_HEADER = "ROADWebserviceTest/ROADWebserviceTest-Prefix.pch";
+				INFOPLIST_FILE = "ROADWebserviceTest/ROADWebserviceTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
@@ -1059,8 +1059,8 @@
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SparkWebserviceTest/SparkWebserviceTest-Prefix.pch";
-				INFOPLIST_FILE = "SparkWebserviceTest/SparkWebserviceTest-Info.plist";
+				GCC_PREFIX_HEADER = "ROADWebserviceTest/ROADWebserviceTest-Prefix.pch";
+				INFOPLIST_FILE = "ROADWebserviceTest/ROADWebserviceTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
@@ -1126,9 +1126,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				DSTROOT = /tmp/SparkWebservice.dst;
+				DSTROOT = /tmp/ROADWebservice.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SparkWebservice/SparkWebservice-Prefix.pch";
+				GCC_PREFIX_HEADER = "ROADWebservice/ROADWebservice-Prefix.pch";
 				GCC_WARN_PEDANTIC = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(OBJROOT)/usr/local/include/**",
@@ -1151,9 +1151,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				DSTROOT = /tmp/SparkWebservice.dst;
+				DSTROOT = /tmp/ROADWebservice.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SparkWebservice/SparkWebservice-Prefix.pch";
+				GCC_PREFIX_HEADER = "ROADWebservice/ROADWebservice-Prefix.pch";
 				GCC_WARN_PEDANTIC = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(OBJROOT)/usr/local/include/**",

@@ -1,5 +1,5 @@
 //
-//  SFMethodInfo.h
+//  RFMethodInfo.h
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -34,7 +34,7 @@
 /**
  Contains information about a declared method of a given class.
  */
-@interface SFMethodInfo : NSObject
+@interface RFMethodInfo : NSObject
 
 /**
  The name of the method.
@@ -83,7 +83,7 @@
  @param aClass The class for which to return a method info.
  @result The info object.
  */
-+ (SFMethodInfo *)classMethodNamed:(NSString *)methodName forClass:(Class)aClass;
++ (RFMethodInfo *)classMethodNamed:(NSString *)methodName forClass:(Class)aClass;
 
 /**
  Returns an info object corresponding to an instance method of the given name.
@@ -91,7 +91,7 @@
  @param aClass The class for which to return a method info.
  @result The info object.
  */
-+ (SFMethodInfo *)instanceMethodNamed:(NSString *)methodName forClass:(Class)aClass;
++ (RFMethodInfo *)instanceMethodNamed:(NSString *)methodName forClass:(Class)aClass;
 
 /**
  The type of the argument at the specified index.

@@ -1,5 +1,5 @@
 //
-//  SFMethodInfo.m
+//  RFMethodInfo.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,13 +31,13 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFMethodInfo.h"
+#import "RFMethodInfo.h"
 
-#import "SFTypeDecoder.h"
+#import "RFTypeDecoder.h"
 #import <objc/runtime.h>
 #import "ROADAttribute.h"
 
-@interface SFMethodInfo () {
+@interface RFMethodInfo () {
     NSString *_name;
     NSString *_className;
     Class _hostClass;
@@ -61,9 +61,9 @@
 
 
 // The number hidden of method arguments: self and _cmd
-static NSUInteger const kSFMethodArgumentOffset = 2;
+static NSUInteger const kRFMethodArgumentOffset = 2;
 
-@implementation SFMethodInfo
+@implementation RFMethodInfo
 
 @synthesize name = _name;
 @synthesize className = _className;
@@ -95,7 +95,7 @@ static NSUInteger const kSFMethodArgumentOffset = 2;
 
 + (NSArray *)methodInfoList:(const Method *)methods count:(unsigned int)numberOfMethods ofClass:(Class)aClass areClassMethods:(const BOOL)areClassMethods {
     NSMutableArray * const result = [[NSMutableArray alloc] init];
-    SFMethodInfo *info;
+    RFMethodInfo *info;
     
     for (unsigned int index = 0; index < numberOfMethods; index++) {
         info = [self methodInfo:methods[index] forClass:aClass];
@@ -106,25 +106,25 @@ static NSUInteger const kSFMethodArgumentOffset = 2;
     return result;
 }
 
-+ (SFMethodInfo *)instanceMethodNamed:(NSString *)methodName forClass:(Class)aClass {
++ (RFMethodInfo *)instanceMethodNamed:(NSString *)methodName forClass:(Class)aClass {
     Method method = class_getInstanceMethod(aClass, NSSelectorFromString(methodName));
-    SFMethodInfo *info = [self methodInfo:method forClass:aClass];
+    RFMethodInfo *info = [self methodInfo:method forClass:aClass];
     info.classMethod = NO;
     return info;
 }
 
-+ (SFMethodInfo *)classMethodNamed:(NSString *)methodName forClass:(Class)aClass {
++ (RFMethodInfo *)classMethodNamed:(NSString *)methodName forClass:(Class)aClass {
     Method method = class_getClassMethod(aClass, NSSelectorFromString(methodName));
-    SFMethodInfo *info = [self methodInfo:method forClass:aClass];
+    RFMethodInfo *info = [self methodInfo:method forClass:aClass];
     info.classMethod = YES;
     return info;
 }
 
-+ (SFMethodInfo *)methodInfo:(Method)method forClass:(Class)aClass {
-    SFMethodInfo *info = [[SFMethodInfo alloc] initWithMethod:method];
++ (RFMethodInfo *)methodInfo:(Method)method forClass:(Class)aClass {
+    RFMethodInfo *info = [[RFMethodInfo alloc] initWithMethod:method];
     info.hostClass = aClass;
     info.name = NSStringFromSelector(method_getName(method));
-    info.numberOfArguments = (NSUInteger)method_getNumberOfArguments(method) - kSFMethodArgumentOffset;
+    info.numberOfArguments = (NSUInteger)method_getNumberOfArguments(method) - kRFMethodArgumentOffset;
     
     return info;
 }
@@ -148,9 +148,9 @@ static NSUInteger const kSFMethodArgumentOffset = 2;
 + (NSArray *)argumentsTypeNamesOfMethod:(Method)method numberOfArguments:(NSUInteger)numberOfArguments {
     NSMutableArray * const array = [[NSMutableArray alloc] init];
     
-    for (unsigned int index = kSFMethodArgumentOffset; index < numberOfArguments + kSFMethodArgumentOffset; index++) {
+    for (unsigned int index = kRFMethodArgumentOffset; index < numberOfArguments + kRFMethodArgumentOffset; index++) {
         char *argEncoding = method_copyArgumentType(method, index);
-        [array addObject:[SFTypeDecoder nameFromTypeEncoding:[NSString stringWithCString:argEncoding encoding:NSUTF8StringEncoding]]];
+        [array addObject:[RFTypeDecoder nameFromTypeEncoding:[NSString stringWithCString:argEncoding encoding:NSUTF8StringEncoding]]];
         free(argEncoding);
     }
     
@@ -161,7 +161,7 @@ static NSUInteger const kSFMethodArgumentOffset = 2;
     char *returnTypeEncoding = method_copyReturnType(method);
     NSString * const result = [NSString stringWithCString:returnTypeEncoding encoding:NSUTF8StringEncoding];
     free(returnTypeEncoding);
-    return [SFTypeDecoder nameFromTypeEncoding:result];
+    return [RFTypeDecoder nameFromTypeEncoding:result];
 }
 
 
@@ -187,11 +187,11 @@ static NSUInteger const kSFMethodArgumentOffset = 2;
 #pragma mark - Attributes
 
 - (NSArray *)attributes {
-    return [self.hostClass SF_attributesForMethod:self.name];
+    return [self.hostClass RF_attributesForMethod:self.name];
 }
 
 - (id)attributeWithType:(Class)requiredClassOfAttribute {
-    return [self.hostClass SF_attributeForMethod:self.name withAttributeType:requiredClassOfAttribute];
+    return [self.hostClass RF_attributeForMethod:self.name withAttributeType:requiredClassOfAttribute];
 }
 
 @end

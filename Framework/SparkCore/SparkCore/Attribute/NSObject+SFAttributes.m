@@ -1,5 +1,5 @@
 //
-//  NSObject+SFAttributes.m
+//  NSObject+RFAttributes.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,22 +30,22 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "NSObject+SFAttributes.h"
-#import "NSObject+SFAttributesInternal.h"
-#import <ROAD/NSRegularExpression+SFSparkExtension.h>
+#import "NSObject+RFAttributes.h"
+#import "NSObject+RFAttributesInternal.h"
+#import <ROAD/NSRegularExpression+RFROADExtension.h>
 #import <ROAD/ROADReflection.h>
 
-@interface NSObject(SFAttributesPrivate)
-+ (NSArray *)SF_attributesFromCreatorInvocation:(NSInvocation *)attributeCreatorValueInvocation;
-+ (id)SF_attributeWithType:(Class)requiredClassOfAttribute from:(NSArray *)attributes;
-+ (NSInvocation *)SF_attributeCreatorInvocationForElement:(NSString *)elementName cachedCreatorsDictionary:(NSMutableDictionary *)cachedCreatorsDictionary creatorSelectorNameFormatter:(NSString *(^)(NSString *))creatorSelectorNameFormatter;
+@interface NSObject(RFAttributesPrivate)
++ (NSArray *)RF_attributesFromCreatorInvocation:(NSInvocation *)attributeCreatorValueInvocation;
++ (id)RF_attributeWithType:(Class)requiredClassOfAttribute from:(NSArray *)attributes;
++ (NSInvocation *)RF_attributeCreatorInvocationForElement:(NSString *)elementName cachedCreatorsDictionary:(NSMutableDictionary *)cachedCreatorsDictionary creatorSelectorNameFormatter:(NSString *(^)(NSString *))creatorSelectorNameFormatter;
 @end
 
-@implementation NSObject (SFAttributes)
+@implementation NSObject (RFAttributes)
 
 #pragma mark - Attributes Private API
 
-+ (NSArray *)SF_attributesFromCreatorInvocation:(NSInvocation *)attributeCreatorValueInvocation {
++ (NSArray *)RF_attributesFromCreatorInvocation:(NSInvocation *)attributeCreatorValueInvocation {
     [attributeCreatorValueInvocation invoke];
     
     __unsafe_unretained NSArray *result = nil;
@@ -54,7 +54,7 @@
     return result;
 }
 
-+ (id)SF_attributeWithType:(Class)requiredClassOfAttribute from:(NSArray *)attributes {
++ (id)RF_attributeWithType:(Class)requiredClassOfAttribute from:(NSArray *)attributes {
     id result = nil;
     
     for (NSObject *attribute in attributes) {
@@ -67,7 +67,7 @@
     return result;
 }
 
-+ (NSInvocation *)SF_attributeCreatorInvocationForElement:(NSString *)elementName cachedCreatorsDictionary:(NSMutableDictionary *)cachedCreatorsDictionary creatorSelectorNameFormatter:(NSString *(^)(NSString *))creatorSelectorNameFormatter {    
++ (NSInvocation *)RF_attributeCreatorInvocationForElement:(NSString *)elementName cachedCreatorsDictionary:(NSMutableDictionary *)cachedCreatorsDictionary creatorSelectorNameFormatter:(NSString *(^)(NSString *))creatorSelectorNameFormatter {    
     NSInvocation *result = [cachedCreatorsDictionary objectForKey:elementName];
     if (result) {
         return result;
@@ -79,7 +79,7 @@
         return nil;
     }
     
-    result = [self SF_invocationForSelector:creatorSelector];
+    result = [self RF_invocationForSelector:creatorSelector];
     if (!result) {
         return nil;
     }
@@ -90,56 +90,56 @@
 
 #pragma mark - Attributes Public API
 
-+ (NSArray *)SF_attributesForMethod:(NSString *)methodName {
-    NSInvocation *attributeCreatorInvocation = [self SF_attributeCreatorInvocationForElement:methodName cachedCreatorsDictionary:self.SF_attributesFactoriesForMethods creatorSelectorNameFormatter:^NSString *(NSString *methodName) {
-        NSUInteger parametersCount = [NSRegularExpression SF_numberOfMatchesToRegex:@":" inString:methodName];
-        NSString *methodNameWithoutParameters = [NSRegularExpression SF_stringByReplacingRegex:@":.*" withTemplate:@"" inString:methodName];
-        return [NSString stringWithFormat:@"SF_attributes_%@_method_%@_p%d", NSStringFromClass(self), methodNameWithoutParameters, parametersCount];
++ (NSArray *)RF_attributesForMethod:(NSString *)methodName {
+    NSInvocation *attributeCreatorInvocation = [self RF_attributeCreatorInvocationForElement:methodName cachedCreatorsDictionary:self.RF_attributesFactoriesForMethods creatorSelectorNameFormatter:^NSString *(NSString *methodName) {
+        NSUInteger parametersCount = [NSRegularExpression RF_numberOfMatchesToRegex:@":" inString:methodName];
+        NSString *methodNameWithoutParameters = [NSRegularExpression RF_stringByReplacingRegex:@":.*" withTemplate:@"" inString:methodName];
+        return [NSString stringWithFormat:@"RF_attributes_%@_method_%@_p%d", NSStringFromClass(self), methodNameWithoutParameters, parametersCount];
     }];
-    return [self SF_attributesFromCreatorInvocation:attributeCreatorInvocation];
+    return [self RF_attributesFromCreatorInvocation:attributeCreatorInvocation];
 }
 
-+ (NSArray *)SF_attributesForProperty:(NSString *)propertyName {
-    NSInvocation *attributeCreatorInvocation = [self SF_attributeCreatorInvocationForElement:propertyName cachedCreatorsDictionary:self.SF_attributesFactoriesForProperties creatorSelectorNameFormatter:^NSString *(NSString *propertyName) {
-        return [NSString stringWithFormat:@"SF_attributes_%@_property_%@", NSStringFromClass(self), propertyName];
++ (NSArray *)RF_attributesForProperty:(NSString *)propertyName {
+    NSInvocation *attributeCreatorInvocation = [self RF_attributeCreatorInvocationForElement:propertyName cachedCreatorsDictionary:self.RF_attributesFactoriesForProperties creatorSelectorNameFormatter:^NSString *(NSString *propertyName) {
+        return [NSString stringWithFormat:@"RF_attributes_%@_property_%@", NSStringFromClass(self), propertyName];
     }];
-    return [self SF_attributesFromCreatorInvocation:attributeCreatorInvocation];
+    return [self RF_attributesFromCreatorInvocation:attributeCreatorInvocation];
 }
 
-+ (NSArray *)SF_attributesForIvar:(NSString *)ivarName {
-    NSInvocation *attributeCreatorInvocation = [self SF_attributeCreatorInvocationForElement:ivarName cachedCreatorsDictionary:self.SF_attributesFactoriesForIvars creatorSelectorNameFormatter:^NSString *(NSString *ivarName) {
-        return [NSString stringWithFormat:@"SF_attributes_%@_ivar_%@", NSStringFromClass(self), ivarName];
++ (NSArray *)RF_attributesForIvar:(NSString *)ivarName {
+    NSInvocation *attributeCreatorInvocation = [self RF_attributeCreatorInvocationForElement:ivarName cachedCreatorsDictionary:self.RF_attributesFactoriesForIvars creatorSelectorNameFormatter:^NSString *(NSString *ivarName) {
+        return [NSString stringWithFormat:@"RF_attributes_%@_ivar_%@", NSStringFromClass(self), ivarName];
     }];
-    return [self SF_attributesFromCreatorInvocation:attributeCreatorInvocation];
+    return [self RF_attributesFromCreatorInvocation:attributeCreatorInvocation];
 }
 
-+ (NSArray *)SF_attributesForClass { return nil; }
++ (NSArray *)RF_attributesForClass { return nil; }
 
 
-+ (id)SF_attributeForMethod:(NSString *)methodName  withAttributeType:(Class)requiredClassOfAttribute {
++ (id)RF_attributeForMethod:(NSString *)methodName  withAttributeType:(Class)requiredClassOfAttribute {
     NSAssert(requiredClassOfAttribute, @"You must specify class of required attribute");
-    return [self SF_attributeWithType:requiredClassOfAttribute from:[self SF_attributesForMethod:methodName]];
+    return [self RF_attributeWithType:requiredClassOfAttribute from:[self RF_attributesForMethod:methodName]];
 }
 
-+ (id)SF_attributeForProperty:(NSString *)propertyName  withAttributeType:(Class)requiredClassOfAttribute {
++ (id)RF_attributeForProperty:(NSString *)propertyName  withAttributeType:(Class)requiredClassOfAttribute {
     NSAssert(requiredClassOfAttribute, @"You must specify class of required attribute");
-    return [self SF_attributeWithType:requiredClassOfAttribute from:[self SF_attributesForProperty:propertyName]];
+    return [self RF_attributeWithType:requiredClassOfAttribute from:[self RF_attributesForProperty:propertyName]];
 }
 
-+ (id)SF_attributeForIvar:(NSString *)ivarName  withAttributeType:(Class)requiredClassOfAttribute {
++ (id)RF_attributeForIvar:(NSString *)ivarName  withAttributeType:(Class)requiredClassOfAttribute {
     NSAssert(requiredClassOfAttribute, @"You must specify class of required attribute");
-    return [self SF_attributeWithType:requiredClassOfAttribute from:[self SF_attributesForIvar:ivarName]];
+    return [self RF_attributeWithType:requiredClassOfAttribute from:[self RF_attributesForIvar:ivarName]];
 }
 
-+ (id)SF_attributeForClassWithAttributeType:(Class)requiredClassOfAttribute {
++ (id)RF_attributeForClassWithAttributeType:(Class)requiredClassOfAttribute {
     NSAssert(requiredClassOfAttribute, @"You must specify class of required attribute");
-    return [self SF_attributeWithType:requiredClassOfAttribute from:[self SF_attributesForClass]];
+    return [self RF_attributeWithType:requiredClassOfAttribute from:[self RF_attributesForClass]];
 }
 
-+ (NSArray *)SF_propertiesWithAttributeType:(Class)requiredClassOfAttribute {
++ (NSArray *)RF_propertiesWithAttributeType:(Class)requiredClassOfAttribute {
     NSMutableArray *result = [NSMutableArray array];
     
-    for (SFPropertyInfo *currentPropertyInfo in [self SF_properties]) {
+    for (RFPropertyInfo *currentPropertyInfo in [self RF_properties]) {
         if ([currentPropertyInfo attributeWithType:requiredClassOfAttribute]) {
             [result addObject:currentPropertyInfo];
         }
@@ -148,10 +148,10 @@
     return result;
 }
 
-+ (NSArray *)SF_ivarsWithAttributeType:(Class)requiredClassOfAttribute {
++ (NSArray *)RF_ivarsWithAttributeType:(Class)requiredClassOfAttribute {
     NSMutableArray *result = [NSMutableArray array];
     
-    for (SFIvarInfo *currentIvarInfo in [self SF_ivars]) {
+    for (RFIvarInfo *currentIvarInfo in [self RF_ivars]) {
         if ([currentIvarInfo attributeWithType:requiredClassOfAttribute]) {
             [result addObject:currentIvarInfo];
         }
@@ -160,10 +160,10 @@
     return result;
 }
 
-+ (NSArray *)SF_methodsWithAttributeType:(Class)requiredClassOfAttribute {
++ (NSArray *)RF_methodsWithAttributeType:(Class)requiredClassOfAttribute {
     NSMutableArray *result = [NSMutableArray array];
     
-    for (SFMethodInfo *currentMethodInfo in [self SF_methods]) {
+    for (RFMethodInfo *currentMethodInfo in [self RF_methods]) {
         if ([currentMethodInfo attributeWithType:requiredClassOfAttribute]) {
             [result addObject:currentMethodInfo];
         }

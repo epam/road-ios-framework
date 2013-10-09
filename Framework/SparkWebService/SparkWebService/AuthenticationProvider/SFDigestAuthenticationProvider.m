@@ -1,5 +1,5 @@
 //
-//  SFBasicAuthenticationProvider.h
+//  RFBasicAuthenticationProvider.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,13 +31,13 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFDigestAuthenticationProvider.h"
-#import "NSError+SFROADWebService.h"
+#import "RFDigestAuthenticationProvider.h"
+#import "NSError+RFROADWebService.h"
 
-@implementation SFDigestAuthenticationProvider
+@implementation RFDigestAuthenticationProvider
 
 
-#pragma mark - SFAuthenticating
+#pragma mark - RFAuthenticating
 
 - (void)processAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge forConnection:(NSURLConnection *)connection {
     [super processAuthenticationChallenge:challenge forConnection:connection];

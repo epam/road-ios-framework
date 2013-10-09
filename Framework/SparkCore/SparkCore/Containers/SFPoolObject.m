@@ -1,5 +1,5 @@
 //
-//  SFPoolObject.m
+//  RFPoolObject.m
 //  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,10 +31,10 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFPoolObject.h"
-#import "SFObjectPool.h"
+#import "RFPoolObject.h"
+#import "RFObjectPool.h"
 
-@implementation SFPoolObject
+@implementation RFPoolObject
 
 @synthesize pool;
 @synthesize poolReuseIdentifier;

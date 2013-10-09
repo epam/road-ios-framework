@@ -1,5 +1,5 @@
 //
-//  SFConnection.m
+//  RFConnection.m
 //  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,9 +30,9 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFConnection.h"
+#import "RFConnection.h"
 
-@interface SFConnection () {
+@interface RFConnection () {
 }
 
 @property (strong, nonatomic) NSNetServiceBrowser *browser;
@@ -41,7 +41,7 @@
 
 @end
 
-@implementation SFConnection {
+@implementation RFConnection {
     
     NSString *appName;
 }

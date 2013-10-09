@@ -1,5 +1,5 @@
 //
-//  SFAnnotatedCoder.h
+//  RFAnnotatedCoder.h
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -34,9 +34,9 @@
 #import <Foundation/Foundation.h>
 
 /**
- JSON serializer. This class is using the SFSerializable and SFDerived attributes to map the memory objects to JSON strings.
+ JSON serializer. This class is using the RFSerializable and RFDerived attributes to map the memory objects to JSON strings.
  */
-@interface SFAttributedCoder : NSObject
+@interface RFAttributedCoder : NSObject
 
 /**
  Encodes the specified object into a json string.

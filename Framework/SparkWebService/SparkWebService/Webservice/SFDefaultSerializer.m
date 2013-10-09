@@ -1,5 +1,5 @@
 //
-//  SFDefaultSerializer.m
+//  RFDefaultSerializer.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,20 +30,20 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFDefaultSerializer.h"
+#import "RFDefaultSerializer.h"
 #import <ROAD/ROADSerialization.h>
-@implementation SFDefaultSerializer
+@implementation RFDefaultSerializer
 
 
 -(id)deserializeData:(NSData *)data serializatinRoot:(NSString *)serializationRoot withDeserializationClass:(Class)deserializationClass error:(NSError *__autoreleasing *)error
 {
-    id restored = [SFAttributedDecoder decodeJSONData:data withSerializtionRoot:serializationRoot rootClassNamed:NSStringFromClass(deserializationClass)];
+    id restored = [RFAttributedDecoder decodeJSONData:data withSerializtionRoot:serializationRoot rootClassNamed:NSStringFromClass(deserializationClass)];
     return restored;
 }
 
 -(NSString *)serializeObject:(id)object
 {
-    return [SFAttributedCoder encodeRootObject:object];
+    return [RFAttributedCoder encodeRootObject:object];
 }
 
 @end

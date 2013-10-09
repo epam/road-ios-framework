@@ -1,5 +1,5 @@
 //
-//  SFODataFetchRequest.m
+//  RFODataFetchRequest.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,13 +30,13 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SFODataFetchRequest.h"
+#import "RFODataFetchRequest.h"
 
-@implementation SFODataFetchRequest
+@implementation RFODataFetchRequest
 
 #pragma mark - Initialization
 
-- (id)initWithEntityName:(NSString *)entityName predicate:(SFODataPredicate *)predicate sortDescriptors:(NSArray *)sortDescriptors {
+- (id)initWithEntityName:(NSString *)entityName predicate:(RFODataPredicate *)predicate sortDescriptors:(NSArray *)sortDescriptors {
     self = [super init];
 
     if (self) {
@@ -49,7 +49,7 @@
     return self;
 }
 
-- (id)initWithEntityName:(NSString *)entityName predicate:(SFODataPredicate *)predicate {
+- (id)initWithEntityName:(NSString *)entityName predicate:(RFODataPredicate *)predicate {
     self = [self initWithEntityName:entityName predicate:predicate sortDescriptors:nil];
     
     return self;

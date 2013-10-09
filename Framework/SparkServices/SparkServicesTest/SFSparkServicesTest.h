@@ -32,6 +32,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface SFROADServicesTest : SenTestCase
+@interface RFROADServicesTest : SenTestCase
 
 @end

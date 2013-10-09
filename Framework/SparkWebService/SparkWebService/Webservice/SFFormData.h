@@ -1,5 +1,5 @@
 //
-//  SFFormData.h
+//  RFFormData.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,7 +32,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SFFormData : NSObject
+@interface RFFormData : NSObject
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSData *data;

@@ -31,8 +31,8 @@
 // for additional information regarding copyright ownership and licensing
 
 #import <Foundation/Foundation.h>
-#import "SFTestAttribute.h"
-#import "CustomSFTestAttribute.h"
+#import "RFTestAttribute.h"
+#import "CustomRFTestAttribute.h"
 
 ///Testing of class with attributes
 @interface SecondAnnotatedClass : NSObject {
