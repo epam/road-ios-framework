@@ -1,6 +1,6 @@
 //
-//  SparkReflection.h
-//  SparkCore
+//  ROADReflection.h
+//  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -31,8 +31,8 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#ifndef SparkReflection_SparkReflection_h
-#define SparkReflection_SparkReflection_h
+#ifndef ROADReflection_ROADReflection_h
+#define ROADReflection_ROADReflection_h
 
 #import "NSObject+SFMemberVariableReflection.h"
 #import "NSObject+SFMethodReflection.h"

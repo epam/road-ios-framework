@@ -1,6 +1,6 @@
 //
 //  SFWebServiceBasicURLBuilder.m
-//  SparkWebService
+//  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -31,7 +31,7 @@
 // for additional information regarding copyright ownership and licensing
 
 #import "SFWebServiceBasicURLBuilder.h"
-#import <Spark/SparkCore.h>
+#import <ROAD/ROADCore.h>
 
 NSString * const SFApiCallTemplateEscapeString = @"%%";
 

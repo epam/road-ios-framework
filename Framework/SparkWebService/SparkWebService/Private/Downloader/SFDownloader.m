@@ -1,6 +1,6 @@
 //
 //  SFDownloader.m
-//  SparkWebService
+//  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -33,9 +33,9 @@
 
 #import "SFDownloader.h"
 #import "SFLooper.h"
-#import <Spark/SparkLogger.h>
-#import <Spark/SparkCore.h>
-#import "NSError+SFSparkWebService.h"
+#import <ROAD/ROADLogger.h>
+#import <ROAD/ROADCore.h>
+#import "NSError+SFROADWebService.h"
 
 #import "SFWebServiceCall.h"
 #import "SFWebServiceHeader.h"

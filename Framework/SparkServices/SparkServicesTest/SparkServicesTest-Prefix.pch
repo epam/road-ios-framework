@@ -1,7 +1,0 @@
-//
-// Prefix header for all source files of the 'SparkServicesTest' target in the 'SparkServicesTest' project
-//
-
-#ifdef __OBJC__
-    #import <Foundation/Foundation.h>
-#endif

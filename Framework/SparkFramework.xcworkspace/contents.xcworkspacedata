@@ -2,22 +2,22 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:SparkWebService/SparkWebService.xcodeproj">
+      location = "group:SparkWebService/ROADWebService.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SparkSerialization/SparkSerialization.xcodeproj">
+      location = "group:SparkSerialization/ROADSerialization.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SparkCore/SparkCore.xcodeproj">
+      location = "group:SparkCore/ROADCore.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SparkObservation/SparkObservation.xcodeproj">
+      location = "group:SparkObservation/ROADObservation.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SparkServices/SparkServices.xcodeproj">
+      location = "group:SparkServices/ROADServices.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SparkLogger/SparkLogger.xcodeproj">
+      location = "group:SparkLogger/ROADLogger.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:../NOTICE">

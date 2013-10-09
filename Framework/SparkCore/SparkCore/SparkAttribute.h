@@ -1,6 +1,6 @@
 //
-//  SparkAttribute.h
-//  SparkCore
+//  ROADAttribute.h
+//  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,8 +30,8 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#ifndef SparkAttributesSupport_Header_h
-#define SparkAttributesSupport_Header_h
+#ifndef ROADAttributesSupport_Header_h
+#define ROADAttributesSupport_Header_h
 
 /**
  This macro is used to declare attributes.
@@ -43,7 +43,7 @@
  The following parameters (if necessary) is a comma separated list of the properties and values, 
  which should be assigned to properties after creation of the attribute's object.
  
- *Technical note: SparkAttributesCodeGenerator interprets this macro and generates appropriate code for creating attribute's objects,
+ *Technical note: ROADAttributesCodeGenerator interprets this macro and generates appropriate code for creating attribute's objects,
   therefore the macro doesn't produce any code themselves.*
  */
 #define SF_ATTRIBUTE(AttrObject, ...)

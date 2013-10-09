@@ -31,7 +31,7 @@
 // for additional information regarding copyright ownership and licensing
 
 #import "SFAuthenticationProvider.h"
-#import "NSError+SFSparkWebService.h"
+#import "NSError+SFROADWebService.h"
 
 NSString * const kSFAuthorizationKey = @"authorization";
 

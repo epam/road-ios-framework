@@ -1,6 +1,6 @@
 //
 //  SFWebServiceClientTest+DynamicTest.h
-//  SparkWebService
+//  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -32,7 +32,7 @@
 
 
 #import "SFWebServiceClient.h"
-#import <Spark/SFWebServiceLogger.h>
+#import <ROAD/SFWebServiceLogger.h>
 
 @protocol SFWebServiceCancellable;
 

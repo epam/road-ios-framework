@@ -1,6 +1,6 @@
 //
 //  SFXMLSpecificParser.m
-//  SparkSerialization
+//  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -33,8 +33,8 @@
 
 #import "SFXMLSpecificParser.h"
 #import "SFXMLElement.h"
-#import <Spark/SparkReflection.h>
-#import <Spark/SparkLogger.h>
+#import <ROAD/ROADReflection.h>
+#import <ROAD/ROADLogger.h>
 
 static NSString * const kSFElementName = @"element";
 

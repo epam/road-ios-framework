@@ -1,6 +1,6 @@
 //
-//  SparkObservation.h
-//  SparkObservation
+//  ROADObservation.h
+//  ROADObservation
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,8 +30,8 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#ifndef SparkObservation_SparkObservation_h
-#define SparkObservation_SparkObservation_h
+#ifndef ROADObservation_ROADObservation_h
+#define ROADObservation_ROADObservation_h
 
 #import "SFObserverWrapper.h"
 #import "SFObserver.h"

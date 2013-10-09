@@ -1,6 +1,6 @@
 //
 //  NSSortDescriptor+SFOData.m
-//  SparkWebService
+//  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -31,9 +31,9 @@
 // for additional information regarding copyright ownership and licensing
 
 #import "NSSortDescriptor+SFOData.h"
-#import <Spark/SparkAttribute.h>
-#import <Spark/SparkSerialization.h>
-#import <Spark/SparkReflection.h>
+#import <ROAD/ROADAttribute.h>
+#import <ROAD/ROADSerialization.h>
+#import <ROAD/ROADReflection.h>
 #import "SFODataExpression.h"
 
 #import "SFODataProperty.h"

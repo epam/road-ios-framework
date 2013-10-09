@@ -1,6 +1,6 @@
 //
 //  SFPropertyInfo.m
-//  SparkCore
+//  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -35,7 +35,7 @@
 
 #import "SFTypeDecoder.h"
 #import <objc/runtime.h>
-#import "SparkAttribute.h"
+#import "ROADAttribute.h"
 
 @interface SFPropertyInfo () {
     NSString *_propertyName;

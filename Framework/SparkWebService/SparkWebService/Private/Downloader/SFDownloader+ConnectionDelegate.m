@@ -1,6 +1,6 @@
 //
 //  SFDownloader+ConnectionDelegate.m
-//  SparkWebService
+//  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -32,8 +32,8 @@
 
 
 #import "SFDownloader+ConnectionDelegate.h"
-#import <Spark/SparkLogger.h>
-#import "NSError+SFSparkWebService.h"
+#import <ROAD/ROADLogger.h>
+#import "NSError+SFROADWebService.h"
 
 #import "SFAuthenticating.h"
 #import "SFWebServiceClient.h"

@@ -1,6 +1,6 @@
 //
 //  SFSerializable.h
-//  SparkSerialization
+//  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,7 +30,7 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <Spark/SparkAttribute.h>
+#import <ROAD/ROADAttribute.h>
 
 extern NSString * const SFSerializedObjectClassName;
 

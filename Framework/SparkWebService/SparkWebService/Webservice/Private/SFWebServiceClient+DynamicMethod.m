@@ -1,6 +1,6 @@
 //
 //  SFWebServiceClient+DynamicMethod.m
-//  SparkWebService
+//  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -34,8 +34,8 @@
 #import <objc/runtime.h>
 #import "SFWebServiceCall.h"
 #import "SFWebServiceClient+DynamicMethod.h"
-#import <Spark/SparkSerialization.h>
-#import <Spark/SparkServices.h>
+#import <ROAD/ROADSerialization.h>
+#import <ROAD/ROADServices.h>
 #import "SFWebServiceCancellable.h"
 #import "SFSerializationDelegate.h"
 #import "SFWebServiceCallParameterEncoder.h"

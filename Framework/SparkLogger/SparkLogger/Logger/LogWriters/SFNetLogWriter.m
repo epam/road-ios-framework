@@ -1,6 +1,6 @@
 //
 //  SFNetLogWriter.m
-//  SparkLogger
+//  ROADLogger
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //

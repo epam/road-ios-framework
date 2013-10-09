@@ -1,6 +1,6 @@
 //
-//  SparkServicesTest.m
-//  SparkServicesTest
+//  ROADServicesTest.m
+//  ROADServicesTest
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -31,12 +31,12 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFSparkServicesTest.h"
-#import "SparkServices.h"
+#import "SFROADServicesTest.h"
+#import "ROADServices.h"
 #import "SFTestService.h"
 #import "SFServiceProvider+SFTestService.h"
 
-@implementation SFSparkServicesTest
+@implementation SFROADServicesTest
 
 - (void)testInstanceFakeService
 {

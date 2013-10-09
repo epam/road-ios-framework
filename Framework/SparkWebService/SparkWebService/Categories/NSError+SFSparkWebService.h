@@ -1,6 +1,6 @@
 //
-//  NSError+SFSparkWebService.h
-//  SparkWebService
+//  NSError+SFROADWebService.h
+//  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -34,7 +34,7 @@
 
 NSString * const kSFWebServiceErrorDomain;
 
-@interface NSError (SFSparkWebService)
+@interface NSError (SFROADWebService)
 /**
  Create deserialization error, and insert the original data into the error userinfo.
  @param data The original data.

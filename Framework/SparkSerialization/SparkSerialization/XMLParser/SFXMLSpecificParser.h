@@ -1,6 +1,6 @@
 //
 //  SFXMLSpecificParser.h
-//  SparkSerialization
+//  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -33,7 +33,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SFXMLParsing.h"
-#import <Spark/SparkCore.h>
+#import <ROAD/ROADCore.h>
 
 @class SFXMLElement;
 

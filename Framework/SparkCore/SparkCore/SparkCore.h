@@ -1,6 +1,6 @@
 //
-//  SparkCore.h
-//  SparkCore
+//  ROADCore.h
+//  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,8 +30,8 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#ifndef SparkCore_SparkCore_h
-#define SparkCore_SparkCore_h
+#ifndef ROADCore_ROADCore_h
+#define ROADCore_ROADCore_h
 
 #import "NSMutableString+SFStringFormatter.h"
 #import "NSString+SFAccessorUtilities.h"
@@ -45,6 +45,6 @@
 #import "SFObject.h"
 #import "SparkSingletonDefinition.h"
 #import "NSRegularExpression+SFSparkExtension.h"
-#import "SparkReflection.h"
-#import "SparkAttribute.h"
+#import "ROADReflection.h"
+#import "ROADAttribute.h"
 #endif

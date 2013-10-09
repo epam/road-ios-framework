@@ -1,6 +1,6 @@
 //
 //  AnnotatedClass+SFAttributes.m
-//  SparkCore
+//  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //

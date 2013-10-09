@@ -1,6 +1,6 @@
 //
 //  SFBasicAuthenticationProvider.h
-//  SparkWebService
+//  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -32,7 +32,7 @@
 
 
 #import "SFDigestAuthenticationProvider.h"
-#import "NSError+SFSparkWebService.h"
+#import "NSError+SFROADWebService.h"
 
 @implementation SFDigestAuthenticationProvider
 

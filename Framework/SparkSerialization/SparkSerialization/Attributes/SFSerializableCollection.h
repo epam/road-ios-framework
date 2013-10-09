@@ -1,6 +1,6 @@
 //
 //  SFSerializableCollection.h
-//  SparkSerialization
+//  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,7 +30,7 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <Spark/SparkAttribute.h>
+#import <ROAD/ROADAttribute.h>
 
 /**
  Indicates if a serializable property is a weak-typed collection, such as NSArray, NSDictionary or NSSet. You can indicate with the defaultValue of this attribute the class names of the elements inside the collection, allowing the annotated decoder to restore these.

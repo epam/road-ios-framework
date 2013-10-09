@@ -1,6 +1,6 @@
 //
 //  SFODataExpression.m
-//  SparkWebService
+//  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -34,7 +34,7 @@
 
 #import "SFODataPredicate.h"
 #import "SFODataProperty.h"
-#import <Spark/SparkSerialization.h>
+#import <ROAD/ROADSerialization.h>
 
 @implementation SFODataExpression
 

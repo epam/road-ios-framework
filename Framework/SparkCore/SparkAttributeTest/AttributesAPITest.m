@@ -1,6 +1,6 @@
 //
 //  AttributesAPITest.m
-//  SparkCore
+//  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -33,7 +33,7 @@
 #import "AttributesAPITest.h"
 #import "AnnotatedClass.h"
 #import "SecondAnnotatedClass.h"
-#import <Spark/SparkReflection.h>
+#import <ROAD/ROADReflection.h>
 
 @implementation AttributesAPITest
 

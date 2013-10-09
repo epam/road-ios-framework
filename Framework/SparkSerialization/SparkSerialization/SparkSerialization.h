@@ -1,6 +1,6 @@
 //
-//  SparkSerialization.h
-//  SparkSerialization
+//  ROADSerialization.h
+//  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,8 +30,8 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#ifndef SparkSerialization_SparkSerialization_h
-#define SparkSerialization_SparkSerialization_h
+#ifndef ROADSerialization_ROADSerialization_h
+#define ROADSerialization_ROADSerialization_h
 
 #import "NSJSONSerialization+SFJSONStringHandling.h"
 #import "SFSerializable.h"

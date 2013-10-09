@@ -1,6 +1,6 @@
 //
-//  NSError+SFSparkWebService.m
-//  SparkWebService
+//  NSError+SFROADWebService.m
+//  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,12 +30,12 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "NSError+SFSparkWebService.h"
+#import "NSError+SFROADWebService.h"
 
 NSString * const kSFWebServiceErrorDomain = @"SFWebServiceError";
 NSString *const kSFWebServiceRecievedDataKey = @"RecievedData";
 
-@implementation NSError (SFSparkWebService)
+@implementation NSError (SFROADWebService)
 
 +(NSError *)SF_sparkWS_deserializationErrorWithData:(NSData*)data
 {

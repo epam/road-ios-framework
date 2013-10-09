@@ -1,6 +1,6 @@
 //
 //  SFMutableObject.m
-//  SparkCore
+//  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -34,7 +34,7 @@
 #import "SFMutableObject.h"
 #import "NSString+SFAccessorUtilities.h"
 #import <objc/runtime.h>
-#import "SparkReflection.h"
+#import "ROADReflection.h"
 
 const char *SFMutableObjectSetterEncoding = "v@:@";
 const char *SFMutableObjectGetterEncoding = "@@:";

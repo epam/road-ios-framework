@@ -1,6 +1,6 @@
 //
-//  SparkServicesTest.h
-//  SparkServicesTest
+//  ROADServicesTest.h
+//  ROADServicesTest
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -32,6 +32,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface SFSparkServicesTest : SenTestCase
+@interface SFROADServicesTest : SenTestCase
 
 @end

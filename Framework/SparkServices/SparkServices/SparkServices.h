@@ -1,6 +1,6 @@
 //
-//  SparkServices.h
-//  SparkServices
+//  ROADServices.h
+//  ROADServices
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -31,8 +31,8 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#ifndef SparkServices_SparkServices_h
-#define SparkServices_SparkServices_h
+#ifndef ROADServices_ROADServices_h
+#define ROADServices_ROADServices_h
 
 #import "SFService.h"
 #import "SFServiceProvider.h"

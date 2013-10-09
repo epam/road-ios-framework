@@ -1,6 +1,6 @@
 //
-//  SparkLoggerTest.m
-//  SparkLoggerTest
+//  ROADLoggerTest.m
+//  ROADLoggerTest
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,12 +30,12 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SparkLoggerTest.h"
-#import <Spark/SparkServices.h>
-#import <Spark/SparkLogger.h>
-#import <Spark/SFServiceProvider+LoggingService.h>
+#import "ROADLoggerTest.h"
+#import <ROAD/ROADServices.h>
+#import <ROAD/ROADLogger.h>
+#import <ROAD/SFServiceProvider+LoggingService.h>
 
-@implementation SparkLoggerTest
+@implementation ROADLoggerTest
 
 - (void)setUp {
     [super setUp];

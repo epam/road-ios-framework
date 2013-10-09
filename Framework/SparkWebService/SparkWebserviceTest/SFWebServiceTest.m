@@ -1,6 +1,6 @@
 //
 //  SFWebServiceTest.m
-//  SparkWebService
+//  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,7 +30,7 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <Spark/SparkLogger.h>
+#import <ROAD/ROADLogger.h>
 #import "SFWebServiceTest.h"
 #import "SFWebServiceClient+DynamicTest.h"
 #import "SFAuthenticating.h"

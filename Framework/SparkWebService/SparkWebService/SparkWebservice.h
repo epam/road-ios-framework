@@ -1,6 +1,6 @@
 //
 //  SparkWebservice.h
-//  SparkWebService
+//  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -34,7 +34,7 @@
 #ifndef SparkWebservice_SparkWebservice_h
 #define SparkWebservice_SparkWebservice_h
 
-#include "SparkWebServiceAnnotations.h"
+#include "ROADWebServiceAnnotations.h"
 #import "SFWebserviceClient.h"
 #import "SFWebServiceCancellable.h"
 #import "SFSerializationDelegate.h"

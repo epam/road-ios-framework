@@ -1,6 +1,6 @@
 //
 //  NSObject+SFAttributes.m
-//  SparkCore
+//  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -32,8 +32,8 @@
 
 #import "NSObject+SFAttributes.h"
 #import "NSObject+SFAttributesInternal.h"
-#import <Spark/NSRegularExpression+SFSparkExtension.h>
-#import <Spark/SparkReflection.h>
+#import <ROAD/NSRegularExpression+SFSparkExtension.h>
+#import <ROAD/ROADReflection.h>
 
 @interface NSObject(SFAttributesPrivate)
 + (NSArray *)SF_attributesFromCreatorInvocation:(NSInvocation *)attributeCreatorValueInvocation;

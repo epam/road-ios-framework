@@ -1,6 +1,6 @@
 //
 //  SFPropertyInfoTest.m
-//  SparkCore
+//  ROADCore
 //
 //  Created by Eduard Beleninik on 9/30/13.
 //  Copyright (c) 2013 Epam Systems. All rights reserved.

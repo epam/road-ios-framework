@@ -1,6 +1,6 @@
 //
 //  SFDefaultSerializer.m
-//  SparkWebService
+//  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -31,7 +31,7 @@
 // for additional information regarding copyright ownership and licensing
 
 #import "SFDefaultSerializer.h"
-#import <Spark/SparkSerialization.h>
+#import <ROAD/ROADSerialization.h>
 @implementation SFDefaultSerializer
 
 

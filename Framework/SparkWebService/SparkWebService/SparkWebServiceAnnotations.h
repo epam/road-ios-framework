@@ -1,6 +1,6 @@
 //
-//  SparkWebServiceAnnotations.h
-//  SparkWebService
+//  ROADWebServiceAnnotations.h
+//  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -31,8 +31,8 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#ifndef SparkWebservice_SparkWebServiceAnnotations_h
-#define SparkWebservice_SparkWebServiceAnnotations_h
+#ifndef SparkWebservice_ROADWebServiceAnnotations_h
+#define SparkWebservice_ROADWebServiceAnnotations_h
 
 #import "SFWebServiceCall.h"
 #import "SFWebServiceClientStatusCodes.h"

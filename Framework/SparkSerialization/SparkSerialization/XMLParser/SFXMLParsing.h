@@ -1,6 +1,6 @@
 //
 //  SFXMLParsing.h
-//  SparkSerialization
+//  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -32,7 +32,7 @@
 
 
 #import <Foundation/Foundation.h>
-#import <Spark/SparkCore.h>
+#import <ROAD/ROADCore.h>
 
 /**
  Extension of the Apple-provided XML parser delegate protocol to allow chaining of parser delegates into a hierarchy.
