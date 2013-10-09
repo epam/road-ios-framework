@@ -36,7 +36,6 @@
     id testObject = @[@1, @2, @"3", [NSDate date]];
     
     NSString *result = [coder encodeRootObject:testObject];
-//    STAssertTrue([result length] > 0, @"Assertion: serialization is successful.");
 
     NSLog(@"%@", result);
 }

@@ -45,34 +45,29 @@ static NSString const* kElementSkipped = @"elementSkipped";
 
 - (void)saveContext
 {
-    if (!_stack)
-        _stack = [[NSMutableArray alloc] init];
+    if (!_stack) _stack = [[NSMutableArray alloc] init];
     
-    if (_currentNode && _properties && _currentNodeProperty && kElementName)
-    {
+    if (_currentNode && _properties && _currentNodeProperty && kElementName) {
+        
         [_stack addObject:@{kCurrentNode : _currentNode, kProperties : _properties, kCurrentNodeProperty : _currentNodeProperty, kElementName : _elementName, kElementSkipped : @(_elementSkipped)}];
     }
-    else
-    {
+    else {
+        
         NSMutableDictionary *newRecord = [[NSMutableDictionary alloc] initWithCapacity:4];
         
-        if (_currentNode)
-            newRecord[kCurrentNode] = _currentNode;
-        if (_properties)
-            newRecord[kProperties] = _properties;
-        if (_currentNodeProperty)
-            newRecord[kCurrentNodeProperty] = _currentNodeProperty;
-        if (_elementName)
-            newRecord[kElementName] = _elementName;
-        
+        if (_currentNode) newRecord[kCurrentNode] = _currentNode;
+        if (_properties) newRecord[kProperties] = _properties;
+        if (_currentNodeProperty) newRecord[kCurrentNodeProperty] = _currentNodeProperty;
+        if (_elementName) newRecord[kElementName] = _elementName;
+
         newRecord[kElementSkipped] = @(_elementSkipped);
         
         [_stack addObject:[newRecord copy]];
     }
 }
 
-- (void)restoreContext
-{
+- (void)restoreContext {
+    
     NSDictionary *record = [_stack count] ? [_stack lastObject] : nil;
 
     _currentNode = record[kCurrentNode];

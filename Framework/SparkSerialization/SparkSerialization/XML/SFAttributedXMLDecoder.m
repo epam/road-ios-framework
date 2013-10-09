@@ -54,8 +54,8 @@
 
 @implementation SFAttributedXMLDecoder
 
-- (void)decodeData:(NSData *)xmlData withRootObjectClass:(Class)rootObjectClass completionBlock:(void (^)(id rootObject, NSError *error))completionBlock;
-{
+- (void)decodeData:(NSData *)xmlData withRootObjectClass:(Class)rootObjectClass completionBlock:(void (^)(id rootObject, NSError *error))completionBlock {
+    
     NSParameterAssert(!self.isParsing);
     
     completionHandler = completionBlock;
@@ -70,38 +70,37 @@
     [_parser parse];
 }
 
-- (BOOL)isParsing
-{
+- (BOOL)isParsing {
+
     return (_parser != nil);
 }
 
 #pragma marl - Parser Delegate
-- (void)parserDidEndDocument:(NSXMLParser *)parser;
-{
+- (void)parserDidEndDocument:(NSXMLParser *)parser {
+
     _parser = nil;
     completionHandler(_result, nil);
 }
 
-- (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError
-{
+- (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
     _parser = nil;
     completionHandler(_result, parseError);
 }
 
-- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict;
-{
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
+
     Class elementClass = nil;
     _context.elementSkipped = NO;
     
     // Check for container and/or it's delayed creation
     BOOL isInArray = NO;
     BOOL isInDictionary = NO;
-    if (!_context.properties)
-    {
+    if (!_context.properties) {
+        
         SFSerializableCollection *collectionAttribute = nil;
 
-        if (_context.currentNodeProperty)
-        {
+        if (_context.currentNodeProperty) {
+            
             //  We want to stay abstract which concrete class was requested
             _context.currentNode = [[[_context.currentNodeProperty.typeClass alloc] init] mutableCopy];
             collectionAttribute = [_context.currentNodeProperty attributeWithType:[SFSerializableCollection class]];
@@ -114,11 +113,11 @@
         
         elementClass = collectionAttribute.collectionClass ? collectionAttribute.collectionClass : [NSDictionary class];
     }
-    else
-    {
+    else {
+        
         SFPropertyInfo *elementProperty = _context.properties[elementName];
-        if (!elementProperty)
-        {
+        if (!elementProperty) {
+            
             SFLogWarning(@"SFAttributedXMLDecoder: Skipped missing property '%@'", elementName);
             _context.elementSkipped = YES;
         }
@@ -127,39 +126,41 @@
 
     [_context saveContext];
 
-    if (!_context.elementSkipped)
-    {
-        if (!_result)
+    if (!_context.elementSkipped) {
+        
+        if (!_result) {
             elementClass = _rootNodeClass;
+        }
         
         NSMutableDictionary *lazyProperties = [NSMutableDictionary new];
         NSArray *properties = [self propertiesForClass:elementClass];
         
         // Then property is a custom object and we want to init it now
-        if ([properties count])
-        {
+        if ([properties count]) {
+            
             id newElement = [[elementClass alloc] init];
             
-            if (isInArray)
+            if (isInArray) {
                 [_context.currentNode addObject:newElement];
-            else if (isInDictionary)
+            }
+            else if (isInDictionary) {
                 [_context.currentNode setObject:newElement forKey:elementName];
+            }
 
             _context.currentNode = newElement;
-            if (!_result)
+            if (!_result) {
                 _result = _context.currentNode;
+            }
             
-            for (SFPropertyInfo *property in properties)
-            {
+            for (SFPropertyInfo *property in properties) {
+                
                 SFXMLAttributes *xmlAttributes = [property attributeWithType:[SFXMLAttributes class]];
                 
-                if (xmlAttributes.isSavedInTag)
-                {
+                if (xmlAttributes.isSavedInTag) {
                     id decodedValue = [self convertString:attributeDict[property.propertyName] forProperty:property];
                     [_context.currentNode setValue:decodedValue forKey:property.propertyName];
                 }
-                else
-                {
+                else {
                     lazyProperties[property.propertyName] = property;
                 }
             }
@@ -171,57 +172,59 @@
     }
 }
 
-- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
-{
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
+    
     [_context restoreContext];
 }
 
-- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
-{
-    if (!_context.elementSkipped && [[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] > 0)
-    {
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
+    
+    if (!_context.elementSkipped && [[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] > 0) {
+
         SFPropertyInfo *property = _context.currentNodeProperty;
         [self setCurrentNodeValue:[self convertString:string forProperty:property] forKey:property.propertyName ? property.propertyName : _context.elementName];
     }
 }
 
-- (void)parser:(NSXMLParser *)parser foundCDATA:(NSData *)CDATABlock
-{
-    if (!_context.elementSkipped)
-    {
+- (void)parser:(NSXMLParser *)parser foundCDATA:(NSData *)CDATABlock {
+
+    if (!_context.elementSkipped) {
         SFPropertyInfo *property = _context.currentNodeProperty;
         [self setCurrentNodeValue:CDATABlock forKey:property.propertyName ? property.propertyName : _context.elementName];
     }
 }
 
 #pragma mark -
-- (void)setCurrentNodeValue:(id)value forKey:(NSString *)key
-{
+- (void)setCurrentNodeValue:(id)value forKey:(NSString *)key {
+    
     id node = _context.currentNode;
     
-    if ([node isKindOfClass:[NSArray class]])
+    if ([node isKindOfClass:[NSArray class]]) {
         [node addObject:value];
-    else if ([node isKindOfClass:[NSDictionary class]])
+    }
+    else if ([node isKindOfClass:[NSDictionary class]]) {
         [node setObject:value forKey:key];
-    else
+    }
+    else {
         [node setValue:value forKey:key];
+    }
     
     SFLogDebug(@"SFAttributedXMLDecoder: setsValue:%@ forKey:%@", value, key);
 }
 
-- (NSArray*)propertiesForClass:(Class)class
-{
+- (NSArray*)propertiesForClass:(Class)class {
+    
     NSArray *result = nil;
 
     @autoreleasepool {
-        if ([class SF_attributeForClassWithAttributeType:[SFSerializable class]])
-        {
+        if ([class SF_attributeForClassWithAttributeType:[SFSerializable class]]) {
+            
             result = [[class SF_properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(SFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
                     return (![evaluatedObject attributeWithType:[SFDerived class]]);
                 }]];
         }
-        else
-        {
+        else {
+
             result = [class SF_propertiesWithAttributeType:[SFSerializable class]];
         }
     }
@@ -229,30 +232,28 @@
     return result;
 }
 
-- (id)convertString:(NSString *)string forProperty:(SFPropertyInfo *)property
-{
+- (id)convertString:(NSString *)string forProperty:(SFPropertyInfo *)property {
+    
     id result = string;
     SFSerializableDate *dateAttribute = nil;
     NSString *attributeClassName = property.typeName;
 
-    if ([attributeClassName isEqualToString:@"NSNumber"] || [attributeClassName isEqualToString:@"c"])
-    {
-        if (!_numberFormatter)
-        {
+    if ([attributeClassName isEqualToString:@"NSNumber"] || [attributeClassName isEqualToString:@"c"]) {
+
+        if (!_numberFormatter) {
             _numberFormatter = [NSNumberFormatter new];
             [_numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
         }
         
         result = [_numberFormatter numberFromString:string];
     }
-    else if ([attributeClassName isEqualToString:@"NSDate"] || (dateAttribute = [property attributeWithType:[SFSerializableDate class]]))
-    {
-        if (dateAttribute.unixTimestamp)
-        {
+    else if ([attributeClassName isEqualToString:@"NSDate"] || (dateAttribute = [property attributeWithType:[SFSerializableDate class]])) {
+        
+        if (dateAttribute.unixTimestamp) {
             result = [NSDate dateWithTimeIntervalSince1970:[string intValue]];
         }
-        else
-        {
+        else {
+            
             NSString *dateFormat = ([dateAttribute.decodingFormat length] == 0) ? dateAttribute.format : dateAttribute.decodingFormat;
             NSAssert(dateFormat, @"SFSerializableDate must have either format or encodingFormat specified");
 
