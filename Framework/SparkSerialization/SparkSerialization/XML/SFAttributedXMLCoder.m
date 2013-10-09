@@ -79,7 +79,7 @@ char* SFAttributedXMLCoderTagForClass(Class aClass)
 
 - (xmlNodePtr)serializeObject:(id)object toXMLNode:(xmlNodePtr)parentNode propertyInfo:(SFPropertyInfo*)propertyInfo
 {
-//    NSParameterAssert((parentNode && !propertyInfo) || (!parentNode && propertyInfo));
+    NSParameterAssert((parentNode && !propertyInfo) || (!parentNode && propertyInfo));
     
     xmlNodePtr result = NULL;
     
@@ -104,93 +104,7 @@ char* SFAttributedXMLCoderTagForClass(Class aClass)
 
     }
     
-//    NSArray* serializableProperties = [objClass SF_attributeForClassWithAttributeType:[SFSerializable class]];
     return result;
 }
-
-#pragma mark -
-#if 0
-
-- (xmlNodePtr)xmlTreeWithRootObject:(id)root
-{
-    const char* nodeName = [root isKindOfClass:[NSArray class]] ? kSFAttributedXMLDefaultArrayTag : ([root isKindOfClass:[NSDictionary class]] ? kSFAttributedXMLDefaultDictionaryTag : NULL);
-    
-    xmlNodePtr node = nodeName ? xmlNewNode(NULL, BAD_CAST nodeName) : NULL;
-
-    if (node)
-    {
-        [self serializeContainer:root toXMLNode:node];
-    }
-    else
-        node = [self serializeObject:root toXMLNode:node];
-    
-    return node;
-}
-
-- (xmlNodePtr)serializeObject:(id)object toXMLNode:(BOOL)toXMLNode storeAsAttribute:(BOOL)storeAsAttribute
-{
-    Class objClass = [object class];
-    NSString* serializationKey = [objClass SF_attributeForClassWithAttributeType:[SFSerializable class]];
-    NSString* serializedValue = nil;
-    
-    if ([objClass isSubclassOfClass:[NSValue class]])
-    {
-        serializedValue = [object stringValue];
-        
-        
-        
-    }
-    
-    
-}
-
-- (void)serializeContainer:(id)container toXMLNode:(xmlNodePtr)node
-{
-}
-
-
-    //    xmlNodeSetContent(node, BAD_CAST "content");
-
-    if ([rootObject isKindOfClass:[NSArray class]])
-    {
-        self.archive = [self encodeArray:rootObject];
-    } else if ([rootObject isKindOfClass:[NSDictionary class]]) {
-        self.archive = [self encodeDictionary:rootObject];
-    }
-    else {
-        [self.archive setObject:NSStringFromClass([rootObject class]) forKey:SFSerializedObjectClassName];
-        NSArray *properties;
-        @autoreleasepool {
-            Class rootObjectClass = [rootObject class];
-            
-            if ([rootObjectClass SF_attributeForClassWithAttributeType:[SFSerializable class]]) {
-                properties = [[rootObjectClass SF_properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(SFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
-                    return (![evaluatedObject attributeWithType:[SFDerived class]]);
-                }]];
-            }
-            else {
-                properties = [rootObjectClass SF_propertiesWithAttributeType:[SFSerializable class]];
-            }
-            
-            
-        }
-        @autoreleasepool {
-            for (SFPropertyInfo * const aDesc in properties) {
-                id value = [rootObject valueForKey:[aDesc propertyName]];
-                value = [self encodeValue:value forProperty:aDesc];
-                
-                NSString *key = [SFSerializationAssistant serializationKeyForProperty:aDesc];
-                
-                if (value != nil) {
-                    [self.archive setObject:value forKey:key];
-                }
-            }
-        }
-    }
-        
-    return node;
-}
-#endif
-
 
 @end
