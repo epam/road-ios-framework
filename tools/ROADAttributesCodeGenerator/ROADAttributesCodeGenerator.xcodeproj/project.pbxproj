@@ -10,7 +10,7 @@
 		8DB3AACD17B1DABB006421E0 /* NSFileManager+ExtendedAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB3AACC17B1DABB006421E0 /* NSFileManager+ExtendedAPI.m */; };
 		8DD9C17717B1C2BC00B00CAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD9C17617B1C2BC00B00CAA /* Foundation.framework */; };
 		8DD9C17A17B1C2BC00B00CAA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD9C17917B1C2BC00B00CAA /* main.m */; };
-		8DD9C17E17B1C2BC00B00CAA /* SparkAttributesCodeGenerator.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DD9C17D17B1C2BC00B00CAA /* SparkAttributesCodeGenerator.1 */; };
+		8DD9C17E17B1C2BC00B00CAA /* ROADAttributesCodeGenerator.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DD9C17D17B1C2BC00B00CAA /* ROADAttributesCodeGenerator.1 */; };
 		8DD9C1D317B1C3C000B00CAA /* NSMutableString+ExtendedAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD9C18717B1C3C000B00CAA /* NSMutableString+ExtendedAPI.m */; };
 		8DD9C1D417B1C3C000B00CAA /* NSRegularExpression+ExtendedAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD9C18917B1C3C000B00CAA /* NSRegularExpression+ExtendedAPI.m */; };
 		8DD9C1D517B1C3C000B00CAA /* NSString+ExtendedAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD9C18B17B1C3C000B00CAA /* NSString+ExtendedAPI.m */; };
@@ -56,7 +56,7 @@
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
-				8DD9C17E17B1C2BC00B00CAA /* SparkAttributesCodeGenerator.1 in CopyFiles */,
+				8DD9C17E17B1C2BC00B00CAA /* ROADAttributesCodeGenerator.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -65,11 +65,11 @@
 /* Begin PBXFileReference section */
 		8DB3AACB17B1DABB006421E0 /* NSFileManager+ExtendedAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+ExtendedAPI.h"; sourceTree = "<group>"; };
 		8DB3AACC17B1DABB006421E0 /* NSFileManager+ExtendedAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+ExtendedAPI.m"; sourceTree = "<group>"; };
-		8DD9C17317B1C2BC00B00CAA /* SparkAttributesCodeGenerator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SparkAttributesCodeGenerator; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DD9C17317B1C2BC00B00CAA /* ROADAttributesCodeGenerator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ROADAttributesCodeGenerator; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DD9C17617B1C2BC00B00CAA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8DD9C17917B1C2BC00B00CAA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8DD9C17C17B1C2BC00B00CAA /* SparkAttributesCodeGenerator-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SparkAttributesCodeGenerator-Prefix.pch"; sourceTree = "<group>"; };
-		8DD9C17D17B1C2BC00B00CAA /* SparkAttributesCodeGenerator.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = SparkAttributesCodeGenerator.1; sourceTree = "<group>"; };
+		8DD9C17C17B1C2BC00B00CAA /* ROADAttributesCodeGenerator-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ROADAttributesCodeGenerator-Prefix.pch"; sourceTree = "<group>"; };
+		8DD9C17D17B1C2BC00B00CAA /* ROADAttributesCodeGenerator.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = ROADAttributesCodeGenerator.1; sourceTree = "<group>"; };
 		8DD9C18617B1C3C000B00CAA /* NSMutableString+ExtendedAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+ExtendedAPI.h"; sourceTree = "<group>"; };
 		8DD9C18717B1C3C000B00CAA /* NSMutableString+ExtendedAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+ExtendedAPI.m"; sourceTree = "<group>"; };
 		8DD9C18817B1C3C000B00CAA /* NSRegularExpression+ExtendedAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRegularExpression+ExtendedAPI.h"; sourceTree = "<group>"; };
@@ -159,7 +159,7 @@
 		8DD9C16A17B1C2BC00B00CAA = {
 			isa = PBXGroup;
 			children = (
-				8DD9C17817B1C2BC00B00CAA /* SparkAttributesCodeGenerator */,
+				8DD9C17817B1C2BC00B00CAA /* ROADAttributesCodeGenerator */,
 				8DD9C17517B1C2BC00B00CAA /* Frameworks */,
 				8DD9C17417B1C2BC00B00CAA /* Products */,
 			);
@@ -168,7 +168,7 @@
 		8DD9C17417B1C2BC00B00CAA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8DD9C17317B1C2BC00B00CAA /* SparkAttributesCodeGenerator */,
+				8DD9C17317B1C2BC00B00CAA /* ROADAttributesCodeGenerator */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -181,23 +181,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8DD9C17817B1C2BC00B00CAA /* SparkAttributesCodeGenerator */ = {
+		8DD9C17817B1C2BC00B00CAA /* ROADAttributesCodeGenerator */ = {
 			isa = PBXGroup;
 			children = (
 				8DD9C1F617B1C60100B00CAA /* Tools */,
 				8DD9C18517B1C3C000B00CAA /* APIExtensions */,
 				8DD9C19217B1C3C000B00CAA /* Logic */,
 				8DD9C17917B1C2BC00B00CAA /* main.m */,
-				8DD9C17D17B1C2BC00B00CAA /* SparkAttributesCodeGenerator.1 */,
+				8DD9C17D17B1C2BC00B00CAA /* ROADAttributesCodeGenerator.1 */,
 				8DD9C17B17B1C2BC00B00CAA /* Supporting Files */,
 			);
-			path = SparkAttributesCodeGenerator;
+			path = ROADAttributesCodeGenerator;
 			sourceTree = "<group>";
 		};
 		8DD9C17B17B1C2BC00B00CAA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8DD9C17C17B1C2BC00B00CAA /* SparkAttributesCodeGenerator-Prefix.pch */,
+				8DD9C17C17B1C2BC00B00CAA /* ROADAttributesCodeGenerator-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -348,9 +348,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8DD9C17217B1C2BC00B00CAA /* SparkAttributesCodeGenerator */ = {
+		8DD9C17217B1C2BC00B00CAA /* ROADAttributesCodeGenerator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8DD9C18117B1C2BC00B00CAA /* Build configuration list for PBXNativeTarget "SparkAttributesCodeGenerator" */;
+			buildConfigurationList = 8DD9C18117B1C2BC00B00CAA /* Build configuration list for PBXNativeTarget "ROADAttributesCodeGenerator" */;
 			buildPhases = (
 				8DD9C16F17B1C2BC00B00CAA /* Sources */,
 				8DD9C17017B1C2BC00B00CAA /* Frameworks */,
@@ -360,9 +360,9 @@
 			);
 			dependencies = (
 			);
-			name = SparkAttributesCodeGenerator;
+			name = ROADAttributesCodeGenerator;
 			productName = SparkAttributesCodeGenerator;
-			productReference = 8DD9C17317B1C2BC00B00CAA /* SparkAttributesCodeGenerator */;
+			productReference = 8DD9C17317B1C2BC00B00CAA /* ROADAttributesCodeGenerator */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -374,7 +374,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = EPAM;
 			};
-			buildConfigurationList = 8DD9C16E17B1C2BC00B00CAA /* Build configuration list for PBXProject "SparkAttributesCodeGenerator" */;
+			buildConfigurationList = 8DD9C16E17B1C2BC00B00CAA /* Build configuration list for PBXProject "ROADAttributesCodeGenerator" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -386,7 +386,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8DD9C17217B1C2BC00B00CAA /* SparkAttributesCodeGenerator */,
+				8DD9C17217B1C2BC00B00CAA /* ROADAttributesCodeGenerator */,
 			);
 		};
 /* End PBXProject section */
@@ -504,7 +504,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SparkAttributesCodeGenerator/SparkAttributesCodeGenerator-Prefix.pch";
+				GCC_PREFIX_HEADER = "ROADAttributesCodeGenerator/ROADAttributesCodeGenerator-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -514,7 +514,7 @@
 			buildSettings = {
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SparkAttributesCodeGenerator/SparkAttributesCodeGenerator-Prefix.pch";
+				GCC_PREFIX_HEADER = "ROADAttributesCodeGenerator/ROADAttributesCodeGenerator-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -522,7 +522,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8DD9C16E17B1C2BC00B00CAA /* Build configuration list for PBXProject "SparkAttributesCodeGenerator" */ = {
+		8DD9C16E17B1C2BC00B00CAA /* Build configuration list for PBXProject "ROADAttributesCodeGenerator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8DD9C17F17B1C2BC00B00CAA /* Debug */,
@@ -531,7 +531,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8DD9C18117B1C2BC00B00CAA /* Build configuration list for PBXNativeTarget "SparkAttributesCodeGenerator" */ = {
+		8DD9C18117B1C2BC00B00CAA /* Build configuration list for PBXNativeTarget "ROADAttributesCodeGenerator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8DD9C18217B1C2BC00B00CAA /* Debug */,

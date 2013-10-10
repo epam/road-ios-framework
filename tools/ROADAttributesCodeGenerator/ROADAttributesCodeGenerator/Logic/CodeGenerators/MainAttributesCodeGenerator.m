@@ -35,8 +35,8 @@
 
 #import "ClassAttributesCodeGenerator.h"
 
-NSString *k_generatedFileNameSuffix = @"+SFAttributes.m";
-NSString *k_collectorFileName = @"SparkGeneratedAttribute.m";
+NSString *k_generatedFileNameSuffix = @"+RFAttributes.m";
+NSString *k_collectorFileName = @"ROADGeneratedAttribute.m";
 
 @implementation MainAttributesCodeGenerator
 

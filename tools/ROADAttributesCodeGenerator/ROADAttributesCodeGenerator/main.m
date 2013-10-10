@@ -1,6 +1,6 @@
 //
 //  main.m
-//  SparkAttributesCodeGenerator
+//  ROADAttributesCodeGenerator
 //
 //  
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -85,12 +85,12 @@ BOOL isValidParameters(ESDArgumentResolver *cmdLineArguments) {
 
 void PrintUsage() {
     [Console writeLine:@"Attribute’s code generator."];
-    [Console writeLine:@"Spark Framework tool"];
+    [Console writeLine:@"ROAD Framework tool"];
     [Console writeLine:@"Copyright (c) 2013 EPAM. All rights reserved."];
     [Console writeLine:@""];
     [Console writeLine:@"Usage:"];
     [Console writeLine:@""];
-    [Console writeLine:@"SparkAttributesCodeGenerator –src=path to folder with source code –dst=path to destination folder where need to create attributes code"];
+    [Console writeLine:@"ROADAttributesCodeGenerator –src=path to folder with source code –dst=path to destination folder where need to create attributes code"];
     [Console writeLine:@""];
 }
 

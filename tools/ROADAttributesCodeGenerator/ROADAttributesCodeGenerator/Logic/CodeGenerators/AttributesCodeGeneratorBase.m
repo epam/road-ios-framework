@@ -66,17 +66,17 @@
     NSString *factoryName = [self factoryName];
     NSString *factoryDictionaryHolderName = [NSString stringWithFormat:@"attributes%@%@Dict", [self modelHolderName:[modelsList lastObject]], [self factoryName]];
     
-    [result appendFormat:@"+ (NSMutableDictionary *)SF_attributes%@ {\n", factoryName];
-    [result appendFormat:@"    NSMutableDictionary *%@ = [[SFAttributeCacheManager attributeCache] objectForKey:@\"SF%@%@\"];\n", factoryDictionaryHolderName, [self modelHolderName:[modelsList lastObject]], factoryName];
+    [result appendFormat:@"+ (NSMutableDictionary *)RF_attributes%@ {\n", factoryName];
+    [result appendFormat:@"    NSMutableDictionary *%@ = [[RFAttributeCacheManager attributeCache] objectForKey:@\"RF%@%@\"];\n", factoryDictionaryHolderName, [self modelHolderName:[modelsList lastObject]], factoryName];
     [result appendFormat:@"    if (%@ != nil) {\n", factoryDictionaryHolderName];
     [result appendFormat:@"        return %@;\n", factoryDictionaryHolderName];
     [result appendLine:@"    }"];
     [result appendLine:@"    "];
-    [result appendFormat:@"    NSMutableDictionary *dictionaryHolder = [super SF_attributes%@];\n", factoryName];
+    [result appendFormat:@"    NSMutableDictionary *dictionaryHolder = [super RF_attributes%@];\n", factoryName];
     [result appendLine:@"    "];
     [result appendLine:@"    if (!dictionaryHolder) {"];
     [result appendLine:@"        dictionaryHolder = [NSMutableDictionary dictionary];"];
-    [result appendFormat:@"        [[SFAttributeCacheManager attributeCache] setObject:dictionaryHolder forKey:@\"SF%@%@\"];\n", [self modelHolderName:[modelsList lastObject]], factoryName];
+    [result appendFormat:@"        [[RFAttributeCacheManager attributeCache] setObject:dictionaryHolder forKey:@\"RF%@%@\"];\n", [self modelHolderName:[modelsList lastObject]], factoryName];
     [result appendLine:@"    }"];
     [result appendLine:@"    "];
     
@@ -85,7 +85,7 @@
             continue;
         }
         
-        [result appendFormat:@"    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(%@)] forKey:@\"%@\"];\n", [self listCreatorName:currentModel], currentModel.name];
+        [result appendFormat:@"    [dictionaryHolder setObject:[self RF_invocationForSelector:@selector(%@)] forKey:@\"%@\"];\n", [self listCreatorName:currentModel], currentModel.name];
     }
     
     [result appendFormat:@"    %@ = dictionaryHolder;  \n", factoryDictionaryHolderName];
@@ -113,10 +113,10 @@
 + (void)writeMethodBodyTo:(NSMutableString *)result forModel:(AnnotatedElementModel *)model {
     NSString *listHolderName = [self listHolderName:model];
     NSString *listCreatorName = [self listCreatorName:model];
-    NSString *cacheKey = [listHolderName stringByReplacingOccurrencesOfString:@"SF_attributes_list" withString:@"SFAL"];
+    NSString *cacheKey = [listHolderName stringByReplacingOccurrencesOfString:@"RF_attributes_list" withString:@"RFAL"];
     
     [result appendFormat:@"+ (NSArray *)%@ {\n", listCreatorName];
-    [result appendFormat:@"    NSMutableArray *%@ = [[SFAttributeCacheManager attributeCache] objectForKey:@\"%@\"];\n", listHolderName, cacheKey];
+    [result appendFormat:@"    NSMutableArray *%@ = [[RFAttributeCacheManager attributeCache] objectForKey:@\"%@\"];\n", listHolderName, cacheKey];
     [result appendFormat:@"    if (%@ != nil) {\n", listHolderName];
     [result appendFormat:@"        return %@;\n", listHolderName];
     [result appendLine:@"    }"];
@@ -125,14 +125,14 @@
     [result appendLine:@"    "];
     [result appendString:[self generateAttributesCreatingBodyForModels:model.attributeModels]];
     [result appendFormat:@"    %@ = attributesArray;\n", listHolderName];
-    [result appendFormat:@"    [[SFAttributeCacheManager attributeCache] setObject:attributesArray forKey:@\"%@\"];\n", cacheKey];
+    [result appendFormat:@"    [[RFAttributeCacheManager attributeCache] setObject:attributesArray forKey:@\"%@\"];\n", cacheKey];
     [result appendLine:@"    "];
     [result appendFormat:@"    return %@;\n", listHolderName];
     [result appendLine:@"}"];
 }
 
 + (NSString *)listHolderName:(AnnotatedElementModel *)model {
-    NSString *result = [NSString stringWithFormat:@"SF_attributes_list_%@_%@_%@", [self modelHolderName:model], [self elementType], [self elementName:model]];
+    NSString *result = [NSString stringWithFormat:@"RF_attributes_list_%@_%@_%@", [self modelHolderName:model], [self elementType], [self elementName:model]];
     return result;
 }
 
@@ -143,7 +143,7 @@
 }
 
 + (NSString *)listCreatorName:(AnnotatedElementModel *)model {
-    NSString *result = [NSString stringWithFormat:@"SF_attributes_%@_%@_%@", [self modelHolderName:model], [self elementType], [self elementName:model]];
+    NSString *result = [NSString stringWithFormat:@"RF_attributes_%@_%@_%@", [self modelHolderName:model], [self elementType], [self elementName:model]];
     return result;
 }
 

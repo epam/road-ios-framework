@@ -75,7 +75,7 @@
 + (void)generateCodeCollectorIntoPath:(NSString *)targetPath fromClassModels:(ClassModelsContainer *)classesInfoContainer {
     NSMutableString *collectorCode = [NSMutableString new];
     
-    [collectorCode appendString:@"#import <Spark/NSObject+SFAttributesInternal.h>\n\n"];
+    [collectorCode appendString:@"#import <ROAD/NSObject+RFAttributesInternal.h>\n\n"];
     
     for (ClassModel *currentClassModel in classesInfoContainer.classModels) {
         if (!currentClassModel.hasGeneratedCode) {

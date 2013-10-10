@@ -78,7 +78,7 @@ NSRegularExpression *keyWordRegex = nil;
 }
 
 + (void)processKeyWord:(NSString *)keyWord withCodeParseState:(CodeParseState *)parseState {
-    if ([keyWord isEqualToString:@"SF_ATTRIBUTE"]) {
+    if ([keyWord isEqualToString:@"RF_ATTRIBUTE"]) {
         [self processAttributeWithCodeParseState:parseState];
         return;
     }

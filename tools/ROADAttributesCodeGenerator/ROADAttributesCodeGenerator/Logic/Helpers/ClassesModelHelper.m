@@ -63,7 +63,7 @@
     
     [currentClassModel1.attributeModels addAttributeModelsFromContainer:classModelToMerge.attributeModels];
     [currentClassModel1.filesToImport addObjectsFromArray:classModelToMerge.filesToImport];
-    [currentClassModel1.filesToImport addObject:@"<Spark/SparkCore.h>"];
+    [currentClassModel1.filesToImport addObject:@"<ROAD/ROADCore.h>"];
     
     [self mergeFieldsToClassModel:currentClassModel1 fromClassModel:classModelToMerge];
     [self mergePropertiesToClassModel:currentClassModel1 fromClassModel:classModelToMerge];

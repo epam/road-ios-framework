@@ -1,6 +1,6 @@
 //
-//  NSFileManager+ExtendedAPI.h
-//  SparkAttributesCodeGenerator
+//  NSFileManager+ExtendedAPI.m
+//  ROADAttributesCodeGenerator
 //
 //  
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -29,10 +29,13 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import <Foundation/Foundation.h>
+#import "NSFileManager+ExtendedAPI.h"
 
-@interface NSFileManager (ExtendedAPI)
+@implementation NSFileManager (ExtendedAPI)
 
-+ (BOOL)isFolderAtPath:(NSString *)path;
++ (BOOL)isFolderAtPath:(NSString *)path {
+    BOOL isDirectory = NO;    
+    return ([[self defaultManager] fileExistsAtPath:path isDirectory:&isDirectory] && isDirectory);
+}
 
 @end

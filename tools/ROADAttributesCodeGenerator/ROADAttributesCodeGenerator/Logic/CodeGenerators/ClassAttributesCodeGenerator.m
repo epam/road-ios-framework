@@ -69,11 +69,11 @@
     }
     
     [categoryDefinitionHeader appendLine:@" "];
-    [categoryDefinitionHeader appendFormat:@"@interface %@(SFAttribute)\n", classModel.name];
+    [categoryDefinitionHeader appendFormat:@"@interface %@(RFAttribute)\n", classModel.name];
     [categoryDefinitionHeader appendLine:@" "];
     [categoryDefinitionHeader appendLine:@"@end"];
     [categoryDefinitionHeader appendLine:@" "];
-    [categoryDefinitionHeader appendFormat:@"@implementation %@(SFAttribute)\n", classModel.name];
+    [categoryDefinitionHeader appendFormat:@"@implementation %@(RFAttribute)\n", classModel.name];
     [categoryDefinitionHeader appendLine:@" "];
 
     [result insertString:categoryDefinitionHeader atIndex:0];
@@ -81,7 +81,7 @@
 }
 
 + (NSString *)listCreatorName:(AnnotatedElementModel *)model {
-    return @"SF_attributesForClass";
+    return @"RF_attributesForClass";
 }
 
 + (NSString *)elementType {
