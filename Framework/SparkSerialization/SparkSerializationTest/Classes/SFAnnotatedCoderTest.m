@@ -57,6 +57,7 @@
     object.strings = @[@"value3", @"value4"];
     object.boolean = YES;
     object.subDictionary = @{@"object3" : object3};
+
     object.child = [[SFSerializationTestObject alloc] init];
     object.child.boolean = NO;
     object.child.string1 = @"value5";

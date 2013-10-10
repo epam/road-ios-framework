@@ -33,8 +33,6 @@
 
 @interface SFAttributedXMLDecoder : NSObject
 
-@property (nonatomic, readonly) BOOL isParsing;
-
-- (void)decodeData:(NSData *)xmlData withRootObjectClass:(Class)rootObjectClass completionBlock:(void (^)(id rootObject, NSError *error))completionBlock;
+- (id)decodeData:(NSData *)xmlData withRootObjectClass:(Class)rootObjectClass;
 
 @end

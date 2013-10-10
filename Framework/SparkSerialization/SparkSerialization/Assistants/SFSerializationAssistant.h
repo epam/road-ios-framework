@@ -31,11 +31,11 @@
 // for additional information regarding copyright ownership and licensing
 
 #import <Foundation/Foundation.h>
-#import <Spark/SparkReflection.h>
 
-@interface SFSerializationAssistant : NSObject
+@class SFPropertyInfo;
 
-+ (NSString *)serializationKeyForProperty:(SFPropertyInfo *)propertyInfo;
-+ (NSString *)collectionItemClassNameForProperty:(SFPropertyInfo *)propertyInfo;
+NSString *SFSerializationKeyForProperty(SFPropertyInfo *propertyInfo);
+NSString *SFSerializationCollectionItemClassNameForProperty(SFPropertyInfo *propertyInfo);
+NSArray *SFSerializationPropertiesForClass(Class class);
 
-@end
+id SFSerializationEncodeObjectForProperty(id value, SFPropertyInfo *propertyInfo, NSDateFormatter* dateFormatter);

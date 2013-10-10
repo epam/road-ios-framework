@@ -38,6 +38,9 @@
 #import "SFDerived.h"
 #import "SFXMLSerializationContext.h"
 #import "SFSerializableCollection.h"
+#import "SFSerializationAssistant.h"
+
+#define kSFAttributedXMLDecoderDefaultContainerClass [NSArray class]
 
 @interface SFAttributedXMLDecoder () <NSXMLParserDelegate> {
     NSXMLParser *_parser;
@@ -54,11 +57,7 @@
 
 @implementation SFAttributedXMLDecoder
 
-- (void)decodeData:(NSData *)xmlData withRootObjectClass:(Class)rootObjectClass completionBlock:(void (^)(id rootObject, NSError *error))completionBlock {
-    
-    NSParameterAssert(!self.isParsing);
-    
-    completionHandler = completionBlock;
+- (id)decodeData:(NSData *)xmlData withRootObjectClass:(Class)rootObjectClass {
     
     _result = nil;
     _context = [SFXMLSerializationContext new];
@@ -68,23 +67,17 @@
     _parser.delegate = self;
     
     [_parser parse];
-}
-
-- (BOOL)isParsing {
-
-    return (_parser != nil);
+    
+    return _result;
 }
 
 #pragma marl - Parser Delegate
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
-
     _parser = nil;
-    completionHandler(_result, nil);
 }
 
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
     _parser = nil;
-    completionHandler(_result, parseError);
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
@@ -93,25 +86,27 @@
     _context.elementSkipped = NO;
     
     // Check for container and/or it's delayed creation
-    BOOL isInArray = NO;
-    BOOL isInDictionary = NO;
     if (!_context.properties) {
         
         SFSerializableCollection *collectionAttribute = nil;
 
-        if (_context.currentNodeProperty) {
+        if (_context.currentNodeClass) {
             
             //  We want to stay abstract which concrete class was requested
-            _context.currentNode = [[[_context.currentNodeProperty.typeClass alloc] init] mutableCopy];
-            collectionAttribute = [_context.currentNodeProperty attributeWithType:[SFSerializableCollection class]];
-            _context.currentNodeProperty = nil;
+            id containerNode = [[[_context.currentNodeProperty.typeClass ? _context.currentNodeProperty.typeClass : _context.currentNodeClass alloc] init] mutableCopy];
+            
+            _context.currentNode = containerNode;
+            _context.simpleValue = NO;
+            
+            if (!_result) {
+                _result = _context.currentNode;
+            }
+
+            _context.currentNodeClass = Nil;
         }
         
-        // Find out the kind;
-        isInArray = [_context.currentNode isKindOfClass:[NSArray class]];
-        isInDictionary = [_context.currentNode isKindOfClass:[NSDictionary class]];
-        
-        elementClass = collectionAttribute.collectionClass ? collectionAttribute.collectionClass : [NSDictionary class];
+        collectionAttribute = [_context.currentNodeProperty attributeWithType:[SFSerializableCollection class]];
+        elementClass = collectionAttribute.collectionClass;
     }
     else {
         
@@ -126,28 +121,25 @@
 
     [_context saveContext];
 
+    _context.simpleValue = YES;
+ 
     if (!_context.elementSkipped) {
         
-        if (!_result) {
+        //  top element
+        if (!_result && !_context.elementName) {
             elementClass = _rootNodeClass;
         }
         
         NSMutableDictionary *lazyProperties = [NSMutableDictionary new];
-        NSArray *properties = [self propertiesForClass:elementClass];
+        NSArray *properties = SFSerializationPropertiesForClass(elementClass);
         
         // Then property is a custom object and we want to init it now
         if ([properties count]) {
             
             id newElement = [[elementClass alloc] init];
-            
-            if (isInArray) {
-                [_context.currentNode addObject:newElement];
-            }
-            else if (isInDictionary) {
-                [_context.currentNode setObject:newElement forKey:elementName];
-            }
-
             _context.currentNode = newElement;
+            _context.simpleValue = NO;
+            
             if (!_result) {
                 _result = _context.currentNode;
             }
@@ -155,18 +147,20 @@
             for (SFPropertyInfo *property in properties) {
                 
                 SFXMLAttributes *xmlAttributes = [property attributeWithType:[SFXMLAttributes class]];
+                NSString* serializationKey = SFSerializationKeyForProperty(property);
                 
                 if (xmlAttributes.isSavedInTag) {
-                    id decodedValue = [self convertString:attributeDict[property.propertyName] forProperty:property];
+                    id decodedValue = [self convertString:attributeDict[serializationKey] forProperty:property];
                     [_context.currentNode setValue:decodedValue forKey:property.propertyName];
                 }
                 else {
-                    lazyProperties[property.propertyName] = property;
+                    lazyProperties[serializationKey] = property;
                 }
             }
         }
 
         _context.currentNodeProperty = [properties count] ? nil : _context.properties[elementName];
+        _context.currentNodeClass = [properties count] ? Nil : kSFAttributedXMLDecoderDefaultContainerClass;
         _context.properties = [lazyProperties count] ? [NSDictionary dictionaryWithDictionary:lazyProperties] : nil;
         _context.elementName = elementName;
     }
@@ -174,7 +168,19 @@
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
     
+    NSString* contextElementName = _context.elementName;
+    id element = _context.currentNode;
+    BOOL isElementSkipped = _context.isElementSkipped;
+    BOOL isSimpleValue = _context.isSimpleValue;
+
     [_context restoreContext];
+
+    if (!isElementSkipped && !isSimpleValue) {
+        NSParameterAssert (contextElementName == elementName);
+
+        NSString* propertyName = [_context.properties[elementName] propertyName];
+        [self setCurrentNodeValue:element forKey:propertyName ? propertyName : elementName];
+    }
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
@@ -209,27 +215,7 @@
         [node setValue:value forKey:key];
     }
     
-    SFLogDebug(@"SFAttributedXMLDecoder: setsValue:%@ forKey:%@", value, key);
-}
-
-- (NSArray*)propertiesForClass:(Class)class {
-    
-    NSArray *result = nil;
-
-    @autoreleasepool {
-        if ([class SF_attributeForClassWithAttributeType:[SFSerializable class]]) {
-            
-            result = [[class SF_properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(SFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
-                    return (![evaluatedObject attributeWithType:[SFDerived class]]);
-                }]];
-        }
-        else {
-
-            result = [class SF_propertiesWithAttributeType:[SFSerializable class]];
-        }
-    }
-    
-    return result;
+//    SFLogDebug(@"SFAttributedXMLDecoder: setsValue:%@ forKey:%@", value, key);
 }
 
 - (id)convertString:(NSString *)string forProperty:(SFPropertyInfo *)property {

@@ -88,27 +88,14 @@
     }
     else {
         [_archive setObject:NSStringFromClass([rootObject class]) forKey:SFSerializedObjectClassName];
-        NSArray *properties;
-        @autoreleasepool {            
-            Class rootObjectClass = [rootObject class];
-            
-            if ([rootObjectClass SF_attributeForClassWithAttributeType:[SFSerializable class]]) {
-                properties = [[rootObjectClass SF_properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(SFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
-                    return (![evaluatedObject attributeWithType:[SFDerived class]]);
-                }]];
-            }
-            else {
-                properties = [rootObjectClass SF_propertiesWithAttributeType:[SFSerializable class]];
-            }
-            
-            
-        }        
+        NSArray *properties = SFSerializationPropertiesForClass([rootObject class]);
+
         @autoreleasepool {
             for (SFPropertyInfo * const aDesc in properties) {
                 id value = [rootObject valueForKey:[aDesc propertyName]];
                 value = [self encodeValue:value forProperty:aDesc];
                 
-                NSString *key = [SFSerializationAssistant serializationKeyForProperty:aDesc];
+                NSString *key = SFSerializationKeyForProperty(aDesc);
                 
                 if (value != nil) {
                     [_archive setObject:value forKey:key];

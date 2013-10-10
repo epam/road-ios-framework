@@ -36,10 +36,10 @@
 @interface SFAttributedXMLCoder : NSObject
 
 /**
- Encodes the specified object into a json string.
+ Encodes the specified object into a xml string.
  @param rootObject The object to serialize.
  @result The xml string.
  */
-- (NSString*)encodeRootObject:(id)rootObject;
+- (NSString *)encodeRootObject:(id)rootObject;
 
 @end

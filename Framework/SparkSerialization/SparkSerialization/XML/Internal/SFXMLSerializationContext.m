@@ -30,11 +30,13 @@
 
 #import "SFXMLSerializationContext.h"
 
-static NSString const* kCurrentNode = @"currentNode";
-static NSString const* kProperties = @"properties";
-static NSString const* kCurrentNodeProperty = @"currentNodeProperty";
-static NSString const* kElementName = @"elementName";
-static NSString const* kElementSkipped = @"elementSkipped";
+static NSString const *kCurrentNode = @"currentNode";
+static NSString const *kProperties = @"properties";
+static NSString const *kCurrentNodeProperty = @"currentNodeProperty";
+static NSString const *kElementName = @"elementName";
+static NSString const *kElementSkipped = @"elementSkipped";
+static NSString const *kSimpleValue = @"simpleValue";
+static NSString const *kCurrentNodeClass = @"Class";
 
 @interface SFXMLSerializationContext () {
     NSMutableArray *_stack;
@@ -47,23 +49,19 @@ static NSString const* kElementSkipped = @"elementSkipped";
 {
     if (!_stack) _stack = [[NSMutableArray alloc] init];
     
-    if (_currentNode && _properties && _currentNodeProperty && kElementName) {
-        
-        [_stack addObject:@{kCurrentNode : _currentNode, kProperties : _properties, kCurrentNodeProperty : _currentNodeProperty, kElementName : _elementName, kElementSkipped : @(_elementSkipped)}];
-    }
-    else {
-        
-        NSMutableDictionary *newRecord = [[NSMutableDictionary alloc] initWithCapacity:4];
-        
-        if (_currentNode) newRecord[kCurrentNode] = _currentNode;
-        if (_properties) newRecord[kProperties] = _properties;
-        if (_currentNodeProperty) newRecord[kCurrentNodeProperty] = _currentNodeProperty;
-        if (_elementName) newRecord[kElementName] = _elementName;
 
-        newRecord[kElementSkipped] = @(_elementSkipped);
-        
-        [_stack addObject:[newRecord copy]];
-    }
+    NSMutableDictionary *newRecord = [[NSMutableDictionary alloc] initWithCapacity:5];
+    
+    if (_currentNode) newRecord[kCurrentNode] = _currentNode;
+    if (_properties) newRecord[kProperties] = _properties;
+    if (_currentNodeProperty) newRecord[kCurrentNodeProperty] = _currentNodeProperty;
+    if (_elementName) newRecord[kElementName] = _elementName;
+    if (_currentNodeClass) newRecord[kCurrentNodeClass] = _currentNodeClass;
+
+    newRecord[kElementSkipped] = @(_elementSkipped);
+    newRecord[kSimpleValue] = @(_simpleValue);
+    
+    [_stack addObject:[newRecord copy]];
 }
 
 - (void)restoreContext {
@@ -75,6 +73,8 @@ static NSString const* kElementSkipped = @"elementSkipped";
     _properties = record[kProperties];
     _elementName = record[kElementName];
     _elementSkipped = [record[kElementSkipped] boolValue];
+    _simpleValue = [record[kSimpleValue] boolValue];
+    _currentNodeClass = record[kCurrentNodeClass];
     
     [_stack removeLastObject];
 }

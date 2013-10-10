@@ -131,24 +131,15 @@
 }
 
 - (id)decodeRootObject:(NSDictionary * const)jsonDict withRootClassNamed:(NSString * const)rootClassName {
-    id rootObject;
+    Class rootObjectClass = NSClassFromString(rootClassName);
+    id rootObject = [[rootObjectClass alloc] init];
     
-    __unsafe_unretained Class const rootObjectClass = NSClassFromString(rootClassName);
-    rootObject = [[rootObjectClass alloc] init];
-    NSArray *properties;
-    if ([rootObjectClass SF_attributeForClassWithAttributeType:[SFSerializable class]]) {
-        properties = [[rootObjectClass SF_properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(SFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
-            return (![evaluatedObject attributeWithType:[SFDerived class]]);
-        }]];
-    }
-    else {
-        properties = [rootObjectClass SF_propertiesWithAttributeType:[SFSerializable class]];
-    }
-
-    NSString *aKey;
+    NSArray *properties = SFSerializationPropertiesForClass(rootObjectClass);
+    NSString *aKey = nil;
+    
     @autoreleasepool {
         for (SFPropertyInfo * const aDesc in properties) {
-            aKey = [SFSerializationAssistant serializationKeyForProperty:aDesc];
+            aKey = SFSerializationKeyForProperty(aDesc);
             
             id result = [self decodeValue:jsonDict[aKey] forProperty:aDesc];
             [rootObject setValue:result forKey:[aDesc propertyName]];
@@ -207,7 +198,7 @@
         value = [subArray copy];
     }
     else if ([aValue isKindOfClass:[NSDictionary class]]) {
-        NSString *decodeClassName = [SFSerializationAssistant collectionItemClassNameForProperty:aDesc];
+        NSString *decodeClassName = SFSerializationCollectionItemClassNameForProperty(aDesc);
         
         if (decodeClassName == nil) {
             decodeClassName = aValue[SFSerializedObjectClassName];
@@ -271,7 +262,6 @@
     NSArray *keys = [keyPath componentsSeparatedByString:@"."];
     
     id nestedJsonObject = jsonObject;
-    BOOL isSuccess = NO;
     NSMutableString *currentKeyPath = [[NSMutableString alloc] init];
     
     for (int index = 0; index < [keys count]; index++) {
@@ -280,9 +270,7 @@
             [currentKeyPath appendString:@"."];
         }
         [currentKeyPath appendString:key];
-        
-        isSuccess = (index == ([keys count] - 1));
-        
+                
         // Check invalid cases: number, string, null or null in array
         if ([nestedJsonObject isKindOfClass:[NSNumber class]]
             || [nestedJsonObject isKindOfClass:[NSString class]]

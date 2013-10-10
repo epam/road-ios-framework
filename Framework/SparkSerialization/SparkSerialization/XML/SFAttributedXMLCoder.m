@@ -32,12 +32,109 @@
 
 
 #import "SFAttributedXMLCoder.h"
+#import <Spark/SparkReflection.h>
+#import "SFSerializable.h"
+#import "SFSerializationAssistant.h"
+#import "SFXMLAttributes.h"
+
+#include <libxml/parser.h>
+
+char *SFAttributedXMLCoderTagForClass(Class aClass)
+{
+    char *result = NULL;
+    
+    if ([aClass isSubclassOfClass:[NSArray class]]) result = "array";
+    else if ([aClass isSubclassOfClass:[NSDictionary class]]) result = "dictionary";
+    else if ([aClass isSubclassOfClass:[NSDate class]]) result = "date";
+    else if ([aClass isSubclassOfClass:[NSNumber class]]) result = "number";
+    else if ([aClass isSubclassOfClass:[NSString class]]) result = "string";
+    else result = "object";
+
+    return result;
+}
+
+@interface SFAttributedXMLCoder () {
+    NSDateFormatter* _dateFormatter;
+}
+@end
 
 @implementation SFAttributedXMLCoder
 
-- (NSString*)encodeRootObject:(id)rootObject
-{
-    return [NSString string];
+- (id)init {
+    
+    if (self = [super init]) {
+        _dateFormatter = [[NSDateFormatter alloc] init];
+    }
+    return self;
+}
+
+- (NSString *)encodeRootObject:(id)rootObject {
+    
+    xmlNodePtr xmlNode = [self serializeObject:rootObject toXMLNode:NULL propertyInfo:nil serializationName:nil];
+    xmlDocPtr xmlDoc = xmlNewDoc(BAD_CAST "1.0");
+    xmlChar *xmlBuff = NULL;
+    int xmlBufferSize = 0;
+
+    xmlDocSetRootElement(xmlDoc, xmlNode);
+    xmlDocDumpFormatMemory(xmlDoc, &xmlBuff, &xmlBufferSize, 1);
+
+    NSString *result = [NSString stringWithUTF8String:(char*)xmlBuff];
+    
+    xmlFree(xmlBuff);
+    xmlFreeDoc(xmlDoc);
+    
+    return result;
+}
+
+- (xmlNodePtr)serializeObject:(id)serializedObject toXMLNode:(xmlNodePtr)parentNode propertyInfo:(SFPropertyInfo*)propertyInfo serializationName:(NSString *)serializationName {
+
+    xmlNodePtr result = NULL;
+    Class class = [serializedObject class];
+    
+    if (!serializationName) serializationName = SFSerializationKeyForProperty(propertyInfo);
+    const char *serializationNameC = ([serializationName length] > 0) ? [serializationName UTF8String] : SFAttributedXMLCoderTagForClass(class);
+    NSParameterAssert(serializationNameC != NULL);
+
+    result = parentNode ? xmlNewChild(parentNode, NULL, BAD_CAST serializationNameC, NULL) : xmlNewNode(NULL, BAD_CAST serializationNameC);
+
+    BOOL isDictionary = [class isSubclassOfClass:[NSDictionary class]];
+    BOOL isArray = [class isSubclassOfClass:[NSArray class]];
+
+    if (isArray || isDictionary) {
+        for (id item in serializedObject) {
+            
+            NSString *serializationName = (isDictionary && [item isKindOfClass:[NSString class]]) ? item : nil;
+            [self serializeObject:isArray ? item : serializedObject[item] toXMLNode:result propertyInfo:nil serializationName:serializationName];
+        }
+    }
+    else {
+        NSArray *properties = SFSerializationPropertiesForClass(class);
+        
+        if ([properties count]) {
+            for (SFPropertyInfo *property in properties) {
+                SFXMLAttributes *xmlAttributes = [property attributeWithType:[SFXMLAttributes class]];
+                
+                if (xmlAttributes.isSavedInTag) {
+                    NSString *encodedString = SFSerializationEncodeObjectForProperty(serializedObject, property, _dateFormatter);
+                    
+                    if ([encodedString length]) {
+                        xmlNewProp(result, BAD_CAST [SFSerializationKeyForProperty(property) UTF8String], BAD_CAST [encodedString UTF8String]);
+                    }
+                }
+                else {
+                    id propertyObject = [serializedObject valueForKey:[property propertyName]];
+                    [self serializeObject:propertyObject toXMLNode:result propertyInfo:property serializationName:nil];
+                }
+            }
+        }
+        else {
+            NSString *encodedObject = SFSerializationEncodeObjectForProperty(serializedObject, propertyInfo, _dateFormatter);
+            // tag attributes or value?
+            xmlNodeSetContent(result, BAD_CAST [encodedObject UTF8String]);
+        }
+    }
+    
+    return result;
 }
 
 @end

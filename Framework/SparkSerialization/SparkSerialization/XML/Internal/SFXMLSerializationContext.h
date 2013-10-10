@@ -35,8 +35,10 @@
 @property (nonatomic, strong) id currentNode;
 @property (nonatomic, strong) NSDictionary *properties;
 @property (nonatomic, strong) SFPropertyInfo *currentNodeProperty;
+@property (nonatomic, strong) Class currentNodeClass;
 @property (nonatomic, strong) NSString *elementName;
 @property (nonatomic, assign, getter = isElementSkipped) BOOL elementSkipped;
+@property (nonatomic, assign, getter = isSimpleValue) BOOL simpleValue;
 
 - (void)saveContext;
 - (void)restoreContext;

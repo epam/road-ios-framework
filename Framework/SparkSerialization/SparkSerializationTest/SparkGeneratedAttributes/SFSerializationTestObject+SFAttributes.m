@@ -4,6 +4,7 @@
 #import "SFSerializableCollection.h"
 #import "SFDerived.h"
 #import "SFSerializationTestObject.h"
+#import "SFAttributedXMLCoder.h"
 #import <Spark/SparkCore.h>
  
 @interface SFSerializationTestObject(SFAttribute)
@@ -41,7 +42,6 @@
     
     SFSerializableDate *attr1 = [[SFSerializableDate alloc] init];
     attr1.format = @"dd/MM/yyyy HH:mm:ss Z";
-    attr1.encodingFormat = @"MM.dd.yyyy HH:mm:ss.AAA Z";
     [attributesArray addObject:attr1];
 
     SF_attributes_list_SFSerializationTestObject_property_date1 = attributesArray;

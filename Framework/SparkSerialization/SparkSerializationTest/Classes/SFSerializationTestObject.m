@@ -32,7 +32,48 @@
 
 
 #import "SFSerializationTestObject.h"
+#import "SFAttributedXMLCoder.h"
+
+static const NSTimeInterval kDateComparisonDelta = 1;
 
 @implementation SFSerializationTestObject
+
+- (BOOL)isEqual:(id)object
+{
+    BOOL result = (object == self);
+    
+    do {
+        if (result) break;
+        
+        SFSerializationTestObject *pair = [object isKindOfClass:[self class]] ? object : nil;
+        if (!pair) break;
+
+        if (_boolean != pair.boolean) break;
+        if (_integer != pair.integer) break;
+
+        if ((_number != pair.number) && ![_number isEqualToNumber:pair.number]) break;
+
+        if ((_string1 != pair.string1) && ![_string1 isEqualToString:pair.string1]) break;
+        if ((_string2 != pair.string2) && ![_string2 isEqualToString:pair.string2]) break;
+        if ((_date1 != pair.date1) && ([_date1 timeIntervalSinceDate:pair.date1] > kDateComparisonDelta)) break;
+        if ((_date2 != pair.date2) && ([_date2 timeIntervalSinceDate:pair.date2] > kDateComparisonDelta)) break;
+        if ((_unixTimestamp != pair.unixTimestamp) && ![_unixTimestamp isEqualToDate:pair.unixTimestamp]) break;
+        
+        if ((_strings != pair.strings) && ![_strings isEqualToArray:pair.strings]) break;
+
+        if ((_subObjects != pair.subObjects) && ![_subObjects isEqualToArray:pair.subObjects]) break;
+        if ((_subDictionary != pair.subDictionary) && ![_subDictionary isEqualToDictionary:pair.subDictionary]) break;
+        
+        result = YES;
+        
+      } while (0);
+    
+    return result;
+}
+
+- (NSUInteger)hash
+{
+    return (NSUInteger)self;
+}
 
 @end
