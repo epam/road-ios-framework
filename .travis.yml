@@ -2,13 +2,13 @@ language: objective-c
 
 env:
     - SPARK_SCHEME=Simian
-    - SPARK_SCHEME=SparkCore
-    - SPARK_SCHEME=SparkLogger
-    - SPARK_SCHEME=SparkServices
-    - SPARK_SCHEME=SparkWebService
-    - SPARK_SCHEME=SparkObservation
-    - SPARK_SCHEME=SparkSerialization
-    - SPARK_SCHEME=SparkAttributesCodeGenerator
+    - SPARK_SCHEME=ROADCore
+    - SPARK_SCHEME=ROADLogger
+    - SPARK_SCHEME=ROADServices
+    - SPARK_SCHEME=ROADWebService
+    - SPARK_SCHEME=ROADObservation
+    - SPARK_SCHEME=ROADSerialization
+    - SPARK_SCHEME=ROADAttributesCodeGenerator
 
 before_script:
     - chmod +x ./script_simian.sh
@@ -19,7 +19,7 @@ script:
     - if [[ $SPARK_SCHEME == Simian ]]; then ./script_simian.sh; else ./script_general.sh; fi
 
 after_success:
-    - if [[ $SPARK_SCHEME != Simian && $SPARK_SCHEME != SparkAttributesCodeGenerator ]]; then ./coveralls.rb --extension m; fi
+    - if [[ $SPARK_SCHEME != Simian && $SPARK_SCHEME != ROADAttributesCodeGenerator ]]; then ./coveralls.rb --extension m; fi
 
 notifications:
   email:
