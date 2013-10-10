@@ -12,6 +12,12 @@ A set of reusable components taking advantage of extra dimension [Attribute-Orie
 **Logger** - attribute-based logger.  
 **Observation** - unification of KVO and NSNotifications with block-based callbacks.  
 
+##Snippet
+Connection to some sweety HTTP server could look like:
+
+ 
+
+
 ##Requirements
 
 Spark requires **iOS 5.0** and above. Compatibility with **4.3** and older is not tested.

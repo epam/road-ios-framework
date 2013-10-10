@@ -31,24 +31,67 @@
 // for additional information regarding copyright ownership and licensing
 
 #import "SFSerializationAssistant.h"
+#import <Spark/SparkReflection.h>
+#import <Spark/SparkLogger.h>
 #import "SFSerializable.h"
+#import "SFDerived.h"
 #import "SFSerializableCollection.h"
+#import "SFSerializableDate.h"
 
-@implementation SFSerializationAssistant
-
-+ (NSString *)serializationKeyForProperty:(SFPropertyInfo *)propertyInfo {
-    SFSerializable *propertySerializableAttribute = [propertyInfo attributeWithType:[SFSerializable class]];
+NSString *SFSerializationKeyForProperty(SFPropertyInfo *propertyInfo) {
     
-    if ([propertySerializableAttribute.serializationKey length] == 0) {
-        return propertyInfo.propertyName;
+    SFSerializable *serializationAttribute = [propertyInfo attributeWithType:[SFSerializable class]];
+    return ([serializationAttribute.serializationKey length] > 0) ? serializationAttribute.serializationKey : propertyInfo.propertyName;
+}
+
+NSString *SFSerializationCollectionItemClassNameForProperty(SFPropertyInfo *propertyInfo) {
+    
+    return NSStringFromClass([[propertyInfo attributeWithType:[SFSerializableCollection class]] collectionClass]);
+}
+
+NSArray *SFSerializationPropertiesForClass(Class class) {
+    NSArray *result = nil;
+    
+    @autoreleasepool {
+        if ([class SF_attributeForClassWithAttributeType:[SFSerializable class]]) {
+            
+            result = [[class SF_properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(SFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
+                return (![evaluatedObject attributeWithType:[SFDerived class]]);
+            }]];
+        }
+        else {
+            result = [class SF_propertiesWithAttributeType:[SFSerializable class]];
+        }
     }
     
-    return propertySerializableAttribute.serializationKey;
+    return result;
 }
 
-+ (NSString *)collectionItemClassNameForProperty:(SFPropertyInfo *)propertyInfo {
-    SFSerializableCollection *collectionAttribute = [propertyInfo attributeWithType:[SFSerializableCollection class]];
-    return (collectionAttribute == nil || collectionAttribute.collectionClass == nil) ? nil : NSStringFromClass(collectionAttribute.collectionClass);
+id SFSerializationEncodeObjectForProperty(id object, SFPropertyInfo *propertyInfo, NSDateFormatter* dateFormatter) {
+    id result = object;
+    
+    if ([object isKindOfClass:[NSDate class]]) {
+
+        SFSerializableDate *serializableDateAttribute = [propertyInfo attributeWithType:[SFSerializableDate class]];
+        if (!serializableDateAttribute) serializableDateAttribute = [propertyInfo.hostClass SF_attributeForProperty:propertyInfo.propertyName withAttributeType:[SFSerializableDate class]];
+        
+        if (serializableDateAttribute.unixTimestamp) {
+            NSDate *date = object;
+            result = [NSString stringWithFormat:@"%.0f", [date timeIntervalSince1970]];
+        }
+        else {
+            NSString *dateFormat = ([serializableDateAttribute.encodingFormat length] > 0) ? serializableDateAttribute.encodingFormat : serializableDateAttribute.format;
+            SFLogDebug(@"SFSerializableDate must have either defaultValue or encodingFormat specified : %@", dateFormat);
+            
+            if (![dateFormatter.dateFormat isEqualToString:dateFormat]) dateFormatter.dateFormat = dateFormat;
+            result = [dateFormat length] ? [dateFormatter stringFromDate:object] : [object description];
+        }
+    }
+    else if (![object isKindOfClass:[NSString class]]) {
+
+        result = [object respondsToSelector:@selector(stringValue)] ? [object stringValue] : [object description];
+    }
+    
+    return result;
 }
 
-@end

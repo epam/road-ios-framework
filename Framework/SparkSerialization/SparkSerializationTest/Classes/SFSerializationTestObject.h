@@ -49,7 +49,7 @@ SF_ATTRIBUTE(SFDerived)
 
 @property (strong, nonatomic) NSArray *strings;
 
-SF_ATTRIBUTE(SFSerializableDate, format = @"dd/MM/yyyy HH:mm:ss Z", encodingFormat = @"MM.dd.yyyy HH:mm:ss.AAA Z")
+SF_ATTRIBUTE(SFSerializableDate, format = @"dd/MM/yyyy HH:mm:ss Z")
 @property (strong, nonatomic) NSDate *date1;
 
 SF_ATTRIBUTE(SFSerializableDate, format = @"MM.dd.yyyy HH:mm", decodingFormat = @"MM.dd.yyyy HH:mm:ss")
@@ -60,6 +60,8 @@ SF_ATTRIBUTE(SFSerializableDate, unixTimestamp = YES)
 
 @property (strong, nonatomic) SFSerializationTestObject *child;
 
+//@property (assign, nonatomic) NSRange range;
+
 SF_ATTRIBUTE(SFSerializableCollection, collectionClass = [SFSerializationTestObject class])
 @property (strong, nonatomic) NSArray *subObjects;
 
@@ -68,6 +70,9 @@ SF_ATTRIBUTE(SFSerializableCollection, collectionClass = [SFSerializationTestObj
 
 @property (nonatomic) int integer;
 
-@property (nonatomic) NSNumber *number;
+@property (nonatomic, strong) NSNumber *number;
+
+
++ (SFSerializationTestObject *)sampleObject;
 
 @end

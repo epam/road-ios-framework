@@ -1,5 +1,5 @@
 //
-//  SFSerializationAssistant.h
+//  SFAttributedXMLCoder.h
 //  SparkSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,12 +30,16 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
+
 #import <Foundation/Foundation.h>
 
-@class SFPropertyInfo;
+@interface SFAttributedXMLCoder : NSObject
 
-NSString *SFSerializationKeyForProperty(SFPropertyInfo *propertyInfo);
-NSString *SFSerializationCollectionItemClassNameForProperty(SFPropertyInfo *propertyInfo);
-NSArray *SFSerializationPropertiesForClass(Class class);
+/**
+ Encodes the specified object into a xml string.
+ @param rootObject The object to serialize.
+ @result The xml string.
+ */
+- (NSString *)encodeRootObject:(id)rootObject;
 
-id SFSerializationEncodeObjectForProperty(id value, SFPropertyInfo *propertyInfo, NSDateFormatter* dateFormatter);
+@end

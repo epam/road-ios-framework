@@ -74,7 +74,7 @@ Where by *serializable object* meant any `NSObject` subclass with serialization 
 
 * `SFExternal`. Marks entity as saved externally and adds link to it.
 * `SFNamespace`. Defines namespace and prefix relation of the entity.
-* `SFPreferXMLAttributes`. Marks that entity or attribute prefers  to be save in XML attributes when possible. 
+* `SFSavedAsXMLAttributes`. Marks that entity or attribute prefers  to be save in XML attributes when possible. 
 * `SFEntityIdentifier`. Sets the name of XML attribute where entity identifier is stored, e.g. `@"Name"` should be set as property identification:
 
 		<Property Name="ID" Type="Edm.Int32" Nullable="false"/>

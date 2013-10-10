@@ -1,5 +1,5 @@
 //
-//  SFXMLSpecificParser.h
+//  SFAnnotatedCoder.h
 //  SparkSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,42 +32,31 @@
 
 
 #import <Foundation/Foundation.h>
-#import "SFXMLParsing.h"
-#import <Spark/SparkCore.h>
-
-@class SFXMLElement;
 
 /**
- Base class of the specific xml parsers.
+ JSON serializer. This class is using the SFSerializable and SFDerived attributes to map the memory objects to JSON strings.
  */
-@interface SFXMLSpecificParser : SFPoolObject <SFXMLParsing>
+@interface SFAttributedCoder : NSObject
 
 /**
- The parsed element.
+ Encodes the specified object into a json string.
+ @param rootObject The object to serialize.
+ @result The json string.
  */
-@property (strong, nonatomic) SFXMLElement *element;
++ (NSString*)encodeRootObject:(id)rootObject;
 
 /**
- The parent parser.
+ Encodes the specified object into a json string data.
+ @param rootObject The object to serialize.
+ @result The json string data.
  */
-@property (weak, nonatomic) SFXMLSpecificParser *parent;
++ (NSData *)encodedDataOfRootObject:(id)rootObject;
 
 /**
- Template method, invoked when a child parser has finished parsing its content.
- @param aChild The child finished parsing.
+ Encodes the specified object into a json dictionary.
+ @param rootObject The object to serialize.
+ @result The json dictionary.
  */
-- (void)childDidFinishParsing:(id<SFXMLParsing> const)aChild;
-
-/**
- The array of the children parsers.
- @result The array of children.
- */
-- (NSArray *)children;
-
-/**
- Adds a child parser.
- @param aChild The child to add.
- */
-- (void)addChild:(id<SFXMLParsing> const)aChild;
++ (id)encodeRootObjectToSerializableObject:(id)rootObject;
 
 @end

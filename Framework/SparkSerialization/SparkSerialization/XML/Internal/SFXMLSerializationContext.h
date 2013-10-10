@@ -1,5 +1,5 @@
 //
-//  SFSerializationAssistant.h
+//  SFXMLSerializationContext.h
 //  SparkSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -26,16 +26,21 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-//
-// See the NOTICE file and the LICENSE file distributed with this work
-// for additional information regarding copyright ownership and licensing
 
-#import <Foundation/Foundation.h>
 
 @class SFPropertyInfo;
 
-NSString *SFSerializationKeyForProperty(SFPropertyInfo *propertyInfo);
-NSString *SFSerializationCollectionItemClassNameForProperty(SFPropertyInfo *propertyInfo);
-NSArray *SFSerializationPropertiesForClass(Class class);
+@interface SFXMLSerializationContext : NSObject
 
-id SFSerializationEncodeObjectForProperty(id value, SFPropertyInfo *propertyInfo, NSDateFormatter* dateFormatter);
+@property (nonatomic, strong) id currentNode;
+@property (nonatomic, strong) NSDictionary *properties;
+@property (nonatomic, strong) SFPropertyInfo *currentNodeProperty;
+@property (nonatomic, strong) Class currentNodeClass;
+@property (nonatomic, strong) NSString *elementName;
+@property (nonatomic, assign, getter = isElementSkipped) BOOL elementSkipped;
+@property (nonatomic, assign, getter = isSimpleValue) BOOL simpleValue;
+
+- (void)saveContext;
+- (void)restoreContext;
+
+@end

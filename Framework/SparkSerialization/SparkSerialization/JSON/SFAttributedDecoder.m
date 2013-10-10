@@ -131,24 +131,15 @@
 }
 
 - (id)decodeRootObject:(NSDictionary * const)jsonDict withRootClassNamed:(NSString * const)rootClassName {
-    id rootObject;
+    Class rootObjectClass = NSClassFromString(rootClassName);
+    id rootObject = [[rootObjectClass alloc] init];
     
-    __unsafe_unretained Class const rootObjectClass = NSClassFromString(rootClassName);
-    rootObject = [[rootObjectClass alloc] init];
-    NSArray *properties;
-    if ([rootObjectClass SF_attributeForClassWithAttributeType:[SFSerializable class]]) {
-        properties = [[rootObjectClass SF_properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(SFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
-            return (![evaluatedObject attributeWithType:[SFDerived class]]);
-        }]];
-    }
-    else {
-        properties = [rootObjectClass SF_propertiesWithAttributeType:[SFSerializable class]];
-    }
-
-    NSString *aKey;
+    NSArray *properties = SFSerializationPropertiesForClass(rootObjectClass);
+    NSString *aKey = nil;
+    
     @autoreleasepool {
         for (SFPropertyInfo * const aDesc in properties) {
-            aKey = [SFSerializationAssistant serializationKeyForProperty:aDesc];
+            aKey = SFSerializationKeyForProperty(aDesc);
             
             id result = [self decodeValue:jsonDict[aKey] forProperty:aDesc];
             [rootObject setValue:result forKey:[aDesc propertyName]];
@@ -164,11 +155,11 @@
         value = [self decodeArray:value forProperty:aDesc];
     }
     else if ([value isKindOfClass:[NSDictionary class]]) {
-        if (![aDesc.typeClass isSubclassOfClass:[NSDictionary class]]) {
-            value = [self decodeJSONDictionary:value forProperty:aDesc];
+        if ([aDesc.typeClass isSubclassOfClass:[NSDictionary class]]) {
+            value = [self decodeDictionary:value forProperty:aDesc];
         }
         else {
-            value = [self decodeDictionary:value forProperty:aDesc];
+            value = [self decodeJSONDictionary:value forProperty:aDesc];
         }
     }
     else if ([aDesc attributeWithType:[SFSerializableDate class]]
@@ -189,7 +180,7 @@
 - (id)decodeDictionary:(NSDictionary * const)aDictionary forProperty:(SFPropertyInfo * const)aDesc {
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [aDictionary enumerateKeysAndObjectsUsingBlock:^(id aKey, id aValue, BOOL *stop) {
-        [dict setObject:[self decodeCollectionElement:aValue forProperty:aDesc] forKey:aKey];
+        dict[aKey] = [self decodeCollectionElement:aValue forProperty:aDesc];
     }];
     
     return [dict copy];
@@ -207,7 +198,7 @@
         value = [subArray copy];
     }
     else if ([aValue isKindOfClass:[NSDictionary class]]) {
-        NSString *decodeClassName = [SFSerializationAssistant collectionItemClassNameForProperty:aDesc];
+        NSString *decodeClassName = SFSerializationCollectionItemClassNameForProperty(aDesc);
         
         if (decodeClassName == nil) {
             decodeClassName = aValue[SFSerializedObjectClassName];
@@ -229,19 +220,13 @@
     SFSerializableDate *serializableDateAttribute = [propertyInfo attributeWithType:[SFSerializableDate class]];
 
     if (serializableDateAttribute.unixTimestamp) {
-        if (![value isKindOfClass:[NSNumber class]]) {
-            decodedValue = nil;
-        }
-        else {
+        if ([value isKindOfClass:[NSNumber class]]) {
             NSNumber *interval = value;
             decodedValue = [NSDate dateWithTimeIntervalSince1970:[interval intValue]];
         }
     }
     else {
-        if (![value isKindOfClass:[NSString class]]) {
-            decodedValue = nil;
-        }
-        else {
+        if ([value isKindOfClass:[NSString class]]) {
             NSString *dateFormat = ([serializableDateAttribute.decodingFormat length] == 0) ? serializableDateAttribute.format: serializableDateAttribute.decodingFormat;
             NSAssert(dateFormat, @"SFSerializableDate must have either format or encodingFormat specified");
             
@@ -257,11 +242,11 @@
 #pragma mark - Support methods
 
 - (NSDateFormatter *)dateFormatterWithFormatString:(NSString *)formatString {
-    NSDateFormatter *dateFormatter = [_dateFormatters objectForKey:formatString];
+    NSDateFormatter *dateFormatter = _dateFormatters[formatString];
     if (!dateFormatter) {
         dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.dateFormat = formatString;
-        [_dateFormatters setObject:dateFormatter forKey:formatString];
+        _dateFormatters[formatString] = dateFormatter;
     }
     
     return dateFormatter;
@@ -271,7 +256,6 @@
     NSArray *keys = [keyPath componentsSeparatedByString:@"."];
     
     id nestedJsonObject = jsonObject;
-    BOOL isSuccess = NO;
     NSMutableString *currentKeyPath = [[NSMutableString alloc] init];
     
     for (int index = 0; index < [keys count]; index++) {
@@ -280,9 +264,7 @@
             [currentKeyPath appendString:@"."];
         }
         [currentKeyPath appendString:key];
-        
-        isSuccess = (index == ([keys count] - 1));
-        
+                
         // Check invalid cases: number, string, null or null in array
         if ([nestedJsonObject isKindOfClass:[NSNumber class]]
             || [nestedJsonObject isKindOfClass:[NSString class]]
