@@ -31,41 +31,22 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "SFAnnotatedCoderTest.h"
+#import <SenTestingKit/SenTestingKit.h>
 #import "SFSerializationTestObject.h"
 #import "SFAttributedDecoder.h"
 #import "SFAttributedCoder.h"
+
+@interface SFAnnotatedCoderTest : SenTestCase
+
+@end
 
 @implementation SFAnnotatedCoderTest {
     SFSerializationTestObject *object;
 }
 
 - (void)setUp {
-    SFSerializationTestObject *object3 = [[SFSerializationTestObject alloc] init];
-    object3.string1 = @"value31";
-    object3.string2 = @"value32";
-    object3.integer = 5;
-    SFSerializationTestObject *object4 = [[SFSerializationTestObject alloc] init];
-    object4.string2 = @"value42";
-    object4.string1 = @"value41";
-    object4.number = @(3);
-    
-    object = [[SFSerializationTestObject alloc] init];
-    object.string1 = @"value1";
-    object.string2 = @"value2";
-    object.strings = @[@"value3", @"value4"];
-    object.boolean = YES;
-    object.subDictionary = @{@"object3" : object3};
-    object.child = [[SFSerializationTestObject alloc] init];
-    object.child.boolean = NO;
-    object.child.string1 = @"value5";
-    object.child.string2 = @"value6";
-    object.child.strings = @[@"value7", @"value8"];
-    object.child.subObjects = @[object3, object4];
-    object.child.subDictionary = nil;
-    object.date1 = [NSDate date];
-    object.date2 = [NSDate dateWithTimeIntervalSinceNow:10000];
-    object.unixTimestamp = [NSDate dateWithTimeIntervalSince1970:200000];
+
+    object = [SFSerializationTestObject sampleObject];
     
     [super setUp];
 }

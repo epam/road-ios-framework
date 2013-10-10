@@ -87,31 +87,18 @@
         _archive = [self encodeDictionary:rootObject];
     }
     else {
-        [_archive setObject:NSStringFromClass([rootObject class]) forKey:SFSerializedObjectClassName];
-        NSArray *properties;
-        @autoreleasepool {            
-            Class rootObjectClass = [rootObject class];
-            
-            if ([rootObjectClass SF_attributeForClassWithAttributeType:[SFSerializable class]]) {
-                properties = [[rootObjectClass SF_properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(SFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
-                    return (![evaluatedObject attributeWithType:[SFDerived class]]);
-                }]];
-            }
-            else {
-                properties = [rootObjectClass SF_propertiesWithAttributeType:[SFSerializable class]];
-            }
-            
-            
-        }        
+        _archive[SFSerializedObjectClassName] = NSStringFromClass([rootObject class]);
+        NSArray *properties = SFSerializationPropertiesForClass([rootObject class]);
+
         @autoreleasepool {
             for (SFPropertyInfo * const aDesc in properties) {
                 id value = [rootObject valueForKey:[aDesc propertyName]];
                 value = [self encodeValue:value forProperty:aDesc];
                 
-                NSString *key = [SFSerializationAssistant serializationKeyForProperty:aDesc];
+                NSString *key = SFSerializationKeyForProperty(aDesc);
                 
                 if (value != nil) {
-                    [_archive setObject:value forKey:key];
+                    _archive[key] = value;
                 }
             }
         }    
@@ -187,11 +174,11 @@
 #pragma mark - Support methods
 
 - (NSDateFormatter *)dataFormatterWithFormatString:(NSString *)formatString {
-    NSDateFormatter *dateFormatter = [_dateFormatters objectForKey:formatString];
+    NSDateFormatter *dateFormatter = _dateFormatters[formatString];
     if (!dateFormatter) {
         dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.dateFormat = formatString;
-        [_dateFormatters setObject:dateFormatter forKey:formatString];
+        _dateFormatters[formatString]  = dateFormatter;
     }
 
     return dateFormatter;

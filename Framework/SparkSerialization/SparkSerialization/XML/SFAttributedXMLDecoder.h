@@ -1,5 +1,5 @@
 //
-//  SFSerializationAssistant.h
+//  SFAttributedXMLDecoder.h
 //  SparkSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,12 +30,9 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <Foundation/Foundation.h>
 
-@class SFPropertyInfo;
+@interface SFAttributedXMLDecoder : NSObject
 
-NSString *SFSerializationKeyForProperty(SFPropertyInfo *propertyInfo);
-NSString *SFSerializationCollectionItemClassNameForProperty(SFPropertyInfo *propertyInfo);
-NSArray *SFSerializationPropertiesForClass(Class class);
+- (id)decodeData:(NSData *)xmlData withRootObjectClass:(Class)rootObjectClass;
 
-id SFSerializationEncodeObjectForProperty(id value, SFPropertyInfo *propertyInfo, NSDateFormatter* dateFormatter);
+@end

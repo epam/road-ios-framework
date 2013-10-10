@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33F0EF1618051DB1001DCCED /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 33F0EF0D18051D3D001DCCED /* libxml2.2.dylib */; };
 		5A164AA2179D762A003275EC /* SFDownloader.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E5B9D4E51786CFFE00E1901C /* SFDownloader.h */; };
 		5A164AA3179D762A003275EC /* SFLooper.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E5B9D4E71786CFFE00E1901C /* SFLooper.h */; };
 		5A164AA6179D762A003275EC /* SFWebServiceCallParameterEncoder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E5B9D4B51786CF9300E1901C /* SFWebServiceCallParameterEncoder.h */; };
@@ -271,6 +272,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		33F0EF0D18051D3D001DCCED /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		5A4AFC47176872640097B1D9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		5AD1FC0C176601C200E67BC4 /* SparkServices.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SparkServices.xcodeproj; path = ../SparkServices/SparkServices.xcodeproj; sourceTree = "<group>"; };
 		5AFB79C5176613C6007F813A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -385,6 +387,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33F0EF1618051DB1001DCCED /* libxml2.2.dylib in Frameworks */,
 				8D94225117E2A4E3005F0AE3 /* libSparkWebService.a in Frameworks */,
 				E5D6E05C17981FBA0041EBCB /* UIKit.framework in Frameworks */,
 				5A4AFC48176872640097B1D9 /* CoreData.framework in Frameworks */,
@@ -441,6 +444,7 @@
 		78FB204415BD336B00C2137A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				33F0EF0D18051D3D001DCCED /* libxml2.2.dylib */,
 				E5D6E05B17981FBA0041EBCB /* UIKit.framework */,
 				5A4AFC47176872640097B1D9 /* CoreData.framework */,
 				5AFB79C5176613C6007F813A /* Foundation.framework */,

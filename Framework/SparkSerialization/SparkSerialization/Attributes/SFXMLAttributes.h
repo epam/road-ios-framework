@@ -1,5 +1,5 @@
 //
-//  SFSerializationAssistant.h
+//  SFXMLAttributes.h
 //  SparkSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,12 +30,19 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <Foundation/Foundation.h>
+/**
+ Atttributes for serialization in XML format
+*/
 
-@class SFPropertyInfo;
+@interface SFXMLAttributes : NSObject
 
-NSString *SFSerializationKeyForProperty(SFPropertyInfo *propertyInfo);
-NSString *SFSerializationCollectionItemClassNameForProperty(SFPropertyInfo *propertyInfo);
-NSArray *SFSerializationPropertiesForClass(Class class);
+/**
+ Define namespace for the tag.
+ */
+@property (nonatomic, copy) NSString* namespaceId;
+/**
+ Indicates that property should be saved in the tag of it's parent (Exception will be raised if impossible)
+ */
+@property (nonatomic, assign) BOOL isSavedInTag;
 
-id SFSerializationEncodeObjectForProperty(id value, SFPropertyInfo *propertyInfo, NSDateFormatter* dateFormatter);
+@end

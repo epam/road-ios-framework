@@ -1,5 +1,5 @@
 //
-//  SFSerializationAssistant.h
+//  SFXMLAttributes.h
 //  SparkSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,12 +30,8 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <Foundation/Foundation.h>
+#import "SFXMLAttributes.h"
 
-@class SFPropertyInfo;
+@implementation SFXMLAttributes
 
-NSString *SFSerializationKeyForProperty(SFPropertyInfo *propertyInfo);
-NSString *SFSerializationCollectionItemClassNameForProperty(SFPropertyInfo *propertyInfo);
-NSArray *SFSerializationPropertiesForClass(Class class);
-
-id SFSerializationEncodeObjectForProperty(id value, SFPropertyInfo *propertyInfo, NSDateFormatter* dateFormatter);
+@end
