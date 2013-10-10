@@ -82,46 +82,13 @@
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
 
-    Class elementClass = nil;
     _context.elementSkipped = NO;
     
-    // Check for container and/or it's delayed creation
-    if (!_context.properties) {
-        
-        SFSerializableCollection *collectionAttribute = nil;
-
-        if (_context.currentNodeClass) {
-            
-            //  We want to stay abstract which concrete class was requested
-            id containerNode = [[[_context.currentNodeProperty.typeClass ? _context.currentNodeProperty.typeClass : _context.currentNodeClass alloc] init] mutableCopy];
-            
-            _context.currentNode = containerNode;
-            _context.simpleValue = NO;
-            
-            if (!_result) {
-                _result = _context.currentNode;
-            }
-
-            _context.currentNodeClass = Nil;
-        }
-        
-        collectionAttribute = [_context.currentNodeProperty attributeWithType:[SFSerializableCollection class]];
-        elementClass = collectionAttribute.collectionClass;
-    }
-    else {
-        
-        SFPropertyInfo *elementProperty = _context.properties[elementName];
-        if (!elementProperty) {
-            
-            SFLogWarning(@"SFAttributedXMLDecoder: Skipped missing property '%@'", elementName);
-            _context.elementSkipped = YES;
-        }
-        elementClass = elementProperty.typeClass;
-    }
+    // Check if container creation was delayed and return expected elementClass for current element in it
+    Class elementClass = [self addContainerForElementWithNameIfNeeded:elementName];
 
     [_context saveContext];
-
-    _context.simpleValue = YES;
+    _context.simpleValue = YES; // assume that element is simple value by default
  
     if (!_context.elementSkipped) {
         
@@ -130,38 +97,12 @@
             elementClass = _rootNodeClass;
         }
         
-        NSMutableDictionary *lazyProperties = [NSMutableDictionary new];
         NSArray *properties = SFSerializationPropertiesForClass(elementClass);
+        NSDictionary *lazyProperties = [self processProperties:properties withElementAttributes:attributeDict andCreateElementIfNeeded:elementClass];
         
-        // Then property is a custom object and we want to init it now
-        if ([properties count]) {
-            
-            id newElement = [[elementClass alloc] init];
-            _context.currentNode = newElement;
-            _context.simpleValue = NO;
-            
-            if (!_result) {
-                _result = _context.currentNode;
-            }
-            
-            for (SFPropertyInfo *property in properties) {
-                
-                SFXMLAttributes *xmlAttributes = [property attributeWithType:[SFXMLAttributes class]];
-                NSString* serializationKey = SFSerializationKeyForProperty(property);
-                
-                if (xmlAttributes.isSavedInTag) {
-                    id decodedValue = [self convertString:attributeDict[serializationKey] forProperty:property];
-                    [_context.currentNode setValue:decodedValue forKey:property.propertyName];
-                }
-                else {
-                    lazyProperties[serializationKey] = property;
-                }
-            }
-        }
-
         _context.currentNodeProperty = [properties count] ? nil : _context.properties[elementName];
         _context.currentNodeClass = [properties count] ? Nil : kSFAttributedXMLDecoderDefaultContainerClass;
-        _context.properties = [lazyProperties count] ? [NSDictionary dictionaryWithDictionary:lazyProperties] : nil;
+        _context.properties = [lazyProperties count] ? lazyProperties : nil;
         _context.elementName = elementName;
     }
 }
@@ -256,6 +197,75 @@
     }
     
     return result;
+}
+
+- (Class)addContainerForElementWithNameIfNeeded:(NSString*)elementName {
+    Class result = Nil;
+    
+    if (!_context.properties) {
+        
+        if (_context.currentNodeClass) {
+            
+            //  We want to stay abstract which concrete class was requested
+            id containerNode = [[[_context.currentNodeProperty.typeClass ? _context.currentNodeProperty.typeClass : _context.currentNodeClass alloc] init] mutableCopy];
+            
+            _context.currentNode = containerNode;
+            _context.simpleValue = NO;
+            
+            if (!_result) {
+                _result = _context.currentNode;
+            }
+            
+            _context.currentNodeClass = Nil;
+        }
+        
+        SFSerializableCollection *collectionAttribute = [_context.currentNodeProperty attributeWithType:[SFSerializableCollection class]];
+        result = collectionAttribute.collectionClass;
+    }
+    else {
+        
+        SFPropertyInfo *elementProperty = _context.properties[elementName];
+        if (!elementProperty) {
+            
+            SFLogWarning(@"SFAttributedXMLDecoder: Skipped missing property '%@'", elementName);
+            _context.elementSkipped = YES;
+        }
+        result = elementProperty.typeClass;
+    }
+
+    return result;
+}
+
+- (NSDictionary *)processProperties:(NSArray *)properties withElementAttributes:(NSDictionary *)attributeDict andCreateElementIfNeeded:(Class)elementClass {
+    
+    NSMutableDictionary *lazyProperties = [NSMutableDictionary new];
+    
+    // Then property is a custom object and we want to init it now
+    if ([properties count]) {
+        
+        id newElement = [[elementClass alloc] init];
+        _context.currentNode = newElement;
+        _context.simpleValue = NO;
+        
+        if (!_result) {
+            _result = _context.currentNode;
+        }
+        
+        for (SFPropertyInfo *property in properties) {
+            
+            SFXMLAttributes *xmlAttributes = [property attributeWithType:[SFXMLAttributes class]];
+            NSString* serializationKey = SFSerializationKeyForProperty(property);
+            
+            if (xmlAttributes.isSavedInTag) {
+                id decodedValue = [self convertString:attributeDict[serializationKey] forProperty:property];
+                [_context.currentNode setValue:decodedValue forKey:property.propertyName];
+            }
+            else {
+                lazyProperties[serializationKey] = property;
+            }
+        }
+    }
+    return [NSDictionary dictionaryWithDictionary:lazyProperties];
 }
 
 @end

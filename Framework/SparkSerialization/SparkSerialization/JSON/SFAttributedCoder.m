@@ -87,7 +87,7 @@
         _archive = [self encodeDictionary:rootObject];
     }
     else {
-        [_archive setObject:NSStringFromClass([rootObject class]) forKey:SFSerializedObjectClassName];
+        _archive[SFSerializedObjectClassName] = NSStringFromClass([rootObject class]);
         NSArray *properties = SFSerializationPropertiesForClass([rootObject class]);
 
         @autoreleasepool {
@@ -98,7 +98,7 @@
                 NSString *key = SFSerializationKeyForProperty(aDesc);
                 
                 if (value != nil) {
-                    [_archive setObject:value forKey:key];
+                    _archive[key] = value;
                 }
             }
         }    
@@ -174,11 +174,11 @@
 #pragma mark - Support methods
 
 - (NSDateFormatter *)dataFormatterWithFormatString:(NSString *)formatString {
-    NSDateFormatter *dateFormatter = [_dateFormatters objectForKey:formatString];
+    NSDateFormatter *dateFormatter = _dateFormatters[formatString];
     if (!dateFormatter) {
         dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.dateFormat = formatString;
-        [_dateFormatters setObject:dateFormatter forKey:formatString];
+        _dateFormatters[formatString]  = dateFormatter;
     }
 
     return dateFormatter;

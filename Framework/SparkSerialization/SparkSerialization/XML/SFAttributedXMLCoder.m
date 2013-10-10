@@ -88,53 +88,71 @@ char *SFAttributedXMLCoderTagForClass(Class aClass)
 
 - (xmlNodePtr)serializeObject:(id)serializedObject toXMLNode:(xmlNodePtr)parentNode propertyInfo:(SFPropertyInfo*)propertyInfo serializationName:(NSString *)serializationName {
 
-    xmlNodePtr result = NULL;
     Class class = [serializedObject class];
+    xmlNodePtr result = [self createXMLNodeWithName:(serializationName ? serializationName : SFSerializationKeyForProperty(propertyInfo)) parent:parentNode objectClass:class];
+
+    // Try to serialize as a container or object with defined properties. Assume it's simple value otherwise.
+    if (![self serializeObjectAsContainer:serializedObject toNode:result] && ![self serializeObjectAsAttributed:serializedObject toNode:result]) {
+        
+            NSString *encodedObject = SFSerializationEncodeObjectForProperty(serializedObject, propertyInfo, _dateFormatter);
+            xmlNodeSetContent(result, BAD_CAST [encodedObject UTF8String]);
+        }
     
-    if (!serializationName) serializationName = SFSerializationKeyForProperty(propertyInfo);
+    return result;
+}
+
+
+#pragma mark -
+- (xmlNodePtr)createXMLNodeWithName:(NSString *)serializationName parent:(xmlNodePtr)parentNode objectClass:(Class)class {
+    
     const char *serializationNameC = ([serializationName length] > 0) ? [serializationName UTF8String] : SFAttributedXMLCoderTagForClass(class);
     NSParameterAssert(serializationNameC != NULL);
+    
+    return parentNode ? xmlNewChild(parentNode, NULL, BAD_CAST serializationNameC, NULL) : xmlNewNode(NULL, BAD_CAST serializationNameC);
+}
 
-    result = parentNode ? xmlNewChild(parentNode, NULL, BAD_CAST serializationNameC, NULL) : xmlNewNode(NULL, BAD_CAST serializationNameC);
+- (BOOL)serializeObjectAsContainer:(id)serializedObject toNode:(xmlNodePtr)xmlNode {
+    
+    BOOL result = NO;
+    Class class = [serializedObject class];
 
     BOOL isDictionary = [class isSubclassOfClass:[NSDictionary class]];
     BOOL isArray = [class isSubclassOfClass:[NSArray class]];
-
-    if (isArray || isDictionary) {
+    
+    if ((result = isArray || isDictionary)) {
         for (id item in serializedObject) {
             
             NSString *serializationName = (isDictionary && [item isKindOfClass:[NSString class]]) ? item : nil;
-            [self serializeObject:isArray ? item : serializedObject[item] toXMLNode:result propertyInfo:nil serializationName:serializationName];
-        }
-    }
-    else {
-        NSArray *properties = SFSerializationPropertiesForClass(class);
-        
-        if ([properties count]) {
-            for (SFPropertyInfo *property in properties) {
-                SFXMLAttributes *xmlAttributes = [property attributeWithType:[SFXMLAttributes class]];
-                
-                if (xmlAttributes.isSavedInTag) {
-                    NSString *encodedString = SFSerializationEncodeObjectForProperty(serializedObject, property, _dateFormatter);
-                    
-                    if ([encodedString length]) {
-                        xmlNewProp(result, BAD_CAST [SFSerializationKeyForProperty(property) UTF8String], BAD_CAST [encodedString UTF8String]);
-                    }
-                }
-                else {
-                    id propertyObject = [serializedObject valueForKey:[property propertyName]];
-                    [self serializeObject:propertyObject toXMLNode:result propertyInfo:property serializationName:nil];
-                }
-            }
-        }
-        else {
-            NSString *encodedObject = SFSerializationEncodeObjectForProperty(serializedObject, propertyInfo, _dateFormatter);
-            // tag attributes or value?
-            xmlNodeSetContent(result, BAD_CAST [encodedObject UTF8String]);
+            [self serializeObject:isArray ? item : serializedObject[item] toXMLNode:xmlNode propertyInfo:nil serializationName:serializationName];
         }
     }
     
     return result;
 }
 
+- (BOOL)serializeObjectAsAttributed:(id)serializedObject toNode:(xmlNodePtr)xmlNode {
+
+    BOOL result = NO;
+    NSArray *properties = SFSerializationPropertiesForClass([serializedObject class]);
+    
+    if ((result = [properties count])) {
+        for (SFPropertyInfo *property in properties) {
+            SFXMLAttributes *xmlAttributes = [property attributeWithType:[SFXMLAttributes class]];
+            
+            if (xmlAttributes.isSavedInTag) {
+                NSString *encodedString = SFSerializationEncodeObjectForProperty(serializedObject, property, _dateFormatter);
+                
+                if ([encodedString length]) {
+                    xmlNewProp(xmlNode, BAD_CAST [SFSerializationKeyForProperty(property) UTF8String], BAD_CAST [encodedString UTF8String]);
+                }
+            }
+            else {
+                id propertyObject = [serializedObject valueForKey:[property propertyName]];
+                [self serializeObject:propertyObject toXMLNode:xmlNode propertyInfo:property serializationName:nil];
+            }
+        }
+    }
+    
+    return result;
+}
 @end

@@ -72,4 +72,7 @@ SF_ATTRIBUTE(SFSerializableCollection, collectionClass = [SFSerializationTestObj
 
 @property (nonatomic, strong) NSNumber *number;
 
+
++ (SFSerializationTestObject *)sampleObject;
+
 @end
