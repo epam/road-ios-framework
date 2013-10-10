@@ -33,7 +33,7 @@
 #import "RFFileLogWriter.h"
 
 @implementation RFFileLogWriter {
-    NRFileHandle *handle;
+    NSFileHandle *handle;
     NSString *filePath;
 }
 
@@ -74,10 +74,10 @@
 
 - (void)openFile {
     
-    if (![[NRFileManager defaultManager] fileExistsAtPath:filePath]) {
-        [[NRFileManager defaultManager] createFileAtPath:filePath contents:nil attributes:nil];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        [[NSFileManager defaultManager] createFileAtPath:filePath contents:nil attributes:nil];
     }
-    handle = [NRFileHandle fileHandleForUpdatingAtPath:filePath];
+    handle = [NSFileHandle fileHandleForUpdatingAtPath:filePath];
 }
 
 - (void)closeFile {
