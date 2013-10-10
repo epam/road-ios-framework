@@ -1,16 +1,16 @@
 #!/bin/bash
 
 # =================     Set environment variables     ===========
-export WORKSPACE="-workspace Framework/SparkFramework.xcworkspace"
-export PROJECT="-project tools/SparkAttributesCodeGenerator/SparkAttributesCodeGenerator.xcodeproj"
-if [[ $SPARK_SCHEME == SparkAttributesCodeGenerator ]]; then export PATCH_FOR_PROJECT_OR_WORKSPACE=$PROJECT; else export PATCH_FOR_PROJECT_OR_WORKSPACE=$WORKSPACE; fi
+export WORKSPACE="-workspace Framework/ROADFramework.xcworkspace"
+export PROJECT="-project tools/ROADAttributesCodeGenerator/ROADAttributesCodeGenerator.xcodeproj"
+if [[ $PROJECT_SCHEME == ROADAttributesCodeGenerator ]]; then export PATCH_FOR_PROJECT_OR_WORKSPACE=$PROJECT; else export PATCH_FOR_PROJECT_OR_WORKSPACE=$WORKSPACE; fi
 
 # =================     Install cpp-coveralls    ===========
 sudo easy_install cpp-coveralls > /dev/null
 
 # =================     Run build, test and oclint check     ===========
-xctool $PATCH_FOR_PROJECT_OR_WORKSPACE -scheme $SPARK_SCHEME -reporter pretty -reporter json-compilation-database:compile_commands.json build
-if [[ $SPARK_SCHEME != SparkAttributesCodeGenerator ]]; then xctool $WORKSPACE -scheme $SPARK_SCHEME test -sdk iphonesimulator; fi	
+xctool $PATCH_FOR_PROJECT_OR_WORKSPACE -scheme $PROJECT_SCHEME -reporter pretty -reporter json-compilation-database:compile_commands.json build
+if [[ $PROJECT_SCHEME != ROADAttributesCodeGenerator ]]; then xctool $WORKSPACE -scheme $PROJECT_SCHEME test -sdk iphonesimulator; fi	
 
 # =================     Download oclint, unzip    ===========
 wget http://archives.oclint.org/releases/0.7/oclint-0.7-x86_64-apple-darwin-10.tar.gz > /dev/null
