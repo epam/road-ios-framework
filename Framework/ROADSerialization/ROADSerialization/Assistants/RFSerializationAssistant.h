@@ -31,11 +31,11 @@
 // for additional information regarding copyright ownership and licensing
 
 #import <Foundation/Foundation.h>
-#import <ROAD/ROADReflection.h>
 
-@interface RFSerializationAssistant : NSObject
+@class RFPropertyInfo;
 
-+ (NSString *)serializationKeyForProperty:(RFPropertyInfo *)propertyInfo;
-+ (NSString *)collectionItemClassNameForProperty:(RFPropertyInfo *)propertyInfo;
+NSString *RFSerializationKeyForProperty(RFPropertyInfo *propertyInfo);
+NSString *RFSerializationCollectionItemClassNameForProperty(RFPropertyInfo *propertyInfo);
+NSArray *RFSerializationPropertiesForClass(Class class);
 
-@end
+id RFSerializationEncodeObjectForProperty(id value, RFPropertyInfo *propertyInfo, NSDateFormatter* dateFormatter);

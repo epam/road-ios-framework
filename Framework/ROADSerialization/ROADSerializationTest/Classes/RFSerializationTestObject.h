@@ -49,7 +49,7 @@ RF_ATTRIBUTE(RFDerived)
 
 @property (strong, nonatomic) NSArray *strings;
 
-RF_ATTRIBUTE(RFSerializableDate, format = @"dd/MM/yyyy HH:mm:ss Z", encodingFormat = @"MM.dd.yyyy HH:mm:ss.AAA Z")
+RF_ATTRIBUTE(RFSerializableDate, format = @"dd/MM/yyyy HH:mm:ss Z")
 @property (strong, nonatomic) NSDate *date1;
 
 RF_ATTRIBUTE(RFSerializableDate, format = @"MM.dd.yyyy HH:mm", decodingFormat = @"MM.dd.yyyy HH:mm:ss")
@@ -60,6 +60,8 @@ RF_ATTRIBUTE(RFSerializableDate, unixTimestamp = YES)
 
 @property (strong, nonatomic) RFSerializationTestObject *child;
 
+//@property (assign, nonatomic) NSRange range;
+
 RF_ATTRIBUTE(RFSerializableCollection, collectionClass = [RFSerializationTestObject class])
 @property (strong, nonatomic) NSArray *subObjects;
 
@@ -68,6 +70,9 @@ RF_ATTRIBUTE(RFSerializableCollection, collectionClass = [RFSerializationTestObj
 
 @property (nonatomic) int integer;
 
-@property (nonatomic) NSNumber *number;
+@property (nonatomic, strong) NSNumber *number;
+
+
++ (RFSerializationTestObject *)sampleObject;
 
 @end

@@ -31,41 +31,22 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "RFAnnotatedCoderTest.h"
+#import <SenTestingKit/SenTestingKit.h>
 #import "RFSerializationTestObject.h"
 #import "RFAttributedDecoder.h"
 #import "RFAttributedCoder.h"
+
+@interface RFAnnotatedCoderTest : SenTestCase
+
+@end
 
 @implementation RFAnnotatedCoderTest {
     RFSerializationTestObject *object;
 }
 
 - (void)setUp {
-    RFSerializationTestObject *object3 = [[RFSerializationTestObject alloc] init];
-    object3.string1 = @"value31";
-    object3.string2 = @"value32";
-    object3.integer = 5;
-    RFSerializationTestObject *object4 = [[RFSerializationTestObject alloc] init];
-    object4.string2 = @"value42";
-    object4.string1 = @"value41";
-    object4.number = @(3);
-    
-    object = [[RFSerializationTestObject alloc] init];
-    object.string1 = @"value1";
-    object.string2 = @"value2";
-    object.strings = @[@"value3", @"value4"];
-    object.boolean = YES;
-    object.subDictionary = @{@"object3" : object3};
-    object.child = [[RFSerializationTestObject alloc] init];
-    object.child.boolean = NO;
-    object.child.string1 = @"value5";
-    object.child.string2 = @"value6";
-    object.child.strings = @[@"value7", @"value8"];
-    object.child.subObjects = @[object3, object4];
-    object.child.subDictionary = nil;
-    object.date1 = [NSDate date];
-    object.date2 = [NSDate dateWithTimeIntervalSinceNow:10000];
-    object.unixTimestamp = [NSDate dateWithTimeIntervalSince1970:200000];
+
+    object = [RFSerializationTestObject sampleObject];
     
     [super setUp];
 }

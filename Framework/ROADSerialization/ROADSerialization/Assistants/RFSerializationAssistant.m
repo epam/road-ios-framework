@@ -31,24 +31,67 @@
 // for additional information regarding copyright ownership and licensing
 
 #import "RFSerializationAssistant.h"
+#import <ROAD/ROADReflection.h>
+#import <ROAD/ROADLogger.h>
 #import "RFSerializable.h"
+#import "RFDerived.h"
 #import "RFSerializableCollection.h"
+#import "RFSerializableDate.h"
 
-@implementation RFSerializationAssistant
-
-+ (NSString *)serializationKeyForProperty:(RFPropertyInfo *)propertyInfo {
-    RFSerializable *propertySerializableAttribute = [propertyInfo attributeWithType:[RFSerializable class]];
+NSString *RFSerializationKeyForProperty(RFPropertyInfo *propertyInfo) {
     
-    if ([propertySerializableAttribute.serializationKey length] == 0) {
-        return propertyInfo.propertyName;
+    RFSerializable *serializationAttribute = [propertyInfo attributeWithType:[RFSerializable class]];
+    return ([serializationAttribute.serializationKey length] > 0) ? serializationAttribute.serializationKey : propertyInfo.propertyName;
+}
+
+NSString *RFSerializationCollectionItemClassNameForProperty(RFPropertyInfo *propertyInfo) {
+    
+    return NSStringFromClass([[propertyInfo attributeWithType:[RFSerializableCollection class]] collectionClass]);
+}
+
+NSArray *RFSerializationPropertiesForClass(Class class) {
+    NSArray *result = nil;
+    
+    @autoreleasepool {
+        if ([class RF_attributeForClassWithAttributeType:[RFSerializable class]]) {
+            
+            result = [[class RF_properties] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(RFPropertyInfo *evaluatedObject, NSDictionary *bindings) {
+                return (![evaluatedObject attributeWithType:[RFDerived class]]);
+            }]];
+        }
+        else {
+            result = [class RF_propertiesWithAttributeType:[RFSerializable class]];
+        }
     }
     
-    return propertySerializableAttribute.serializationKey;
+    return result;
 }
 
-+ (NSString *)collectionItemClassNameForProperty:(RFPropertyInfo *)propertyInfo {
-    RFSerializableCollection *collectionAttribute = [propertyInfo attributeWithType:[RFSerializableCollection class]];
-    return (collectionAttribute == nil || collectionAttribute.collectionClass == nil) ? nil : NSStringFromClass(collectionAttribute.collectionClass);
+id RFSerializationEncodeObjectForProperty(id object, RFPropertyInfo *propertyInfo, NSDateFormatter* dateFormatter) {
+    id result = object;
+    
+    if ([object isKindOfClass:[NSDate class]]) {
+
+        RFSerializableDate *serializableDateAttribute = [propertyInfo attributeWithType:[RFSerializableDate class]];
+        if (!serializableDateAttribute) serializableDateAttribute = [propertyInfo.hostClass RF_attributeForProperty:propertyInfo.propertyName withAttributeType:[RFSerializableDate class]];
+        
+        if (serializableDateAttribute.unixTimestamp) {
+            NSDate *date = object;
+            result = [NSString stringWithFormat:@"%.0f", [date timeIntervalSince1970]];
+        }
+        else {
+            NSString *dateFormat = ([serializableDateAttribute.encodingFormat length] > 0) ? serializableDateAttribute.encodingFormat : serializableDateAttribute.format;
+            RFLogDebug(@"RFSerializableDate must have either defaultValue or encodingFormat specified : %@", dateFormat);
+            
+            if (![dateFormatter.dateFormat isEqualToString:dateFormat]) dateFormatter.dateFormat = dateFormat;
+            result = [dateFormat length] ? [dateFormatter stringFromDate:object] : [object description];
+        }
+    }
+    else if (![object isKindOfClass:[NSString class]]) {
+
+        result = [object respondsToSelector:@selector(stringValue)] ? [object stringValue] : [object description];
+    }
+    
+    return result;
 }
 
-@end
