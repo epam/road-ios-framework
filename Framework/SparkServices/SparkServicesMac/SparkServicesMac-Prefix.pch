@@ -1,9 +1,0 @@
-//
-// Prefix header for all source files of the 'SparkServicesMac' target in the 'SparkServicesMac' project
-//
-
-#ifdef __OBJC__
-    #import <Cocoa/Cocoa.h>
-    #import <SparkReflection/SparkReflection.h>
-    #import <SparkAttribute/SparkAttribute.h>
-#endif

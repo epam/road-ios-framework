@@ -1,0 +1,10 @@
+//
+// Prefix header for all source files of the 'ROADSerializationTest' target in the 'ROADSerializationTest' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <ROAD/ROADReflection.h>
+    #import <ROAD/ROADCore.h>
+    #import <ROAD/ROADAttribute.h>
+#endif

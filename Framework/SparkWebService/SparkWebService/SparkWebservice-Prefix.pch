@@ -1,7 +1,0 @@
-//
-// Prefix header for all source files of the 'SparkWebservice' target in the 'SparkWebservice' project
-//
-
-#ifdef __OBJC__
-    #import <Foundation/Foundation.h>
-#endif

@@ -1,13 +1,9 @@
 .DS_Store
 xcuserdata
 
-tools/SparkAttributesCodeGenerator/SparkAttributesCodeGenerator.xcodeproj/project.xcworkspace/contents.xcworkspacedata
-
-tools/SparkAttributesCodeGenerator/SparkAttributesCodeGenerator.xcodeproj/project.xcworkspace/contents.xcworkspacedata
-
-tools/SparkAttributesCodeGenerator/SparkAttributesCodeGenerator.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+tools/ROADAttributesCodeGenerator/ROADAttributesCodeGenerator.xcodeproj/project.xcworkspace/contents.xcworkspacedata
 
 *.xcworkspacedata
 
-Framework/SparkServices/SparkServicesTest/SparkGeneratedAttributes/*
-Framework/SparkFramework.xcworkspace/xcshareddata
+Framework/ROADServices/ROADServicesTest/ROADGeneratedAttributes/*
+Framework/ROADFramework.xcworkspace/xcshareddata
