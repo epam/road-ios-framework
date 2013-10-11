@@ -54,8 +54,7 @@
 }
 
 - (void)testServiceWithWrongAnnotations {
-    id service = [RFServiceProvider serviceWithWrongAttribute];
-    STAssertNil(service, @"Service provider respond with undefined result on method with wrong attribute");
+    STAssertFalse([RFServiceProvider resolveClassMethod:@selector(serviceWithWrongAttribute)], @"Service provider respond with undefined result on method with wrong attribute");
 }
 
 @end
