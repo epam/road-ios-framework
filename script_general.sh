@@ -18,7 +18,7 @@ tar xzf oclint-0.7-x86_64-apple-darwin-10.tar.gz > /dev/null
 
 # =================     Remove necessary rules from "lib/oclint/rules/" folder of oclint     ===========
 rm $('pwd')/oclint-0.7-x86_64-apple-darwin-10/lib/oclint/rules/libUnusedMethodParameterRule.dylib
-
+# ======================================================================================================
 
 # =================     Setup oclint    ===========
 OCLINT_HOME=$('pwd')/oclint-0.7-x86_64-apple-darwin-10

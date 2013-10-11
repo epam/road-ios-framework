@@ -1,5 +1,5 @@
 //
-//  RFAnnotatedCoderTest.h
+//  RFAnnotatedCoder.h
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,8 +31,32 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <Foundation/Foundation.h>
 
-@interface RFAnnotatedCoderTest : SenTestCase
+/**
+ JSON serializer. This class is using the RFSerializable and RFDerived attributes to map the memory objects to JSON strings.
+ */
+@interface RFAttributedCoder : NSObject
+
+/**
+ Encodes the specified object into a json string.
+ @param rootObject The object to serialize.
+ @result The json string.
+ */
++ (NSString*)encodeRootObject:(id)rootObject;
+
+/**
+ Encodes the specified object into a json string data.
+ @param rootObject The object to serialize.
+ @result The json string data.
+ */
++ (NSData *)encodedDataOfRootObject:(id)rootObject;
+
+/**
+ Encodes the specified object into a json dictionary.
+ @param rootObject The object to serialize.
+ @result The json dictionary.
+ */
++ (id)encodeRootObjectToSerializableObject:(id)rootObject;
 
 @end

@@ -40,12 +40,7 @@
 #import "RFSerializableDate.h"
 #import "RFAttributedCoder.h"
 #import "RFAttributedDecoder.h"
-#import "RFXMLParser.h"
-#import "RFXMLElement.h"
-#import "RFXMLSpecificParser.h"
-#import "RFXMLModelParser.h"
-#import "RFEntityElement.h"
-#import "RFPropertyElement.h"
-#import "RFRelationshipElement.h"
+#import "RFAttributedXMLCoder.h"
+#import "RFAttributedXMLDecoder.h"
 
 #endif
