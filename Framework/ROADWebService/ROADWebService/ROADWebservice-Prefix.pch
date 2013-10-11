@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'ROADWebservice' target in the 'ROADWebservice' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
