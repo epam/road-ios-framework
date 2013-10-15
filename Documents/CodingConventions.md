@@ -1,7 +1,7 @@
-# Spark Objective-C Style Guide
+# ROAD Objective-C Style Guide
 ###### Revision 1.0
 
-This style guide describes the coding conventions for Spark iOS Framework.
+This style guide describes the coding conventions for ROAD iOS Framework.
 
 Most of these guidelines match Apple's documentation and community-accepted best practices, however some guidelines are derived from personal preferences. This document aims to set a standard way of doing things so that everyone can do things the same way. If there is some rule you are not particularly fond of, it is encouraged to follow this rule anyway to stay consistent with everyone else.
 
@@ -44,7 +44,7 @@ Most of these guidelines match Apple's documentation and community-accepted best
 
 1. Apple's [Coding Guidelines for Cocoa](https://developer.apple.com/library/ios/#documentation/Cocoa/Conceptual/CodingGuidelines/) covers most of the naming rules that need to be followed.
 2. Naming conventions related to [Memory Management Rules](https://developer.apple.com/library/mac/documentation/cocoa/conceptual/MemoryMgmt/Articles/mmRules.html) should also be followed.
-3. `SF` prefix should always be used for class names and constants. This prefix stands for "Spark Framework".
+3. `RF` prefix should always be used for class names and constants. This prefix stands for "ROAD Framework".
 
 ## 2.Project
 
@@ -138,8 +138,8 @@ Every comment that you add should be either appledoc in header files or should s
 
 ## 5.Categories
 1. Category file name should follow the next pattern: `ClassName+CategoryName.h` and `ClassName+CategoryName.m`.
-2. If you add a category to a class without `SF` prefix then the category name should have `SF` prefix. If the class name already has `SF` prefix the category name should not have `SF` prefix. ***For example*** `NSObject+SFAttributes`, but `SFServiceProvider+Logging`.
-3. If you add a category to a class without `SF` prefix then the category methods should have `SF_` prefix to avoid method name collisions.
+2. If you add a category to a class without `RF` prefix then the category name should have `RF` prefix. If the class name already has `RF` prefix the category name should not have `RF` prefix. ***For example*** `NSObject+RFAttributes`, but `RFServiceProvider+Logging`.
+3. If you add a category to a class without `RF` prefix then the category methods should have `RF_` prefix to avoid method name collisions.
 4. Categories should be named for the sort of functionality they provide. Don't create umbrella categories.
 
 ## 6.Methods
@@ -250,7 +250,7 @@ if (isAwesome == YES) // Never do this.
 
 ### 6.3.Logging
 1. Choose an appropriate logging level (`info`, `debug`, `warning`, `error`) to reflect the severity of the log message.
-2. Specify a distict log message type appropriate for your component (for instance `SparkCore`), so that your messages can be easily filtered out from a user's logs.
+2. Specify a distict log message type appropriate for your component (for instance `ROADCore`), so that your messages can be easily filtered out from a user's logs.
 
 ### 6.4.Error Handling
 1. To indicate errors, use an `NSError **` method argument.
@@ -292,7 +292,7 @@ UIApplication.sharedApplication.delegate;
 
 ### 7.2.Private Properties
 1. Prefer to create and use instance variable directly instead of private property if you are not implementing custom setter/getter.
-2. Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `SFTPrivate` or `private`) should never be used unless extending another class.
+2. Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `RFTPrivate` or `private`) should never be used unless extending another class.
 
 **For example:**
 ```objc
@@ -336,11 +336,11 @@ NSNumber *buildingZIPCode = [NSNumber numberWithInteger:10018];
 1. Constants are preferred over in-line string literals or numbers, as they allow for easy reproduction of commonly used variables and can be quickly changed without the need for find and replace. Constants should be declared as `static` constants and not `#define`s, since it may appear that defined macro does not represent a constant (you never know untill you look at macro itself).
 **For example:**
 ```objc
-static NSString *const SFNetLogServiceType = @"_appalocalnetwork._tcp.";
+static NSString *const RFNetLogServiceType = @"_appalocalnetwork._tcp.";
 ```
 **Not:**
 ```objc
-#define SFNetLogServiceType @"_appalocalnetwork._tcp."
+#define RFNetLogServiceType @"_appalocalnetwork._tcp."
 ```
 
 2. Scope / lifetime specifiers should always stand before const specifier. 
@@ -370,9 +370,9 @@ static NSString *const SFNetLogServiceType = @"_appalocalnetwork._tcp.";
 ### 11.1.Functions
 
 1. C function declarations should start with a capital letter.
-2. C function declarations in header files should have `SF` prefix: 
+2. C function declarations in header files should have `RF` prefix: 
 ***For example***
-`void SFAwesomeFunction(BOOL hasSomeArgs);`
+`void RFAwesomeFunction(BOOL hasSomeArgs);`
 
 ## 12.Objective-C++
 1. Objective-C++ implementation file should have `.mm` extension
