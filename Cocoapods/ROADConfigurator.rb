@@ -9,7 +9,7 @@ class ROADConfigurator
     end
 
     def self.post_install(installer_representation)
-	config_path = './ROADConfigurator.yaml'
+	config_path = ‘./ROADConfigurator.yaml’
         if File.exists?(config_path)
           @@config = YAML::load(File.open(config_path))
         end
@@ -17,13 +17,13 @@ class ROADConfigurator
 =begin
         road_framework_path = nil
         installer_representation.pods.each do |pod_representation|
-            if pod_representation.name == 'ROADFramework'
+            if pod_representation.name == ‘ROADFramework'
                 road_framework_path = pod_representation.root
             end
         end
 
         if road_framework_path.nil?
-            puts 'ROADConfigurator.rb called without RoadFramework being defined in Podfile.'
+            puts ‘ROADConfigurator.rb called without RoadFramework being defined in Podfile.'
             Process.exit!(true)
         end
 =end
@@ -65,7 +65,7 @@ class ROADConfigurator
         run_script_pods = "\"#{installer_representation.config.project_root}/binaries/ROADAttributesCodeGenerator\""\
         " -src=\"${SRCROOT}/\""\
         " -dst=\"${SRCROOT}/ROADFramework/Framework/ROADGeneratedAttributes/\""
-        ROADConfigurator::add_script_to_project_targets(run_script_pods, 'ROAD - generate attributes', installer_representation.project, installer_representation.project.targets)
+        ROADConfigurator::add_script_to_project_targets(run_script_pods, ‘ROAD - generate attributes', installer_representation.project, installer_representation.project.targets)
     end
 
     def self.get_target_from_project_by_uuid(project, uuid)
@@ -119,7 +119,7 @@ class ROADConfigurator
 
         curl_call = "curl "
         if (defined? @@config)
-            curl_call += "-u #{@@config['github_username']}:#{@@config['github_password']} "
+            curl_call += "-u #{@@config[“github_username”]}:#{@@config[“github_password”]} "
         end
         curl_call += "-L -o \"#{attributes_code_generator_path}\" #{@@road_attributes_code_generator_url}"
 

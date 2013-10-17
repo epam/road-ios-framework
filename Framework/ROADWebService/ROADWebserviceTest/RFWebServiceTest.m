@@ -32,6 +32,7 @@
 
 #import <ROAD/ROADLogger.h>
 #import "RFWebServiceTest.h"
+#import "RFWebServiceClientWithRoot.h"
 #import "RFWebServiceClient+DynamicTest.h"
 #import "RFAuthenticating.h"
 #import "RFServiceProvider+ConcreteWebServiceClient.h"
@@ -58,6 +59,14 @@
     Method originalMethod = class_getInstanceMethod([RFDownloader class], originalSelector);
     Method overrideMethod = class_getInstanceMethod([RFDownloader class], overrideSelector);
     method_exchangeImplementations(originalMethod, overrideMethod);
+}
+
+- (void)testServiceRootAttribute {
+    RFWebServiceClientWithRoot *webServiceClientWithRoot = [[RFWebServiceClientWithRoot alloc] init];
+    STAssertEqualObjects(webServiceClientWithRoot.serviceRoot, @"http://google.com", @"Service root was not initialized by a correct value from an attribute.");
+
+    webServiceClientWithRoot = [[RFWebServiceClientWithRoot alloc] initWithServiceRoot:@"http://yahoo.com"];
+    STAssertEqualObjects(webServiceClientWithRoot.serviceRoot, @"http://yahoo.com", @"Service root from attribute was not overrided by a init method parameter.");
 }
 
 - (void)testHTTPBasicAuthentication {

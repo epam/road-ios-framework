@@ -32,24 +32,35 @@
 // for additional information regarding copyright ownership and licensing
 
 #import "RFWebServiceClient.h"
-#import "RFDefaultSerializer.h"
+
 #import "RFAuthenticating.h"
+#import "RFDefaultSerializer.h"
+#import "RFWebService.h"
 
 @implementation RFWebServiceClient
 
 - (id)init {
-    self = [self initWithServiceRoot:nil];
+    self = [super init];
+ 
+    if (self) {
+        _serializationDelegate = [[RFDefaultSerializer alloc] init];
+        _sharedHeaders = [[NSMutableDictionary alloc] init];
+        
+        RFWebService *webServiceAttribute = [[self class] RF_attributeForClassWithAttributeType:[RFWebService class]];
+        
+        if (webServiceAttribute) {
+            _serviceRoot = webServiceAttribute.serviceRoot;
+        }
+    }
     
     return self;
 }
 
 - (id)initWithServiceRoot:(NSString *)serviceRoot {
-    self = [super init];
+    self = [self init];
     
     if (self) {
         _serviceRoot = serviceRoot;
-        _serializationDelegate = [[RFDefaultSerializer alloc] init];
-        _sharedHeaders = [[NSMutableDictionary alloc] init];
     }
     
     return self;
