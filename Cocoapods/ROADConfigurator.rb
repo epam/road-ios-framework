@@ -1,7 +1,7 @@
 require 'xcodeproj'
 
 class ROADConfigurator
-    @@road_attributes_code_generator_url = 'https://github.com/epam/spark-ios-framework/raw/master/tools/binaries/SparkAttributesCodeGenerator'
+    @@road_attributes_code_generator_url = 'https://github.com/epam/spark-ios-framework/raw/master/tools/binaries/ROADAttributesCodeGenerator'
     
     def self.set_github_credentials(username, password)
         @@github_username = username
@@ -9,16 +9,21 @@ class ROADConfigurator
     end
 
     def self.post_install(installer_representation)
+	config_path = './ROADConfigurator.yaml'
+        if File.exists?(config_path)
+          @@config = YAML::load(File.open(config_path))
+        end
+
 =begin
-        sparkframework_path = nil
+        road_framework_path = nil
         installer_representation.pods.each do |pod_representation|
-            if pod_representation.name == 'SparkFramework'
-                sparkframework_path = pod_representation.root
+            if pod_representation.name == 'ROADFramework'
+                road_framework_path = pod_representation.root
             end
         end
 
-        if sparkframework_path.nil?
-            puts 'SparkConfigurator.rb called without SparkFramework being defined in Podfile.'
+        if road_framework_path.nil?
+            puts 'ROADConfigurator.rb called without RoadFramework being defined in Podfile.'
             Process.exit!(true)
         end
 =end
@@ -39,14 +44,14 @@ class ROADConfigurator
                         user_targets.push(user_target)
                 
                         user_project_dir = File.dirname(user_project.path)
-                        genereted_attributes_path = "#{user_project_dir}/#{user_target.name}/SparkGeneratedAttributes"
+                        genereted_attributes_path = "#{user_project_dir}/#{user_target.name}/ROADGeneratedAttributes"
                         ROADConfigurator::create_generated_attributes_for_path(genereted_attributes_path)
                     end
                 end
         
-                run_script_user = "\"#{installer_representation.config.project_root}/binaries/SparkAttributesCodeGenerator\""\
+                run_script_user = "\"#{installer_representation.config.project_root}/binaries/ROADAttributesCodeGenerator\""\
                 " -src=\"${SRCROOT}/${PROJECT_NAME}\""\
-                " -dst=\"${SRCROOT}/${PROJECT_NAME}/SparkGeneratedAttributes/\""
+                " -dst=\"${SRCROOT}/${PROJECT_NAME}/ROADGeneratedAttributes/\""
                 ROADConfigurator::add_script_to_project_targets(run_script_user, 'ROAD - generate attributes', user_project, user_targets)
             end
         end
@@ -54,13 +59,13 @@ class ROADConfigurator
 
     def self.modify_pods_project(installer_representation)
         path_proj_pods = installer_representation.config.project_pods_root
-        genereted_attributes_path = "#{path_proj_pods}/SparkFramework/Framework/SparkGeneratedAttributes"
+        genereted_attributes_path = "#{path_proj_pods}/ROADFramework/Framework/ROADGeneratedAttributes"
         ROADConfigurator::create_generated_attributes_for_path(genereted_attributes_path)
 
-        run_script_pods = "\"#{installer_representation.config.project_root}/binaries/SparkAttributesCodeGenerator\""\
+        run_script_pods = "\"#{installer_representation.config.project_root}/binaries/ROADAttributesCodeGenerator\""\
         " -src=\"${SRCROOT}/\""\
-        " -dst=\"${SRCROOT}/SparkFramework/Framework/SparkGeneratedAttributes/\""
-        ROADConfigurator::add_script_to_project_targets(run_script_pods, 'Spark - generate attributes', installer_representation.project, installer_representation.project.targets)
+        " -dst=\"${SRCROOT}/ROADFramework/Framework/ROADGeneratedAttributes/\""
+        ROADConfigurator::add_script_to_project_targets(run_script_pods, 'ROAD - generate attributes', installer_representation.project, installer_representation.project.targets)
     end
 
     def self.get_target_from_project_by_uuid(project, uuid)
@@ -73,7 +78,7 @@ class ROADConfigurator
     end
 
     def self.create_generated_attributes_for_path(path)
-        generated_attributes_file_path = "#{path}/SparkGeneratedAttribute.m"
+        generated_attributes_file_path = "#{path}/ROADGeneratedAttribute.m"
 
         if !File.exists?(generated_attributes_file_path)
             FileUtils.mkdir_p(path)
@@ -113,8 +118,8 @@ class ROADConfigurator
         attributes_code_generator_path = "#{binary_path}/ROADAttributesCodeGenerator"
 
         curl_call = "curl "
-        if (defined? @@github_username)
-            curl_call += "-u #{@@github_username}:#{@@github_password} "
+        if (defined? @@config)
+            curl_call += "-u #{@@config['github_username']}:#{@@config['github_password']} "
         end
         curl_call += "-L -o \"#{attributes_code_generator_path}\" #{@@road_attributes_code_generator_url}"
 
