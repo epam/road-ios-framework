@@ -98,7 +98,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     serialization.dependency 'ROADFramework/ROADServices'    
     serialization.dependency 'ROADFramework/ROADLogger'
     serialization.ios.framework = 'CoreFoundation'
-    serialization.library = 'z'
+    serialization.library = 'xml2', 'z'
     serialization.header_dir = 'ROAD'
   end
 
