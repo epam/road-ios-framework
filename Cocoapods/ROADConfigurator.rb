@@ -1,7 +1,7 @@
 require 'xcodeproj'
 
-class SparkConfigurator
-    @@spark_attributes_code_generator_url = 'https://github.com/epam/spark-ios-framework/raw/master/tools/binaries/SparkAttributesCodeGenerator'
+class ROADConfigurator
+    @@road_attributes_code_generator_url = 'https://github.com/epam/spark-ios-framework/raw/master/tools/binaries/SparkAttributesCodeGenerator'
     
     def self.set_github_credentials(username, password)
         @@github_username = username
@@ -22,9 +22,9 @@ class SparkConfigurator
             Process.exit!(true)
         end
 =end
-        SparkConfigurator::download_binaries(installer_representation)
-        SparkConfigurator::modify_user_project(installer_representation)
-        SparkConfigurator::modify_pods_project(installer_representation)
+        ROADConfigurator::download_binaries(installer_representation)
+        ROADConfigurator::modify_user_project(installer_representation)
+        ROADConfigurator::modify_pods_project(installer_representation)
     end
 
     def self.modify_user_project(installer_representation)
@@ -40,14 +40,14 @@ class SparkConfigurator
                 
                         user_project_dir = File.dirname(user_project.path)
                         genereted_attributes_path = "#{user_project_dir}/#{user_target.name}/SparkGeneratedAttributes"
-                        SparkConfigurator::create_generated_attributes_for_path(genereted_attributes_path)
+                        ROADConfigurator::create_generated_attributes_for_path(genereted_attributes_path)
                     end
                 end
         
                 run_script_user = "\"#{installer_representation.config.project_root}/binaries/SparkAttributesCodeGenerator\""\
                 " -src=\"${SRCROOT}/${PROJECT_NAME}\""\
                 " -dst=\"${SRCROOT}/${PROJECT_NAME}/SparkGeneratedAttributes/\""
-                SparkConfigurator::add_script_to_project_targets(run_script_user, 'Spark - generate attributes', user_project, user_targets)
+                ROADConfigurator::add_script_to_project_targets(run_script_user, 'ROAD - generate attributes', user_project, user_targets)
             end
         end
     end
@@ -55,12 +55,12 @@ class SparkConfigurator
     def self.modify_pods_project(installer_representation)
         path_proj_pods = installer_representation.config.project_pods_root
         genereted_attributes_path = "#{path_proj_pods}/SparkFramework/Framework/SparkGeneratedAttributes"
-        SparkConfigurator::create_generated_attributes_for_path(genereted_attributes_path)
+        ROADConfigurator::create_generated_attributes_for_path(genereted_attributes_path)
 
         run_script_pods = "\"#{installer_representation.config.project_root}/binaries/SparkAttributesCodeGenerator\""\
         " -src=\"${SRCROOT}/\""\
         " -dst=\"${SRCROOT}/SparkFramework/Framework/SparkGeneratedAttributes/\""
-        SparkConfigurator::add_script_to_project_targets(run_script_pods, 'Spark - generate attributes', installer_representation.project, installer_representation.project.targets)
+        ROADConfigurator::add_script_to_project_targets(run_script_pods, 'Spark - generate attributes', installer_representation.project, installer_representation.project.targets)
     end
 
     def self.get_target_from_project_by_uuid(project, uuid)
@@ -110,13 +110,13 @@ class SparkConfigurator
             FileUtils.mkdir(binary_path)
         end
 
-        attributes_code_generator_path = "#{binary_path}/SparkAttributesCodeGenerator"
+        attributes_code_generator_path = "#{binary_path}/ROADAttributesCodeGenerator"
 
         curl_call = "curl "
         if (defined? @@github_username)
             curl_call += "-u #{@@github_username}:#{@@github_password} "
         end
-        curl_call += "-L -o \"#{attributes_code_generator_path}\" #{@@spark_attributes_code_generator_url}"
+        curl_call += "-L -o \"#{attributes_code_generator_path}\" #{@@road_attributes_code_generator_url}"
 
         puts curl_call
 
