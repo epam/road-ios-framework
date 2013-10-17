@@ -34,6 +34,7 @@
 #ifndef ROADWebservice_ROADWebServiceAnnotations_h
 #define ROADWebservice_ROADWebServiceAnnotations_h
 
+#import "RFWebService.h"
 #import "RFWebServiceCall.h"
 #import "RFWebServiceClientStatusCodes.h"
 #import "RFWebServiceHeader.h"
