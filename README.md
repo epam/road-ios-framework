@@ -1,10 +1,7 @@
-#Spark iOS Framework [![Build Status](https://magnum.travis-ci.com/epam/spark-ios-framework.png?token=o3R2wxGct9xoZkZhni3K&branch=dev)](https://magnum.travis-ci.com/epam/spark-ios-framework)
-===================
+Master: [![Build Status](https://magnum.travis-ci.com/epam/spark-ios-framework.png?token=o3R2wxGct9xoZkZhni3K)](https://magnum.travis-ci.com/epam/spark-ios-framework) Dev: [![Build Status](https://magnum.travis-ci.com/epam/spark-ios-framework.png?token=o3R2wxGct9xoZkZhni3K&branch=dev)](https://magnum.travis-ci.com/epam/spark-ios-framework)
+#ROAD iOS Framework
+
 A set of reusable components taking advantage of extra dimension [Attribute-Oriented Programming](https://en.wikipedia.org/wiki/Attribute-oriented_programming) adds.
-
-* Source: [github.com/epam/spark-ios-framework](github.com/epam/spark-ios-framework)
-* Homepage: [sparkiosframework.com](http://sparkiosframework.com)
-
 
 ##Components
 
@@ -15,41 +12,53 @@ A set of reusable components taking advantage of extra dimension [Attribute-Orie
 **Logger** - attribute-based logger.  
 **Observation** - unification of KVO and NSNotifications with block-based callbacks.  
 
+##Snippet
+Connection to some sweety HTTP server could look like:
+
+ 
+
+
 ##Requirements
 
-Spark requires **iOS 5.0** and above. Compatibility with **4.3** and older is not tested.
+ROAD requires **iOS 5.0** and above. Compatibility with **4.3** and older is not tested.
 
-Spark initially designed to use **ARC**. 
+ROAD initially designed to use **ARC**. 
 
 ##Jump Start
-Download [`Podfile`](https://github.com/epam/spark-ios-framework/tree/dev/Cocoapods/Podfile) and add it's contents to yours if you already use **CocoaPods**.
+[CocoaPods](http://cocoapods.org) the only recommended way of ROAD integration. Besides standard configuration of pod dependencies pod_install hook definition required as shown below. Typical Podfile will looks like following:
 
-Otherwise follow next steps:
+	platform :ios, '5.0'
 
-* Create a project
-* Download [`Podfile`](https://github.com/epam/spark-ios-framework/tree/dev/Cocoapods/Podfile) to the project root.
+	pod 'ROADFramework', '~> 1.1.0'
 
-* Go to project root in terminal and install dependencies:
+	post_install do |installer|
+	  require File.expand_path('./', 'ROADConfigurator.rb')
+	  ROADConfigurator::post_install(installer)
+	end
 
-        $ pod install
 
-*From now, use generated Xcode workspace instead of the project file only*
- 
-* Copy [`SparkAttributesCodeGenerator`](https://github.com/epam/spark-ios-framework/tree/master/tools/binaries) into new directory `binaries` in project root. It will be used for **attributes** preprocessing.
-
-* Verify that **Run Script** with `SparkAttributesCodeGenerator` is in **"Build Phases"** before **Compile Sources** for all targets including `Pods.xcodeproj` points to valid path.
+Download [`ROADConfigurator.rb`](./Cocoapods/Podfile) and put it right near your `Podfile`
 
 **Using components separately**  
 If you'd like to embed only specific components from the framework it can be done with CocoaPods as well.
 
-        pod 'spark-ios-framework/SparkServices'
-        pod 'spark-ios-framework/SparkWebService'
+        pod 'spark-ios-framework/ROADServices'
+        pod 'spark-ios-framework/ROADWebService'
+
+Detail information on internals of ROAD integration as well as advanced topics like integration with predefined workspace, multiple projects or targets available in [documentation](./Documents/Configuration/Cocoapods.md).        
         
 ##Documentation
 
-Documentation for all components can be found in **Documents** folder.
+User documentation for following components available in **Documents** folder:
 
-_coming soon in [cocoadocs.org](http://cocoadocs.org)_
+* [Core](./Documents/ROADCore.md)
+* [Services](./Documents/ROADServices.md)
+* [Serialization](./Documents/ROADSerialization.md)
+* [Web Services](./Documents/ROADWebSwervices.md)
+* [Logger](./Documents/ROADLogger.md)
+* [Observation](./Documents/ROADObservation.md)
+
+Classes reference available in [cocoadocs.org](http://cocoadocs.org/docsets/spark-ios-framework/)
 
 ##License
-Spark is made available under the terms of the [BSD v3](http://opensource.org/licenses/BSD-3-Clause). See the LICENSE file that accompanies this distribution for the full text of the license.
+ROAD is made available under the terms of the [BSD v3](http://opensource.org/licenses/BSD-3-Clause). See the LICENSE file that accompanies this distribution for the full text of the license.
