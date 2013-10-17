@@ -99,6 +99,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     serialization.dependency 'ROADFramework/ROADLogger'
     serialization.ios.framework = 'CoreFoundation'
     serialization.library = 'xml2', 'z'
+    serialization.xcconfig = { 'HEADER_SEARCH_PATHS' => '"$(SDKROOT)/usr/include/libxml2"' }
     serialization.header_dir = 'ROAD'
   end
 
