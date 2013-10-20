@@ -32,9 +32,21 @@
 
 #import "RFFileLogWriter.h"
 
+#import "RFLogFilter.h"
+
 @implementation RFFileLogWriter {
     NSFileHandle *handle;
     NSString *filePath;
+}
+
+- (instancetype)init {
+    self = [super init];
+    
+    if (self) {
+        [self addFilter:[RFLogFilter fileFilter]];
+    }
+    
+    return self;
 }
 
 + (RFFileLogWriter *)writerWithPath:(NSString * const)path {
@@ -73,7 +85,6 @@
 }
 
 - (void)openFile {
-    
     if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
         [[NSFileManager defaultManager] createFileAtPath:filePath contents:nil attributes:nil];
     }

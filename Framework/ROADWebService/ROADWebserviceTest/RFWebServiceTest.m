@@ -33,6 +33,7 @@
 #import <ROAD/ROADLogger.h>
 #import "RFWebServiceTest.h"
 #import "RFWebServiceClientWithRoot.h"
+#import "RFWebServiceClientWithLogger.h"
 #import "RFWebServiceClient+DynamicTest.h"
 #import "RFAuthenticating.h"
 #import "RFServiceProvider+ConcreteWebServiceClient.h"
@@ -262,6 +263,19 @@
         [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
         isFinished = YES;
     }
+}
+
+- (void)testLoggerAttributeInitializationForDownloader {
+    RFWebServiceClient *webServiceClient = [[RFWebServiceClientWithLogger alloc] init];
+    RFDownloader *downloader = [[RFDownloader alloc] initWithClient:webServiceClient methodName:@"methodWithLogger" authenticationProvider:nil];
+    STAssertEqualObjects(downloader.loggerType, kRFLogMessageTypeNetworkOnly, @"Logger type for web service method was not configured properly. It should be taken from a method attribute.");
+    
+    downloader = [[RFDownloader alloc] initWithClient:webServiceClient methodName:@"methodWithoutLogger" authenticationProvider:nil];
+    STAssertEqualObjects(downloader.loggerType, kRFLogMessageTypeAllLoggers, @"Logger type for web service method was not configured properly. It should be taken from a class attribute.");
+    
+    webServiceClient = [[RFWebServiceClient alloc] init];
+    downloader = [[RFDownloader alloc] initWithClient:webServiceClient methodName:@"notAvailableMethod" authenticationProvider:nil];
+    STAssertNil(downloader.loggerType, kRFLogMessageTypeConsoleOnly, @"Logger type for web service method was not configured properly. It should be nil as neither method nor class have a logger attribute.");
 }
 
 @end
