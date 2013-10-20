@@ -86,7 +86,7 @@ class ROADConfigurator
     end
 
     def self.create_generated_attributes_for_path(path)
-        generated_attributes_file_path = "#{path}/ROADGeneratedAttributes.m"
+        generated_attributes_file_path = "#{path}/ROADGeneratedAttribute.m"
 
         if !File.exists?(generated_attributes_file_path)
             FileUtils.mkdir_p(path)
