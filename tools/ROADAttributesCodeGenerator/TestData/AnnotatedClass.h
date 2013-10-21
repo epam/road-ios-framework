@@ -32,8 +32,8 @@
 #import "CustomESDAttribute.h"
 
 ///Testing of class with attributes
-SF_ATTRIBUTE(ESDAttribute)
-SF_ATTRIBUTE(CustomESDAttribute,
+RF_ATTRIBUTE(ESDAttribute)
+RF_ATTRIBUTE(CustomESDAttribute,
               property1 = @"Text1",
               dictionaryProperty = @{
                 @"key1" : @"[value1",
@@ -57,32 +57,32 @@ SF_ATTRIBUTE(CustomESDAttribute,
         @interface
         AnnotatedClass : NSObject <NSCopy, SomeOtherProto>{
     ///Testing of field with attributes
-            SF_ATTRIBUTE(ESDAttribute)
+            RF_ATTRIBUTE(ESDAttribute)
             NSObject* _someField;NSObject* _someField2;
-            SF_ATTRIBUTE(ESDAttribute)
+            RF_ATTRIBUTE(ESDAttribute)
             NSObject* _someField3;
         }
         /*@interface
         AnnotatedClass(SomeCategory)*/
 
 ///Testing of method with attributes
-SF_ATTRIBUTE(ESDAttribute)
-SF_ATTRIBUTE(CustomESDAttribute, property1 = @"Text1", /*Another /* comment*/ property2 = @"Text2//")
-SF_ATTRIBUTE(CustomESDAttribute, property3 = @"Text1", /*Another /* comment*/ property4 = @"Text2//")
+RF_ATTRIBUTE(ESDAttribute)
+RF_ATTRIBUTE(CustomESDAttribute, property1 = @"Text1", /*Another /* comment*/ property2 = @"Text2//")
+RF_ATTRIBUTE(CustomESDAttribute, property3 = @"Text1", /*Another /* comment*/ property4 = @"Text2//")
 //Noise comment
         - (void)viewDidLoad;
 
 ///Testing of method with attributes
 ///@param param1 Some parameter
-SF_ATTRIBUTE(ESDAttribute)
-SF_ATTRIBUTE(CustomESDAttribute, property1 = @"Text1", property2 = @"/*") - (void)viewDidLoad:(BOOL)param1;
+RF_ATTRIBUTE(ESDAttribute)
+RF_ATTRIBUTE(CustomESDAttribute, property1 = @"Text1", property2 = @"/*") - (void)viewDidLoad:(BOOL)param1;
 
-SF_ATTRIBUTE(SFAttribute)
+RF_ATTRIBUTE(RFAttribute)
 - (void)viewDidLoad:(BOOL)param1 param2:(BOOL)param2;
 
 ///Testing of property with attributes
-SF_ATTRIBUTE(ESDAttribute)
-SF_ATTRIBUTE(CustomESDAttribute, property2 = @"*/", intProperty = (2+2)*2) //Some other comment
+RF_ATTRIBUTE(ESDAttribute)
+RF_ATTRIBUTE(CustomESDAttribute, property2 = @"*/", intProperty = (2+2)*2) //Some other comment
     @property
         (strong, nonatomic)
             UIWindow *window;
@@ -92,47 +92,47 @@ SF_ATTRIBUTE(CustomESDAttribute, property2 = @"*/", intProperty = (2+2)*2) //Som
         @interface
         AnnotatedClass(ExpandCat) {
     ///Testing of field with attributes
-            SF_ATTRIBUTE(ESDAttribute)
+            RF_ATTRIBUTE(ESDAttribute)
             NSObject* _someField4;
         }
 
 ///Testing of method with attributes
-SF_ATTRIBUTE(ESDAttribute)
-SF_ATTRIBUTE(CustomESDAttribute, property5 = @"Text1", /*Another /* comment*/ property6 = @"Text2//")
+RF_ATTRIBUTE(ESDAttribute)
+RF_ATTRIBUTE(CustomESDAttribute, property5 = @"Text1", /*Another /* comment*/ property6 = @"Text2//")
 //Noise comment
         - (void)viewDidLoad;
 
 ///Testing of method with attributes
 ///@param param1 Some parameter
-SF_ATTRIBUTE(ESDAttribute)
-SF_ATTRIBUTE(CustomESDAttribute, property1 = @"Text1", property2 = @"/*") - (void)viewDidLoad:(BOOL)param1;
+RF_ATTRIBUTE(ESDAttribute)
+RF_ATTRIBUTE(CustomESDAttribute, property1 = @"Text1", property2 = @"/*") - (void)viewDidLoad:(BOOL)param1;
 
 ///Testing of property with attributes
-SF_ATTRIBUTE(ESDAttribute)
-SF_ATTRIBUTE(CustomESDAttribute, property2 = @"*/", intProperty = (2+2)*2) //Some other comment
+RF_ATTRIBUTE(ESDAttribute)
+RF_ATTRIBUTE(CustomESDAttribute, property2 = @"*/", intProperty = (2+2)*2) //Some other comment
     @property
         (strong, nonatomic)
             UIWindow *window2;
 
-SF_ATTRIBUTE(SFWebServiceCall, serializationDisabled = NO, relativePath = @"%%0%%")
-SF_ATTRIBUTE(SFWebServiceHeader, hearderFields = @{@"Accept" : @"application/json"})
-SF_ATTRIBUTE(SFWebServiceErrorHandler, handlerClass = @"SFODataErrorHandler")
-- (id<SFWebServiceCancellable>)testErrorHandlerRootWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO, relativePath = @"%%0%%")
+RF_ATTRIBUTE(RFWebServiceHeader, hearderFields = @{@"Accept" : @"application/json"})
+RF_ATTRIBUTE(RFWebServiceErrorHandler, handlerClass = @"RFODataErrorHandler")
+- (id<RFWebServiceCancellable>)testErrorHandlerRootWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
-SF_ATTRIBUTE(SFWebServiceCall)
-SF_ATTRIBUTE(SFWebServiceHeader, hearderFields = @{@"Accept": @"application/json"})
-SF_ATTRIBUTE(SFWebServiceURLBuilder, builderClass = [SFODataWebServiceURLBuilder class])
-- (id<SFWebServiceCancellable>)loadDataWithFetchRequest:(SFODataFetchRequest *)fetchRequest success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+RF_ATTRIBUTE(RFWebServiceCall)
+RF_ATTRIBUTE(RFWebServiceHeader, hearderFields = @{@"Accept": @"application/json"})
+RF_ATTRIBUTE(RFWebServiceURLBuilder, builderClass = [RFODataWebServiceURLBuilder class])
+- (id<RFWebServiceCancellable>)loadDataWithFetchRequest:(RFODataFetchRequest *)fetchRequest success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
-SF_ATTRIBUTE(SFWebServiceCall, serializationDisabled = NO, relativePath = @"?importantParameter=%%1%%")
-SF_ATTRIBUTE(SFWebServiceURLBuilder, builderClass = [SFODataWebServiceURLBuilder class])
-SF_ATTRIBUTE(SFWebServiceHeader, hearderFields = @{@"Accept" : @"application/json"})
-- (id<SFWebServiceCancellable>)loadDataWithFetchRequest:(SFODataFetchRequest *)fetchRequest someImportantParameter:(NSString *)importantParameter success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO, relativePath = @"?importantParameter=%%1%%")
+RF_ATTRIBUTE(RFWebServiceURLBuilder, builderClass = [RFODataWebServiceURLBuilder class])
+RF_ATTRIBUTE(RFWebServiceHeader, hearderFields = @{@"Accept" : @"application/json"})
+- (id<RFWebServiceCancellable>)loadDataWithFetchRequest:(RFODataFetchRequest *)fetchRequest someImportantParameter:(NSString *)importantParameter success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
-SF_ATTRIBUTE(SFWebServiceCall, serializationDisabled = NO, serializationRoot = @"coord.lon", successCodes = @[[NSValue valueWithRange:NSMakeRange(200, 300)]])
-- (id<SFWebServiceCancellable>)testSerializationRootWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO, serializationRoot = @"coord.lon", successCodes = @[[NSValue valueWithRange:NSMakeRange(200, 300)]])
+- (id<RFWebServiceCancellable>)testSerializationRootWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
-SF_ATTRIBUTE(SFWebServiceCall, serializationDisabled = NO, serializationRoot = @"coord.lon.localizedMessage.locale", successCodes = @[[NSValue valueWithRange:NSMakeRange(200, 300)]])
-- (id<SFWebServiceCancellable>)testWrongSerializationRootWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO, serializationRoot = @"coord.lon.localizedMessage.locale", successCodes = @[[NSValue valueWithRange:NSMakeRange(200, 300)]])
+- (id<RFWebServiceCancellable>)testWrongSerializationRootWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
 @end
