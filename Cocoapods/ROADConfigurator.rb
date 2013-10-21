@@ -9,24 +9,23 @@ class ROADConfigurator
     end
 
     def self.post_install(installer_representation)
-	config_path = ‘./ROADConfigurator.yaml’
+	config_path = './ROADConfigurator.yaml'
         if File.exists?(config_path)
           @@config = YAML::load(File.open(config_path))
         end
 
-=begin
         road_framework_path = nil
         installer_representation.pods.each do |pod_representation|
-            if pod_representation.name == ‘ROADFramework'
+            if pod_representation.name == 'ROADFramework'
                 road_framework_path = pod_representation.root
             end
         end
 
         if road_framework_path.nil?
-            puts ‘ROADConfigurator.rb called without RoadFramework being defined in Podfile.'
+            puts 'ROADConfigurator.rb called without RoadFramework being defined in Podfile.'
             Process.exit!(true)
         end
-=end
+
         ROADConfigurator::download_binaries(installer_representation)
         ROADConfigurator::modify_user_project(installer_representation)
         ROADConfigurator::modify_pods_project(installer_representation)
@@ -45,7 +44,10 @@ class ROADConfigurator
                 
                         user_project_dir = File.dirname(user_project.path)
                         genereted_attributes_path = "#{user_project_dir}/#{user_target.name}/ROADGeneratedAttributes"
-                        ROADConfigurator::create_generated_attributes_for_path(genereted_attributes_path)
+                        generated_attributes_file_path = ROADConfigurator::create_generated_attributes_for_path(genereted_attributes_path)
+                        
+                        attributes_file_reference = user_project.new_file(generated_attributes_file_path)
+                        user_target.source_build_phase.add_file_reference(attributes_file_reference)
                     end
                 end
         
@@ -60,12 +62,18 @@ class ROADConfigurator
     def self.modify_pods_project(installer_representation)
         path_proj_pods = installer_representation.config.project_pods_root
         genereted_attributes_path = "#{path_proj_pods}/ROADFramework/Framework/ROADGeneratedAttributes"
-        ROADConfigurator::create_generated_attributes_for_path(genereted_attributes_path)
+        generated_attributes_file_path = ROADConfigurator::create_generated_attributes_for_path(genereted_attributes_path)
 
         run_script_pods = "\"#{installer_representation.config.project_root}/binaries/ROADAttributesCodeGenerator\""\
         " -src=\"${SRCROOT}/\""\
         " -dst=\"${SRCROOT}/ROADFramework/Framework/ROADGeneratedAttributes/\""
-        ROADConfigurator::add_script_to_project_targets(run_script_pods, ‘ROAD - generate attributes', installer_representation.project, installer_representation.project.targets)
+        ROADConfigurator::add_script_to_project_targets(run_script_pods, 'ROAD - generate attributes', installer_representation.project, installer_representation.project.targets)
+
+        attributes_file_reference = installer_representation.project.new_file(generated_attributes_file_path)
+
+        installer_representation.project.targets.each do |pods_target|
+            pods_target.source_build_phase.add_file_reference(attributes_file_reference)
+        end
     end
 
     def self.get_target_from_project_by_uuid(project, uuid)
@@ -85,6 +93,8 @@ class ROADConfigurator
             puts "create: #{generated_attributes_file_path}"
             File.new(generated_attributes_file_path, 'w+').close
         end
+
+        generated_attributes_file_path
     end
     
     def self.add_script_to_project_targets(script, script_name, project, targets)
@@ -119,7 +129,7 @@ class ROADConfigurator
 
         curl_call = "curl "
         if (defined? @@config)
-            curl_call += "-u #{@@config[“github_username”]}:#{@@config[“github_password”]} "
+            curl_call += "-u #{@@config['github_username']}:#{@@config['github_password']} "
         end
         curl_call += "-L -o \"#{attributes_code_generator_path}\" #{@@road_attributes_code_generator_url}"
 

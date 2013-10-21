@@ -75,7 +75,7 @@
         _successCodes = [NSMutableArray arrayWithObjects:[NSValue valueWithRange:NSMakeRange(200, 100)], nil];
         RFWebServiceLogger *loggerTypeAttribute = [[webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceLogger class]];
         if (!loggerTypeAttribute) {
-            loggerTypeAttribute = [[self class] RF_attributeForClassWithAttributeType:[RFWebServiceLogger class]];
+            loggerTypeAttribute = [[webServiceClient class] RF_attributeForClassWithAttributeType:[RFWebServiceLogger class]];
         }
         _loggerType = loggerTypeAttribute.loggerType;
         _callAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceCall class]];

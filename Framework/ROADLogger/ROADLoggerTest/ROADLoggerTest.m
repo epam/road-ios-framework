@@ -33,7 +33,6 @@
 #import "ROADLoggerTest.h"
 #import <ROAD/ROADServices.h>
 #import <ROAD/ROADLogger.h>
-#import <ROAD/RFServiceProvider+LoggingService.h>
 
 @implementation ROADLoggerTest
 
@@ -129,7 +128,6 @@
 }
 
 - (void)testCustomFormatter {
-    
     NSString *message1 = @"It's right";
     NSString *message2 = @"It's not right";
     NSString *symbol = @"not ";
@@ -145,6 +143,19 @@
     }];
     
     STAssertTrue([[writer formattedMessage:[RFLogMessage infoMessage:message2]] isEqualToString:message1] , @"Values are not equals");
+}
+
+- (void)testDefaultWriters {
+    RFLogWriter *writer = [RFLogWriter plainConsoleWriter];
+    STAssertNotNil(writer, @"Plain console writer factory method returns nil object.");
+
+    NSMutableSet *filters = [writer valueForKey:@"_filters"];
+    STAssertTrue(filters.count == 1, @"Console writer filters initialized incorrectly. Only one filter should be provided by default.");
+
+    writer = [RFLogWriter fileWriterWithPath:@"somePath"];
+    STAssertNotNil(writer, @"Plain file writer factory method returns nil object.");
+    filters = [writer valueForKey:@"_filters"];
+    STAssertTrue(filters.count == 1, @"File writer filters initialized incorrectly. Only one filter should be provided by default.");
 }
 
 @end

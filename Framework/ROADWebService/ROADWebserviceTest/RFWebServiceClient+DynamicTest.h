@@ -32,7 +32,6 @@
 
 
 #import "RFWebServiceClient.h"
-#import <ROAD/RFWebServiceLogger.h>
 
 @protocol RFWebServiceCancellable;
 
@@ -48,7 +47,6 @@ RF_ATTRIBUTE(RFWebServiceCall, relativePath = @"/example=%%0%%")
 - (id<RFWebServiceCancellable>)dynamicDownloadTest:(NSString *)object success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
 RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled= YES, relativePath = @"/?time=1")
-RF_ATTRIBUTE(RFWebServiceLogger, loggerType = @"RFLogMessageTypeConsoleOnly")
 RF_ATTRIBUTE(RFWebServiceHeader, hearderFields = @{@"authorization" : @"Basic ZXBhbTplcGFt"})
 - (id<RFWebServiceCancellable>)downloadJSONWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 

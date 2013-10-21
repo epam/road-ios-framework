@@ -34,7 +34,19 @@
 
 #import "RFLogFormatter.h"
 
+#import "RFLogFilter.h"
+
 @implementation RFConsoleLogWriter
+
+- (instancetype)init {
+    self = [super init];
+    
+    if (self) {
+        [self addFilter:[RFLogFilter consoleFilter]];
+    }
+    
+    return self;
+}
 
 - (void)logValidMessage:(RFLogMessage * const)aMessage {
     [self printMessage:aMessage];
