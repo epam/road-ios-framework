@@ -1,21 +1,24 @@
 #import <Foundation/Foundation.h>
 #import "ESDAttribute.h"
 #import "CustomESDAttribute.h"
+#import <ROAD/ROADCore.h>
 #import "AnnotatedClass.h"
+#import <ROAD/ROADCore.h>
+#import <ROAD/ROADCore.h>
+#import <ROAD/ROADCore.h>
  
-@interface AnnotatedClass(SFAttribute)
+@interface AnnotatedClass(RFAttribute)
  
 @end
  
-@implementation AnnotatedClass(SFAttribute)
+@implementation AnnotatedClass(RFAttribute)
  
 #pragma mark - Fill Attributes generated code (Ivars section)
 
-static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_ivar__someField = nil;
-
-+ (NSArray *)SF_attributes_AnnotatedClass_ivar__someField {
-    if (SF_attributes_list_AnnotatedClass_ivar__someField != nil) {
-        return SF_attributes_list_AnnotatedClass_ivar__someField;
++ (NSArray *)RF_attributes_AnnotatedClass_ivar__someField {
+    NSMutableArray *RF_attributes_list_AnnotatedClass_ivar__someField = [[RFAttributeCacheManager attributeCache] objectForKey:@"RFAL_AnnotatedClass_ivar__someField"];
+    if (RF_attributes_list_AnnotatedClass_ivar__someField != nil) {
+        return RF_attributes_list_AnnotatedClass_ivar__someField;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
@@ -23,16 +26,16 @@ static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_ivar__someField 
     ESDAttribute *attr1 = [[ESDAttribute alloc] init];
     [attributesArray addObject:attr1];
 
-    SF_attributes_list_AnnotatedClass_ivar__someField = attributesArray;
+    RF_attributes_list_AnnotatedClass_ivar__someField = attributesArray;
+    [[RFAttributeCacheManager attributeCache] setObject:attributesArray forKey:@"RFAL_AnnotatedClass_ivar__someField"];
     
-    return SF_attributes_list_AnnotatedClass_ivar__someField;
+    return RF_attributes_list_AnnotatedClass_ivar__someField;
 }
 
-static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_ivar__someField3 = nil;
-
-+ (NSArray *)SF_attributes_AnnotatedClass_ivar__someField3 {
-    if (SF_attributes_list_AnnotatedClass_ivar__someField3 != nil) {
-        return SF_attributes_list_AnnotatedClass_ivar__someField3;
++ (NSArray *)RF_attributes_AnnotatedClass_ivar__someField3 {
+    NSMutableArray *RF_attributes_list_AnnotatedClass_ivar__someField3 = [[RFAttributeCacheManager attributeCache] objectForKey:@"RFAL_AnnotatedClass_ivar__someField3"];
+    if (RF_attributes_list_AnnotatedClass_ivar__someField3 != nil) {
+        return RF_attributes_list_AnnotatedClass_ivar__someField3;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
@@ -40,16 +43,16 @@ static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_ivar__someField3
     ESDAttribute *attr1 = [[ESDAttribute alloc] init];
     [attributesArray addObject:attr1];
 
-    SF_attributes_list_AnnotatedClass_ivar__someField3 = attributesArray;
+    RF_attributes_list_AnnotatedClass_ivar__someField3 = attributesArray;
+    [[RFAttributeCacheManager attributeCache] setObject:attributesArray forKey:@"RFAL_AnnotatedClass_ivar__someField3"];
     
-    return SF_attributes_list_AnnotatedClass_ivar__someField3;
+    return RF_attributes_list_AnnotatedClass_ivar__someField3;
 }
 
-static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_ivar__someField4 = nil;
-
-+ (NSArray *)SF_attributes_AnnotatedClass_ivar__someField4 {
-    if (SF_attributes_list_AnnotatedClass_ivar__someField4 != nil) {
-        return SF_attributes_list_AnnotatedClass_ivar__someField4;
++ (NSArray *)RF_attributes_AnnotatedClass_ivar__someField4 {
+    NSMutableArray *RF_attributes_list_AnnotatedClass_ivar__someField4 = [[RFAttributeCacheManager attributeCache] objectForKey:@"RFAL_AnnotatedClass_ivar__someField4"];
+    if (RF_attributes_list_AnnotatedClass_ivar__someField4 != nil) {
+        return RF_attributes_list_AnnotatedClass_ivar__someField4;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
@@ -57,16 +60,16 @@ static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_ivar__someField4
     ESDAttribute *attr1 = [[ESDAttribute alloc] init];
     [attributesArray addObject:attr1];
 
-    SF_attributes_list_AnnotatedClass_ivar__someField4 = attributesArray;
+    RF_attributes_list_AnnotatedClass_ivar__someField4 = attributesArray;
+    [[RFAttributeCacheManager attributeCache] setObject:attributesArray forKey:@"RFAL_AnnotatedClass_ivar__someField4"];
     
-    return SF_attributes_list_AnnotatedClass_ivar__someField4;
+    return RF_attributes_list_AnnotatedClass_ivar__someField4;
 }
 
-static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_ivar__testPropStore1 = nil;
-
-+ (NSArray *)SF_attributes_AnnotatedClass_ivar__testPropStore1 {
-    if (SF_attributes_list_AnnotatedClass_ivar__testPropStore1 != nil) {
-        return SF_attributes_list_AnnotatedClass_ivar__testPropStore1;
++ (NSArray *)RF_attributes_AnnotatedClass_ivar__testPropStore1 {
+    NSMutableArray *RF_attributes_list_AnnotatedClass_ivar__testPropStore1 = [[RFAttributeCacheManager attributeCache] objectForKey:@"RFAL_AnnotatedClass_ivar__testPropStore1"];
+    if (RF_attributes_list_AnnotatedClass_ivar__testPropStore1 != nil) {
+        return RF_attributes_list_AnnotatedClass_ivar__testPropStore1;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
@@ -76,28 +79,29 @@ static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_ivar__testPropSt
     attr1.property2 = @"PropStore1Text2//";
     [attributesArray addObject:attr1];
 
-    SF_attributes_list_AnnotatedClass_ivar__testPropStore1 = attributesArray;
+    RF_attributes_list_AnnotatedClass_ivar__testPropStore1 = attributesArray;
+    [[RFAttributeCacheManager attributeCache] setObject:attributesArray forKey:@"RFAL_AnnotatedClass_ivar__testPropStore1"];
     
-    return SF_attributes_list_AnnotatedClass_ivar__testPropStore1;
+    return RF_attributes_list_AnnotatedClass_ivar__testPropStore1;
 }
 
-static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForIvarsDict = nil;
-    
-+ (NSMutableDictionary *)SF_attributesFactoriesForIvars {
++ (NSMutableDictionary *)RF_attributesFactoriesForIvars {
+    NSMutableDictionary *attributesAnnotatedClassFactoriesForIvarsDict = [[RFAttributeCacheManager attributeCache] objectForKey:@"RFAnnotatedClassFactoriesForIvars"];
     if (attributesAnnotatedClassFactoriesForIvarsDict != nil) {
         return attributesAnnotatedClassFactoriesForIvarsDict;
     }
     
-    NSMutableDictionary *dictionaryHolder = [super SF_attributesFactoriesForIvars];
+    NSMutableDictionary *dictionaryHolder = [super RF_attributesFactoriesForIvars];
     
     if (!dictionaryHolder) {
         dictionaryHolder = [NSMutableDictionary dictionary];
+        [[RFAttributeCacheManager attributeCache] setObject:dictionaryHolder forKey:@"RFAnnotatedClassFactoriesForIvars"];
     }
     
-    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_ivar__someField)] forKey:@"_someField"];
-    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_ivar__someField3)] forKey:@"_someField3"];
-    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_ivar__someField4)] forKey:@"_someField4"];
-    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_ivar__testPropStore1)] forKey:@"_testPropStore1"];
+    [dictionaryHolder setObject:[self RF_invocationForSelector:@selector(RF_attributes_AnnotatedClass_ivar__someField)] forKey:@"_someField"];
+    [dictionaryHolder setObject:[self RF_invocationForSelector:@selector(RF_attributes_AnnotatedClass_ivar__someField3)] forKey:@"_someField3"];
+    [dictionaryHolder setObject:[self RF_invocationForSelector:@selector(RF_attributes_AnnotatedClass_ivar__someField4)] forKey:@"_someField4"];
+    [dictionaryHolder setObject:[self RF_invocationForSelector:@selector(RF_attributes_AnnotatedClass_ivar__testPropStore1)] forKey:@"_testPropStore1"];
     attributesAnnotatedClassFactoriesForIvarsDict = dictionaryHolder;  
     
     return attributesAnnotatedClassFactoriesForIvarsDict;
@@ -108,11 +112,10 @@ static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForIvarsDict
 
 #pragma mark - Fill Attributes generated code (Properties section)
 
-static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_property_window = nil;
-
-+ (NSArray *)SF_attributes_AnnotatedClass_property_window {
-    if (SF_attributes_list_AnnotatedClass_property_window != nil) {
-        return SF_attributes_list_AnnotatedClass_property_window;
++ (NSArray *)RF_attributes_AnnotatedClass_property_window {
+    NSMutableArray *RF_attributes_list_AnnotatedClass_property_window = [[RFAttributeCacheManager attributeCache] objectForKey:@"RFAL_AnnotatedClass_property_window"];
+    if (RF_attributes_list_AnnotatedClass_property_window != nil) {
+        return RF_attributes_list_AnnotatedClass_property_window;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:2];
@@ -125,16 +128,16 @@ static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_property_window 
     attr2.intProperty = (2+2)*2;
     [attributesArray addObject:attr2];
 
-    SF_attributes_list_AnnotatedClass_property_window = attributesArray;
+    RF_attributes_list_AnnotatedClass_property_window = attributesArray;
+    [[RFAttributeCacheManager attributeCache] setObject:attributesArray forKey:@"RFAL_AnnotatedClass_property_window"];
     
-    return SF_attributes_list_AnnotatedClass_property_window;
+    return RF_attributes_list_AnnotatedClass_property_window;
 }
 
-static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_property_window2 = nil;
-
-+ (NSArray *)SF_attributes_AnnotatedClass_property_window2 {
-    if (SF_attributes_list_AnnotatedClass_property_window2 != nil) {
-        return SF_attributes_list_AnnotatedClass_property_window2;
++ (NSArray *)RF_attributes_AnnotatedClass_property_window2 {
+    NSMutableArray *RF_attributes_list_AnnotatedClass_property_window2 = [[RFAttributeCacheManager attributeCache] objectForKey:@"RFAL_AnnotatedClass_property_window2"];
+    if (RF_attributes_list_AnnotatedClass_property_window2 != nil) {
+        return RF_attributes_list_AnnotatedClass_property_window2;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:2];
@@ -147,26 +150,27 @@ static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_property_window2
     attr2.intProperty = (2+2)*2;
     [attributesArray addObject:attr2];
 
-    SF_attributes_list_AnnotatedClass_property_window2 = attributesArray;
+    RF_attributes_list_AnnotatedClass_property_window2 = attributesArray;
+    [[RFAttributeCacheManager attributeCache] setObject:attributesArray forKey:@"RFAL_AnnotatedClass_property_window2"];
     
-    return SF_attributes_list_AnnotatedClass_property_window2;
+    return RF_attributes_list_AnnotatedClass_property_window2;
 }
 
-static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForPropertiesDict = nil;
-    
-+ (NSMutableDictionary *)SF_attributesFactoriesForProperties {
++ (NSMutableDictionary *)RF_attributesFactoriesForProperties {
+    NSMutableDictionary *attributesAnnotatedClassFactoriesForPropertiesDict = [[RFAttributeCacheManager attributeCache] objectForKey:@"RFAnnotatedClassFactoriesForProperties"];
     if (attributesAnnotatedClassFactoriesForPropertiesDict != nil) {
         return attributesAnnotatedClassFactoriesForPropertiesDict;
     }
     
-    NSMutableDictionary *dictionaryHolder = [super SF_attributesFactoriesForProperties];
+    NSMutableDictionary *dictionaryHolder = [super RF_attributesFactoriesForProperties];
     
     if (!dictionaryHolder) {
         dictionaryHolder = [NSMutableDictionary dictionary];
+        [[RFAttributeCacheManager attributeCache] setObject:dictionaryHolder forKey:@"RFAnnotatedClassFactoriesForProperties"];
     }
     
-    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_property_window)] forKey:@"window"];
-    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_property_window2)] forKey:@"window2"];
+    [dictionaryHolder setObject:[self RF_invocationForSelector:@selector(RF_attributes_AnnotatedClass_property_window)] forKey:@"window"];
+    [dictionaryHolder setObject:[self RF_invocationForSelector:@selector(RF_attributes_AnnotatedClass_property_window2)] forKey:@"window2"];
     attributesAnnotatedClassFactoriesForPropertiesDict = dictionaryHolder;  
     
     return attributesAnnotatedClassFactoriesForPropertiesDict;
@@ -177,11 +181,10 @@ static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForPropertie
 
 #pragma mark - Fill Attributes generated code (Methods section)
 
-static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_method_viewDidLoad_p0 = nil;
-
-+ (NSArray *)SF_attributes_AnnotatedClass_method_viewDidLoad_p0 {
-    if (SF_attributes_list_AnnotatedClass_method_viewDidLoad_p0 != nil) {
-        return SF_attributes_list_AnnotatedClass_method_viewDidLoad_p0;
++ (NSArray *)RF_attributes_AnnotatedClass_method_viewDidLoad_p0 {
+    NSMutableArray *RF_attributes_list_AnnotatedClass_method_viewDidLoad_p0 = [[RFAttributeCacheManager attributeCache] objectForKey:@"RFAL_AnnotatedClass_method_viewDidLoad_p0"];
+    if (RF_attributes_list_AnnotatedClass_method_viewDidLoad_p0 != nil) {
+        return RF_attributes_list_AnnotatedClass_method_viewDidLoad_p0;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:2];
@@ -198,16 +201,16 @@ static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_method_viewDidLo
     attr2.property6 = @"Text2//";
     [attributesArray addObject:attr2];
 
-    SF_attributes_list_AnnotatedClass_method_viewDidLoad_p0 = attributesArray;
+    RF_attributes_list_AnnotatedClass_method_viewDidLoad_p0 = attributesArray;
+    [[RFAttributeCacheManager attributeCache] setObject:attributesArray forKey:@"RFAL_AnnotatedClass_method_viewDidLoad_p0"];
     
-    return SF_attributes_list_AnnotatedClass_method_viewDidLoad_p0;
+    return RF_attributes_list_AnnotatedClass_method_viewDidLoad_p0;
 }
 
-static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_method_viewDidLoad_p1 = nil;
-
-+ (NSArray *)SF_attributes_AnnotatedClass_method_viewDidLoad_p1 {
-    if (SF_attributes_list_AnnotatedClass_method_viewDidLoad_p1 != nil) {
-        return SF_attributes_list_AnnotatedClass_method_viewDidLoad_p1;
++ (NSArray *)RF_attributes_AnnotatedClass_method_viewDidLoad_p1 {
+    NSMutableArray *RF_attributes_list_AnnotatedClass_method_viewDidLoad_p1 = [[RFAttributeCacheManager attributeCache] objectForKey:@"RFAL_AnnotatedClass_method_viewDidLoad_p1"];
+    if (RF_attributes_list_AnnotatedClass_method_viewDidLoad_p1 != nil) {
+        return RF_attributes_list_AnnotatedClass_method_viewDidLoad_p1;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:2];
@@ -222,168 +225,169 @@ static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_method_viewDidLo
     attr2.property2 = @"/*";
     [attributesArray addObject:attr2];
 
-    SF_attributes_list_AnnotatedClass_method_viewDidLoad_p1 = attributesArray;
+    RF_attributes_list_AnnotatedClass_method_viewDidLoad_p1 = attributesArray;
+    [[RFAttributeCacheManager attributeCache] setObject:attributesArray forKey:@"RFAL_AnnotatedClass_method_viewDidLoad_p1"];
     
-    return SF_attributes_list_AnnotatedClass_method_viewDidLoad_p1;
+    return RF_attributes_list_AnnotatedClass_method_viewDidLoad_p1;
 }
 
-static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_method_viewDidLoad_p2 = nil;
-
-+ (NSArray *)SF_attributes_AnnotatedClass_method_viewDidLoad_p2 {
-    if (SF_attributes_list_AnnotatedClass_method_viewDidLoad_p2 != nil) {
-        return SF_attributes_list_AnnotatedClass_method_viewDidLoad_p2;
++ (NSArray *)RF_attributes_AnnotatedClass_method_viewDidLoad_p2 {
+    NSMutableArray *RF_attributes_list_AnnotatedClass_method_viewDidLoad_p2 = [[RFAttributeCacheManager attributeCache] objectForKey:@"RFAL_AnnotatedClass_method_viewDidLoad_p2"];
+    if (RF_attributes_list_AnnotatedClass_method_viewDidLoad_p2 != nil) {
+        return RF_attributes_list_AnnotatedClass_method_viewDidLoad_p2;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
     
-    SFAttribute *attr1 = [[SFAttribute alloc] init];
+    RFAttribute *attr1 = [[RFAttribute alloc] init];
     [attributesArray addObject:attr1];
 
-    SF_attributes_list_AnnotatedClass_method_viewDidLoad_p2 = attributesArray;
+    RF_attributes_list_AnnotatedClass_method_viewDidLoad_p2 = attributesArray;
+    [[RFAttributeCacheManager attributeCache] setObject:attributesArray forKey:@"RFAL_AnnotatedClass_method_viewDidLoad_p2"];
     
-    return SF_attributes_list_AnnotatedClass_method_viewDidLoad_p2;
+    return RF_attributes_list_AnnotatedClass_method_viewDidLoad_p2;
 }
 
-static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_method_testErrorHandlerRootWithSuccess_p2 = nil;
-
-+ (NSArray *)SF_attributes_AnnotatedClass_method_testErrorHandlerRootWithSuccess_p2 {
-    if (SF_attributes_list_AnnotatedClass_method_testErrorHandlerRootWithSuccess_p2 != nil) {
-        return SF_attributes_list_AnnotatedClass_method_testErrorHandlerRootWithSuccess_p2;
++ (NSArray *)RF_attributes_AnnotatedClass_method_testErrorHandlerRootWithSuccess_p2 {
+    NSMutableArray *RF_attributes_list_AnnotatedClass_method_testErrorHandlerRootWithSuccess_p2 = [[RFAttributeCacheManager attributeCache] objectForKey:@"RFAL_AnnotatedClass_method_testErrorHandlerRootWithSuccess_p2"];
+    if (RF_attributes_list_AnnotatedClass_method_testErrorHandlerRootWithSuccess_p2 != nil) {
+        return RF_attributes_list_AnnotatedClass_method_testErrorHandlerRootWithSuccess_p2;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:3];
     
-    SFWebServiceCall *attr1 = [[SFWebServiceCall alloc] init];
+    RFWebServiceCall *attr1 = [[RFWebServiceCall alloc] init];
     attr1.serializationDisabled = NO;
     attr1.relativePath = @"%%0%%";
     [attributesArray addObject:attr1];
 
-    SFWebServiceHeader *attr2 = [[SFWebServiceHeader alloc] init];
+    RFWebServiceHeader *attr2 = [[RFWebServiceHeader alloc] init];
     attr2.hearderFields = @{@"Accept" : @"application/json"};
     [attributesArray addObject:attr2];
 
-    SFWebServiceErrorHandler *attr3 = [[SFWebServiceErrorHandler alloc] init];
-    attr3.handlerClass = @"SFODataErrorHandler";
+    RFWebServiceErrorHandler *attr3 = [[RFWebServiceErrorHandler alloc] init];
+    attr3.handlerClass = @"RFODataErrorHandler";
     [attributesArray addObject:attr3];
 
-    SF_attributes_list_AnnotatedClass_method_testErrorHandlerRootWithSuccess_p2 = attributesArray;
+    RF_attributes_list_AnnotatedClass_method_testErrorHandlerRootWithSuccess_p2 = attributesArray;
+    [[RFAttributeCacheManager attributeCache] setObject:attributesArray forKey:@"RFAL_AnnotatedClass_method_testErrorHandlerRootWithSuccess_p2"];
     
-    return SF_attributes_list_AnnotatedClass_method_testErrorHandlerRootWithSuccess_p2;
+    return RF_attributes_list_AnnotatedClass_method_testErrorHandlerRootWithSuccess_p2;
 }
 
-static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p3 = nil;
-
-+ (NSArray *)SF_attributes_AnnotatedClass_method_loadDataWithFetchRequest_p3 {
-    if (SF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p3 != nil) {
-        return SF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p3;
++ (NSArray *)RF_attributes_AnnotatedClass_method_loadDataWithFetchRequest_p3 {
+    NSMutableArray *RF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p3 = [[RFAttributeCacheManager attributeCache] objectForKey:@"RFAL_AnnotatedClass_method_loadDataWithFetchRequest_p3"];
+    if (RF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p3 != nil) {
+        return RF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p3;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:3];
     
-    SFWebServiceCall *attr1 = [[SFWebServiceCall alloc] init];
+    RFWebServiceCall *attr1 = [[RFWebServiceCall alloc] init];
     [attributesArray addObject:attr1];
 
-    SFWebServiceHeader *attr2 = [[SFWebServiceHeader alloc] init];
+    RFWebServiceHeader *attr2 = [[RFWebServiceHeader alloc] init];
     attr2.hearderFields = @{@"Accept": @"application/json"};
     [attributesArray addObject:attr2];
 
-    SFWebServiceURLBuilder *attr3 = [[SFWebServiceURLBuilder alloc] init];
-    attr3.builderClass = [SFODataWebServiceURLBuilder class];
+    RFWebServiceURLBuilder *attr3 = [[RFWebServiceURLBuilder alloc] init];
+    attr3.builderClass = [RFODataWebServiceURLBuilder class];
     [attributesArray addObject:attr3];
 
-    SF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p3 = attributesArray;
+    RF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p3 = attributesArray;
+    [[RFAttributeCacheManager attributeCache] setObject:attributesArray forKey:@"RFAL_AnnotatedClass_method_loadDataWithFetchRequest_p3"];
     
-    return SF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p3;
+    return RF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p3;
 }
 
-static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p4 = nil;
-
-+ (NSArray *)SF_attributes_AnnotatedClass_method_loadDataWithFetchRequest_p4 {
-    if (SF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p4 != nil) {
-        return SF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p4;
++ (NSArray *)RF_attributes_AnnotatedClass_method_loadDataWithFetchRequest_p4 {
+    NSMutableArray *RF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p4 = [[RFAttributeCacheManager attributeCache] objectForKey:@"RFAL_AnnotatedClass_method_loadDataWithFetchRequest_p4"];
+    if (RF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p4 != nil) {
+        return RF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p4;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:3];
     
-    SFWebServiceCall *attr1 = [[SFWebServiceCall alloc] init];
+    RFWebServiceCall *attr1 = [[RFWebServiceCall alloc] init];
     attr1.serializationDisabled = NO;
     attr1.relativePath = @"?importantParameter=%%1%%";
     [attributesArray addObject:attr1];
 
-    SFWebServiceURLBuilder *attr2 = [[SFWebServiceURLBuilder alloc] init];
-    attr2.builderClass = [SFODataWebServiceURLBuilder class];
+    RFWebServiceURLBuilder *attr2 = [[RFWebServiceURLBuilder alloc] init];
+    attr2.builderClass = [RFODataWebServiceURLBuilder class];
     [attributesArray addObject:attr2];
 
-    SFWebServiceHeader *attr3 = [[SFWebServiceHeader alloc] init];
+    RFWebServiceHeader *attr3 = [[RFWebServiceHeader alloc] init];
     attr3.hearderFields = @{@"Accept" : @"application/json"};
     [attributesArray addObject:attr3];
 
-    SF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p4 = attributesArray;
+    RF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p4 = attributesArray;
+    [[RFAttributeCacheManager attributeCache] setObject:attributesArray forKey:@"RFAL_AnnotatedClass_method_loadDataWithFetchRequest_p4"];
     
-    return SF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p4;
+    return RF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p4;
 }
 
-static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_method_testSerializationRootWithSuccess_p2 = nil;
-
-+ (NSArray *)SF_attributes_AnnotatedClass_method_testSerializationRootWithSuccess_p2 {
-    if (SF_attributes_list_AnnotatedClass_method_testSerializationRootWithSuccess_p2 != nil) {
-        return SF_attributes_list_AnnotatedClass_method_testSerializationRootWithSuccess_p2;
++ (NSArray *)RF_attributes_AnnotatedClass_method_testSerializationRootWithSuccess_p2 {
+    NSMutableArray *RF_attributes_list_AnnotatedClass_method_testSerializationRootWithSuccess_p2 = [[RFAttributeCacheManager attributeCache] objectForKey:@"RFAL_AnnotatedClass_method_testSerializationRootWithSuccess_p2"];
+    if (RF_attributes_list_AnnotatedClass_method_testSerializationRootWithSuccess_p2 != nil) {
+        return RF_attributes_list_AnnotatedClass_method_testSerializationRootWithSuccess_p2;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
     
-    SFWebServiceCall *attr1 = [[SFWebServiceCall alloc] init];
+    RFWebServiceCall *attr1 = [[RFWebServiceCall alloc] init];
     attr1.serializationDisabled = NO;
     attr1.serializationRoot = @"coord.lon";
     attr1.successCodes = @[[NSValue valueWithRange:NSMakeRange(200, 300)]];
     [attributesArray addObject:attr1];
 
-    SF_attributes_list_AnnotatedClass_method_testSerializationRootWithSuccess_p2 = attributesArray;
+    RF_attributes_list_AnnotatedClass_method_testSerializationRootWithSuccess_p2 = attributesArray;
+    [[RFAttributeCacheManager attributeCache] setObject:attributesArray forKey:@"RFAL_AnnotatedClass_method_testSerializationRootWithSuccess_p2"];
     
-    return SF_attributes_list_AnnotatedClass_method_testSerializationRootWithSuccess_p2;
+    return RF_attributes_list_AnnotatedClass_method_testSerializationRootWithSuccess_p2;
 }
 
-static NSMutableArray __weak *SF_attributes_list_AnnotatedClass_method_testWrongSerializationRootWithSuccess_p2 = nil;
-
-+ (NSArray *)SF_attributes_AnnotatedClass_method_testWrongSerializationRootWithSuccess_p2 {
-    if (SF_attributes_list_AnnotatedClass_method_testWrongSerializationRootWithSuccess_p2 != nil) {
-        return SF_attributes_list_AnnotatedClass_method_testWrongSerializationRootWithSuccess_p2;
++ (NSArray *)RF_attributes_AnnotatedClass_method_testWrongSerializationRootWithSuccess_p2 {
+    NSMutableArray *RF_attributes_list_AnnotatedClass_method_testWrongSerializationRootWithSuccess_p2 = [[RFAttributeCacheManager attributeCache] objectForKey:@"RFAL_AnnotatedClass_method_testWrongSerializationRootWithSuccess_p2"];
+    if (RF_attributes_list_AnnotatedClass_method_testWrongSerializationRootWithSuccess_p2 != nil) {
+        return RF_attributes_list_AnnotatedClass_method_testWrongSerializationRootWithSuccess_p2;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
     
-    SFWebServiceCall *attr1 = [[SFWebServiceCall alloc] init];
+    RFWebServiceCall *attr1 = [[RFWebServiceCall alloc] init];
     attr1.serializationDisabled = NO;
     attr1.serializationRoot = @"coord.lon.localizedMessage.locale";
     attr1.successCodes = @[[NSValue valueWithRange:NSMakeRange(200, 300)]];
     [attributesArray addObject:attr1];
 
-    SF_attributes_list_AnnotatedClass_method_testWrongSerializationRootWithSuccess_p2 = attributesArray;
+    RF_attributes_list_AnnotatedClass_method_testWrongSerializationRootWithSuccess_p2 = attributesArray;
+    [[RFAttributeCacheManager attributeCache] setObject:attributesArray forKey:@"RFAL_AnnotatedClass_method_testWrongSerializationRootWithSuccess_p2"];
     
-    return SF_attributes_list_AnnotatedClass_method_testWrongSerializationRootWithSuccess_p2;
+    return RF_attributes_list_AnnotatedClass_method_testWrongSerializationRootWithSuccess_p2;
 }
 
-static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForMethodsDict = nil;
-    
-+ (NSMutableDictionary *)SF_attributesFactoriesForMethods {
++ (NSMutableDictionary *)RF_attributesFactoriesForMethods {
+    NSMutableDictionary *attributesAnnotatedClassFactoriesForMethodsDict = [[RFAttributeCacheManager attributeCache] objectForKey:@"RFAnnotatedClassFactoriesForMethods"];
     if (attributesAnnotatedClassFactoriesForMethodsDict != nil) {
         return attributesAnnotatedClassFactoriesForMethodsDict;
     }
     
-    NSMutableDictionary *dictionaryHolder = [super SF_attributesFactoriesForMethods];
+    NSMutableDictionary *dictionaryHolder = [super RF_attributesFactoriesForMethods];
     
     if (!dictionaryHolder) {
         dictionaryHolder = [NSMutableDictionary dictionary];
+        [[RFAttributeCacheManager attributeCache] setObject:dictionaryHolder forKey:@"RFAnnotatedClassFactoriesForMethods"];
     }
     
-    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_method_viewDidLoad_p0)] forKey:@"viewDidLoad"];
-    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_method_viewDidLoad_p1)] forKey:@"viewDidLoad:"];
-    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_method_viewDidLoad_p2)] forKey:@"viewDidLoad:param2:"];
-    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_method_testErrorHandlerRootWithSuccess_p2)] forKey:@"testErrorHandlerRootWithSuccess:failure:"];
-    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_method_loadDataWithFetchRequest_p3)] forKey:@"loadDataWithFetchRequest:success:failure:"];
-    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_method_loadDataWithFetchRequest_p4)] forKey:@"loadDataWithFetchRequest:someImportantParameter:success:failure:"];
-    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_method_testSerializationRootWithSuccess_p2)] forKey:@"testSerializationRootWithSuccess:failure:"];
-    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_AnnotatedClass_method_testWrongSerializationRootWithSuccess_p2)] forKey:@"testWrongSerializationRootWithSuccess:failure:"];
+    [dictionaryHolder setObject:[self RF_invocationForSelector:@selector(RF_attributes_AnnotatedClass_method_viewDidLoad_p0)] forKey:@"viewDidLoad"];
+    [dictionaryHolder setObject:[self RF_invocationForSelector:@selector(RF_attributes_AnnotatedClass_method_viewDidLoad_p1)] forKey:@"viewDidLoad:"];
+    [dictionaryHolder setObject:[self RF_invocationForSelector:@selector(RF_attributes_AnnotatedClass_method_viewDidLoad_p2)] forKey:@"viewDidLoad:param2:"];
+    [dictionaryHolder setObject:[self RF_invocationForSelector:@selector(RF_attributes_AnnotatedClass_method_testErrorHandlerRootWithSuccess_p2)] forKey:@"testErrorHandlerRootWithSuccess:failure:"];
+    [dictionaryHolder setObject:[self RF_invocationForSelector:@selector(RF_attributes_AnnotatedClass_method_loadDataWithFetchRequest_p3)] forKey:@"loadDataWithFetchRequest:success:failure:"];
+    [dictionaryHolder setObject:[self RF_invocationForSelector:@selector(RF_attributes_AnnotatedClass_method_loadDataWithFetchRequest_p4)] forKey:@"loadDataWithFetchRequest:someImportantParameter:success:failure:"];
+    [dictionaryHolder setObject:[self RF_invocationForSelector:@selector(RF_attributes_AnnotatedClass_method_testSerializationRootWithSuccess_p2)] forKey:@"testSerializationRootWithSuccess:failure:"];
+    [dictionaryHolder setObject:[self RF_invocationForSelector:@selector(RF_attributes_AnnotatedClass_method_testWrongSerializationRootWithSuccess_p2)] forKey:@"testWrongSerializationRootWithSuccess:failure:"];
     attributesAnnotatedClassFactoriesForMethodsDict = dictionaryHolder;  
     
     return attributesAnnotatedClassFactoriesForMethodsDict;
@@ -394,11 +398,10 @@ static NSMutableDictionary __weak *attributesAnnotatedClassFactoriesForMethodsDi
 
 #pragma mark - Fill Attributes generated code (Class section)
 
-static NSMutableArray __weak *SF_attributes_list__class_AnnotatedClass = nil;
-
-+ (NSArray *)SF_attributesForClass {
-    if (SF_attributes_list__class_AnnotatedClass != nil) {
-        return SF_attributes_list__class_AnnotatedClass;
++ (NSArray *)RF_attributesForClass {
+    NSMutableArray *RF_attributes_list__class_AnnotatedClass = [[RFAttributeCacheManager attributeCache] objectForKey:@"RFAL__class_AnnotatedClass"];
+    if (RF_attributes_list__class_AnnotatedClass != nil) {
+        return RF_attributes_list__class_AnnotatedClass;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:2];
@@ -428,9 +431,10 @@ static NSMutableArray __weak *SF_attributes_list__class_AnnotatedClass = nil;
               };
     [attributesArray addObject:attr2];
 
-    SF_attributes_list__class_AnnotatedClass = attributesArray;
+    RF_attributes_list__class_AnnotatedClass = attributesArray;
+    [[RFAttributeCacheManager attributeCache] setObject:attributesArray forKey:@"RFAL__class_AnnotatedClass"];
     
-    return SF_attributes_list__class_AnnotatedClass;
+    return RF_attributes_list__class_AnnotatedClass;
 }
 
 #pragma mark - 
