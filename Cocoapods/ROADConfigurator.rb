@@ -64,14 +64,16 @@ class ROADConfigurator
         genereted_attributes_path = "#{path_proj_pods}/ROADFramework/Framework/ROADGeneratedAttributes"
         generated_attributes_file_path = ROADConfigurator::create_generated_attributes_for_path(genereted_attributes_path)
 
+        pods_targets = installer_representation.project.targets.select { |target| target.name.eql? "Pods-ROADFramework" }
+
         run_script_pods = "\"#{installer_representation.config.project_root}/binaries/ROADAttributesCodeGenerator\""\
         " -src=\"${SRCROOT}/\""\
         " -dst=\"${SRCROOT}/ROADFramework/Framework/ROADGeneratedAttributes/\""
-        ROADConfigurator::add_script_to_project_targets(run_script_pods, 'ROAD - generate attributes', installer_representation.project, installer_representation.project.targets)
+        ROADConfigurator::add_script_to_project_targets(run_script_pods, 'ROAD - generate attributes', installer_representation.project, pods_targets)
 
         attributes_file_reference = installer_representation.project.new_file(generated_attributes_file_path)
 
-        installer_representation.project.targets.each do |pods_target|
+        pods_targets.each do |pods_target|
             pods_target.source_build_phase.add_file_reference(attributes_file_reference)
         end
     end
