@@ -34,8 +34,23 @@
 #import "ROADAttribute.h"
 #import "RFTestAttribute.h"
 #import "CustomRFTestAttribute.h"
+#import "NSObject+RFAttributesInternal.h"
 
-@interface AnnotatedClass : NSObject {
+RF_ATTRIBUTE(CustomRFTestAttribute, property2 = @"TestStringForProp2ForProtocol", property1 = @"TestStringForProp1ForProtocol") //Some other comment
+@protocol TestProtocol <NSObject>
+
+RF_ATTRIBUTE(RFTestAttribute)
+RF_ATTRIBUTE(CustomRFTestAttribute, property2 = @"TestStringForProp2ForMethod", property1 = @"TestStringForProp1ForMethod") //Some other comment
+-(void)doSmth;
+
+///Testing of property with attributes
+RF_ATTRIBUTE(RFTestAttribute)
+RF_ATTRIBUTE(CustomRFTestAttribute, property2 = @"TestStringForProp2ForProperty", intProperty = (2 + 2) * 2) //Some other comment
+@property (strong, nonatomic) NSObject *prop;
+
+@end
+
+@interface AnnotatedClass : NSObject <TestProtocol> {
     NSObject* _someField;
 }
 

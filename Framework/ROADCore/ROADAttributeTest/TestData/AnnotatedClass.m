@@ -36,6 +36,11 @@
     NSString *_testPropStore;
 }
 
+@synthesize prop;
+
+- (void)doSmth {
+}
+
 - (void)viewDidLoad {
 }
 
