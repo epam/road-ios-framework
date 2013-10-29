@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.description  = <<-DESC
                    ROAD Framework is a collection of libraries, tools and guidelines to handle common routines like web services integration, serialization, logging and others. As result ROAD accelerates development, streamline support and maintenance, enforce best practices as well as remove technology entropy and fragmentation. Framework architecture allows to use libraries in application independently as well as all together to benefit from capabilities of each other.
                    DESC
-  s.homepage     = 'https://github.com/epam/spark-ios-framework'
+  s.homepage     = 'https://github.com/epam/road-ios-framework'
   s.license      = 'ROAD Framework
 
 Copyright (c) 2013, EPAM Systems, Inc.
@@ -46,14 +46,14 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   '
 
-  s.author       = { 'EPAM Systems' => 'support.spark@epam.com' }
+  s.author       = { 'EPAM Systems, Inc' => 'SupportROAD@epam.com' }
 
   s.platform = :ios
   s.ios.deployment_target = '5.0'
 
   s.requires_arc = true
 
-  s.source       = { :git => 'https://github.com/epam/spark-ios-framework.git', :tag => '1.1.0' }
+  s.source       = { :git => 'https://github.com/epam/road-ios-framework.git', :tag => '1.1.0' }
 
   s.xcconfig = { 'OTHER_LDFLAGS' => '-all_load' }
 
