@@ -42,8 +42,8 @@ Download [`ROADConfigurator.rb`](./Cocoapods/Podfile) and put it right near your
 **Using components separately**  
 If you'd like to embed only specific components from the framework it can be done with CocoaPods as well.
 
-        pod 'spark-ios-framework/ROADServices'
-        pod 'spark-ios-framework/ROADWebService'
+        pod 'road-ios-framework/ROADServices'
+        pod 'road-ios-framework/ROADWebService'
 
 Detail information on internals of ROAD integration as well as advanced topics like integration with predefined workspace, multiple projects or targets available in [documentation](./Documents/Configuration/Cocoapods.md).        
         
@@ -58,7 +58,7 @@ User documentation for following components available in **Documents** folder:
 * [Logger](./Documents/ROADLogger.md)
 * [Observation](./Documents/ROADObservation.md)
 
-Classes reference available in [cocoadocs.org](http://cocoadocs.org/docsets/spark-ios-framework/)
+Classes reference available in [cocoadocs.org](http://cocoadocs.org/docsets/ROADFramework/)
 
 ##License
 ROAD is made available under the terms of the [BSD v3](http://opensource.org/licenses/BSD-3-Clause). See the LICENSE file that accompanies this distribution for the full text of the license.
