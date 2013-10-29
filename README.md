@@ -1,4 +1,4 @@
-Master: [![Build Status](https://travis-ci.com/epam/road-ios-framework.png)](https://travis-ci.com/epam/road-ios-framework) Dev: [![Build Status](https://travis-ci.com/epam/road-ios-framework.png?branch=dev)](https://travis-ci.com/epam/road-ios-framework)
+Master: [![Build Status](https://travis-ci.org/epam/road-ios-framework.png)](https://travis-ci.org/epam/road-ios-framework) Dev: [![Build Status](https://travis-ci.org/epam/road-ios-framework.png?branch=dev)](https://travis-ci.org/epam/road-ios-framework)
 #ROAD iOS Framework
 
 A set of reusable components taking advantage of extra dimension [Attribute-Oriented Programming](https://en.wikipedia.org/wiki/Attribute-oriented_programming) adds.
