@@ -1,5 +1,5 @@
 //
-//  InterfaceParser.m
+//  ProtocolsModelHelper.h
 //  AttributesResearchLab
 //
 //  
@@ -29,48 +29,12 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "ClassParser.h"
-#import "SourceCodeHelper.h"
-#import "NSRegularExpression+ExtendedAPI.h"
+#import <Foundation/Foundation.h>
+#import "ProtocolModel.h"
 
-@interface ClassParser ()
+@interface ProtocolsModelHelper : NSObject
 
-+ (ClassModel*)parseFrom:(CodeParseState *)parseState forModel:(ClassModel*)model;
-
-@end
-
-@implementation ClassParser
-
-+ (ClassModel*)parseFrom:(CodeParseState *)parseState {
-    ClassModel* result = [ClassParser parseFrom:parseState forModel:[ClassModel new]];
-    return result;
-}
-
-+ (ClassModel*)parseFrom:(CodeParseState *)parseState forModel:(ClassModel*)model {
-    [ProtocolParser parseFrom:parseState forModel:model];
-    
-    model.categoryName = [self extractCategoryNameFromBuffer:model.modelDeclarationForParser];
-    return model;
-}
-
-NSRegularExpression *categoryNameRegex = nil;
-+ (NSString *)extractCategoryNameFromBuffer:(NSMutableString *)workCodeBuffer {
-    if (categoryNameRegex == nil) {
-        categoryNameRegex = [NSRegularExpression regexFromString:@"\\((?<!%)[@A-Za-z0-9_]+\\)"];
-    }
-    
-    NSString* foundPart = [SourceCodeHelper extractElement:categoryNameRegex fromBuffer:workCodeBuffer];
-    
-    if (foundPart == nil) {
-        return nil;
-    }
-    
-    NSMutableString *result = [NSMutableString stringWithString:foundPart];
-    
-    [result replaceOccurrencesOfString:@"(" withString:@"" options:0 range:NSMakeRange(0, [result length])];
-    [result replaceOccurrencesOfString:@")" withString:@"" options:0 range:NSMakeRange(0, [result length])];
-    
-    return result;
-}
++ (void)mergeProtocolsModel:(NSMutableArray *)protocolsModel1 withProtocolsModel:(NSMutableArray *)protocolsModel2;
++ (void)mergeProtocolsModel:(NSMutableArray *)protocolsModel1 withProtocolModel:(ProtocolModel *)protocolModelToMerge;
 
 @end

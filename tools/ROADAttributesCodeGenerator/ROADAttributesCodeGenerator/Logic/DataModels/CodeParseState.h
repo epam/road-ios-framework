@@ -33,6 +33,7 @@
 #import "PreprocessedSourceCode.h"
 #import "ClassModel.h"
 #import "ClassModelsContainer.h"
+#import "ProtocolModelsContainer.h"
 
 @interface CodeParseState : NSObject
 
@@ -42,8 +43,12 @@
 @property (nonatomic, strong) NSMutableArray *currentImportFilesList;
 
 @property (nonatomic, strong) ClassModel *currentClass;
+@property (nonatomic, strong) ProtocolModel *currentProtocol;
 
 @property (nonatomic, strong) ClassModelsContainer *foundClassesList;
+@property (nonatomic, strong) ProtocolModelsContainer *foundProtocolsList;
+
+@property (nonatomic, assign) BOOL isProtocolMode;
 @property (nonatomic, assign) BOOL isFieldMode;
 
 @end

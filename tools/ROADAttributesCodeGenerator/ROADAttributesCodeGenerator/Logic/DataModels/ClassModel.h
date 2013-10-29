@@ -30,18 +30,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AnnotatedElementModel.h"
+#import "ProtocolModel.h"
 
-@interface ClassModel : AnnotatedElementModel {}
+@interface ClassModel : ProtocolModel {}
 
 @property(nonatomic, strong) NSString *categoryName;
 
 @property (nonatomic, strong) NSMutableArray *fieldsList;
-@property (nonatomic, strong) NSMutableArray *propertiesList;
-@property (nonatomic, strong) NSMutableArray *methodsList;
-
-@property (nonatomic, assign) BOOL hasGeneratedCode;
-
-@property(nonatomic, strong) NSMutableArray *filesToImport;
 
 @end

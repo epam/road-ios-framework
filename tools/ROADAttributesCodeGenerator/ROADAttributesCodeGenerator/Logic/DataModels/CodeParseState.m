@@ -41,6 +41,7 @@
     
     self.currentAttributesList = [[AttributeModelsContainer alloc] init];
     self.currentImportFilesList = [NSMutableArray array];
+    self.isProtocolMode = NO;
     self.isFieldMode = NO;
     
     return self;

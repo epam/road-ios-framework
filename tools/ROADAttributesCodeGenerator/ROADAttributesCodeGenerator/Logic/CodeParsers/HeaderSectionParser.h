@@ -31,9 +31,10 @@
 
 #import <Foundation/Foundation.h>
 #import "ClassModelsContainer.h"
+#import "ProtocolModelsContainer.h"
 
 @interface HeaderSectionParser : NSObject
 
-+ (void)parseSourceCode:(NSString *)sourceCode into:(ClassModelsContainer *)classModelsContainer skipImports:(BOOL)skipImports;
++ (void)parseSourceCode:(NSString *)sourceCode intoClass:(ClassModelsContainer *)classModelsContainer intoProtocol:(ProtocolModelsContainer *)protocolModelsContainer skipImports:(BOOL)skipImports;
 
 @end

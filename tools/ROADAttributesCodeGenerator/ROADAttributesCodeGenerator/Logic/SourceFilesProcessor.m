@@ -37,39 +37,41 @@
 #import "ClassesModelHelper.h"
 #import "MainAttributesCodeGenerator.h"
 #import "UserSourceCodeConfigurator.h"
+#import "ProtocolModelsContainer.h"
 
 @implementation SourceFilesProcessor
 
 + (void)generateAttributeFactoriesIntoPath:(NSString *)targetPath fromSourceCodePath:(NSString *)sourcesPath {
     ClassModelsContainer *classesInfoContainer = [ClassModelsContainer new];
+    ProtocolModelsContainer* protocolsInfoContainer = [ProtocolModelsContainer new];
     
-    [self gatherClassesInfoFromSourceCodePath:sourcesPath into:classesInfoContainer];
-    [self generateAttributeFactoriesIntoPath:targetPath fromClassModels:classesInfoContainer];
+    [self gatherClassesInfoFromSourceCodePath:sourcesPath intoClass:classesInfoContainer intoProtocol:protocolsInfoContainer];
+    [self generateAttributeFactoriesIntoPath:targetPath fromClassModels:classesInfoContainer intoProtocol:protocolsInfoContainer];
     [self generateCodeCollectorIntoPath:targetPath fromClassModels:classesInfoContainer];
     
     [self removeAbsoletedFactoriesFromPath:(NSString *)targetPath accordingToClassModels:classesInfoContainer];
 }
 
-+ (void)gatherClassesInfoFromSourceCodePath:(NSString *)sourcesPath into:(ClassModelsContainer *)classesInfoContainer {
++ (void)gatherClassesInfoFromSourceCodePath:(NSString *)sourcesPath intoClass:(ClassModelsContainer *)classesInfoContainer intoProtocol:(ProtocolModelsContainer *)protocolsInfoContainer {
     NSArray *filesToProcess = [SourceFileHelper sourceCodeFilesFromPath:sourcesPath];
 
     for (NSString *fileToProcess in filesToProcess) {
-         [self gatherClassInfoFromFile:fileToProcess into:classesInfoContainer skipImports:NO];
+         [self gatherClassInfoFromFile:fileToProcess intoClass:classesInfoContainer intoProtocol:protocolsInfoContainer  skipImports:NO];
     }
 }
 
-+ (void)generateAttributeFactoriesIntoPath:(NSString *)targetPath fromClassModels:(ClassModelsContainer *)classesInfoContainer {
-    [MainAttributesCodeGenerator generateFilesForModel:classesInfoContainer.classModels inDirectory:targetPath];
++ (void)generateAttributeFactoriesIntoPath:(NSString *)targetPath fromClassModels:(ClassModelsContainer *)classesInfoContainer intoProtocol:(ProtocolModelsContainer *)protocolsInfoContainer {
+    [MainAttributesCodeGenerator generateFilesForClasses:classesInfoContainer.classModels forProtocols:protocolsInfoContainer.protocolModels inDirectory:targetPath];
 }
 
-+ (void)gatherClassInfoFromFile:(NSString *)sourcesPath into:(ClassModelsContainer *)classesInfoContainer skipImports:(BOOL)skipImports {
++ (void)gatherClassInfoFromFile:(NSString *)sourcesPath intoClass:(ClassModelsContainer *)classesInfoContainer intoProtocol:(ProtocolModelsContainer *)protocolsInfoContainer skipImports:(BOOL)skipImports {
     NSString *sourceCode = [TextFile loadTextFile:sourcesPath];
 
     if ([NSString isNilOrEmpty:sourceCode]) {
         return;
     }
 
-    [HeaderSectionParser parseSourceCode:sourceCode into:classesInfoContainer skipImports:skipImports];
+    [HeaderSectionParser parseSourceCode:sourceCode intoClass:classesInfoContainer intoProtocol:protocolsInfoContainer skipImports:skipImports];
 }
 
 + (void)generateCodeCollectorIntoPath:(NSString *)targetPath fromClassModels:(ClassModelsContainer *)classesInfoContainer {

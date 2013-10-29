@@ -30,11 +30,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ProtocolParser.h"
 #import "CodeParseState.h"
 #import "ClassModel.h"
 
-@interface ClassParser : NSObject
+@interface ClassParser : ProtocolParser
 
-+ (ClassModel *)parseFrom:(CodeParseState *)parseState;
++ (ClassModel*)parseFrom:(CodeParseState *)parseState;
 
 @end

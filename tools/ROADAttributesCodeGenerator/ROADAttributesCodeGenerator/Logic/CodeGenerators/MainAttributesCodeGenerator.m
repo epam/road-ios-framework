@@ -40,8 +40,26 @@ NSString *k_collectorFileName = @"ROADGeneratedAttribute.m";
 
 @implementation MainAttributesCodeGenerator
 
-+ (void)generateFilesForModel:(NSArray *)classesModel inDirectory:(NSString *)directoryPath {
-    for (ClassModel *currentClassModel in classesModel) {
++ (void)generateFilesForClasses:(NSArray *)classModels forProtocols:(NSArray*)protocolModels inDirectory:(NSString *)directoryPath {
+    for (ClassModel *currentClassModel in classModels) {
+        
+        NSMutableArray* arrayOfProtocolsForCurrentClassModel = [NSMutableArray new];
+        if ([currentClassModel.protocolList count] > 0) {
+            for (NSString* protocolName in currentClassModel.protocolList) {
+                for (ProtocolModel *protocolModel in protocolModels) {
+                    if ([protocolName isEqualToString:protocolModel.name]) {
+                        [arrayOfProtocolsForCurrentClassModel addObject:protocolModel];
+                    }
+                }
+            }
+        }
+        
+        for (ProtocolModel *protocolModel in arrayOfProtocolsForCurrentClassModel) {
+            [currentClassModel.propertiesList addObjectsFromArray:protocolModel.propertiesList];
+            [currentClassModel.methodsList addObjectsFromArray:protocolModel.methodsList];
+            [currentClassModel.attributeModels addAttributeModelsFromContainer:protocolModel.attributeModels];
+        }
+        
         NSString *generatedCode = [ClassAttributesCodeGenerator generateCodeForClassModel:currentClassModel];
         
         if ([NSString isNilOrEmpty:generatedCode]) {
