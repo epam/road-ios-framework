@@ -42,7 +42,7 @@
 - (void)test_RF_attributesForInstanceOfClassImplementsProtocol {
     NSArray *attributesList = [AnnotatedClass RF_attributesForClass];
     STAssertTrue(attributesList != nil, @"attributesList must contain values");
-    STAssertTrue([attributesList count] == 2, @"attributesList must contain 2 items");
+    STAssertTrue([attributesList count] == 3, @"attributesList must contain 2 items");
     
     CustomRFTestAttribute *testAttribute = [attributesList lastObject];
     STAssertTrue(testAttribute != nil, @"testAttribute must not be nil");
