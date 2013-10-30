@@ -51,6 +51,7 @@ RF_ATTRIBUTE(CustomRFTestAttribute, property2 = @"TestStringForProp2ForProperty"
 
 @end
 
+RF_ATTRIBUTE(NSObject)
 @interface AnnotatedClass : NSObject <TestProtocol> {
     NSObject* _someField;
 }
