@@ -37,6 +37,40 @@
 
 @implementation AttributesAPITest
 
+#pragma mark - Test Attributes generated code (Protocol section)
+
+- (void)test_RF_attributesForInstanceOfClassImplementsProtocol {
+    NSArray *attributesList = [AnnotatedClass RF_attributesForClass];
+    STAssertTrue(attributesList != nil, @"attributesList must contain values");
+    STAssertTrue([attributesList count] == 2, @"attributesList must contain 2 items");
+    
+    CustomRFTestAttribute *testAttribute = [attributesList lastObject];
+    STAssertTrue(testAttribute != nil, @"testAttribute must not be nil");
+    STAssertEquals(testAttribute.property2, @"TestStringForProp2ForProtocol", @"testAttribute doesn't contains appropriate value");
+}
+
+- (void)test_RF_attributesForInstanceMethodForClassImplementsProtocol {
+    NSArray *attributesList = [AnnotatedClass RF_attributesForMethod:@"doSmth"];
+    STAssertTrue(attributesList != nil, @"attributesList must contain values");
+    STAssertTrue([attributesList count] == 2, @"attributesList must contain 2 items");
+    
+    CustomRFTestAttribute *testAttribute = [attributesList lastObject];
+    STAssertTrue(testAttribute != nil, @"testAttribute must not be nil");
+    STAssertEquals(testAttribute.property1, @"TestStringForProp1ForMethod", @"testAttribute doesn't contains appropriate value");
+}
+
+- (void)test_RF_attributesForPropertyForClassImplementsProtocol {
+    NSArray *attributesList = [AnnotatedClass RF_attributesForProperty:@"prop"];
+    STAssertTrue(attributesList != nil, @"attributesList must contain values");
+    STAssertTrue([attributesList count] == 2, @"attributesList must contain 2 items");
+    
+    CustomRFTestAttribute *testAttribute = [attributesList lastObject];
+    STAssertTrue(testAttribute != nil, @"testAttribute must not be nil");
+    STAssertEquals(testAttribute.property2, @"TestStringForProp2ForProperty", @"testAttribute doesn't contains appropriate value");
+}
+
+#pragma mark -
+
 #pragma mark - Test Attributes generated code (Methods section)
 
 - (void)test_RF_attributesForInstanceMethod {

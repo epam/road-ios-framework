@@ -130,12 +130,15 @@
         return RF_attributes_list__class_AnnotatedClass;
     }
     
-    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
+    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:2];
     
-    CustomRFTestAttribute *attr1 = [[CustomRFTestAttribute alloc] init];
-    attr1.property2 = @"TestStringForProp2ForProtocol";
-    attr1.property1 = @"TestStringForProp1ForProtocol";
+    RFTestAttribute *attr1 = [[RFTestAttribute alloc] init];
     [attributesArray addObject:attr1];
+
+    CustomRFTestAttribute *attr2 = [[CustomRFTestAttribute alloc] init];
+    attr2.property2 = @"TestStringForProp2ForProtocol";
+    attr2.property1 = @"TestStringForProp1ForProtocol";
+    [attributesArray addObject:attr2];
 
     RF_attributes_list__class_AnnotatedClass = attributesArray;
     [[RFAttributeCacheManager attributeCache] setObject:attributesArray forKey:@"RFAL__class_AnnotatedClass"];

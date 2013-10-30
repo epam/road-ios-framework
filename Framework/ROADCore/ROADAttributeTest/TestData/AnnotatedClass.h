@@ -36,6 +36,7 @@
 #import "CustomRFTestAttribute.h"
 #import "NSObject+RFAttributesInternal.h"
 
+RF_ATTRIBUTE(RFTestAttribute)
 RF_ATTRIBUTE(CustomRFTestAttribute, property2 = @"TestStringForProp2ForProtocol", property1 = @"TestStringForProp1ForProtocol") //Some other comment
 @protocol TestProtocol <NSObject>
 
