@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A6B4FA01822414C00080113 /* SecondAnnotatedClass+RFAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6B4F9F1822414C00080113 /* SecondAnnotatedClass+RFAttributes.m */; };
+		1A6B4FA11822414C00080113 /* SecondAnnotatedClass+RFAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6B4F9F1822414C00080113 /* SecondAnnotatedClass+RFAttributes.m */; };
 		1A966C6418211FFF00031D15 /* AnnotatedClass+RFAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A966C6218211FFF00031D15 /* AnnotatedClass+RFAttributes.m */; };
 		1A966C6518211FFF00031D15 /* AnnotatedClass+RFAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A966C6218211FFF00031D15 /* AnnotatedClass+RFAttributes.m */; };
 		1A966C6618211FFF00031D15 /* ROADGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A966C6318211FFF00031D15 /* ROADGeneratedAttribute.m */; };
@@ -164,6 +166,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A6B4F9F1822414C00080113 /* SecondAnnotatedClass+RFAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SecondAnnotatedClass+RFAttributes.m"; sourceTree = "<group>"; };
 		1A966C6218211FFF00031D15 /* AnnotatedClass+RFAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AnnotatedClass+RFAttributes.m"; sourceTree = "<group>"; };
 		1A966C6318211FFF00031D15 /* ROADGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROADGeneratedAttribute.m; sourceTree = "<group>"; };
 		5AD1FC421766038E00E67BC4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = ../../../../System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
@@ -301,6 +304,7 @@
 		1A966C6118211FC400031D15 /* ROADGeneratedAttributes */ = {
 			isa = PBXGroup;
 			children = (
+				1A6B4F9F1822414C00080113 /* SecondAnnotatedClass+RFAttributes.m */,
 				1A966C6218211FFF00031D15 /* AnnotatedClass+RFAttributes.m */,
 				1A966C6318211FFF00031D15 /* ROADGeneratedAttribute.m */,
 			);
@@ -760,6 +764,7 @@
 				83AE631B17F44E280053780E /* RFAttributeCacheManager.m in Sources */,
 				1A966C6618211FFF00031D15 /* ROADGeneratedAttribute.m in Sources */,
 				8D9422CB17E2C52D005F0AE3 /* NSObject+RFAttributesInternal.m in Sources */,
+				1A6B4FA01822414C00080113 /* SecondAnnotatedClass+RFAttributes.m in Sources */,
 				8D9422D617E2C53D005F0AE3 /* RFTypeDecoder.m in Sources */,
 				8D9422D717E2C53D005F0AE3 /* RFIvarInfo.m in Sources */,
 				8D9422D817E2C53D005F0AE3 /* RFMethodInfo.m in Sources */,
@@ -800,6 +805,7 @@
 				8D9422EF17E2C59C005F0AE3 /* RFTemplateParsingTest.m in Sources */,
 				8D9422F017E2C59C005F0AE3 /* RFMutableObjectTest.m in Sources */,
 				8D9422F117E2C59C005F0AE3 /* RFPoolTest.m in Sources */,
+				1A6B4FA11822414C00080113 /* SecondAnnotatedClass+RFAttributes.m in Sources */,
 				8D94230217E2C5A9005F0AE3 /* AttributesAPITest.m in Sources */,
 				D78E852E17F9C1AE0046385E /* RFPropertyInfoTest.m in Sources */,
 				8D94230417E2C5A9005F0AE3 /* AnnotatedClass.m in Sources */,

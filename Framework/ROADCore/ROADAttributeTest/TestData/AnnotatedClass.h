@@ -36,10 +36,12 @@
 #import "CustomRFTestAttribute.h"
 #import "NSObject+RFAttributesInternal.h"
 
+///Testing of protocol with attributes
 RF_ATTRIBUTE(RFTestAttribute)
 RF_ATTRIBUTE(CustomRFTestAttribute, property2 = @"TestStringForProp2ForProtocol", property1 = @"TestStringForProp1ForProtocol") //Some other comment
 @protocol TestProtocol <NSObject>
 
+///Testing of method with attributes
 RF_ATTRIBUTE(RFTestAttribute)
 RF_ATTRIBUTE(CustomRFTestAttribute, property2 = @"TestStringForProp2ForMethod", property1 = @"TestStringForProp1ForMethod") //Some other comment
 -(void)doSmth;
@@ -51,8 +53,11 @@ RF_ATTRIBUTE(CustomRFTestAttribute, property2 = @"TestStringForProp2ForProperty"
 
 @end
 
+
+///Testing of class with attributes
 RF_ATTRIBUTE(NSObject)
 @interface AnnotatedClass : NSObject <TestProtocol> {
+    RF_ATTRIBUTE(RFTestAttribute)
     NSObject* _someField;
 }
 
@@ -63,6 +68,9 @@ RF_ATTRIBUTE(CustomRFTestAttribute, property1 = @"Text1", property2 = @"Text2")
 
 - (void)viewDidLoad:(BOOL)param1;
 
+///Testing of property with attributes
+RF_ATTRIBUTE(RFTestAttribute)
+RF_ATTRIBUTE(CustomRFTestAttribute, property2 = @"TestStringForProp", property1 = @"TestStringForProp") //Some other comment
 @property (strong, nonatomic) NSString *window;
 
 @end

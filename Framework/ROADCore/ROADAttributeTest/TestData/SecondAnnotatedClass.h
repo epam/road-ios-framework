@@ -33,16 +33,29 @@
 #import <Foundation/Foundation.h>
 #import "RFTestAttribute.h"
 #import "CustomRFTestAttribute.h"
+#import "NSObject+RFAttributesInternal.h"
 
 ///Testing of class with attributes
+RF_ATTRIBUTE(RFTestAttribute)
+RF_ATTRIBUTE(CustomRFTestAttribute, property1 = @"Text1") //Some other comment
 @interface SecondAnnotatedClass : NSObject {
     ///Testing of field with attributes
+    RF_ATTRIBUTE(RFTestAttribute)
     NSObject* _someField;
 }
 
+///Testing of method with attributes
+RF_ATTRIBUTE(RFTestAttribute)
+RF_ATTRIBUTE(CustomRFTestAttribute, property2 = @"Text2", property1 = @"Text1") //Some other comment
 - (void)viewDidLoad;
+
+///Testing of method with attributes
+RF_ATTRIBUTE(RFTestAttribute)
 - (void)viewDidLoad:(BOOL)param1;
 
+///Testing of property with attributes
+RF_ATTRIBUTE(RFTestAttribute)
+RF_ATTRIBUTE(CustomRFTestAttribute, property2 = @"Text2", intProperty = (2 + 2) * 2) //Some other comment
 @property (strong, nonatomic) NSString *window;
 
 @end

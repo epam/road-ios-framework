@@ -93,6 +93,20 @@
     STAssertTrue(attributesList1 == attributesList2, @"attributesList1 and attributesList2 must point at the same array");    
 }
 
+- (void)test_RF_attributesForInstanceMethodCachingAfterAutoreleasePool2 {
+    NSArray __weak *attributesList1 = nil;
+    
+    @autoreleasepool {
+        attributesList1 = [SecondAnnotatedClass RF_attributesForMethod:@"viewDidLoad"];
+        STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
+    }
+    
+    NSArray *attributesList2 = [SecondAnnotatedClass RF_attributesForMethod:@"viewDidLoad"];
+    STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
+    
+    STAssertTrue(attributesList1 != attributesList2, @"it seems here is memory leak");
+}
+
 - (void)test_RF_attributesForInstanceMethodCachingAfterAutoreleasePool {
     NSArray __weak *attributesList1 = nil;
     
@@ -128,7 +142,7 @@
     
     CustomRFTestAttribute *testAttribute = [attributesList lastObject];
     STAssertTrue(testAttribute != nil, @"testAttribute must not be nil");
-    STAssertEquals(testAttribute.property2, @"Text2", @"testAttribute doesn't contains appropriate value");
+    STAssertEquals(testAttribute.property2, @"TestStringForProp", @"testAttribute doesn't contains appropriate value");
 }
 
 - (void)test_RF_attributesForPropertyCaching {
@@ -224,10 +238,10 @@
 
 - (void)test_RF_propertiesWithAttributeType_withFiltering {
     NSArray *properties = [AnnotatedClass RF_propertiesWithAttributeType:[CustomRFTestAttribute class]];
-    STAssertTrue([properties count] == 1, @"properties must contain values");
+    STAssertTrue([properties count] == 2, @"properties must contain values");
 
     RFPropertyInfo *property = [properties lastObject];
-    STAssertTrue([property.propertyName isEqualToString:@"window"], @"please check function");
+    STAssertTrue([property.propertyName isEqualToString:@"prop"], @"please check function");
 }
 
 - (void)test_RF_propertiesWithAttributeType_withWrongFiltering {
@@ -250,7 +264,7 @@
 
 - (void)test_RF_methodsWithAttributeType_withFiltering {
     NSArray *methods = [AnnotatedClass RF_methodsWithAttributeType:[CustomRFTestAttribute class]];
-    STAssertTrue([methods count] == 1, @"methods must contain values");
+    STAssertTrue([methods count] == 2, @"methods must contain values");
     
     RFMethodInfo *method = [methods lastObject];
     STAssertTrue([method.name isEqualToString:@"viewDidLoad"], @"please check function");
