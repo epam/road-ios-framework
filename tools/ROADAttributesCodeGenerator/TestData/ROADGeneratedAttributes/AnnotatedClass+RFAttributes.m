@@ -125,7 +125,7 @@
 
     CustomESDAttribute *attr2 = [[CustomESDAttribute alloc] init];
     attr2.property2 = @"*/";
-    attr2.intProperty = (2+2)*2;
+    attr2.intProperty = (2 + 2) * 2;
     [attributesArray addObject:attr2];
 
     RF_attributes_list_AnnotatedClass_property_window = attributesArray;
@@ -147,7 +147,7 @@
 
     CustomESDAttribute *attr2 = [[CustomESDAttribute alloc] init];
     attr2.property2 = @"*/";
-    attr2.intProperty = (2+2)*2;
+    attr2.intProperty = (2 + 2) * 2;
     [attributesArray addObject:attr2];
 
     RF_attributes_list_AnnotatedClass_property_window2 = attributesArray;
@@ -262,7 +262,7 @@
     [attributesArray addObject:attr1];
 
     RFWebServiceHeader *attr2 = [[RFWebServiceHeader alloc] init];
-    attr2.hearderFields = @{@"Accept" : @"application/json"};
+    attr2.hearderFields = @{@"Accept": @"application/json"};
     [attributesArray addObject:attr2];
 
     RFWebServiceErrorHandler *attr3 = [[RFWebServiceErrorHandler alloc] init];
@@ -318,7 +318,7 @@
     [attributesArray addObject:attr2];
 
     RFWebServiceHeader *attr3 = [[RFWebServiceHeader alloc] init];
-    attr3.hearderFields = @{@"Accept" : @"application/json"};
+    attr3.hearderFields = @{@"Accept": @"application/json"};
     [attributesArray addObject:attr3];
 
     RF_attributes_list_AnnotatedClass_method_loadDataWithFetchRequest_p4 = attributesArray;
@@ -412,23 +412,23 @@
     CustomESDAttribute *attr2 = [[CustomESDAttribute alloc] init];
     attr2.property1 = @"Text1";
     attr2.dictionaryProperty = @{
-                @"key1" : @"[value1",
-                @"key2" : @"value2]"
-              };
-    attr2.arrayProperty = @[@'a',@'b',@'[', @'\'', @'[', @']', @'{', @'{', @'}', @'"', @'d', @'"'];
-    attr2.blockProperty = ^(NSString* sInfo, int *result) {
-                  if (sInfo == nil) {
-                      *result = 1;
-                      return;
-                  }
-                  
-                  if ([sInfo length] == 0) {
-                      *result = 2;
-                      return;
-                  }
-                  
-                  *result = 0;
-              };
+                                    @"key1": @"[value1",
+                                    @"key2": @"value2]"
+                                    };
+    attr2.arrayProperty = @[@'a', @'b', @'[', @'\'', @'[', @']', @'{', @'{', @'}', @'"', @'d', @'"'];
+    attr2.blockProperty = ^(NSString *sInfo, int *result) {
+                 if (sInfo == nil) {
+                     *result = 1;
+                     return;
+                 }
+                 
+                 if ([sInfo length] == 0) {
+                     *result = 2;
+                     return;
+                 }
+                 
+                 *result = 0;
+             };
     [attributesArray addObject:attr2];
 
     RF_attributes_list__class_AnnotatedClass = attributesArray;
