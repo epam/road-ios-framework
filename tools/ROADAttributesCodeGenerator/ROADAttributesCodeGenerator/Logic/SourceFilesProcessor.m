@@ -56,7 +56,7 @@
     NSArray *filesToProcess = [SourceFileHelper sourceCodeFilesFromPath:sourcesPath];
 
     for (NSString *fileToProcess in filesToProcess) {
-         [self gatherClassInfoFromFile:fileToProcess intoClass:classesInfoContainer intoProtocol:protocolsInfoContainer  skipImports:NO];
+        [self gatherClassInfoFromFile:fileToProcess intoClass:classesInfoContainer intoProtocol:protocolsInfoContainer  skipImports:NO];
     }
 }
 
