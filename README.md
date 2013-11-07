@@ -37,7 +37,7 @@ ROAD initially designed to use **ARC**.
 	end
 
 
-Download [`ROADConfigurator.rb`](./Cocoapods/Podfile) and put it right near your `Podfile`
+Download [`ROADConfigurator.rb`](./Cocoapods/ROADConfigurator.rb) and put it right near your `Podfile`
 
 **Using components separately**  
 If you'd like to embed only specific components from the framework it can be done with CocoaPods as well.

@@ -1,7 +1,7 @@
 require 'xcodeproj'
 
 class ROADConfigurator
-    @@road_attributes_code_generator_url = 'https://github.com/epam/spark-ios-framework/raw/master/tools/binaries/ROADAttributesCodeGenerator'
+    @@road_attributes_code_generator_url = 'https://github.com/epam/road-ios-framework/raw/master/tools/binaries/ROADAttributesCodeGenerator'
     
     def self.set_github_credentials(username, password)
         @@github_username = username
