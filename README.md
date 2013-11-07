@@ -62,3 +62,7 @@ Classes reference available in [cocoadocs.org](http://cocoadocs.org/docsets/ROAD
 
 ##License
 ROAD is made available under the terms of the [BSD v3](http://opensource.org/licenses/BSD-3-Clause). See the LICENSE file that accompanies this distribution for the full text of the license.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/epam/road-ios-framework/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
