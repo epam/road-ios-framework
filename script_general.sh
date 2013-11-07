@@ -24,4 +24,4 @@ OCLINT_HOME=$('pwd')/oclint-0.7-x86_64-apple-darwin-10
 PATH=$OCLINT_HOME/bin:$PATH
 
 # =================     Run oclint    ===========
-oclint-json-compilation-database -- -rc=LONG_LINE=500 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 30 -max-priority-3 80
+oclint-json-compilation-database -- -rc=LONG_LINE=500 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 30 -max-priority-3 140
