@@ -1,49 +1,49 @@
-#import <Spark/SparkServices.h>
+#import <ROAD/ROADServices.h>
 #import "ODataWebClient.h"
  
-@interface SFServiceProvider(SFAttribute)
+@interface RFServiceProvider(RFAttribute)
  
 @end
  
-@implementation SFServiceProvider(SFAttribute)
+@implementation RFServiceProvider(RFAttribute)
  
 #pragma mark - Fill Attributes generated code (Methods section)
 
-static NSMutableArray __weak *SF_attributes_list_SFServiceProvider_method_odataWebClient_p0 = nil;
-
-+ (NSArray *)SF_attributes_SFServiceProvider_method_odataWebClient_p0 {
-    if (SF_attributes_list_SFServiceProvider_method_odataWebClient_p0 != nil) {
-        return SF_attributes_list_SFServiceProvider_method_odataWebClient_p0;
++ (NSArray *)RF_attributes_RFServiceProvider_method_odataWebClient_p0 {
+    NSMutableArray *RF_attributes_list_RFServiceProvider_method_odataWebClient_p0 = [[RFAttributeCacheManager attributeCache] objectForKey:@"RFAL_RFServiceProvider_method_odataWebClient_p0"];
+    if (RF_attributes_list_RFServiceProvider_method_odataWebClient_p0 != nil) {
+        return RF_attributes_list_RFServiceProvider_method_odataWebClient_p0;
     }
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:1];
     
-    SFService *attr1 = [[SFService alloc] init];
+    RFService *attr1 = [[RFService alloc] init];
     attr1.serviceClass = [[ODataWebClient class];
     [attributesArray addObject:attr1];
 
-    SF_attributes_list_SFServiceProvider_method_odataWebClient_p0 = attributesArray;
+    RF_attributes_list_RFServiceProvider_method_odataWebClient_p0 = attributesArray;
+    [[RFAttributeCacheManager attributeCache] setObject:attributesArray forKey:@"RFAL_RFServiceProvider_method_odataWebClient_p0"];
     
-    return SF_attributes_list_SFServiceProvider_method_odataWebClient_p0;
+    return RF_attributes_list_RFServiceProvider_method_odataWebClient_p0;
 }
 
-static NSMutableDictionary __weak *attributesSFServiceProviderFactoriesForMethodsDict = nil;
-    
-+ (NSMutableDictionary *)SF_attributesFactoriesForMethods {
-    if (attributesSFServiceProviderFactoriesForMethodsDict != nil) {
-        return attributesSFServiceProviderFactoriesForMethodsDict;
++ (NSMutableDictionary *)RF_attributesFactoriesForMethods {
+    NSMutableDictionary *attributesRFServiceProviderFactoriesForMethodsDict = [[RFAttributeCacheManager attributeCache] objectForKey:@"RFRFServiceProviderFactoriesForMethods"];
+    if (attributesRFServiceProviderFactoriesForMethodsDict != nil) {
+        return attributesRFServiceProviderFactoriesForMethodsDict;
     }
     
-    NSMutableDictionary *dictionaryHolder = [super SF_attributesFactoriesForMethods];
+    NSMutableDictionary *dictionaryHolder = [super RF_attributesFactoriesForMethods];
     
     if (!dictionaryHolder) {
         dictionaryHolder = [NSMutableDictionary dictionary];
+        [[RFAttributeCacheManager attributeCache] setObject:dictionaryHolder forKey:@"RFRFServiceProviderFactoriesForMethods"];
     }
     
-    [dictionaryHolder setObject:[self SF_invocationForSelector:@selector(SF_attributes_SFServiceProvider_method_odataWebClient_p0)] forKey:@"odataWebClient"];
-    attributesSFServiceProviderFactoriesForMethodsDict = dictionaryHolder;  
+    [dictionaryHolder setObject:[self RF_invocationForSelector:@selector(RF_attributes_RFServiceProvider_method_odataWebClient_p0)] forKey:@"odataWebClient"];
+    attributesRFServiceProviderFactoriesForMethodsDict = dictionaryHolder;  
     
-    return attributesSFServiceProviderFactoriesForMethodsDict;
+    return attributesRFServiceProviderFactoriesForMethodsDict;
 }
 
 

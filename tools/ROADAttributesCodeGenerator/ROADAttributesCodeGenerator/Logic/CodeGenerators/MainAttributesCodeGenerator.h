@@ -34,7 +34,7 @@
 
 @interface MainAttributesCodeGenerator : NSObject
 
-+ (void)generateFilesForModel:(NSArray *)classesModel inDirectory:(NSString *)directoryPath;
++ (void)generateFilesForClasses:(NSArray *)classModels forProtocols:(NSArray*)protocolModels inDirectory:(NSString *)directoryPath;
 + (NSString *)attrFileNameForClassModel:(ClassModel *)classModel;
 
 extern NSString *k_generatedFileNameSuffix;

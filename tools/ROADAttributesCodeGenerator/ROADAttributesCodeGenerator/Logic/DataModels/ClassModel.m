@@ -40,10 +40,6 @@
     }
     
     self.fieldsList = [NSMutableArray array];
-    self.propertiesList = [NSMutableArray array];
-    self.methodsList = [NSMutableArray array];
-    self.filesToImport = [NSMutableArray array];
-    self.hasGeneratedCode = NO;
     
     return self;
 }

@@ -1,6 +1,7 @@
 //
-//  AnnotatedClass.m
-//  AttributesPrototype
+//  ProtocolModel.m
+//  AttributesResearchLab
+//
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -26,41 +27,25 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
 
-#import "AnnotatedClass.h"
+#import "ProtocolModel.h"
 
-@interface AnnotatedClass() {
-	RF_ATTRIBUTE(CustomESDAttribute, property1 = @"PropStore1Text", /*Another /* comment*/ property2 = @"PropStore1Text2//")
-    NSString *_testPropStore1;
-}
+@implementation ProtocolModel
 
-@end
-
-@implementation AnnotatedClass
-#include "AnnotatedClass.attr.m"
-
-- (void)viewDidLoad {
-}
-
-
-- (void)viewDidLoad:(BOOL)param1 {
-}
-
-@end
-
-@implementation AnnotatedClass
-	(
-	 ExpandCat
-	  )
-{
-    NSString *_testPropStore;
-}
-#include "AnnotatedClass.ExpandCat.attr.m"
-
-- (void)viewDidLoad {
-}
-
-- (void)viewDidLoad:(BOOL)param1 {
+- (id)init {
+    self = [super init];
+    if (self == nil) {
+        return nil;
+    }
+    
+    self.propertiesList = [NSMutableArray array];
+    self.filesToImport = [NSMutableArray array];
+    self.protocolList = [NSMutableArray array];
+    self.methodsList = [NSMutableArray array];
+    self.hasGeneratedCode = NO;
+    
+    return self;
 }
 
 @end

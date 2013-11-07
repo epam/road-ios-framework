@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A8A2E96181908B700877EE0 /* ProtocolModelsContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8A2E95181908B700877EE0 /* ProtocolModelsContainer.m */; };
+		1A8A2E9918190FD300877EE0 /* ProtocolsModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8A2E9818190FD300877EE0 /* ProtocolsModelHelper.m */; };
+		1AAB2404181687D7007CC865 /* ProtocolModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB2403181687D7007CC865 /* ProtocolModel.m */; };
+		1AAB240718168829007CC865 /* ProtocolParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB240618168829007CC865 /* ProtocolParser.m */; };
 		8DB3AACD17B1DABB006421E0 /* NSFileManager+ExtendedAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB3AACC17B1DABB006421E0 /* NSFileManager+ExtendedAPI.m */; };
 		8DD9C17717B1C2BC00B00CAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD9C17617B1C2BC00B00CAA /* Foundation.framework */; };
 		8DD9C17A17B1C2BC00B00CAA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD9C17917B1C2BC00B00CAA /* main.m */; };
@@ -63,6 +67,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A8A2E94181908B700877EE0 /* ProtocolModelsContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolModelsContainer.h; sourceTree = "<group>"; };
+		1A8A2E95181908B700877EE0 /* ProtocolModelsContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolModelsContainer.m; sourceTree = "<group>"; };
+		1A8A2E9718190FD300877EE0 /* ProtocolsModelHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolsModelHelper.h; sourceTree = "<group>"; };
+		1A8A2E9818190FD300877EE0 /* ProtocolsModelHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolsModelHelper.m; sourceTree = "<group>"; };
+		1AAB2402181687D7007CC865 /* ProtocolModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolModel.h; sourceTree = "<group>"; };
+		1AAB2403181687D7007CC865 /* ProtocolModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolModel.m; sourceTree = "<group>"; };
+		1AAB240518168829007CC865 /* ProtocolParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolParser.h; sourceTree = "<group>"; };
+		1AAB240618168829007CC865 /* ProtocolParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolParser.m; sourceTree = "<group>"; };
 		8DB3AACB17B1DABB006421E0 /* NSFileManager+ExtendedAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+ExtendedAPI.h"; sourceTree = "<group>"; };
 		8DB3AACC17B1DABB006421E0 /* NSFileManager+ExtendedAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+ExtendedAPI.m"; sourceTree = "<group>"; };
 		8DD9C17317B1C2BC00B00CAA /* ROADAttributesCodeGenerator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ROADAttributesCodeGenerator; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -268,6 +280,8 @@
 				8DD9C1AA17B1C3C000B00CAA /* MethodParser.m */,
 				8DD9C1AB17B1C3C000B00CAA /* PropertyParser.h */,
 				8DD9C1AC17B1C3C000B00CAA /* PropertyParser.m */,
+				1AAB240518168829007CC865 /* ProtocolParser.h */,
+				1AAB240618168829007CC865 /* ProtocolParser.m */,
 			);
 			path = CodeParsers;
 			sourceTree = "<group>";
@@ -294,6 +308,8 @@
 				8DD9C1B617B1C3C000B00CAA /* MetaMarkersContainer.m */,
 				8DD9C1B717B1C3C000B00CAA /* MetaMarkersStorageAdapter.h */,
 				8DD9C1B817B1C3C000B00CAA /* MetaMarkersStorageAdapter.m */,
+				1A8A2E94181908B700877EE0 /* ProtocolModelsContainer.h */,
+				1A8A2E95181908B700877EE0 /* ProtocolModelsContainer.m */,
 			);
 			path = DataContainers;
 			sourceTree = "<group>";
@@ -317,6 +333,8 @@
 				8DD9C1C717B1C3C000B00CAA /* PreprocessedSourceCode.m */,
 				8DD9C1C817B1C3C000B00CAA /* PropertyModel.h */,
 				8DD9C1C917B1C3C000B00CAA /* PropertyModel.m */,
+				1AAB2402181687D7007CC865 /* ProtocolModel.h */,
+				1AAB2403181687D7007CC865 /* ProtocolModel.m */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -324,6 +342,8 @@
 		8DD9C1CA17B1C3C000B00CAA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				1A8A2E9718190FD300877EE0 /* ProtocolsModelHelper.h */,
+				1A8A2E9818190FD300877EE0 /* ProtocolsModelHelper.m */,
 				8DD9C1CB17B1C3C000B00CAA /* ClassesModelHelper.h */,
 				8DD9C1CC17B1C3C000B00CAA /* ClassesModelHelper.m */,
 				8DD9C1CD17B1C3C000B00CAA /* SourceCodeHelper.h */,
@@ -412,16 +432,20 @@
 				8DD9C1E117B1C3C000B00CAA /* FieldParser.m in Sources */,
 				8DD9C1E217B1C3C000B00CAA /* HeaderSectionParser.m in Sources */,
 				8DD9C1E317B1C3C000B00CAA /* MethodParser.m in Sources */,
+				1AAB2404181687D7007CC865 /* ProtocolModel.m in Sources */,
 				8DD9C1E417B1C3C000B00CAA /* PropertyParser.m in Sources */,
 				8DD9C1E517B1C3C000B00CAA /* SourceCodePreprocessor.m in Sources */,
 				8DD9C1E617B1C3C000B00CAA /* UserSourceCodeConfigurator.m in Sources */,
 				8DD9C1E717B1C3C000B00CAA /* ClassModelsContainer.m in Sources */,
 				8DD9C1E817B1C3C000B00CAA /* MetaMarkersContainer.m in Sources */,
+				1A8A2E96181908B700877EE0 /* ProtocolModelsContainer.m in Sources */,
 				8DD9C1E917B1C3C000B00CAA /* MetaMarkersStorageAdapter.m in Sources */,
 				8DD9C1EA17B1C3C000B00CAA /* AnnotatedElementModel.m in Sources */,
 				8DD9C1EB17B1C3C000B00CAA /* AttributeModel.m in Sources */,
 				8DD9C1EC17B1C3C000B00CAA /* ClassModel.m in Sources */,
+				1AAB240718168829007CC865 /* ProtocolParser.m in Sources */,
 				8DD9C1ED17B1C3C000B00CAA /* CodeParseState.m in Sources */,
+				1A8A2E9918190FD300877EE0 /* ProtocolsModelHelper.m in Sources */,
 				8DD9C1EE17B1C3C000B00CAA /* FieldModel.m in Sources */,
 				8DD9C1EF17B1C3C000B00CAA /* MethodModel.m in Sources */,
 				8DD9C1F017B1C3C000B00CAA /* PreprocessedSourceCode.m in Sources */,

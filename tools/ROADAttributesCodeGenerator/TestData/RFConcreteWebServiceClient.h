@@ -1,6 +1,6 @@
 //
-//  SFConcreteWebServiceClient.h
-//  SparkWebservice
+//  RFConcreteWebServiceClient.h
+//  ROADWebservice
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,37 +27,37 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "SFWebServiceClient.h"
-#import "SFWebServiceErrorHandler.h"
-#import "SFWebServiceHeader.h"
-#import "SFWebServiceCall.h"
-#import "SFWebServiceURLBuilder.h"
-#import "SFODataWebServiceURLBuilder.h"
+#import "RFWebServiceClient.h"
+#import "RFWebServiceErrorHandler.h"
+#import "RFWebServiceHeader.h"
+#import "RFWebServiceCall.h"
+#import "RFWebServiceURLBuilder.h"
+#import "RFODataWebServiceURLBuilder.h"
 
-@class SFODataFetchRequest;
-@protocol SFWebServiceCancellable;
+@class RFODataFetchRequest;
+@protocol RFWebServiceCancellable;
 
-@interface SFConcreteWebServiceClient : SFWebServiceClient
+@interface RFConcreteWebServiceClient : RFWebServiceClient
 
-SF_ATTRIBUTE(SFWebServiceCall, serializationDisabled = NO, relativePath = @"%%0%%")
-SF_ATTRIBUTE(SFWebServiceHeader, hearderFields = @{@"Accept" : @"application/json"})
-SF_ATTRIBUTE(SFWebServiceErrorHandler, handlerClass = @"SFODataErrorHandler")
-- (id<SFWebServiceCancellable>)testErrorHandlerRootWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO, relativePath = @"%%0%%")
+RF_ATTRIBUTE(RFWebServiceHeader, hearderFields = @{@"Accept" : @"application/json"})
+RF_ATTRIBUTE(RFWebServiceErrorHandler, handlerClass = @"RFODataErrorHandler")
+- (id<RFWebServiceCancellable>)testErrorHandlerRootWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
-SF_ATTRIBUTE(SFWebServiceCall)
-SF_ATTRIBUTE(SFWebServiceHeader, hearderFields = @{@"Accept": @"application/json"})
-SF_ATTRIBUTE(SFWebServiceURLBuilder, builderClass = [SFODataWebServiceURLBuilder class])
-- (id<SFWebServiceCancellable>)loadDataWithFetchRequest:(SFODataFetchRequest *)fetchRequest success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+RF_ATTRIBUTE(RFWebServiceCall)
+RF_ATTRIBUTE(RFWebServiceHeader, hearderFields = @{@"Accept": @"application/json"})
+RF_ATTRIBUTE(RFWebServiceURLBuilder, builderClass = [RFODataWebServiceURLBuilder class])
+- (id<RFWebServiceCancellable>)loadDataWithFetchRequest:(RFODataFetchRequest *)fetchRequest success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
-SF_ATTRIBUTE(SFWebServiceCall, serializationDisabled = NO, relativePath = @"?importantParameter=%%1%%")
-SF_ATTRIBUTE(SFWebServiceURLBuilder, builderClass = [SFODataWebServiceURLBuilder class])
-SF_ATTRIBUTE(SFWebServiceHeader, hearderFields = @{@"Accept" : @"application/json"})
-- (id<SFWebServiceCancellable>)loadDataWithFetchRequest:(SFODataFetchRequest *)fetchRequest someImportantParameter:(NSString *)importantParameter success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO, relativePath = @"?importantParameter=%%1%%")
+RF_ATTRIBUTE(RFWebServiceURLBuilder, builderClass = [RFODataWebServiceURLBuilder class])
+RF_ATTRIBUTE(RFWebServiceHeader, hearderFields = @{@"Accept" : @"application/json"})
+- (id<RFWebServiceCancellable>)loadDataWithFetchRequest:(RFODataFetchRequest *)fetchRequest someImportantParameter:(NSString *)importantParameter success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
-SF_ATTRIBUTE(SFWebServiceCall, serializationDisabled = NO, serializationRoot = @"coord.lon", successCodes = @[[NSValue valueWithRange:NSMakeRange(200, 300)]])
-- (id<SFWebServiceCancellable>)testSerializationRootWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO, serializationRoot = @"coord.lon", successCodes = @[[NSValue valueWithRange:NSMakeRange(200, 300)]])
+- (id<RFWebServiceCancellable>)testSerializationRootWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
-SF_ATTRIBUTE(SFWebServiceCall, serializationDisabled = NO, serializationRoot = @"coord.lon.localizedMessage.locale", successCodes = @[[NSValue valueWithRange:NSMakeRange(200, 300)]])
-- (id<SFWebServiceCancellable>)testWrongSerializationRootWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO, serializationRoot = @"coord.lon.localizedMessage.locale", successCodes = @[[NSValue valueWithRange:NSMakeRange(200, 300)]])
+- (id<RFWebServiceCancellable>)testWrongSerializationRootWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
 @end
