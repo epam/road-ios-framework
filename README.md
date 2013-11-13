@@ -42,8 +42,8 @@ Download [`ROADConfigurator.rb`](./Cocoapods/ROADConfigurator.rb) and put it rig
 **Using components separately**  
 If you'd like to embed only specific components from the framework it can be done with CocoaPods as well.
 
-        pod 'road-ios-framework/ROADServices'
-        pod 'road-ios-framework/ROADWebService'
+        pod 'ROADFramework/ROADServices'
+        pod 'ROADFramework/ROADWebService'
 
 Detail information on internals of ROAD integration as well as advanced topics like integration with predefined workspace, multiple projects or targets available in [documentation](./Documents/Configuration/Cocoapods.md).        
         
@@ -54,7 +54,7 @@ User documentation for following components available in **Documents** folder:
 * [Core](./Documents/ROADCore.md)
 * [Services](./Documents/ROADServices.md)
 * [Serialization](./Documents/ROADSerialization.md)
-* [Web Services](./Documents/ROADWebSwervices.md)
+* [Web Services](./Documents/ROADWebService.md)
 * [Logger](./Documents/ROADLogger.md)
 * [Observation](./Documents/ROADObservation.md)
 
