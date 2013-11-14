@@ -86,21 +86,25 @@ NSRegularExpression *keyWordRegex = nil;
     }
     
     if (parseState.isFieldMode) {
+        [self setupEndOfProtocol:parseState];
         [self processFieldWithCodeParseState:parseState];
         return;
     }
     
     if ([keyWord isEqualToString:@"@interface"]) {
+        [self setupEndOfProtocol:parseState];
         [self processClassDefinitionBeginWithCodeParseState:parseState];
         return;
     }
 
     if ([keyWord isEqualToString:@"@implementation"]) {
+        [self setupEndOfProtocol:parseState];
         [self processClassImplementationBeginWithCodeParseState:parseState];
         return;
     }
     
     if ([keyWord isEqualToString:@"@end"]) {
+        [self setupEndOfProtocol:parseState];
         if (parseState.isProtocolMode) {
             [self processProtocolDefinitionEndWithCodeParseState:parseState];
         } else {
@@ -125,6 +129,7 @@ NSRegularExpression *keyWordRegex = nil;
     }
     
     if ([keyWord isEqualToString:@"import"]) {
+        [self setupEndOfProtocol:parseState];
         [self processImportWithCodeParseState:parseState];
         return;
     }
@@ -132,6 +137,12 @@ NSRegularExpression *keyWordRegex = nil;
     if ([keyWord isEqualToString:@"@protocol"]) {
         [self processProtocolWithCodeParseState:parseState];
         return;
+    }
+}
+
++ (void)setupEndOfProtocol:(CodeParseState*)parseState {
+    if (parseState.isProtocolMode) {
+        parseState.isProtocolMode = NO;
     }
 }
 
@@ -152,6 +163,8 @@ NSRegularExpression *keyWordRegex = nil;
 }
 
 + (void)processProtocolWithCodeParseState:(CodeParseState *)parseState {
+    parseState.isProtocolMode = YES;
+    
     ProtocolModel *parsedProtocol = [ProtocolParser parseFrom:parseState];
     
     parsedProtocol.attributeModels = parseState.currentAttributesList;
@@ -161,7 +174,6 @@ NSRegularExpression *keyWordRegex = nil;
     parseState.currentImportFilesList = [NSMutableArray array];
     
     parseState.currentProtocol = parsedProtocol;
-    parseState.isProtocolMode = YES;
 }
 
 + (void)processClassImplementationBeginWithCodeParseState:(CodeParseState *)parseState {
@@ -180,7 +192,6 @@ NSRegularExpression *keyWordRegex = nil;
     
     [parseState.foundProtocolsList addProtocolModel:parseState.currentProtocol];
     parseState.currentProtocol = nil;
-    parseState.isProtocolMode = NO;
 }
 
 + (void)processClassDefinitionEndWithCodeParseState:(CodeParseState *)parseState {
