@@ -1,4 +1,4 @@
-#Web Services
+#Web Service
 
 Component strikes to provide zero-coding client to remote web services by annotating responsible classes with specific  **RFAttributes**.
 
