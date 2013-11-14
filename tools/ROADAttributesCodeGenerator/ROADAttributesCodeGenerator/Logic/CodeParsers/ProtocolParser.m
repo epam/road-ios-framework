@@ -45,6 +45,14 @@
     
     model.name = [self extractNameFromBuffer:model.modelDeclarationForParser];
     model.protocolList = [self extractProtocolNamesFromBuffer:model.modelDeclarationForParser];
+    
+    if (parseState.isProtocolMode) {
+        NSString* workCodeBufferWithoutWhitespaces = [parseState.workCodeBuffer stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        NSRange rangeOfSemicolon = [workCodeBufferWithoutWhitespaces rangeOfString:@";"];
+        if (rangeOfSemicolon.location == 0) {
+            parseState.isProtocolMode = NO;
+        }
+    }
     return model;
 }
 

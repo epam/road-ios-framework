@@ -54,7 +54,7 @@ User documentation for following components available in **Documents** folder:
 * [Core](./Documents/ROADCore.md)
 * [Services](./Documents/ROADServices.md)
 * [Serialization](./Documents/ROADSerialization.md)
-* [Web Services](./Documents/ROADWebService.md)
+* [Web Service](./Documents/ROADWebService.md)
 * [Logger](./Documents/ROADLogger.md)
 * [Observation](./Documents/ROADObservation.md)
 
