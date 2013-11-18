@@ -54,7 +54,7 @@ class ROADConfigurator
                     end
                 end
         
-                run_script_user = "\"${SRCROOT}/binaries/ROADAttributesCodeGenerator\""\
+                run_script_user = "\"${SRCROOT}/#{target.xcconfig_relative_path.split('Pods/Pods')[0]}binaries/ROADAttributesCodeGenerator\""\
                 " -src=\"${SRCROOT}/${PROJECT_NAME}\""\
                 " -dst=\"${SRCROOT}/${PROJECT_NAME}/ROADGeneratedAttributes/\""
                 ROADConfigurator::add_script_to_project_targets(run_script_user, 'ROAD - generate attributes', user_project, user_targets)

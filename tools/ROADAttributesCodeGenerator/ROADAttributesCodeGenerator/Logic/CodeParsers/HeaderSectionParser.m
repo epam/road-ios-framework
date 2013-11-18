@@ -104,9 +104,8 @@ NSRegularExpression *keyWordRegex = nil;
     }
     
     if ([keyWord isEqualToString:@"@end"]) {
-        [self setupEndOfProtocol:parseState];
         if (parseState.isProtocolMode) {
-            [self processProtocolDefinitionEndWithCodeParseState:parseState];
+            [self setupEndOfProtocol:parseState];
         } else {
             [self processClassDefinitionEndWithCodeParseState:parseState];
         }
@@ -142,6 +141,7 @@ NSRegularExpression *keyWordRegex = nil;
 
 + (void)setupEndOfProtocol:(CodeParseState*)parseState {
     if (parseState.isProtocolMode) {
+        [self processProtocolDefinitionEndWithCodeParseState:parseState];
         parseState.isProtocolMode = NO;
     }
 }
