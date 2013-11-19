@@ -36,6 +36,7 @@ static NSString const *kCurrentNodeProperty = @"currentNodeProperty";
 static NSString const *kElementName = @"elementName";
 static NSString const *kElementSkipped = @"elementSkipped";
 static NSString const *kSimpleValue = @"simpleValue";
+static NSString const *kInSerializationContainer = @"inSerializationContainer";
 static NSString const *kCurrentNodeClass = @"Class";
 
 @interface RFXMLSerializationContext () {
@@ -50,7 +51,7 @@ static NSString const *kCurrentNodeClass = @"Class";
     if (!_stack) _stack = [[NSMutableArray alloc] init];
     
 
-    NSMutableDictionary *newRecord = [[NSMutableDictionary alloc] initWithCapacity:5];
+    NSMutableDictionary *newRecord = [[NSMutableDictionary alloc] initWithCapacity:8];
     
     if (_currentNode) newRecord[kCurrentNode] = _currentNode;
     if (_properties) newRecord[kProperties] = _properties;
@@ -60,6 +61,7 @@ static NSString const *kCurrentNodeClass = @"Class";
 
     newRecord[kElementSkipped] = @(_elementSkipped);
     newRecord[kSimpleValue] = @(_simpleValue);
+    newRecord[kInSerializationContainer] = @(_inSerializationContainer);
     
     [_stack addObject:[newRecord copy]];
 }
@@ -74,6 +76,7 @@ static NSString const *kCurrentNodeClass = @"Class";
     _elementName = record[kElementName];
     _elementSkipped = [record[kElementSkipped] boolValue];
     _simpleValue = [record[kSimpleValue] boolValue];
+    _inSerializationContainer = [record[kInSerializationContainer] boolValue];
     _currentNodeClass = record[kCurrentNodeClass];
     
     [_stack removeLastObject];

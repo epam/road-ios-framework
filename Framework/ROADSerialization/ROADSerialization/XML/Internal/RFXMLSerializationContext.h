@@ -39,6 +39,7 @@
 @property (nonatomic, strong) NSString *elementName;
 @property (nonatomic, assign, getter = isElementSkipped) BOOL elementSkipped;
 @property (nonatomic, assign, getter = isSimpleValue) BOOL simpleValue;
+@property (nonatomic, assign, getter = isInSerializationContainer) BOOL inSerializationContainer;
 
 - (void)saveContext;
 - (void)restoreContext;

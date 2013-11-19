@@ -36,11 +36,11 @@
 #import "RFSerializable.h"
 #import "RFSerializationAssistant.h"
 #import "RFXMLAttributes.h"
+#import "RFXMLCollectionContainer.h"
 
 #include <libxml/parser.h>
 
-char *RFAttributedXMLCoderTagForClass(Class aClass)
-{
+char *RFAttributedXMLCoderTagForClass(Class aClass) {
     char *result = NULL;
     
     if ([aClass isSubclassOfClass:[NSArray class]]) result = "array";
@@ -70,7 +70,7 @@ char *RFAttributedXMLCoderTagForClass(Class aClass)
 
 - (NSString *)encodeRootObject:(id)rootObject {
     
-    xmlNodePtr xmlNode = [self serializeObject:rootObject toXMLNode:NULL propertyInfo:nil serializationName:nil];
+    xmlNodePtr xmlNode = [self serializeObject:rootObject toXMLNode:NULL precreatedNode:NULL propertyInfo:nil serializationName:nil];
     xmlDocPtr xmlDoc = xmlNewDoc(BAD_CAST "1.0");
     xmlChar *xmlBuff = NULL;
     int xmlBufferSize = 0;
@@ -86,10 +86,10 @@ char *RFAttributedXMLCoderTagForClass(Class aClass)
     return result;
 }
 
-- (xmlNodePtr)serializeObject:(id)serializedObject toXMLNode:(xmlNodePtr)parentNode propertyInfo:(RFPropertyInfo*)propertyInfo serializationName:(NSString *)serializationName {
+- (xmlNodePtr)serializeObject:(id)serializedObject toXMLNode:(xmlNodePtr)parentNode precreatedNode:(xmlNodePtr)precreatedNode propertyInfo:(RFPropertyInfo*)propertyInfo serializationName:(NSString *)serializationName {
 
     Class class = [serializedObject class];
-    xmlNodePtr result = [self createXMLNodeWithName:(serializationName ? serializationName : RFSerializationKeyForProperty(propertyInfo)) parent:parentNode objectClass:class];
+    xmlNodePtr result = precreatedNode ? precreatedNode : [self createXMLNodeWithName:(serializationName ? serializationName : RFSerializationKeyForProperty(propertyInfo)) parent:parentNode objectClass:class];
 
     // Try to serialize as a container or object with defined properties. Assume it's simple value otherwise.
     if (![self serializeObjectAsContainer:serializedObject toNode:result] && ![self serializeObjectAsAttributed:serializedObject toNode:result]) {
@@ -123,7 +123,7 @@ char *RFAttributedXMLCoderTagForClass(Class aClass)
         for (id item in serializedObject) {
             
             NSString *serializationName = (isDictionary && [item isKindOfClass:[NSString class]]) ? item : nil;
-            [self serializeObject:isArray ? item : serializedObject[item] toXMLNode:xmlNode propertyInfo:nil serializationName:serializationName];
+            [self serializeObject:isArray ? item : serializedObject[item] toXMLNode:xmlNode precreatedNode:NULL propertyInfo:nil serializationName:serializationName];
         }
     }
     
@@ -134,21 +134,28 @@ char *RFAttributedXMLCoderTagForClass(Class aClass)
 
     BOOL result = NO;
     NSArray *properties = RFSerializationPropertiesForClass([serializedObject class]);
+    RFXMLCollectionContainer *serializationContainer = [[serializedObject class] RF_attributeForClassWithAttributeType:[RFXMLCollectionContainer class]];
+    NSString *containerKey = serializationContainer.containerKey;
     
     if ((result = [properties count])) {
         for (RFPropertyInfo *property in properties) {
             RFXMLAttributes *xmlAttributes = [property attributeWithType:[RFXMLAttributes class]];
+            id propertyObject = [serializedObject valueForKey:property.propertyName];
             
             if (xmlAttributes.isSavedInTag) {
-                NSString *encodedString = RFSerializationEncodeObjectForProperty(serializedObject, property, _dateFormatter);
+                NSString *encodedString = RFSerializationEncodeObjectForProperty(propertyObject, property, _dateFormatter);
                 
                 if ([encodedString length]) {
                     xmlNewProp(xmlNode, BAD_CAST [RFSerializationKeyForProperty(property) UTF8String], BAD_CAST [encodedString UTF8String]);
                 }
             }
             else {
-                id propertyObject = [serializedObject valueForKey:[property propertyName]];
-                [self serializeObject:propertyObject toXMLNode:xmlNode propertyInfo:property serializationName:nil];
+                if (![containerKey length] || [containerKey isEqualToString:property.propertyName]) {
+                    [self serializeObject:propertyObject toXMLNode:xmlNode precreatedNode:[containerKey length] ? xmlNode : NULL propertyInfo:property serializationName:nil];
+                }
+                else {
+                    NSAssert(![containerKey length], @"Serialization container can't have properties in child tags");
+                }
             }
         }
     }
