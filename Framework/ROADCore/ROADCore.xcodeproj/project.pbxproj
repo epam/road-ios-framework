@@ -650,7 +650,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 78B8E6CF16C3CCC10049E36B /* Build configuration list for PBXNativeTarget "ROADCoreTest" */;
 			buildPhases = (
-				1A0BE51D183A5FAB006633A3 /* ShellScript */,
 				78B8E6BA16C3CCC00049E36B /* Sources */,
 				78B8E6BB16C3CCC00049E36B /* Frameworks */,
 				78B8E6BC16C3CCC00049E36B /* Resources */,
@@ -718,19 +717,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1A0BE51D183A5FAB006633A3 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"${SRCROOT}/${PRODUCT_NAME}\"\n\"${SRCROOT}/../../tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/ROADAttributeTest/TestData\" -dst=\"${SRCROOT}/ROADAttributeTest/TestData/ROADGeneratedAttributes\"";
-		};
 		78B8E6BD16C3CCC00049E36B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

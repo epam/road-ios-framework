@@ -39,6 +39,7 @@
 #import "RFXMLSerializationContext.h"
 #import "RFSerializableCollection.h"
 #import "RFSerializationAssistant.h"
+#import "RFXMLCollectionContainer.h"
 
 #define kRFAttributedXMLDecoderDefaultContainerClass [NSArray class]
 
@@ -89,6 +90,7 @@
 
     [_context saveContext];
     _context.simpleValue = YES; // assume that element is simple value by default
+    _context.inSerializationContainer = NO;
  
     if (!_context.elementSkipped) {
         
@@ -97,30 +99,49 @@
             elementClass = _rootNodeClass;
         }
         
+        // Get properties for element Class and process attributeDict, probably containing some of them
         NSArray *properties = RFSerializationPropertiesForClass(elementClass);
+        // Lazy are those not marked as 'savedInTag'
         NSDictionary *lazyProperties = [self processProperties:properties withElementAttributes:attributeDict andCreateElementIfNeeded:elementClass];
+        RFXMLCollectionContainer *serializationContainer = [elementClass RF_attributeForClassWithAttributeType:[RFXMLCollectionContainer class]];
         
+        NSAssert(!serializationContainer || [lazyProperties count] == 1, @"Object is expected to contain either lazyProperties or serializationContainer");
+        
+        // If there are no properties in tag we suppose notation of kind <tag>value</tag>
         _context.currentNodeProperty = [properties count] ? nil : _context.properties[elementName];
         _context.currentNodeClass = [properties count] ? Nil : kRFAttributedXMLDecoderDefaultContainerClass;
+
         _context.properties = [lazyProperties count] ? lazyProperties : nil;
         _context.elementName = elementName;
+
+        if (serializationContainer) {
+            // Add virtual tag with the name extracted from serializationContainer attribute
+            [self parser:parser didStartElement:serializationContainer.containerKey namespaceURI:namespaceURI qualifiedName:qName attributes:nil];
+            _context.inSerializationContainer = YES;
+        }
     }
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
     
-    NSString* contextElementName = _context.elementName;
+    NSString *contextElementName = _context.elementName;
     id element = _context.currentNode;
     BOOL isElementSkipped = _context.isElementSkipped;
     BOOL isSimpleValue = _context.isSimpleValue;
+    BOOL isInSerializationContainer = _context.isInSerializationContainer;
 
     [_context restoreContext];
 
     if (!isElementSkipped && !isSimpleValue) {
-        NSParameterAssert (contextElementName == elementName);
+        if (!isInSerializationContainer) NSParameterAssert(contextElementName == elementName);
 
-        NSString* propertyName = [_context.properties[elementName] propertyName];
-        [self setCurrentNodeValue:element forKey:propertyName ? propertyName : elementName];
+        NSString* propertyName = [_context.properties[contextElementName] propertyName];
+        [self setCurrentNodeValue:element forKey:propertyName ? propertyName : contextElementName];
+    }
+
+    if (isInSerializationContainer) {
+        // Close virtual tag
+        [self parser:parser didEndElement:elementName namespaceURI:namespaceURI qualifiedName:qName];
     }
 }
 
@@ -238,11 +259,12 @@
 
 - (NSDictionary *)processProperties:(NSArray *)properties withElementAttributes:(NSDictionary *)attributeDict andCreateElementIfNeeded:(Class)elementClass {
     
-    NSMutableDictionary *lazyProperties = [NSMutableDictionary new];
+    NSMutableDictionary *lazyProperties = nil;
     
     // Then property is a custom object and we want to init it now
     if ([properties count]) {
-        
+
+        lazyProperties = [[NSMutableDictionary alloc] init];
         id newElement = [[elementClass alloc] init];
         _context.currentNode = newElement;
         _context.simpleValue = NO;
@@ -264,8 +286,10 @@
                 lazyProperties[serializationKey] = property;
             }
         }
+
     }
-    return [NSDictionary dictionaryWithDictionary:lazyProperties];
+
+    return [lazyProperties count] ? [NSDictionary dictionaryWithDictionary:lazyProperties] : nil;
 }
 
 @end

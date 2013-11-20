@@ -53,7 +53,6 @@ RF_ATTRIBUTE(CustomRFTestAttribute, property2 = @"TestStringForProp2ForProperty"
 
 @end
 
-@protocol NSObject      ; // just for tests
 
 ///Testing of class with attributes
 RF_ATTRIBUTE(NSObject)

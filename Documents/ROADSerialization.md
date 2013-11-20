@@ -13,10 +13,10 @@ Encoding and decoding entry points are provided by correspondening classes:
 		…
 	
 * `RFAttributedDecoder` acts in a reverse direction.
-		 + (id)decodeJSONString:(NSString * const)jsonString;
+		 + (id)decodeJSONString:(NSString *const)jsonString withRootClassNamed:(NSString * const)rootClassName
 		…
 
-Where by *serializable object* meant any `NSObject` subclass with serialization attributes defined.
+Where *rootClassName* is a name of any `NSObject` subclass with serialization attributes defined.
 
 ##Defined Attributes
 
@@ -60,23 +60,54 @@ API is similar to JSON serializer:
 
 * `RFAttributedXMLCoder` encodes serializable object into XML stored in `NSString`, `NSData` or `NSDictionary`. 
 		+ (id)encodeRootObject:(id const)rootObject;
-		…
 	
-* `RFAttributedDecoder` acts in a reverse direction.
-		 + (id)decodeXMLString:(NSString * const)xmlString;
-		…
+* `RFAttributedXMLDecoder` acts in a reverse direction.
+		- (id)decodeData:(NSData *)xmlData withRootObjectClass:(Class)rootObjectClass;
 
-Where by *serializable object* meant any `NSObject` subclass with serialization attributes defined.
+Where *rootClassName* is a name of any `NSObject` subclass with serialization attributes defined.
 
 ##Defined Attributes
 
 **JSON** parsing attributes are derived and extended with:
 
-* `RFExternal`. Marks entity as saved externally and adds link to it.
-* `RFNamespace`. Defines namespace and prefix relation of the entity.
-* `RFSavedAsXMLAttributes`. Marks that entity or attribute prefers  to be save in XML attributes when possible. 
-* `RFEntityIdentifier`. Sets the name of XML attribute where entity identifier is stored, e.g. `@"Name"` should be set as property identification:
+* `RFXMLAttributes`. Applied to object property and defines whether it is stored in parent tag or as a child.
+* `RFXMLCollectionContainer`. Applied to object and allows to control tag suppresion for aggregated container.
 
-		<Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+##Sample
+
+	<john age="54" name="John Doe" city="Boyarka">
+		<children>
+	    	<mary age="25" name="Mary Doe" city="Boyarka"/>
+		    <chris age="13" name="Chris Doe" city="Boyarka"/>
+		</children>
+	</john>	
+
+XML above can be annotated in code in the following way:
+
+	RF_ATTRIBUTE(RFSerializable)
+	@interface Person : NSObject
 	
+	RF_ATTRIBUTE(RFXMLAttributes, isSavedInTag = YES);
+	@property (copy, nonatomic) NSString *name;
+	RF_ATTRIBUTE(RFXMLAttributes, isSavedInTag = YES);
+	@property (copy, nonatomic) NSString *city;
+	RF_ATTRIBUTE(RFXMLAttributes, isSavedInTag = YES);
+	@property (assign, nonatomic) int age;
+	
+	RF_ATTRIBUTE(RFSerializableCollection, collectionClass = [Person class])
+	@property (copy, nonatomic) NSArray *children;
 
+If children of `John` are stored without container tag:
+
+	<john age="54" name="John Doe" city="Boyarka">
+    	<mary age="25" name="Mary Doe" city="Boyarka"/>
+	    <chris age="13" name="Chris Doe" city="Boyarka"/>
+	</john>	
+	
+`Person` can be annotated that content of it's subtags has to be deserialized into `children` array:
+
+	RF_ATTRIBUTE(RFSerializable)
+	RF_ATTRIBUTE(RFXMLCollectionContainer, containerKey = @"children");
+	@interface RFXMLSerializationTestObject : NSObject
+
+Serialization works in the same way.

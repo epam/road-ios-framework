@@ -10,11 +10,13 @@
 #import "RFAttributedXMLCoder.h"
 #import "RFAttributedXMLDecoder.h"
 #import "RFSerializationTestObject.h"
+#import "RFXMLSerializationTestObject.h"
 #import <ROAD/ROADLogger.h>
 
 @interface RFAttributedXMLCoderTest : SenTestCase {
-    RFSerializationTestObject *object;
-
+    RFSerializationTestObject *_object;
+    RFXMLSerializationTestObject *_object2;
+    
     RFAttributedXMLDecoder *decoder;
     RFAttributedXMLCoder *coder;
 }
@@ -30,7 +32,8 @@
     decoder = [[RFAttributedXMLDecoder alloc] init];
     coder = [[RFAttributedXMLCoder alloc] init];
     
-    object = [RFSerializationTestObject sampleObject];
+    _object = [RFSerializationTestObject sampleObject];
+    _object2 = [RFXMLSerializationTestObject sampleObject];
     
     [super setUp];
 }
@@ -58,21 +61,21 @@
     STAssertTrue([emptyObject isEqual:recreatedEmptyObject], @"Assertion: object is not equal to initial after serialization and deserialization.");
 }
 
-- (void)testObjectSerialization
+- (void)testSerialization
 {
-    NSString* string = [coder encodeRootObject:object];
+    NSString *string = [coder encodeRootObject:_object];
     RFSerializationTestObject *recreatedObject = [decoder decodeData:[string dataUsingEncoding:NSUTF8StringEncoding] withRootObjectClass:[RFSerializationTestObject class]];
     
     string = [coder encodeRootObject:recreatedObject];
     STAssertTrue([string length] > 0, @"Assertion: double serialization of test object is not successful.");
     
-    STAssertTrue(![object isEqual:recreatedObject], @"Assertion: object is equal to initial after serialization and deserialization.");
+    STAssertTrue(![_object isEqual:recreatedObject], @"Assertion: object is equal to initial after serialization and deserialization.");
     
     // string2 is derived attribute
-    recreatedObject.string2 = object.string2;
-    [recreatedObject.subDictionary[@"object3"] setString2:[object.subDictionary[@"object3"] string2]];
+    recreatedObject.string2 = _object.string2;
+    [recreatedObject.subDictionary[@"object3"] setString2:[_object.subDictionary[@"object3"] string2]];
     
-    STAssertTrue([object isEqual:recreatedObject], @"Assertion: object is not equal to initial after serialization and deserialization.");
+    STAssertTrue([_object isEqual:recreatedObject], @"Assertion: object is not equal to initial after serialization and deserialization.");
 }
 
 - (void)testDeserializationFromFile
@@ -82,7 +85,36 @@
     NSData *data = [NSData dataWithContentsOfURL:fileURL];
 
     id result = [decoder decodeData:data withRootObjectClass:[RFSerializationTestObject class]];
-    STAssertTrue(result, @"Assertion: serialization is not successful.");
+    STAssertTrue(result, @"Assertion: deserialization is not successful.");
+}
+
+- (void)testSerializationWithCollectionContainer
+{
+    NSString *string = [coder encodeRootObject:_object2];
+    RFXMLSerializationTestObject *recreatedObject = [decoder decodeData:[string dataUsingEncoding:NSUTF8StringEncoding] withRootObjectClass:[RFXMLSerializationTestObject class]];
+    
+    string = [coder encodeRootObject:recreatedObject];
+    STAssertTrue([string length] > 0, @"Assertion: double serialization of test object is not successful.");
+    
+    STAssertTrue(![_object2 isEqual:recreatedObject], @"Assertion: object is equal to initial after serialization and deserialization.");
+    
+    // string2 is derived attribute
+    recreatedObject.string2 = _object2.string2;
+    
+    STAssertTrue([_object2 isEqual:recreatedObject], @"Assertion: object is not equal to initial after serialization and deserialization.");
+}
+
+- (void)testDeserializationWithCollectionContainer
+{
+    NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+    NSURL *fileURL = [testBundle URLForResource:@"DeserialisationCollectionContainerTest" withExtension:@"xml"];
+    NSData *data = [NSData dataWithContentsOfURL:fileURL];
+    
+    RFXMLSerializationTestObject *result = [decoder decodeData:data withRootObjectClass:[RFXMLSerializationTestObject class]];
+
+    result.string2 = _object2.string2;
+
+    STAssertTrue([result isEqual:_object2], @"Assertion: deserialization is not successful.");
 }
 
 @end
