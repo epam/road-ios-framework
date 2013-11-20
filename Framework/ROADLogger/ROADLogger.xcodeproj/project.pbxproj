@@ -410,7 +410,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 789AAE4016C4E3FA00FF7FB0 /* Build configuration list for PBXNativeTarget "ROADLogger" */;
 			buildPhases = (
-				83C544E2174B7A53000C8BCD /* ROAD - generate attributes */,
+				83C544E2174B7A53000C8BCD /* ShellScript */,
 				789AAE2E16C4E3FA00FF7FB0 /* Sources */,
 				789AAE2F16C4E3FA00FF7FB0 /* Frameworks */,
 				789AAE3016C4E3FA00FF7FB0 /* CopyFiles */,
@@ -430,7 +430,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D771949717CF4DED0011047F /* Build configuration list for PBXNativeTarget "ROADLoggerTest" */;
 			buildPhases = (
-				D7AF136117CF4F2D00A92C31 /* ROAD - generate attributes */,
+				D7AF136117CF4F2D00A92C31 /* ShellScript */,
 				D771948417CF4DED0011047F /* Sources */,
 				D771948517CF4DED0011047F /* Frameworks */,
 				D771948617CF4DED0011047F /* Resources */,
@@ -541,14 +541,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		83C544E2174B7A53000C8BCD /* ROAD - generate attributes */ = {
+		83C544E2174B7A53000C8BCD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "ROAD - generate attributes";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -568,14 +567,13 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
-		D7AF136117CF4F2D00A92C31 /* ROAD - generate attributes */ = {
+		D7AF136117CF4F2D00A92C31 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "ROAD - generate attributes";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;

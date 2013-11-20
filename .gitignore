@@ -6,5 +6,4 @@ tools/ROADAttributesCodeGenerator/ROADAttributesCodeGenerator.xcodeproj/project.
 *.xcworkspacedata
 
 Framework/ROADServices/ROADServicesTest/ROADGeneratedAttributes/*
-Framework/ROADCore/ROADAttributeTest/TestData/ROADGeneratedAttributes/*
 Framework/ROADFramework.xcworkspace/xcshareddata

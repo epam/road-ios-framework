@@ -34,13 +34,10 @@
 
 @implementation RFSerializableDate
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        _unixTimestamp = NO;
-    }
-    return self;
+- (id)init {
+
+    _unixTimestamp = NO;
+    return [super init];
 }
 
 @end

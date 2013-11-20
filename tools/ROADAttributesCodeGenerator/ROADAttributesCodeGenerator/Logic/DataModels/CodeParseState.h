@@ -40,7 +40,7 @@
 @property (nonatomic, strong) PreprocessedSourceCode *sourceCodeInfo;
 @property (nonatomic, strong) NSMutableString *workCodeBuffer;
 @property (nonatomic, strong) AttributeModelsContainer *currentAttributesList;
-@property (nonatomic, strong) NSMutableSet *currentImportFilesList;
+@property (nonatomic, strong) NSMutableArray *currentImportFilesList;
 
 @property (nonatomic, strong) ClassModel *currentClass;
 @property (nonatomic, strong) ProtocolModel *currentProtocol;

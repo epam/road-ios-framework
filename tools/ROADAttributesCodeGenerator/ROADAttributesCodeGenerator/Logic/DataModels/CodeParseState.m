@@ -40,7 +40,7 @@
     }
     
     self.currentAttributesList = [[AttributeModelsContainer alloc] init];
-    self.currentImportFilesList = [NSMutableSet set];
+    self.currentImportFilesList = [NSMutableArray array];
     self.isProtocolMode = NO;
     self.isFieldMode = NO;
     
