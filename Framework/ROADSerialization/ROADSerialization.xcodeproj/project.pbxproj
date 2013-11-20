@@ -550,7 +550,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7841619616480C1E0089FDE9 /* Build configuration list for PBXNativeTarget "ROADSerializationTest" */;
 			buildPhases = (
-				8D60079617D003DE0095E17D /* ShellScript */,
+				8D60079617D003DE0095E17D /* ROAD - generate attributes */,
 				7841617816480C1D0089FDE9 /* Sources */,
 				7841617916480C1D0089FDE9 /* Frameworks */,
 				7841617A16480C1D0089FDE9 /* Resources */,
@@ -761,13 +761,14 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
-		8D60079617D003DE0095E17D /* ShellScript */ = {
+		8D60079617D003DE0095E17D /* ROAD - generate attributes */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "ROAD - generate attributes";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
