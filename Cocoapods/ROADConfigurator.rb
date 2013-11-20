@@ -9,7 +9,7 @@ class ROADConfigurator
     end
 
     def self.post_install(installer_representation)
-    config_path = './ROADConfigurator.yaml'
+        config_path = './ROADConfigurator.yaml'
         if File.exists?(config_path)
           @@config = YAML::load(File.open(config_path))
         end
