@@ -16,7 +16,6 @@ Web Services are represented by `RFWebServiceClient`. Instance is created in pla
 
 Snippet below illustrates basic authentication:
 
-    authenticationFinished = NO;
     __block BOOL isFinished = NO;
     
     RFWebServiceClient *client = [[RFWebServiceClient alloc] initWithServiceRoot:@"http://httpbin.org/"];

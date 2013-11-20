@@ -707,7 +707,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 783AF1B41650FAF800AD247E /* Build configuration list for PBXNativeTarget "ROADWebServiceTest" */;
 			buildPhases = (
-				83448CDC17D0D393002A0D15 /* ShellScript */,
+				83448CDC17D0D393002A0D15 /* ROAD - generate attributes */,
 				783AF19E1650FAF800AD247E /* Sources */,
 				783AF19F1650FAF800AD247E /* Frameworks */,
 				783AF1A01650FAF800AD247E /* Resources */,
@@ -727,7 +727,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 78FB204F15BD336B00C2137A /* Build configuration list for PBXNativeTarget "ROADWebService" */;
 			buildPhases = (
-				83B1E28417CF91AD0049C112 /* ShellScript */,
+				83B1E28417CF91AD0049C112 /* ROAD - generate attributes */,
 				78FB203E15BD336B00C2137A /* Sources */,
 				78FB203F15BD336B00C2137A /* Frameworks */,
 				78017ABB15C7F66C00DD1041 /* CopyFiles */,
@@ -907,26 +907,28 @@
 			shellPath = /bin/sh;
 			shellScript = "echo \"Copy resource files to bundle\"\nSRC=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/include/ROAD/\"\n\n\n\nif [ ! -d ${DEST} ]; then\nmkdir ${DEST}\nfi\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"\n\n";
 		};
-		83448CDC17D0D393002A0D15 /* ShellScript */ = {
+		83448CDC17D0D393002A0D15 /* ROAD - generate attributes */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "ROAD - generate attributes";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/../../tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/ROADWebserviceTest/\" -dst=\"${SRCROOT}/ROADWebserviceTest/ROADGeneratedAttributes/\"";
 		};
-		83B1E28417CF91AD0049C112 /* ShellScript */ = {
+		83B1E28417CF91AD0049C112 /* ROAD - generate attributes */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "ROAD - generate attributes";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
