@@ -29,7 +29,7 @@ ROAD initially designed to use **ARC**.
 
 	platform :ios, '5.0'
 
-	pod 'ROADFramework', '~> 1.1.0'
+	pod 'ROADFramework', '~> 1.1.1'
 
 	post_install do |installer|
 	  require File.expand_path('./', 'ROADConfigurator.rb')
