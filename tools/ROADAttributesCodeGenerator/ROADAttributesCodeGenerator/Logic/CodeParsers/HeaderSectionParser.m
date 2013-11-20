@@ -104,9 +104,8 @@ NSRegularExpression *keyWordRegex = nil;
     }
     
     if ([keyWord isEqualToString:@"@end"]) {
-        [self setupEndOfProtocol:parseState];
         if (parseState.isProtocolMode) {
-            [self processProtocolDefinitionEndWithCodeParseState:parseState];
+            [self setupEndOfProtocol:parseState];
         } else {
             [self processClassDefinitionEndWithCodeParseState:parseState];
         }
@@ -142,6 +141,7 @@ NSRegularExpression *keyWordRegex = nil;
 
 + (void)setupEndOfProtocol:(CodeParseState*)parseState {
     if (parseState.isProtocolMode) {
+        [self processProtocolDefinitionEndWithCodeParseState:parseState];
         parseState.isProtocolMode = NO;
     }
 }
@@ -156,8 +156,8 @@ NSRegularExpression *keyWordRegex = nil;
     parsedClass.attributeModels = parseState.currentAttributesList;
     parseState.currentAttributesList = [[AttributeModelsContainer alloc] init];
     
-    [parsedClass.filesToImport addObjectsFromArray:parseState.currentImportFilesList];
-    parseState.currentImportFilesList = [NSMutableArray array];
+    [parsedClass.filesToImport addObjectsFromArray:[parseState.currentImportFilesList allObjects]];
+    parseState.currentImportFilesList = [NSMutableSet set];
     
     parseState.currentClass = parsedClass;    
 }
@@ -170,8 +170,7 @@ NSRegularExpression *keyWordRegex = nil;
     parsedProtocol.attributeModels = parseState.currentAttributesList;
     parseState.currentAttributesList = [[AttributeModelsContainer alloc] init];
     
-    [parsedProtocol.filesToImport addObjectsFromArray:parseState.currentImportFilesList];
-    parseState.currentImportFilesList = [NSMutableArray array];
+    [parsedProtocol.filesToImport addObjectsFromArray:[parseState.currentImportFilesList allObjects]];
     
     parseState.currentProtocol = parsedProtocol;
 }
@@ -179,8 +178,8 @@ NSRegularExpression *keyWordRegex = nil;
 + (void)processClassImplementationBeginWithCodeParseState:(CodeParseState *)parseState {
     ClassModel *parsedClass = [ClassParser parseFrom:parseState];
        
-    [parsedClass.filesToImport addObjectsFromArray:parseState.currentImportFilesList];
-    parseState.currentImportFilesList = [NSMutableArray array];
+    [parsedClass.filesToImport addObjectsFromArray:[parseState.currentImportFilesList allObjects]];
+    parseState.currentImportFilesList = [NSMutableSet set];
     
     [parseState.foundClassesList addClassModel:parsedClass];
 }
