@@ -54,7 +54,8 @@ char *RFAttributedXMLCoderTagForClass(Class aClass) {
 }
 
 @interface RFAttributedXMLCoder () {
-    NSDateFormatter* _dateFormatter;
+    NSDateFormatter *_dateFormatter;
+    xmlDocPtr _xmlDoc;
 }
 @end
 
@@ -71,17 +72,18 @@ char *RFAttributedXMLCoderTagForClass(Class aClass) {
 - (NSString *)encodeRootObject:(id)rootObject {
     
     xmlNodePtr xmlNode = [self serializeObject:rootObject toXMLNode:NULL precreatedNode:NULL propertyInfo:nil serializationName:nil];
-    xmlDocPtr xmlDoc = xmlNewDoc(BAD_CAST "1.0");
+    _xmlDoc = xmlNewDoc(BAD_CAST "1.0");
     xmlChar *xmlBuff = NULL;
     int xmlBufferSize = 0;
 
-    xmlDocSetRootElement(xmlDoc, xmlNode);
-    xmlDocDumpFormatMemory(xmlDoc, &xmlBuff, &xmlBufferSize, 1);
+    xmlDocSetRootElement(_xmlDoc, xmlNode);
+    xmlDocDumpFormatMemory(_xmlDoc, &xmlBuff, &xmlBufferSize, 1);
 
     NSString *result = [NSString stringWithUTF8String:(char*)xmlBuff];
     
     xmlFree(xmlBuff);
-    xmlFreeDoc(xmlDoc);
+    xmlFreeDoc(_xmlDoc);
+    _xmlDoc = NULL;
     
     return result;
 }
@@ -91,8 +93,13 @@ char *RFAttributedXMLCoderTagForClass(Class aClass) {
     Class class = [serializedObject class];
     xmlNodePtr result = precreatedNode ? precreatedNode : [self createXMLNodeWithName:(serializationName ? serializationName : RFSerializationKeyForProperty(propertyInfo)) parent:parentNode objectClass:class];
 
+    // Check if we want CDATA
+    if ([class isSubclassOfClass:[NSData class]]) {
+        xmlNodePtr cdataPtr = xmlNewCDataBlock(_xmlDoc, [serializedObject bytes], [serializedObject length]);
+        xmlAddChild( result, cdataPtr );
+    }
     // Try to serialize as a container or object with defined properties. Assume it's simple value otherwise.
-    if (![self serializeObjectAsContainer:serializedObject toNode:result] && ![self serializeObjectAsAttributed:serializedObject toNode:result]) {
+    else if (![self serializeObjectAsContainer:serializedObject toNode:result] && ![self serializeObjectAsAttributed:serializedObject toNode:result]) {
         
             NSString *encodedObject = RFSerializationEncodeObjectForProperty(serializedObject, propertyInfo, _dateFormatter);
             xmlNodeSetContent(result, BAD_CAST [encodedObject UTF8String]);

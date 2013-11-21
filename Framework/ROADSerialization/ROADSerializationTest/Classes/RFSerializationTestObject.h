@@ -72,6 +72,8 @@ RF_ATTRIBUTE(RFSerializableCollection, collectionClass = [RFSerializationTestObj
 
 @property (nonatomic, strong) NSNumber *number;
 
+@property (nonatomic, copy) NSData *cdata;
+
 
 + (RFSerializationTestObject *)sampleObject;
 
