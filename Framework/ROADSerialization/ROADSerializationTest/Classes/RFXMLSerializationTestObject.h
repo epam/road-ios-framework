@@ -23,6 +23,7 @@ RF_ATTRIBUTE(RFXMLAttributes, isSavedInTag = YES);
 RF_ATTRIBUTE(RFXMLAttributes, isSavedInTag = YES);
 @property (copy, nonatomic) NSString *city;
 RF_ATTRIBUTE(RFXMLAttributes, isSavedInTag = YES);
+RF_ATTRIBUTE(RFSerializable, serializationKey = @"nm:age")
 @property (assign, nonatomic) int age;
 
 RF_ATTRIBUTE(RFSerializableCollection, collectionClass = [RFXMLSerializationTestObject class])

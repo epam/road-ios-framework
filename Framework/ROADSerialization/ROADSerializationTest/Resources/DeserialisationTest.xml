@@ -9,7 +9,8 @@
     <date2>"07.22.2013 12:07:01"</date2>
     <unixTimestamp>1365609600</unixTimestamp>
     <boolean>1</boolean>
-    <cdata><![CDATA[пчелы, осы, шмели]]></cdata>
+    <!-- go wider then NSASCIIStringEncoding -->
+    <cdata><![CDATA[E=mc²]]></cdata>
     <subDictionary>
         <object3>
             <boolean>0</boolean>
