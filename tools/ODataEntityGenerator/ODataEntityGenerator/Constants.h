@@ -51,7 +51,7 @@ static NSString * const propertyQualifierVariable = @"$propertyqualifier$";
 
 static NSString * const readonlyPropertyQualifier = @"readonly";
 
-static NSString * const entityNameVariable = @"SF_ATTRIBUTE(SFODataEntity)";
+static NSString * const entityNameVariable = @"RF_ATTRIBUTE(RFODataEntity)";
 static NSString * const collectionTypeAnnotationVariable = @"$collectionTypeAnnotation$";
 static NSString * const collectionAnnotationKey = @"collectionAnnotation";
 
