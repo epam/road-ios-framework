@@ -33,16 +33,22 @@
 
 #import "RFAttributedCoder.h"
 #import <ROAD/ROADReflection.h>
-#import "RFSerializationAssistant.h"
 #import <ROAD/ROADLogger.h>
+#import <ROAD/ROADCore.h>
+
+#import "RFSerializationAssistant.h"
 #import "RFSerializable.h"
 #import "RFDerived.h"
 #import "RFSerializableDate.h"
+#import "RFSerializationCustomHandler.h"
+#import "RFJSONSerializationHandler.h"
 
 @implementation RFAttributedCoder {
     NSString * _dateFormat;
     NSMutableDictionary * _dateFormatters;
     id _archive;
+    NSString * _currentPath;
+//    NSMutableArray * _customHandlingPathes;
 }
 
 
@@ -54,6 +60,7 @@
     if (self) {
         _archive = [[NSMutableDictionary alloc] init];
         _dateFormatters = [[NSMutableDictionary alloc] init];
+//        _customHandlingPathes = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -74,38 +81,66 @@
 
 + (id)encodeRootObjectToSerializableObject:(id)rootObject {
     RFLogInfo(@"Coder(%@ %p) started processing object(%@)", self, self, rootObject);
+    
     RFAttributedCoder *coder = [[self alloc] init];
-    [coder encodeRootObject:rootObject];
+    coder->_archive = [coder encodeRootObject:rootObject];
+    
     RFLogInfo(@"Coder(%@ %p) ended processing", self, self);
+    
     return coder->_archive;
 }
 
-- (void)encodeRootObject:(id)rootObject {
+- (id)encodeRootObject:(id)rootObject {
+    id archive = [[NSMutableDictionary alloc] init];
+    
     if ([rootObject isKindOfClass:[NSArray class]]) {
-        _archive = [self encodeArray:rootObject];
-    } else if ([rootObject isKindOfClass:[NSDictionary class]]) {
-        _archive = [self encodeDictionary:rootObject];
+        archive = [self encodeArray:rootObject customHandlerAttribute:nil];
+    }
+    else if ([rootObject isKindOfClass:[NSDictionary class]]) {
+        archive = [self encodeDictionary:rootObject customHandlerAttribute:nil];
     }
     else {
-        _archive[RFSerializedObjectClassName] = NSStringFromClass([rootObject class]);
-        NSArray *properties = RFSerializationPropertiesForClass([rootObject class]);
+        RFSerializationCustomHandler *customHandlerAttribute = [[rootObject class] RF_attributeForClassWithAttributeType:[RFSerializationCustomHandler class]];
+        if (customHandlerAttribute && customHandlerAttribute.key.length == 0) {
+            RFCustomSerialization(rootObject, customHandlerAttribute);
+        }
+        else {
+            archive[RFSerializedObjectClassName] = NSStringFromClass([rootObject class]);
+            NSArray *properties = RFSerializationPropertiesForClass([rootObject class]);
 
-        @autoreleasepool {
-            for (RFPropertyInfo * const aDesc in properties) {
-                id value = [rootObject valueForKey:[aDesc propertyName]];
-                value = [self encodeValue:value forProperty:aDesc];
-                
-                NSString *key = RFSerializationKeyForProperty(aDesc);
-                
-                if (value != nil) {
-                    _archive[key] = value;
+            @autoreleasepool {
+                for (RFPropertyInfo * const aDesc in properties) {
+                    NSString *propertyName = [aDesc propertyName];
+                    id value = [rootObject valueForKey:propertyName];
+                    id encodedValue;
+                    
+                    if ([customHandlerAttribute.key isEqualToString:propertyName]) {
+                        encodedValue = RFCustomSerialization(value, customHandlerAttribute);
+                    }
+                    else {
+                        RFSerializationCustomHandler *propertyCustomHandlerAttribute = [aDesc attributeWithType:[RFSerializationCustomHandler class]];
+                        if (propertyCustomHandlerAttribute && propertyCustomHandlerAttribute.key.length == 0) {
+                            encodedValue = RFCustomSerialization(value, propertyCustomHandlerAttribute);
+                        }
+                        else {
+                            encodedValue = [self encodeValue:value forProperty:aDesc customHandlerAttribute:propertyCustomHandlerAttribute];
+                        }
+                        
+                    }
+                    
+                    NSString *key = RFSerializationKeyForProperty(aDesc);
+                    if (encodedValue != nil) {
+                        archive[key] = encodedValue;
+                    }
                 }
             }
-        }    
+        }
     }
+    
+    return archive;
 }
 
-- (id)encodeValue:(id)value forProperty:(RFPropertyInfo *)propertyInfo {
+- (id)encodeValue:(id)value forProperty:(RFPropertyInfo *)propertyInfo customHandlerAttribute:(RFSerializationCustomHandler *)customHandlerAttribute {
     id encodedValue = nil;
     
     if ([value isKindOfClass:[NSDate class]]) {
@@ -116,55 +151,63 @@
             encodedValue = [NSString stringWithFormat:@"%.0f", [date timeIntervalSince1970]];
         }
         else {
-            NSString *dateFormat = ([serializableDateAttribute.encodingFormat length] == 0) ? serializableDateAttribute.format: serializableDateAttribute.encodingFormat;
-            NSAssert(dateFormat, @"RFSerializableDate must have either defaultValue or encodingFormat specified");
+            NSString *dateFormat = ([serializableDateAttribute.encodingFormat length] == 0) ? serializableDateAttribute.format : serializableDateAttribute.encodingFormat;
+            NSAssert(dateFormat, @"RFSerializableDate must have either format or encodingFormat specified");
             
             NSDateFormatter *dateFormatter = [self dataFormatterWithFormatString:dateFormat];
             encodedValue = [dateFormatter stringFromDate:value];
         }
     }
     else {
-        encodedValue = [self encodeValue:value];
+        encodedValue = [self encodeValue:value customHandlerAttribute:customHandlerAttribute];
     }
     
     return encodedValue;
 }
 
-- (id)encodeValue:(id)aValue {
-    id value = aValue;
+- (id)encodeValue:(id)value customHandlerAttribute:(RFSerializationCustomHandler *)customHandlerAttribute {
+    id encodedValue;
     
     if ([[value class] RF_attributeForClassWithAttributeType:[RFSerializable class]] || [[[value class] RF_propertiesWithAttributeType:[RFSerializable class]] count] > 0) {
-        value = [[self class] encodeRootObjectToSerializableObject:value];
+        encodedValue = [self encodeRootObject:value];
     }
     else if ([value isKindOfClass:[NSArray class]]) {
-        value = [self encodeArray:value];
+        encodedValue = [self encodeArray:value customHandlerAttribute:customHandlerAttribute];
     }
     else if ([value isKindOfClass:[NSDictionary class]]) {
-        value = [self encodeDictionary:value];
+        encodedValue = [self encodeDictionary:value customHandlerAttribute:customHandlerAttribute];
     }
     else if ([value isKindOfClass:[NSDate class]]) {
-        value = [value description];
+        encodedValue = [value description];
+    }
+    else {
+        encodedValue = value;
     }
     
-    return value;
+    return encodedValue;
 }
 
-- (id)encodeArray:(NSArray *)anArray {
+- (id)encodeArray:(NSArray *)anArray customHandlerAttribute:(RFSerializationCustomHandler *)customHandlerAttribute {
     NSMutableArray *array = [NSMutableArray array];
     
     for (id aValue in anArray) {
-        [array addObject:[self encodeValue:aValue]];
+        [array addObject:[self encodeValue:aValue customHandlerAttribute:customHandlerAttribute]];
     }
     
     return [NSArray arrayWithArray:array];
 }
 
-- (id)encodeDictionary:(NSDictionary *)aDict {
+- (id)encodeDictionary:(NSDictionary *)aDict customHandlerAttribute:(RFSerializationCustomHandler *)customHandlerAttribute {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
     for (id aKey in aDict) {
         id aValue = aDict[aKey];
-        dict[aKey] = [self encodeValue:aValue];
+        if ([customHandlerAttribute.key isEqualToString:aKey]) {
+            RFCustomSerialization(aValue, customHandlerAttribute);
+        }
+        else {
+            dict[aKey] = [self encodeValue:aValue customHandlerAttribute:customHandlerAttribute];
+        }
     }
     
     return [NSDictionary dictionaryWithDictionary:dict];

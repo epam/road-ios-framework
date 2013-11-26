@@ -1,5 +1,5 @@
 //
-//  RFSerializationAssistant.h
+//  RFSerializationCustomHandler.h
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -32,13 +32,18 @@
 
 #import <Foundation/Foundation.h>
 
-#import "RFSerializationCustomHandler.h"
+/**
+ * Defines custom serialization handler class. The handler class has to conform to RFJSONSerializationHandler protocol for JSON serialization.
+ */
+@interface RFSerializationCustomHandler : NSObject
 
-@class RFPropertyInfo;
+/**
+ * Defines path to object that custom serialization handler will receive. It can be property of class, in case it was defined for class, or it can be key in dictionary, in case it was defined for property with NSDictionary type.
+ */
+@property (nonatomic, strong) NSString *key;
+/**
+ * Defines class that responsible for serialization and deserialization back part of object.
+ */
+@property (nonatomic, strong) Class handlerClass;
 
-NSString *RFSerializationKeyForProperty(RFPropertyInfo *propertyInfo);
-NSString *RFSerializationCollectionItemClassNameForProperty(RFPropertyInfo *propertyInfo);
-NSArray *RFSerializationPropertiesForClass(Class class);
-id RFCustomSerialization(id value, RFSerializationCustomHandler *customHandlerAttribute);
-
-id RFSerializationEncodeObjectForProperty(id value, RFPropertyInfo *propertyInfo, NSDateFormatter* dateFormatter);
+@end

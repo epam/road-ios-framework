@@ -37,6 +37,7 @@
 #import "RFDerived.h"
 #import "RFSerializableCollection.h"
 #import "RFSerializableDate.h"
+#import "RFJSONSerializationHandler.h"
 
 NSString *RFSerializationKeyForProperty(RFPropertyInfo *propertyInfo) {
     
@@ -81,7 +82,7 @@ id RFSerializationEncodeObjectForProperty(id object, RFPropertyInfo *propertyInf
         }
         else {
             NSString *dateFormat = ([serializableDateAttribute.encodingFormat length] > 0) ? serializableDateAttribute.encodingFormat : serializableDateAttribute.format;
-            RFLogDebug(@"RFSerializableDate must have either defaultValue or encodingFormat specified : %@", dateFormat);
+            RFLogDebug(@"RFSerializableDate must have either format or encodingFormat specified : %@", dateFormat);
             
             if (![dateFormatter.dateFormat isEqualToString:dateFormat]) dateFormatter.dateFormat = dateFormat;
             result = [dateFormat length] ? [dateFormatter stringFromDate:object] : [object description];
@@ -93,5 +94,18 @@ id RFSerializationEncodeObjectForProperty(id object, RFPropertyInfo *propertyInf
     }
     
     return result;
+}
+
+id RFCustomSerialization(id value, RFSerializationCustomHandler *customHandlerAttribute) {
+    id encodedValue;
+    id<RFJSONSerializationHandler> customSerializationHandler = [[customHandlerAttribute.handlerClass alloc] init];
+    if ([customHandlerAttribute respondsToSelector:@selector(encodeObject:)]) {
+        encodedValue = [customSerializationHandler encodeObject:value];
+    }
+    else {
+        RFLogWarning(@"Custom handler - %@ - was assigned, but it does not have appropriate encoding method!", NSStringFromClass(customHandlerAttribute.handlerClass));
+    }
+    
+    return encodedValue;
 }
 
