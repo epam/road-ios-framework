@@ -102,8 +102,8 @@ static const NSTimeInterval kDateComparisonDelta = 1;
     object.child.strings = @[@"value7", @"value8"];
     object.child.subObjects = @[object3, object4];
     object.child.subDictionary = nil;
-    object.date1 = [NSDate date];
-    object.date2 = [NSDate dateWithTimeIntervalSinceNow:10000];
+    object.date1 = [NSDate dateWithTimeIntervalSince1970:34530523];
+    object.date2 = [NSDate dateWithTimeIntervalSince1970:10000];
     object.unixTimestamp = [NSDate dateWithTimeIntervalSince1970:200000];
     
     return object;

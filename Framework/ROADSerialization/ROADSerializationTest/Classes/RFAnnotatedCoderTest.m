@@ -60,7 +60,10 @@
 
 - (void)testSerialization {
     NSString *result = [RFAttributedCoder encodeRootObject:object];
-    STAssertTrue([result length] > 0, @"Assertion: serialization is successful.");
+    NSError *error;
+    NSString *test = [NSString stringWithContentsOfFile:[[NSBundle bundleForClass:self.class]  pathForResource:@"SerializationTest" ofType:@"json"] encoding:NSUTF8StringEncoding error:&error];
+    STAssertNil(error, @"Assertion: SerializationTest.json file was not loaded to check result");
+    STAssertTrue([test isEqualToString:result], @"Assertion: serialization is successful.");
 }
 
 - (void)testDeserialization {
