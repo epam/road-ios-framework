@@ -12,7 +12,7 @@
 	<true/>
 	<key>dateFormatString</key>
 	<string>
-SF_ATTRIBUTE(SFSerializableDate, format = @&quot;$dateFormat$&quot;)</string>
+RF_ATTRIBUTE(RFSerializableDate, format = @&quot;$dateFormat$&quot;)</string>
 	<key>headerfile</key>
 	<string>//
 //  $classname$
@@ -23,10 +23,10 @@ SF_ATTRIBUTE(SFSerializableDate, format = @&quot;$dateFormat$&quot;)</string>
 
 $forwarddeclarations$
 
-#import &lt;Spark/SparkWebservice.h&gt;
-#import &lt;Spark/SparkSerialization.h&gt;
+#import &lt;ROAD/ROADWebservice.h&gt;
+#import &lt;ROAD/ROADSerialization.h&gt;
 
-SF_ATTRIBUTE(SFODataEntity)
+RF_ATTRIBUTE(RFODataEntity)
 @interface $classname$ : $baseclass$
 
 $properties$
@@ -34,12 +34,12 @@ $properties$
         
 </string>
 	<key>headerfile_property</key>
-	<string>SF_ATTRIBUTE(SFSerializable, serializationKey = @&quot;$originalpropertyname$&quot;)$collectionTypeAnnotation$$dateFormat$
+	<string>RF_ATTRIBUTE(RFSerializable, serializationKey = @&quot;$originalpropertyname$&quot;)$collectionTypeAnnotation$$dateFormat$
 @property ($propertyqualifier$, nonatomic) $propertytype$ $propertyname$;
 </string>
 	<key>collectionAnnotation</key>
 	<string>
-SF_ATTRIBUTE(SFSerializableCollection, collectionClass = [$propertytype$ class])</string>
+RF_ATTRIBUTE(RFSerializableCollection, collectionClass = [$propertytype$ class])</string>
 	<key>codefile</key>
 	<string>//
 //  $classname$
