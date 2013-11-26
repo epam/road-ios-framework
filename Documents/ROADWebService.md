@@ -1,4 +1,3 @@
-
 #Web Service
 
 Component strikes to provide zero-coding client to remote web services by annotating responsible classes with specific  **RFAttributes**.
@@ -158,4 +157,14 @@ RFODataFetchRequest *fetchRequest = [[RFODataFetchRequest alloc] initWithEntityN
 } failure:^(NSError *error) {
   // Failure
 }];
+```
+```objc
+@interface RFConcreteWebServiceClient : RFWebServiceClient
+...
+RF_ATTRIBUTE(RFWebServiceCall)
+RF_ATTRIBUTE(RFWebServiceHeader, hearderFields = @{@"Accept": @"application/json"})
+RF_ATTRIBUTE(RFWebServiceURLBuilder, builderClass = [RFODataWebServiceURLBuilder class])
+- (id<RFWebServiceCancellable>)loadDataWithFetchRequest:(RFODataFetchRequest *)fetchRequest success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+...
+@end
 ```

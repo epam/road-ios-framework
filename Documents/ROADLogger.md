@@ -72,9 +72,31 @@ logger.writers = @[writer];
 RFLogInfo(message2);
 RFLogInfo([writer formattedMessage:[RFLogMessage infoMessage:message2]]);
 RFLogInfo([writer formattedMessage:[RFLogMessage infoMessage:message1]]);
-
 ```
 In console you can see `It's right` message 3 times.
+
+##### Filtering messages:
+Create `RFLogFilter` with necessary predicate for filtering. 
+```objc
+NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(RFLogMessage *evaluatedObject, NSDictionary *bindings) {
+    return [evaluatedObject.type isEqualToString:kRFLogMessageTypeNetworkOnly];
+}];
+RFLogFilter *logFilter = [RFLogFilter filterWithPrediate:predicate];
+    
+RFLogMessage *validLogMessage = [RFLogMessage logMessage:@"Simple message" type:kRFLogMessageTypeNetworkOnly level:RFLogLevelWarning userInfo:nil];
+RFLogMessage *invalidLogMessage = [RFLogMessage logMessage:@"Simple message" type:kRFLogMessageTypeFileOnly level:RFLogLevelWarning userInfo:nil];
+
+if ([logFilter hasMessagePassedTest:validLogMessage]) {
+    // Message has passed filtering because type of message was "kRFLogMessageTypeNetworkOnly"
+}
+    
+if (![logFilter hasMessagePassedTest:invalidLogMessage]) {
+    // Message has not passed filtering because type of message was "kRFLogMessageTypeFileOnly"
+}
+```
+
+RFLogger contains 6 predefined constants for types of log messages: `kRFLogMessageTypeAllLoggers`, `kRFLogMessageTypeNetworkOnly`, `kRFLogMessageTypeWebServiceOnly`, `kRFLogMessageTypeConsoleOnly`, `kRFLogMessageTypeFileOnly`, `kRFLogMessageTypeNoLogging`.
+
 ## Logging to the Network
 `RFNetworkLogWriter` can output it's messages to the service located in the neighborhood network and discovered by Bonjour.
 
