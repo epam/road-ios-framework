@@ -223,7 +223,7 @@
     [headerOutputString replaceOccurrencesOfString:classnameVariable withString:anEntity.name options:0 range:NSMakeRange(0, [headerOutputString length])];
     // If collection name is not empty add its value into annotation
     if (anEntity.entitySetName) {
-        [headerOutputString replaceOccurrencesOfString:entityNameVariable withString:[NSString stringWithFormat:@"SF_ATTRIBUTE(SFODataEntity, entityName = @\"%@\")", anEntity.entitySetName] options:0 range:NSMakeRange(0, [headerOutputString length])];
+        [headerOutputString replaceOccurrencesOfString:entityNameVariable withString:[NSString stringWithFormat:@"RF_ATTRIBUTE(RFODataEntity, entityName = @\"%@\")", anEntity.entitySetName] options:0 range:NSMakeRange(0, [headerOutputString length])];
     }
     [codeOutputString replaceOccurrencesOfString:classnameVariable withString:anEntity.name options:0 range:NSMakeRange(0, [codeOutputString length])];
     
@@ -232,7 +232,7 @@
     if (anEntity.baseName != nil)
         baseClass = anEntity.baseName;
     else
-        baseClass = @"SFODataAbstractEntity";
+        baseClass = @"RFODataAbstractEntity";
     [headerOutputString replaceOccurrencesOfString:baseclassVariable withString:baseClass options:0 range:NSMakeRange(0, [headerOutputString length])];
     [codeOutputString replaceOccurrencesOfString:baseclassVariable withString:baseClass options:0 range:NSMakeRange(0, [codeOutputString length])];
     
