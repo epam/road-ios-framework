@@ -48,7 +48,6 @@
     NSMutableDictionary * _dateFormatters;
     id _archive;
     NSString * _currentPath;
-//    NSMutableArray * _customHandlingPathes;
 }
 
 
@@ -60,7 +59,6 @@
     if (self) {
         _archive = [[NSMutableDictionary alloc] init];
         _dateFormatters = [[NSMutableDictionary alloc] init];
-//        _customHandlingPathes = [[NSMutableArray alloc] init];
     }
     
     return self;
