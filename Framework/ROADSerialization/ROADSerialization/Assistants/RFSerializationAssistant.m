@@ -109,3 +109,15 @@ id RFCustomSerialization(id value, RFSerializationCustomHandler *customHandlerAt
     return encodedValue;
 }
 
+id RFCustomDeserialization(id value, RFSerializationCustomHandler *customHandlerAttribute) {
+    id decodedValue;
+    id<RFJSONSerializationHandling> customSerializationHandler = [[customHandlerAttribute.handlerClass alloc] init];
+    if ([customSerializationHandler respondsToSelector:@selector(decodeObject:)]) {
+        decodedValue = [customSerializationHandler decodeObject:value];
+    }
+    else {
+        RFLogWarning(@"Custom handler - %@ - was assigned, but it does not have appropriate decoding method!", NSStringFromClass(customHandlerAttribute.handlerClass));
+    }
+    
+    return decodedValue;
+}

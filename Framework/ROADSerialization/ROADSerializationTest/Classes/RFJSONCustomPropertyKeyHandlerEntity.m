@@ -41,4 +41,25 @@
     return obj;
 }
 
++ (id)deserializationTestObject {
+    RFJSONCustomPropertyKeyHandlerEntity *obj = [[RFJSONCustomPropertyKeyHandlerEntity alloc] init];
+    obj.subDictionary = @{@"string1" : @"Success Decoding"};
+    
+    return obj;
+}
+
+- (BOOL)isEqual:(id)object {
+    BOOL isEqual = NO;
+    
+    if ([object isMemberOfClass:[RFJSONCustomPropertyKeyHandlerEntity class]]) {
+        RFJSONCustomPropertyKeyHandlerEntity *obj = object;
+        if ([obj.subDictionary count] == [_subDictionary count]
+            && [_subDictionary[@"string1"] isEqualToString:obj.subDictionary[@"string1"]]) {
+            isEqual = YES;
+        }
+    }
+    
+    return isEqual;
+}
+
 @end
