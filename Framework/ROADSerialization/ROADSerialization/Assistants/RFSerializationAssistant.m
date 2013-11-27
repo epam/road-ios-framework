@@ -37,7 +37,7 @@
 #import "RFDerived.h"
 #import "RFSerializableCollection.h"
 #import "RFSerializableDate.h"
-#import "RFJSONSerializationHandler.h"
+#import "RFJSONSerializationHandling.h"
 
 NSString *RFSerializationKeyForProperty(RFPropertyInfo *propertyInfo) {
     
@@ -98,8 +98,8 @@ id RFSerializationEncodeObjectForProperty(id object, RFPropertyInfo *propertyInf
 
 id RFCustomSerialization(id value, RFSerializationCustomHandler *customHandlerAttribute) {
     id encodedValue;
-    id<RFJSONSerializationHandler> customSerializationHandler = [[customHandlerAttribute.handlerClass alloc] init];
-    if ([customHandlerAttribute respondsToSelector:@selector(encodeObject:)]) {
+    id<RFJSONSerializationHandling> customSerializationHandler = [[customHandlerAttribute.handlerClass alloc] init];
+    if ([customSerializationHandler respondsToSelector:@selector(encodeObject:)]) {
         encodedValue = [customSerializationHandler encodeObject:value];
     }
     else {
