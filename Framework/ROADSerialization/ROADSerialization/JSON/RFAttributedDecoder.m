@@ -132,31 +132,53 @@
 
 - (id)decodeRootObject:(NSDictionary * const)jsonDict withRootClassNamed:(NSString * const)rootClassName {
     Class rootObjectClass = NSClassFromString(rootClassName);
-    id rootObject = [[rootObjectClass alloc] init];
+    id rootObject;
     
-    NSArray *properties = RFSerializationPropertiesForClass(rootObjectClass);
-    NSString *aKey = nil;
-    
-    @autoreleasepool {
-        for (RFPropertyInfo * const aDesc in properties) {
-            aKey = RFSerializationKeyForProperty(aDesc);
-            
-            id result = [self decodeValue:jsonDict[aKey] forProperty:aDesc];
-            [rootObject setValue:result forKey:[aDesc propertyName]];
+    RFSerializationCustomHandler *customHandlerAttribute = [rootObjectClass RF_attributeForClassWithAttributeType:[RFSerializationCustomHandler class]];
+    if (customHandlerAttribute && customHandlerAttribute.key.length == 0) {
+        rootObject = RFCustomDeserialization(rootObject, customHandlerAttribute);
+    }
+    else {
+        rootObject = [[rootObjectClass alloc] init];
+        
+        NSArray *properties = RFSerializationPropertiesForClass(rootObjectClass);
+        NSString *aKey = nil;
+        
+        @autoreleasepool {
+            for (RFPropertyInfo * const aDesc in properties) {
+                aKey = RFSerializationKeyForProperty(aDesc);
+                NSString *propertyName = [aDesc propertyName];
+                id result;
+                
+                if ([customHandlerAttribute.key isEqualToString:propertyName]) {
+                    result = RFCustomDeserialization(jsonDict[aKey], customHandlerAttribute);
+                }
+                else {
+                    RFSerializationCustomHandler *propertyCustomHandlerAttribute = [aDesc attributeWithType:[RFSerializationCustomHandler class]];
+                    if (propertyCustomHandlerAttribute && propertyCustomHandlerAttribute.key.length == 0) {
+                        result = RFCustomDeserialization(jsonDict[aKey], propertyCustomHandlerAttribute);
+                    }
+                    else {
+                        result = [self decodeValue:jsonDict[aKey] forProperty:aDesc customHandlerAttribute:propertyCustomHandlerAttribute];
+                    }
+                }
+                
+                [rootObject setValue:result forKey:propertyName];
+            }
         }
     }
-
+        
     return rootObject;
 }
 
-- (id)decodeValue:(id const)aValue forProperty:(RFPropertyInfo * const)aDesc {
+- (id)decodeValue:(id const)aValue forProperty:(RFPropertyInfo * const)aDesc customHandlerAttribute:(RFSerializationCustomHandler *)customHandlerAttribute {
     id value = aValue;
     if ([value isKindOfClass:[NSArray class]]) {
-        value = [self decodeArray:value forProperty:aDesc];
+        value = [self decodeArray:value forProperty:aDesc customHandlerAttribute:customHandlerAttribute];
     }
     else if ([value isKindOfClass:[NSDictionary class]]) {
         if ([aDesc.typeClass isSubclassOfClass:[NSDictionary class]]) {
-            value = [self decodeDictionary:value forProperty:aDesc];
+            value = [self decodeDictionary:value forProperty:aDesc customHandlerAttribute:customHandlerAttribute];
         }
         else {
             value = [self decodeJSONDictionary:value forProperty:aDesc];
@@ -169,30 +191,35 @@
     return value;
 }
 
-- (id)decodeArray:(NSArray * const)anArray forProperty:(RFPropertyInfo * const)aDesc {
+- (id)decodeArray:(NSArray * const)anArray forProperty:(RFPropertyInfo * const)aDesc customHandlerAttribute:(RFSerializationCustomHandler *)customHandlerAttribute {
     NSMutableArray *array = [[NSMutableArray alloc] init];
     for (id aValue in anArray) {
-        [array addObject:[self decodeCollectionElement:aValue forProperty:aDesc]];
+        [array addObject:[self decodeCollectionElement:aValue forProperty:aDesc customHandlerAttribute:customHandlerAttribute]];
     }
     return [array copy];
 }
 
-- (id)decodeDictionary:(NSDictionary * const)aDictionary forProperty:(RFPropertyInfo * const)aDesc {
+- (id)decodeDictionary:(NSDictionary * const)aDictionary forProperty:(RFPropertyInfo * const)aDesc customHandlerAttribute:(RFSerializationCustomHandler *)customHandlerAttribute {
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [aDictionary enumerateKeysAndObjectsUsingBlock:^(id aKey, id aValue, BOOL *stop) {
-        dict[aKey] = [self decodeCollectionElement:aValue forProperty:aDesc];
+        if ([customHandlerAttribute.key isEqualToString:aKey]) {
+            dict[aKey] = RFCustomDeserialization(aValue, customHandlerAttribute);
+        }
+        else {
+            dict[aKey] = [self decodeCollectionElement:aValue forProperty:aDesc customHandlerAttribute:nil];
+        }
     }];
     
     return [dict copy];
 }
 
-- (id)decodeCollectionElement:(id const)aValue forProperty:(RFPropertyInfo * const)aDesc {
+- (id)decodeCollectionElement:(id const)aValue forProperty:(RFPropertyInfo * const)aDesc customHandlerAttribute:(RFSerializationCustomHandler *)customHandlerAttribute {
     id value = aValue;
     if ([aValue isKindOfClass:[NSArray class]]) {
         NSMutableArray *subArray = [[NSMutableArray alloc] init];
         
         for (const id aSubValue in aValue) {
-            [subArray addObject:[self decodeCollectionElement:aSubValue forProperty:aDesc]];
+            [subArray addObject:[self decodeCollectionElement:aSubValue forProperty:aDesc customHandlerAttribute:customHandlerAttribute]];
         }
         
         value = [subArray copy];
@@ -208,7 +235,7 @@
             value = [self decodeRootObject:aValue withRootClassNamed:decodeClassName];
         }
         else {
-            value = [self decodeDictionary:aValue forProperty:nil];
+            value = [self decodeDictionary:aValue forProperty:nil customHandlerAttribute:customHandlerAttribute];
         }
     }  
     return value;

@@ -56,6 +56,8 @@
 		83D0E5FE1845DC51002625E6 /* RFJSONCustomClassPropertyHandlerEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E5FD1845DC51002625E6 /* RFJSONCustomClassPropertyHandlerEntity.m */; };
 		83D0E6011845DCAA002625E6 /* RFJSONCustomPropertyHandlerEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E6001845DCAA002625E6 /* RFJSONCustomPropertyHandlerEntity.m */; };
 		83D0E6041845DCBF002625E6 /* RFJSONCustomPropertyKeyHandlerEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E6031845DCBF002625E6 /* RFJSONCustomPropertyKeyHandlerEntity.m */; };
+		83D0E61018462AE8002625E6 /* DeserializationCustomHandlingTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 83D0E60F18462AE8002625E6 /* DeserializationCustomHandlingTest.json */; };
+		83D0E6161846304E002625E6 /* DeserializationCustomPropertyKeyHandlingTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 83D0E6151846304E002625E6 /* DeserializationCustomPropertyKeyHandlingTest.json */; };
 		83F122CA18449D32000023AF /* RFSerializationCustomHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F122C918449D32000023AF /* RFSerializationCustomHandler.m */; };
 		8D1239BC17CFAED300094213 /* RFSerializationAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1239BB17CFAED300094213 /* RFSerializationAssistant.m */; };
 		8D60078317CFFF2C0095E17D /* libROADLogger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D60077E17CFFECC0095E17D /* libROADLogger.a */; };
@@ -244,6 +246,8 @@
 		83D0E6001845DCAA002625E6 /* RFJSONCustomPropertyHandlerEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFJSONCustomPropertyHandlerEntity.m; sourceTree = "<group>"; };
 		83D0E6021845DCBF002625E6 /* RFJSONCustomPropertyKeyHandlerEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFJSONCustomPropertyKeyHandlerEntity.h; sourceTree = "<group>"; };
 		83D0E6031845DCBF002625E6 /* RFJSONCustomPropertyKeyHandlerEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFJSONCustomPropertyKeyHandlerEntity.m; sourceTree = "<group>"; };
+		83D0E60F18462AE8002625E6 /* DeserializationCustomHandlingTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DeserializationCustomHandlingTest.json; sourceTree = "<group>"; };
+		83D0E6151846304E002625E6 /* DeserializationCustomPropertyKeyHandlingTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DeserializationCustomPropertyKeyHandlingTest.json; sourceTree = "<group>"; };
 		83F122C818449D32000023AF /* RFSerializationCustomHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFSerializationCustomHandler.h; sourceTree = "<group>"; };
 		83F122C918449D32000023AF /* RFSerializationCustomHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFSerializationCustomHandler.m; sourceTree = "<group>"; };
 		8D1239BA17CFAED300094213 /* RFSerializationAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFSerializationAssistant.h; sourceTree = "<group>"; };
@@ -407,6 +411,8 @@
 				3337D3821802BB1600FE22F4 /* DeserialisationTest3.xml */,
 				C3182C9C183B95D80041F4B7 /* DeserialisationCollectionContainerTest.xml */,
 				83D0E5F11844DD3D002625E6 /* SerializationTest.json */,
+				83D0E60F18462AE8002625E6 /* DeserializationCustomHandlingTest.json */,
+				83D0E6151846304E002625E6 /* DeserializationCustomPropertyKeyHandlingTest.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -759,6 +765,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83D0E6161846304E002625E6 /* DeserializationCustomPropertyKeyHandlingTest.json in Resources */,
+				83D0E61018462AE8002625E6 /* DeserializationCustomHandlingTest.json in Resources */,
 				3337D3831802BB1600FE22F4 /* DeserialisationTest2.xml in Resources */,
 				7841618916480C1E0089FDE9 /* InfoPlist.strings in Resources */,
 				83BEEF711744EAB50095BD53 /* DeserialisationTest.json in Resources */,

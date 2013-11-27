@@ -42,5 +42,6 @@ RF_ATTRIBUTE(RFSerializationCustomHandler, handlerClass = [RFJSONCustomSerializa
 @property (strong, nonatomic) NSDictionary *subDictionary;
 
 + (id)sampleObject;
++ (id)deserializationTestObject;
 
 @end
