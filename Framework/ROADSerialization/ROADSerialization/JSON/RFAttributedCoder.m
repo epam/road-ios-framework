@@ -41,7 +41,7 @@
 #import "RFDerived.h"
 #import "RFSerializableDate.h"
 #import "RFSerializationCustomHandler.h"
-#import "RFJSONSerializationHandler.h"
+#import "RFJSONSerializationHandling.h"
 
 @implementation RFAttributedCoder {
     NSString * _dateFormat;
@@ -76,7 +76,7 @@
 
 + (NSData *)encodedDataOfRootObject:(id)rootObject {
     id result = [self encodeRootObjectToSerializableObject:rootObject];
-    return [NSJSONSerialization dataWithJSONObject:result options:NSJSONWritingPrettyPrinted error:nil];
+    return [NSJSONSerialization dataWithJSONObject:result options:NSJSONWritingPrettyPrinted | NSJSONReadingAllowFragments error:nil];
 }
 
 + (id)encodeRootObjectToSerializableObject:(id)rootObject {
@@ -102,7 +102,7 @@
     else {
         RFSerializationCustomHandler *customHandlerAttribute = [[rootObject class] RF_attributeForClassWithAttributeType:[RFSerializationCustomHandler class]];
         if (customHandlerAttribute && customHandlerAttribute.key.length == 0) {
-            RFCustomSerialization(rootObject, customHandlerAttribute);
+            archive = RFCustomSerialization(rootObject, customHandlerAttribute);
         }
         else {
             archive[RFSerializedObjectClassName] = NSStringFromClass([rootObject class]);
@@ -203,7 +203,7 @@
     for (id aKey in aDict) {
         id aValue = aDict[aKey];
         if ([customHandlerAttribute.key isEqualToString:aKey]) {
-            RFCustomSerialization(aValue, customHandlerAttribute);
+            dict[aKey] = RFCustomSerialization(aValue, customHandlerAttribute);
         }
         else {
             dict[aKey] = [self encodeValue:aValue customHandlerAttribute:customHandlerAttribute];
