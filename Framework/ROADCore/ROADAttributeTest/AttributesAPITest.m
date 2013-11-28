@@ -93,33 +93,33 @@
     STAssertTrue(attributesList1 == attributesList2, @"attributesList1 and attributesList2 must point at the same array");    
 }
 
-//- (void)test_RF_attributesForInstanceMethodCachingAfterAutoreleasePool2 {
-//    NSArray __weak *attributesList1 = nil;
-//    
-//    @autoreleasepool {
-//        attributesList1 = [SecondAnnotatedClass RF_attributesForMethod:@"viewDidLoad"];
-//        STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
-//    }
-//    
-//    NSArray *attributesList2 = [SecondAnnotatedClass RF_attributesForMethod:@"viewDidLoad"];
-//    STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
-//    
-//    STAssertTrue(attributesList1 != attributesList2, @"it seems here is memory leak");
-//}
+- (void)test_RF_attributesForInstanceMethodCachingAfterAutoreleasePool2 {
+    NSArray __weak *attributesList1 = nil;
+    
+    @autoreleasepool {
+        attributesList1 = [SecondAnnotatedClass RF_attributesForMethod:@"viewDidLoad"];
+        STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
+    }
+    
+    NSArray *attributesList2 = [SecondAnnotatedClass RF_attributesForMethod:@"viewDidLoad"];
+    STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
+    
+    STAssertTrue(attributesList1 == attributesList2, @"it seems that cache functionality doesn't work");
+}
 
-//- (void)test_RF_attributesForInstanceMethodCachingAfterAutoreleasePool {
-//    NSArray __weak *attributesList1 = nil;
-//    
-//    @autoreleasepool {
-//        attributesList1 = [AnnotatedClass RF_attributesForMethod:@"viewDidLoad"];
-//        STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
-//    }
-//        
-//    NSArray *attributesList2 = [AnnotatedClass RF_attributesForMethod:@"viewDidLoad"];
-//    STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
-//    
-//    STAssertTrue(attributesList1 != attributesList2, @"it seems here is memory leak");
-//}
+- (void)test_RF_attributesForInstanceMethodCachingAfterAutoreleasePool {
+    NSArray __weak *attributesList1 = nil;
+    
+    @autoreleasepool {
+        attributesList1 = [AnnotatedClass RF_attributesForMethod:@"viewDidLoad"];
+        STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
+    }
+        
+    NSArray *attributesList2 = [AnnotatedClass RF_attributesForMethod:@"viewDidLoad"];
+    STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
+    
+    STAssertTrue(attributesList1 == attributesList2, @"it seems that cache functionality doesn't work");
+}
 
 - (void)test_InstanceMethodCachingInterference {    
     NSArray *attributesList1 = [AnnotatedClass RF_attributesForMethod:@"viewDidLoad"];
@@ -155,19 +155,19 @@
     STAssertTrue(attributesList1 == attributesList2, @"attributesList1 and attributesList2 must point at the same array");
 }
 
-//- (void)test_RF_attributesForPropertyCachingAfterAutoreleasePool {
-//    NSArray __weak *attributesList1 = nil;
-//    
-//    @autoreleasepool {
-//        attributesList1 = [AnnotatedClass RF_attributesForProperty:@"window"];
-//        STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
-//    }
-//    
-//    NSArray *attributesList2 = [AnnotatedClass RF_attributesForProperty:@"window"];
-//    STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
-//    
-//    STAssertTrue(attributesList1 != attributesList2, @"it seems here is memory leak");
-//}
+- (void)test_RF_attributesForPropertyCachingAfterAutoreleasePool {
+    NSArray __weak *attributesList1 = nil;
+    
+    @autoreleasepool {
+        attributesList1 = [AnnotatedClass RF_attributesForProperty:@"window"];
+        STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
+    }
+    
+    NSArray *attributesList2 = [AnnotatedClass RF_attributesForProperty:@"window"];
+    STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
+    
+    STAssertTrue(attributesList1 == attributesList2, @"it seems that cache functionality doesn't work");
+}
 
 - (void)test_PropertyCachingInterference {    
     NSArray *attributesList1 = [AnnotatedClass RF_attributesForProperty:@"window"];
@@ -202,19 +202,19 @@
     STAssertTrue(attributesList1 == attributesList2, @"attributesList1 and attributesList2 must point at the same array");
 }
 
-//- (void)test_RF_attributesForFieldCachingAfterAutoreleasePool {
-//    NSArray __weak *attributesList1 = nil;
-//    
-//    @autoreleasepool {
-//        attributesList1 = [AnnotatedClass RF_attributesForIvar:@"_someField"];
-//        STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
-//    }
-//    
-//    NSArray *attributesList2 = [AnnotatedClass RF_attributesForIvar:@"_someField"];
-//    STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
-//    
-//    STAssertTrue(attributesList1 != attributesList2, @"it seems here is memory leak");
-//}
+- (void)test_RF_attributesForFieldCachingAfterAutoreleasePool {
+    NSArray __weak *attributesList1 = nil;
+    
+    @autoreleasepool {
+        attributesList1 = [AnnotatedClass RF_attributesForIvar:@"_someField"];
+        STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
+    }
+    
+    NSArray *attributesList2 = [AnnotatedClass RF_attributesForIvar:@"_someField"];
+    STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
+    
+    STAssertTrue(attributesList1 == attributesList2, @"it seems that cache functionality doesn't work");
+}
 
 - (void)test_FieldCachingInterference {    
     NSArray *attributesList1 = [AnnotatedClass RF_attributesForIvar:@"_someField"];
