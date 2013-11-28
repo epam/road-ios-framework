@@ -76,28 +76,30 @@ Where *rootClassName* is a name of any `NSObject` subclass with serialization at
 
 **JSON** parsing attributes are derived and extended with:
 
-* `RFXMLAttributes`. Applied to object property and defines whether it is stored in parent tag or as a child.
-* `RFXMLCollectionContainer`. Applied to object and allows to control tag suppresion for aggregated container.
+* `RFXMLSerializable`. 
+	* *isTagAttribute* Applied to object property and defines whether it is stored in parent tag as attribute or as a child.
+* `RFXMLSerializableCollection`. Applied to object property of *NSArray* or *NSDictionary* type when it should be serialized directly into parent's tag.
+	* *itemTag* sets tag name for collection items.
 
 ##Sample
 ```xml
-<john age="54" name="John Doe" city="Boyarka">
+<person age="54" name="John Doe" city="Boyarka">
   <children>
-    <mary age="25" name="Mary Doe" city="Boyarka"/>
-    <chris age="13" name="Chris Doe" city="Boyarka"/>
+    <person age="25" name="Mary Doe" city="Boyarka"/>
+    <person age="13" name="Chris Doe" city="Boyarka"/>
   </children>
-</john>	
+</person>	
 ```
 XML above can be annotated in code in the following way:
 ```objc
 RF_ATTRIBUTE(RFSerializable)
 @interface Person : NSObject
 	
-RF_ATTRIBUTE(RFXMLAttributes, isSavedInTag = YES);
+RF_ATTRIBUTE(RFXMLSerializable, isTagAttribute = YES);
 @property (copy, nonatomic) NSString *name;
-RF_ATTRIBUTE(RFXMLAttributes, isSavedInTag = YES);
+RF_ATTRIBUTE(RFXMLSerializable, isTagAttribute = YES);
 @property (copy, nonatomic) NSString *city;
-RF_ATTRIBUTE(RFXMLAttributes, isSavedInTag = YES);
+RF_ATTRIBUTE(RFXMLSerializable, isTagAttribute = YES);
 @property (assign, nonatomic) int age;
 	
 RF_ATTRIBUTE(RFSerializableCollection, collectionClass = [Person class])
@@ -105,15 +107,14 @@ RF_ATTRIBUTE(RFSerializableCollection, collectionClass = [Person class])
 ```
 If children of `John` are stored without container tag:
 ```xml
-<john age="54" name="John Doe" city="Boyarka">
-  <mary age="25" name="Mary Doe" city="Boyarka"/>
-  <chris age="13" name="Chris Doe" city="Boyarka"/>
+<person age="54" name="John Doe" city="Boyarka">
+  <person age="25" name="Mary Doe" city="Boyarka"/>
+  <person age="13" name="Chris Doe" city="Boyarka"/>
 </john>	
 ```	
-`Person` can be annotated that content of it's subtags has to be deserialized into `children` array:
+`children` property can be annotated that content of it's subtags with 'person' key is associated with the `children` array:
 ```objc
-RF_ATTRIBUTE(RFSerializable)
-RF_ATTRIBUTE(RFXMLCollectionContainer, containerKey = @"children");
-@interface RFXMLSerializationTestObject : NSObject
+RF_ATTRIBUTE(RFXMLSerializableCollection, collectionClass = [Person class], itemTag = @"person")
+@property (copy, nonatomic) NSArray *children;
 ```
 Serialization works in the same way.

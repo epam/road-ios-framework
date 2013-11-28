@@ -25,7 +25,6 @@ RF_ATTRIBUTE(RFXMLSerializable, serializationKey = @"nm:age", isTagAttribute = Y
 RF_ATTRIBUTE(RFXMLSerializableCollection, collectionClass = [RFXMLSerializationTestObject class], itemTag = @"child")
 @property (copy, nonatomic) NSArray *children;
 
-
 @property (copy, nonatomic) NSString *dog;
 
 RF_ATTRIBUTE(RFXMLSerializableCollection, collectionClass = [NSString class], itemTag = @"rocket")
