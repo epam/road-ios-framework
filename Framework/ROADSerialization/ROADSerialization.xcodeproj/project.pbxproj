@@ -62,9 +62,12 @@
 		C3182CF9183E4C140041F4B7 /* RFAttributedXMLCoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3182CF8183E4C140041F4B7 /* RFAttributedXMLCoderTest.m */; };
 		C33138E718369AE2000675B6 /* RFDerived.m in Sources */ = {isa = PBXBuildFile; fileRef = C33138E618369AE2000675B6 /* RFDerived.m */; };
 		C33138ED18369B36000675B6 /* RFSerializableCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = C33138EC18369B36000675B6 /* RFSerializableCollection.m */; };
-		C33138EF18369B62000675B6 /* RFXMLAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = C33138EE18369B62000675B6 /* RFXMLAttributes.m */; };
+		C33138EF18369B62000675B6 /* RFXMLSerializable.m in Sources */ = {isa = PBXBuildFile; fileRef = C33138EE18369B62000675B6 /* RFXMLSerializable.m */; };
 		C33138F418369C28000675B6 /* RFXMLSerializationTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C33138F318369C28000675B6 /* RFXMLSerializationTestObject.m */; };
 		C33138F718369E11000675B6 /* RFXMLCollectionContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = C33138F618369E11000675B6 /* RFXMLCollectionContainer.m */; };
+		C33E160018462BA400AB4CC6 /* RFXMLSerializableCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = C33E15FF18462BA400AB4CC6 /* RFXMLSerializableCollection.m */; };
+		C33E16021847451700AB4CC6 /* DeserialisationMixedCollectionContainerTest.xml in Resources */ = {isa = PBXBuildFile; fileRef = C33E16011847451700AB4CC6 /* DeserialisationMixedCollectionContainerTest.xml */; };
+		C33E16051847455F00AB4CC6 /* RFXMLSerializationTestObject2.m in Sources */ = {isa = PBXBuildFile; fileRef = C33E16041847455F00AB4CC6 /* RFXMLSerializationTestObject2.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,7 +187,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		331843EC17FC628D00634BF6 /* RFXMLAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFXMLAttributes.h; sourceTree = "<group>"; };
+		331843EC17FC628D00634BF6 /* RFXMLSerializable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFXMLSerializable.h; sourceTree = "<group>"; };
 		331843EF17FC656600634BF6 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		3337D37F1802B5AE00FE22F4 /* DeserialisationTest.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DeserialisationTest.xml; sourceTree = "<group>"; };
 		3337D3811802BB1600FE22F4 /* DeserialisationTest2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DeserialisationTest2.xml; sourceTree = "<group>"; };
@@ -240,11 +243,16 @@
 		C3182CF8183E4C140041F4B7 /* RFAttributedXMLCoderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFAttributedXMLCoderTest.m; sourceTree = "<group>"; };
 		C33138E618369AE2000675B6 /* RFDerived.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFDerived.m; sourceTree = "<group>"; };
 		C33138EC18369B36000675B6 /* RFSerializableCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFSerializableCollection.m; sourceTree = "<group>"; };
-		C33138EE18369B62000675B6 /* RFXMLAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFXMLAttributes.m; sourceTree = "<group>"; };
+		C33138EE18369B62000675B6 /* RFXMLSerializable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFXMLSerializable.m; sourceTree = "<group>"; };
 		C33138F218369C28000675B6 /* RFXMLSerializationTestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFXMLSerializationTestObject.h; sourceTree = "<group>"; };
 		C33138F318369C28000675B6 /* RFXMLSerializationTestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFXMLSerializationTestObject.m; sourceTree = "<group>"; };
 		C33138F518369E11000675B6 /* RFXMLCollectionContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFXMLCollectionContainer.h; sourceTree = "<group>"; };
 		C33138F618369E11000675B6 /* RFXMLCollectionContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFXMLCollectionContainer.m; sourceTree = "<group>"; };
+		C33E15FE18462BA400AB4CC6 /* RFXMLSerializableCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFXMLSerializableCollection.h; sourceTree = "<group>"; };
+		C33E15FF18462BA400AB4CC6 /* RFXMLSerializableCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFXMLSerializableCollection.m; sourceTree = "<group>"; };
+		C33E16011847451700AB4CC6 /* DeserialisationMixedCollectionContainerTest.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DeserialisationMixedCollectionContainerTest.xml; sourceTree = "<group>"; };
+		C33E16031847455F00AB4CC6 /* RFXMLSerializationTestObject2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFXMLSerializationTestObject2.h; sourceTree = "<group>"; };
+		C33E16041847455F00AB4CC6 /* RFXMLSerializationTestObject2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFXMLSerializationTestObject2.m; sourceTree = "<group>"; };
 		CDA9F5D416E9F1D9000A50CC /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		CDB87E6616EA0BA2003D9081 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -365,6 +373,8 @@
 				78513E6C164921BF0049549A /* RFSerializationTestObject.m */,
 				C33138F218369C28000675B6 /* RFXMLSerializationTestObject.h */,
 				C33138F318369C28000675B6 /* RFXMLSerializationTestObject.m */,
+				C33E16031847455F00AB4CC6 /* RFXMLSerializationTestObject2.h */,
+				C33E16041847455F00AB4CC6 /* RFXMLSerializationTestObject2.m */,
 				78513E6F1649220C0049549A /* RFAnnotatedCoderTest.m */,
 				C3182CF8183E4C140041F4B7 /* RFAttributedXMLCoderTest.m */,
 			);
@@ -380,6 +390,7 @@
 				3337D3811802BB1600FE22F4 /* DeserialisationTest2.xml */,
 				3337D3821802BB1600FE22F4 /* DeserialisationTest3.xml */,
 				C3182C9C183B95D80041F4B7 /* DeserialisationCollectionContainerTest.xml */,
+				C33E16011847451700AB4CC6 /* DeserialisationMixedCollectionContainerTest.xml */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -442,10 +453,12 @@
 				C33138E618369AE2000675B6 /* RFDerived.m */,
 				78DD7329164A6305009B334C /* RFSerializableCollection.h */,
 				C33138EC18369B36000675B6 /* RFSerializableCollection.m */,
-				331843EC17FC628D00634BF6 /* RFXMLAttributes.h */,
-				C33138EE18369B62000675B6 /* RFXMLAttributes.m */,
+				331843EC17FC628D00634BF6 /* RFXMLSerializable.h */,
+				C33138EE18369B62000675B6 /* RFXMLSerializable.m */,
 				C33138F518369E11000675B6 /* RFXMLCollectionContainer.h */,
 				C33138F618369E11000675B6 /* RFXMLCollectionContainer.m */,
+				C33E15FE18462BA400AB4CC6 /* RFXMLSerializableCollection.h */,
+				C33E15FF18462BA400AB4CC6 /* RFXMLSerializableCollection.m */,
 			);
 			path = Attributes;
 			sourceTree = "<group>";
@@ -717,6 +730,7 @@
 				7841618916480C1E0089FDE9 /* InfoPlist.strings in Resources */,
 				83BEEF711744EAB50095BD53 /* DeserialisationTest.json in Resources */,
 				3337D3801802B5AE00FE22F4 /* DeserialisationTest.xml in Resources */,
+				C33E16021847451700AB4CC6 /* DeserialisationMixedCollectionContainerTest.xml in Resources */,
 				3337D3841802BB1600FE22F4 /* DeserialisationTest3.xml in Resources */,
 				5A1CC60A176F279300A6C154 /* TempAttributes in Resources */,
 				C3182C9D183B95D80041F4B7 /* DeserialisationCollectionContainerTest.xml in Resources */,
@@ -785,6 +799,7 @@
 				784161AC16480CC40089FDE9 /* RFJSONStringHandlingTest.m in Sources */,
 				78513E6D164921BF0049549A /* RFSerializationTestObject.m in Sources */,
 				78513E701649220C0049549A /* RFAnnotatedCoderTest.m in Sources */,
+				C33E16051847455F00AB4CC6 /* RFXMLSerializationTestObject2.m in Sources */,
 				8D60078617CFFF7D0095E17D /* ROADGeneratedAttribute.m in Sources */,
 				C33138F418369C28000675B6 /* RFXMLSerializationTestObject.m in Sources */,
 				C3182CF9183E4C140041F4B7 /* RFAttributedXMLCoderTest.m in Sources */,
@@ -799,11 +814,12 @@
 				C33138E718369AE2000675B6 /* RFDerived.m in Sources */,
 				7895728816380A33009D7417 /* RFSerializable.m in Sources */,
 				3337D3DA1803ECE200FE22F4 /* RFAttributedDecoder.m in Sources */,
+				C33E160018462BA400AB4CC6 /* RFXMLSerializableCollection.m in Sources */,
 				3337D3DB1803ECE200FE22F4 /* RFXMLSerializationContext.m in Sources */,
 				786535591639648E00E86841 /* NSJSONSerialization+RFJSONStringHandling.m in Sources */,
 				3337D3D91803ECE200FE22F4 /* RFAttributedCoder.m in Sources */,
 				C33138ED18369B36000675B6 /* RFSerializableCollection.m in Sources */,
-				C33138EF18369B62000675B6 /* RFXMLAttributes.m in Sources */,
+				C33138EF18369B62000675B6 /* RFXMLSerializable.m in Sources */,
 				83A36B2F1798205000449C0C /* RFSerializableDate.m in Sources */,
 				8D1239BC17CFAED300094213 /* RFSerializationAssistant.m in Sources */,
 				3337D3DD1803ECE200FE22F4 /* RFAttributedXMLDecoder.m in Sources */,

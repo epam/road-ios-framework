@@ -11,11 +11,13 @@
 #import "RFAttributedXMLDecoder.h"
 #import "RFSerializationTestObject.h"
 #import "RFXMLSerializationTestObject.h"
+#import "RFXMLSerializationTestObject2.h"
 #import <ROAD/ROADLogger.h>
 
 @interface RFAttributedXMLCoderTest : SenTestCase {
     RFSerializationTestObject *_object;
     RFXMLSerializationTestObject *_object2;
+    RFXMLSerializationTestObject2 *_object3;
     
     RFAttributedXMLDecoder *decoder;
     RFAttributedXMLCoder *coder;
@@ -34,7 +36,8 @@
     
     _object = [RFSerializationTestObject sampleObject];
     _object2 = [RFXMLSerializationTestObject sampleObject];
-    
+    _object3 = [RFXMLSerializationTestObject2 sampleObject];
+   
     [super setUp];
 }
 
@@ -44,6 +47,7 @@
     [super tearDown];
 }
 
+#if 1
 - (void)testSimpleSerialization
 {
     id objects = @[@1, @2, @"3", [NSDate date], @[@"string1", @"string2", @"string3"], @{@"myValue1" : @1, @"myValue2" : @2}];
@@ -103,6 +107,7 @@
     
     STAssertTrue([_object2 isEqual:recreatedObject], @"Assertion: object is not equal to initial after serialization and deserialization.");
 }
+#endif
 
 - (void)testDeserializationWithCollectionContainer
 {
@@ -115,6 +120,19 @@
     result.string2 = _object2.string2;
 
     STAssertTrue([result isEqual:_object2], @"Assertion: deserialization is not successful.");
+}
+
+- (void)testDeserializationWithMixedCollectionContainer
+{
+    NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+    NSURL *fileURL = [testBundle URLForResource:@"DeserialisationMixedCollectionContainerTest" withExtension:@"xml"];
+    NSData *data = [NSData dataWithContentsOfURL:fileURL];
+    
+    RFXMLSerializationTestObject2 *result = [decoder decodeData:data withRootObjectClass:[RFXMLSerializationTestObject2 class]];
+    
+    result.string2 = _object3.string2;
+    
+    STAssertTrue([result isEqual:_object3], @"Assertion: deserialization is not successful.");
 }
 
 @end

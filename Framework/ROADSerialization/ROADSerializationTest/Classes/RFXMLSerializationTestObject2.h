@@ -1,5 +1,5 @@
 //
-//  RFXMLSerializationTestObject.h
+//  RFXMLSerializationTestObject2.h
 //  ROADSerialization
 //
 //  Created by Oleh Sannikov on 15.11.13.
@@ -7,11 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RFXMLSerializableCollection.h"
-#import "RFXMLSerializable.h"
+#import "RFXMLSerializationTestObject.h"
 
 RF_ATTRIBUTE(RFSerializable)
-@interface RFXMLSerializationTestObject : NSObject
+@interface RFXMLSerializationTestObject2 : RFXMLSerializationTestObject
 
 RF_ATTRIBUTE(RFDerived)
 @property (copy, nonatomic) NSString *string2;
@@ -26,7 +25,10 @@ RF_ATTRIBUTE(RFXMLSerializable, serializationKey = @"nm:age", isTagAttribute = Y
 RF_ATTRIBUTE(RFXMLSerializableCollection, collectionClass = [RFXMLSerializationTestObject class], itemTag = @"child")
 @property (copy, nonatomic) NSArray *children;
 
-+ (id)sampleObject;
-- (BOOL)isContentEqual:(id)object;
+
+@property (copy, nonatomic) NSString *dog;
+
+RF_ATTRIBUTE(RFXMLSerializableCollection, collectionClass = [NSString class], itemTag = @"rocket")
+@property (copy, nonatomic) NSArray *rockets;
 
 @end

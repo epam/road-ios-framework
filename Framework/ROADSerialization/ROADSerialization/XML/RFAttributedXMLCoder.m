@@ -33,9 +33,8 @@
 
 #import "RFAttributedXMLCoder.h"
 #import <ROAD/ROADReflection.h>
-#import "RFSerializable.h"
 #import "RFSerializationAssistant.h"
-#import "RFXMLAttributes.h"
+#import "RFXMLSerializable.h"
 #import "RFXMLCollectionContainer.h"
 
 #include <libxml/parser.h>
@@ -146,10 +145,10 @@ char *RFAttributedXMLCoderTagForClass(Class aClass) {
     
     if ((result = [properties count])) {
         for (RFPropertyInfo *property in properties) {
-            RFXMLAttributes *xmlAttributes = [property attributeWithType:[RFXMLAttributes class]];
+            RFXMLSerializable *xmlAttributes = [property attributeWithType:[RFXMLSerializable class]];
             id propertyObject = [serializedObject valueForKey:property.propertyName];
             
-            if (xmlAttributes.isSavedInTag) {
+            if (xmlAttributes.isTagAttribute) {
                 NSString *encodedString = RFSerializationEncodeObjectForProperty(propertyObject, property, _dateFormatter);
                 
                 if ([encodedString length]) {
