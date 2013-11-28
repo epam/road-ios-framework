@@ -47,7 +47,7 @@ RF_ATTRIBUTE(RFWebServiceCall, relativePath = @"/example=%%0%%")
 - (id<RFWebServiceCancellable>)dynamicDownloadTest:(NSString *)object success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
 RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled= YES, relativePath = @"/?time=1")
-RF_ATTRIBUTE(RFWebServiceHeader, hearderFields = @{@"authorization" : @"Basic ZXBhbTplcGFt"})
+RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{@"authorization" : @"Basic ZXBhbTplcGFt"})
 - (id<RFWebServiceCancellable>)downloadJSONWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
 RF_ATTRIBUTE(RFWebServiceCall, method = @"GET", relativePath = @"/?time=1")
@@ -57,7 +57,7 @@ RF_ATTRIBUTE(RFWebServiceCall, method = @"GET", relativePath = @"/?time=10")
 - (id<RFWebServiceCancellable>)loadBigListWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
 RF_ATTRIBUTE(RFWebServiceCall, method = @"GET", relativePath = @"/?time=1")
-RF_ATTRIBUTE(RFWebServiceHeader, hearderFields = @{@"testKey1" : @"%%0%%"})
+RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{@"testKey1" : @"%%0%%"})
 - (id<RFWebServiceCancellable>)loadListWithHeaderValueForTestKey1:(NSString*)headerValue prepareBlock:(RFWebServiceClientPrepareForSendRequestBlock)block success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
 @end

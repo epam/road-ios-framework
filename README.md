@@ -13,10 +13,52 @@ A set of reusable components taking advantage of extra dimension [Attribute-Orie
 **Observation** - unification of KVO and NSNotifications with block-based callbacks.  
 
 ##Snippet
-Connection to some sweety HTTP server could look like:
+Connection to test HTTP server, that returns JSON from headers you send, could look like:
 
- 
+	RF_ATTRIBUTE(RFWebService, serviceRoot = @"http://headers.jsontest.com/")
+	@interface JsonTestWebClient : RFWebServiceClient
+	
+	RF_ATTRIBUTE(RFWebServiceCall, method = @"GET", prototypeClass = [HeaderFields class])
+	RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{@"Text" : @"A lot of text",
+	                                                   @"Number" : [@1434252.234 stringValue],
+	                                                   @"Date" : [[NSDate dateWithTimeIntervalSince1970:100000000] description]})
+	- (id<RFWebServiceCancellable>)echoRequestHeadersAsJSONWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+	
+	@end
 
+then we define the model:
+
+	RF_ATTRIBUTE(RFSerializable)
+	@interface HeaderFields : NSObject
+	
+	RF_ATTRIBUTE(RFSerializable, serializationKey = @"Text")
+	@property NSString *text;
+	
+	RF_ATTRIBUTE(RFSerializable, serializationKey = @"Number")
+	@property NSNumber *number;
+	
+	RF_ATTRIBUTE(RFSerializable, serializationKey = @"Date")
+	RF_ATTRIBUTE(RFSerializableDate, format = @"yyyy-MM-dd HH:mm:ss Z")
+	@property NSDate *date;
+	
+	@end
+
+and making singleton instance of JsonTestWebClient accessible through RFServiceProvider:
+
+	@interface RFServiceProvider (JsonTestWebClient)
+	
+	RF_ATTRIBUTE(RFService, serviceClass = [JsonTestWebClient class])
+	+ (JsonTestWebClient *)jsonTestWebClient;
+	
+	@end
+
+Now we can use it: 
+
+	[[RFServiceProvider jsonTestWebClient] echoRequestHeadersAsJSONWithSuccess:^(HeaderFields *result) {
+	    NSLog(@"%@", result);
+	} failure:^(NSError *error) {
+	    NSLog(@"Something terrible happened! Here are details : %@", error);
+	}];
 
 ##Requirements
 
@@ -29,7 +71,7 @@ ROAD initially designed to use **ARC**.
 
 	platform :ios, '5.0'
 
-	pod 'ROADFramework', '~> 1.1.1'
+	pod 'ROADFramework', '~> 1.1.0'
 
 	post_install do |installer|
 	  require File.expand_path('./', 'ROADConfigurator.rb')
@@ -42,8 +84,8 @@ Download [`ROADConfigurator.rb`](./Cocoapods/ROADConfigurator.rb) and put it rig
 **Using components separately**  
 If you'd like to embed only specific components from the framework it can be done with CocoaPods as well.
 
-        pod 'ROADFramework/ROADServices'
-        pod 'ROADFramework/ROADWebService'
+        pod 'road-ios-framework/ROADServices'
+        pod 'road-ios-framework/ROADWebService'
 
 Detail information on internals of ROAD integration as well as advanced topics like integration with predefined workspace, multiple projects or targets available in [documentation](./Documents/Configuration/Cocoapods.md).        
         
@@ -54,7 +96,7 @@ User documentation for following components available in **Documents** folder:
 * [Core](./Documents/ROADCore.md)
 * [Services](./Documents/ROADServices.md)
 * [Serialization](./Documents/ROADSerialization.md)
-* [Web Service](./Documents/ROADWebService.md)
+* [Web Services](./Documents/ROADWebSwervices.md)
 * [Logger](./Documents/ROADLogger.md)
 * [Observation](./Documents/ROADObservation.md)
 
