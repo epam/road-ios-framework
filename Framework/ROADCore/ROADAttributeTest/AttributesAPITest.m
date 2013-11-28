@@ -104,7 +104,7 @@
     NSArray *attributesList2 = [SecondAnnotatedClass RF_attributesForMethod:@"viewDidLoad"];
     STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
     
-    STAssertTrue(attributesList1 == attributesList2, @"it seems here is memory leak");
+    STAssertTrue(attributesList1 == attributesList2, @"it seems that cache functionality doesn't work");
 }
 
 - (void)test_RF_attributesForInstanceMethodCachingAfterAutoreleasePool {
@@ -118,7 +118,7 @@
     NSArray *attributesList2 = [AnnotatedClass RF_attributesForMethod:@"viewDidLoad"];
     STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
     
-    STAssertTrue(attributesList1 == attributesList2, @"it seems here is memory leak");
+    STAssertTrue(attributesList1 == attributesList2, @"it seems that cache functionality doesn't work");
 }
 
 - (void)test_InstanceMethodCachingInterference {    
@@ -166,7 +166,7 @@
     NSArray *attributesList2 = [AnnotatedClass RF_attributesForProperty:@"window"];
     STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
     
-    STAssertTrue(attributesList1 == attributesList2, @"it seems here is memory leak");
+    STAssertTrue(attributesList1 == attributesList2, @"it seems that cache functionality doesn't work");
 }
 
 - (void)test_PropertyCachingInterference {    
@@ -213,7 +213,7 @@
     NSArray *attributesList2 = [AnnotatedClass RF_attributesForIvar:@"_someField"];
     STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
     
-    STAssertTrue(attributesList1 == attributesList2, @"it seems here is memory leak");
+    STAssertTrue(attributesList1 == attributesList2, @"it seems that cache functionality doesn't work");
 }
 
 - (void)test_FieldCachingInterference {    
