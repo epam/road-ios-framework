@@ -64,7 +64,6 @@
 		C33138ED18369B36000675B6 /* RFSerializableCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = C33138EC18369B36000675B6 /* RFSerializableCollection.m */; };
 		C33138EF18369B62000675B6 /* RFXMLSerializable.m in Sources */ = {isa = PBXBuildFile; fileRef = C33138EE18369B62000675B6 /* RFXMLSerializable.m */; };
 		C33138F418369C28000675B6 /* RFXMLSerializationTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C33138F318369C28000675B6 /* RFXMLSerializationTestObject.m */; };
-		C33138F718369E11000675B6 /* RFXMLCollectionContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = C33138F618369E11000675B6 /* RFXMLCollectionContainer.m */; };
 		C33E160018462BA400AB4CC6 /* RFXMLSerializableCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = C33E15FF18462BA400AB4CC6 /* RFXMLSerializableCollection.m */; };
 		C33E16021847451700AB4CC6 /* DeserialisationMixedCollectionContainerTest.xml in Resources */ = {isa = PBXBuildFile; fileRef = C33E16011847451700AB4CC6 /* DeserialisationMixedCollectionContainerTest.xml */; };
 		C33E16051847455F00AB4CC6 /* RFXMLSerializationTestObject2.m in Sources */ = {isa = PBXBuildFile; fileRef = C33E16041847455F00AB4CC6 /* RFXMLSerializationTestObject2.m */; };
@@ -246,8 +245,6 @@
 		C33138EE18369B62000675B6 /* RFXMLSerializable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFXMLSerializable.m; sourceTree = "<group>"; };
 		C33138F218369C28000675B6 /* RFXMLSerializationTestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFXMLSerializationTestObject.h; sourceTree = "<group>"; };
 		C33138F318369C28000675B6 /* RFXMLSerializationTestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFXMLSerializationTestObject.m; sourceTree = "<group>"; };
-		C33138F518369E11000675B6 /* RFXMLCollectionContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFXMLCollectionContainer.h; sourceTree = "<group>"; };
-		C33138F618369E11000675B6 /* RFXMLCollectionContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFXMLCollectionContainer.m; sourceTree = "<group>"; };
 		C33E15FE18462BA400AB4CC6 /* RFXMLSerializableCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFXMLSerializableCollection.h; sourceTree = "<group>"; };
 		C33E15FF18462BA400AB4CC6 /* RFXMLSerializableCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFXMLSerializableCollection.m; sourceTree = "<group>"; };
 		C33E16011847451700AB4CC6 /* DeserialisationMixedCollectionContainerTest.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DeserialisationMixedCollectionContainerTest.xml; sourceTree = "<group>"; };
@@ -455,8 +452,6 @@
 				C33138EC18369B36000675B6 /* RFSerializableCollection.m */,
 				331843EC17FC628D00634BF6 /* RFXMLSerializable.h */,
 				C33138EE18369B62000675B6 /* RFXMLSerializable.m */,
-				C33138F518369E11000675B6 /* RFXMLCollectionContainer.h */,
-				C33138F618369E11000675B6 /* RFXMLCollectionContainer.m */,
 				C33E15FE18462BA400AB4CC6 /* RFXMLSerializableCollection.h */,
 				C33E15FF18462BA400AB4CC6 /* RFXMLSerializableCollection.m */,
 			);
@@ -823,7 +818,6 @@
 				83A36B2F1798205000449C0C /* RFSerializableDate.m in Sources */,
 				8D1239BC17CFAED300094213 /* RFSerializationAssistant.m in Sources */,
 				3337D3DD1803ECE200FE22F4 /* RFAttributedXMLDecoder.m in Sources */,
-				C33138F718369E11000675B6 /* RFXMLCollectionContainer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

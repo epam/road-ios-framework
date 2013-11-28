@@ -47,7 +47,6 @@
     [super tearDown];
 }
 
-#if 1
 - (void)testSimpleSerialization
 {
     id objects = @[@1, @2, @"3", [NSDate date], @[@"string1", @"string2", @"string3"], @{@"myValue1" : @1, @"myValue2" : @2}];
@@ -107,7 +106,6 @@
     
     STAssertTrue([_object2 isEqual:recreatedObject], @"Assertion: object is not equal to initial after serialization and deserialization.");
 }
-#endif
 
 - (void)testDeserializationWithCollectionContainer
 {
@@ -133,6 +131,13 @@
     result.string2 = _object3.string2;
     
     STAssertTrue([result isEqual:_object3], @"Assertion: deserialization is not successful.");
+    
+    NSString *reencodedXML = [coder encodeRootObject:result];
+    RFXMLSerializationTestObject2 *recreatedResult = [decoder decodeData:[reencodedXML dataUsingEncoding:NSUTF8StringEncoding] withRootObjectClass:[RFXMLSerializationTestObject2 class]];
+    
+    recreatedResult.string2 = _object3.string2;
+    
+    STAssertTrue([recreatedResult isEqual:_object3], @"Assertion: deserialization is not successful.");
 }
 
 @end

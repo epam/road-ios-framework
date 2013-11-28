@@ -38,7 +38,6 @@
 #import "RFXMLSerializationContext.h"
 #import "RFSerializableCollection.h"
 #import "RFSerializationAssistant.h"
-#import "RFXMLCollectionContainer.h"
 #import "RFXMLSerializableCollection.h"
 
 #define kRFAttributedXMLDecoderDefaultContainerClass [NSArray class]
