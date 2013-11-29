@@ -235,7 +235,7 @@ NSString * const RFAttributeTemplateEscape = @"%%";
 
 - (NSMutableDictionary*)dynamicPropertyValuesFromAttribute:(RFWebServiceHeader *)serviceHeaderAttribute WithPropertyValues:(NSDictionary*)values {
     NSMutableDictionary* result = [NSMutableDictionary new];
-    [serviceHeaderAttribute.hearderFields enumerateKeysAndObjectsUsingBlock:^(id key, NSString* obj, BOOL *stop) {
+    [serviceHeaderAttribute.headerFields enumerateKeysAndObjectsUsingBlock:^(id key, NSString* obj, BOOL *stop) {
         NSMutableString* value = [obj mutableCopy];
         [value RF_formatStringUsingValues:values withEscape:RFAttributeTemplateEscape];
         result[key] = [value copy];
