@@ -62,8 +62,18 @@
     NSString *result = [RFAttributedCoder encodeRootObject:object];
     NSError *error;
     NSString *test = [NSString stringWithContentsOfFile:[[NSBundle bundleForClass:self.class] pathForResource:@"SerializationTest" ofType:@"json"] encoding:NSUTF8StringEncoding error:&error];
+    
+    NSArray *tests = [test componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" \n"]];
+    tests = [tests filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"length > 0"]];
+    NSArray *results = [result componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" \n"]];
+    results = [results filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"length > 0"]];
+    
     STAssertNil(error, @"Assertion: SerializationTest.json file was not loaded to check result");
-    STAssertTrue([test isEqualToString:result], @"Assertion: serialization is successful.");
+    STAssertEquals([tests count], [results count], @"Assertion: number of components in result json is wrong");
+    
+    for (int index = 0; index < [tests count]; index++) {
+        STAssertTrue([tests[index] isEqualToString:results[index]], @"Assertion: serialization is not successful. Result: %@", result);
+    }
 }
 
 - (void)testDeserialization {
