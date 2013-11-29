@@ -88,7 +88,7 @@ Find.find(derivedDataDir) do |gcda_file|
             relative_path = source_path.slice(workingDir.length+1, source_path.length)
             
             extension = File.extname(relative_path)
-      			extension = extension.slice(1, extension.length-1)
+                              extension = extension.slice(1, extension.length-1)
             
             puts "#{extension}"
             
