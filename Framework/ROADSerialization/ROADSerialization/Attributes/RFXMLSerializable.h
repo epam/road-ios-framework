@@ -41,7 +41,7 @@
 /**
  Define namespace for the tag.
  */
-@property (nonatomic, copy) NSString* namespaceId;
+@property (nonatomic, copy) NSString *namespaceId;
 /**
  Indicates that property should be saved in the tag of it's parent (Exception will be raised if impossible)
  */

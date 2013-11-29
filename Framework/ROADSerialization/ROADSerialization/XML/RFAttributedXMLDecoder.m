@@ -146,7 +146,7 @@
     if (!isElementSkipped && !isSimpleValue) {
         if (!currentVirtualTag) NSParameterAssert(contextElementName == elementName);
 
-        NSString* propertyName = [_context.properties[contextElementName] propertyName];
+        NSString *propertyName = [_context.properties[contextElementName] propertyName];
         [self setCurrentNodeValue:element forKey:propertyName ? propertyName : contextElementName];
     }
 
@@ -300,7 +300,7 @@
         for (RFPropertyInfo *property in properties) {
             
             RFXMLSerializable *xmlAttributes = [property attributeWithType:[RFXMLSerializable class]];
-            NSString* serializationKey = RFSerializationKeyForProperty(property);
+            NSString *serializationKey = RFSerializationKeyForProperty(property);
             
             if (xmlAttributes.isTagAttribute) {
                 id decodedValue = [self convertString:attributeDict[serializationKey] forProperty:property];
