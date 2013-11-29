@@ -79,7 +79,6 @@
         }
         
         if (!skippingDate) {
-            NSLog(@"%@", results[index]);
             STAssertTrue([tests[index] isEqualToString:results[index]], @"Assertion: serialization is not successful. Result: %@", result);
         }
         
