@@ -1,5 +1,5 @@
 //
-//  RFSerializationAssistant.h
+//  RFJSONCustomClassHandlerEntity.m
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,16 +30,15 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <Foundation/Foundation.h>
+#import "RFJSONCustomClassHandlerEntity.h"
 
-#import "RFSerializationCustomHandler.h"
+@implementation RFJSONCustomClassHandlerEntity
 
-@class RFPropertyInfo;
++ (id)sampleObject {
+    RFJSONCustomClassHandlerEntity *obj = [[RFJSONCustomClassHandlerEntity alloc] init];
+    obj.string1 = @"Failed Encoding";
+    
+    return obj;
+}
 
-NSString *RFSerializationKeyForProperty(RFPropertyInfo *propertyInfo);
-NSString *RFSerializationCollectionItemClassNameForProperty(RFPropertyInfo *propertyInfo);
-NSArray *RFSerializationPropertiesForClass(Class class);
-id RFCustomSerialization(id value, RFSerializationCustomHandler *customHandlerAttribute);
-id RFCustomDeserialization(id value, RFSerializationCustomHandler *customHandlerAttribute);
-
-id RFSerializationEncodeObjectForProperty(id value, RFPropertyInfo *propertyInfo, NSDateFormatter* dateFormatter);
+@end

@@ -1,5 +1,5 @@
 //
-//  RFSerializationAssistant.h
+//  RFJSONCustomPropertyKeyHandlerEntity.m
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,16 +30,36 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <Foundation/Foundation.h>
+#import "RFJSONCustomPropertyKeyHandlerEntity.h"
 
-#import "RFSerializationCustomHandler.h"
+@implementation RFJSONCustomPropertyKeyHandlerEntity
 
-@class RFPropertyInfo;
++ (id)sampleObject {
+    RFJSONCustomPropertyKeyHandlerEntity *obj = [[RFJSONCustomPropertyKeyHandlerEntity alloc] init];
+    obj.subDictionary = @{@"string1": @"Failed Encoding"};
+    
+    return obj;
+}
 
-NSString *RFSerializationKeyForProperty(RFPropertyInfo *propertyInfo);
-NSString *RFSerializationCollectionItemClassNameForProperty(RFPropertyInfo *propertyInfo);
-NSArray *RFSerializationPropertiesForClass(Class class);
-id RFCustomSerialization(id value, RFSerializationCustomHandler *customHandlerAttribute);
-id RFCustomDeserialization(id value, RFSerializationCustomHandler *customHandlerAttribute);
++ (id)deserializationTestObject {
+    RFJSONCustomPropertyKeyHandlerEntity *obj = [[RFJSONCustomPropertyKeyHandlerEntity alloc] init];
+    obj.subDictionary = @{@"string1" : @"Success Decoding"};
+    
+    return obj;
+}
 
-id RFSerializationEncodeObjectForProperty(id value, RFPropertyInfo *propertyInfo, NSDateFormatter* dateFormatter);
+- (BOOL)isEqual:(id)object {
+    BOOL isEqual = NO;
+    
+    if ([object isMemberOfClass:[RFJSONCustomPropertyKeyHandlerEntity class]]) {
+        RFJSONCustomPropertyKeyHandlerEntity *obj = object;
+        if ([obj.subDictionary count] == [_subDictionary count]
+            && [_subDictionary[@"string1"] isEqualToString:obj.subDictionary[@"string1"]]) {
+            isEqual = YES;
+        }
+    }
+    
+    return isEqual;
+}
+
+@end
