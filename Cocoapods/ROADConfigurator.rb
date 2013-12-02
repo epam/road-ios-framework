@@ -66,7 +66,7 @@ class ROADConfigurator
         installer_representation.project.targets.each do |pods_target|
             if pods_target.name.scan("ROADFramework").size > 0
 
-                #======= Code for work around wich works only for repeated command of "pod install" =======
+                #======= Code for work around which works only for repeated command of "pod install" =======
                 group_for_genrated_attributes = installer_representation.project.main_group['Pods/ROADFramework/ROADGeneratedAttributes']
                 if group_for_genrated_attributes
                     installer_representation.project.main_group['Pods/ROADFramework/ROADGeneratedAttributes'].files.each do |file|
