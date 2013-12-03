@@ -1,5 +1,5 @@
 //
-//  RFWebService.m
+//  RFWebServiceSerializer.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,8 +30,16 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "RFWebService.h"
+#import <ROAD/ROADAttribute.h>
 
-@implementation RFWebService
+/**
+ * Specifies custom request serializer
+ */
+@interface RFWebServiceSerializer : NSObject
+
+/**
+ * Class of serializer that will be responsible for serialization and deserialization of request parameters. Must conform to RFSerializationDelegate protocol.
+ */
+@property Class serializerClass;
 
 @end

@@ -32,6 +32,8 @@
 
 #import "RFDownloader+FakeRequest.h"
 
+#import "RFSerializableTestObject.h"
+
 @implementation RFDownloader (FakeRequest)
 
 - (void)fakeStart {
@@ -47,15 +49,13 @@
     NSError *error;
     
     if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.multipart.data"]) {
-        if ([self checkMultipartData]) {
-            response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{}];
-        }
-        else {
-            response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:400 HTTPVersion:@"HTTP/1.1" headerFields:@{}];
-        }
+        response = [self checkMultipartData] ? [self successResponse] : [self failureResponse];
     }
     else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.method.without.blocks"]) {
-        response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{}];
+        response = [self successResponse];
+    }
+    else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.serializer"]) {
+        response = [self checkXMLSerializedRequestData] ? [self successResponse] : [self failureResponse];
     }
     else {
         // Not processed URL
@@ -69,6 +69,9 @@
     
     [downloaderFinishMethodInvocation invoke];
 }
+
+
+#pragma mark - Checks
 
 - (BOOL)checkMultipartData {
     NSString *result = [[NSString alloc] initWithData:self.request.HTTPBody encoding:NSUTF8StringEncoding];
@@ -96,6 +99,27 @@
     }
     
     return isOkMultipartData;
+}
+
+- (BOOL)checkXMLSerializedRequestData {
+    BOOL result = NO;
+    
+    NSString *body = [[NSString alloc] initWithData:self.request.HTTPBody encoding:NSUTF8StringEncoding];
+    RFAttributedXMLCoder *coder = [[RFAttributedXMLCoder alloc] init];
+    NSString *testBody = [coder encodeRootObject:[RFSerializableTestObject testObject]];
+    if ([testBody isEqualToString:body]) {
+        result = YES;
+    }
+    
+    return result;
+}
+
+- (NSHTTPURLResponse *)successResponse {
+    return [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{}];
+}
+
+- (NSHTTPURLResponse *)failureResponse {
+    return [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:400 HTTPVersion:@"HTTP/1.1" headerFields:@{}];
 }
 
 @end

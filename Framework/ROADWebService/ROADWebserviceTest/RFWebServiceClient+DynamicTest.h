@@ -33,6 +33,10 @@
 
 #import "RFWebServiceClient.h"
 
+#import "RFXMLSerializer.h"
+#import "RFSerializableTestObject.h"
+#import "RFWebServiceSerializer.h"
+
 @protocol RFWebServiceCancellable;
 
 @interface RFWebServiceClient (DynamicTest)
@@ -46,7 +50,7 @@ RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO, method = @"GET", rela
 RF_ATTRIBUTE(RFWebServiceCall, relativePath = @"/example=%%0%%")
 - (id<RFWebServiceCancellable>)dynamicDownloadTest:(NSString *)object success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
-RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled= YES, relativePath = @"/?time=1")
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, relativePath = @"/?time=1")
 RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{@"authorization" : @"Basic ZXBhbTplcGFt"})
 - (id<RFWebServiceCancellable>)downloadJSONWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
@@ -58,6 +62,11 @@ RF_ATTRIBUTE(RFWebServiceCall, method = @"GET", relativePath = @"/?time=10")
 
 RF_ATTRIBUTE(RFWebServiceCall, method = @"GET", relativePath = @"/?time=1")
 RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{@"testKey1" : @"%%0%%"})
-- (id<RFWebServiceCancellable>)loadListWithHeaderValueForTestKey1:(NSString*)headerValue prepareBlock:(RFWebServiceClientPrepareForSendRequestBlock)block success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+- (id<RFWebServiceCancellable>)loadListWithHeaderValueForTestKey1:(NSString *)headerValue prepareBlock:(RFWebServiceClientPrepareForSendRequestBlock)block success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+RF_ATTRIBUTE(RFWebServiceCall, method = @"POST")
+RF_ATTRIBUTE(RFWebServiceSerializer, serializerClass = [RFXMLSerializer class])
+- (id<RFWebServiceCancellable>)testXMLSerializerWithObject:(RFSerializableTestObject *)headerValue withSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
 
 @end

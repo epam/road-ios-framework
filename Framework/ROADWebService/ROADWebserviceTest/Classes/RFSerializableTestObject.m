@@ -1,5 +1,5 @@
 //
-//  RFWebService.m
+//  RFSerializableTestObject.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,8 +30,30 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "RFWebService.h"
+#import "RFSerializableTestObject.h"
 
-@implementation RFWebService
+@implementation RFSerializableTestObject
+
++ (RFSerializableTestObject *)testObject {
+    RFSerializableTestObject *testObject = [[RFSerializableTestObject alloc] init];
+    testObject.name = @"John Smith";
+    testObject.city = @"Oklahoma";
+    
+    return testObject;
+}
+
+- (BOOL)isEqual:(id)object {
+    BOOL isEqual = NO;
+    
+    if ([object isMemberOfClass:[RFSerializableTestObject class]]) {
+        RFSerializableTestObject *serialTestObject = object;
+        if ([serialTestObject.name isEqualToString:_name]
+            && [serialTestObject.city isEqualToString:_city]) {
+            isEqual = YES;
+        }
+    }
+
+    return isEqual;
+}
 
 @end

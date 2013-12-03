@@ -1,5 +1,5 @@
 //
-//  RFWebService.m
+//  RFXMLSerializer.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,8 +30,20 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "RFWebService.h"
+#import "RFXMLSerializer.h"
+#import <ROAD/ROADSerialization.h>
 
-@implementation RFWebService
+@implementation RFXMLSerializer
+
+-(id)deserializeData:(NSData *)data serializatinRoot:(NSString *)serializationRoot withDeserializationClass:(Class)deserializationClass error:(NSError *__autoreleasing *)error {
+    RFAttributedXMLDecoder *decoder = [[RFAttributedXMLDecoder alloc] init];
+    id restored = [decoder decodeData:data withRootObjectClass:NSStringFromClass(deserializationClass)];
+    return restored;
+}
+
+-(NSString *)serializeObject:(id)object {
+    RFAttributedXMLCoder *coder = [[RFAttributedXMLCoder alloc] init];
+    return [coder encodeRootObject:object];
+}
 
 @end

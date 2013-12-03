@@ -38,7 +38,7 @@
 #import "RFAuthenticating.h"
 #import "RFServiceProvider+ConcreteWebServiceClient.h"
 #import "RFDownloader+FakeRequest.h"
-
+#import "RFSerializableTestObject.h"
 #import "RFBasicAuthenticationProvider.h"
 #import "RFDigestAuthenticationProvider.h"
 #import <objc/runtime.h>
@@ -276,6 +276,31 @@
     webServiceClient = [[RFWebServiceClient alloc] init];
     downloader = [[RFDownloader alloc] initWithClient:webServiceClient methodName:@"notAvailableMethod" authenticationProvider:nil];
     STAssertNil(downloader.loggerType, kRFLogMessageTypeConsoleOnly, @"Logger type for web service method was not configured properly. It should be nil as neither method nor class have a logger attribute.");
+}
+
+- (void)testCustomSerializer {
+    __block BOOL isFinished = NO;
+    __block BOOL isSuccess = NO;
+    __block id customSerializationResult;
+    
+    RFSerializableTestObject *testObject = [RFSerializableTestObject testObject];
+    
+    RFWebServiceClient *webClient = [[RFWebServiceClient alloc] initWithServiceRoot:@"http://test.serializer"];
+    [webClient testXMLSerializerWithObject:testObject withSuccess:^(id result) {
+        isSuccess = YES;
+        customSerializationResult = result;
+        isFinished = YES;
+    } failure:^(NSError *error) {
+        isFinished = YES;
+    }];
+    
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
+    }
+    
+    STAssertTrue(isSuccess, @"Custom serialization of web service request is failed!");
+    STAssertEquals(customSerializationResult, testObject, @"Custom deserialization of web service response is failed!");
+    
 }
 
 @end

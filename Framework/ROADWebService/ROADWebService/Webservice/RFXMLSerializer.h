@@ -1,5 +1,5 @@
 //
-//  RFWebService.m
+//  RFXMLSerializer.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,8 +30,11 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "RFWebService.h"
+#import "RFSerializationDelegate.h"
 
-@implementation RFWebService
+/**
+ The XML serializer for web service
+ */
+@interface RFXMLSerializer : NSObject <RFSerializationDelegate>
 
 @end

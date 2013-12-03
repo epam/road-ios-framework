@@ -1,5 +1,5 @@
 //
-//  RFWebService.m
+//  RFSerializableTestObject.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,8 +30,16 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "RFWebService.h"
+#import <ROAD/ROADSerialization.h>
 
-@implementation RFWebService
+RF_ATTRIBUTE(RFSerializable)
+@interface RFSerializableTestObject : NSObject
+
+RF_ATTRIBUTE(RFXMLAttributes, isSavedInTag = YES);
+@property (copy, nonatomic) NSString *name;
+RF_ATTRIBUTE(RFXMLAttributes, isSavedInTag = NO);
+@property (copy, nonatomic) NSString *city;
+
++ (RFSerializableTestObject *)testObject;
 
 @end
