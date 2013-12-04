@@ -1,6 +1,6 @@
 //
-//  RFWebServiceHeader.h
-//  ROADWebService
+//  RFSerializationCustomHandler.m
+//  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,10 +30,8 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <ROAD/ROADAttribute.h>
+#import "RFSerializationCustomHandler.h"
 
-@interface RFWebServiceHeader : NSObject
-
-@property (strong, nonatomic) NSDictionary *headerFields;
+@implementation RFSerializationCustomHandler
 
 @end

@@ -1,6 +1,6 @@
 //
-//  RFWebServiceHeader.h
-//  ROADWebService
+//  RFJSONCustomPropertyHandlerEntity.m
+//  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,10 +30,35 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <ROAD/ROADAttribute.h>
+#import "RFJSONCustomPropertyHandlerEntity.h"
 
-@interface RFWebServiceHeader : NSObject
+@implementation RFJSONCustomPropertyHandlerEntity
 
-@property (strong, nonatomic) NSDictionary *headerFields;
++ (id)sampleObject {
+    RFJSONCustomPropertyHandlerEntity *obj = [[RFJSONCustomPropertyHandlerEntity alloc] init];
+    obj.string1 = @"Failed Encoding";
+    
+    return obj;
+}
+
++ (id)deserializationTestObject {
+    RFJSONCustomPropertyHandlerEntity *obj = [[RFJSONCustomPropertyHandlerEntity alloc] init];
+    obj.string1 = @"Success Decoding";
+    
+    return obj;
+}
+
+- (BOOL)isEqual:(id)object {
+    BOOL isEqual = NO;
+    
+    if ([object isMemberOfClass:[RFJSONCustomPropertyHandlerEntity class]]) {
+        RFJSONCustomPropertyHandlerEntity *obj = object;
+        if ([_string1 isEqualToString:obj.string1]) {
+            isEqual = YES;
+        }
+    }
+    
+    return isEqual;
+}
 
 @end

@@ -1,6 +1,6 @@
 //
-//  RFWebServiceHeader.h
-//  ROADWebService
+//  RFJSONCustomClassHandler.m
+//  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -29,11 +29,16 @@
 //
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
+#import "RFJSONCustomSerializationHandler.h"
 
-#import <ROAD/ROADAttribute.h>
+@implementation RFJSONCustomSerializationHandler
 
-@interface RFWebServiceHeader : NSObject
+- (id)decodeObject:(id)object {
+    return @"Success Decoding";
+}
 
-@property (strong, nonatomic) NSDictionary *headerFields;
+- (id)encodeObject:(id)object {
+    return @"Success Encoding";
+}
 
 @end

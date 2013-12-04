@@ -1,6 +1,6 @@
 //
-//  RFWebServiceHeader.h
-//  ROADWebService
+//  RFSerializationCustomHandler.h
+//  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,10 +30,20 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <ROAD/ROADAttribute.h>
+#import <Foundation/Foundation.h>
 
-@interface RFWebServiceHeader : NSObject
+/**
+ * Defines custom serialization handler class. The handler class has to conform to RFJSONSerializationHandler protocol for JSON serialization.
+ */
+@interface RFSerializationCustomHandler : NSObject
 
-@property (strong, nonatomic) NSDictionary *headerFields;
+/**
+ * Defines path to object that custom serialization handler will receive. It can be property of class, in case it was defined for class, or it can be key in dictionary, in case it was defined for property with NSDictionary type.
+ */
+@property (nonatomic, strong) NSString *key;
+/**
+ * Defines class that responsible for serialization and deserialization back part of object.
+ */
+@property (nonatomic, strong) Class handlerClass;
 
 @end

@@ -171,8 +171,7 @@ NSRegularExpression *keyWordRegex = nil;
     parseState.currentAttributesList = [[AttributeModelsContainer alloc] init];
     
     [parsedProtocol.filesToImport addObjectsFromArray:parseState.currentImportFilesList];
-    parseState.currentImportFilesList = [NSMutableArray array];
-    
+
     parseState.currentProtocol = parsedProtocol;
 }
 

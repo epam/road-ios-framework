@@ -60,7 +60,32 @@
 
 - (void)testSerialization {
     NSString *result = [RFAttributedCoder encodeRootObject:object];
-    STAssertTrue([result length] > 0, @"Assertion: serialization is successful.");
+    NSError *error;
+    NSString *test = [NSString stringWithContentsOfFile:[[NSBundle bundleForClass:self.class] pathForResource:@"SerializationTest" ofType:@"json"] encoding:NSUTF8StringEncoding error:&error];
+    
+    NSArray *tests = [test componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" \n"]];
+    tests = [tests filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"length > 0"]];
+    NSArray *results = [result componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" \n"]];
+    results = [results filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"length > 0"]];
+    
+    STAssertNil(error, @"Assertion: SerializationTest.json file was not loaded to check result");
+    STAssertEquals([tests count], [results count], @"Assertion: number of components in result json is wrong");
+    
+    BOOL skippingDate = NO;
+    for (int index = 0; index < [tests count]; index++) {
+        if (index > 2 && [tests[index - 2] hasPrefix:@"\"date"]) {
+            // Date field is depends on time zone
+            skippingDate = YES;
+        }
+        
+        if (!skippingDate) {
+            STAssertTrue([tests[index] isEqualToString:results[index]], @"Assertion: serialization is not successful. Result: %@", result);
+        }
+        
+        if ([tests[index] hasSuffix:@","]) {
+            skippingDate = NO;
+        }
+    }
 }
 
 - (void)testDeserialization {
