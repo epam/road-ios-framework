@@ -2,4 +2,8 @@
 <john nm:age="54" name="John Doe" city="Boyarka">
     <child nm:age="25" name="Mary Doe" city="Boyarka"/>
     <child nm:age="13" name="Chris Doe" city="Boyarka"/>
+    <rocket>Spaceship One</rocket>
+    <rocket>Spaceship One on One</rocket>
+    <dog>Flurry</dog>
+    <rocket>Spaceship Two</rocket>
 </john>

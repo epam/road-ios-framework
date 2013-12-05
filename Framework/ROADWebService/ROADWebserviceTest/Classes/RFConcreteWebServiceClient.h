@@ -67,7 +67,7 @@ RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO, serializationRoot = @
 
 RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
 RF_ATTRIBUTE(RFMultipartData, boundary = @"sdfsfsf")
-- (id<RFWebServiceCancellable>)testMultipartDataWithAttachment:(RFFormData *)attachment success:(id)successBlock failure:(void(^)(NSError *error))failureBlock;
+- (id<RFWebServiceCancellable>)testMultipartDataWithAttachment:(RFFormData *)attachment success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
 RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
 - (id<RFWebServiceCancellable>)testMultipartDataWithAttachments:(NSArray *)attachments success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;

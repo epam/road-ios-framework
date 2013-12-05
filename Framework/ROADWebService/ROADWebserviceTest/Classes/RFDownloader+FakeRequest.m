@@ -89,6 +89,11 @@
             || numberOfMatches % 2 == 1)) {
         isOkMultipartData = YES;
     }
+    else {
+        NSLog(@"Number of matches exceed the limit - %d", numberOfMatches);
+        NSLog(@"result - %@", result);
+        NSLog(@"%@", self.request.allHTTPHeaderFields);
+    }
     
     return isOkMultipartData;
 }
