@@ -37,7 +37,7 @@
 
 -(id)deserializeData:(NSData *)data serializatinRoot:(NSString *)serializationRoot withDeserializationClass:(Class)deserializationClass error:(NSError *__autoreleasing *)error {
     RFAttributedXMLDecoder *decoder = [[RFAttributedXMLDecoder alloc] init];
-    id restored = [decoder decodeData:data withRootObjectClass:NSStringFromClass(deserializationClass)];
+    id restored = [decoder decodeData:data withRootObjectClass:deserializationClass];
     return restored;
 }
 

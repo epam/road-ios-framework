@@ -37,12 +37,13 @@
 @implementation RFDownloader (FakeRequest)
 
 - (void)fakeStart {
+    SEL downloaderFinishSelector = sel_registerName("downloaderFinishedWithResult:response:error:");
     NSMethodSignature * downloaderFinishMethodSignature = [RFDownloader
-                                                           instanceMethodSignatureForSelector:@selector(downloaderFinishedWithResult:response:error:)];
+                                                           instanceMethodSignatureForSelector:downloaderFinishSelector];
     NSInvocation * downloaderFinishMethodInvocation = [NSInvocation
                                    invocationWithMethodSignature:downloaderFinishMethodSignature];
     [downloaderFinishMethodInvocation setTarget:self];
-    [downloaderFinishMethodInvocation setSelector:@selector(downloaderFinishedWithResult:response:error:)];
+    [downloaderFinishMethodInvocation setSelector:downloaderFinishSelector];
 
     NSData *resultData = [[NSData alloc] init];
     NSURLResponse *response;
@@ -56,6 +57,7 @@
     }
     else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.serializer"]) {
         response = [self checkXMLSerializedRequestData] ? [self successResponse] : [self failureResponse];
+        resultData = self.request.HTTPBody;
     }
     else {
         // Not processed URL

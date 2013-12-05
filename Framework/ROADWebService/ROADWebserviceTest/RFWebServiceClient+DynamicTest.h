@@ -64,9 +64,8 @@ RF_ATTRIBUTE(RFWebServiceCall, method = @"GET", relativePath = @"/?time=1")
 RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{@"testKey1" : @"%%0%%"})
 - (id<RFWebServiceCancellable>)loadListWithHeaderValueForTestKey1:(NSString *)headerValue prepareBlock:(RFWebServiceClientPrepareForSendRequestBlock)block success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
-RF_ATTRIBUTE(RFWebServiceCall, method = @"POST")
+RF_ATTRIBUTE(RFWebServiceCall, method = @"POST", prototypeClass = [RFSerializableTestObject class])
 RF_ATTRIBUTE(RFWebServiceSerializer, serializerClass = [RFXMLSerializer class])
 - (id<RFWebServiceCancellable>)testXMLSerializerWithObject:(RFSerializableTestObject *)headerValue withSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
-
 
 @end
