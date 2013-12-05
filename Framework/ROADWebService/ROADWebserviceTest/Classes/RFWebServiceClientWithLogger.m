@@ -8,6 +8,11 @@
 
 #import "RFWebServiceClientWithLogger.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wincomplete-implementation"
+
 @implementation RFWebServiceClientWithLogger
 
 @end
+
+#pragma clang diagnostic pop

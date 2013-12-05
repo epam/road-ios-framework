@@ -214,19 +214,21 @@
 }
 
 - (NSMutableURLRequest *)requestForUrl:(NSURL * const)anUrl withMethod:(NSString * const)method withBody:(NSData *)httpBody values:(NSDictionary *)values {
+    NSData *body = httpBody;
+    
     if ([_callAttribute.method isEqualToString:@"POST"]) {
         if (_callAttribute.postParameter != NSNotFound && !httpBody.length) {
             id bodyObject = [values objectForKey:[NSString stringWithFormat:@"%d", _callAttribute.postParameter]];
-            httpBody = [self dataFromParameter:bodyObject];
+            body = [self dataFromParameter:bodyObject];
         }
         else {
-            if (!httpBody.length) {
+            if (!body.length) {
                 id firstParameter = values[@"0"];
                 if (firstParameter) { // Checking first parameter of web service call method
-                    httpBody = [self dataFromParameter:firstParameter];
+                    body = [self dataFromParameter:firstParameter];
                 }
             }
-            else {
+            else if (_callAttribute.postParameter != NSNotFound) {
                 RFLogWarning(@"Web service method %@ specifies postParameter, but has NSData of RFFormData variable in parameters and use it instead", method);
             }
         }
@@ -235,7 +237,7 @@
     
     NSMutableURLRequest * const request = [NSMutableURLRequest requestWithURL:anUrl];
     request.HTTPMethod = method;
-    request.HTTPBody = httpBody;
+    request.HTTPBody = body;
     return request;
 }
 
