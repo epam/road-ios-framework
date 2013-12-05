@@ -1,6 +1,6 @@
 //
-//  RFEncodingMapper.m
-//  ROADReflection
+//  RFTypeDecoder.m
+//  ROADCore
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -77,12 +77,26 @@ static NSString * const kRFDereferenceOperator = @"*";
 }
 
 + (NSString *)nameFromTypeEncoding:(NSString *)encoding {
-    NSString *result;
+    NSString *result = nil;
     
     if ([encoding length] == 1) {
         result = kRFMapDictionary[encoding];
     }
-    else if ([self RF_isPrefix:[self RF_objectTypeEncodingCharacterSet] inString:encoding]) {
+    else {
+        result = [self checkCustomEncoding:encoding];
+    }
+    
+    if ([result length] == 0) {
+        // in case no match is found, a fail-safe solution is to keep the encoding itself
+        result = [encoding copy];
+    }
+    
+    return result;
+}
+
++ (NSString *)checkCustomEncoding:(NSString *)encoding {
+    id result;
+    if ([self RF_isPrefix:[self RF_objectTypeEncodingCharacterSet] inString:encoding]) {
         result = [NSString stringWithFormat:kRFPointerFormat, [encoding stringByTrimmingCharactersInSet:[self RF_objectTypeEncodingCharacterSet]]];
     }
     else if ([self RF_isPrefix:[self RF_valueTypePointerEncodingCharacterSet] inString:encoding]) {
@@ -108,11 +122,6 @@ static NSString * const kRFDereferenceOperator = @"*";
         NSString * const typeEncoding = [encoding stringByTrimmingCharactersInSet:[self RF_fixedArrayEncodingCharacterSet]];
         NSString * const type = [self nameFromTypeEncoding:typeEncoding];
         result = [NSString stringWithFormat:kRFFixedArrayFormat, type, (long)arraySize];
-    }
-    
-    if ([result length] == 0) {
-        // in case no match is found, a fail-safe solution is to keep the encoding itself
-        result = [encoding copy];
     }
     
     return result;
