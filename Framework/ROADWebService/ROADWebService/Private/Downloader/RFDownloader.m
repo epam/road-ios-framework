@@ -101,7 +101,7 @@
         boundary = multipartDataAttribute.boundary;
         if (!boundary.length) {
             // Some random default boundary
-            boundary = kRFBoundaryDefaultString;
+            boundary = @"AaB03x"; //kRFBoundaryDefaultString;
             RFLogWarning(@"WebService: Boundary is not specified, using default one");
         }
         NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
