@@ -43,6 +43,7 @@
 		78CBA92B16C3D41800DAC9BB /* ROADCore.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 78CBA92916C3D41800DAC9BB /* ROADCore.xcodeproj */; };
 		78DD732B164A6305009B334C /* RFSerializableCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 78DD7329164A6305009B334C /* RFSerializableCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78DD732F164A6553009B334C /* RFSerializableCollection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78DD7329164A6305009B334C /* RFSerializableCollection.h */; };
+		83522BF31850C8AA006C5CA3 /* RFXMLSerializableCollection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C33E15FE18462BA400AB4CC6 /* RFXMLSerializableCollection.h */; };
 		835B6C71175628D50072765C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 835B6C70175628D50072765C /* libz.dylib */; };
 		83A36B2F1798205000449C0C /* RFSerializableDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A36B2E1798205000449C0C /* RFSerializableDate.m */; };
 		83A36B3517982A0B00449C0C /* RFSerializableDate.h in Headers */ = {isa = PBXBuildFile; fileRef = 83A36B2D1798205000449C0C /* RFSerializableDate.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -59,8 +60,7 @@
 		83D0E61018462AE8002625E6 /* DeserializationCustomHandlingTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 83D0E60F18462AE8002625E6 /* DeserializationCustomHandlingTest.json */; };
 		83D0E6161846304E002625E6 /* DeserializationCustomPropertyKeyHandlingTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 83D0E6151846304E002625E6 /* DeserializationCustomPropertyKeyHandlingTest.json */; };
 		83D0E643184DCC0B002625E6 /* RFSerializationCustomHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83F122C818449D32000023AF /* RFSerializationCustomHandler.h */; };
-		83D0E648184DCC10002625E6 /* RFXMLCollectionContainer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C33138F518369E11000675B6 /* RFXMLCollectionContainer.h */; };
-		83D0E649184DCC14002625E6 /* RFXMLAttributes.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 331843EC17FC628D00634BF6 /* RFXMLAttributes.h */; };
+		83D0E649184DCC14002625E6 /* RFXMLSerializable.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 331843EC17FC628D00634BF6 /* RFXMLSerializable.h */; };
 		83F122CA18449D32000023AF /* RFSerializationCustomHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F122C918449D32000023AF /* RFSerializationCustomHandler.m */; };
 		8D1239BC17CFAED300094213 /* RFSerializationAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1239BB17CFAED300094213 /* RFSerializationAssistant.m */; };
 		8D60078317CFFF2C0095E17D /* libROADLogger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D60077E17CFFECC0095E17D /* libROADLogger.a */; };
@@ -183,8 +183,8 @@
 			dstPath = include/ROAD;
 			dstSubfolderSpec = 16;
 			files = (
-				83D0E649184DCC14002625E6 /* RFXMLAttributes.h in CopyFiles */,
-				83D0E648184DCC10002625E6 /* RFXMLCollectionContainer.h in CopyFiles */,
+				83522BF31850C8AA006C5CA3 /* RFXMLSerializableCollection.h in CopyFiles */,
+				83D0E649184DCC14002625E6 /* RFXMLSerializable.h in CopyFiles */,
 				83D0E643184DCC0B002625E6 /* RFSerializationCustomHandler.h in CopyFiles */,
 				33F0EEEB1804AA15001DCCED /* RFAttributedCoder.h in CopyFiles */,
 				33F0EEEC1804AA15001DCCED /* RFAttributedDecoder.h in CopyFiles */,

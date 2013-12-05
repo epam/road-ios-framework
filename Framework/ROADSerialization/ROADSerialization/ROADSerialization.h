@@ -42,7 +42,7 @@
 #import "RFAttributedDecoder.h"
 #import "RFAttributedXMLCoder.h"
 #import "RFAttributedXMLDecoder.h"
-#import "RFXMLAttributes.h"
-#import "RFXMLCollectionContainer.h"
+#import "RFXMLSerializable.h"
+#import "RFXMLSerializableCollection.h"
 
 #endif

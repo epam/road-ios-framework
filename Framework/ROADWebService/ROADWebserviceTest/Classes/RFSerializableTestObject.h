@@ -35,9 +35,9 @@
 RF_ATTRIBUTE(RFSerializable)
 @interface RFSerializableTestObject : NSObject
 
-RF_ATTRIBUTE(RFXMLAttributes, isSavedInTag = YES);
+RF_ATTRIBUTE(RFXMLSerializable, isTagAttribute = YES);
 @property (copy, nonatomic) NSString *name;
-RF_ATTRIBUTE(RFXMLAttributes, isSavedInTag = NO);
+RF_ATTRIBUTE(RFXMLSerializable, isTagAttribute = NO);
 @property (copy, nonatomic) NSString *city;
 
 + (RFSerializableTestObject *)testObject;
