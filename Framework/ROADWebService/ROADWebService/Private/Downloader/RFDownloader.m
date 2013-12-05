@@ -96,16 +96,13 @@
     if (_multipartData) {
         NSString *boundary;
         RFMultipartData *multipartDataAttribute = [[self.webServiceClient class] RF_attributeForMethod:self.methodName withAttributeType:[RFMultipartData class]];
-        NSLog(@"multipartDataAttribute - %@", multipartDataAttribute);
-        NSLog(@"multipartDataAttribute.boundary - %@", multipartDataAttribute.boundary);
         boundary = multipartDataAttribute.boundary;
         if (!boundary.length) {
             // Some random default boundary
-            boundary = @"AaB03x"; //kRFBoundaryDefaultString;
+            boundary = @"AaB03x"; //kRFBoundaryDefaultString; // Bug of Travis: const string contain nil
             RFLogWarning(@"WebService: Boundary is not specified, using default one");
         }
         NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
-        NSLog(@"boundary - %@", boundary);
         [_request addValue:contentType forHTTPHeaderField:@"Content-Type"];
     }
     

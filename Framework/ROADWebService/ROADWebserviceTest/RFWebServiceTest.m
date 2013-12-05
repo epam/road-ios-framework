@@ -50,7 +50,10 @@
 }
 @end
 
-@implementation RFWebServiceTest
+@implementation RFWebServiceTest {
+    RFLogWriter *logWriter;
+    
+}
 
 + (void)setUp {
     [[RFServiceProvider logger] addWriter:[RFConsoleLogWriter new]];
@@ -60,7 +63,17 @@
     Method originalMethod = class_getInstanceMethod([RFDownloader class], originalSelector);
     Method overrideMethod = class_getInstanceMethod([RFDownloader class], overrideSelector);
     method_exchangeImplementations(originalMethod, overrideMethod);
-    NSLog(@"Downloader's stubing some requests!");
+}
+
+// Travis bug cause performing +setUp before each test
++ (void)tearDown {
+    [[RFServiceProvider logger] removeWriter:[[[RFServiceProvider logger] writers] lastObject]];
+    
+    SEL originalSelector = @selector(start);
+    SEL overrideSelector = @selector(fakeStart);
+    Method originalMethod = class_getInstanceMethod([RFDownloader class], originalSelector);
+    Method overrideMethod = class_getInstanceMethod([RFDownloader class], overrideSelector);
+    method_exchangeImplementations(originalMethod, overrideMethod);
 }
 
 - (void)testServiceRootAttribute {
