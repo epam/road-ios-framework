@@ -60,6 +60,7 @@
     Method originalMethod = class_getInstanceMethod([RFDownloader class], originalSelector);
     Method overrideMethod = class_getInstanceMethod([RFDownloader class], overrideSelector);
     method_exchangeImplementations(originalMethod, overrideMethod);
+    NSLog(@"Downloader's stubing some requests!");
 }
 
 - (void)testServiceRootAttribute {

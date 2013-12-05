@@ -37,6 +37,8 @@
 @implementation RFDownloader (FakeRequest)
 
 - (void)fakeStart {
+    NSLog(@"Faking start of downloading at url: %@", self.request.URL);
+    
     SEL downloaderFinishSelector = sel_registerName("downloaderFinishedWithResult:response:error:");
     NSMethodSignature * downloaderFinishMethodSignature = [RFDownloader
                                                            instanceMethodSignatureForSelector:downloaderFinishSelector];
