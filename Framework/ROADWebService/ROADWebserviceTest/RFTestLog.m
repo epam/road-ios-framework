@@ -1,5 +1,5 @@
 //
-//  RFWebServiceClientWithLogger.h
+//  RFTestLog.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,13 +30,49 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "RFWebServiceClient.h"
-#import "RFWebServiceLogger.h"
-#import <ROAD/ROADLogger.h>
+#import <SenTestingKit/SenTestingKit.h>
 
-RF_ATTRIBUTE(RFWebServiceLogger, loggerType=kRFLogMessageTypeAllLoggers)
-@interface RFWebServiceClientWithLogger : RFWebServiceClient
-RF_ATTRIBUTE(RFWebServiceLogger, loggerType=kRFLogMessageTypeNetworkOnly)
-- (void)methodWithLogger;
-- (void)methodWithoutLogger;
+// GCOV Flush function
+extern void __gcov_flush(void);
+
+static id mainSuite = nil;
+
+@interface RFTestLog : SenTestLog
+
+@end
+
+@implementation RFTestLog
+
++ (void)initialize
+{
+	[[NSUserDefaults standardUserDefaults] setValue:@"RFTestLog" forKey:SenTestObserverClassKey];
+    
+	[super initialize];
+}
+
++ (void)testSuiteDidStart:(NSNotification *)notification
+{
+	[super testSuiteDidStart:notification];
+    
+	SenTestSuiteRun *suite = notification.object;
+    
+	if (mainSuite == nil)
+	{
+		mainSuite = suite;
+	}
+}
+
++ (void)testSuiteDidStop:(NSNotification *)notification
+{
+	[super testSuiteDidStop:notification];
+    
+	SenTestSuiteRun* suite = notification.object;
+    
+	if (mainSuite == suite)
+	{
+		// workaround for missing flush with iOS 7 Simulator
+		__gcov_flush();
+	}
+}
+
 @end

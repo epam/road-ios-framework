@@ -27,6 +27,7 @@
 		831EB9DB17C600AA004C9BA5 /* RFWebServiceErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 831EB9DA17C600AA004C9BA5 /* RFWebServiceErrorHandler.m */; };
 		831EB9E917C600D4004C9BA5 /* RFWebServiceErrorHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 831EB9D917C600AA004C9BA5 /* RFWebServiceErrorHandler.h */; };
 		831EB9ED17C60A65004C9BA5 /* RFODataErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 831EB9EC17C60A65004C9BA5 /* RFODataErrorHandler.m */; };
+		83245D3B1854DB2000F3251B /* RFTestLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 83245D3A1854DB2000F3251B /* RFTestLog.m */; };
 		832540EE17A6B02B006AACF4 /* RFAuthenticationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 832540ED17A6B02B006AACF4 /* RFAuthenticationProvider.m */; };
 		83448CCF17D0C98B002A0D15 /* ROADGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 83448CCE17D0C98B002A0D15 /* ROADGeneratedAttribute.m */; };
 		8349D87B17B0E5FE006BDA5F /* RFConcurrentAuthenticationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8349D87A17B0E5FE006BDA5F /* RFConcurrentAuthenticationProvider.m */; };
@@ -288,6 +289,7 @@
 		831EB9EA17C6047D004C9BA5 /* RFWebServiceErrorHandling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFWebServiceErrorHandling.h; sourceTree = "<group>"; };
 		831EB9EB17C60A65004C9BA5 /* RFODataErrorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFODataErrorHandler.h; sourceTree = "<group>"; };
 		831EB9EC17C60A65004C9BA5 /* RFODataErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RFODataErrorHandler.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		83245D3A1854DB2000F3251B /* RFTestLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFTestLog.m; sourceTree = "<group>"; };
 		832540EC17A6B02B006AACF4 /* RFAuthenticationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFAuthenticationProvider.h; sourceTree = "<group>"; };
 		832540ED17A6B02B006AACF4 /* RFAuthenticationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RFAuthenticationProvider.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		83448CCE17D0C98B002A0D15 /* ROADGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ROADGeneratedAttribute.m; path = ROADGeneratedAttributes/ROADGeneratedAttribute.m; sourceTree = "<group>"; };
@@ -641,6 +643,7 @@
 				CD896C3F1737E85800565C9C /* ROADWebserviceTest-Prefix.pch */,
 				EE057849181398D30093B308 /* RFWebServiceClientWithLogger.h */,
 				EE05784A181398D30093B308 /* RFWebServiceClientWithLogger.m */,
+				83245D3A1854DB2000F3251B /* RFTestLog.m */,
 			);
 			path = ROADWebserviceTest;
 			sourceTree = "<group>";
@@ -954,6 +957,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D94224817E2A4B0005F0AE3 /* RFODataTestEntity.m in Sources */,
+				83245D3B1854DB2000F3251B /* RFTestLog.m in Sources */,
 				8D94224917E2A4B5005F0AE3 /* RFDownloader+FakeRequest.m in Sources */,
 				8D94224A17E2A4BB005F0AE3 /* ROADGeneratedAttribute.m in Sources */,
 				EE05784B181398D30093B308 /* RFWebServiceClientWithLogger.m in Sources */,
