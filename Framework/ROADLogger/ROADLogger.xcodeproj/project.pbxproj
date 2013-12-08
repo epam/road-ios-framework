@@ -22,6 +22,7 @@
 		78B1BEA116E7721A009AD4EF /* RFLogMessageWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B1BE9B16E7721A009AD4EF /* RFLogMessageWrapper.m */; };
 		78B1BEA216E7721A009AD4EF /* RFStreamDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B1BE9D16E7721A009AD4EF /* RFStreamDelegate.m */; };
 		78B1BEA316E7721A009AD4EF /* RFStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B1BE9F16E7721A009AD4EF /* RFStreamWriter.m */; };
+		83245D551854DF7900F3251B /* RFTestLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 83245D541854DF7900F3251B /* RFTestLog.m */; };
 		8D6007DA17D014A00095E17D /* RFServiceProvider+LoggingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6007D917D014A00095E17D /* RFServiceProvider+LoggingService.m */; };
 		8D6007DC17D016890095E17D /* RFServiceProvider+LoggingService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D6007D817D014A00095E17D /* RFServiceProvider+LoggingService.h */; };
 		CD4E844F16F7663F00618316 /* RFConnection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B1BE9716E7721A009AD4EF /* RFConnection.h */; };
@@ -186,6 +187,7 @@
 		78B1BE9E16E7721A009AD4EF /* RFStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFStreamWriter.h; sourceTree = "<group>"; };
 		78B1BE9F16E7721A009AD4EF /* RFStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFStreamWriter.m; sourceTree = "<group>"; };
 		78F95AFB16E9F1CF00E58C3B /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		83245D541854DF7900F3251B /* RFTestLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFTestLog.m; sourceTree = "<group>"; };
 		8D6007D817D014A00095E17D /* RFServiceProvider+LoggingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RFServiceProvider+LoggingService.h"; sourceTree = "<group>"; };
 		8D6007D917D014A00095E17D /* RFServiceProvider+LoggingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RFServiceProvider+LoggingService.m"; sourceTree = "<group>"; };
 		D757824A17CCB91000BD85DA /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -369,6 +371,7 @@
 				D771949317CF4DED0011047F /* ROADLoggerTest.h */,
 				D771949417CF4DED0011047F /* ROADLoggerTest.m */,
 				D771948E17CF4DED0011047F /* Supporting Files */,
+				83245D541854DF7900F3251B /* RFTestLog.m */,
 			);
 			path = ROADLoggerTest;
 			sourceTree = "<group>";
@@ -611,6 +614,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D771949517CF4DED0011047F /* ROADLoggerTest.m in Sources */,
+				83245D551854DF7900F3251B /* RFTestLog.m in Sources */,
 				D7AF147717CF7C4A00A92C31 /* ROADGeneratedAttribute.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -704,6 +708,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/ROADLogger.dst;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADLogger/ROADLogger-Prefix.pch";
 				ONLY_ACTIVE_ARCH = NO;
@@ -720,6 +725,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/ROADLogger.dst;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADLogger/ROADLogger-Prefix.pch";
 				OTHER_LDFLAGS = (

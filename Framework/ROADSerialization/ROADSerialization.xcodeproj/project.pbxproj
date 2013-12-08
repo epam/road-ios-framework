@@ -43,6 +43,7 @@
 		78CBA92B16C3D41800DAC9BB /* ROADCore.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 78CBA92916C3D41800DAC9BB /* ROADCore.xcodeproj */; };
 		78DD732B164A6305009B334C /* RFSerializableCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 78DD7329164A6305009B334C /* RFSerializableCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78DD732F164A6553009B334C /* RFSerializableCollection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78DD7329164A6305009B334C /* RFSerializableCollection.h */; };
+		83245D4D1854DEEF00F3251B /* RFTestLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 83245D4C1854DEEF00F3251B /* RFTestLog.m */; };
 		835B6C71175628D50072765C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 835B6C70175628D50072765C /* libz.dylib */; };
 		83A36B2F1798205000449C0C /* RFSerializableDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A36B2E1798205000449C0C /* RFSerializableDate.m */; };
 		83A36B3517982A0B00449C0C /* RFSerializableDate.h in Headers */ = {isa = PBXBuildFile; fileRef = 83A36B2D1798205000449C0C /* RFSerializableDate.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -231,6 +232,7 @@
 		78BCFF7F16D24E6800D23908 /* TempAttributes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TempAttributes; sourceTree = "<group>"; };
 		78CBA92916C3D41800DAC9BB /* ROADCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ROADCore.xcodeproj; path = ../ROADCore/ROADCore.xcodeproj; sourceTree = "<group>"; };
 		78DD7329164A6305009B334C /* RFSerializableCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RFSerializableCollection.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		83245D4C1854DEEF00F3251B /* RFTestLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFTestLog.m; sourceTree = "<group>"; };
 		835B6C70175628D50072765C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		83A36B2D1798205000449C0C /* RFSerializableDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RFSerializableDate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		83A36B2E1798205000449C0C /* RFSerializableDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFSerializableDate.m; sourceTree = "<group>"; };
@@ -404,6 +406,7 @@
 				78513E6F1649220C0049549A /* RFAnnotatedCoderTest.m */,
 				C3182CF8183E4C140041F4B7 /* RFAttributedXMLCoderTest.m */,
 				83D0E5F71845DB73002625E6 /* RFCustomJSONSerializationHandlingTest.m */,
+				83245D4C1854DEEF00F3251B /* RFTestLog.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -854,6 +857,7 @@
 				78513E701649220C0049549A /* RFAnnotatedCoderTest.m in Sources */,
 				C33E16051847455F00AB4CC6 /* RFXMLSerializationTestObject2.m in Sources */,
 				83D0E6011845DCAA002625E6 /* RFJSONCustomPropertyHandlerEntity.m in Sources */,
+				83245D4D1854DEEF00F3251B /* RFTestLog.m in Sources */,
 				8D60078617CFFF7D0095E17D /* ROADGeneratedAttribute.m in Sources */,
 				83D0E5F51845D8A3002625E6 /* RFJSONCustomSerializationHandler.m in Sources */,
 				C33138F418369C28000675B6 /* RFXMLSerializationTestObject.m in Sources */,
@@ -1071,6 +1075,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/SecondSightSerialization.dst;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADSerialization/ROADSerialization-Prefix.pch";
 				OTHER_LDFLAGS = (
@@ -1086,6 +1091,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/SecondSightSerialization.dst;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADSerialization/ROADSerialization-Prefix.pch";
 				OTHER_LDFLAGS = (
