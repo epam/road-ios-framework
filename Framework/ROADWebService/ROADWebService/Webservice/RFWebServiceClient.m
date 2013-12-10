@@ -36,6 +36,7 @@
 #import "RFAuthenticating.h"
 #import "RFDefaultSerializer.h"
 #import "RFWebService.h"
+#import "RFWebServiceSerializer.h"
 
 @implementation RFWebServiceClient
 
@@ -43,7 +44,15 @@
     self = [super init];
  
     if (self) {
-        _serializationDelegate = [[RFDefaultSerializer alloc] init];
+        // Creates custom serializer if it was specified
+        RFWebServiceSerializer *serializerAttribute = [[self class] RF_attributeForClassWithAttributeType:[RFWebServiceSerializer class]];
+        if (serializerAttribute.serializerClass) {
+            _serializationDelegate = [[serializerAttribute.serializerClass alloc] init];
+        }
+        else {
+            _serializationDelegate = [[RFDefaultSerializer alloc] init];
+        }
+        
         _sharedHeaders = [[NSMutableDictionary alloc] init];
         
         RFWebService *webServiceAttribute = [[self class] RF_attributeForClassWithAttributeType:[RFWebService class]];

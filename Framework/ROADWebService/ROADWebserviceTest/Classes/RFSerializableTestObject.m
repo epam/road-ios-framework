@@ -1,5 +1,5 @@
 //
-//  RFWebServiceCall.h
+//  RFSerializableTestObject.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,36 +30,30 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <ROAD/ROADAttribute.h>
+#import "RFSerializableTestObject.h"
 
-@interface RFWebServiceCall : NSObject
+@implementation RFSerializableTestObject
 
-/**
- * Specifies path relative to service root of web service client.
- */
-@property (strong, nonatomic) NSString *relativePath;
++ (RFSerializableTestObject *)testObject {
+    RFSerializableTestObject *testObject = [[RFSerializableTestObject alloc] init];
+    testObject.name = @"John Smith";
+    testObject.city = @"Oklahoma";
+    
+    return testObject;
+}
 
-@property (copy, nonatomic) NSArray* successCodes;
+- (BOOL)isEqual:(id)object {
+    BOOL isEqual = NO;
+    
+    if ([object isMemberOfClass:[RFSerializableTestObject class]]) {
+        RFSerializableTestObject *serialTestObject = object;
+        if ([serialTestObject.name isEqualToString:_name]
+            && [serialTestObject.city isEqualToString:_city]) {
+            isEqual = YES;
+        }
+    }
 
-@property (assign, nonatomic) BOOL overrideGlobalSuccessCodes;
-
-@property (copy, nonatomic) NSString *method;
-
-/**
- * Specifies class which represents response.
- */
-@property (strong, nonatomic) Class prototypeClass;
-
-/**
- * Specifies key path to prototype class in response.
- */
-@property (copy, nonatomic) NSString *serializationRoot;
-
-@property BOOL serializationDisabled;
-
-/**
- * Works only if method == @"POST". Specifies index of parameter from method, which will be sent in request body.
- */
-@property (assign, nonatomic) int postParameter;
+    return isEqual;
+}
 
 @end

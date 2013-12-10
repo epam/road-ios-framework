@@ -32,8 +32,8 @@
 
 #import "RFDefaultSerializer.h"
 #import <ROAD/ROADSerialization.h>
-@implementation RFDefaultSerializer
 
+@implementation RFDefaultSerializer
 
 -(id)deserializeData:(NSData *)data serializatinRoot:(NSString *)serializationRoot withDeserializationClass:(Class)deserializationClass error:(NSError *__autoreleasing *)error
 {

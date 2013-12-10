@@ -107,35 +107,39 @@
             NSArray *properties = RFSerializationPropertiesForClass([rootObject class]);
 
             @autoreleasepool {
-                for (RFPropertyInfo * const aDesc in properties) {
-                    NSString *propertyName = [aDesc propertyName];
-                    id value = [rootObject valueForKey:propertyName];
-                    id encodedValue;
-                    
-                    if ([customHandlerAttribute.key isEqualToString:propertyName]) {
-                        encodedValue = RFCustomSerialization(value, customHandlerAttribute);
-                    }
-                    else {
-                        RFSerializationCustomHandler *propertyCustomHandlerAttribute = [aDesc attributeWithType:[RFSerializationCustomHandler class]];
-                        if (propertyCustomHandlerAttribute && propertyCustomHandlerAttribute.key.length == 0) {
-                            encodedValue = RFCustomSerialization(value, propertyCustomHandlerAttribute);
-                        }
-                        else {
-                            encodedValue = [self encodeValue:value forProperty:aDesc customHandlerAttribute:propertyCustomHandlerAttribute];
-                        }
-                        
-                    }
-                    
-                    NSString *key = RFSerializationKeyForProperty(aDesc);
-                    if (encodedValue != nil) {
-                        archive[key] = encodedValue;
-                    }
-                }
+                [self fillDictionary:archive withProperties:properties rootObject:rootObject customHandlerAttribute:customHandlerAttribute];
             }
         }
     }
     
     return archive;
+}
+
+- (void)fillDictionary:(NSMutableDictionary *)archive withProperties:(NSArray *)properties rootObject:(id)rootObject  customHandlerAttribute:(RFSerializationCustomHandler *)customHandlerAttribute {
+    for (RFPropertyInfo * const aDesc in properties) {
+        NSString *propertyName = [aDesc propertyName];
+        id value = [rootObject valueForKey:propertyName];
+        id encodedValue;
+        
+        if ([customHandlerAttribute.key isEqualToString:propertyName]) {
+            encodedValue = RFCustomSerialization(value, customHandlerAttribute);
+        }
+        else {
+            RFSerializationCustomHandler *propertyCustomHandlerAttribute = [aDesc attributeWithType:[RFSerializationCustomHandler class]];
+            if (propertyCustomHandlerAttribute && propertyCustomHandlerAttribute.key.length == 0) {
+                encodedValue = RFCustomSerialization(value, propertyCustomHandlerAttribute);
+            }
+            else {
+                encodedValue = [self encodeValue:value forProperty:aDesc customHandlerAttribute:propertyCustomHandlerAttribute];
+            }
+            
+        }
+        
+        NSString *key = RFSerializationKeyForProperty(aDesc);
+        if (encodedValue != nil) {
+            archive[key] = encodedValue;
+        }
+    }
 }
 
 - (id)encodeValue:(id)value forProperty:(RFPropertyInfo *)propertyInfo customHandlerAttribute:(RFSerializationCustomHandler *)customHandlerAttribute {

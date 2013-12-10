@@ -46,6 +46,7 @@
 #import "RFWebServiceLogger.h"
 #import "RFMultipartData.h"
 #import "RFWebServiceCallParameterEncoder.h"
+#import "RFWebServiceSerializer.h"
 
 @interface RFDownloader () {
     NSURLConnection * _connection;
@@ -89,22 +90,19 @@
 }
 
 - (void)configureRequestForUrl:(NSURL * const)anUrl body:(NSData * const)httpBody sharedHeaders:(NSDictionary *)sharedHeaders values:(NSDictionary *)values {
-    _request = [self requestForUrl:anUrl withMethod:_callAttribute.method withBody:httpBody];
+    _request = [self requestForUrl:anUrl withMethod:_callAttribute.method withBody:httpBody values:values];
     
     // For multipart form data we have to add specific header
     if (_multipartData) {
         NSString *boundary;
         RFMultipartData *multipartDataAttribute = [[self.webServiceClient class] RF_attributeForMethod:self.methodName withAttributeType:[RFMultipartData class]];
-        NSLog(@"multipartDataAttribute - %@", multipartDataAttribute);
-        NSLog(@"multipartDataAttribute.boundary - %@", multipartDataAttribute.boundary);
         boundary = multipartDataAttribute.boundary;
         if (!boundary.length) {
             // Some random default boundary
-            boundary = kRFBoundaryDefaultString;
+            boundary = @"AaB03x"; //kRFBoundaryDefaultString; // Bug of Travis: const string contain nil
             RFLogWarning(@"WebService: Boundary is not specified, using default one");
         }
         NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
-        NSLog(@"boundary - %@", boundary);
         [_request addValue:contentType forHTTPHeaderField:@"Content-Type"];
     }
     
@@ -158,7 +156,7 @@
     self.response = response;
     
     if (!resultError && !_callAttribute.serializationDisabled) {
-        [RFWebServiceSerializationHandler deserializeData:result withSerializator:_webServiceClient.serializationDelegate serializatinRoot:_callAttribute.serializationRoot toDeserializationClass:_callAttribute.prototypeClass withCompletitionBlock:^(id serializedData, NSError *error) {
+        [RFWebServiceSerializationHandler deserializeData:result withSerializator:[self serializationDelegate] serializatinRoot:_callAttribute.serializationRoot toDeserializationClass:_callAttribute.prototypeClass withCompletitionBlock:^(id serializedData, NSError *error) {
             resultData = serializedData;
             resultError = error;
         }];
@@ -173,6 +171,19 @@
         [self performSelector:@selector(performFailureBlockOnSpecificThread) onThread:[NSThread mainThread] withObject:nil waitUntilDone:YES];
     }
     
+}
+
+- (id<RFSerializationDelegate>)serializationDelegate {
+    RFWebServiceSerializer *serializerAttribute = [[self.webServiceClient class] RF_attributeForMethod:self.methodName withAttributeType:[RFWebServiceSerializer class]];
+    id<RFSerializationDelegate> serializationDelegate;
+    if (serializerAttribute.serializerClass) {
+        serializationDelegate = [[serializerAttribute.serializerClass alloc] init];
+    }
+    else {
+        serializationDelegate = self.webServiceClient.serializationDelegate;
+    }
+    
+    return serializationDelegate;
 }
 
 - (void)stop {
@@ -202,10 +213,31 @@
    
 }
 
-- (NSMutableURLRequest *)requestForUrl:(NSURL * const)anUrl withMethod:(NSString * const)method withBody:(NSData * const)httpBody {
+- (NSMutableURLRequest *)requestForUrl:(NSURL * const)anUrl withMethod:(NSString * const)method withBody:(NSData *)httpBody values:(NSDictionary *)values {
+    NSData *body = httpBody;
+    
+    if ([_callAttribute.method isEqualToString:@"POST"]) {
+        if (_callAttribute.postParameter != NSNotFound && !httpBody.length) {
+            id bodyObject = [values objectForKey:[NSString stringWithFormat:@"%d", _callAttribute.postParameter]];
+            body = [self dataFromParameter:bodyObject];
+        }
+        else {
+            if (!body.length) {
+                id firstParameter = values[@"0"];
+                if (firstParameter) { // Checking first parameter of web service call method
+                    body = [self dataFromParameter:firstParameter];
+                }
+            }
+            else if (_callAttribute.postParameter != NSNotFound) {
+                RFLogWarning(@"Web service method %@ specifies postParameter, but has NSData of RFFormData variable in parameters and use it instead", method);
+            }
+        }
+    }
+    
+    
     NSMutableURLRequest * const request = [NSMutableURLRequest requestWithURL:anUrl];
     request.HTTPMethod = method;
-    request.HTTPBody = httpBody;
+    request.HTTPBody = body;
     return request;
 }
 
@@ -245,6 +277,16 @@ NSString * const RFAttributeTemplateEscape = @"%%";
         result[key] = [value copy];
     }];
     return result;
+}
+
+- (NSData *)dataFromParameter:(id)parameter {
+    NSData *data;
+    
+    if ([parameter isKindOfClass:[NSString class]]) {
+        data = [parameter dataUsingEncoding:NSUTF8StringEncoding];
+    }
+    
+    return data;
 }
 
 @end

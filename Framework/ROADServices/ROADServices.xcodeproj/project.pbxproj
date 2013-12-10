@@ -12,7 +12,7 @@
 		5ACD215D1741179500CC61AC /* RFROADServicesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACD215C1741179500CC61AC /* RFROADServicesTest.m */; };
 		5ACD2188174124EA00CC61AC /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ACD2186174124B500CC61AC /* SenTestingKit.framework */; };
 		5AD1FC4D1766040600E67BC4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD1FC4C1766040600E67BC4 /* Cocoa.framework */; };
-		782B6D5416C3D49B0057DF2C /* ROADCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782B6CEB16C3D46A0057DF2C /* ROADCore.framework */; };
+		782B6D5416C3D49B0057DF2C /* ROAD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782B6CEB16C3D46A0057DF2C /* ROAD.framework */; };
 		7869946416AEBF9A00B28760 /* RFService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7869946316AEBF9A00B28760 /* RFService.m */; };
 		7869946B16AEBFE100B28760 /* ROADServices.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 7869946A16AEBFC400B28760 /* ROADServices.h */; };
 		7869946C16AEBFE400B28760 /* RFService.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 7869946216AEBF9A00B28760 /* RFService.h */; };
@@ -154,7 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				782B6D5416C3D49B0057DF2C /* ROADCore.framework in Frameworks */,
+				782B6D5416C3D49B0057DF2C /* ROAD.framework in Frameworks */,
 				5AD1FC4D1766040600E67BC4 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,8 +198,8 @@
 			isa = PBXGroup;
 			children = (
 				782B6CE916C3D46A0057DF2C /* libROADCore.a */,
-				782B6CEB16C3D46A0057DF2C /* ROADCore.framework */,
-				782B6CED16C3D46A0057DF2C /* ROADCoreTest.octest */,
+				782B6CEB16C3D46A0057DF2C /* ROAD.framework */,
+				782B6CED16C3D46A0057DF2C /* ROAD.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -373,7 +373,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = RF;
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Epam Systems";
 			};
 			buildConfigurationList = 7869944716AEBF3E00B28760 /* Build configuration list for PBXProject "ROADServices" */;
@@ -409,17 +409,17 @@
 			remoteRef = 782B6CE816C3D46A0057DF2C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		782B6CEB16C3D46A0057DF2C /* ROADCore.framework */ = {
+		782B6CEB16C3D46A0057DF2C /* ROAD.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = ROADCore.framework;
+			path = ROAD.framework;
 			remoteRef = 782B6CEA16C3D46A0057DF2C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		782B6CED16C3D46A0057DF2C /* ROADCoreTest.octest */ = {
+		782B6CED16C3D46A0057DF2C /* ROAD.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = ROADCoreTest.octest;
+			path = ROAD.octest;
 			remoteRef = 782B6CEC16C3D46A0057DF2C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -674,7 +674,6 @@
 		786994F616AEC09E00B28760 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -698,7 +697,6 @@
 		786994F716AEC09E00B28760 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 1;

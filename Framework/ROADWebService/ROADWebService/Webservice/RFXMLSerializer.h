@@ -1,5 +1,5 @@
 //
-//  RFWebServiceCall.h
+//  RFXMLSerializer.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,36 +30,11 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <ROAD/ROADAttribute.h>
-
-@interface RFWebServiceCall : NSObject
+#import "RFSerializationDelegate.h"
 
 /**
- * Specifies path relative to service root of web service client.
+ The XML serializer for web service
  */
-@property (strong, nonatomic) NSString *relativePath;
-
-@property (copy, nonatomic) NSArray* successCodes;
-
-@property (assign, nonatomic) BOOL overrideGlobalSuccessCodes;
-
-@property (copy, nonatomic) NSString *method;
-
-/**
- * Specifies class which represents response.
- */
-@property (strong, nonatomic) Class prototypeClass;
-
-/**
- * Specifies key path to prototype class in response.
- */
-@property (copy, nonatomic) NSString *serializationRoot;
-
-@property BOOL serializationDisabled;
-
-/**
- * Works only if method == @"POST". Specifies index of parameter from method, which will be sent in request body.
- */
-@property (assign, nonatomic) int postParameter;
+@interface RFXMLSerializer : NSObject <RFSerializationDelegate>
 
 @end
