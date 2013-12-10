@@ -8,13 +8,20 @@ require 'optparse'
 # arraw of source subfolders to exclude
 excludedFolders = []
 extensionsToProcess = []
-coveralls_cmd = "coveralls --verbose"
+coveralls_cmd = "coveralls"
 
 excludeHeaders = false
 
 # create option parser
 opts = OptionParser.new
 opts.banner = "Usage: coveralls.rb [options]"
+
+opts.on('-e', '--current-scheme FOLDER', 'Current scheme name') do |v|
+   list_of_schemes = ["ROADWebService", "ROADSerialization", "ROADCore", "ROADServices", "ROADObservation", "ROADLogger"]
+   list_of_schemes.delete(v)
+   excludedFolders.push(*list_of_schemes)
+   puts "#{excludedFolders}"
+end
 
 opts.on('-e', '--exclude-folder FOLDER', 'Folder to exclude') do |v|
    excludedFolders << v
