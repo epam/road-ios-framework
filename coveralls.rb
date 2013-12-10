@@ -16,17 +16,18 @@ excludeHeaders = false
 opts = OptionParser.new
 opts.banner = "Usage: coveralls.rb [options]"
 
-opts.on('-e', '--current-scheme FOLDER', 'Current scheme name') do |v|
+opts.on('-s', '--current-scheme SCHEME', 'Current scheme name') do |v|
    list_of_schemes = ["ROADWebService", "ROADSerialization", "ROADCore", "ROADServices", "ROADObservation", "ROADLogger"]
    list_of_schemes.delete(v)
    excludedFolders.push(*list_of_schemes)
-   puts "#{excludedFolders}"
+   list_of_schemes.each { |x| coveralls_cmd.concat(" -e #{x}") }
 end
 
 opts.on('-e', '--exclude-folder FOLDER', 'Folder to exclude') do |v|
    excludedFolders << v
    coveralls_cmd.concat(" -e #{v}")
 end
+
 
 opts.on('-h', '--exclude-headers', 'Ignores headers') do |v|
   excludeHeaders = true
