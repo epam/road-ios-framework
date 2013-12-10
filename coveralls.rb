@@ -93,11 +93,9 @@ Find.find(derivedDataDir) do |gcda_file|
             
             # cut off absolute working dir to get relative source path
             relative_path = source_path.slice(workingDir.length+1, source_path.length)
-            
+
             extension = File.extname(relative_path)
       			extension = extension.slice(1, extension.length-1)
-            
-            puts "#{extension}"
             
             # get the path components
             path_comps = relative_path.split(File::SEPARATOR)
@@ -105,7 +103,15 @@ Find.find(derivedDataDir) do |gcda_file|
             shouldProcess = false
             exclusionMsg =""
             
-            if (excludedFolders.include?(path_comps[0]))
+            excludeByFolder = false
+            excludedFolders.each do |excludedFolder| 
+                if (relative_path.include?(excludedFolder)) 
+                    excludeByFolder = true
+                end
+            end
+
+
+            if (excludeByFolder)
               exclusionMsg = "excluded via option"
             else
               if (excludeHeaders == true && extension == 'h')
