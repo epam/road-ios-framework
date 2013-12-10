@@ -47,7 +47,6 @@ end
 # the folders
 workingDir = Dir.getwd
 derivedDataDir = "#{Etc.getpwuid.dir}/Library/Developer/Xcode/DerivedData/"
-puts "DerivedData folder: #{derivedDataDir}"
 outputDir = workingDir + "/gcov"
 
 # create gcov output folder
@@ -58,7 +57,6 @@ GCOV_SOURCE_PATTERN = Regexp.new(/Source:(.*)/)
 
 # enumerate all gcda files underneath derivedData
 Find.find(derivedDataDir) do |gcda_file|
-  puts "File founded: #{gcda_file}"
   if gcda_file.match(/\.gcda\Z/)
     
       #get just the folder name

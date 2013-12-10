@@ -21,7 +21,6 @@
 		786994FF16AEC0C100B28760 /* RFService.h in Headers */ = {isa = PBXBuildFile; fileRef = 7869946216AEBF9A00B28760 /* RFService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7869950116AEC0CF00B28760 /* RFService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7869946316AEBF9A00B28760 /* RFService.m */; };
 		78CBA92616C3D40300DAC9BB /* ROADCore.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 78CBA92416C3D40300DAC9BB /* ROADCore.xcodeproj */; };
-		83245D531854DF6300F3251B /* RFTestLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 83245D521854DF6300F3251B /* RFTestLog.m */; };
 		83AE634917F469560053780E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AE634817F469560053780E /* UIKit.framework */; };
 		D771947717CF41BC0011047F /* ROADGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = D771947617CF41BC0011047F /* ROADGeneratedAttribute.m */; };
 		D7AF13E817CF541500A92C31 /* RFServiceProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AF13E617CF541500A92C31 /* RFServiceProvider.m */; };
@@ -122,7 +121,6 @@
 		786994F116AEC09E00B28760 /* ROADServicesMac-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ROADServicesMac-Prefix.pch"; sourceTree = "<group>"; };
 		78CBA92416C3D40300DAC9BB /* ROADCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ROADCore.xcodeproj; path = ../ROADCore/ROADCore.xcodeproj; sourceTree = "<group>"; };
 		78F95ADD16E9F16600E58C3B /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		83245D521854DF6300F3251B /* RFTestLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFTestLog.m; sourceTree = "<group>"; };
 		83AE634817F469560053780E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D771947617CF41BC0011047F /* ROADGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ROADGeneratedAttribute.m; path = ROADGeneratedAttributes/ROADGeneratedAttribute.m; sourceTree = "<group>"; };
 		D7AF13E617CF541500A92C31 /* RFServiceProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFServiceProvider.m; sourceTree = "<group>"; };
@@ -173,7 +171,6 @@
 				5ACD215B1741179500CC61AC /* RFROADServicesTest.h */,
 				5ACD215C1741179500CC61AC /* RFROADServicesTest.m */,
 				5ACD21561741179500CC61AC /* Supporting Files */,
-				83245D521854DF6300F3251B /* RFTestLog.m */,
 			);
 			path = ROADServicesTest;
 			sourceTree = "<group>";
@@ -482,7 +479,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83245D531854DF6300F3251B /* RFTestLog.m in Sources */,
 				5ACD215D1741179500CC61AC /* RFROADServicesTest.m in Sources */,
 				D771947717CF41BC0011047F /* ROADGeneratedAttribute.m in Sources */,
 				D7AF141B17CF64B700A92C31 /* RFTestService.m in Sources */,
@@ -556,7 +552,7 @@
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
-				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADServicesTest/ROADServicesTest-Prefix.pch";
@@ -582,7 +578,7 @@
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
-				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADServicesTest/ROADServicesTest-Prefix.pch";

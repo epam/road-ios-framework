@@ -26,7 +26,6 @@
 		7867EB9916C3C95900A93194 /* RFObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 7867EB5716C3C86800A93194 /* RFObserver.m */; };
 		78B8E66C16C3CAF20049E36B /* RFObserverWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7867EB5516C3C86800A93194 /* RFObserverWrapper.m */; };
 		78B8E66D16C3CAF50049E36B /* RFObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 7867EB5716C3C86800A93194 /* RFObserver.m */; };
-		83245D511854DF4D00F3251B /* RFTestLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 83245D501854DF4D00F3251B /* RFTestLog.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -68,7 +67,6 @@
 		7867EB9516C3C93F00A93194 /* RFObservationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFObservationTest.h; sourceTree = "<group>"; };
 		7867EB9616C3C93F00A93194 /* RFObservationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFObservationTest.m; sourceTree = "<group>"; };
 		78F95AC616E9F0C000E58C3B /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		83245D501854DF4D00F3251B /* RFTestLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFTestLog.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,7 +184,6 @@
 				7867EB9516C3C93F00A93194 /* RFObservationTest.h */,
 				7867EB9616C3C93F00A93194 /* RFObservationTest.m */,
 				7867EB8616C3C91B00A93194 /* Supporting Files */,
-				83245D501854DF4D00F3251B /* RFTestLog.m */,
 			);
 			path = ROADObservationTest;
 			sourceTree = "<group>";
@@ -359,7 +356,6 @@
 			files = (
 				7867EB9416C3C93700A93194 /* RFNotificationObservationTest.m in Sources */,
 				7867EB9716C3C93F00A93194 /* RFObservationTest.m in Sources */,
-				83245D511854DF4D00F3251B /* RFTestLog.m in Sources */,
 				7867EB9816C3C95900A93194 /* RFObserverWrapper.m in Sources */,
 				7867EB9916C3C95900A93194 /* RFObserver.m in Sources */,
 			);
@@ -527,7 +523,7 @@
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
-				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADObservationTest/ROADObservationTest-Prefix.pch";
@@ -550,7 +546,7 @@
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
-				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADObservationTest/ROADObservationTest-Prefix.pch";

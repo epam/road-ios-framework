@@ -60,7 +60,6 @@
 		78B8E71E16C3CD320049E36B /* NSMutableString+RFStringFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E70416C3CD320049E36B /* NSMutableString+RFStringFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78B8E71F16C3CD320049E36B /* NSMutableString+RFStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70516C3CD320049E36B /* NSMutableString+RFStringFormatter.m */; };
 		78B8E72016C3CD320049E36B /* NSMutableString+RFStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70516C3CD320049E36B /* NSMutableString+RFStringFormatter.m */; };
-		83245D4F1854DF3500F3251B /* RFTestLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 83245D4E1854DF3500F3251B /* RFTestLog.m */; };
 		83AE631B17F44E280053780E /* RFAttributeCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AE631A17F44E280053780E /* RFAttributeCacheManager.m */; };
 		83AE631C17F456C40053780E /* RFAttributeCacheManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83AE631917F44E280053780E /* RFAttributeCacheManager.h */; };
 		83AE634617F467BF0053780E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AE634517F467BF0053780E /* UIKit.framework */; };
@@ -197,7 +196,6 @@
 		78B8E70416C3CD320049E36B /* NSMutableString+RFStringFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSMutableString+RFStringFormatter.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		78B8E70516C3CD320049E36B /* NSMutableString+RFStringFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSMutableString+RFStringFormatter.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		78B8E72216C3CD4A0049E36B /* ROADCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ROADCore.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		83245D4E1854DF3500F3251B /* RFTestLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFTestLog.m; sourceTree = "<group>"; };
 		83AE631917F44E280053780E /* RFAttributeCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFAttributeCacheManager.h; sourceTree = "<group>"; };
 		83AE631A17F44E280053780E /* RFAttributeCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFAttributeCacheManager.m; sourceTree = "<group>"; };
 		83AE634517F467BF0053780E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -498,7 +496,6 @@
 				8D9422E917E2C59C005F0AE3 /* InfoPlist.strings */,
 				8D9422EB17E2C59C005F0AE3 /* ROADCoreTest-Info.plist */,
 				8D9422EC17E2C59C005F0AE3 /* ROADCoreTest-Prefix.pch */,
-				83245D4E1854DF3500F3251B /* RFTestLog.m */,
 			);
 			path = ROADCoreTest;
 			sourceTree = "<group>";
@@ -795,7 +792,6 @@
 				D714B72217F5AD4600C82560 /* RFIvarInfoTest.m in Sources */,
 				8D9422EF17E2C59C005F0AE3 /* RFTemplateParsingTest.m in Sources */,
 				8D9422F017E2C59C005F0AE3 /* RFMutableObjectTest.m in Sources */,
-				83245D4F1854DF3500F3251B /* RFTestLog.m in Sources */,
 				8D9422F117E2C59C005F0AE3 /* RFPoolTest.m in Sources */,
 				8D94230217E2C5A9005F0AE3 /* AttributesAPITest.m in Sources */,
 				D78E852E17F9C1AE0046385E /* RFPropertyInfoTest.m in Sources */,
@@ -981,7 +977,7 @@
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
-				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADCoreTest/ROADCoreTest-Prefix.pch";
@@ -1005,7 +1001,7 @@
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
-				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADCoreTest/ROADCoreTest-Prefix.pch";
