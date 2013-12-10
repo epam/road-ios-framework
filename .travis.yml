@@ -20,9 +20,10 @@ script:
     - if [[ $PROJECT_SCHEME == Simian ]]; then ./script_simian.sh; else ./script_general.sh; fi
 
 after_success:
-    - if [[ $PROJECT_SCHEME != Simian && $PROJECT_SCHEME != ROADAttributesCodeGenerator ]]; then ./coveralls.rb --extension m; fi
+    - if [[ $PROJECT_SCHEME != Simian && $PROJECT_SCHEME != ROADAttributesCodeGenerator ]]; then ./coveralls.rb --extension m --exclude-folder ROADGeneratedAttributes --current-scheme $PROJECT_SCHEME; fi
 
 notifications:
   email:
     - Nikita_Leonov@epam.com
     - Valery_Demin@epam.com
+    - Yuru_Taustahuzau@epam.com
