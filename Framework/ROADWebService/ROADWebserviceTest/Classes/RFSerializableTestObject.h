@@ -1,5 +1,5 @@
 //
-//  RFWebServiceCall.h
+//  RFSerializableTestObject.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,36 +30,16 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <ROAD/ROADAttribute.h>
+#import <ROAD/ROADSerialization.h>
 
-@interface RFWebServiceCall : NSObject
+RF_ATTRIBUTE(RFSerializable)
+@interface RFSerializableTestObject : NSObject
 
-/**
- * Specifies path relative to service root of web service client.
- */
-@property (strong, nonatomic) NSString *relativePath;
+RF_ATTRIBUTE(RFXMLSerializable, isTagAttribute = YES);
+@property (copy, nonatomic) NSString *name;
+RF_ATTRIBUTE(RFXMLSerializable, isTagAttribute = NO);
+@property (copy, nonatomic) NSString *city;
 
-@property (copy, nonatomic) NSArray* successCodes;
-
-@property (assign, nonatomic) BOOL overrideGlobalSuccessCodes;
-
-@property (copy, nonatomic) NSString *method;
-
-/**
- * Specifies class which represents response.
- */
-@property (strong, nonatomic) Class prototypeClass;
-
-/**
- * Specifies key path to prototype class in response.
- */
-@property (copy, nonatomic) NSString *serializationRoot;
-
-@property BOOL serializationDisabled;
-
-/**
- * Works only if method == @"POST". Specifies index of parameter from method, which will be sent in request body.
- */
-@property (assign, nonatomic) int postParameter;
++ (RFSerializableTestObject *)testObject;
 
 @end

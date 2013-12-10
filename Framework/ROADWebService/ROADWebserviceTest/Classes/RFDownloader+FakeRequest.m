@@ -31,31 +31,36 @@
 // for additional information regarding copyright ownership and licensing
 
 #import "RFDownloader+FakeRequest.h"
+#import <ROAD/ROADLogger.h>
+
+#import "RFSerializableTestObject.h"
 
 @implementation RFDownloader (FakeRequest)
 
 - (void)fakeStart {
+    RFLogWarning(@"Faking start of downloading at url: %@", self.request.URL);
+    
+    SEL downloaderFinishSelector = sel_registerName("downloaderFinishedWithResult:response:error:");
     NSMethodSignature * downloaderFinishMethodSignature = [RFDownloader
-                                                           instanceMethodSignatureForSelector:@selector(downloaderFinishedWithResult:response:error:)];
+                                                           instanceMethodSignatureForSelector:downloaderFinishSelector];
     NSInvocation * downloaderFinishMethodInvocation = [NSInvocation
                                    invocationWithMethodSignature:downloaderFinishMethodSignature];
     [downloaderFinishMethodInvocation setTarget:self];
-    [downloaderFinishMethodInvocation setSelector:@selector(downloaderFinishedWithResult:response:error:)];
+    [downloaderFinishMethodInvocation setSelector:downloaderFinishSelector];
 
     NSData *resultData = [[NSData alloc] init];
     NSURLResponse *response;
     NSError *error;
     
     if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.multipart.data"]) {
-        if ([self checkMultipartData]) {
-            response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{}];
-        }
-        else {
-            response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:400 HTTPVersion:@"HTTP/1.1" headerFields:@{}];
-        }
+        response = [self checkMultipartData] ? [self successResponse] : [self failureResponse];
     }
     else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.method.without.blocks"]) {
-        response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{}];
+        response = [self successResponse];
+    }
+    else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.serializer"]) {
+        response = [self checkXMLSerializedRequestData] ? [self successResponse] : [self failureResponse];
+        resultData = self.request.HTTPBody;
     }
     else {
         // Not processed URL
@@ -69,6 +74,9 @@
     
     [downloaderFinishMethodInvocation invoke];
 }
+
+
+#pragma mark - Checks
 
 - (BOOL)checkMultipartData {
     NSString *result = [[NSString alloc] initWithData:self.request.HTTPBody encoding:NSUTF8StringEncoding];
@@ -90,12 +98,33 @@
         isOkMultipartData = YES;
     }
     else {
-        NSLog(@"Number of matches exceed the limit - %d", numberOfMatches);
-        NSLog(@"result - %@", result);
-        NSLog(@"%@", self.request.allHTTPHeaderFields);
+        RFLogError(@"Number of matches exceed the limit - %d", numberOfMatches);
+        RFLogError(@"result - %@", result);
+        RFLogError(@"%@", self.request.allHTTPHeaderFields);
     }
     
     return isOkMultipartData;
+}
+
+- (BOOL)checkXMLSerializedRequestData {
+    BOOL result = NO;
+    
+    NSString *body = [[NSString alloc] initWithData:self.request.HTTPBody encoding:NSUTF8StringEncoding];
+    RFAttributedXMLCoder *coder = [[RFAttributedXMLCoder alloc] init];
+    NSString *testBody = [coder encodeRootObject:[RFSerializableTestObject testObject]];
+    if ([testBody isEqualToString:body]) {
+        result = YES;
+    }
+    
+    return result;
+}
+
+- (NSHTTPURLResponse *)successResponse {
+    return [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{}];
+}
+
+- (NSHTTPURLResponse *)failureResponse {
+    return [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:400 HTTPVersion:@"HTTP/1.1" headerFields:@{}];
 }
 
 @end

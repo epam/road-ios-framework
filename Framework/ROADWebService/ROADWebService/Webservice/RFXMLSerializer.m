@@ -1,5 +1,5 @@
 //
-//  RFWebServiceCall.h
+//  RFXMLSerializer.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,36 +30,20 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <ROAD/ROADAttribute.h>
+#import "RFXMLSerializer.h"
+#import <ROAD/ROADSerialization.h>
 
-@interface RFWebServiceCall : NSObject
+@implementation RFXMLSerializer
 
-/**
- * Specifies path relative to service root of web service client.
- */
-@property (strong, nonatomic) NSString *relativePath;
+-(id)deserializeData:(NSData *)data serializatinRoot:(NSString *)serializationRoot withDeserializationClass:(Class)deserializationClass error:(NSError *__autoreleasing *)error {
+    RFAttributedXMLDecoder *decoder = [[RFAttributedXMLDecoder alloc] init];
+    id restored = [decoder decodeData:data withRootObjectClass:deserializationClass];
+    return restored;
+}
 
-@property (copy, nonatomic) NSArray* successCodes;
-
-@property (assign, nonatomic) BOOL overrideGlobalSuccessCodes;
-
-@property (copy, nonatomic) NSString *method;
-
-/**
- * Specifies class which represents response.
- */
-@property (strong, nonatomic) Class prototypeClass;
-
-/**
- * Specifies key path to prototype class in response.
- */
-@property (copy, nonatomic) NSString *serializationRoot;
-
-@property BOOL serializationDisabled;
-
-/**
- * Works only if method == @"POST". Specifies index of parameter from method, which will be sent in request body.
- */
-@property (assign, nonatomic) int postParameter;
+-(NSString *)serializeObject:(id)object {
+    RFAttributedXMLCoder *coder = [[RFAttributedXMLCoder alloc] init];
+    return [coder encodeRootObject:object];
+}
 
 @end

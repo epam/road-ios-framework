@@ -65,11 +65,11 @@ RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO, serializationRoot = @
 RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO, serializationRoot = @"coord.lon.localizedMessage.locale", successCodes = @[[NSValue valueWithRange:NSMakeRange(200, 300)]])
 - (id<RFWebServiceCancellable>)testWrongSerializationRootWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
-RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, method = @"POST")
 RF_ATTRIBUTE(RFMultipartData, boundary = @"sdfsfsf")
 - (id<RFWebServiceCancellable>)testMultipartDataWithAttachment:(RFFormData *)attachment success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
-RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, method = @"POST")
 - (id<RFWebServiceCancellable>)testMultipartDataWithAttachments:(NSArray *)attachments success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
 RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)

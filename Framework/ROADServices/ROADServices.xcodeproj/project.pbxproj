@@ -373,7 +373,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = RF;
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Epam Systems";
 			};
 			buildConfigurationList = 7869944716AEBF3E00B28760 /* Build configuration list for PBXProject "ROADServices" */;
@@ -678,7 +678,6 @@
 		786994F616AEC09E00B28760 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -702,7 +701,6 @@
 		786994F716AEC09E00B28760 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 1;
