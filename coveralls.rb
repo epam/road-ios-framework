@@ -8,7 +8,7 @@ require 'optparse'
 # arraw of source subfolders to exclude
 excludedFolders = []
 extensionsToProcess = []
-coveralls_cmd = "coveralls"
+coveralls_cmd = "coveralls --verbose"
 
 excludeHeaders = false
 
@@ -130,6 +130,7 @@ Find.find(derivedDataDir) do |gcda_file|
 end
 
 #call the coveralls, exclude some files
+puts "Calling cpp-coveralls: #{coveralls_cmd}"
 system coveralls_cmd
 
 #clean up
