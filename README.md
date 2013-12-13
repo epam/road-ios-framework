@@ -18,18 +18,18 @@ Connection to test HTTP server, that returns JSON from headers you send, could l
 	RF_ATTRIBUTE(RFWebService, serviceRoot = @"http://headers.jsontest.com/")
 	@interface JsonTestWebClient : RFWebServiceClient
 	
-	RF_ATTRIBUTE(RFWebServiceCall, method = @"GET", prototypeClass = [HeaderFields class])
+	RF_ATTRIBUTE(RFWebServiceCall, method = @"GET", prototypeClass = [MyWebServiceResponse class])
 	RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{@"Text" : @"A lot of text",
 	                                                   @"Number" : [@1434252.234 stringValue],
 	                                                   @"Date" : [[NSDate dateWithTimeIntervalSince1970:100000000] description]})
-	- (id<RFWebServiceCancellable>)echoRequestHeadersAsJSONWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+	- (id<RFWebServiceCancellable>)echoRequestHeadersAsJSONWithSuccess:(void(^)(MyWebServiceResponse result))successBlock failure:(void(^)(NSError *error))failureBlock;
 	
 	@end
 
 then we define the model:
 
 	RF_ATTRIBUTE(RFSerializable)
-	@interface HeaderFields : NSObject
+	@interface MyWebServiceResponse : NSObject
 	
 	RF_ATTRIBUTE(RFSerializable, serializationKey = @"Text")
 	@property NSString *text;
@@ -54,7 +54,7 @@ and making singleton instance of JsonTestWebClient accessible through RFServiceP
 
 Now we can use it: 
 
-	[[RFServiceProvider jsonTestWebClient] echoRequestHeadersAsJSONWithSuccess:^(HeaderFields *result) {
+	[[RFServiceProvider jsonTestWebClient] echoRequestHeadersAsJSONWithSuccess:^(MyWebServiceResponse *result) {
 	    NSLog(@"%@", result);
 	} failure:^(NSError *error) {
 	    NSLog(@"Something terrible happened! Here are details : %@", error);
