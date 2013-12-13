@@ -16,10 +16,18 @@ excludeHeaders = false
 opts = OptionParser.new
 opts.banner = "Usage: coveralls.rb [options]"
 
+opts.on('-s', '--current-scheme SCHEME', 'Current scheme name') do |v|
+   list_of_schemes = ["ROADWebService", "ROADSerialization", "ROADCore", "ROADServices", "ROADObservation", "ROADLogger"]
+   list_of_schemes.delete(v)
+   excludedFolders.push(*list_of_schemes)
+   list_of_schemes.each { |x| coveralls_cmd.concat(" -e #{x}") }
+end
+
 opts.on('-e', '--exclude-folder FOLDER', 'Folder to exclude') do |v|
    excludedFolders << v
    coveralls_cmd.concat(" -e #{v}")
 end
+
 
 opts.on('-h', '--exclude-headers', 'Ignores headers') do |v|
   excludeHeaders = true
@@ -57,7 +65,6 @@ GCOV_SOURCE_PATTERN = Regexp.new(/Source:(.*)/)
 
 # enumerate all gcda files underneath derivedData
 Find.find(derivedDataDir) do |gcda_file|
-
   if gcda_file.match(/\.gcda\Z/)
     
       #get just the folder name
@@ -86,11 +93,9 @@ Find.find(derivedDataDir) do |gcda_file|
             
             # cut off absolute working dir to get relative source path
             relative_path = source_path.slice(workingDir.length+1, source_path.length)
-            
+
             extension = File.extname(relative_path)
       			extension = extension.slice(1, extension.length-1)
-            
-            puts "#{extension}"
             
             # get the path components
             path_comps = relative_path.split(File::SEPARATOR)
@@ -98,7 +103,15 @@ Find.find(derivedDataDir) do |gcda_file|
             shouldProcess = false
             exclusionMsg =""
             
-            if (excludedFolders.include?(path_comps[0]))
+            excludeByFolder = false
+            excludedFolders.each do |excludedFolder| 
+                if (relative_path.include?(excludedFolder)) 
+                    excludeByFolder = true
+                end
+            end
+
+
+            if (excludeByFolder)
               exclusionMsg = "excluded via option"
             else
               if (excludeHeaders == true && extension == 'h')
@@ -130,6 +143,7 @@ Find.find(derivedDataDir) do |gcda_file|
 end
 
 #call the coveralls, exclude some files
+puts "Calling cpp-coveralls: #{coveralls_cmd}"
 system coveralls_cmd
 
 #clean up

@@ -1,5 +1,5 @@
 //
-//  RFXMLAttributes.m
+//  RFJSONCustomPropertyHandlerEntity.h
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,8 +30,18 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "RFXMLAttributes.h"
+#import <Foundation/Foundation.h>
+#import "RFSerializationCustomHandler.h"
+#import "RFJSONCustomSerializationHandler.h"
+#import "RFSerializable.h"
 
-@implementation RFXMLAttributes
+RF_ATTRIBUTE(RFSerializable)
+@interface RFJSONCustomPropertyHandlerEntity : NSObject
+
+RF_ATTRIBUTE(RFSerializationCustomHandler, handlerClass = [RFJSONCustomSerializationHandler class])
+@property (strong, nonatomic) NSString *string1;
+
++ (id)sampleObject;
++ (id)deserializationTestObject;
 
 @end

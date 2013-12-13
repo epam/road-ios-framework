@@ -39,7 +39,9 @@
 @property (nonatomic, strong) NSString *elementName;
 @property (nonatomic, assign, getter = isElementSkipped) BOOL elementSkipped;
 @property (nonatomic, assign, getter = isSimpleValue) BOOL simpleValue;
-@property (nonatomic, assign, getter = isInSerializationContainer) BOOL inSerializationContainer;
+@property (nonatomic, assign, getter = isMutable) BOOL mutable;
+@property (nonatomic, strong) NSDictionary *itemTags;
+@property (nonatomic, strong) NSString *currentVirtualTag;
 
 - (void)saveContext;
 - (void)restoreContext;

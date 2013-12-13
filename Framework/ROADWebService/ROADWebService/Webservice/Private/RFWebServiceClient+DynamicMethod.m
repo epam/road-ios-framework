@@ -48,6 +48,7 @@
 #import "RFBasicAuthenticationProvider.h"
 #import "RFAuthenticating.h"
 #import "RFWebServiceBasicURLBuilder.h"
+#import "RFWebServiceSerializer.h"
 
 @implementation RFWebServiceClient (DynamicMethod)
 
@@ -137,7 +138,16 @@
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
     dispatch_async(queue, ^{
         
-        [RFWebServiceCallParameterEncoder encodeParameters:parameterList forClient:self methodName:methodName withSerializator:self.serializationDelegate callbackBlock:^(NSDictionary *parameters, NSData *postData, BOOL isMultipartData) {
+        RFWebServiceSerializer *serializerAttribute = [[self class] RF_attributeForMethod:methodName withAttributeType:[RFWebServiceSerializer class]];
+        id<RFSerializationDelegate> serializationDelegate;
+        if (serializerAttribute.serializerClass) {
+            serializationDelegate = [[serializerAttribute.serializerClass alloc] init];
+        }
+        else {
+            serializationDelegate = self.serializationDelegate;
+        }
+        
+        [RFWebServiceCallParameterEncoder encodeParameters:parameterList forClient:self methodName:methodName withSerializator:serializationDelegate callbackBlock:^(NSDictionary *parameters, NSData *postData, BOOL isMultipartData) {
             parametersDictionary = parameters;
             bodyData = postData;
             downloader.multipartData = isMultipartData;

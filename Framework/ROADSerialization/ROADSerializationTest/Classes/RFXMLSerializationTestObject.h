@@ -7,27 +7,26 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RFSerializable.h"
-#import "RFXMLCollectionContainer.h"
-#import "RFXMLAttributes.h"
+#import "RFXMLSerializableCollection.h"
+#import "RFXMLSerializable.h"
 
 RF_ATTRIBUTE(RFSerializable)
-RF_ATTRIBUTE(RFXMLCollectionContainer, containerKey = @"children");
 @interface RFXMLSerializationTestObject : NSObject
 
 RF_ATTRIBUTE(RFDerived)
 @property (copy, nonatomic) NSString *string2;
 
-RF_ATTRIBUTE(RFXMLAttributes, isSavedInTag = YES);
+RF_ATTRIBUTE(RFXMLSerializable, isTagAttribute = YES);
 @property (copy, nonatomic) NSString *name;
-RF_ATTRIBUTE(RFXMLAttributes, isSavedInTag = YES);
+RF_ATTRIBUTE(RFXMLSerializable, isTagAttribute = YES);
 @property (copy, nonatomic) NSString *city;
-RF_ATTRIBUTE(RFXMLAttributes, isSavedInTag = YES);
+RF_ATTRIBUTE(RFXMLSerializable, serializationKey = @"nm:age", isTagAttribute = YES);
 @property (assign, nonatomic) int age;
 
-RF_ATTRIBUTE(RFSerializableCollection, collectionClass = [RFXMLSerializationTestObject class])
+RF_ATTRIBUTE(RFXMLSerializableCollection, collectionClass = [RFXMLSerializationTestObject class], itemTag = @"child")
 @property (copy, nonatomic) NSArray *children;
 
-+ (RFXMLSerializationTestObject *)sampleObject;
++ (id)sampleObject;
+- (BOOL)isContentEqual:(id)object;
 
 @end

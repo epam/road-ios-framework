@@ -37,6 +37,6 @@
 */
 @interface RFSerializableCollection : NSObject
 
-@property(nonatomic, assign) Class collectionClass;
+@property(nonatomic, strong) Class collectionClass;
 
 @end

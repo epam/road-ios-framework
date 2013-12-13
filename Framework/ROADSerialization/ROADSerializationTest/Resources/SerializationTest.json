@@ -1,0 +1,46 @@
+{
+  "strings" : [
+    "value3",
+    "value4"
+  ],
+  "date2" : "01.01.1970 05:46",
+  "string1" : "value1",
+  "boolean" : 1,
+  "subDictionary" : {
+    "object3" : {
+      "RFSerializedObjectClassName" : "RFSerializationTestObject",
+      "boolean" : 0,
+      "integer" : 5,
+      "string1" : "value31"
+    }
+  },
+  "date1" : "04\/02\/1971 18:48:43 +0300",
+  "unixTimestamp" : "200000",
+  "integer" : 0,
+  "child" : {
+    "RFSerializedObjectClassName" : "RFSerializationTestObject",
+    "boolean" : 0,
+    "strings" : [
+      "value7",
+      "value8"
+    ],
+    "subObjects" : [
+      {
+        "RFSerializedObjectClassName" : "RFSerializationTestObject",
+        "boolean" : 0,
+        "integer" : 5,
+        "string1" : "value31"
+      },
+      {
+        "RFSerializedObjectClassName" : "RFSerializationTestObject",
+        "boolean" : 0,
+        "integer" : 0,
+        "number" : 3,
+        "string1" : "value41"
+      }
+    ],
+    "integer" : 0,
+    "string1" : "value5"
+  },
+  "RFSerializedObjectClassName" : "RFSerializationTestObject"
+}

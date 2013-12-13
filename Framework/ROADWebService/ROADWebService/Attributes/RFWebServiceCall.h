@@ -34,6 +34,9 @@
 
 @interface RFWebServiceCall : NSObject
 
+/**
+ * Specifies path relative to service root of web service client.
+ */
 @property (strong, nonatomic) NSString *relativePath;
 
 @property (copy, nonatomic) NSArray* successCodes;
@@ -42,10 +45,21 @@
 
 @property (copy, nonatomic) NSString *method;
 
+/**
+ * Specifies class which represents response.
+ */
 @property (strong, nonatomic) Class prototypeClass;
 
+/**
+ * Specifies key path to prototype class in response.
+ */
 @property (copy, nonatomic) NSString *serializationRoot;
 
 @property BOOL serializationDisabled;
+
+/**
+ * Works only if method == @"POST". Specifies index of parameter from method, which will be sent in request body.
+ */
+@property (assign, nonatomic) int postParameter;
 
 @end
