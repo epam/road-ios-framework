@@ -22,11 +22,20 @@
 		7867EB8A16C3C91B00A93194 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7867EB8816C3C91B00A93194 /* InfoPlist.strings */; };
 		7867EB9416C3C93700A93194 /* RFNotificationObservationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7867EB9316C3C93700A93194 /* RFNotificationObservationTest.m */; };
 		7867EB9716C3C93F00A93194 /* RFObservationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7867EB9616C3C93F00A93194 /* RFObservationTest.m */; };
-		7867EB9816C3C95900A93194 /* RFObserverWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7867EB5516C3C86800A93194 /* RFObserverWrapper.m */; };
-		7867EB9916C3C95900A93194 /* RFObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 7867EB5716C3C86800A93194 /* RFObserver.m */; };
 		78B8E66C16C3CAF20049E36B /* RFObserverWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7867EB5516C3C86800A93194 /* RFObserverWrapper.m */; };
 		78B8E66D16C3CAF50049E36B /* RFObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 7867EB5716C3C86800A93194 /* RFObserver.m */; };
+		8353BC2818585537009704A8 /* libROADObservation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7867EB4216C3C81600A93194 /* libROADObservation.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8353BC26185854F7009704A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7867EB3A16C3C81600A93194 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7867EB4116C3C81600A93194;
+			remoteInfo = ROADObservation;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		7867EB4016C3C81600A93194 /* CopyFiles */ = {
@@ -89,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8353BC2818585537009704A8 /* libROADObservation.a in Frameworks */,
 				7867EB8116C3C91B00A93194 /* SenTestingKit.framework in Frameworks */,
 				7867EB8416C3C91B00A93194 /* Foundation.framework in Frameworks */,
 			);
@@ -261,6 +271,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				8353BC27185854F7009704A8 /* PBXTargetDependency */,
 			);
 			name = ROADObservationTest;
 			productName = ROADObservationTest;
@@ -356,12 +367,18 @@
 			files = (
 				7867EB9416C3C93700A93194 /* RFNotificationObservationTest.m in Sources */,
 				7867EB9716C3C93F00A93194 /* RFObservationTest.m in Sources */,
-				7867EB9816C3C95900A93194 /* RFObserverWrapper.m in Sources */,
-				7867EB9916C3C95900A93194 /* RFObserver.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8353BC27185854F7009704A8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7867EB4116C3C81600A93194 /* ROADObservation */;
+			targetProxy = 8353BC26185854F7009704A8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7867EB6D16C3C8E400A93194 /* InfoPlist.strings */ = {
@@ -407,7 +424,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -430,7 +447,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
