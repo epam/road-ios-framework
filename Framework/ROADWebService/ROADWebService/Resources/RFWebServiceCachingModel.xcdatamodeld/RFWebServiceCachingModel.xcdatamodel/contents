@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="12F45" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="WebResponse" representedClassName="RFWebResponse" syncable="YES">
+        <attribute name="eTag" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="expirationDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="requestBodyData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="requestURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="response" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="responseBodyData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="urlHash" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="WebResponse" positionX="160" positionY="192" width="128" height="118"/>
+    </elements>
+</model>
