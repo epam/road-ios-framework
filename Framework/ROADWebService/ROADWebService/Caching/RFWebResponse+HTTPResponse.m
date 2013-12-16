@@ -34,7 +34,7 @@
 
 @implementation RFWebResponse (HTTPResponse)
 
-- (NSURLResponse *)unarchivedResponse {
+- (NSHTTPURLResponse *)unarchivedResponse {
     return [NSKeyedUnarchiver unarchiveObjectWithData:self.response];
 }
 

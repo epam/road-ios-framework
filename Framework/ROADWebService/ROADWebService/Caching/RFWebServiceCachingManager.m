@@ -61,18 +61,23 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
     return self;
 }
 
-- (void)setCacheWithURL:(NSString *const)URLString requestBodyData:(NSData *const)requestBodyData response:(NSHTTPURLResponse *const)response responseBodyData:(NSData *const)responseBodyData expirationDate:(NSDate *)expirationDate {
+- (void)setCacheWithRequest:(NSURLRequest *)request response:(NSHTTPURLResponse *)response responseBodyData:(NSData *)responseBodyData expirationDate:(NSDate *)expirationDate {
+    if (!expirationDate) {
+        expirationDate = [RFWebServiceCachingManager expirationDateFromResponse:response];
+    }
+    
     if ([expirationDate compare:[NSDate date]] == NSOrderedAscending) {
         dispatch_sync(_cacheQueue, ^{
             NSManagedObjectContext *managedObjectContext = _cacheContext.context;
             
-            RFWebResponse *newWebResponse = [NSEntityDescription insertNewObjectForEntityForName:kRFWebResponseEntityName inManagedObjectContext:_cacheContext.context];
-            newWebResponse.urlHash = [[NSDecimalNumber alloc] initWithUnsignedInteger:[URLString hash]];
-            newWebResponse.requestURL = URLString;
-            newWebResponse.requestBodyData = requestBodyData;
+            RFWebResponse *newWebResponse = [NSEntityDescription insertNewObjectForEntityForName:kRFWebResponseEntityName inManagedObjectContext:managedObjectContext];
+            newWebResponse.urlHash = [[NSDecimalNumber alloc] initWithUnsignedInteger:[[request.URL absoluteString] hash]];
+            newWebResponse.requestURL = [request.URL absoluteString];
+            newWebResponse.requestBodyData = request.HTTPBody;
             newWebResponse.response = [NSKeyedArchiver archivedDataWithRootObject:response];
             newWebResponse.responseBodyData = responseBodyData;
             newWebResponse.expirationDate = expirationDate;
+            newWebResponse.eTag = [RFWebServiceCachingManager etagFromResponse:response];
             
             NSError *error;
             [managedObjectContext save:&error];
@@ -82,16 +87,74 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
     }
 }
 
-- (id)cacheWithURL:(NSString *const)URLString requestBodyData:(NSData *const)requestBodyData {
+- (id)cacheWithRequest:(NSURLRequest *)request {
+    NSUInteger requestURLHash = [[request.URL absoluteString] hash];
     __block NSArray *cachedResponse;
     dispatch_sync(_cacheQueue, ^{
         NSManagedObjectContext *managedObjectContext = _cacheContext.context;
         NSFetchRequest *fetchCachedResponse = [[NSFetchRequest alloc] initWithEntityName:kRFWebResponseEntityName];
+        fetchCachedResponse.predicate = [NSPredicate predicateWithFormat:@"urlHash == %@", requestURLHash];
         NSError *error;
         cachedResponse = [managedObjectContext executeFetchRequest:fetchCachedResponse error:&error];
     });
         
     return cachedResponse;
+}
+
+
+#pragma mark - Utility methods
+
+static NSString * const kRFWebServiceHeaderFieldPragma              = @"Pragma";
+static NSString * const kRFWebServiceHeaderFieldCacheControl        = @"Cache-Control";
+static NSString * const kRFWebServiceHeaderFieldExpires             = @"Expires";
+static NSString * const kRFWebServiceHeaderFieldETag                = @"ETag";
+static NSString * const kRFWebServiceHeaderNoCacheValue             = @"no-cache";
+static NSString * const kRFWebServiceHeaderMaxAgeKey                = @"max-age";
+static NSString * const kRFWebServiceHeaderExpiresFormat            = @"EEE, dd MMM yyyy HH:mm:ss zzz";
+static NSString * const kRFWebServiceHeaderParameterSeparator       = @",";
+static NSString * const kRFWebServiceHeaderKeyValueSeparator        = @"=";
+static const NSInteger kRFWebServiceHeaderValueParameterIndex       = 1;
+
++ (NSDate *)expirationDateFromResponse:(NSHTTPURLResponse *)response {
+    NSDate *expirationDate;
+    BOOL noCaching = NO;
+    
+    NSString *pragma = [response.allHeaderFields valueForKey:kRFWebServiceHeaderFieldPragma];
+    if ([pragma rangeOfString:kRFWebServiceHeaderNoCacheValue].location != NSNotFound) {
+        noCaching = YES;
+    }
+    
+    NSString *cacheControl = [response.allHeaderFields valueForKey:kRFWebServiceHeaderFieldCacheControl];
+    NSArray *cacheControlComponents = [cacheControl componentsSeparatedByString:kRFWebServiceHeaderParameterSeparator];
+    
+    if (!noCaching) {
+        for (NSString *component in cacheControlComponents) {
+            if ([component rangeOfString:kRFWebServiceHeaderNoCacheValue].location != NSNotFound) {
+                noCaching = YES;
+                break;
+            }
+            
+            if ([component rangeOfString:kRFWebServiceHeaderMaxAgeKey].location != NSNotFound) {
+                NSArray *maxAgeComponents = [component componentsSeparatedByString:kRFWebServiceHeaderKeyValueSeparator];
+                NSString *maxAgeValue = maxAgeComponents[kRFWebServiceHeaderValueParameterIndex];
+                NSInteger maxAge = [maxAgeValue integerValue];
+                expirationDate = [NSDate dateWithTimeIntervalSinceNow:maxAge];
+            }
+        }
+        
+        if (!expirationDate && !noCaching) {
+            NSString *expires = [response.allHeaderFields valueForKey:kRFWebServiceHeaderFieldExpires];
+            NSDateFormatter *expiresDateFormatter = [[NSDateFormatter alloc] init];
+            expiresDateFormatter.dateFormat = kRFWebServiceHeaderExpiresFormat;
+            expirationDate = [expiresDateFormatter dateFromString:expires];
+        }
+    }
+    
+    return expirationDate;
+}
+
++ (NSString *)etagFromResponse:(NSHTTPURLResponse *)response {
+    return [response.allHeaderFields valueForKey:kRFWebServiceHeaderFieldETag];
 }
 
 @end

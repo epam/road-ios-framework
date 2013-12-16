@@ -32,6 +32,11 @@
 
 #import "RFWebServiceClient+DynamicTest.h"
 
-//@implementation RFWebServiceClient (DynamicTest)
-//
-//@end
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wincomplete-implementation"
+
+@implementation RFWebServiceClient (DynamicTest)
+
+@end
+
+#pragma clang diagnostic pop

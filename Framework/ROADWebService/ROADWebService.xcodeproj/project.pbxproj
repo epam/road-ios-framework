@@ -42,6 +42,8 @@
 		8353BC87185B46E1009704A8 /* RFWebResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8353BC86185B46E1009704A8 /* RFWebResponse.m */; };
 		8353BC8A185B4A5C009704A8 /* RFWebServiceCacheContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 8353BC89185B4A5C009704A8 /* RFWebServiceCacheContext.m */; };
 		8353BC9E185B4D63009704A8 /* RFWebResponse+HTTPResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8353BC9D185B4D63009704A8 /* RFWebResponse+HTTPResponse.m */; };
+		8353BCA1185EDE1B009704A8 /* RFServiceProvider+WebServiceCachingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8353BCA0185EDE1B009704A8 /* RFServiceProvider+WebServiceCachingManager.m */; };
+		8353BCDA185F19C8009704A8 /* RFWebServiceCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8353BCD9185F19C8009704A8 /* RFWebServiceCache.m */; };
 		835D30FD184DFE0E00EF2310 /* RFConcreteWebServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 835D30FC184DFE0E00EF2310 /* RFConcreteWebServiceClient.m */; };
 		837B001317B3A1AE00D77A5D /* RFODataProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 837B001217B3A1AE00D77A5D /* RFODataProperty.m */; };
 		837B001B17B3B0F000D77A5D /* RFODataEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 837B001A17B3B0F000D77A5D /* RFODataEntity.m */; };
@@ -326,6 +328,10 @@
 		8353BC89185B4A5C009704A8 /* RFWebServiceCacheContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebServiceCacheContext.m; sourceTree = "<group>"; };
 		8353BC9C185B4D63009704A8 /* RFWebResponse+HTTPResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RFWebResponse+HTTPResponse.h"; sourceTree = "<group>"; };
 		8353BC9D185B4D63009704A8 /* RFWebResponse+HTTPResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RFWebResponse+HTTPResponse.m"; sourceTree = "<group>"; };
+		8353BC9F185EDE1B009704A8 /* RFServiceProvider+WebServiceCachingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RFServiceProvider+WebServiceCachingManager.h"; sourceTree = "<group>"; };
+		8353BCA0185EDE1B009704A8 /* RFServiceProvider+WebServiceCachingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RFServiceProvider+WebServiceCachingManager.m"; sourceTree = "<group>"; };
+		8353BCD8185F19C8009704A8 /* RFWebServiceCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFWebServiceCache.h; sourceTree = "<group>"; };
+		8353BCD9185F19C8009704A8 /* RFWebServiceCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebServiceCache.m; sourceTree = "<group>"; };
 		835D30FC184DFE0E00EF2310 /* RFConcreteWebServiceClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFConcreteWebServiceClient.m; sourceTree = "<group>"; };
 		837B001117B3A1AE00D77A5D /* RFODataProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFODataProperty.h; sourceTree = "<group>"; };
 		837B001217B3A1AE00D77A5D /* RFODataProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFODataProperty.m; sourceTree = "<group>"; };
@@ -538,6 +544,8 @@
 				8353BC86185B46E1009704A8 /* RFWebResponse.m */,
 				8353BC9C185B4D63009704A8 /* RFWebResponse+HTTPResponse.h */,
 				8353BC9D185B4D63009704A8 /* RFWebResponse+HTTPResponse.m */,
+				8353BC9F185EDE1B009704A8 /* RFServiceProvider+WebServiceCachingManager.h */,
+				8353BCA0185EDE1B009704A8 /* RFServiceProvider+WebServiceCachingManager.m */,
 			);
 			path = Caching;
 			sourceTree = "<group>";
@@ -648,6 +656,8 @@
 				EE3022E8180FD3CE003B1826 /* RFWebService.m */,
 				83D0E63A184CAB0F002625E6 /* RFWebServiceSerializer.h */,
 				83D0E63B184CAB0F002625E6 /* RFWebServiceSerializer.m */,
+				8353BCD8185F19C8009704A8 /* RFWebServiceCache.h */,
+				8353BCD9185F19C8009704A8 /* RFWebServiceCache.m */,
 			);
 			path = Attributes;
 			sourceTree = "<group>";
@@ -1030,6 +1040,7 @@
 				CD896C241737E84F00565C9C /* RFWebServiceHeader.m in Sources */,
 				CD896C2E1737E84F00565C9C /* RFDefaultSerializer.m in Sources */,
 				E5D81148179562510046DED1 /* RFWebServiceClientStatusCodes.m in Sources */,
+				8353BCDA185F19C8009704A8 /* RFWebServiceCache.m in Sources */,
 				8353BC8A185B4A5C009704A8 /* RFWebServiceCacheContext.m in Sources */,
 				CD896C301737E84F00565C9C /* RFWebServiceClient.m in Sources */,
 				83AFDCE0174F532900CC1200 /* RFWebServiceLogger.m in Sources */,
@@ -1065,6 +1076,7 @@
 				83D0E631184CA28A002625E6 /* RFXMLSerializer.m in Sources */,
 				83BCEB6017FEB4A700B5A7C4 /* RFLoggerWebServicePath.m in Sources */,
 				83448CCF17D0C98B002A0D15 /* ROADGeneratedAttribute.m in Sources */,
+				8353BCA1185EDE1B009704A8 /* RFServiceProvider+WebServiceCachingManager.m in Sources */,
 				839992B417D74B95002DAE8D /* RFFormData.m in Sources */,
 				83D0E63C184CAB0F002625E6 /* RFWebServiceSerializer.m in Sources */,
 				8353BC9E185B4D63009704A8 /* RFWebResponse+HTTPResponse.m in Sources */,

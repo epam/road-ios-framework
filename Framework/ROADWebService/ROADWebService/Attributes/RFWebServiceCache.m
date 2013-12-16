@@ -1,5 +1,5 @@
 //
-//  RFWebServiceCachingManaging.h
+//  RFWebServiceCache.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,23 +30,8 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <Foundation/Foundation.h>
+#import "RFWebServiceCache.h"
 
-@protocol RFWebServiceCachingManaging <NSObject>
-
-/**
- * Set one cache entry to the webservice cache.
- * @param request The request that should be stored in the cache.
- * @param response The response of the request.
- * @param responseBodyData The response data
- * @param expirationDate The timeout time of the cache.
- */
-- (void)setCacheWithRequest:(NSURLRequest *)request response:(NSHTTPURLResponse *)response responseBodyData:(NSData *)responseBodyData expirationDate:(NSDate *)expirationDate;
-
-/**
- * Returns the cache object from the cache. If no entry has found, returns nil.
- * @param request The request that should be check in the cache.
- */
-- (id)cacheWithRequest:(NSURLRequest *)request;
+@implementation RFWebServiceCache
 
 @end

@@ -34,4 +34,6 @@
 
 @interface RFWebResponse (HTTPResponse)
 
+- (NSHTTPURLResponse *)unarchivedResponse;
+
 @end

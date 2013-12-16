@@ -47,6 +47,9 @@
 #import "RFMultipartData.h"
 #import "RFWebServiceCallParameterEncoder.h"
 #import "RFWebServiceSerializer.h"
+#import "RFServiceProvider+WebServiceCachingManager.h"
+#import "RFWebResponse+HTTPResponse.h"
+#import "RFWebServiceCache.h"
 
 @interface RFDownloader () {
     NSURLConnection * _connection;
@@ -138,15 +141,27 @@
         return;
     }
     
-    _connection = [[NSURLConnection alloc] initWithRequest:_request delegate:self startImmediately:NO];
+    RFWebServiceCache *cacheAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceCache class]];
+    id<RFWebServiceCachingManaging> cacheManager =  [RFServiceProvider webServiceCacheManager];
+    RFWebResponse *cachedResponse;
+    if (!cacheAttribute.cacheDisabled) {
+        cachedResponse = [cacheManager cacheWithRequest:_request];
+    }
     
-    if (_looper == nil) {
-        _looper = [[RFLooper alloc] init];
-        _data = [NSMutableData data];
-        [_connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-        [_connection start];
-        RFLogTypedDebug(self.loggerType, @"URL connection(%p) has started. Method: %@. URL: %@\nHeader fields: %@", _connection, _connection.currentRequest.HTTPMethod, [_connection.currentRequest.URL absoluteString], [_connection.currentRequest allHTTPHeaderFields]);
-        [_looper start];
+    if (cachedResponse) {
+        [self downloaderFinishedWithResult:cachedResponse.responseBodyData response:[cachedResponse unarchivedResponse] error:nil];
+    }
+    else {
+        _connection = [[NSURLConnection alloc] initWithRequest:_request delegate:self startImmediately:NO];
+        
+        if (_looper == nil) {
+            _looper = [[RFLooper alloc] init];
+            _data = [NSMutableData data];
+            [_connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+            [_connection start];
+            RFLogTypedDebug(self.loggerType, @"URL connection(%p) has started. Method: %@. URL: %@\nHeader fields: %@", _connection, _connection.currentRequest.HTTPMethod, [_connection.currentRequest.URL absoluteString], [_connection.currentRequest allHTTPHeaderFields]);
+            [_looper start];
+        }
     }
 }
 

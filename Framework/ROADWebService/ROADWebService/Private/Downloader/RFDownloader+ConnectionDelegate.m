@@ -39,6 +39,8 @@
 #import "RFWebServiceClient.h"
 #import "RFWebServiceErrorHandler.h"
 #import "RFWebServiceErrorHandling.h"
+#import "RFServiceProvider+WebServiceCachingManager.h"
+#import "RFWebServiceCache.h"
 
 @interface RFDownloader ()
 
@@ -103,6 +105,16 @@
             }
         }
         
+    }
+    
+    if (!self.downloadError) {
+        RFWebServiceCache *cacheAttribute = [[self.webServiceClient class] RF_attributeForMethod:self.methodName withAttributeType:[RFWebServiceCache class]];
+        NSDate *expirationDate;
+        if (cacheAttribute.maxAge) {
+            expirationDate = [NSDate dateWithTimeIntervalSinceNow:cacheAttribute.maxAge];
+        }
+        id<RFWebServiceCachingManaging> cacheManager =  [RFServiceProvider webServiceCacheManager];
+        [cacheManager setCacheWithRequest:self.request response:self.response responseBodyData:self.data expirationDate:expirationDate];
     }
     
     [self stop];
