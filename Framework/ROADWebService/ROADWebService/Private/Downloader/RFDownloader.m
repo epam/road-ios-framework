@@ -136,13 +136,13 @@
     }
 }
 
-- (void)start {
+- (void)checkCacheAndStart {
     if (_requestCancelled) {
         return;
     }
     
     RFWebServiceCache *cacheAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceCache class]];
-    id<RFWebServiceCachingManaging> cacheManager =  [RFServiceProvider webServiceCacheManager];
+    id<RFWebServiceCachingManaging> cacheManager = [RFServiceProvider webServiceCacheManager];
     RFWebResponse *cachedResponse;
     if (!cacheAttribute.cacheDisabled) {
         cachedResponse = [cacheManager cacheWithRequest:_request];
@@ -152,16 +152,20 @@
         [self downloaderFinishedWithResult:cachedResponse.responseBodyData response:[cachedResponse unarchivedResponse] error:nil];
     }
     else {
-        _connection = [[NSURLConnection alloc] initWithRequest:_request delegate:self startImmediately:NO];
-        
-        if (_looper == nil) {
-            _looper = [[RFLooper alloc] init];
-            _data = [NSMutableData data];
-            [_connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-            [_connection start];
-            RFLogTypedDebug(self.loggerType, @"URL connection(%p) has started. Method: %@. URL: %@\nHeader fields: %@", _connection, _connection.currentRequest.HTTPMethod, [_connection.currentRequest.URL absoluteString], [_connection.currentRequest allHTTPHeaderFields]);
-            [_looper start];
-        }
+        [self start];
+    }
+}
+
+- (void)start {
+    _connection = [[NSURLConnection alloc] initWithRequest:_request delegate:self startImmediately:NO];
+    
+    if (_looper == nil) {
+        _looper = [[RFLooper alloc] init];
+        _data = [NSMutableData data];
+        [_connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+        [_connection start];
+        RFLogTypedDebug(self.loggerType, @"URL connection(%p) has started. Method: %@. URL: %@\nHeader fields: %@", _connection, _connection.currentRequest.HTTPMethod, [_connection.currentRequest.URL absoluteString], [_connection.currentRequest allHTTPHeaderFields]);
+        [_looper start];
     }
 }
 
@@ -176,7 +180,19 @@
             resultError = error;
         }];
     }
+
+    // Cache response
+    if (!self.downloadError) {
+        RFWebServiceCache *cacheAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceCache class]];
+        NSDate *expirationDate;
+        if (cacheAttribute.maxAge) {
+            expirationDate = [NSDate dateWithTimeIntervalSinceNow:cacheAttribute.maxAge];
+        }
+        id<RFWebServiceCachingManaging> cacheManager = [RFServiceProvider webServiceCacheManager];
+        [cacheManager setCacheWithRequest:_request response:response responseBodyData:result expirationDate:expirationDate];
+    }
     
+    // Perform callback block
     self.downloadError = resultError;
     if (!self.downloadError) {
         self.serializedData = resultData;
@@ -185,7 +201,6 @@
     else {
         [self performSelector:@selector(performFailureBlockOnSpecificThread) onThread:[NSThread mainThread] withObject:nil waitUntilDone:YES];
     }
-    
 }
 
 - (id<RFSerializationDelegate>)serializationDelegate {

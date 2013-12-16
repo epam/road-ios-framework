@@ -107,16 +107,6 @@
         
     }
     
-    if (!self.downloadError) {
-        RFWebServiceCache *cacheAttribute = [[self.webServiceClient class] RF_attributeForMethod:self.methodName withAttributeType:[RFWebServiceCache class]];
-        NSDate *expirationDate;
-        if (cacheAttribute.maxAge) {
-            expirationDate = [NSDate dateWithTimeIntervalSinceNow:cacheAttribute.maxAge];
-        }
-        id<RFWebServiceCachingManaging> cacheManager =  [RFServiceProvider webServiceCacheManager];
-        [cacheManager setCacheWithRequest:self.request response:self.response responseBodyData:self.data expirationDate:expirationDate];
-    }
-    
     [self stop];
 }
 

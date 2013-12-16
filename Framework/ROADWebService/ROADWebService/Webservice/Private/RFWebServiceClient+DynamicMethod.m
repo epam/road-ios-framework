@@ -189,7 +189,7 @@ prepareForSendRequestBlock:(RFWebServiceClientPrepareForSendRequestBlock)prepare
             prepareForSendRequestBlock(downloader.request);
         }
         
-        [downloader start];
+        [downloader checkCacheAndStart];
     });
 }
 

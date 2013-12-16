@@ -69,7 +69,7 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
     if ([expirationDate compare:[NSDate date]] == NSOrderedAscending) {
         dispatch_sync(_cacheQueue, ^{
             NSManagedObjectContext *managedObjectContext = _cacheContext.context;
-            
+
             RFWebResponse *newWebResponse = [NSEntityDescription insertNewObjectForEntityForName:kRFWebResponseEntityName inManagedObjectContext:managedObjectContext];
             newWebResponse.urlHash = [[NSDecimalNumber alloc] initWithUnsignedInteger:[[request.URL absoluteString] hash]];
             newWebResponse.requestURL = [request.URL absoluteString];
@@ -78,12 +78,11 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
             newWebResponse.responseBodyData = responseBodyData;
             newWebResponse.expirationDate = expirationDate;
             newWebResponse.eTag = [RFWebServiceCachingManager etagFromResponse:response];
-            
+
             NSError *error;
             [managedObjectContext save:&error];
             RFLogError(@"RFWebServiceCachingManager error: saving cached response failed with error: %@", [error localizedDescription]);
         });
-
     }
 }
 

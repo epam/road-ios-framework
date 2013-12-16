@@ -62,6 +62,14 @@
         response = [self checkXMLSerializedRequestData] ? [self successResponse] : [self failureResponse];
         resultData = self.request.HTTPBody;
     }
+    else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.cache.pragma"]) {
+        response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{@"Pragma" : @"no-cache"}];
+        resultData = [[[NSDate date] description] dataUsingEncoding:NSUTF8StringEncoding];
+    }
+    else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.cache.cache-control.no-cache"]) {
+        response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{@"Cache-Control" : @"no-cache; must-revalidate; max-age=0"}];
+        resultData = [[[NSDate date] description] dataUsingEncoding:NSUTF8StringEncoding];
+    }
     else {
         // Not processed URL
         [self fakeStart];

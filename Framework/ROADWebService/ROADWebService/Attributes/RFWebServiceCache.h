@@ -32,6 +32,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * The attribute override default behaviour of caching mechanism by specifying cached record expiration date or disabling caching.
+ */
 @interface RFWebServiceCache : NSObject
 
 /**

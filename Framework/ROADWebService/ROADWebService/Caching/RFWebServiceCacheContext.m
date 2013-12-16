@@ -37,7 +37,8 @@
 
 static NSString * const kRFWebServiceCachingDirectory = @"RFCachingDirecory";
 static NSString * const kRFWebServiceCachingModelName = @"RFWebServiceCachingModel";
-static NSString * const kRFWebServiceCachingModelExtension = @"xcdatamodeld";
+static NSString * const kRFWebServiceCachingModelExtension = @"momd";
+static NSString * const kRFWebServiceCachingStorageName = @"RFWebServiceCache.coredata";
 
 @implementation RFWebServiceCacheContext {
     NSPersistentStoreCoordinator *_persistentStoreCoordinator;
@@ -57,11 +58,22 @@ static NSString * const kRFWebServiceCachingModelExtension = @"xcdatamodeld";
         
         NSArray *cachingFolderList = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
         NSString *webServiceCachingPath = [cachingFolderList RF_lastElementIfNotEmpty];
+
+        webServiceCachingPath = [webServiceCachingPath stringByAppendingPathComponent:kRFWebServiceCachingDirectory];
         
+        if (![[NSFileManager defaultManager] fileExistsAtPath:webServiceCachingPath]) {
+            NSError *error;
+            [[NSFileManager defaultManager] createDirectoryAtPath:webServiceCachingPath withIntermediateDirectories:NO attributes:nil error:&error];
+            if (error) {
+                RFLogError(@"Directory for web service cache was not created with error: %@", error);
+            }
+        }
+        
+        webServiceCachingPath = [webServiceCachingPath stringByAppendingPathComponent:kRFWebServiceCachingStorageName];
         NSURL *storeUrl = [NSURL fileURLWithPath:webServiceCachingPath];
         NSString *storeType = NSSQLiteStoreType;
         NSError *error;
-        webServiceCachingPath = [webServiceCachingPath stringByAppendingPathComponent:kRFWebServiceCachingDirectory];
+
         
         if (![_persistentStoreCoordinator addPersistentStoreWithType:storeType configuration:nil
                                                                  URL:storeUrl options:nil error:&error]) {
