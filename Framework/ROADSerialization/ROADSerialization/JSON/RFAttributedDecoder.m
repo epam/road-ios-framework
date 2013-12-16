@@ -40,6 +40,8 @@
 #import "RFSerializableCollection.h"
 #import "NSJSONSerialization+RFJSONStringHandling.h"
 #import "RFSerializableDate.h"
+#import "RFSerializableBoolean.h"
+#import "RFBooleanTranslator.h"
 
 @interface RFAttributedDecoder ()
 
@@ -142,7 +144,9 @@
             aKey = RFSerializationKeyForProperty(aDesc);
             
             id result = [self decodeValue:jsonDict[aKey] forProperty:aDesc];
-            [rootObject setValue:result forKey:[aDesc propertyName]];
+            if ([self isValueValid:result forProperty:aDesc]) {
+                [rootObject setValue:result forKey:[aDesc propertyName]];
+            }
         }
     }
 
@@ -165,6 +169,9 @@
     else if ([aDesc attributeWithType:[RFSerializableDate class]]
              || [[self class] RF_attributeForClassWithAttributeType:[RFSerializableDate class]]) {
         value = [self decodeDateString:aValue forProperty:aDesc];
+    }
+    else if ([aDesc attributeWithType:[RFSerializableBoolean class]]) {
+        value = [RFBooleanTranslator decodeTranslatableValue:aValue forProperty:aDesc];
     }
     return value;
 }
@@ -281,6 +288,17 @@
     }
     
     return nestedJsonObject;
+}
+
+/**
+ Determines if the value is primitive and has the nil or NSNull value to avoid crashes from setting nil or NSNull value to a primitive
+ 
+ @param id the value to be set
+ @param RFPropertyInfo the property information where the value should be set
+ @return YES if the value can be safely set
+ */
+- (BOOL)isValueValid:(id const)value forProperty:(RFPropertyInfo *)propertyInfo {
+    return ((value && value != [NSNull null]) || ![[propertyInfo typeName] isEqualToString:@"c"]);
 }
 
 @end

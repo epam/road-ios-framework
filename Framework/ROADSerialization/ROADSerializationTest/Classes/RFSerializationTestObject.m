@@ -97,6 +97,12 @@ static const NSTimeInterval kDateComparisonDelta = 1;
     
     object.child = [[RFSerializationTestObject alloc] init];
     object.child.boolean = NO;
+    
+    object.booleanToTranslateTrue = YES;
+    object.booleanToTranslateFalse = NO;
+    object.booleanToTranslateTrueFromNumber = YES;
+    object.booleanToTranslateFalseFromNumber = NO;
+
     object.child.string1 = @"value5";
     object.child.string2 = @"value6";
     object.child.strings = @[@"value7", @"value8"];

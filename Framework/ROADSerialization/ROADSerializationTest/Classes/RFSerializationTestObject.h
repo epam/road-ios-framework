@@ -34,6 +34,7 @@
 #import <Foundation/Foundation.h>
 #import "RFSerializable.h"
 #import "RFSerializableDate.h"
+#import "RFSerializableBoolean.h"
 #import "RFSerializableCollection.h"
 #import "RFDerived.h"
 
@@ -46,6 +47,18 @@ RF_ATTRIBUTE(RFDerived)
 @property (copy, nonatomic) NSString *string2;
 
 @property (assign, nonatomic) BOOL boolean;
+
+RF_ATTRIBUTE(RFSerializableBoolean, translationValues = @{ @"true": @YES, @"false": @NO } )
+@property (assign, nonatomic) BOOL booleanToTranslateTrue;
+
+RF_ATTRIBUTE(RFSerializableBoolean, translationValues = @{ @"true": @YES, @"false": @NO } )
+@property (assign, nonatomic) BOOL booleanToTranslateFalse;
+
+RF_ATTRIBUTE(RFSerializableBoolean, translationValues = @{ @10000: @YES, @20000: @NO } )
+@property (assign, nonatomic) BOOL booleanToTranslateTrueFromNumber;
+
+RF_ATTRIBUTE(RFSerializableBoolean, translationValues = @{ @10000: @YES, @20000: @NO } )
+@property (assign, nonatomic) BOOL booleanToTranslateFalseFromNumber;
 
 @property (strong, nonatomic) NSArray *strings;
 

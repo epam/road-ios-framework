@@ -37,6 +37,8 @@
 #import "RFDerived.h"
 #import "RFSerializableCollection.h"
 #import "RFSerializableDate.h"
+#import "RFSerializableBoolean.h"
+#import "RFBooleanTranslator.h"
 
 NSString *RFSerializationKeyForProperty(RFPropertyInfo *propertyInfo) {
     
@@ -91,7 +93,11 @@ id RFSerializationEncodeObjectForProperty(id object, RFPropertyInfo *propertyInf
 
         result = [object respondsToSelector:@selector(stringValue)] ? [object stringValue] : [object description];
     }
-    
+
+    if ([propertyInfo attributeWithType:[RFSerializableBoolean class]]) {
+        result = [RFBooleanTranslator encodeTranslatableValue:object forProperty:propertyInfo];
+    }
+
     return result;
 }
 
