@@ -100,8 +100,9 @@ char *RFAttributedXMLCoderTagForClass(Class aClass) {
     // Try to serialize as a container or object with defined properties. Assume it's simple value otherwise.
     else if (![self serializeObjectAsContainer:serializedObject toNode:result itemTag:itemTag] && ![self serializeObjectAsAttributed:serializedObject toNode:result]) {
         
-            NSString *encodedObject = RFSerializationEncodeObjectForProperty(serializedObject, propertyInfo, _dateFormatter);
-            xmlNodeSetContent(result, BAD_CAST [encodedObject UTF8String]);
+            id encodedObject = RFSerializationEncodeObjectForProperty(serializedObject, propertyInfo, _dateFormatter);
+            NSString *encodedString = [encodedObject respondsToSelector:@selector(stringValue)] ? [encodedObject stringValue] : [encodedObject description];
+            xmlNodeSetContent(result, BAD_CAST [encodedString UTF8String]);
         }
     
     return result;
