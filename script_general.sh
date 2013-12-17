@@ -19,6 +19,8 @@ unzip oclint-0.9.dev.da383ab.zip > /dev/null
 
 # =================     Remove necessary rules from "lib/oclint/rules/" folder of oclint     ===========
 rm $('pwd')/oclint-0.9.dev.da383ab/lib/oclint/rules/libUnusedMethodParameterRule.dylib
+rm $('pwd')/oclint-0.9.dev.da383ab/lib/oclint/rules/libFeatureEnvyRule.dylib
+rm $('pwd')/oclint-0.9.dev.da383ab/lib/oclint/rules/libObjCAssignIvarOutsideAccessorsRule.dylib
 
 # =================     Setup oclint    ===========
 OCLINT_HOME=$('pwd')/oclint-0.9.dev.da383ab
