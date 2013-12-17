@@ -314,7 +314,6 @@
     
     STAssertTrue(isSuccess, @"Custom serialization of web service request is failed!");
     STAssertTrue([testObject isEqual:customSerializationResult], @"Custom deserialization of web service response is failed!");
-    
 }
 
 @end

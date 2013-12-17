@@ -75,10 +75,13 @@ RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, method = @"POST")
 RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
 - (id<RFWebServiceCancellable>)testMethodWithoutBlocks;
 
-RF_ATTRIBUTE(RFWebServiceCall)
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
 - (id<RFWebServiceCancellable>)testPragmaNoCacheWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
-RF_ATTRIBUTE(RFWebServiceCall)
-- (id<RFWebServiceCancellable>)testCacheControlNoCaheWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
+- (id<RFWebServiceCancellable>)testCacheControlNoCacheWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
+- (id<RFWebServiceCancellable>)testNoCacheHeadersWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
 @end

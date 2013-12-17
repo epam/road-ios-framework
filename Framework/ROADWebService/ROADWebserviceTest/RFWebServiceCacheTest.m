@@ -66,25 +66,62 @@
 }
 
 - (void)testPragmaNoCaching {
-    __block BOOL isFinished = NO;
     RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.cache.pragma"];
     
-    __block NSDate *firstDate;
-    [webClient testPragmaNoCacheWithSuccess:^(NSDate *result) {
-        firstDate = result;
-        isFinished = YES;
-    } failure:^(NSError *error) {
-        isFinished = YES;
-    }];
+    NSString *firstDate;
+    NSString *controlDate;
+    [self sendTwoConsequentRequestsOnWebServiceClient:webClient withFirstResult:&firstDate secondResult:&controlDate];
+    
+    STAssertFalse([controlDate isEqualToString:firstDate], @"Response with Pragma:no-cache was cached!");
+}
 
-    while (!isFinished) {
-        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
-    }
+- (void)testCacheControlNoCaching {
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.cache.cache-control.no-cache"];
     
-    __block NSDate *controlDate;
-    isFinished = NO;
-    [webClient testPragmaNoCacheWithSuccess:^(NSDate *result) {
-        controlDate = result;
+    NSString *firstDate;
+    NSString *controlDate;
+    [self sendTwoConsequentRequestsOnWebServiceClient:webClient withFirstResult:&firstDate secondResult:&controlDate];
+    
+    STAssertFalse([controlDate isEqualToString:firstDate], @"Response with Cache-control:no-cache was cached!");
+}
+
+- (void)testNoCacheHeaders {
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.cache.no.cache.headers"];
+    
+    NSString *firstDate;
+    NSString *controlDate;
+    [self sendTwoConsequentRequestsOnWebServiceClient:webClient withFirstResult:&firstDate secondResult:&controlDate];
+
+    STAssertFalse([controlDate isEqualToString:firstDate], @"Response without any cache specifying was cached!");
+}
+
+- (void)testExpiresHeader {
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.expires.header"];
+    
+    NSString *firstDate;
+    NSString *controlDate;
+    [self sendTwoConsequentRequestsOnWebServiceClient:webClient withFirstResult:&firstDate secondResult:&controlDate];
+    
+    STAssertTrue([controlDate isEqualToString:firstDate], @"Response without any cache specifying was cached!");
+}
+
+- (void)testMaxAgeHeader {
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.max-age.header"];
+    
+    NSString *firstDate;
+    NSString *controlDate;
+    [self sendTwoConsequentRequestsOnWebServiceClient:webClient withFirstResult:&firstDate secondResult:&controlDate];
+    
+    STAssertTrue([controlDate isEqualToString:firstDate], @"Response without any cache specifying was cached!");
+}
+
+
+#pragma mark - Utility methods
+
+- (BOOL)sendTwoConsequentRequestsOnWebServiceClient:(RFConcreteWebServiceClient *)webClient withFirstResult:(NSString **)firstResult secondResult:(NSString **)secondResult {
+    __block BOOL isFinished = NO;
+    [webClient testCacheControlNoCacheWithSuccess:^(NSData *result) {
+        *firstResult = [[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding];
         isFinished = YES;
     } failure:^(NSError *error) {
         isFinished = YES;
@@ -94,7 +131,21 @@
         [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
     }
     
-    STAssertTrue([controlDate isEqualToDate:firstDate], @"Response with Pragma:no-cache was cached!");;
+    STAssertNotNil(*firstResult, @"Web service request with cache failed!");
+    
+    isFinished = NO;
+    [webClient testPragmaNoCacheWithSuccess:^(NSData *result) {
+        *secondResult = [[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding];
+        isFinished = YES;
+    } failure:^(NSError *error) {
+        isFinished = YES;
+    }];
+    
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
+    }
+    
+    STAssertNotNil(*secondResult, @"Web service request with cache failed at second call!");
 }
 
 @end

@@ -61,6 +61,9 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
     return self;
 }
 
+
+#pragma mark - RFWebServiceCachingManaging
+
 - (void)setCacheWithRequest:(NSURLRequest *)request response:(NSHTTPURLResponse *)response responseBodyData:(NSData *)responseBodyData expirationDate:(NSDate *)expirationDate {
     if (!expirationDate) {
         expirationDate = [RFWebServiceCachingManager expirationDateFromResponse:response];
@@ -81,7 +84,9 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
 
             NSError *error;
             [managedObjectContext save:&error];
-            RFLogError(@"RFWebServiceCachingManager error: saving cached response failed with error: %@", [error localizedDescription]);
+            if (error) {
+                RFLogError(@"RFWebServiceCachingManager error: saving cached response failed with error: %@", [error localizedDescription]);
+            }
         });
     }
 }
@@ -92,12 +97,12 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
     dispatch_sync(_cacheQueue, ^{
         NSManagedObjectContext *managedObjectContext = _cacheContext.context;
         NSFetchRequest *fetchCachedResponse = [[NSFetchRequest alloc] initWithEntityName:kRFWebResponseEntityName];
-        fetchCachedResponse.predicate = [NSPredicate predicateWithFormat:@"urlHash == %@", requestURLHash];
+        fetchCachedResponse.predicate = [NSPredicate predicateWithFormat:@"urlHash == %lu", requestURLHash];
         NSError *error;
         cachedResponse = [managedObjectContext executeFetchRequest:fetchCachedResponse error:&error];
     });
         
-    return cachedResponse;
+    return [cachedResponse RF_lastElementIfNotEmpty];
 }
 
 
@@ -119,14 +124,14 @@ static const NSInteger kRFWebServiceHeaderValueParameterIndex       = 1;
     BOOL noCaching = NO;
     
     NSString *pragma = [response.allHeaderFields valueForKey:kRFWebServiceHeaderFieldPragma];
-    if ([pragma rangeOfString:kRFWebServiceHeaderNoCacheValue].location != NSNotFound) {
+    if (pragma && [pragma rangeOfString:kRFWebServiceHeaderNoCacheValue].location != NSNotFound) {
         noCaching = YES;
     }
     
-    NSString *cacheControl = [response.allHeaderFields valueForKey:kRFWebServiceHeaderFieldCacheControl];
-    NSArray *cacheControlComponents = [cacheControl componentsSeparatedByString:kRFWebServiceHeaderParameterSeparator];
-    
     if (!noCaching) {
+        NSString *cacheControl = [response.allHeaderFields valueForKey:kRFWebServiceHeaderFieldCacheControl];
+        NSArray *cacheControlComponents = [cacheControl componentsSeparatedByString:kRFWebServiceHeaderParameterSeparator];
+        
         for (NSString *component in cacheControlComponents) {
             if ([component rangeOfString:kRFWebServiceHeaderNoCacheValue].location != NSNotFound) {
                 noCaching = YES;
