@@ -34,6 +34,6 @@
 
 @interface RFWebServiceHeader : NSObject
 
-@property (strong, nonatomic) NSDictionary *hearderFields;
+@property (strong, nonatomic) NSDictionary *headerFields;
 
 @end

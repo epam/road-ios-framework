@@ -7,40 +7,38 @@
 Registering a service requires 2 simple steps:
 
 * Add category to `RFServiceProvider` with a getter for the service.
-	
-		@interface SFServiceProvider (SampleService)
-		 
-		- (id<SampleServiceInterface>)watchListService;
-		 
-		@end	
-
+  
+  ```objc
+@interface SFServiceProvider (SampleService)
+- (id<SampleServiceInterface>)watchListService;
+@end	
+  ```
 	`SampleServiceInterface` is a placeholder for any abstraction protocol to the service.
 	
 * Annotate getter with `RFService` **attribute** specifying service class.
-
-		RF_ATTRIBUTE(RFService, serviceClass = [SampleService class])
-		- (id<SampleServiceInterface>)watchListService;
-
-
-##Access to services
-Registry items can be accessed via `+ sharedProvider` singleton accessor of `RFServiceProvider`.
-
+  ```objc
+RF_ATTRIBUTE(RFService, serviceClass = [SampleService class])
+- (id<SampleServiceInterface>)watchListService;
+  ```
 
 ##Example
 
 **Logger** shared instance created using *Service Locator* looks like:
+```objc
+#import <ROAD/ROADServices.h>
+#import "RFLogger.h"
 
-	@interface RFServiceProvider (RFLogger)
-	
-	RF_ATTRIBUTE(RFService, serviceClass = [RFLogger class])
-	- (id<RFLogging>)logger;
-	
-	@end
+@interface RFServiceProvider (LoggingService)
 
+RF_ATTRIBUTE(RFService, serviceClass = [RFLogger class])
++ (id<RFLogging>)logger;
+
+@end
+```
 And used as:
-
-	    id <RFLogging> logger = [[RFServiceProvider sharedProvider] logger];
-
+```objc
+id <RFLogging> logger = [RFServiceProvider logger];
+```
 ##Dependencies
 
 **Services** are build on top of **Attributes** to specify service class for each specific case.

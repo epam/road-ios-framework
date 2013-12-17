@@ -36,7 +36,12 @@ static NSString const *kCurrentNodeProperty = @"currentNodeProperty";
 static NSString const *kElementName = @"elementName";
 static NSString const *kElementSkipped = @"elementSkipped";
 static NSString const *kSimpleValue = @"simpleValue";
+static NSString const *kMutable = @"mutable";
+static NSString const *kInSerializationContainer = @"inSerializationContainer";
 static NSString const *kCurrentNodeClass = @"Class";
+static NSString const *kItemTags = @"itemTags";
+static NSString const *kCurrentVirtualTag = @"currentVirtualTag";
+
 
 @interface RFXMLSerializationContext () {
     NSMutableArray *_stack;
@@ -50,16 +55,19 @@ static NSString const *kCurrentNodeClass = @"Class";
     if (!_stack) _stack = [[NSMutableArray alloc] init];
     
 
-    NSMutableDictionary *newRecord = [[NSMutableDictionary alloc] initWithCapacity:5];
+    NSMutableDictionary *newRecord = [[NSMutableDictionary alloc] initWithCapacity:8];
     
     if (_currentNode) newRecord[kCurrentNode] = _currentNode;
     if (_properties) newRecord[kProperties] = _properties;
     if (_currentNodeProperty) newRecord[kCurrentNodeProperty] = _currentNodeProperty;
     if (_elementName) newRecord[kElementName] = _elementName;
     if (_currentNodeClass) newRecord[kCurrentNodeClass] = _currentNodeClass;
+    if (_itemTags) newRecord[kItemTags] = _itemTags;
+    if (_currentVirtualTag) newRecord[kCurrentVirtualTag] = _currentVirtualTag;
 
     newRecord[kElementSkipped] = @(_elementSkipped);
     newRecord[kSimpleValue] = @(_simpleValue);
+    newRecord[kMutable] = @(_mutable);
     
     [_stack addObject:[newRecord copy]];
 }
@@ -74,7 +82,10 @@ static NSString const *kCurrentNodeClass = @"Class";
     _elementName = record[kElementName];
     _elementSkipped = [record[kElementSkipped] boolValue];
     _simpleValue = [record[kSimpleValue] boolValue];
+    _mutable = [record[kMutable] boolValue];
     _currentNodeClass = record[kCurrentNodeClass];
+    _itemTags = record[kItemTags];
+    _currentVirtualTag = record[kCurrentVirtualTag];
     
     [_stack removeLastObject];
 }

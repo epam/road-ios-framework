@@ -74,6 +74,7 @@ NSRegularExpression *methodParametersRegex = nil;
     
     while ([NSRegularExpression numberOfMatchesToRegex:@"\\(" inString:result] > 0) {
         [NSRegularExpression replaceRegex:@"\\([^()]+\\)" withTemplate:@"" inString:result];
+        [NSRegularExpression replaceRegex:@"\\(+\\)" withTemplate:@"" inString:result];
     }
     
     [NSRegularExpression replaceRegex:@":[^ ]*" withTemplate:@":" inString:result];

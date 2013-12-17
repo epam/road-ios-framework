@@ -17,6 +17,7 @@
 		49B4B37415067C1200B30D78 /* NSXMLElement+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4B37315067C1200B30D78 /* NSXMLElement+Additions.m */; };
 		49B4B3B31507C24900B30D78 /* EntityGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4B3B21507C24900B30D78 /* EntityGenerator.m */; };
 		831EB9AE17C35566004C9BA5 /* ServiceGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 831EB9AD17C35564004C9BA5 /* ServiceGenerator.m */; };
+		839B656317EAE47A00F14FF9 /* serviceTemplates.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 839B656217EAE46500F14FF9 /* serviceTemplates.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -38,6 +39,7 @@
 			dstPath = .;
 			dstSubfolderSpec = 16;
 			files = (
+				839B656317EAE47A00F14FF9 /* serviceTemplates.plist in CopyFiles */,
 				4962A1CB150909130015043C /* templates.plist in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,7 +67,7 @@
 		831EB9AC17C35561004C9BA5 /* ServiceGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceGenerator.h; sourceTree = "<group>"; };
 		831EB9AD17C35564004C9BA5 /* ServiceGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceGenerator.m; sourceTree = "<group>"; };
 		831EB9AF17C358E7004C9BA5 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		83AA548317E1975500C73DEF /* serviceTemplates.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = serviceTemplates.plist; sourceTree = SOURCE_ROOT; };
+		839B656217EAE46500F14FF9 /* serviceTemplates.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = serviceTemplates.plist; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +110,7 @@
 		49B4B30D1504D01300B30D78 /* ODataEntityGenerator */ = {
 			isa = PBXGroup;
 			children = (
-				83AA548317E1975500C73DEF /* serviceTemplates.plist */,
+				839B656217EAE46500F14FF9 /* serviceTemplates.plist */,
 				4962A1CA150902EF0015043C /* templates.plist */,
 				49B4B30E1504D01300B30D78 /* main.m */,
 				49B4B3B11507C24900B30D78 /* EntityGenerator.h */,

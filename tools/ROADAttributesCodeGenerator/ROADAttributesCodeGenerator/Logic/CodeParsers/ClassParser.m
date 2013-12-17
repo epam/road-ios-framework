@@ -33,37 +33,24 @@
 #import "SourceCodeHelper.h"
 #import "NSRegularExpression+ExtendedAPI.h"
 
+@interface ClassParser ()
+
++ (ClassModel*)parseFrom:(CodeParseState *)parseState forModel:(ClassModel*)model;
+
+@end
+
 @implementation ClassParser
 
-+ (ClassModel *)parseFrom:(CodeParseState *)parseState {
-    ClassModel *result = [ClassModel new];
-    
-    NSMutableString *classDeclaration = [NSMutableString stringWithString:[self extractClassDeclarationFromBuffer:parseState.workCodeBuffer]];
-    
-    result.name = [self extractNameFromBuffer:classDeclaration];
-    result.categoryName = [self extractCategoryNameFromBuffer:classDeclaration];
-    
++ (ClassModel*)parseFrom:(CodeParseState *)parseState {
+    ClassModel* result = [ClassParser parseFrom:parseState forModel:[ClassModel new]];
     return result;
 }
 
-NSRegularExpression *classDeclarationRegex = nil;
-+ (NSString *)extractClassDeclarationFromBuffer:(NSMutableString *)workCodeBuffer {
-    if (classDeclarationRegex == nil) {
-        classDeclarationRegex = [NSRegularExpression regexFromString:@"^[ ]*[A-Za-z0-9_]+(\\((?<!%)[@A-Za-z0-9_]+\\)){0,1}([ ]*\\:[ ]*[A-Za-z0-9_]+[ ]*(\\<[^<>]+\\>){0,1}){0,1}"];
-    }
++ (ClassModel*)parseFrom:(CodeParseState *)parseState forModel:(ClassModel*)model {
+    [ProtocolParser parseFrom:parseState forModel:model];
     
-    NSString *result = [SourceCodeHelper extractElement:classDeclarationRegex fromBuffer:workCodeBuffer];
-    return result;
-}
-
-NSRegularExpression *nameRegex = nil;
-+ (NSString *)extractNameFromBuffer:(NSMutableString *)workCodeBuffer {
-    if (nameRegex == nil) {
-        nameRegex = [NSRegularExpression regexFromString:@"(?<!%)[@A-Za-z0-9_]+"];
-    }
-    
-    NSString *result = [SourceCodeHelper extractElement:nameRegex fromBuffer:workCodeBuffer];
-    return result;
+    model.categoryName = [self extractCategoryNameFromBuffer:model.modelDeclarationForParser];
+    return model;
 }
 
 NSRegularExpression *categoryNameRegex = nil;

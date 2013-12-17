@@ -32,13 +32,13 @@
 #import <ROAD/NSRegularExpression+RFROADExtension.h>
 #import <ROAD/ROADReflection.h>
 #import <ROAD/ROADLogger.h>
-#import "RFXMLAttributes.h"
+#import "RFXMLSerializable.h"
 #import "RFSerializableDate.h"
-#import "RFSerializable.h"
 #import "RFDerived.h"
 #import "RFXMLSerializationContext.h"
 #import "RFSerializableCollection.h"
 #import "RFSerializationAssistant.h"
+#import "RFXMLSerializableCollection.h"
 
 #define kRFAttributedXMLDecoderDefaultContainerClass [NSArray class]
 
@@ -81,7 +81,30 @@
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
+    
+    NSParameterAssert(elementName);
 
+    // Check if there is some virtual tag already open
+    if (![_context.currentVirtualTag isEqualToString:_context.itemTags[elementName]]) {
+        
+        NSString *itemContainerTag = _context.itemTags[elementName];
+        
+        if (_context.currentVirtualTag) {
+            // Close current tag and open new
+            NSString *currentVirtualTag = _context.currentVirtualTag;
+            _context.currentVirtualTag = nil;
+            [self parser:parser didEndElement:currentVirtualTag namespaceURI:namespaceURI qualifiedName:qName];
+        }
+        
+        if (itemContainerTag) {
+            // Add virtual tag with the name extracted from serializationContainer attribute
+            id itemTags = _context.itemTags;
+            [self parser:parser didStartElement:itemContainerTag namespaceURI:namespaceURI qualifiedName:qName attributes:nil];
+            _context.currentVirtualTag = itemContainerTag;
+            _context.itemTags = itemTags;
+        }
+    }
+    
     _context.elementSkipped = NO;
     
     // Check if container creation was delayed and return expected elementClass for current element in it
@@ -89,6 +112,7 @@
 
     [_context saveContext];
     _context.simpleValue = YES; // assume that element is simple value by default
+    _context.currentVirtualTag = nil;
  
     if (!_context.elementSkipped) {
         
@@ -97,31 +121,37 @@
             elementClass = _rootNodeClass;
         }
         
+        // Get properties for element Class and process attributeDict, probably containing some of them
         NSArray *properties = RFSerializationPropertiesForClass(elementClass);
-        NSDictionary *lazyProperties = [self processProperties:properties withElementAttributes:attributeDict andCreateElementIfNeeded:elementClass];
-        
+
+        // If there are no properties in tag we suppose notation of kind <tag>value</tag>
         _context.currentNodeProperty = [properties count] ? nil : _context.properties[elementName];
         _context.currentNodeClass = [properties count] ? Nil : kRFAttributedXMLDecoderDefaultContainerClass;
-        _context.properties = [lazyProperties count] ? lazyProperties : nil;
         _context.elementName = elementName;
+
+        [self processProperties:properties withElementAttributes:attributeDict andCreateElementIfNeeded:elementClass];
     }
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
     
-    NSString* contextElementName = _context.elementName;
+    NSString *contextElementName = _context.elementName;
     id element = _context.currentNode;
     BOOL isElementSkipped = _context.isElementSkipped;
     BOOL isSimpleValue = _context.isSimpleValue;
+    NSString *currentVirtualTag = _context.currentVirtualTag;
 
     [_context restoreContext];
 
     if (!isElementSkipped && !isSimpleValue) {
-        NSParameterAssert (contextElementName == elementName);
+        if (!currentVirtualTag) NSParameterAssert(contextElementName == elementName);
 
-        NSString* propertyName = [_context.properties[elementName] propertyName];
-        [self setCurrentNodeValue:element forKey:propertyName ? propertyName : elementName];
+        NSString *propertyName = [_context.properties[contextElementName] propertyName];
+        [self setCurrentNodeValue:element forKey:propertyName ? propertyName : contextElementName];
     }
+
+    if (currentVirtualTag)
+        [self parser:parser didEndElement:elementName namespaceURI:namespaceURI qualifiedName:qName];
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
@@ -153,6 +183,19 @@
         [node setObject:value forKey:key];
     }
     else {
+        id existingValue = [node valueForKey:key];
+        
+        if (existingValue) {
+            if ([value isKindOfClass:[NSArray class]] && [existingValue isKindOfClass:[NSArray class]]) value = [existingValue arrayByAddingObjectsFromArray:value];
+            else if ([value isKindOfClass:[NSDictionary class]] && [existingValue isKindOfClass:[NSDictionary class]]) {
+                existingValue = [existingValue mutableCopy];
+                [existingValue addEntriesFromDictionary:value];
+                value = [existingValue copy];
+            }
+            else if ([value isKindOfClass:[NSSet class]] && [existingValue isKindOfClass:[NSSet class]]) value = [existingValue setByAddingObjectsFromSet:value];
+        }
+        else if (_context.mutable) value = [value copy];
+        
         [node setValue:value forKey:key];
     }
     
@@ -211,6 +254,7 @@
             
             _context.currentNode = containerNode;
             _context.simpleValue = NO;
+            _context.mutable = YES;
             
             if (!_result) {
                 _result = _context.currentNode;
@@ -236,16 +280,18 @@
     return result;
 }
 
-- (NSDictionary *)processProperties:(NSArray *)properties withElementAttributes:(NSDictionary *)attributeDict andCreateElementIfNeeded:(Class)elementClass {
+- (void)processProperties:(NSArray *)properties withElementAttributes:(NSDictionary *)attributeDict andCreateElementIfNeeded:(Class)elementClass {
     
-    NSMutableDictionary *lazyProperties = [NSMutableDictionary new];
+    NSMutableDictionary *lazyProperties = nil;
+    NSMutableDictionary *itemTags = nil;
     
     // Then property is a custom object and we want to init it now
     if ([properties count]) {
-        
+
         id newElement = [[elementClass alloc] init];
         _context.currentNode = newElement;
         _context.simpleValue = NO;
+        _context.mutable = NO;
         
         if (!_result) {
             _result = _context.currentNode;
@@ -253,19 +299,32 @@
         
         for (RFPropertyInfo *property in properties) {
             
-            RFXMLAttributes *xmlAttributes = [property attributeWithType:[RFXMLAttributes class]];
-            NSString* serializationKey = RFSerializationKeyForProperty(property);
+            RFXMLSerializable *xmlAttributes = [property attributeWithType:[RFXMLSerializable class]];
+            NSString *serializationKey = RFSerializationKeyForProperty(property);
             
-            if (xmlAttributes.isSavedInTag) {
+            if (xmlAttributes.isTagAttribute) {
                 id decodedValue = [self convertString:attributeDict[serializationKey] forProperty:property];
                 [_context.currentNode setValue:decodedValue forKey:property.propertyName];
             }
             else {
+
+                if (!lazyProperties) lazyProperties = [[NSMutableDictionary alloc] init];
                 lazyProperties[serializationKey] = property;
+
+                // store tags associated with collections in context for future tag processing
+                RFXMLSerializableCollection *collection = [property attributeWithType:[RFXMLSerializableCollection class]];
+                if (collection ) {
+                    if (!itemTags) itemTags = [[NSMutableDictionary alloc] init];
+                    itemTags[collection.itemTag] = serializationKey;
+                }
             }
         }
+
     }
-    return [NSDictionary dictionaryWithDictionary:lazyProperties];
+
+    _context.properties = [lazyProperties count] ? [NSDictionary dictionaryWithDictionary:lazyProperties] : nil;
+    _context.itemTags = [itemTags count] ? [NSDictionary dictionaryWithDictionary:itemTags] : nil;
+
 }
 
 @end

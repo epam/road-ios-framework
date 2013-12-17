@@ -19,10 +19,10 @@
 </string>
 	<key>serviceDeclaration</key>
 	<string>
-SF_ATTRIBUTE(SFWebServiceHeader, hearderFields = @{@&quot;Accept&quot; : @&quot;application/json&quot;})
-SF_ATTRIBUTE(SFWebServiceURLBuilder, builderClass = [SFODataWebServiceURLBuilder class])
-SF_ATTRIBUTE(SFWebServiceCall, prototypeClass = [$classname$ class])
-- (void)load$entity_set_name$WithFetchRequest:(SFODataFetchRequest *)fetchRequest success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+RF_ATTRIBUTE(RFWebServiceHeader, hearderFields = @{@&quot;Accept&quot; : @&quot;application/json&quot;})
+RF_ATTRIBUTE(RFWebServiceURLBuilder, builderClass = [RFODataWebServiceURLBuilder class])
+RF_ATTRIBUTE(RFWebServiceCall, prototypeClass = [$classname$ class])
+- (id&lt;RFWebServiceCancellable&gt;)load$entity_set_name$WithFetchRequest:(RFODataFetchRequest *)fetchRequest success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 </string>
 	<key>headerfile</key>
 	<string>//
@@ -32,16 +32,16 @@ SF_ATTRIBUTE(SFWebServiceCall, prototypeClass = [$classname$ class])
 //  Copyright (c) EPAM Systems. All rights reserved.
 //
 
-#import &lt;Spark/SparkWebservice.h&gt;
+#import &lt;ROAD/ROADWebservice.h&gt;
 
-SF_ATTRIBUTE(SFWebServiceErrorHandler, handlerClass = @&quot;SFODataErrorHandler&quot;)
-SF_ATTRIBUTE(SFWebServiceClientStatusCodes, successCodes = @[[NSValue valueWithRange:NSMakeRange(200, 100)]])
-@interface $webClientName$ : SFWebServiceClient
+RF_ATTRIBUTE(RFWebServiceErrorHandler, handlerClass = @&quot;RFODataErrorHandler&quot;)
+RF_ATTRIBUTE(RFWebServiceClientStatusCodes, successCodes = @[[NSValue valueWithRange:NSMakeRange(200, 100)]])
+@interface $webClientName$ : RFWebServiceClient
 $service_declaration$
 @end
 </string>
 	<key>webClientName</key>
-	<string>ODataWebClient</string>
+	<string>ODataDemoWebClient</string>
 	<key>creationDateFormatString</key>
 	<string>yyyy-MM-dd</string>
 </dict>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A966C6718211FFF00031D15 /* ROADGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A966C6318211FFF00031D15 /* ROADGeneratedAttribute.m */; };
 		5AD1FC431766038E00E67BC4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD1FC421766038E00E67BC4 /* Cocoa.framework */; };
 		78180F0816C3D0A300B4AA31 /* ROADCore.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E72216C3CD4A0049E36B /* ROADCore.h */; };
 		78180F0916C3D0A800B4AA31 /* NSArray+RFEmptyArrayChecks.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6F816C3CD320049E36B /* NSArray+RFEmptyArrayChecks.h */; };
@@ -78,10 +79,8 @@
 		8D9422F117E2C59C005F0AE3 /* RFPoolTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9422E817E2C59C005F0AE3 /* RFPoolTest.m */; };
 		8D9422F217E2C59C005F0AE3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D9422E917E2C59C005F0AE3 /* InfoPlist.strings */; };
 		8D94230217E2C5A9005F0AE3 /* AttributesAPITest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9422F617E2C5A9005F0AE3 /* AttributesAPITest.m */; };
-		8D94230317E2C5A9005F0AE3 /* AnnotatedClass+RFAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9422F817E2C5A9005F0AE3 /* AnnotatedClass+RFAttributes.m */; };
 		8D94230417E2C5A9005F0AE3 /* AnnotatedClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9422FA17E2C5A9005F0AE3 /* AnnotatedClass.m */; };
 		8D94230517E2C5A9005F0AE3 /* CustomRFTestAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9422FC17E2C5A9005F0AE3 /* CustomRFTestAttribute.m */; };
-		8D94230617E2C5A9005F0AE3 /* SecondAnnotatedClass+RFAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9422FD17E2C5A9005F0AE3 /* SecondAnnotatedClass+RFAttributes.m */; };
 		8D94230717E2C5A9005F0AE3 /* SecondAnnotatedClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9422FF17E2C5A9005F0AE3 /* SecondAnnotatedClass.m */; };
 		8D94230817E2C5A9005F0AE3 /* RFTestAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D94230117E2C5A9005F0AE3 /* RFTestAttribute.m */; };
 		8D94231817E2C5B4005F0AE3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D94231117E2C5B4005F0AE3 /* InfoPlist.strings */; };
@@ -162,6 +161,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A966C6318211FFF00031D15 /* ROADGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROADGeneratedAttribute.m; sourceTree = "<group>"; };
 		5AD1FC421766038E00E67BC4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = ../../../../System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		78B8E68E16C3CC3E0049E36B /* libROADCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libROADCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		78B8E69116C3CC3E0049E36B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -229,12 +229,10 @@
 		8D9422EC17E2C59C005F0AE3 /* ROADCoreTest-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ROADCoreTest-Prefix.pch"; sourceTree = "<group>"; };
 		8D9422F517E2C5A9005F0AE3 /* AttributesAPITest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributesAPITest.h; sourceTree = "<group>"; };
 		8D9422F617E2C5A9005F0AE3 /* AttributesAPITest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AttributesAPITest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		8D9422F817E2C5A9005F0AE3 /* AnnotatedClass+RFAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AnnotatedClass+RFAttributes.m"; sourceTree = "<group>"; };
 		8D9422F917E2C5A9005F0AE3 /* AnnotatedClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnotatedClass.h; sourceTree = "<group>"; };
 		8D9422FA17E2C5A9005F0AE3 /* AnnotatedClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotatedClass.m; sourceTree = "<group>"; };
 		8D9422FB17E2C5A9005F0AE3 /* CustomRFTestAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomRFTestAttribute.h; sourceTree = "<group>"; };
 		8D9422FC17E2C5A9005F0AE3 /* CustomRFTestAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomRFTestAttribute.m; sourceTree = "<group>"; };
-		8D9422FD17E2C5A9005F0AE3 /* SecondAnnotatedClass+RFAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SecondAnnotatedClass+RFAttributes.m"; sourceTree = "<group>"; };
 		8D9422FE17E2C5A9005F0AE3 /* SecondAnnotatedClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondAnnotatedClass.h; sourceTree = "<group>"; };
 		8D9422FF17E2C5A9005F0AE3 /* SecondAnnotatedClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondAnnotatedClass.m; sourceTree = "<group>"; };
 		8D94230017E2C5A9005F0AE3 /* RFTestAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFTestAttribute.h; sourceTree = "<group>"; };
@@ -296,6 +294,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A966C6118211FC400031D15 /* ROADGeneratedAttributes */ = {
+			isa = PBXGroup;
+			children = (
+				1A966C6318211FFF00031D15 /* ROADGeneratedAttribute.m */,
+			);
+			path = ROADGeneratedAttributes;
+			sourceTree = "<group>";
+		};
 		78B8E68516C3CC3E0049E36B = {
 			isa = PBXGroup;
 			children = (
@@ -531,12 +537,11 @@
 		8D9422F717E2C5A9005F0AE3 /* TestData */ = {
 			isa = PBXGroup;
 			children = (
-				8D9422F817E2C5A9005F0AE3 /* AnnotatedClass+RFAttributes.m */,
+				1A966C6118211FC400031D15 /* ROADGeneratedAttributes */,
 				8D9422F917E2C5A9005F0AE3 /* AnnotatedClass.h */,
 				8D9422FA17E2C5A9005F0AE3 /* AnnotatedClass.m */,
 				8D9422FB17E2C5A9005F0AE3 /* CustomRFTestAttribute.h */,
 				8D9422FC17E2C5A9005F0AE3 /* CustomRFTestAttribute.m */,
-				8D9422FD17E2C5A9005F0AE3 /* SecondAnnotatedClass+RFAttributes.m */,
 				8D9422FE17E2C5A9005F0AE3 /* SecondAnnotatedClass.h */,
 				8D9422FF17E2C5A9005F0AE3 /* SecondAnnotatedClass.m */,
 				8D94230017E2C5A9005F0AE3 /* RFTestAttribute.h */,
@@ -781,6 +786,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D9422ED17E2C59C005F0AE3 /* RFConditionalComponentResultTest.m in Sources */,
+				1A966C6718211FFF00031D15 /* ROADGeneratedAttribute.m in Sources */,
 				D78F39D217F98D4A00F8DEEB /* RFMethodInfoTest.m in Sources */,
 				8D9422EE17E2C59C005F0AE3 /* RFPropertyNameMethodTest.m in Sources */,
 				D714B72217F5AD4600C82560 /* RFIvarInfoTest.m in Sources */,
@@ -788,11 +794,9 @@
 				8D9422F017E2C59C005F0AE3 /* RFMutableObjectTest.m in Sources */,
 				8D9422F117E2C59C005F0AE3 /* RFPoolTest.m in Sources */,
 				8D94230217E2C5A9005F0AE3 /* AttributesAPITest.m in Sources */,
-				8D94230317E2C5A9005F0AE3 /* AnnotatedClass+RFAttributes.m in Sources */,
 				D78E852E17F9C1AE0046385E /* RFPropertyInfoTest.m in Sources */,
 				8D94230417E2C5A9005F0AE3 /* AnnotatedClass.m in Sources */,
 				8D94230517E2C5A9005F0AE3 /* CustomRFTestAttribute.m in Sources */,
-				8D94230617E2C5A9005F0AE3 /* SecondAnnotatedClass+RFAttributes.m in Sources */,
 				8D94230717E2C5A9005F0AE3 /* SecondAnnotatedClass.m in Sources */,
 				8D94230817E2C5A9005F0AE3 /* RFTestAttribute.m in Sources */,
 			);
@@ -893,6 +897,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/ROADCore.dst;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADCore/ROADCore-Prefix.pch";
 				ONLY_ACTIVE_ARCH = NO;
@@ -906,6 +912,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/ROADCore.dst;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADCore/ROADCore-Prefix.pch";
 				ONLY_ACTIVE_ARCH = NO;
@@ -969,7 +977,7 @@
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
-				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADCoreTest/ROADCoreTest-Prefix.pch";
@@ -993,7 +1001,7 @@
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
-				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADCoreTest/ROADCoreTest-Prefix.pch";

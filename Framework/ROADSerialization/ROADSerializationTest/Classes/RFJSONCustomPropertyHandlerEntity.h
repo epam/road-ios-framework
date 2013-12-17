@@ -1,5 +1,5 @@
 //
-//  RFXMLAttributes.h
+//  RFJSONCustomPropertyHandlerEntity.h
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,19 +30,18 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-/**
- Atttributes for serialization in XML format
-*/
+#import <Foundation/Foundation.h>
+#import "RFSerializationCustomHandler.h"
+#import "RFJSONCustomSerializationHandler.h"
+#import "RFSerializable.h"
 
-@interface RFXMLAttributes : NSObject
+RF_ATTRIBUTE(RFSerializable)
+@interface RFJSONCustomPropertyHandlerEntity : NSObject
 
-/**
- Define namespace for the tag.
- */
-@property (nonatomic, copy) NSString* namespaceId;
-/**
- Indicates that property should be saved in the tag of it's parent (Exception will be raised if impossible)
- */
-@property (nonatomic, assign) BOOL isSavedInTag;
+RF_ATTRIBUTE(RFSerializationCustomHandler, handlerClass = [RFJSONCustomSerializationHandler class])
+@property (strong, nonatomic) NSString *string1;
+
++ (id)sampleObject;
++ (id)deserializationTestObject;
 
 @end

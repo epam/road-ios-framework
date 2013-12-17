@@ -1,6 +1,7 @@
 //
-//  RFXMLAttributes.h
-//  ROADSerialization
+//  ProtocolModel.h
+//  AttributesResearchLab
+//
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -27,11 +28,17 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
-// See the NOTICE file and the LICENSE file distributed with this work
-// for additional information regarding copyright ownership and licensing
 
-#import "RFXMLAttributes.h"
+#import "MethodModel.h"
 
-@implementation RFXMLAttributes
+@interface ProtocolModel : AnnotatedElementModel
+
+@property (nonatomic, strong) NSMutableString *modelDeclarationForParser;
+
+@property (nonatomic, strong) NSMutableArray *propertiesList;
+@property (nonatomic, strong) NSMutableArray *filesToImport;
+@property (nonatomic, strong) NSMutableArray *protocolList;
+@property (nonatomic, strong) NSMutableArray *methodsList;
+@property (nonatomic, assign) BOOL hasGeneratedCode;
 
 @end

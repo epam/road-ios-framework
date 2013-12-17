@@ -11,6 +11,7 @@ env:
     - PROJECT_SCHEME=ROADAttributesCodeGenerator
 
 before_script:
+    - sudo easy_install cpp-coveralls
     - chmod +x ./script_simian.sh
     - chmod +x ./script_general.sh
     - chmod +x ./coveralls.rb
@@ -19,14 +20,10 @@ script:
     - if [[ $PROJECT_SCHEME == Simian ]]; then ./script_simian.sh; else ./script_general.sh; fi
 
 after_success:
-    - if [[ $PROJECT_SCHEME != Simian && $PROJECT_SCHEME != ROADAttributesCodeGenerator ]]; then ./coveralls.rb --extension m; fi
+    - if [[ $PROJECT_SCHEME != Simian && $PROJECT_SCHEME != ROADAttributesCodeGenerator ]]; then ./coveralls.rb --extension m --exclude-folder ROADGeneratedAttributes --current-scheme $PROJECT_SCHEME; fi
 
 notifications:
   email:
     - Nikita_Leonov@epam.com
-    - Yuru_Taustahuzau@epam.com
-    - Eduard_Beleninik@epam.com
-    - Igor_Chesnokov@epam.com
-    - Oleh_Sannikov@epam.com
-    - Tymur_Mamedov@epam.com
     - Valery_Demin@epam.com
+    - Yuru_Taustahuzau@epam.com

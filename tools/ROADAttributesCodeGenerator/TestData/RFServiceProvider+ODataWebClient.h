@@ -1,17 +1,17 @@
 //
-//  SFServiceProvider+ODataWebClient.h
+//  RFServiceProvider+ODataWebClient.h
 //  ODataDemo
 //
 //  Created by Yuru Taustahuzau on 8/13/13.
 //  Copyright (c) 2013 EPAM Systems. All rights reserved.
 //
 
-#import <Spark/SparkServices.h>
+#import <ROAD/ROADServices.h>
 #import "ODataWebClient.h"
 
-@interface SFServiceProvider(ODataWebClient)
+@interface RFServiceProvider(ODataWebClient)
 
-SF_ATTRIBUTE(SFService, serviceClass = [[ODataWebClient class])
+RF_ATTRIBUTE(RFService, serviceClass = [[ODataWebClient class])
 - (ODataWebClient *)odataWebClient;
 
 @end

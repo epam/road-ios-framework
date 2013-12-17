@@ -37,6 +37,40 @@
 
 @implementation AttributesAPITest
 
+#pragma mark - Test Attributes generated code (Protocol section)
+
+- (void)test_RF_attributesForInstanceOfClassImplementsProtocol {
+    NSArray *attributesList = [AnnotatedClass RF_attributesForClass];
+    STAssertTrue(attributesList != nil, @"attributesList must contain values");
+    STAssertTrue([attributesList count] == 3, @"attributesList must contain 2 items");
+    
+    CustomRFTestAttribute *testAttribute = [attributesList lastObject];
+    STAssertTrue(testAttribute != nil, @"testAttribute must not be nil");
+    STAssertEquals(testAttribute.property2, @"TestStringForProp2ForProtocol", @"testAttribute doesn't contains appropriate value");
+}
+
+- (void)test_RF_attributesForInstanceMethodForClassImplementsProtocol {
+    NSArray *attributesList = [AnnotatedClass RF_attributesForMethod:@"doSmth"];
+    STAssertTrue(attributesList != nil, @"attributesList must contain values");
+    STAssertTrue([attributesList count] == 2, @"attributesList must contain 2 items");
+    
+    CustomRFTestAttribute *testAttribute = [attributesList lastObject];
+    STAssertTrue(testAttribute != nil, @"testAttribute must not be nil");
+    STAssertEquals(testAttribute.property1, @"TestStringForProp1ForMethod", @"testAttribute doesn't contains appropriate value");
+}
+
+- (void)test_RF_attributesForPropertyForClassImplementsProtocol {
+    NSArray *attributesList = [AnnotatedClass RF_attributesForProperty:@"prop"];
+    STAssertTrue(attributesList != nil, @"attributesList must contain values");
+    STAssertTrue([attributesList count] == 2, @"attributesList must contain 2 items");
+    
+    CustomRFTestAttribute *testAttribute = [attributesList lastObject];
+    STAssertTrue(testAttribute != nil, @"testAttribute must not be nil");
+    STAssertEquals(testAttribute.property2, @"TestStringForProp2ForProperty", @"testAttribute doesn't contains appropriate value");
+}
+
+#pragma mark -
+
 #pragma mark - Test Attributes generated code (Methods section)
 
 - (void)test_RF_attributesForInstanceMethod {
@@ -59,6 +93,20 @@
     STAssertTrue(attributesList1 == attributesList2, @"attributesList1 and attributesList2 must point at the same array");    
 }
 
+- (void)test_RF_attributesForInstanceMethodCachingAfterAutoreleasePool2 {
+    NSArray __weak *attributesList1 = nil;
+    
+    @autoreleasepool {
+        attributesList1 = [SecondAnnotatedClass RF_attributesForMethod:@"viewDidLoad"];
+        STAssertTrue(attributesList1 != nil, @"attributesList1 must contain values");
+    }
+    
+    NSArray *attributesList2 = [SecondAnnotatedClass RF_attributesForMethod:@"viewDidLoad"];
+    STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
+    
+    STAssertTrue(attributesList1 == attributesList2, @"it seems that cache functionality doesn't work");
+}
+
 - (void)test_RF_attributesForInstanceMethodCachingAfterAutoreleasePool {
     NSArray __weak *attributesList1 = nil;
     
@@ -70,7 +118,7 @@
     NSArray *attributesList2 = [AnnotatedClass RF_attributesForMethod:@"viewDidLoad"];
     STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
     
-    STAssertTrue(attributesList1 != attributesList2, @"it seems here is memory leak");
+    STAssertTrue(attributesList1 == attributesList2, @"it seems that cache functionality doesn't work");
 }
 
 - (void)test_InstanceMethodCachingInterference {    
@@ -94,7 +142,7 @@
     
     CustomRFTestAttribute *testAttribute = [attributesList lastObject];
     STAssertTrue(testAttribute != nil, @"testAttribute must not be nil");
-    STAssertEquals(testAttribute.property2, @"Text2", @"testAttribute doesn't contains appropriate value");
+    STAssertEquals(testAttribute.property2, @"TestStringForProp", @"testAttribute doesn't contains appropriate value");
 }
 
 - (void)test_RF_attributesForPropertyCaching {
@@ -118,7 +166,7 @@
     NSArray *attributesList2 = [AnnotatedClass RF_attributesForProperty:@"window"];
     STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
     
-    STAssertTrue(attributesList1 != attributesList2, @"it seems here is memory leak");
+    STAssertTrue(attributesList1 == attributesList2, @"it seems that cache functionality doesn't work");
 }
 
 - (void)test_PropertyCachingInterference {    
@@ -165,7 +213,7 @@
     NSArray *attributesList2 = [AnnotatedClass RF_attributesForIvar:@"_someField"];
     STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
     
-    STAssertTrue(attributesList1 != attributesList2, @"it seems here is memory leak");
+    STAssertTrue(attributesList1 == attributesList2, @"it seems that cache functionality doesn't work");
 }
 
 - (void)test_FieldCachingInterference {    
@@ -181,7 +229,7 @@
 - (void)test_RF_attributesForClass {
     NSArray *attributesList = [AnnotatedClass RF_attributesForClass];
     STAssertTrue(attributesList != nil, @"attributesList must contain values");
-    STAssertTrue([attributesList count] == 2, @"attributesList must contain 2 items");
+    STAssertTrue([attributesList count] == 3, @"attributesList must contain 2 items");
     
     CustomRFTestAttribute *testAttribute = [AnnotatedClass RF_attributeForClassWithAttributeType:[CustomRFTestAttribute class]];
     
@@ -190,10 +238,10 @@
 
 - (void)test_RF_propertiesWithAttributeType_withFiltering {
     NSArray *properties = [AnnotatedClass RF_propertiesWithAttributeType:[CustomRFTestAttribute class]];
-    STAssertTrue([properties count] == 1, @"properties must contain values");
+    STAssertTrue([properties count] == 2, @"properties must contain values");
 
     RFPropertyInfo *property = [properties lastObject];
-    STAssertTrue([property.propertyName isEqualToString:@"window"], @"please check function");
+    STAssertTrue([property.propertyName isEqualToString:@"prop"], @"please check function");
 }
 
 - (void)test_RF_propertiesWithAttributeType_withWrongFiltering {
@@ -216,7 +264,7 @@
 
 - (void)test_RF_methodsWithAttributeType_withFiltering {
     NSArray *methods = [AnnotatedClass RF_methodsWithAttributeType:[CustomRFTestAttribute class]];
-    STAssertTrue([methods count] == 1, @"methods must contain values");
+    STAssertTrue([methods count] == 2, @"methods must contain values");
     
     RFMethodInfo *method = [methods lastObject];
     STAssertTrue([method.name isEqualToString:@"viewDidLoad"], @"please check function");
