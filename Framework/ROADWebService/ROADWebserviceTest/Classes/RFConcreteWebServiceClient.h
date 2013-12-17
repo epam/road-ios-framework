@@ -38,6 +38,7 @@
 #import "RFODataWebServiceURLBuilder.h"
 #import "RFFormData.h"
 #import "RFMultipartData.h"
+#import "RFWebServiceCache.h"
 
 @class RFODataFetchRequest;
 @protocol RFWebServiceCancellable;
@@ -76,12 +77,14 @@ RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
 - (id<RFWebServiceCancellable>)testMethodWithoutBlocks;
 
 RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
-- (id<RFWebServiceCancellable>)testPragmaNoCacheWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+- (id<RFWebServiceCancellable>)testCacheNoAttrWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
+RF_ATTRIBUTE(RFWebServiceCache, cacheDisabled = YES)
 RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
-- (id<RFWebServiceCancellable>)testCacheControlNoCacheWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+- (id<RFWebServiceCancellable>)testCacheDisableWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
+RF_ATTRIBUTE(RFWebServiceCache, maxAge = 300)
 RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
-- (id<RFWebServiceCancellable>)testNoCacheHeadersWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+- (id<RFWebServiceCancellable>)testCacheMaxAgeWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
 @end

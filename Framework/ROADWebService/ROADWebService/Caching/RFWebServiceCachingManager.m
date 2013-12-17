@@ -69,7 +69,7 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
         expirationDate = [RFWebServiceCachingManager expirationDateFromResponse:response];
     }
     
-    if ([expirationDate compare:[NSDate date]] == NSOrderedAscending) {
+    if ([expirationDate compare:[NSDate date]] == NSOrderedDescending) {
         dispatch_sync(_cacheQueue, ^{
             NSManagedObjectContext *managedObjectContext = _cacheContext.context;
 
@@ -93,16 +93,33 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
 
 - (id)cacheWithRequest:(NSURLRequest *)request {
     NSUInteger requestURLHash = [[request.URL absoluteString] hash];
-    __block NSArray *cachedResponse;
+    __block id cachedResponse;
     dispatch_sync(_cacheQueue, ^{
         NSManagedObjectContext *managedObjectContext = _cacheContext.context;
         NSFetchRequest *fetchCachedResponse = [[NSFetchRequest alloc] initWithEntityName:kRFWebResponseEntityName];
         fetchCachedResponse.predicate = [NSPredicate predicateWithFormat:@"urlHash == %lu", requestURLHash];
         NSError *error;
-        cachedResponse = [managedObjectContext executeFetchRequest:fetchCachedResponse error:&error];
+        NSArray *cachedResponses = [managedObjectContext executeFetchRequest:fetchCachedResponse error:&error];
+        
+        for (RFWebResponse *webResponse in cachedResponses) {
+            if ([webResponse.expirationDate compare:[NSDate date]] == NSOrderedAscending) {
+                [managedObjectContext deleteObject:webResponse];
+                NSError *error;
+                [managedObjectContext save:&error];
+                if (error) {
+                    RFLogError(@"Clean of cache was failed with error : %@", error);
+                }
+            }
+            else if ([webResponse.requestURL isEqualToString:[request.URL absoluteString]]
+                     && ((request.HTTPBody.length == 0 && webResponse.requestBodyData.length == 0)
+                         || [webResponse.requestBodyData isEqualToData:request.HTTPBody])) {
+                cachedResponse = webResponse;
+                break;
+            }
+        }
     });
         
-    return [cachedResponse RF_lastElementIfNotEmpty];
+    return cachedResponse;
 }
 
 
@@ -134,6 +151,7 @@ static const NSInteger kRFWebServiceHeaderValueParameterIndex       = 1;
         
         for (NSString *component in cacheControlComponents) {
             if ([component rangeOfString:kRFWebServiceHeaderNoCacheValue].location != NSNotFound) {
+                expirationDate = nil;
                 noCaching = YES;
                 break;
             }

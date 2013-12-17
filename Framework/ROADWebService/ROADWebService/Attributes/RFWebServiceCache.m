@@ -34,4 +34,13 @@
 
 @implementation RFWebServiceCache
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        _cacheDisabled = NO;
+    }
+    return self;
+}
+
 @end

@@ -40,7 +40,7 @@
 - (void)fakeStart {
     RFLogWarning(@"Faking start of downloading at url: %@", self.request.URL);
     
-    SEL downloaderFinishSelector = sel_registerName("downloaderFinishedWithResult:response:error:");
+    SEL downloaderFinishSelector = sel_registerName("cacheAndFinishWithResult:response:error:");
     NSMethodSignature * downloaderFinishMethodSignature = [RFDownloader
                                                            instanceMethodSignatureForSelector:downloaderFinishSelector];
     NSInvocation * downloaderFinishMethodInvocation = [NSInvocation
@@ -66,7 +66,8 @@
         response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{@"Pragma" : @"no-cache"}];
         resultData = [RFDownloader generateDateBasedData];
     }
-    else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.cache.cache-control.no-cache"]) {
+    else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.cache.cache-control.no-cache"]
+              || [[[self.request URL] absoluteString] isEqualToString:@"http://test.cache.max-age.attr"]) {
         response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{@"Cache-Control" : @"must-revalidate, max-age=0, no-cache"}];
         resultData = [RFDownloader generateDateBasedData];
     }
@@ -79,12 +80,12 @@
         dateFormatter.dateFormat = @"EEE, dd MMM yyyy HH:mm:ss zzz";;
         NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
         [dateFormatter setTimeZone:gmt];
-        NSString *timeStamp = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:10]];
+        NSString *timeStamp = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:300]];
         response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{@"Expires" : timeStamp}];
         resultData = [RFDownloader generateDateBasedData];
     }
     else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.max-age.header"]) {
-        response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{@"Cache-Control" : @"max-age=10"}];
+        response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{@"Cache-Control" : @"max-age=300"}];
         resultData = [RFDownloader generateDateBasedData];
     }
     else {

@@ -52,6 +52,13 @@
     Method originalMethod = class_getInstanceMethod([RFDownloader class], originalSelector);
     Method overrideMethod = class_getInstanceMethod([RFDownloader class], overrideSelector);
     method_exchangeImplementations(originalMethod, overrideMethod);
+    
+//    NSArray *cachingFolderList = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+//    NSString *webServiceCachingPath = [cachingFolderList RF_lastElementIfNotEmpty];
+//    webServiceCachingPath = [webServiceCachingPath stringByAppendingPathComponent:@"RFCachingDirecory"];
+//    webServiceCachingPath = [webServiceCachingPath stringByAppendingPathComponent:@"RFWebServiceCache.coredata"];
+//    NSURL *storeUrl = [NSURL fileURLWithPath:webServiceCachingPath];
+//    [[NSFileManager defaultManager] removeItemAtPath:storeUrl error:nil];
 }
 
 // Travis bug cause performing +setUp before each test
@@ -70,7 +77,7 @@
     
     NSString *firstDate;
     NSString *controlDate;
-    [self sendTwoConsequentRequestsOnWebServiceClient:webClient withFirstResult:&firstDate secondResult:&controlDate];
+    [self sendTwoConsequentRequestsOnWebServiceClient:webClient selector:@selector(testCacheNoAttrWithSuccess:failure:) firstResult:&firstDate secondResult:&controlDate];
     
     STAssertFalse([controlDate isEqualToString:firstDate], @"Response with Pragma:no-cache was cached!");
 }
@@ -80,7 +87,7 @@
     
     NSString *firstDate;
     NSString *controlDate;
-    [self sendTwoConsequentRequestsOnWebServiceClient:webClient withFirstResult:&firstDate secondResult:&controlDate];
+    [self sendTwoConsequentRequestsOnWebServiceClient:webClient selector:@selector(testCacheNoAttrWithSuccess:failure:) firstResult:&firstDate secondResult:&controlDate];
     
     STAssertFalse([controlDate isEqualToString:firstDate], @"Response with Cache-control:no-cache was cached!");
 }
@@ -90,7 +97,7 @@
     
     NSString *firstDate;
     NSString *controlDate;
-    [self sendTwoConsequentRequestsOnWebServiceClient:webClient withFirstResult:&firstDate secondResult:&controlDate];
+    [self sendTwoConsequentRequestsOnWebServiceClient:webClient selector:@selector(testCacheNoAttrWithSuccess:failure:) firstResult:&firstDate secondResult:&controlDate];
 
     STAssertFalse([controlDate isEqualToString:firstDate], @"Response without any cache specifying was cached!");
 }
@@ -100,9 +107,9 @@
     
     NSString *firstDate;
     NSString *controlDate;
-    [self sendTwoConsequentRequestsOnWebServiceClient:webClient withFirstResult:&firstDate secondResult:&controlDate];
+    [self sendTwoConsequentRequestsOnWebServiceClient:webClient selector:@selector(testCacheNoAttrWithSuccess:failure:) firstResult:&firstDate secondResult:&controlDate];
     
-    STAssertTrue([controlDate isEqualToString:firstDate], @"Response without any cache specifying was cached!");
+    STAssertTrue([controlDate isEqualToString:firstDate], @"Response with expires header was not cached!");
 }
 
 - (void)testMaxAgeHeader {
@@ -110,20 +117,44 @@
     
     NSString *firstDate;
     NSString *controlDate;
-    [self sendTwoConsequentRequestsOnWebServiceClient:webClient withFirstResult:&firstDate secondResult:&controlDate];
+    [self sendTwoConsequentRequestsOnWebServiceClient:webClient selector:@selector(testCacheNoAttrWithSuccess:failure:) firstResult:&firstDate secondResult:&controlDate];
     
-    STAssertTrue([controlDate isEqualToString:firstDate], @"Response without any cache specifying was cached!");
+    STAssertTrue([controlDate isEqualToString:firstDate], @"Response with max-age header was not cached!");
+}
+
+- (void)testDisableCache {
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.max-age.header"];
+    
+    NSString *firstDate;
+    NSString *controlDate;
+    [self sendTwoConsequentRequestsOnWebServiceClient:webClient selector:@selector(testCacheDisableWithSuccess:failure:) firstResult:&firstDate secondResult:&controlDate];
+    
+    STAssertFalse([controlDate isEqualToString:firstDate], @"Response with disableCache attribute was cached!");
+}
+
+- (void)testMaxAgeAttribute {
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.cache.max-age.attr"];
+    
+    NSString *firstDate;
+    NSString *controlDate;
+    [self sendTwoConsequentRequestsOnWebServiceClient:webClient selector:@selector(testCacheMaxAgeWithSuccess:failure:) firstResult:&firstDate secondResult:&controlDate];
+    
+    STAssertTrue([controlDate isEqualToString:firstDate], @"Response with maxAge attribute was not cached!");
 }
 
 
 #pragma mark - Utility methods
 
-- (BOOL)sendTwoConsequentRequestsOnWebServiceClient:(RFConcreteWebServiceClient *)webClient withFirstResult:(NSString **)firstResult secondResult:(NSString **)secondResult {
+- (BOOL)sendTwoConsequentRequestsOnWebServiceClient:(RFConcreteWebServiceClient *)webClient selector:(SEL)selector firstResult:(NSString **)firstResult secondResult:(NSString **)secondResult {
     __block BOOL isFinished = NO;
-    [webClient testCacheControlNoCacheWithSuccess:^(NSData *result) {
-        *firstResult = [[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding];
+    // Strong variable to store response from web service
+    __block NSString *fResult;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    [webClient performSelector:selector withObject:^(NSData *result) {
+        fResult = [[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding];
         isFinished = YES;
-    } failure:^(NSError *error) {
+    } withObject:^(NSError *error) {
         isFinished = YES;
     }];
     
@@ -131,21 +162,26 @@
         [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
     }
     
-    STAssertNotNil(*firstResult, @"Web service request with cache failed!");
+    STAssertNotNil(fResult, @"Web service request with cache failed!");
     
+    __block NSString *sResult;
     isFinished = NO;
-    [webClient testPragmaNoCacheWithSuccess:^(NSData *result) {
-        *secondResult = [[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding];
+    [webClient performSelector:selector withObject:^(NSData *result) {
+        sResult = [[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding];
         isFinished = YES;
-    } failure:^(NSError *error) {
+    } withObject:^(NSError *error) {
         isFinished = YES;
     }];
+#pragma clang diagnostic pop
     
     while (!isFinished) {
         [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
     }
     
-    STAssertNotNil(*secondResult, @"Web service request with cache failed at second call!");
+    STAssertNotNil(sResult, @"Web service request with cache failed at second call!");
+    
+    *firstResult = fResult;
+    *secondResult = sResult;
 }
 
 @end

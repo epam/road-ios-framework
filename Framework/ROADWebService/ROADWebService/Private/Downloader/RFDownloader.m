@@ -169,6 +169,22 @@
     }
 }
 
+- (void)cacheAndFinishWithResult:(NSData *)result response:(NSHTTPURLResponse *)response error:(NSError *)error {
+    if (!error) {
+        RFWebServiceCache *cacheAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceCache class]];
+        if (!cacheAttribute.cacheDisabled) {
+            NSDate *expirationDate;
+            if (cacheAttribute.maxAge) {
+                expirationDate = [NSDate dateWithTimeIntervalSinceNow:cacheAttribute.maxAge];
+            }
+            id<RFWebServiceCachingManaging> cacheManager = [RFServiceProvider webServiceCacheManager];
+            [cacheManager setCacheWithRequest:_request response:response responseBodyData:result expirationDate:expirationDate];
+        }
+    }
+    
+    [self downloaderFinishedWithResult:result response:response error:error];
+}
+
 - (void)downloaderFinishedWithResult:(NSData *)result response:(NSHTTPURLResponse *)response error:(NSError *)error {
     __block id resultData = result;
     __block NSError *resultError = error;
@@ -179,17 +195,6 @@
             resultData = serializedData;
             resultError = error;
         }];
-    }
-
-    // Cache response
-    if (!self.downloadError) {
-        RFWebServiceCache *cacheAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceCache class]];
-        NSDate *expirationDate;
-        if (cacheAttribute.maxAge) {
-            expirationDate = [NSDate dateWithTimeIntervalSinceNow:cacheAttribute.maxAge];
-        }
-        id<RFWebServiceCachingManaging> cacheManager = [RFServiceProvider webServiceCacheManager];
-        [cacheManager setCacheWithRequest:_request response:response responseBodyData:result expirationDate:expirationDate];
     }
     
     // Perform callback block
@@ -219,7 +224,7 @@
 - (void)stop {
     _connection = nil;
     [self fillErrorUserInfoAndCleanData];
-    [self downloaderFinishedWithResult:_data response:_response error:_downloadError];
+    [self cacheAndFinishWithResult:_data response:_response error:_downloadError];
     [_looper stop];
     _looper = nil;
     
