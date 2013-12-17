@@ -13,14 +13,17 @@ xctool $PATCH_FOR_PROJECT_OR_WORKSPACE -scheme $PROJECT_SCHEME -reporter pretty 
 if [[ $PROJECT_SCHEME != ROADAttributesCodeGenerator ]]; then xctool $WORKSPACE -scheme $PROJECT_SCHEME test -sdk iphonesimulator6.1; fi	
 
 # =================     Download oclint, unzip    ===========
-wget http://archives.oclint.org/releases/0.7/oclint-0.7-x86_64-apple-darwin-10.tar.gz > /dev/null
-tar xzf oclint-0.7-x86_64-apple-darwin-10.tar.gz > /dev/null
+
+wget https://www.dropbox.com/s/y0dqo9ni6myoevy/oclint-0.9.dev.da383ab.zip > /dev/null
+unzip oclint-0.9.dev.da383ab.zip > /dev/null
 
 # =================     Remove necessary rules from "lib/oclint/rules/" folder of oclint     ===========
-rm $('pwd')/oclint-0.7-x86_64-apple-darwin-10/lib/oclint/rules/libUnusedMethodParameterRule.dylib
+rm $('pwd')/oclint-0.9.dev.da383ab/lib/oclint/rules/libUnusedMethodParameterRule.dylib
+rm $('pwd')/oclint-0.9.dev.da383ab/lib/oclint/rules/libFeatureEnvyRule.dylib
+rm $('pwd')/oclint-0.9.dev.da383ab/lib/oclint/rules/libObjCAssignIvarOutsideAccessorsRule.dylib
 
 # =================     Setup oclint    ===========
-OCLINT_HOME=$('pwd')/oclint-0.7-x86_64-apple-darwin-10
+OCLINT_HOME=$('pwd')/oclint-0.9.dev.da383ab
 PATH=$OCLINT_HOME/bin:$PATH
 
 # =================     Run oclint    ===========
