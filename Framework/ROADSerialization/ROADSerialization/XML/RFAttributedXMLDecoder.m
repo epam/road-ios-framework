@@ -68,17 +68,12 @@
     
     [_parser parse];
     
+    _parser = nil;
+    
     return _result;
 }
 
 #pragma marl - Parser Delegate
-- (void)parserDidEndDocument:(NSXMLParser *)parser {
-    _parser = nil;
-}
-
-- (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
-    _parser = nil;
-}
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     
