@@ -38,6 +38,8 @@
 #import "RFSerializableCollection.h"
 #import "RFSerializableDate.h"
 #import "RFJSONSerializationHandling.h"
+#import "RFSerializableBoolean.h"
+#import "RFBooleanTranslator.h"
 
 NSString *RFSerializationKeyForProperty(RFPropertyInfo *propertyInfo) {
     
@@ -72,7 +74,7 @@ id RFSerializationEncodeObjectForProperty(id object, RFPropertyInfo *propertyInf
     id result = object;
     
     if ([object isKindOfClass:[NSDate class]]) {
-
+        
         RFSerializableDate *serializableDateAttribute = [propertyInfo attributeWithType:[RFSerializableDate class]];
         if (!serializableDateAttribute) serializableDateAttribute = [propertyInfo.hostClass RF_attributeForProperty:propertyInfo.propertyName withAttributeType:[RFSerializableDate class]];
         
@@ -88,8 +90,11 @@ id RFSerializationEncodeObjectForProperty(id object, RFPropertyInfo *propertyInf
             result = [dateFormat length] ? [dateFormatter stringFromDate:object] : [object description];
         }
     }
+    else if ([propertyInfo attributeWithType:[RFSerializableBoolean class]]) {
+        result = [RFBooleanTranslator encodeTranslatableValue:object forProperty:propertyInfo];
+    }
     else if (![object isKindOfClass:[NSString class]]) {
-
+        
         result = [object respondsToSelector:@selector(stringValue)] ? [object stringValue] : [object description];
     }
     

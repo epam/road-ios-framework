@@ -42,6 +42,8 @@
 #import "RFSerializableDate.h"
 #import "RFSerializationCustomHandler.h"
 #import "RFJSONSerializationHandling.h"
+#import "RFSerializableBoolean.h"
+#import "RFBooleanTranslator.h"
 
 @implementation RFAttributedCoder {
     NSString * _dateFormat;
@@ -159,6 +161,9 @@
             NSDateFormatter *dateFormatter = [self dataFormatterWithFormatString:dateFormat];
             encodedValue = [dateFormatter stringFromDate:value];
         }
+    }
+    else if ([propertyInfo attributeWithType:[RFSerializableBoolean class]]) {
+        encodedValue = [RFBooleanTranslator encodeTranslatableValue:value forProperty:propertyInfo];
     }
     else {
         encodedValue = [self encodeValue:value customHandlerAttribute:customHandlerAttribute];

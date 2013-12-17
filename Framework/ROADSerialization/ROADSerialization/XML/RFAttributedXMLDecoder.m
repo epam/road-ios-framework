@@ -33,12 +33,14 @@
 #import <ROAD/ROADReflection.h>
 #import <ROAD/ROADLogger.h>
 #import "RFXMLSerializable.h"
+#import "RFSerializableBoolean.h"
 #import "RFSerializableDate.h"
 #import "RFDerived.h"
 #import "RFXMLSerializationContext.h"
 #import "RFSerializableCollection.h"
 #import "RFSerializationAssistant.h"
 #import "RFXMLSerializableCollection.h"
+#import "RFBooleanTranslator.h"
 
 #define kRFAttributedXMLDecoderDefaultContainerClass [NSArray class]
 
@@ -68,17 +70,12 @@
     
     [_parser parse];
     
+    _parser = nil;
+    
     return _result;
 }
 
 #pragma marl - Parser Delegate
-- (void)parserDidEndDocument:(NSXMLParser *)parser {
-    _parser = nil;
-}
-
-- (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
-    _parser = nil;
-}
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     
@@ -196,10 +193,22 @@
         }
         else if (_context.mutable) value = [value copy];
         
-        [node setValue:value forKey:key];
+        if ([self isValueValid:value forProperty:_context.currentNodeProperty]) {
+            [node setValue:value forKey:key];
+        }
     }
-    
-//    RFLogDebug(@"RFAttributedXMLDecoder: setsValue:%@ forKey:%@", value, key);
+
+}
+
+/**
+ Determines if the value is primitive and has the nil or NSNull value to avoid crashes from setting nil or NSNull value to a primitive
+ 
+ @param id the value to be set
+ @param RFPropertyInfo the property information where the value should be set
+ @return YES if the value can be safely set
+ */
+- (BOOL)isValueValid:(id const)value forProperty:(RFPropertyInfo *)propertyInfo {
+    return ((value && value != [NSNull null]) || ![[propertyInfo typeName] isEqualToString:@"c"]);
 }
 
 - (id)convertString:(NSString *)string forProperty:(RFPropertyInfo *)property {
@@ -208,6 +217,9 @@
     RFSerializableDate *dateAttribute = nil;
     NSString *attributeClassName = property.typeName;
 
+    if ([property attributeWithType:[RFSerializableBoolean class]]) {
+        result = [RFBooleanTranslator decodeTranslatableValue:string forProperty:property];
+    }
     if ([attributeClassName isEqualToString:@"NSNumber"] || [attributeClassName isEqualToString:@"c"]) {
 
         if (!_numberFormatter) {
