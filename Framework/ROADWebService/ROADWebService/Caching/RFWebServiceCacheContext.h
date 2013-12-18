@@ -36,5 +36,12 @@
 @interface RFWebServiceCacheContext : NSObject
 
 @property (nonatomic, strong, readonly) NSManagedObjectContext *context;
+@property (nonatomic, strong, readonly) NSPersistentStoreCoordinator *persisitentStoreCoordinator;
+@property (nonatomic, strong, readonly) NSURL *storeURL;
+
+/**
+ * Add persistent store to persistent store coordinator if it does not have any now.
+ */
+- (void)bindStore;
 
 @end

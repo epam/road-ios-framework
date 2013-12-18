@@ -56,34 +56,41 @@ static NSString * const kRFWebServiceCachingStorageName = @"RFWebServiceCache.co
     if (!_persistentStoreCoordinator) {
         _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
         
-        NSArray *cachingFolderList = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-        NSString *webServiceCachingPath = [cachingFolderList RF_lastElementIfNotEmpty];
-
-        webServiceCachingPath = [webServiceCachingPath stringByAppendingPathComponent:kRFWebServiceCachingDirectory];
-        
-        if (![[NSFileManager defaultManager] fileExistsAtPath:webServiceCachingPath]) {
-            NSError *error;
-            [[NSFileManager defaultManager] createDirectoryAtPath:webServiceCachingPath withIntermediateDirectories:NO attributes:nil error:&error];
-            if (error) {
-                RFLogError(@"Directory for web service cache was not created with error: %@", error);
-            }
-        }
-        
-        webServiceCachingPath = [webServiceCachingPath stringByAppendingPathComponent:kRFWebServiceCachingStorageName];
-        NSURL *storeUrl = [NSURL fileURLWithPath:webServiceCachingPath];
-        NSString *storeType = NSSQLiteStoreType;
-        NSError *error;
-
-        
-        if (![_persistentStoreCoordinator addPersistentStoreWithType:storeType configuration:nil
-                                                                 URL:storeUrl options:nil error:&error]) {
-            _persistentStoreCoordinator = nil;
-            RFLogError(@"RFWebServiceCachingManager error: persistent storage creating was failed with error: %@", [error localizedDescription]);
-        }
+        [self bindStore];
     }
     
     
     return _persistentStoreCoordinator;
+}
+
+- (void)bindStore {
+    if ([_persistentStoreCoordinator.persistentStores count] > 0) {
+        return;
+    }
+    
+    NSArray *cachingFolderList = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *webServiceCachingPath = [cachingFolderList RF_lastElementIfNotEmpty];
+    
+    webServiceCachingPath = [webServiceCachingPath stringByAppendingPathComponent:kRFWebServiceCachingDirectory];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:webServiceCachingPath]) {
+        NSError *error;
+        [[NSFileManager defaultManager] createDirectoryAtPath:webServiceCachingPath withIntermediateDirectories:NO attributes:nil error:&error];
+        if (error) {
+            RFLogError(@"Directory for web service cache was not created with error: %@", error);
+        }
+    }
+    
+    webServiceCachingPath = [webServiceCachingPath stringByAppendingPathComponent:kRFWebServiceCachingStorageName];
+    _storeURL = [NSURL fileURLWithPath:webServiceCachingPath];
+    NSString *storeType = NSSQLiteStoreType;
+    NSError *error;
+    
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:storeType configuration:nil
+                                                             URL:_storeURL options:nil error:&error]) {
+        _persistentStoreCoordinator = nil;
+        RFLogError(@"RFWebServiceCachingManager error: persistent storage creating was failed with error: %@", [error localizedDescription]);
+    }
 }
 
 - (NSManagedObjectModel *)managedObjectModel {

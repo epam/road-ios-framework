@@ -58,4 +58,9 @@
  */
 - (RFWebResponse *)cacheForResponse:(NSHTTPURLResponse *)response request:(NSURLRequest *)request;
 
+/**
+ * Clear all record in cache
+ */
+- (void)dropCache;
+
 @end

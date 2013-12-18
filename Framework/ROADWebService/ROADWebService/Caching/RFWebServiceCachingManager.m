@@ -124,6 +124,23 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
     return cachedResponse;
 }
 
+- (void)dropCache {
+    NSError *error;
+    [_cacheContext.persisitentStoreCoordinator removePersistentStore:[_cacheContext.persisitentStoreCoordinator.persistentStores lastObject] error:&error];
+    if (error) {
+        RFLogError(@"Cache failed to be dropped with error : %@", error);
+    }
+    else {
+        [[NSFileManager defaultManager] removeItemAtURL:_cacheContext.storeURL error:&error];
+        if (error) {
+            RFLogError(@"Cache file failed to be dropped with error : %@", error);
+        }
+        else {
+            [_cacheContext bindStore];
+        }
+    }
+}
+
 
 #pragma mark - Utility methods
 

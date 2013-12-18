@@ -36,6 +36,7 @@
 
 #import "RFServiceProvider+ConcreteWebServiceClient.h"
 #import "RFDownloader+FakeRequest.h"
+#import "RFServiceProvider+WebServiceCachingManager.h"
 
 
 @interface RFWebServiceCacheTest : SenTestCase
@@ -182,6 +183,18 @@
     [self sendTwoConsequentRequestsOnWebServiceClient:webClient selector:@selector(testCacheNoAttrWithSuccess:failure:) firstResult:&firstDate secondResult:&controlDate];
     
     STAssertTrue([controlDate isEqualToString:firstDate], @"Response with maxAge attribute was not cached!");
+}
+
+- (void)testDropCacheMethod {
+    [[RFServiceProvider webServiceCacheManager] dropCache];
+    
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.max-age.header"];
+    
+    NSString *firstDate;
+    NSString *controlDate;
+    [self sendTwoConsequentRequestsOnWebServiceClient:webClient selector:@selector(testCacheNoAttrWithSuccess:failure:) firstResult:&firstDate secondResult:&controlDate];
+    
+    STAssertTrue([controlDate isEqualToString:firstDate], @"Response with max-age header was not cached!");
 }
 
 

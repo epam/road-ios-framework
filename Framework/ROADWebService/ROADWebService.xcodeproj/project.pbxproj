@@ -81,6 +81,11 @@
 		83BCEB6017FEB4A700B5A7C4 /* RFLoggerWebServicePath.m in Sources */ = {isa = PBXBuildFile; fileRef = 83BCEB5F17FEB4A700B5A7C4 /* RFLoggerWebServicePath.m */; };
 		83BCEB6817FEB4CF00B5A7C4 /* RFLoggerWebServicePath.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83BCEB5E17FEB4A700B5A7C4 /* RFLoggerWebServicePath.h */; };
 		83C1734A18618C6700A9538D /* RFWebResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C1734918618C6700A9538D /* RFWebResponse.m */; };
+		83C173521861E22100A9538D /* RFWebServiceCachingManaging.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8353BC7E185B273D009704A8 /* RFWebServiceCachingManaging.h */; };
+		83C173531861E22100A9538D /* RFWebServiceCachingManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8353BC7B185B26AB009704A8 /* RFWebServiceCachingManager.h */; };
+		83C173541861E22100A9538D /* RFWebResponse.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83C1734818618C6700A9538D /* RFWebResponse.h */; };
+		83C173551861E22100A9538D /* RFServiceProvider+WebServiceCachingManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8353BC9F185EDE1B009704A8 /* RFServiceProvider+WebServiceCachingManager.h */; };
+		83C173561861E22100A9538D /* RFWebServiceCache.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8353BCD8185F19C8009704A8 /* RFWebServiceCache.h */; };
 		83D0E631184CA28A002625E6 /* RFXMLSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E630184CA289002625E6 /* RFXMLSerializer.m */; };
 		83D0E63C184CAB0F002625E6 /* RFWebServiceSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E63B184CAB0F002625E6 /* RFWebServiceSerializer.m */; };
 		83D0E641184DC4B5002625E6 /* RFSerializableTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E63F184DC4B5002625E6 /* RFSerializableTestObject.m */; };
@@ -245,6 +250,11 @@
 			dstPath = include/ROAD;
 			dstSubfolderSpec = 16;
 			files = (
+				83C173521861E22100A9538D /* RFWebServiceCachingManaging.h in CopyFiles */,
+				83C173531861E22100A9538D /* RFWebServiceCachingManager.h in CopyFiles */,
+				83C173541861E22100A9538D /* RFWebResponse.h in CopyFiles */,
+				83C173551861E22100A9538D /* RFServiceProvider+WebServiceCachingManager.h in CopyFiles */,
+				83C173561861E22100A9538D /* RFWebServiceCache.h in CopyFiles */,
 				830CCCE0184E00ED007E9A69 /* RFXMLSerializer.h in CopyFiles */,
 				830CCCE1184E00ED007E9A69 /* RFWebService.h in CopyFiles */,
 				830CCCE2184E00ED007E9A69 /* RFWebServiceSerializer.h in CopyFiles */,
