@@ -37,11 +37,11 @@
 #import "RFWebServiceClient+DynamicTest.h"
 #import "RFAuthenticating.h"
 #import "RFServiceProvider+ConcreteWebServiceClient.h"
-#import "RFDownloader+FakeRequest.h"
 #import "RFSerializableTestObject.h"
 #import "RFBasicAuthenticationProvider.h"
 #import "RFDigestAuthenticationProvider.h"
-#import <objc/runtime.h>
+#import "RFDownloadFaker.h"
+#import "RFDownloader.h"
 
 @interface RFWebServiceTest ()
 {
@@ -56,24 +56,12 @@
 }
 
 + (void)setUp {
-    [[RFServiceProvider logger] addWriter:[RFConsoleLogWriter new]];
-    
-    SEL originalSelector = @selector(start);
-    SEL overrideSelector = @selector(fakeStart);
-    Method originalMethod = class_getInstanceMethod([RFDownloader class], originalSelector);
-    Method overrideMethod = class_getInstanceMethod([RFDownloader class], overrideSelector);
-    method_exchangeImplementations(originalMethod, overrideMethod);
+    [RFDownloadFaker setUp];
 }
 
 // Travis bug cause performing +setUp before each test
 + (void)tearDown {
-    [[RFServiceProvider logger] removeWriter:[[[RFServiceProvider logger] writers] lastObject]];
-    
-    SEL originalSelector = @selector(start);
-    SEL overrideSelector = @selector(fakeStart);
-    Method originalMethod = class_getInstanceMethod([RFDownloader class], originalSelector);
-    Method overrideMethod = class_getInstanceMethod([RFDownloader class], overrideSelector);
-    method_exchangeImplementations(originalMethod, overrideMethod);
+    [RFDownloadFaker tearDown];
 }
 
 - (void)testServiceRootAttribute {

@@ -1,5 +1,5 @@
 //
-//  RFWebServiceClientWithRoot.m
+//  RFDownloadFaker.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,13 +30,11 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "RFWebServiceClientWithRoot.h"
+#import <Foundation/Foundation.h>
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wincomplete-implementation"
+@interface RFDownloadFaker : NSObject
 
-@implementation RFWebServiceClientWithRoot
++ (void)setUp;
++ (void)tearDown;
 
 @end
-
-#pragma clang diagnostic pop

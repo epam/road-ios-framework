@@ -32,11 +32,11 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import <ROAD/ROADLogger.h>
-#import <objc/runtime.h>
 
 #import "RFServiceProvider+ConcreteWebServiceClient.h"
 #import "RFDownloader+FakeRequest.h"
 #import "RFServiceProvider+WebServiceCachingManager.h"
+#import "RFDownloadFaker.h"
 
 
 @interface RFWebServiceCacheTest : SenTestCase
@@ -46,25 +46,12 @@
 @implementation RFWebServiceCacheTest
 
 + (void)setUp {
-    [[RFServiceProvider logger] addWriter:[RFConsoleLogWriter new]];
-    
-    SEL originalSelector = @selector(start);
-    SEL overrideSelector = @selector(fakeStart);
-    Method originalMethod = class_getInstanceMethod([RFDownloader class], originalSelector);
-    Method overrideMethod = class_getInstanceMethod([RFDownloader class], overrideSelector);
-    method_exchangeImplementations(originalMethod, overrideMethod);
-    
+    [RFDownloadFaker setUp];
 }
 
 // Travis bug cause performing +setUp before each test
 + (void)tearDown {
-    [[RFServiceProvider logger] removeWriter:[[[RFServiceProvider logger] writers] lastObject]];
-    
-    SEL originalSelector = @selector(start);
-    SEL overrideSelector = @selector(fakeStart);
-    Method originalMethod = class_getInstanceMethod([RFDownloader class], originalSelector);
-    Method overrideMethod = class_getInstanceMethod([RFDownloader class], overrideSelector);
-    method_exchangeImplementations(originalMethod, overrideMethod);
+    [RFDownloadFaker tearDown];
     
     NSArray *cachingFolderList = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *webServiceCachingPath = [cachingFolderList lastObject];
