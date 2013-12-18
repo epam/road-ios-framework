@@ -35,17 +35,14 @@
 @implementation NSRegularExpression (RFROADExtension)
 
 + (NSRegularExpression *)RF_regexFromString:(NSString *)regexString {
-    NSError *error = NULL;
-    NSRegularExpression *result = [NSRegularExpression regularExpressionWithPattern:regexString options:0 error:&error];
     
-    return result;
+    return [NSRegularExpression regularExpressionWithPattern:regexString options:0 error:nil];
 }
 
 + (NSString *)RF_stringByReplacingRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSString *)sourceString {
     NSRegularExpression *regex = [NSRegularExpression RF_regexFromString:regexString];
     
-    NSString *result = [regex stringByReplacingMatchesInString:sourceString options:0 range:NSMakeRange(0, [sourceString length]) withTemplate:template];
-    return result;
+    return [regex stringByReplacingMatchesInString:sourceString options:0 range:NSMakeRange(0, [sourceString length]) withTemplate:template];
 }
 
 + (void)RF_replaceRegex:(NSString *)regexString withTemplate:(NSString *)template inString:(NSMutableString *)sourceString {
@@ -56,9 +53,8 @@
 
 + (NSUInteger)RF_numberOfMatchesToRegex:(NSString *)regexString inString:(NSString *)sourceString {
     NSRegularExpression *regex = [NSRegularExpression RF_regexFromString:regexString];
-    NSUInteger result = [regex numberOfMatchesInString:sourceString options:0 range:NSMakeRange(0, [sourceString length])];
     
-    return result;
+    return [regex numberOfMatchesInString:sourceString options:0 range:NSMakeRange(0, [sourceString length])];
 }
 
 @end

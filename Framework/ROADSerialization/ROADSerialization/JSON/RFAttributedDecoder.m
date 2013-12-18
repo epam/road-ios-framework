@@ -134,7 +134,7 @@
 
 - (id)decodeRootObject:(NSDictionary * const)jsonDict withRootClassNamed:(NSString * const)rootClassName {
     Class rootObjectClass = NSClassFromString(rootClassName);
-    id rootObject;
+    id rootObject = nil;
     
     RFSerializationCustomHandler *customHandlerAttribute = [rootObjectClass RF_attributeForClassWithAttributeType:[RFSerializationCustomHandler class]];
     if (customHandlerAttribute && customHandlerAttribute.key.length == 0) {
@@ -144,34 +144,38 @@
         rootObject = [[rootObjectClass alloc] init];
         
         NSArray *properties = RFSerializationPropertiesForClass(rootObjectClass);
-        NSString *aKey = nil;
         
         @autoreleasepool {
             for (RFPropertyInfo * const aDesc in properties) {
-                aKey = RFSerializationKeyForProperty(aDesc);
-                NSString *propertyName = [aDesc propertyName];
-                id result;
-                
-                if ([customHandlerAttribute.key isEqualToString:propertyName]) {
-                    result = RFCustomDeserialization(jsonDict[aKey], customHandlerAttribute);
-                }
-                else {
-                    RFSerializationCustomHandler *propertyCustomHandlerAttribute = [aDesc attributeWithType:[RFSerializationCustomHandler class]];
-                    if (propertyCustomHandlerAttribute && propertyCustomHandlerAttribute.key.length == 0) {
-                        result = RFCustomDeserialization(jsonDict[aKey], propertyCustomHandlerAttribute);
-                    }
-                    else {
-                        result = [self decodeValue:jsonDict[aKey] forProperty:aDesc customHandlerAttribute:propertyCustomHandlerAttribute];
-                    }
-                }
-                if ([self isValueValid:result forProperty:aDesc]) {
-                    [rootObject setValue:result forKey:propertyName];
-                }
+                [self decodeProperty:aDesc ofObject:rootObject jsonDict:jsonDict handlerAttribute:customHandlerAttribute];
             }
         }
     }
         
     return rootObject;
+}
+
+- (void)decodeProperty:(RFPropertyInfo *)property ofObject:(id)object jsonDict:(NSDictionary * const)jsonDict handlerAttribute:(RFSerializationCustomHandler *)handlerAttribute {
+    
+    NSString *aKey = RFSerializationKeyForProperty(property);
+    NSString *propertyName = [property propertyName];
+    id result = nil;
+    
+    if ([handlerAttribute.key isEqualToString:propertyName]) {
+        result = RFCustomDeserialization(jsonDict[aKey], handlerAttribute);
+    }
+    else {
+        RFSerializationCustomHandler *propertyCustomHandlerAttribute = [property attributeWithType:[RFSerializationCustomHandler class]];
+        if (propertyCustomHandlerAttribute && propertyCustomHandlerAttribute.key.length == 0) {
+            result = RFCustomDeserialization(jsonDict[aKey], propertyCustomHandlerAttribute);
+        }
+        else {
+            result = [self decodeValue:jsonDict[aKey] forProperty:property customHandlerAttribute:propertyCustomHandlerAttribute];
+        }
+    }
+    if ([self isValueValid:result forProperty:property]) {
+        [object setValue:result forKey:propertyName];
+    }
 }
 
 - (id)decodeValue:(id const)aValue forProperty:(RFPropertyInfo * const)aDesc customHandlerAttribute:(RFSerializationCustomHandler *)customHandlerAttribute {

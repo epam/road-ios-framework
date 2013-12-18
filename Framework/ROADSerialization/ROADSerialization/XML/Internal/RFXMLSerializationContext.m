@@ -50,16 +50,17 @@ static NSString const *kCurrentVirtualTag = @"currentVirtualTag";
 
 @implementation RFXMLSerializationContext
 
-- (void)saveContext
+- (void)saveContext __attribute__((annotate("oclint:suppress[high npath complexity]")))
 {
     if (!_stack) _stack = [[NSMutableArray alloc] init];
-    
 
     NSMutableDictionary *newRecord = [[NSMutableDictionary alloc] initWithCapacity:8];
     
+    // Avoid nil assignment
     if (_currentNode) newRecord[kCurrentNode] = _currentNode;
     if (_properties) newRecord[kProperties] = _properties;
     if (_currentNodeProperty) newRecord[kCurrentNodeProperty] = _currentNodeProperty;
+ 
     if (_elementName) newRecord[kElementName] = _elementName;
     if (_currentNodeClass) newRecord[kCurrentNodeClass] = _currentNodeClass;
     if (_itemTags) newRecord[kItemTags] = _itemTags;
