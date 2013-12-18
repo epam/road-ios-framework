@@ -3,6 +3,7 @@
     <entity name="WebResponse" representedClassName="RFWebResponse" syncable="YES">
         <attribute name="eTag" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="expirationDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="lastModified" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="requestBodyData" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="requestURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="response" optional="YES" attributeType="Binary" syncable="YES"/>
@@ -10,6 +11,6 @@
         <attribute name="urlHash" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="WebResponse" positionX="160" positionY="192" width="128" height="118"/>
+        <element name="WebResponse" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

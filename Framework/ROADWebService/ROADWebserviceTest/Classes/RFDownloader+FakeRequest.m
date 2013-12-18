@@ -76,17 +76,38 @@
         resultData = [RFDownloader generateDateBasedData];
     }
     else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.expires.header"]) {
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.dateFormat = @"EEE, dd MMM yyyy HH:mm:ss zzz";;
-        NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
-        [dateFormatter setTimeZone:gmt];
-        NSString *timeStamp = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:300]];
-        response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{@"Expires" : timeStamp}];
+        response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{@"Expires" : [RFDownloader httpDatePlusFiveMinute]}];
         resultData = [RFDownloader generateDateBasedData];
     }
     else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.max-age.header"]) {
         response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{@"Cache-Control" : @"max-age=300"}];
         resultData = [RFDownloader generateDateBasedData];
+    }
+    else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.cache.last.modified"]) {
+        response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{@"Last-Modified" : [RFDownloader httpDatePlusFiveMinute]}];
+        resultData = [RFDownloader generateDateBasedData];
+    }
+    else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.cache.etag"]) {
+        response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{@"ETag" : [[NSString alloc] initWithData:[RFDownloader generateDateBasedData] encoding:NSUTF8StringEncoding]}];
+        resultData = [RFDownloader generateDateBasedData];
+    }
+    else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.cache.same.last.modified"]) {
+        if ([[self.request.allHTTPHeaderFields objectForKey:@"If-Modified-Since"] isEqualToString:@"Sat, 29 Oct 1994 19:43:31 GMT"]) {
+            response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:304 HTTPVersion:@"HTTP/1.1" headerFields:nil];
+        }
+        else {
+            response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{@"Last-Modified" : @"Sat, 29 Oct 1994 19:43:31 GMT"}];
+            resultData = [RFDownloader generateDateBasedData];
+        }
+    }
+    else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.cache.same.etag"]) {
+        if ([[self.request.allHTTPHeaderFields objectForKey:@"If-None-Match"] isEqualToString:@"4a7sd47ads5789a6sd"]) {
+            response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:304 HTTPVersion:@"HTTP/1.1" headerFields:nil];
+        }
+        else {
+            response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{@"ETag" : @"4a7sd47ads5789a6sd"}];
+            resultData = [RFDownloader generateDateBasedData];
+        }
     }
     else {
         // Not processed URL
@@ -157,6 +178,16 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"yyyy/MM/dd HH:mm:ss.SSS ZZZ";
     return [[dateFormatter stringFromDate:[NSDate date]] dataUsingEncoding:NSUTF8StringEncoding];
+}
+
++ (NSString *)httpDatePlusFiveMinute {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"EEE, dd MMM yyyy HH:mm:ss zzz";;
+    NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+    [dateFormatter setTimeZone:gmt];
+    NSString *timeStamp = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:300]];
+    
+    return timeStamp;
 }
 
 @end

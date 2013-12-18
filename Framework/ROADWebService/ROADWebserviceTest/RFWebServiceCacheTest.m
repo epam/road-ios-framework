@@ -53,12 +53,6 @@
     Method overrideMethod = class_getInstanceMethod([RFDownloader class], overrideSelector);
     method_exchangeImplementations(originalMethod, overrideMethod);
     
-//    NSArray *cachingFolderList = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-//    NSString *webServiceCachingPath = [cachingFolderList RF_lastElementIfNotEmpty];
-//    webServiceCachingPath = [webServiceCachingPath stringByAppendingPathComponent:@"RFCachingDirecory"];
-//    webServiceCachingPath = [webServiceCachingPath stringByAppendingPathComponent:@"RFWebServiceCache.coredata"];
-//    NSURL *storeUrl = [NSURL fileURLWithPath:webServiceCachingPath];
-//    [[NSFileManager defaultManager] removeItemAtPath:storeUrl error:nil];
 }
 
 // Travis bug cause performing +setUp before each test
@@ -70,6 +64,14 @@
     Method originalMethod = class_getInstanceMethod([RFDownloader class], originalSelector);
     Method overrideMethod = class_getInstanceMethod([RFDownloader class], overrideSelector);
     method_exchangeImplementations(originalMethod, overrideMethod);
+    
+    NSArray *cachingFolderList = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *webServiceCachingPath = [cachingFolderList lastObject];
+    webServiceCachingPath = [webServiceCachingPath stringByAppendingPathComponent:@"RFCachingDirecory"];
+    webServiceCachingPath = [webServiceCachingPath stringByAppendingPathComponent:@"RFWebServiceCache.coredata"];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:webServiceCachingPath]) {
+        [[NSFileManager defaultManager] removeItemAtPath:webServiceCachingPath error:nil];
+    }
 }
 
 - (void)testPragmaNoCaching {
@@ -138,6 +140,46 @@
     NSString *firstDate;
     NSString *controlDate;
     [self sendTwoConsequentRequestsOnWebServiceClient:webClient selector:@selector(testCacheMaxAgeWithSuccess:failure:) firstResult:&firstDate secondResult:&controlDate];
+    
+    STAssertTrue([controlDate isEqualToString:firstDate], @"Response with maxAge attribute was not cached!");
+}
+
+- (void)testLastModifiedField {
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.cache.last.modified"];
+    
+    NSString *firstDate;
+    NSString *controlDate;
+    [self sendTwoConsequentRequestsOnWebServiceClient:webClient selector:@selector(testCacheNoAttrWithSuccess:failure:) firstResult:&firstDate secondResult:&controlDate];
+    
+    STAssertFalse([controlDate isEqualToString:firstDate], @"Response with maxAge attribute was not cached!");
+}
+
+- (void)testEtagField {
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.cache.etag"];
+    
+    NSString *firstDate;
+    NSString *controlDate;
+    [self sendTwoConsequentRequestsOnWebServiceClient:webClient selector:@selector(testCacheNoAttrWithSuccess:failure:) firstResult:&firstDate secondResult:&controlDate];
+    
+    STAssertFalse([controlDate isEqualToString:firstDate], @"Response with maxAge attribute was not cached!");
+}
+
+- (void)testSameLastModifiedField {
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.cache.same.last.modified"];
+    
+    NSString *firstDate;
+    NSString *controlDate;
+    [self sendTwoConsequentRequestsOnWebServiceClient:webClient selector:@selector(testCacheNoAttrWithSuccess:failure:) firstResult:&firstDate secondResult:&controlDate];
+    
+    STAssertTrue([controlDate isEqualToString:firstDate], @"Response with maxAge attribute was not cached!");
+}
+
+- (void)testSameEtagField {
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.cache.same.etag"];
+    
+    NSString *firstDate;
+    NSString *controlDate;
+    [self sendTwoConsequentRequestsOnWebServiceClient:webClient selector:@selector(testCacheNoAttrWithSuccess:failure:) firstResult:&firstDate secondResult:&controlDate];
     
     STAssertTrue([controlDate isEqualToString:firstDate], @"Response with maxAge attribute was not cached!");
 }

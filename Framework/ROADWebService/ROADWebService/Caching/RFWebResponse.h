@@ -1,5 +1,5 @@
 //
-//  RFWebServiceCachingManaging.h
+//  RFWebResponse.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -31,31 +31,18 @@
 // for additional information regarding copyright ownership and licensing
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@class RFWebResponse;
 
-@protocol RFWebServiceCachingManaging <NSObject>
+@interface RFWebResponse : NSManagedObject
 
-/**
- * Set one cache entry to the web service cache.
- * @param request The request that should be stored in the cache.
- * @param response The response of the request.
- * @param responseBodyData The response data.
- * @param expirationDate The timeout time of the cache.
- */
-- (void)setCacheWithRequest:(NSURLRequest *)request response:(NSHTTPURLResponse *)response responseBodyData:(NSData *)responseBodyData expirationDate:(NSDate *)expirationDate;
-
-/**
- * Returns the cache object from the cache. If no entry has found, returns nil.
- * @param request The request that should be check in the cache.
- */
-- (RFWebResponse *)cacheWithRequest:(NSURLRequest *)request;
-
-/**
- * Returns the cache object in case response tells that the cache object is still valid.
- * @param response The response from the web service.
- * @param request The request to the web service.
- */
-- (RFWebResponse *)cacheForResponse:(NSHTTPURLResponse *)response request:(NSURLRequest *)request;
+@property (nonatomic, retain) NSString * eTag;
+@property (nonatomic, retain) NSDate * expirationDate;
+@property (nonatomic, retain) NSData * requestBodyData;
+@property (nonatomic, retain) NSString * requestURL;
+@property (nonatomic, retain) NSData * response;
+@property (nonatomic, retain) NSData * responseBodyData;
+@property (nonatomic, retain) NSDecimalNumber * urlHash;
+@property (nonatomic, retain) NSString * lastModified;
 
 @end
