@@ -44,7 +44,6 @@
 		8353BCA1185EDE1B009704A8 /* RFServiceProvider+WebServiceCachingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8353BCA0185EDE1B009704A8 /* RFServiceProvider+WebServiceCachingManager.m */; };
 		8353BCDA185F19C8009704A8 /* RFWebServiceCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8353BCD9185F19C8009704A8 /* RFWebServiceCache.m */; };
 		8353BCDC185F1F48009704A8 /* RFWebServiceCacheTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8353BCDB185F1F48009704A8 /* RFWebServiceCacheTest.m */; };
-		835D30FD184DFE0E00EF2310 /* RFConcreteWebServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 835D30FC184DFE0E00EF2310 /* RFConcreteWebServiceClient.m */; };
 		837B001317B3A1AE00D77A5D /* RFODataProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 837B001217B3A1AE00D77A5D /* RFODataProperty.m */; };
 		837B001B17B3B0F000D77A5D /* RFODataEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 837B001A17B3B0F000D77A5D /* RFODataEntity.m */; };
 		837B001F17B3B1AB00D77A5D /* RFODataAbstractEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 837B001E17B3B1AB00D77A5D /* RFODataAbstractEntity.m */; };
@@ -72,6 +71,8 @@
 		83AA50E517DDF1F300C73DEF /* RFMultipartData.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 839992B617D7658F002DAE8D /* RFMultipartData.h */; };
 		83AA50E617DDF1FD00C73DEF /* RFFormData.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 839992B217D74B94002DAE8D /* RFFormData.h */; };
 		83AA529317DF05BE00C73DEF /* RFWebServiceURLBuilderParameter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 837B004617B8C86100D77A5D /* RFWebServiceURLBuilderParameter.h */; };
+		83AAEF0F18620E6D006432EE /* RFDownloadFaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C173581861E9CA00A9538D /* RFDownloadFaker.m */; };
+		83AAEF1718620E7E006432EE /* RFConcreteWebServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 835D30FC184DFE0E00EF2310 /* RFConcreteWebServiceClient.m */; };
 		83ACF19B17A8F43E0077DF82 /* RFAuthenticationProvider.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 832540EC17A6B02B006AACF4 /* RFAuthenticationProvider.h */; };
 		83AFDCE0174F532900CC1200 /* RFWebServiceLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AFDCDF174F532900CC1200 /* RFWebServiceLogger.m */; };
 		83AFDCEB174F58FB00CC1200 /* RFWebServiceLogger.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83AFDCDE174F532900CC1200 /* RFWebServiceLogger.h */; };
@@ -86,7 +87,6 @@
 		83C173541861E22100A9538D /* RFWebResponse.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83C1734818618C6700A9538D /* RFWebResponse.h */; };
 		83C173551861E22100A9538D /* RFServiceProvider+WebServiceCachingManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8353BC9F185EDE1B009704A8 /* RFServiceProvider+WebServiceCachingManager.h */; };
 		83C173561861E22100A9538D /* RFWebServiceCache.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8353BCD8185F19C8009704A8 /* RFWebServiceCache.h */; };
-		83C173591861E9CA00A9538D /* RFDownloadFaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C173581861E9CA00A9538D /* RFDownloadFaker.m */; };
 		83D0E631184CA28A002625E6 /* RFXMLSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E630184CA289002625E6 /* RFXMLSerializer.m */; };
 		83D0E63C184CAB0F002625E6 /* RFWebServiceSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E63B184CAB0F002625E6 /* RFWebServiceSerializer.m */; };
 		83D0E641184DC4B5002625E6 /* RFSerializableTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E63F184DC4B5002625E6 /* RFSerializableTestObject.m */; };
@@ -1041,7 +1041,9 @@
 				8D94224917E2A4B5005F0AE3 /* RFDownloader+FakeRequest.m in Sources */,
 				8D94224A17E2A4BB005F0AE3 /* ROADGeneratedAttribute.m in Sources */,
 				EE05784B181398D30093B308 /* RFWebServiceClientWithLogger.m in Sources */,
+				83AAEF1718620E7E006432EE /* RFConcreteWebServiceClient.m in Sources */,
 				8D94224B17E2A4BE005F0AE3 /* RFWebServiceClient+DynamicTest.m in Sources */,
+				83AAEF0F18620E6D006432EE /* RFDownloadFaker.m in Sources */,
 				8353BCDC185F1F48009704A8 /* RFWebServiceCacheTest.m in Sources */,
 				83D0E641184DC4B5002625E6 /* RFSerializableTestObject.m in Sources */,
 				EE3022F4180FD687003B1826 /* RFWebServiceClientWithRoot.m in Sources */,
@@ -1055,7 +1057,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD896C231737E84F00565C9C /* RFWebServiceCall.m in Sources */,
-				835D30FD184DFE0E00EF2310 /* RFConcreteWebServiceClient.m in Sources */,
 				CD896C241737E84F00565C9C /* RFWebServiceHeader.m in Sources */,
 				CD896C2E1737E84F00565C9C /* RFDefaultSerializer.m in Sources */,
 				E5D81148179562510046DED1 /* RFWebServiceClientStatusCodes.m in Sources */,
@@ -1098,7 +1099,6 @@
 				8353BCA1185EDE1B009704A8 /* RFServiceProvider+WebServiceCachingManager.m in Sources */,
 				839992B417D74B95002DAE8D /* RFFormData.m in Sources */,
 				83D0E63C184CAB0F002625E6 /* RFWebServiceSerializer.m in Sources */,
-				83C173591861E9CA00A9538D /* RFDownloadFaker.m in Sources */,
 				8353BC9E185B4D63009704A8 /* RFWebResponse+HTTPResponse.m in Sources */,
 				839992B817D7658F002DAE8D /* RFMultipartData.m in Sources */,
 			);

@@ -50,10 +50,7 @@
 }
 @end
 
-@implementation RFWebServiceTest {
-    RFLogWriter *logWriter;
-    
-}
+@implementation RFWebServiceTest
 
 + (void)setUp {
     [RFDownloadFaker setUp];

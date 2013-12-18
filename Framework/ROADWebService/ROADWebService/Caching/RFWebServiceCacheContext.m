@@ -88,8 +88,13 @@ static NSString * const kRFWebServiceCachingStorageName = @"RFWebServiceCache.co
     
     if (![_persistentStoreCoordinator addPersistentStoreWithType:storeType configuration:nil
                                                              URL:_storeURL options:nil error:&error]) {
-        _persistentStoreCoordinator = nil;
-        RFLogError(@"RFWebServiceCachingManager error: persistent storage creating was failed with error: %@", [error localizedDescription]);
+        error = nil;
+        [[NSFileManager defaultManager] removeItemAtURL:_storeURL error:&error];
+        if (![_persistentStoreCoordinator addPersistentStoreWithType:storeType configuration:nil
+                                                                 URL:_storeURL options:nil error:&error]) {
+            _persistentStoreCoordinator = nil;
+            RFLogError(@"RFWebServiceCachingManager error: persistent storage creating was failed with error: %@", [error localizedDescription]);
+        }
     }
 }
 
