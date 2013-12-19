@@ -137,13 +137,10 @@ char *RFAttributedXMLCoderTagForClass(Class aClass) {
 
 - (BOOL)serializeObjectAsAttributed:(id)serializedObject toNode:(xmlNodePtr)xmlNode {
 
-    BOOL result = NO;
     NSArray *properties = RFSerializationPropertiesForClass([serializedObject class]);
+    BOOL result = ([properties count] > 0);
     
-    do {
-        if (!(result = [properties count]))
-            break;
-        
+    if (result) {
         for (RFPropertyInfo *property in properties) {
 
             RFXMLSerializable *xmlAttributes = [property attributeWithType:[RFXMLSerializable class]];
@@ -161,7 +158,7 @@ char *RFAttributedXMLCoderTagForClass(Class aClass) {
                 [self serializeObject:propertyObject toXMLNode:xmlNode precreatedNode:collection ? xmlNode : NULL propertyInfo:property serializationName:nil itemTag:collection.itemTag];
             }
         }
-    } while (0);
+    };
     
     return result;
 }

@@ -74,8 +74,8 @@
     
     [_parser parse];
     
-    _parser = nil;
     _parser.delegate = nil;
+    _parser = nil;
     
     if (error)
         *error = _parseError;
