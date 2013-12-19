@@ -72,7 +72,6 @@ static NSString * const kRFWebServiceCachingStorageName = @"RFWebServiceCache.co
     NSString *webServiceCachingPath = [cachingFolderList RF_lastElementIfNotEmpty];
     
     webServiceCachingPath = [webServiceCachingPath stringByAppendingPathComponent:kRFWebServiceCachingDirectory];
-    
     if (![[NSFileManager defaultManager] fileExistsAtPath:webServiceCachingPath]) {
         NSError *error;
         [[NSFileManager defaultManager] createDirectoryAtPath:webServiceCachingPath withIntermediateDirectories:NO attributes:nil error:&error];
@@ -100,7 +99,9 @@ static NSString * const kRFWebServiceCachingStorageName = @"RFWebServiceCache.co
 
 - (NSManagedObjectModel *)managedObjectModel {
     if (!_managedObjectModel) {
-        NSURL *url = [[NSURL alloc] initWithString:[[NSBundle bundleForClass:self.class] pathForResource:kRFWebServiceCachingModelName ofType:kRFWebServiceCachingModelExtension]];
+        NSString *modelPath = [[NSBundle bundleForClass:self.class] pathForResource:kRFWebServiceCachingModelName ofType:kRFWebServiceCachingModelExtension];
+        NSString *escapedModelPath = [modelPath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSURL *url = [[NSURL alloc] initWithString:escapedModelPath];
         _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:url];
     }
     
