@@ -33,6 +33,6 @@
 
 @interface RFAttributedXMLDecoder : NSObject
 
-- (id)decodeData:(NSData *)xmlData withRootObjectClass:(Class)rootObjectClass;
+- (id)decodeData:(NSData *)xmlData withRootObjectClass:(Class)rootObjectClass error:(NSError **)error;
 
 @end

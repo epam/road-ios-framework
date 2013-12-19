@@ -42,4 +42,4 @@ NSArray *RFSerializationPropertiesForClass(Class class);
 id RFCustomSerialization(id value, RFSerializationCustomHandler *customHandlerAttribute);
 id RFCustomDeserialization(id value, RFSerializationCustomHandler *customHandlerAttribute);
 
-id RFSerializationEncodeObjectForProperty(id value, RFPropertyInfo *propertyInfo, NSDateFormatter* dateFormatter);
+NSString *RFSerializationEncodeObjectForProperty(id value, RFPropertyInfo *propertyInfo, NSDateFormatter* dateFormatter);

@@ -100,8 +100,7 @@ char *RFAttributedXMLCoderTagForClass(Class aClass) {
     // Try to serialize as a container or object with defined properties. Assume it's simple value otherwise.
     else if (![self serializeObjectAsContainer:serializedObject toNode:result itemTag:itemTag] && ![self serializeObjectAsAttributed:serializedObject toNode:result]) {
         
-            id encodedObject = RFSerializationEncodeObjectForProperty(serializedObject, propertyInfo, _dateFormatter);
-            NSString *encodedString = [encodedObject respondsToSelector:@selector(stringValue)] ? [encodedObject stringValue] : [encodedObject description];
+            NSString *encodedString = RFSerializationEncodeObjectForProperty(serializedObject, propertyInfo, _dateFormatter);
             xmlNodeSetContent(result, BAD_CAST [encodedString UTF8String]);
         }
     
@@ -120,15 +119,14 @@ char *RFAttributedXMLCoderTagForClass(Class aClass) {
 
 - (BOOL)serializeObjectAsContainer:(id)serializedObject toNode:(xmlNodePtr)xmlNode itemTag:(NSString *)itemTag {
     
-    BOOL result = NO;
     Class class = [serializedObject class];
 
     BOOL isDictionary = [class isSubclassOfClass:[NSDictionary class]];
     BOOL isArray = [class isSubclassOfClass:[NSArray class]];
-    
-    if ((result = isArray || isDictionary)) {
+    BOOL result = isArray || isDictionary;
+
+    if (result) {
         for (id item in serializedObject) {
-            
             NSString *serializationName = [itemTag length] ? itemTag : ((isDictionary && [item isKindOfClass:[NSString class]]) ? item : nil);
             [self serializeObject:isArray ? item : serializedObject[item] toXMLNode:xmlNode precreatedNode:NULL propertyInfo:nil serializationName:serializationName itemTag:nil];
         }
@@ -139,11 +137,12 @@ char *RFAttributedXMLCoderTagForClass(Class aClass) {
 
 - (BOOL)serializeObjectAsAttributed:(id)serializedObject toNode:(xmlNodePtr)xmlNode {
 
-    BOOL result = NO;
     NSArray *properties = RFSerializationPropertiesForClass([serializedObject class]);
+    BOOL result = ([properties count] > 0);
     
-    if ((result = [properties count])) {
+    if (result) {
         for (RFPropertyInfo *property in properties) {
+
             RFXMLSerializable *xmlAttributes = [property attributeWithType:[RFXMLSerializable class]];
             id propertyObject = [serializedObject valueForKey:property.propertyName];
             
@@ -155,12 +154,11 @@ char *RFAttributedXMLCoderTagForClass(Class aClass) {
                 }
             }
             else {
-                
                 RFXMLSerializableCollection *collection = [property attributeWithType:[RFXMLSerializableCollection class]];
                 [self serializeObject:propertyObject toXMLNode:xmlNode precreatedNode:collection ? xmlNode : NULL propertyInfo:property serializationName:nil itemTag:collection.itemTag];
             }
         }
-    }
+    };
     
     return result;
 }
