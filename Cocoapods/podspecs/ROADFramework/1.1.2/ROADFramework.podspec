@@ -53,7 +53,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
   s.requires_arc = true
 
-  s.source       = { :git => 'https://github.com/epam/road-ios-framework.git', :tag => '1.1.2' }
+  s.source       = { :git => 'https://github.com/epam/road-ios-framework.git', :branch => 'dev' }
 
   s.xcconfig = { 'OTHER_LDFLAGS' => '-all_load' }
 
