@@ -126,11 +126,18 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
 
 - (void)dropCache {
     NSError *error;
+    NSLog(@"%@", _cacheContext.persisitentStoreCoordinator.persistentStores);
     [_cacheContext.persisitentStoreCoordinator removePersistentStore:[_cacheContext.persisitentStoreCoordinator.persistentStores lastObject] error:&error];
     if (error) {
         RFLogError(@"Cache failed to be dropped with error : %@", error);
     }
     else {
+        if (![[NSFileManager defaultManager] fileExistsAtPath:[_cacheContext.storeURL absoluteString]]) {
+            NSLog(@"file not exist %@", [_cacheContext.storeURL absoluteString]);
+        }
+        else {
+            NSLog(@"file exist %@", [_cacheContext.storeURL absoluteString]);
+        }
         [[NSFileManager defaultManager] removeItemAtURL:_cacheContext.storeURL error:&error];
         if (error) {
             RFLogError(@"Cache file failed to be dropped with error : %@", error);
