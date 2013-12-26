@@ -132,11 +132,11 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
         RFLogError(@"Cache failed to be dropped with error : %@", error);
     }
     else {
-        if (![[NSFileManager defaultManager] fileExistsAtPath:[_cacheContext.storeURL absoluteString]]) {
-            NSLog(@"file not exist %@", [_cacheContext.storeURL absoluteString]);
+        if (![[NSFileManager defaultManager] fileExistsAtPath:[[_cacheContext.storeURL absoluteString] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]) {
+            NSLog(@"file not exist %@", [[_cacheContext.storeURL absoluteString] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
         }
         else {
-            NSLog(@"file exist %@", [_cacheContext.storeURL absoluteString]);
+            NSLog(@"file exist %@", [[_cacheContext.storeURL absoluteString]stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
         }
         [[NSFileManager defaultManager] removeItemAtURL:_cacheContext.storeURL error:&error];
         if (error) {
