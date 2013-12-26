@@ -1,5 +1,5 @@
 //
-//  EDSDownloader.h
+//  RFWebResponse.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,49 +30,18 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "RFWebServiceCancellable.h"
+#import "RFWebResponse.h"
 
-@protocol RFAuthenticating;
-@class RFWebServiceClient;
 
-@interface RFDownloader : NSObject <RFWebServiceCancellable, NSURLConnectionDelegate, NSURLConnectionDataDelegate>
+@implementation RFWebResponse
 
-@property (strong, nonatomic) NSString *loggerType;
-@property (readonly, nonatomic, readonly) NSMutableArray *successCodes;
-@property (strong, nonatomic) id<RFAuthenticating> authenticationProvider;
-@property (strong, nonatomic, readonly) NSMutableURLRequest *request;
-
-/**
- * The flag that specify if current request is multipart form data request.
- */
-@property (assign, nonatomic, getter = isMultipartData) BOOL multipartData;
-
-@property (nonatomic, strong, readonly) RFWebServiceClient *webServiceClient;
-@property (nonatomic, strong, readonly) NSString *methodName;
-/**
- The serialized data from the request,
- */
-@property (strong, nonatomic) id serializedData;
-/**
- The response success block.
- */
-@property (copy, nonatomic) void (^successBlock)(id result);
-/**
- The response failure block.
- */
-@property (copy, nonatomic) void (^failureBlock)(id error);
-/**
- Indicates that the request has been cancelled.
- */
-@property (atomic, assign, readonly, getter = isRequestCancelled) BOOL requestCancelled;
-
-- (id)initWithClient:(RFWebServiceClient *)webServiceClient methodName:(NSString *)methodName authenticationProvider:(id<RFAuthenticating>)authenticaitonProvider;
-
-- (void)configureRequestForUrl:(NSURL * const)anUrl body:(NSData *)httpBody sharedHeaders:(NSDictionary *)sharedHeaders values:(NSDictionary *)values;
-
-- (void)checkCacheAndStart;
-- (void)start;
-
-- (void)cancel;
+@dynamic eTag;
+@dynamic expirationDate;
+@dynamic requestBodyData;
+@dynamic requestURL;
+@dynamic response;
+@dynamic responseBodyData;
+@dynamic urlHash;
+@dynamic lastModified;
 
 @end

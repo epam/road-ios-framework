@@ -1,5 +1,5 @@
 //
-//  EDSDownloader.h
+//  RFWebServiceCache.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,49 +30,20 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "RFWebServiceCancellable.h"
-
-@protocol RFAuthenticating;
-@class RFWebServiceClient;
-
-@interface RFDownloader : NSObject <RFWebServiceCancellable, NSURLConnectionDelegate, NSURLConnectionDataDelegate>
-
-@property (strong, nonatomic) NSString *loggerType;
-@property (readonly, nonatomic, readonly) NSMutableArray *successCodes;
-@property (strong, nonatomic) id<RFAuthenticating> authenticationProvider;
-@property (strong, nonatomic, readonly) NSMutableURLRequest *request;
+#import <Foundation/Foundation.h>
 
 /**
- * The flag that specify if current request is multipart form data request.
+ * The attribute override default behaviour of caching mechanism by specifying cached record expiration date or disabling caching.
  */
-@property (assign, nonatomic, getter = isMultipartData) BOOL multipartData;
+@interface RFWebServiceCache : NSObject
 
-@property (nonatomic, strong, readonly) RFWebServiceClient *webServiceClient;
-@property (nonatomic, strong, readonly) NSString *methodName;
 /**
- The serialized data from the request,
+ * Cache expiration time for marked web response.
  */
-@property (strong, nonatomic) id serializedData;
+@property NSUInteger maxAge;
 /**
- The response success block.
+ * Disable caching for marked web request.
  */
-@property (copy, nonatomic) void (^successBlock)(id result);
-/**
- The response failure block.
- */
-@property (copy, nonatomic) void (^failureBlock)(id error);
-/**
- Indicates that the request has been cancelled.
- */
-@property (atomic, assign, readonly, getter = isRequestCancelled) BOOL requestCancelled;
-
-- (id)initWithClient:(RFWebServiceClient *)webServiceClient methodName:(NSString *)methodName authenticationProvider:(id<RFAuthenticating>)authenticaitonProvider;
-
-- (void)configureRequestForUrl:(NSURL * const)anUrl body:(NSData *)httpBody sharedHeaders:(NSDictionary *)sharedHeaders values:(NSDictionary *)values;
-
-- (void)checkCacheAndStart;
-- (void)start;
-
-- (void)cancel;
+@property BOOL cacheDisabled;
 
 @end

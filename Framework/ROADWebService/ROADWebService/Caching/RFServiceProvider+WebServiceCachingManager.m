@@ -1,5 +1,5 @@
 //
-//  EDSDownloader.h
+//  RFServiceProvider+WebServiceCachingManager.m
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,49 +30,13 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "RFWebServiceCancellable.h"
+#import "RFServiceProvider+WebServiceCachingManager.h"
 
-@protocol RFAuthenticating;
-@class RFWebServiceClient;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wincomplete-implementation"
 
-@interface RFDownloader : NSObject <RFWebServiceCancellable, NSURLConnectionDelegate, NSURLConnectionDataDelegate>
-
-@property (strong, nonatomic) NSString *loggerType;
-@property (readonly, nonatomic, readonly) NSMutableArray *successCodes;
-@property (strong, nonatomic) id<RFAuthenticating> authenticationProvider;
-@property (strong, nonatomic, readonly) NSMutableURLRequest *request;
-
-/**
- * The flag that specify if current request is multipart form data request.
- */
-@property (assign, nonatomic, getter = isMultipartData) BOOL multipartData;
-
-@property (nonatomic, strong, readonly) RFWebServiceClient *webServiceClient;
-@property (nonatomic, strong, readonly) NSString *methodName;
-/**
- The serialized data from the request,
- */
-@property (strong, nonatomic) id serializedData;
-/**
- The response success block.
- */
-@property (copy, nonatomic) void (^successBlock)(id result);
-/**
- The response failure block.
- */
-@property (copy, nonatomic) void (^failureBlock)(id error);
-/**
- Indicates that the request has been cancelled.
- */
-@property (atomic, assign, readonly, getter = isRequestCancelled) BOOL requestCancelled;
-
-- (id)initWithClient:(RFWebServiceClient *)webServiceClient methodName:(NSString *)methodName authenticationProvider:(id<RFAuthenticating>)authenticaitonProvider;
-
-- (void)configureRequestForUrl:(NSURL * const)anUrl body:(NSData *)httpBody sharedHeaders:(NSDictionary *)sharedHeaders values:(NSDictionary *)values;
-
-- (void)checkCacheAndStart;
-- (void)start;
-
-- (void)cancel;
+@implementation RFServiceProvider (WebServiceCachingManager)
 
 @end
+
+#pragma clang diagnostic pop

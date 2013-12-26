@@ -39,6 +39,9 @@
 #import "RFWebServiceClient.h"
 #import "RFWebServiceErrorHandler.h"
 #import "RFWebServiceErrorHandling.h"
+#import "RFServiceProvider+WebServiceCachingManager.h"
+#import "RFWebServiceCache.h"
+#import "RFWebResponse+HTTPResponse.h"
 
 @interface RFDownloader ()
 
@@ -102,9 +105,8 @@
                 self.downloadError = [[NSError alloc] initWithDomain:NSURLErrorDomain code:[response statusCode] userInfo:nil];
             }
         }
-        
     }
-    
+
     [self stop];
 }
 

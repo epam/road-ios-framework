@@ -1,5 +1,5 @@
 //
-//  EDSDownloader.h
+//  RFWebServiceCachingManaging.h
 //  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,49 +30,37 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "RFWebServiceCancellable.h"
+#import <Foundation/Foundation.h>
 
-@protocol RFAuthenticating;
-@class RFWebServiceClient;
+@class RFWebResponse;
 
-@interface RFDownloader : NSObject <RFWebServiceCancellable, NSURLConnectionDelegate, NSURLConnectionDataDelegate>
-
-@property (strong, nonatomic) NSString *loggerType;
-@property (readonly, nonatomic, readonly) NSMutableArray *successCodes;
-@property (strong, nonatomic) id<RFAuthenticating> authenticationProvider;
-@property (strong, nonatomic, readonly) NSMutableURLRequest *request;
+@protocol RFWebServiceCachingManaging <NSObject>
 
 /**
- * The flag that specify if current request is multipart form data request.
+ * Set one cache entry to the web service cache.
+ * @param request The request that should be stored in the cache.
+ * @param response The response of the request.
+ * @param responseBodyData The response data.
+ * @param expirationDate The timeout time of the cache.
  */
-@property (assign, nonatomic, getter = isMultipartData) BOOL multipartData;
+- (void)setCacheWithRequest:(NSURLRequest *)request response:(NSHTTPURLResponse *)response responseBodyData:(NSData *)responseBodyData expirationDate:(NSDate *)expirationDate;
 
-@property (nonatomic, strong, readonly) RFWebServiceClient *webServiceClient;
-@property (nonatomic, strong, readonly) NSString *methodName;
 /**
- The serialized data from the request,
+ * Returns the cache object from the cache. If no entry has found, returns nil.
+ * @param request The request that should be check in the cache.
  */
-@property (strong, nonatomic) id serializedData;
+- (RFWebResponse *)cacheWithRequest:(NSURLRequest *)request;
+
 /**
- The response success block.
+ * Returns the cache object in case response tells that the cache object is still valid.
+ * @param response The response from the web service.
+ * @param request The request to the web service.
  */
-@property (copy, nonatomic) void (^successBlock)(id result);
+- (RFWebResponse *)cacheForResponse:(NSHTTPURLResponse *)response request:(NSURLRequest *)request;
+
 /**
- The response failure block.
+ * Clear all record in cache
  */
-@property (copy, nonatomic) void (^failureBlock)(id error);
-/**
- Indicates that the request has been cancelled.
- */
-@property (atomic, assign, readonly, getter = isRequestCancelled) BOOL requestCancelled;
-
-- (id)initWithClient:(RFWebServiceClient *)webServiceClient methodName:(NSString *)methodName authenticationProvider:(id<RFAuthenticating>)authenticaitonProvider;
-
-- (void)configureRequestForUrl:(NSURL * const)anUrl body:(NSData *)httpBody sharedHeaders:(NSDictionary *)sharedHeaders values:(NSDictionary *)values;
-
-- (void)checkCacheAndStart;
-- (void)start;
-
-- (void)cancel;
+- (void)dropCache;
 
 @end
