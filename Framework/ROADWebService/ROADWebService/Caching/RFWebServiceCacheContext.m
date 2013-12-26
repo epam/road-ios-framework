@@ -59,7 +59,6 @@ static NSString * const kRFWebServiceCachingStorageName = @"RFWebServiceCache.co
         [self bindStore];
     }
     
-    NSLog(@"RETURN _persistentStoreCoordinator = %@", _persistentStoreCoordinator);
     return _persistentStoreCoordinator;
 }
 
@@ -72,21 +71,16 @@ static NSString * const kRFWebServiceCachingStorageName = @"RFWebServiceCache.co
     NSString *webServiceCachingPath = [cachingFolderList RF_lastElementIfNotEmpty];
     
     webServiceCachingPath = [webServiceCachingPath stringByAppendingPathComponent:kRFWebServiceCachingDirectory];
-    NSLog(@" _persistentStoreCoordinator webServiceCachingPath = %@", webServiceCachingPath);
     if (![[NSFileManager defaultManager] fileExistsAtPath:webServiceCachingPath]) {
         NSError *error;
-        NSLog(@"NOT FOUNDED _persistentStoreCoordinator webServiceCachingPath = %@", webServiceCachingPath);
         [[NSFileManager defaultManager] createDirectoryAtPath:webServiceCachingPath withIntermediateDirectories:NO attributes:nil error:&error];
         if (error) {
-            NSLog(@"ERROR _persistentStoreCoordinator webServiceCachingPath = %@, error = %@, localizedError = %@", webServiceCachingPath, error, [error localizedDescription]);
             RFLogError(@"Directory for web service cache was not created with error: %@", error);
         }
     }
     
     webServiceCachingPath = [webServiceCachingPath stringByAppendingPathComponent:kRFWebServiceCachingStorageName];
-    NSLog(@"AFTER _persistentStoreCoordinator webServiceCachingPath = %@", webServiceCachingPath);
     _storeURL = [NSURL fileURLWithPath:webServiceCachingPath];
-    NSLog(@"AFTER _persistentStoreCoordinator _storeURL = %@", _storeURL);
     NSString *storeType = NSSQLiteStoreType;
     NSError *error;
     
@@ -94,11 +88,9 @@ static NSString * const kRFWebServiceCachingStorageName = @"RFWebServiceCache.co
                                                              URL:_storeURL options:nil error:&error]) {
         error = nil;
         [[NSFileManager defaultManager] removeItemAtURL:_storeURL error:&error];
-        NSLog(@"TRYING TO REMOVE _persistentStoreCoordinator _storeURL = %@", _storeURL);
         if (![_persistentStoreCoordinator addPersistentStoreWithType:storeType configuration:nil
                                                                  URL:_storeURL options:nil error:&error]) {
             _persistentStoreCoordinator = nil;
-            NSLog(@"ERROR _persistentStoreCoordinator _storeURL = %@, error = %@, localizedError = %@", _storeURL, error, [error localizedDescription]);
             RFLogError(@"RFWebServiceCachingManager error: persistent storage creating was failed with error: %@", [error localizedDescription]);
         }
     }
@@ -108,13 +100,10 @@ static NSString * const kRFWebServiceCachingStorageName = @"RFWebServiceCache.co
     if (!_managedObjectModel) {
         NSString *modelPath = [[NSBundle bundleForClass:self.class] pathForResource:kRFWebServiceCachingModelName ofType:kRFWebServiceCachingModelExtension];
         NSString *escapedModelPath = [modelPath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        NSLog(@" _managedObjectModel escapedModelPath = %@", escapedModelPath);
         NSURL *url = [[NSURL alloc] initWithString:escapedModelPath];
-        NSLog(@" _managedObjectModel url = %@", url);
         _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:url];
     }
     
-    NSLog(@"RETURN _managedObjectModel = %@", _managedObjectModel);
     return _managedObjectModel;
 }
 
@@ -124,7 +113,6 @@ static NSString * const kRFWebServiceCachingStorageName = @"RFWebServiceCache.co
         [_managedObjectContext setPersistentStoreCoordinator:[self persisitentStoreCoordinator]];
     }
     
-    NSLog(@"RETURN _managedObjectContext = %@", _managedObjectContext);
     return _managedObjectContext;
 }
 
