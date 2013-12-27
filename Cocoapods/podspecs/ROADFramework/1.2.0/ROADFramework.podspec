@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = 'ROADFramework'
-  s.version      = '1.1.3'
+  s.version      = '1.2.0'
   s.summary      = 'ROAD iOS Framework'
 
   s.description  = <<-DESC
@@ -53,7 +53,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
   s.requires_arc = true
 
-  s.source       = { :git => 'https://github.com/epam/road-ios-framework.git', :tag => '1.1.3' }
+  s.source       = { :git => 'https://github.com/epam/road-ios-framework.git', :tag => '1.2.0' }
 
   s.xcconfig = { 'OTHER_LDFLAGS' => '-all_load' }
 
