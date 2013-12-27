@@ -33,12 +33,14 @@
 #import <ROAD/ROADReflection.h>
 #import <ROAD/ROADLogger.h>
 #import "RFXMLSerializable.h"
+#import "RFSerializableBoolean.h"
 #import "RFSerializableDate.h"
 #import "RFDerived.h"
 #import "RFXMLSerializationContext.h"
 #import "RFSerializableCollection.h"
 #import "RFSerializationAssistant.h"
 #import "RFXMLSerializableCollection.h"
+#import "RFBooleanTranslator.h"
 
 #define kRFAttributedXMLDecoderDefaultContainerClass [NSArray class]
 
@@ -52,12 +54,15 @@
     
     void (^completionHandler)(id rootObject, NSError *error);
     id _result;
+    
+    NSError *_parseError;
 }
+
 @end
 
 @implementation RFAttributedXMLDecoder
 
-- (id)decodeData:(NSData *)xmlData withRootObjectClass:(Class)rootObjectClass {
+- (id)decodeData:(NSData *)xmlData withRootObjectClass:(Class)rootObjectClass error:(NSError **)error {
     
     _result = nil;
     _context = [RFXMLSerializationContext new];
@@ -65,19 +70,23 @@
     
     _parser = [[NSXMLParser alloc] initWithData:xmlData];
     _parser.delegate = self;
+    _parseError = nil;
     
     [_parser parse];
+    
+    _parser.delegate = nil;
+    _parser = nil;
+    
+    if (error)
+        *error = _parseError;
     
     return _result;
 }
 
 #pragma marl - Parser Delegate
-- (void)parserDidEndDocument:(NSXMLParser *)parser {
-    _parser = nil;
-}
-
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
-    _parser = nil;
+    
+    _parseError = parseError;
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
@@ -117,19 +126,11 @@
     if (!_context.elementSkipped) {
         
         //  top element
-        if (!_result && !_context.elementName) {
-            elementClass = _rootNodeClass;
-        }
-        
-        // Get properties for element Class and process attributeDict, probably containing some of them
-        NSArray *properties = RFSerializationPropertiesForClass(elementClass);
-
-        // If there are no properties in tag we suppose notation of kind <tag>value</tag>
-        _context.currentNodeProperty = [properties count] ? nil : _context.properties[elementName];
-        _context.currentNodeClass = [properties count] ? Nil : kRFAttributedXMLDecoderDefaultContainerClass;
+        if (!_result && !_context.elementName) elementClass = _rootNodeClass;
         _context.elementName = elementName;
 
-        [self processProperties:properties withElementAttributes:attributeDict andCreateElementIfNeeded:elementClass];
+        // Get properties for element Class and process attributeDict, probably containing some of them
+        [self processProperties:RFSerializationPropertiesForClass(elementClass) withElementAttributes:attributeDict andCreateElementIfNeeded:elementClass];
     }
 }
 
@@ -172,6 +173,28 @@
 }
 
 #pragma mark -
+- (void)setCurrentNodeValueToCustomObject:(id)value forKey:(NSString *)key {
+
+    id node = _context.currentNode;
+    id existingValue = [node valueForKey:key];
+    id newValue = value;
+    
+    if (existingValue) {
+        if ([newValue isKindOfClass:[NSArray class]] && [existingValue isKindOfClass:[NSArray class]]) newValue = [existingValue arrayByAddingObjectsFromArray:newValue];
+        else if ([newValue isKindOfClass:[NSDictionary class]] && [existingValue isKindOfClass:[NSDictionary class]]) {
+            existingValue = [existingValue mutableCopy];
+            [existingValue addEntriesFromDictionary:newValue];
+            newValue = [existingValue copy];
+        }
+        else if ([newValue isKindOfClass:[NSSet class]] && [existingValue isKindOfClass:[NSSet class]]) newValue = [existingValue setByAddingObjectsFromSet:value];
+    }
+    else if (_context.mutable) newValue = [newValue copy];
+    
+    if ([self isValueValid:newValue forProperty:_context.currentNodeProperty]) {
+        [node setValue:newValue forKey:key];
+    }
+}
+
 - (void)setCurrentNodeValue:(id)value forKey:(NSString *)key {
     
     id node = _context.currentNode;
@@ -183,23 +206,45 @@
         [node setObject:value forKey:key];
     }
     else {
-        id existingValue = [node valueForKey:key];
+        [self setCurrentNodeValueToCustomObject:value forKey:key];
+    }
+
+}
+
+/**
+ Determines if the value is primitive and has the nil or NSNull value to avoid crashes from setting nil or NSNull value to a primitive
+ 
+ @param id the value to be set
+ @param RFPropertyInfo the property information where the value should be set
+ @return YES if the value can be safely set
+ */
+- (BOOL)isValueValid:(id const)value forProperty:(RFPropertyInfo *)propertyInfo {
+    return ((value && value != [NSNull null]) || ![[propertyInfo typeName] isEqualToString:@"c"]);
+}
+
+- (NSDate *)dateFromString:(NSString *)string withDateAttribute:(RFSerializableDate *)dateAttribute {
+    NSDate *result = nil;
+    
+    if (dateAttribute.unixTimestamp) {
+        result = [NSDate dateWithTimeIntervalSince1970:[string intValue]];
+    }
+    else {
         
-        if (existingValue) {
-            if ([value isKindOfClass:[NSArray class]] && [existingValue isKindOfClass:[NSArray class]]) value = [existingValue arrayByAddingObjectsFromArray:value];
-            else if ([value isKindOfClass:[NSDictionary class]] && [existingValue isKindOfClass:[NSDictionary class]]) {
-                existingValue = [existingValue mutableCopy];
-                [existingValue addEntriesFromDictionary:value];
-                value = [existingValue copy];
-            }
-            else if ([value isKindOfClass:[NSSet class]] && [existingValue isKindOfClass:[NSSet class]]) value = [existingValue setByAddingObjectsFromSet:value];
+        NSString *dateFormat = ([dateAttribute.decodingFormat length] == 0) ? dateAttribute.format : dateAttribute.decodingFormat;
+        NSAssert(dateFormat, @"RFSerializableDate must have either format or encodingFormat specified");
+        
+        if (!_dateFormatter) {
+            _dateFormatter = [[NSDateFormatter alloc] init];
         }
-        else if (_context.mutable) value = [value copy];
         
-        [node setValue:value forKey:key];
+        if (![dateFormat isEqualToString:_dateFormatter.dateFormat]) {
+            _dateFormatter.dateFormat = dateFormat;
+        }
+        
+        result = [_dateFormatter dateFromString:string];
     }
     
-//    RFLogDebug(@"RFAttributedXMLDecoder: setsValue:%@ forKey:%@", value, key);
+    return result;
 }
 
 - (id)convertString:(NSString *)string forProperty:(RFPropertyInfo *)property {
@@ -208,6 +253,9 @@
     RFSerializableDate *dateAttribute = nil;
     NSString *attributeClassName = property.typeName;
 
+    if ([property attributeWithType:[RFSerializableBoolean class]]) {
+        result = [RFBooleanTranslator decodeTranslatableValue:string forProperty:property];
+    }
     if ([attributeClassName isEqualToString:@"NSNumber"] || [attributeClassName isEqualToString:@"c"]) {
 
         if (!_numberFormatter) {
@@ -219,24 +267,8 @@
     }
     else if ([attributeClassName isEqualToString:@"NSDate"] || (dateAttribute = [property attributeWithType:[RFSerializableDate class]])) {
         
-        if (dateAttribute.unixTimestamp) {
-            result = [NSDate dateWithTimeIntervalSince1970:[string intValue]];
-        }
-        else {
-            
-            NSString *dateFormat = ([dateAttribute.decodingFormat length] == 0) ? dateAttribute.format : dateAttribute.decodingFormat;
-            NSAssert(dateFormat, @"RFSerializableDate must have either format or encodingFormat specified");
-
-            if (!_dateFormatter) {
-                _dateFormatter = [[NSDateFormatter alloc] init];
-            }
-            
-            if (![dateFormat isEqualToString:_dateFormatter.dateFormat]) {
-                _dateFormatter.dateFormat = dateFormat;
-            }
-            
-            result = [_dateFormatter dateFromString:string];
-        }
+        result = [self dateFromString:string withDateAttribute:dateAttribute];
+        
     }
     
     return result;
@@ -280,8 +312,36 @@
     return result;
 }
 
+- (void)processProperty:(RFPropertyInfo *)property withElementAttributes:(NSDictionary *)attributeDict lazyProperties:(NSMutableDictionary **)lazyProperties itemTags:(NSMutableDictionary **)itemTags {
+
+    RFXMLSerializable *xmlAttributes = [property attributeWithType:[RFXMLSerializable class]];
+    NSString *serializationKey = RFSerializationKeyForProperty(property);
+    
+    if (xmlAttributes.isTagAttribute) {
+        id decodedValue = [self convertString:attributeDict[serializationKey] forProperty:property];
+        [_context.currentNode setValue:decodedValue forKey:property.propertyName];
+    }
+    else {
+        NSParameterAssert(lazyProperties && itemTags);
+        
+        if (!*lazyProperties) *lazyProperties = [[NSMutableDictionary alloc] init];
+        (*lazyProperties)[serializationKey] = property;
+        
+        // store tags associated with collections in context for future tag processing
+        RFXMLSerializableCollection *collection = [property attributeWithType:[RFXMLSerializableCollection class]];
+        if (collection ) {
+            if (!*itemTags) *itemTags = [[NSMutableDictionary alloc] init];
+            (*itemTags)[collection.itemTag] = serializationKey;
+        }
+    }
+}
+
 - (void)processProperties:(NSArray *)properties withElementAttributes:(NSDictionary *)attributeDict andCreateElementIfNeeded:(Class)elementClass {
     
+    // If there are no properties in tag we suppose notation of kind <tag>value</tag>
+    _context.currentNodeProperty = [properties count] ? nil : _context.properties[_context.elementName];
+    _context.currentNodeClass = [properties count] ? Nil : kRFAttributedXMLDecoderDefaultContainerClass;
+
     NSMutableDictionary *lazyProperties = nil;
     NSMutableDictionary *itemTags = nil;
     
@@ -293,31 +353,10 @@
         _context.simpleValue = NO;
         _context.mutable = NO;
         
-        if (!_result) {
-            _result = _context.currentNode;
-        }
+        if (!_result) _result = _context.currentNode;
         
         for (RFPropertyInfo *property in properties) {
-            
-            RFXMLSerializable *xmlAttributes = [property attributeWithType:[RFXMLSerializable class]];
-            NSString *serializationKey = RFSerializationKeyForProperty(property);
-            
-            if (xmlAttributes.isTagAttribute) {
-                id decodedValue = [self convertString:attributeDict[serializationKey] forProperty:property];
-                [_context.currentNode setValue:decodedValue forKey:property.propertyName];
-            }
-            else {
-
-                if (!lazyProperties) lazyProperties = [[NSMutableDictionary alloc] init];
-                lazyProperties[serializationKey] = property;
-
-                // store tags associated with collections in context for future tag processing
-                RFXMLSerializableCollection *collection = [property attributeWithType:[RFXMLSerializableCollection class]];
-                if (collection ) {
-                    if (!itemTags) itemTags = [[NSMutableDictionary alloc] init];
-                    itemTags[collection.itemTag] = serializationKey;
-                }
-            }
+            [self processProperty:property withElementAttributes:attributeDict lazyProperties:&lazyProperties itemTags:&itemTags];
         }
 
     }

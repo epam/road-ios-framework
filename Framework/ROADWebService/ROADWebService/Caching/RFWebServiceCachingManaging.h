@@ -1,6 +1,6 @@
 //
-//  RFAttributedXMLDecoder.h
-//  ROADSerialization
+//  RFWebServiceCachingManaging.h
+//  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,9 +30,37 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
+#import <Foundation/Foundation.h>
 
-@interface RFAttributedXMLDecoder : NSObject
+@class RFWebResponse;
 
-- (id)decodeData:(NSData *)xmlData withRootObjectClass:(Class)rootObjectClass error:(NSError **)error;
+@protocol RFWebServiceCachingManaging <NSObject>
+
+/**
+ * Set one cache entry to the web service cache.
+ * @param request The request that should be stored in the cache.
+ * @param response The response of the request.
+ * @param responseBodyData The response data.
+ * @param expirationDate The timeout time of the cache.
+ */
+- (void)setCacheWithRequest:(NSURLRequest *)request response:(NSHTTPURLResponse *)response responseBodyData:(NSData *)responseBodyData expirationDate:(NSDate *)expirationDate;
+
+/**
+ * Returns the cache object from the cache. If no entry has found, returns nil.
+ * @param request The request that should be check in the cache.
+ */
+- (RFWebResponse *)cacheWithRequest:(NSURLRequest *)request;
+
+/**
+ * Returns the cache object in case response tells that the cache object is still valid.
+ * @param response The response from the web service.
+ * @param request The request to the web service.
+ */
+- (RFWebResponse *)cacheForResponse:(NSHTTPURLResponse *)response request:(NSURLRequest *)request;
+
+/**
+ * Clear all record in cache
+ */
+- (void)dropCache;
 
 @end

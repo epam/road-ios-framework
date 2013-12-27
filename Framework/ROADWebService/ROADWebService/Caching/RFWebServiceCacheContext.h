@@ -1,6 +1,6 @@
 //
-//  RFAttributedXMLDecoder.h
-//  ROADSerialization
+//  RFWebServiceCacheContext.h
+//  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,9 +30,18 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@interface RFAttributedXMLDecoder : NSObject
+@interface RFWebServiceCacheContext : NSObject
 
-- (id)decodeData:(NSData *)xmlData withRootObjectClass:(Class)rootObjectClass error:(NSError **)error;
+@property (nonatomic, strong, readonly) NSManagedObjectContext *context;
+@property (nonatomic, strong, readonly) NSPersistentStoreCoordinator *persisitentStoreCoordinator;
+@property (nonatomic, strong, readonly) NSURL *storeURL;
+
+/**
+ * Add persistent store to persistent store coordinator if it does not have any now.
+ */
+- (void)bindStore;
 
 @end

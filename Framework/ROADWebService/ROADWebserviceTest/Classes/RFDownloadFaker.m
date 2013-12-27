@@ -1,6 +1,6 @@
 //
-//  RFAttributedXMLDecoder.h
-//  ROADSerialization
+//  RFDownloadFaker.m
+//  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,9 +30,33 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
+#import "RFDownloadFaker.h"
+#import <objc/runtime.h>
+#import <ROAD/ROADLogger.h>
 
-@interface RFAttributedXMLDecoder : NSObject
+#import "RFDownloader+FakeRequest.h"
 
-- (id)decodeData:(NSData *)xmlData withRootObjectClass:(Class)rootObjectClass error:(NSError **)error;
+@implementation RFDownloadFaker
+
++ (void)setUp {
+    [[RFServiceProvider logger] addWriter:[RFConsoleLogWriter new]];
+    
+    SEL originalSelector = @selector(start);
+    SEL overrideSelector = @selector(fakeStart);
+    Method originalMethod = class_getInstanceMethod([RFDownloader class], originalSelector);
+    Method overrideMethod = class_getInstanceMethod([RFDownloader class], overrideSelector);
+    method_exchangeImplementations(originalMethod, overrideMethod);
+}
+
+// Travis bug cause performing +setUp before each test
++ (void)tearDown {
+    [[RFServiceProvider logger] removeWriter:[[[RFServiceProvider logger] writers] lastObject]];
+    
+    SEL originalSelector = @selector(start);
+    SEL overrideSelector = @selector(fakeStart);
+    Method originalMethod = class_getInstanceMethod([RFDownloader class], originalSelector);
+    Method overrideMethod = class_getInstanceMethod([RFDownloader class], overrideSelector);
+    method_exchangeImplementations(originalMethod, overrideMethod);
+}
 
 @end

@@ -1,6 +1,6 @@
 //
-//  RFAttributedXMLDecoder.h
-//  ROADSerialization
+//  RFServiceProvider+WebServiceCachingManager.m
+//  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,9 +30,13 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
+#import "RFServiceProvider+WebServiceCachingManager.h"
 
-@interface RFAttributedXMLDecoder : NSObject
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wincomplete-implementation"
 
-- (id)decodeData:(NSData *)xmlData withRootObjectClass:(Class)rootObjectClass error:(NSError **)error;
+@implementation RFServiceProvider (WebServiceCachingManager)
 
 @end
+
+#pragma clang diagnostic pop

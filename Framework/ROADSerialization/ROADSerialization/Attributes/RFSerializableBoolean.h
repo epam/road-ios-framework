@@ -1,5 +1,5 @@
 //
-//  RFAttributedXMLDecoder.h
+//  RFSerializableBoolean.h
 //  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
@@ -30,9 +30,10 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
+#import <ROAD/ROADAttribute.h>
 
-@interface RFAttributedXMLDecoder : NSObject
+@interface RFSerializableBoolean : NSObject
 
-- (id)decodeData:(NSData *)xmlData withRootObjectClass:(Class)rootObjectClass error:(NSError **)error;
+@property (nonatomic, strong) NSDictionary *translationValues;
 
 @end

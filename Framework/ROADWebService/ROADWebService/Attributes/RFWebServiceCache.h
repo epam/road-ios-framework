@@ -1,6 +1,6 @@
 //
-//  RFAttributedXMLDecoder.h
-//  ROADSerialization
+//  RFWebServiceCache.h
+//  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,9 +30,20 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
+#import <Foundation/Foundation.h>
 
-@interface RFAttributedXMLDecoder : NSObject
+/**
+ * The attribute override default behaviour of caching mechanism by specifying cached record expiration date or disabling caching.
+ */
+@interface RFWebServiceCache : NSObject
 
-- (id)decodeData:(NSData *)xmlData withRootObjectClass:(Class)rootObjectClass error:(NSError **)error;
+/**
+ * Cache expiration time for marked web response.
+ */
+@property NSUInteger maxAge;
+/**
+ * Disable caching for marked web request.
+ */
+@property BOOL cacheDisabled;
 
 @end

@@ -1,6 +1,6 @@
 //
-//  RFAttributedXMLDecoder.h
-//  ROADSerialization
+//  RFWebServiceCache.m
+//  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,9 +30,17 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
+#import "RFWebServiceCache.h"
 
-@interface RFAttributedXMLDecoder : NSObject
+@implementation RFWebServiceCache
 
-- (id)decodeData:(NSData *)xmlData withRootObjectClass:(Class)rootObjectClass error:(NSError **)error;
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        _cacheDisabled = NO;
+    }
+    return self;
+}
 
 @end

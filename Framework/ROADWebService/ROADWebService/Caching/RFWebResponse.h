@@ -1,6 +1,6 @@
 //
-//  RFAttributedXMLDecoder.h
-//  ROADSerialization
+//  RFWebResponse.h
+//  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,9 +30,19 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@interface RFAttributedXMLDecoder : NSObject
 
-- (id)decodeData:(NSData *)xmlData withRootObjectClass:(Class)rootObjectClass error:(NSError **)error;
+@interface RFWebResponse : NSManagedObject
+
+@property (nonatomic, retain) NSString * eTag;
+@property (nonatomic, retain) NSDate * expirationDate;
+@property (nonatomic, retain) NSData * requestBodyData;
+@property (nonatomic, retain) NSString * requestURL;
+@property (nonatomic, retain) NSData * response;
+@property (nonatomic, retain) NSData * responseBodyData;
+@property (nonatomic, retain) NSDecimalNumber * urlHash;
+@property (nonatomic, retain) NSString * lastModified;
 
 @end

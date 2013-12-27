@@ -1,6 +1,6 @@
 //
-//  RFAttributedXMLDecoder.h
-//  ROADSerialization
+//  RFWebResponse+HTTPResponse.m
+//  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,9 +30,12 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
+#import "RFWebResponse+HTTPResponse.h"
 
-@interface RFAttributedXMLDecoder : NSObject
+@implementation RFWebResponse (HTTPResponse)
 
-- (id)decodeData:(NSData *)xmlData withRootObjectClass:(Class)rootObjectClass error:(NSError **)error;
+- (NSHTTPURLResponse *)unarchivedResponse {
+    return [NSKeyedUnarchiver unarchiveObjectWithData:self.response];
+}
 
 @end

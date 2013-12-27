@@ -1,6 +1,6 @@
 //
-//  RFAttributedXMLDecoder.h
-//  ROADSerialization
+//  RFServiceProvider+WebServiceCachingManager.h
+//  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,9 +30,12 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
+#import <ROAD/ROADServices.h>
+#import "RFWebServiceCachingManager.h"
 
-@interface RFAttributedXMLDecoder : NSObject
+@interface RFServiceProvider (WebServiceCachingManager)
 
-- (id)decodeData:(NSData *)xmlData withRootObjectClass:(Class)rootObjectClass error:(NSError **)error;
+RF_ATTRIBUTE(RFService, serviceClass = [RFWebServiceCachingManager class])
++ (id<RFWebServiceCachingManaging>)webServiceCacheManager;
 
 @end

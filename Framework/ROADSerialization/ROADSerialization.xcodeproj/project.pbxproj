@@ -16,13 +16,16 @@
 		3337D3DB1803ECE200FE22F4 /* RFXMLSerializationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3337D3D41803ECE200FE22F4 /* RFXMLSerializationContext.m */; };
 		3337D3DC1803ECE200FE22F4 /* RFAttributedXMLCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3337D3D61803ECE200FE22F4 /* RFAttributedXMLCoder.m */; };
 		3337D3DD1803ECE200FE22F4 /* RFAttributedXMLDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3337D3D81803ECE200FE22F4 /* RFAttributedXMLDecoder.m */; };
-		33BC999B17FD83020039EB5E /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 331843EF17FC656600634BF6 /* libxml2.2.dylib */; };
 		33F0EEEB1804AA15001DCCED /* RFAttributedCoder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3337D3CD1803ECE200FE22F4 /* RFAttributedCoder.h */; };
 		33F0EEEC1804AA15001DCCED /* RFAttributedDecoder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3337D3CF1803ECE200FE22F4 /* RFAttributedDecoder.h */; };
 		33F0EEED1804AA15001DCCED /* RFAttributedXMLCoder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3337D3D51803ECE200FE22F4 /* RFAttributedXMLCoder.h */; };
 		33F0EEEE1804AA15001DCCED /* RFAttributedXMLDecoder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3337D3D71803ECE200FE22F4 /* RFAttributedXMLDecoder.h */; };
 		5A1CC60A176F279300A6C154 /* TempAttributes in Resources */ = {isa = PBXBuildFile; fileRef = 78BCFF7F16D24E6800D23908 /* TempAttributes */; };
 		5AD1FC4F1766042200E67BC4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD1FC4E1766042200E67BC4 /* Cocoa.framework */; };
+		63D10F08185EFA7700BD9046 /* RFBooleanTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D10F07185EFA7700BD9046 /* RFBooleanTranslator.m */; };
+		63D10F10185EFAB700BD9046 /* RFSerializableBoolean.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D10F0F185EFAB700BD9046 /* RFSerializableBoolean.m */; };
+		63D10F12185EFAC000BD9046 /* RFSerializableBoolean.h in Headers */ = {isa = PBXBuildFile; fileRef = 63D10F0E185EFAB700BD9046 /* RFSerializableBoolean.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		63D10F13185EFAC600BD9046 /* RFSerializableBoolean.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D10F0F185EFAB700BD9046 /* RFSerializableBoolean.m */; };
 		782B6D6816C3D4C10057DF2C /* ROAD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782B6CE116C3D46A0057DF2C /* ROAD.framework */; };
 		782B6D6E16C3D4CF0057DF2C /* libROADCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 782B6CDF16C3D46A0057DF2C /* libROADCore.a */; };
 		7841617F16480C1D0089FDE9 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7841617E16480C1D0089FDE9 /* SenTestingKit.framework */; };
@@ -49,6 +52,7 @@
 		83A36B3517982A0B00449C0C /* RFSerializableDate.h in Headers */ = {isa = PBXBuildFile; fileRef = 83A36B2D1798205000449C0C /* RFSerializableDate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		83A36B3617982A1600449C0C /* RFSerializableDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A36B2E1798205000449C0C /* RFSerializableDate.m */; };
 		83A36B3817982C1E00449C0C /* RFSerializableDate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83A36B2D1798205000449C0C /* RFSerializableDate.h */; };
+		83AC5FF8185F79C9001FC9C6 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 331843EF17FC656600634BF6 /* libxml2.2.dylib */; };
 		83BEEF711744EAB50095BD53 /* DeserialisationTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 83BEEF701744EAB50095BD53 /* DeserialisationTest.json */; };
 		83D0E5F21844DD3D002625E6 /* SerializationTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 83D0E5F11844DD3D002625E6 /* SerializationTest.json */; };
 		83D0E5F51845D8A3002625E6 /* RFJSONCustomSerializationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E5F41845D8A3002625E6 /* RFJSONCustomSerializationHandler.m */; };
@@ -219,6 +223,10 @@
 		3337D3D71803ECE200FE22F4 /* RFAttributedXMLDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFAttributedXMLDecoder.h; sourceTree = "<group>"; };
 		3337D3D81803ECE200FE22F4 /* RFAttributedXMLDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFAttributedXMLDecoder.m; sourceTree = "<group>"; };
 		5AD1FC4E1766042200E67BC4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = ../../../../System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		63D10F06185EFA7700BD9046 /* RFBooleanTranslator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFBooleanTranslator.h; sourceTree = "<group>"; };
+		63D10F07185EFA7700BD9046 /* RFBooleanTranslator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFBooleanTranslator.m; sourceTree = "<group>"; };
+		63D10F0E185EFAB700BD9046 /* RFSerializableBoolean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFSerializableBoolean.h; sourceTree = "<group>"; };
+		63D10F0F185EFAB700BD9046 /* RFSerializableBoolean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFSerializableBoolean.m; sourceTree = "<group>"; };
 		7841617D16480C1D0089FDE9 /* ROADSerializationTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ROADSerializationTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7841617E16480C1D0089FDE9 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		7841618616480C1E0089FDE9 /* ROADSerializationTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ROADSerializationTest-Info.plist"; sourceTree = "<group>"; };
@@ -292,7 +300,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33BC999B17FD83020039EB5E /* libxml2.2.dylib in Frameworks */,
+				83AC5FF8185F79C9001FC9C6 /* libxml2.2.dylib in Frameworks */,
 				8D60079817D004340095E17D /* UIKit.framework in Frameworks */,
 				8D60079517D0002D0095E17D /* libROADServices.a in Frameworks */,
 				8D60078317CFFF2C0095E17D /* libROADLogger.a in Frameworks */,
@@ -481,6 +489,8 @@
 		78957284163809A0009D7417 /* Attributes */ = {
 			isa = PBXGroup;
 			children = (
+				63D10F0E185EFAB700BD9046 /* RFSerializableBoolean.h */,
+				63D10F0F185EFAB700BD9046 /* RFSerializableBoolean.m */,
 				83A36B2D1798205000449C0C /* RFSerializableDate.h */,
 				83A36B2E1798205000449C0C /* RFSerializableDate.m */,
 				7895728516380A33009D7417 /* RFSerializable.h */,
@@ -521,6 +531,8 @@
 		8D1239B617CFAE9300094213 /* Assistants */ = {
 			isa = PBXGroup;
 			children = (
+				63D10F06185EFA7700BD9046 /* RFBooleanTranslator.h */,
+				63D10F07185EFA7700BD9046 /* RFBooleanTranslator.m */,
 				8D1239BA17CFAED300094213 /* RFSerializationAssistant.h */,
 				8D1239BB17CFAED300094213 /* RFSerializationAssistant.m */,
 			);
@@ -604,6 +616,7 @@
 			files = (
 				786535581639648E00E86841 /* NSJSONSerialization+RFJSONStringHandling.h in Headers */,
 				7895728716380A33009D7417 /* RFSerializable.h in Headers */,
+				63D10F12185EFAC000BD9046 /* RFSerializableBoolean.h in Headers */,
 				78DD732B164A6305009B334C /* RFSerializableCollection.h in Headers */,
 				78957291163828E1009D7417 /* RFDerived.h in Headers */,
 				9F80CD5C15F64EEE0031BA24 /* ROADSerialization.h in Headers */,
@@ -877,9 +890,11 @@
 				83F122CA18449D32000023AF /* RFSerializationCustomHandler.m in Sources */,
 				3337D3DC1803ECE200FE22F4 /* RFAttributedXMLCoder.m in Sources */,
 				C33138E718369AE2000675B6 /* RFDerived.m in Sources */,
+				63D10F08185EFA7700BD9046 /* RFBooleanTranslator.m in Sources */,
 				7895728816380A33009D7417 /* RFSerializable.m in Sources */,
 				3337D3DA1803ECE200FE22F4 /* RFAttributedDecoder.m in Sources */,
 				C33E160018462BA400AB4CC6 /* RFXMLSerializableCollection.m in Sources */,
+				63D10F10185EFAB700BD9046 /* RFSerializableBoolean.m in Sources */,
 				3337D3DB1803ECE200FE22F4 /* RFXMLSerializationContext.m in Sources */,
 				786535591639648E00E86841 /* NSJSONSerialization+RFJSONStringHandling.m in Sources */,
 				3337D3D91803ECE200FE22F4 /* RFAttributedCoder.m in Sources */,
@@ -896,6 +911,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7895728916380A33009D7417 /* RFSerializable.m in Sources */,
+				63D10F13185EFAC600BD9046 /* RFSerializableBoolean.m in Sources */,
 				7865355A1639648E00E86841 /* NSJSONSerialization+RFJSONStringHandling.m in Sources */,
 				83A36B3617982A1600449C0C /* RFSerializableDate.m in Sources */,
 			);
