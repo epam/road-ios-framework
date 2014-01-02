@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = 'ROADFramework'
-  s.version      = '1.1.2'
+  s.version      = '1.2.0'
   s.summary      = 'ROAD iOS Framework'
 
   s.description  = <<-DESC
@@ -53,13 +53,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
   s.requires_arc = true
 
-  s.source       = { :git => 'https://github.com/epam/road-ios-framework.git', :tag => '1.1.2' }
+  s.source       = { :git => 'https://github.com/epam/road-ios-framework.git', :tag => '1.2.0' }
 
   s.xcconfig = { 'OTHER_LDFLAGS' => '-all_load' }
-
-  s.subspec 'ROADGeneratedAttributes' do |gen|
-    gen.source_files = 'Framework/ROADGeneratedAttributes/**/*.{h,m}'
-  end
  
   s.subspec 'ROADCore' do |core|
     core.source_files = 'Framework/ROADCore/ROADCore/**/*.{h,m}'
@@ -106,6 +102,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     s.subspec 'ROADWebService' do |web|
     web.source_files = 'Framework/ROADWebService/ROADWebService/**/*.{h,m}'
     web.public_header_files = 'Framework/ROADWebService/ROADWebService/**/*.h'
+    web.resources = 'Framework/ROADWebService/ROADWebService/Caching/*.{xcdatamodeld,xcdatamodel}'
     web.dependency 'ROADFramework/ROADCore'
     web.dependency 'ROADFramework/ROADSerialization'
     web.dependency 'ROADFramework/ROADServices'    
