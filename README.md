@@ -74,18 +74,17 @@ ROAD initially designed to use **ARC**.
 	pod 'ROADFramework', '~> 1.1.0'
 
 	post_install do |installer|
+	  `curl https://raw.github.com/epam/road-ios-framework/master/Cocoapods/ROADConfigurator.rb > ROADConfigurator.rb`
 	  require File.expand_path('./', 'ROADConfigurator.rb')
 	  ROADConfigurator::post_install(installer)
 	end
 
 
-Download [`ROADConfigurator.rb`](./Cocoapods/ROADConfigurator.rb) and put it right near your `Podfile`
-
 **Using components separately**  
 If you'd like to embed only specific components from the framework it can be done with CocoaPods as well.
 
-        pod 'road-ios-framework/ROADServices'
-        pod 'road-ios-framework/ROADWebService'
+        pod 'ROADFramework/ROADServices'
+        pod 'ROADFramework/ROADWebService'
 
 Detail information on internals of ROAD integration as well as advanced topics like integration with predefined workspace, multiple projects or targets available in [documentation](./Documents/Configuration/Cocoapods.md).        
         
