@@ -72,7 +72,7 @@ ROAD initially designed to use **ARC**.
 	pod 'ROADFramework'
 
 	post_install do |installer|
-	  require File.expand_path('./ROADFramework/Framework/ROADCore/', 'ROADConfigurator.rb')
+	  require File.expand_path('ROADConfigurator.rb', './Pods/ROADFramework/Framework/ROADCore/ROADCore/')
 	  ROADConfigurator::post_install(installer)
 	end
 
