@@ -44,8 +44,8 @@
     PreprocessedSourceCode *result = [PreprocessedSourceCode new];
     result.sourceCode = [NSMutableString stringWithString:sourceCode];
     
-    [self processStringParamsInCode:result];
     [self removeComments:result];
+    [self processStringParamsInCode:result];
     [self removeImports:result];
     [self removeIncludes:result];
     [self processArrayBlocksInCode:result];
@@ -64,8 +64,8 @@
     PreprocessedSourceCode *result = [PreprocessedSourceCode new];
     result.sourceCode = [NSMutableString stringWithString:sourceCode];
     
-    [self processStringParamsInCode:result];
     [self removeComments:result];
+    [self processStringParamsInCode:result];
     [self removeIncludes:result];
     [self processArrayBlocksInCode:result];
     [self processCodeBlocksInCode:result];
