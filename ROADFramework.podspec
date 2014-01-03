@@ -58,7 +58,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   s.xcconfig = { 'OTHER_LDFLAGS' => '-all_load' }
 
   s.subspec 'ROADCore' do |core|
-    core.source_files = 'Framework/ROADCore/ROADCore/**/*.{h,m}'
+    core.source_files = 'Framework/ROADCore/ROADCore/**/*.{h,m,rb}'
     core.public_header_files = 'Framework/ROADCore/ROADCore/**/*.h'
     core.header_dir = 'ROAD'
   end
