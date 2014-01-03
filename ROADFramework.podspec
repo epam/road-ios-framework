@@ -56,7 +56,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   s.source       = { :git => 'https://github.com/epam/road-ios-framework.git', :tag => '1.2.0' }
 
   s.xcconfig = { 'OTHER_LDFLAGS' => '-all_load' }
- 
+
   s.subspec 'ROADCore' do |core|
     core.source_files = 'Framework/ROADCore/ROADCore/**/*.{h,m}'
     core.public_header_files = 'Framework/ROADCore/ROADCore/**/*.h'
@@ -87,7 +87,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     logger.header_dir = 'ROAD'
   end
 
-    s.subspec 'ROADSerialization' do |serialization|
+  s.subspec 'ROADSerialization' do |serialization|
     serialization.source_files = 'Framework/ROADSerialization/ROADSerialization/**/*.{h,m}'
     serialization.public_header_files = 'Framework/ROADSerialization/ROADSerialization/**/*.h'
     serialization.dependency 'ROADFramework/ROADCore'
@@ -99,7 +99,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     serialization.header_dir = 'ROAD'
   end
 
-    s.subspec 'ROADWebService' do |web|
+  s.subspec 'ROADWebService' do |web|
     web.source_files = 'Framework/ROADWebService/ROADWebService/**/*.{h,m}'
     web.public_header_files = 'Framework/ROADWebService/ROADWebService/**/*.h'
     web.resources = 'Framework/ROADWebService/ROADWebService/Caching/*.{xcdatamodeld,xcdatamodel}'
@@ -110,5 +110,4 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     web.ios.framework = 'CoreFoundation', 'CFNetwork'
     web.header_dir = 'ROAD'
   end
-
 end

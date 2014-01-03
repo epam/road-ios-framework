@@ -69,13 +69,10 @@ ROAD initially designed to use **ARC**.
 ##Jump Start
 [CocoaPods](http://cocoapods.org) the only recommended way of ROAD integration. Besides standard configuration of pod dependencies pod_install hook definition required as shown below. Typical Podfile will looks like following:
 
-	platform :ios, '5.0'
-
-	pod 'ROADFramework', '~> 1.1.0'
+	pod 'ROADFramework'
 
 	post_install do |installer|
-	  `curl https://raw.github.com/epam/road-ios-framework/master/Cocoapods/ROADConfigurator.rb > ROADConfigurator.rb`
-	  require File.expand_path('./', 'ROADConfigurator.rb')
+	  require File.expand_path('./ROADFramework/Framework/ROADCore/', 'ROADConfigurator.rb')
 	  ROADConfigurator::post_install(installer)
 	end
 
