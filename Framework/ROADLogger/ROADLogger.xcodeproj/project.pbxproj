@@ -51,7 +51,8 @@
 		D7AF14C717CF910A00A92C31 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF14C617CF910A00A92C31 /* UIKit.framework */; };
 		D7AF14C917CF914200A92C31 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF14C817CF914200A92C31 /* libz.dylib */; };
 		D7AF14CB17CF917800A92C31 /* libROADCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF14CA17CF917800A92C31 /* libROADCore.a */; };
-		EE27F989188643D9006AEED8 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE27F988188643D9006AEED8 /* SenTestingKit.framework */; };
+		EE7FDA89188645A9003B250C /* libUtilities.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE27F98118863DDE006AEED8 /* libUtilities.a */; };
+		EE7FDA9018864EC2003B250C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE7FDA8F18864EC2003B250C /* SenTestingKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -216,7 +217,7 @@
 		D7AF14C817CF914200A92C31 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		D7AF14CA17CF917800A92C31 /* libROADCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libROADCore.a; path = "../ROADCore/build/Release-iphoneos/libROADCore.a"; sourceTree = "<group>"; };
 		EE27F97C18863DDE006AEED8 /* Utilities.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Utilities.xcodeproj; path = ../Utilities/Utilities.xcodeproj; sourceTree = "<group>"; };
-		EE27F988188643D9006AEED8 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		EE7FDA8F18864EC2003B250C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,14 +232,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE7FDA89188645A9003B250C /* libUtilities.a in Frameworks */,
 				D7AF14CB17CF917800A92C31 /* libROADCore.a in Frameworks */,
 				D7AF14C917CF914200A92C31 /* libz.dylib in Frameworks */,
 				D7AF14C717CF910A00A92C31 /* UIKit.framework in Frameworks */,
 				D7AF149517CF8E1B00A92C31 /* libROADLogger.a in Frameworks */,
+				EE7FDA9018864EC2003B250C /* SenTestingKit.framework in Frameworks */,
 				D7AF145717CF745B00A92C31 /* libROADObservation.a in Frameworks */,
 				D7AF145517CF745000A92C31 /* libROADServices.a in Frameworks */,
 				D771948C17CF4DED0011047F /* Foundation.framework in Frameworks */,
-				EE27F989188643D9006AEED8 /* SenTestingKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,9 +320,9 @@
 		789AAE3416C4E3FA00FF7FB0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EE27F988188643D9006AEED8 /* SenTestingKit.framework */,
 				D7AF14CA17CF917800A92C31 /* libROADCore.a */,
 				D7AF14C817CF914200A92C31 /* libz.dylib */,
+				EE7FDA8F18864EC2003B250C /* SenTestingKit.framework */,
 				D7AF14C617CF910A00A92C31 /* UIKit.framework */,
 				D7AF136417CF502E00A92C31 /* ROADObservation.xcodeproj */,
 				D7AF135317CF4F1D00A92C31 /* ROADServices.xcodeproj */,
@@ -749,6 +751,7 @@
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADLogger/ROADLogger-Prefix.pch";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -780,9 +783,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"\\\"$(SDKROOT)/Developer/Library/Frameworks\\\"",
-					"\\\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\\\"",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
@@ -803,9 +805,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"\\\"$(SDKROOT)/Developer/Library/Frameworks\\\"",
-					"\\\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\\\"",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
