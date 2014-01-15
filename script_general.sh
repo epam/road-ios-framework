@@ -1,6 +1,6 @@
 #!/bin/bash
 
-EXIT=0
+EXIT_STATUS=0
 
 # =================     Set environment variables     ===========
 export WORKSPACE="-workspace Framework/ROADFramework.xcworkspace"
@@ -31,4 +31,4 @@ PATH=$OCLINT_HOME/bin:$PATH
 # =================     Run oclint    ===========
 oclint-json-compilation-database -- -rc=LONG_LINE=500 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 30 -max-priority-3 152 || EXIT_STATUS=$?
 
-exit $EXIT
+exit $EXIT_STATUS
