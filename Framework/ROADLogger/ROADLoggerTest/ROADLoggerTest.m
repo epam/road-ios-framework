@@ -2,7 +2,7 @@
 //  ROADLoggerTest.m
 //  ROADLoggerTest
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -33,6 +33,8 @@
 #import "ROADLoggerTest.h"
 #import <ROAD/ROADServices.h>
 #import <ROAD/ROADLogger.h>
+
+#import <Utilities/SenTestCase+Async.h>
 
 @implementation ROADLoggerTest
 
@@ -148,14 +150,18 @@
 - (void)testDefaultWriters {
     RFLogWriter *writer = [RFLogWriter plainConsoleWriter];
     STAssertNotNil(writer, @"Plain console writer factory method returns nil object.");
-
+    
     NSMutableSet *filters = [writer valueForKey:@"_filters"];
-    STAssertTrue(filters.count == 1, @"Console writer filters initialized incorrectly. Only one filter should be provided by default.");
-
+    STAssertTrue([SenTestCase waitFor:^BOOL{
+        return filters.count == 1;
+    } withTimeout:2], @"Console writer filters initialized incorrectly. Only one filter should be provided by default.");
+    
     writer = [RFLogWriter fileWriterWithPath:@"somePath"];
     STAssertNotNil(writer, @"Plain file writer factory method returns nil object.");
     filters = [writer valueForKey:@"_filters"];
-    STAssertTrue(filters.count == 1, @"File writer filters initialized incorrectly. Only one filter should be provided by default.");
+    STAssertTrue([SenTestCase waitFor:^BOOL{
+        return filters.count == 1;
+    } withTimeout:2], @"File writer filters initialized incorrectly. Only one filter should be provided by default.");
 }
 
 @end
