@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<john nm:age="54" name="John Doe" city="Boyarka">
+<john xmlns:nm="http://itunes.apple.com/rss" nm:age="54" name="John Doe" city="Boyarka">
     <child nm:age="25" name="Mary Doe" city="Boyarka"/>
     <child nm:age="13" name="Chris Doe" city="Boyarka"/>
 </john>

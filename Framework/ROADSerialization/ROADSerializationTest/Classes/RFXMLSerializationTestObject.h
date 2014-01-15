@@ -23,6 +23,9 @@ RF_ATTRIBUTE(RFXMLSerializable, isTagAttribute = YES);
 RF_ATTRIBUTE(RFXMLSerializable, serializationKey = @"nm:age", isTagAttribute = YES);
 @property (assign, nonatomic) int age;
 
+RF_ATTRIBUTE(RFXMLSerializable, serializationKey = @"xmlns:nm", isTagAttribute = YES);
+@property (assign, nonatomic) NSString *nm;
+
 RF_ATTRIBUTE(RFXMLSerializableCollection, collectionClass = [RFXMLSerializationTestObject class], itemTag = @"child")
 @property (copy, nonatomic) NSArray *children;
 
