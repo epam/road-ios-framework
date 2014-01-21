@@ -1,3 +1,5 @@
+[![License](https://go-shields.herokuapp.com/license-BSD%203-blue.png)]() [![Version](https://cocoapod-badges.herokuapp.com/v/ROADFramework/badge.png)](https://github.com/epam/road-ios-framework/) [![Platform](https://cocoapod-badges.herokuapp.com/p/ROADFramework/badge.png)](https://github.com/epam/road-ios-framework/)
+
 Master: [![Build Status](https://api.travis-ci.org/epam/road-ios-framework.png?branch=master)](https://travis-ci.org/epam/road-ios-framework) [![Coverage Status](https://coveralls.io/repos/epam/road-ios-framework/badge.png?branch=master)](https://coveralls.io/r/epam/road-ios-framework?branch=master) Dev: [![Build Status](https://travis-ci.org/epam/road-ios-framework.png?branch=dev)](https://travis-ci.org/epam/road-ios-framework) [![Coverage Status](https://coveralls.io/repos/epam/road-ios-framework/badge.png?branch=dev)](https://coveralls.io/r/epam/road-ios-framework?branch=dev)
 #ROAD iOS Framework
 
@@ -103,7 +105,7 @@ User documentation for following components available in **Documents** folder:
 Classes reference available in [cocoadocs.org](http://cocoadocs.org/docsets/ROADFramework/)
 
 ##License
-ROAD is made available under the terms of the [BSD v3](http://opensource.org/licenses/BSD-3-Clause). See the LICENSE file that accompanies this distribution for the full text of the license.
+ROAD is made available under the terms of the [BSD-3](http://opensource.org/licenses/BSD-3-Clause). See the LICENSE file that accompanies this distribution for the full text of the license.
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/epam/road-ios-framework/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
