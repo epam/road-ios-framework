@@ -73,23 +73,19 @@ ROAD initially designed to use **ARC**.
 ##Jump Start
 [CocoaPods](http://cocoapods.org) the only recommended way of ROAD integration. Besides standard configuration of pod dependencies pod_install hook definition required as shown below. Typical Podfile will looks like following:
 
-	platform :ios, '5.0'
-
-	pod 'ROADFramework', '~> 1.1.0'
+	pod 'ROADFramework'
 
 	post_install do |installer|
-	  require File.expand_path('./', 'ROADConfigurator.rb')
+	  require File.expand_path('ROADConfigurator.rb', './Pods/ROADFramework/Framework/ROADCore/ROADCore/')
 	  ROADConfigurator::post_install(installer)
 	end
 
 
-Download [`ROADConfigurator.rb`](./Cocoapods/ROADConfigurator.rb) and put it right near your `Podfile`
-
 **Using components separately**  
 If you'd like to embed only specific components from the framework it can be done with CocoaPods as well.
 
-        pod 'road-ios-framework/ROADServices'
-        pod 'road-ios-framework/ROADWebService'
+        pod 'ROADFramework/ROADServices'
+        pod 'ROADFramework/ROADWebService'
 
 Detail information on internals of ROAD integration as well as advanced topics like integration with predefined workspace, multiple projects or targets available in [documentation](./Documents/Configuration/Cocoapods.md).        
         
@@ -100,7 +96,7 @@ User documentation for following components available in **Documents** folder:
 * [Core](./Documents/ROADCore.md)
 * [Services](./Documents/ROADServices.md)
 * [Serialization](./Documents/ROADSerialization.md)
-* [Web Services](./Documents/ROADWebSwervices.md)
+* [Web Services](./Documents/ROADWebService.md)
 * [Logger](./Documents/ROADLogger.md)
 * [Observation](./Documents/ROADObservation.md)
 

@@ -1,6 +1,6 @@
 //
-//  ROADLoggerTest.h
-//  ROADLoggerTest
+//  SenTestCase+Async.h
+//  Utilities
 //
 //  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
@@ -32,6 +32,8 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface ROADLoggerTest : SenTestCase
+@interface SenTestCase (Async)
+
++ (BOOL)waitFor:(BOOL(^)(void))block withTimeout:(NSTimeInterval)timeout;
 
 @end
