@@ -94,8 +94,15 @@ if (![logFilter hasMessagePassedTest:invalidLogMessage]) {
     // Message has not passed filtering because type of message was "kRFLogMessageTypeFileOnly"
 }
 ```
+##### Predefined logging types
+RFLogger contains 6 predefined constants for types of log messages: 
 
-RFLogger contains 6 predefined constants for types of log messages: `kRFLogMessageTypeAllLoggers`, `kRFLogMessageTypeNetworkOnly`, `kRFLogMessageTypeWebServiceOnly`, `kRFLogMessageTypeConsoleOnly`, `kRFLogMessageTypeFileOnly`, `kRFLogMessageTypeNoLogging`.
+ - `kRFLogMessageTypeAllLoggers`;
+ - `kRFLogMessageTypeNetworkOnly`;
+ - `kRFLogMessageTypeWebServiceOnly`;
+ - `kRFLogMessageTypeConsoleOnly`;
+ - `kRFLogMessageTypeFileOnly`;
+ - `kRFLogMessageTypeNoLogging`.
 
 ## Logging to the Network
 `RFNetworkLogWriter` can output it's messages to the service located in the neighborhood network and discovered by Bonjour.
