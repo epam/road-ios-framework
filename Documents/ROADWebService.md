@@ -118,8 +118,8 @@ RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, method = @"GET", rel
 ##Basic & digest authentication
 Authentication is implemented one by one of the providers:
 
-* `RFBasicAuthenticationProvider`
-* `RFDigestAuthenticationProvider`
+* `RFBasicAuthenticationProvider`;
+* `RFDigestAuthenticationProvider`.
 
 by setting it to web client's `authenticationProvider` property.
 
@@ -154,10 +154,10 @@ In case, there's need to have the same headers in every request in one specific 
 Request is counted as multipart data request if it has `RFFormData` parameters in method declaration. 
 `RFFormData` has set of basic parameters:
 
-* name
-* data
-* fileName (*optional*)
-* contentType (*optional*). Default value is `application/octet-stream`
+* name;
+* data;
+* fileName (*optional*);
+* contentType (*optional*). Default value is `application/octet-stream`.
 
 Multipart request builder will use these parameter to create request like this:
 ```objc
@@ -197,6 +197,17 @@ Example of custom error handling is OData error handler - `RFODataErrorHandler`.
 
 Logging is implemented by `RFWebServiceLogger` and extends `RFLogger` with remote logging functionality.
 
+##Web Service Caching
+
+By default web service client will cache data getting into account standard rules of HTTP protocol caching. Web service client react on following headers:
+
+* Pragma
+* Cache-Control
+* Expires
+* ETag
+* Last-Modified
+
+This behaviour can be modified via `RFWebServiceCache` attribute.
 
 ##Open Data Protocol support
 Web service partially implements [Open Data Protocol](http://en.wikipedia.org/wiki/Open_Data_Protocol) specification.
@@ -224,5 +235,5 @@ RF_ATTRIBUTE(RFWebServiceURLBuilder, builderClass = [RFODataWebServiceURLBuilder
 @end
 ```
 
-[1]:https://github.com/epam/road-ios-framework/blob/master/Documents/ROADLogger.md#predefined-logging-types
+[1]:./ROADLogger.md#predefined-logging-types
 [2]:http://www.odata.org

@@ -105,7 +105,7 @@ RFLogger contains 6 predefined constants for types of log messages:
  - `kRFLogMessageTypeNoLogging`.
 
 ## Logging to the Network
-`RFNetworkLogWriter` can output it's messages to the service located in the neighborhood network and discovered by Bonjour.
+`RFNetworkLogWriter` can output it's messages to the service located in the neighbourhood network and discovered by Bonjour.
 
 All the job is zero-configured and performed transparently to the user. List of available services can be obtained via delegate method:
 ```objc		
