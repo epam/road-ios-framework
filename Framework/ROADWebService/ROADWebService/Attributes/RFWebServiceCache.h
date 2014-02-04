@@ -42,7 +42,7 @@
  */
 @property NSUInteger maxAge;
 /**
- * Disable caching for marked web request.
+ * Disables caching for marked web request.
  */
 @property BOOL cacheDisabled;
 

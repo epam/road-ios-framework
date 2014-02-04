@@ -90,12 +90,10 @@
         errorHandlerAttribute = [[self.webServiceClient class] RF_attributeForMethod:self.methodName withAttributeType:[RFWebServiceErrorHandler class]];
     }
     
-    if (errorHandlerAttribute.handlerClass.length) {
-        Class errorHandler = NSClassFromString(errorHandlerAttribute.handlerClass);
-        NSAssert(errorHandler, @"Error handler class (%@) is not exist in app", errorHandlerAttribute.handlerClass);
-        
-        if ([errorHandler conformsToProtocol:@protocol(RFWebServiceErrorHandling)]) {
-            self.downloadError = [errorHandler validateResponse:self.response withData:self.data];
+    if (errorHandlerAttribute.handlerClass) {
+      
+        if ([errorHandlerAttribute.handlerClass conformsToProtocol:@protocol(RFWebServiceErrorHandling)]) {
+            self.downloadError = [errorHandlerAttribute.handlerClass validateResponse:self.response withData:self.data];
         }
     }
     else {

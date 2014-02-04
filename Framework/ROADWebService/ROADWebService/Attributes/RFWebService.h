@@ -32,6 +32,9 @@
 
 #import <ROAD/ROADAttribute.h>
 
+/**
+ * Attribute allows to specify parameters of web service client class.
+ */
 @interface RFWebService : NSObject
 
 @property (copy, nonatomic) NSString *serviceRoot;

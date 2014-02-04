@@ -79,8 +79,6 @@
 		83B1E0C317CB94A70049C112 /* RFWebServiceErrorHandling.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 831EB9EA17C6047D004C9BA5 /* RFWebServiceErrorHandling.h */; };
 		83B97B9E175DCC23006C72BA /* ROADSerialization.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 83B97B9C175DCC22006C72BA /* ROADSerialization.xcodeproj */; };
 		83B97BA1175DCD16006C72BA /* ROADLogger.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 83B97B9F175DCD15006C72BA /* ROADLogger.xcodeproj */; };
-		83BCEB6017FEB4A700B5A7C4 /* RFLoggerWebServicePath.m in Sources */ = {isa = PBXBuildFile; fileRef = 83BCEB5F17FEB4A700B5A7C4 /* RFLoggerWebServicePath.m */; };
-		83BCEB6817FEB4CF00B5A7C4 /* RFLoggerWebServicePath.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83BCEB5E17FEB4A700B5A7C4 /* RFLoggerWebServicePath.h */; };
 		83C1734A18618C6700A9538D /* RFWebResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C1734918618C6700A9538D /* RFWebResponse.m */; };
 		83C173521861E22100A9538D /* RFWebServiceCachingManaging.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8353BC7E185B273D009704A8 /* RFWebServiceCachingManaging.h */; };
 		83C173531861E22100A9538D /* RFWebServiceCachingManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8353BC7B185B26AB009704A8 /* RFWebServiceCachingManager.h */; };
@@ -260,7 +258,6 @@
 				830CCCE1184E00ED007E9A69 /* RFWebService.h in CopyFiles */,
 				830CCCE2184E00ED007E9A69 /* RFWebServiceSerializer.h in CopyFiles */,
 				83D0E64A184DCC3C002625E6 /* RFDigestAuthenticationProvider.h in CopyFiles */,
-				83BCEB6817FEB4CF00B5A7C4 /* RFLoggerWebServicePath.h in CopyFiles */,
 				83AA529317DF05BE00C73DEF /* RFWebServiceURLBuilderParameter.h in CopyFiles */,
 				83AA50E617DDF1FD00C73DEF /* RFFormData.h in CopyFiles */,
 				83AA50E517DDF1F300C73DEF /* RFMultipartData.h in CopyFiles */,
@@ -383,8 +380,6 @@
 		83B5D20417D4CDDB0030D8CD /* RFWebServiceClient+DynamicTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RFWebServiceClient+DynamicTest.m"; sourceTree = "<group>"; };
 		83B97B9C175DCC22006C72BA /* ROADSerialization.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ROADSerialization.xcodeproj; path = ../ROADSerialization/ROADSerialization.xcodeproj; sourceTree = "<group>"; };
 		83B97B9F175DCD15006C72BA /* ROADLogger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ROADLogger.xcodeproj; path = ../ROADLogger/ROADLogger.xcodeproj; sourceTree = "<group>"; };
-		83BCEB5E17FEB4A700B5A7C4 /* RFLoggerWebServicePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFLoggerWebServicePath.h; sourceTree = "<group>"; };
-		83BCEB5F17FEB4A700B5A7C4 /* RFLoggerWebServicePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFLoggerWebServicePath.m; sourceTree = "<group>"; };
 		83C1734818618C6700A9538D /* RFWebResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFWebResponse.h; path = ROADWebService/Caching/RFWebResponse.h; sourceTree = SOURCE_ROOT; };
 		83C1734918618C6700A9538D /* RFWebResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFWebResponse.m; path = ROADWebService/Caching/RFWebResponse.m; sourceTree = SOURCE_ROOT; };
 		83C173571861E9CA00A9538D /* RFDownloadFaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFDownloadFaker.h; sourceTree = "<group>"; };
@@ -656,8 +651,6 @@
 		CD896BFC1737E84F00565C9C /* Attributes */ = {
 			isa = PBXGroup;
 			children = (
-				83BCEB5E17FEB4A700B5A7C4 /* RFLoggerWebServicePath.h */,
-				83BCEB5F17FEB4A700B5A7C4 /* RFLoggerWebServicePath.m */,
 				831EB9D917C600AA004C9BA5 /* RFWebServiceErrorHandler.h */,
 				831EB9DA17C600AA004C9BA5 /* RFWebServiceErrorHandler.m */,
 				CD896BFF1737E84F00565C9C /* RFWebServiceCall.h */,
@@ -1094,7 +1087,6 @@
 				831EB9ED17C60A65004C9BA5 /* RFODataErrorHandler.m in Sources */,
 				D719856817C65D5B0017C680 /* RFDigestAuthenticationProvider.m in Sources */,
 				83D0E631184CA28A002625E6 /* RFXMLSerializer.m in Sources */,
-				83BCEB6017FEB4A700B5A7C4 /* RFLoggerWebServicePath.m in Sources */,
 				83448CCF17D0C98B002A0D15 /* ROADGeneratedAttribute.m in Sources */,
 				8353BCA1185EDE1B009704A8 /* RFServiceProvider+WebServiceCachingManager.m in Sources */,
 				839992B417D74B95002DAE8D /* RFFormData.m in Sources */,

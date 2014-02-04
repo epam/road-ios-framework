@@ -39,10 +39,19 @@
  */
 @property (strong, nonatomic) NSString *relativePath;
 
+/**
+ * List valid status codes of response for annotated method (array of `NSNumber` or `NSValue` range values).
+ */
 @property (copy, nonatomic) NSArray* successCodes;
 
+/**
+ * Specifies if successCodes parameter do or not override global settings (for web service client class). Default - YES.
+ */
 @property (assign, nonatomic) BOOL overrideGlobalSuccessCodes;
 
+/**
+ * Sets the HTTP request method of the receiver.
+ */
 @property (copy, nonatomic) NSString *method;
 
 /**
@@ -55,10 +64,13 @@
  */
 @property (copy, nonatomic) NSString *serializationRoot;
 
+/**
+ * Manually disable serialization of response.
+ */
 @property BOOL serializationDisabled;
 
 /**
- * Works only if method == @"POST". Specifies index of parameter from method, which will be sent in request body.
+ * Works only if method == @"POST". Specifies index of parameter from method, which will be sent in request body. Numeration starts from 0.
  */
 @property (assign, nonatomic) int postParameter;
 

@@ -32,6 +32,9 @@
 
 #import <ROAD/ROADAttribute.h>
 
+/**
+ * Classes marked with this attribute will not be serialized or altered when be passed in web service request. You have to implement custom serialization in your URL builder.
+ */
 @interface RFWebServiceURLBuilderParameter : NSObject
 
 @end
