@@ -34,6 +34,9 @@
 
 @interface RFWebServiceHeader : NSObject
 
+/**
+ * Specifies header fields via key/value pairs.
+ */
 @property (strong, nonatomic) NSDictionary *headerFields;
 
 @end

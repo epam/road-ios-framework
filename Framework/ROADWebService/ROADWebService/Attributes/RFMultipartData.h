@@ -32,8 +32,14 @@
 
 #import <ROAD/ROADAttribute.h>
 
+/**
+ * Attributes allows to specify additional parameters of multipart request.
+ */
 @interface RFMultipartData : NSObject
 
+/**
+ * Boundary between parts of multipart request.
+ */
 @property (nonatomic, strong) NSString *boundary;
 
 @end

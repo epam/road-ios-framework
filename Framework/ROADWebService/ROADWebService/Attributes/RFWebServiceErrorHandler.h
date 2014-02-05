@@ -32,8 +32,14 @@
 
 #import <ROAD/ROADAttribute.h>
 
+/**
+ * Attribute for specifying class for custom error handling. This class must implement protocol RFWebServiceErrorHandling
+ */
 @interface RFWebServiceErrorHandler : NSObject
 
-@property (nonatomic, strong) NSString *handlerClass;
+/**
+ * Class for handling error in response. It must implement protocol RFWebServiceErrorHandling
+ */
+@property (nonatomic, strong) Class handlerClass;
 
 @end

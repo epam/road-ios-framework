@@ -54,11 +54,11 @@ typedef void (^RFAuthenticationFailureBlock)(NSError *error);
 @property (nonatomic, strong) NSMutableSet *failureBlocks;
 
 /**
- * Methods have to be implemented to open session, add authorization headers or any other operation, that will result in preliminary authentication (and late requests will be authenticated) or finishing preparations for processAuthenticationChallenge:forConnection: method (and late requests can handle authentication without additional requests/calculations).
+ * Methods have to be implemented to open session, add authorization headers or any other operation, that will result in preliminary authentication (and following requests will be authenticated) or finishing preparations for processAuthenticationChallenge:forConnection: method (and late requests can handle authentication without additional requests/calculations).
  */
 - (void)authenticate;
 /**
- * Methods have to be implemented to open session, add authorization headers or any other operation, that will result in preliminary authentication (and late requests will be authenticated) or finishing preparations for processAuthenticationChallenge:forConnection: method (and late requests can handle authentication without additional requests/calculations).
+ * Methods have to be implemented to open session, add authorization headers or any other operation, that will result in preliminary authentication (and following requests will be authenticated) or finishing preparations for processAuthenticationChallenge:forConnection: method (and late requests can handle authentication without additional requests/calculations).
  * @param successBlock The block will be executed in case of successfully of authentication process
  * @param failureBlock The block will be executed in case of failure of authentication process
  */
@@ -76,7 +76,7 @@ typedef void (^RFAuthenticationFailureBlock)(NSError *error);
 - (BOOL)isSessionOpened;
 
 /**
- * Method checks response status for related to authentication things (for instance)
+ * Method checks response status for related to authentication things (for instance, 401 status code)
  * @param response The response that was received from service after authenctication challenge was arised
  * @param connection The connection where authenctication challenge was arised
  */
