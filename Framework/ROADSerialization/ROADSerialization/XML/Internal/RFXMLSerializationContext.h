@@ -44,7 +44,7 @@
 @property (nonatomic, strong) NSString *currentVirtualTag;
 
 
-- (void)saveContext __attribute__((annotate("oclint:suppress[high npath complexity]")));
+- (void)saveContext;
 - (void)restoreContext;
 
 @end

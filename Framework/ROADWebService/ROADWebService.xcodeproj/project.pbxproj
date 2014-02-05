@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		8353CC38189F885C00135D86 /* ROADWebService_OCLint */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 8353CC43189F885C00135D86 /* Build configuration list for PBXAggregateTarget "ROADWebService_OCLint" */;
+			buildPhases = (
+				8353CC44189F886600135D86 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = ROADWebService_OCLint;
+			productName = ROADWebService_OCLint;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		33F0EF1618051DB1001DCCED /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 33F0EF0D18051D3D001DCCED /* libxml2.2.dylib */; };
 		5A164AA2179D762A003275EC /* RFDownloader.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E5B9D4E51786CFFE00E1901C /* RFDownloader.h */; };
@@ -873,6 +887,7 @@
 			targets = (
 				78FB204115BD336B00C2137A /* ROADWebService */,
 				783AF1A21650FAF800AD247E /* ROADWebServiceTest */,
+				8353CC38189F885C00135D86 /* ROADWebService_OCLint */,
 			);
 		};
 /* End PBXProject section */
@@ -1003,6 +1018,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/../../tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/ROADWebserviceTest/\" -dst=\"${SRCROOT}/ROADWebserviceTest/ROADGeneratedAttributes/\"";
+		};
+		8353CC44189F886600135D86 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "source ~/.bash_profile\n\nhash oclint &> /dev/null\nif [ $? -eq 1 ]; then\necho >&2 \"oclint not found, analyzing stopped\"\nexit 1\nfi\n\ncd \"${TARGET_TEMP_DIR}\"\n\necho \"[*] starting xcodebuild to rebuild the project..\"\n# clean previous output\nif [ -f xcodebuild.log ]; then\nrm xcodebuild.log\nfi\n\ncd \"${SRCROOT}\"/..\n\nxcodebuild clean -workspace ROADFramework.xcworkspace -scheme ROADWebService -configuration Debug\n\n#build xcodebuild.log\nxcodebuild -workspace ROADFramework.xcworkspace -scheme ROADWebService -configuration Debug | tee \"${TARGET_TEMP_DIR}/xcodebuild.log\"\n\necho \"[*] transforming xcodebuild.log into compile_commands.json...\"\necho \"TARGET_TEMP_DIR: ${TARGET_TEMP_DIR}\"\ncd \"${TARGET_TEMP_DIR}\"\n#transform it into compile_commands.json\necho \"oclint-xcodebuild -e ROADGeneratedAttributes\"\noclint-xcodebuild -e ROADGeneratedAttributes\n\necho \"[*] copy compile_commands.json to the project root...\"\ncp \"${TARGET_TEMP_DIR}/compile_commands.json\" \"${SRCROOT}/compile_commands.json\"\n\necho \"[*] starting analyzing\"\ncd \"${TARGET_TEMP_DIR}\"\noclint-json-compilation-database -e ROADGeneratedAttributes -- -rc=LONG_LINE=500 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 30 -max-priority-3 152 | sed 's/\\(.*\\.\\m\\{1,2\\}:[0-9]*:[0-9]*:\\)/\\1 warning:/'";
 		};
 		83B1E28417CF91AD0049C112 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1303,6 +1331,20 @@
 			};
 			name = Release;
 		};
+		8353CC39189F885C00135D86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8353CC3A189F885C00135D86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1329,6 +1371,15 @@
 			buildConfigurations = (
 				78FB205015BD336B00C2137A /* Debug */,
 				78FB205115BD336B00C2137A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8353CC43189F885C00135D86 /* Build configuration list for PBXAggregateTarget "ROADWebService_OCLint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8353CC39189F885C00135D86 /* Debug */,
+				8353CC3A189F885C00135D86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

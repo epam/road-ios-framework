@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		8353CC33189F82A300135D86 /* ROADCore_OCLint */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 8353CC36189F82A300135D86 /* Build configuration list for PBXAggregateTarget "ROADCore_OCLint" */;
+			buildPhases = (
+				8353CC37189F82B800135D86 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = ROADCore_OCLint;
+			productName = OCLint_Check;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		1A966C6718211FFF00031D15 /* ROADGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A966C6318211FFF00031D15 /* ROADGeneratedAttribute.m */; };
 		5AD1FC431766038E00E67BC4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD1FC421766038E00E67BC4 /* Cocoa.framework */; };
@@ -690,6 +704,7 @@
 				78B8E68D16C3CC3E0049E36B /* ROADCore */,
 				78B8E6A516C3CCA50049E36B /* ROADCoreMac */,
 				78B8E6BE16C3CCC00049E36B /* ROADCoreTest */,
+				8353CC33189F82A300135D86 /* ROADCore_OCLint */,
 			);
 		};
 /* End PBXProject section */
@@ -729,6 +744,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		8353CC37189F82B800135D86 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "source ~/.bash_profile\n\nhash oclint &> /dev/null\nif [ $? -eq 1 ]; then\necho >&2 \"oclint not found, analyzing stopped\"\nexit 1\nfi\n\ncd \"${TARGET_TEMP_DIR}\"\n\necho \"[*] starting xcodebuild to rebuild the project..\"\n# clean previous output\nif [ -f xcodebuild.log ]; then\nrm xcodebuild.log\nfi\n\ncd \"${SRCROOT}\"/..\n\nxcodebuild clean -workspace ROADFramework.xcworkspace -scheme ROADCore -configuration Debug\n\n#build xcodebuild.log\nxcodebuild -workspace ROADFramework.xcworkspace -scheme ROADCore -configuration Debug | tee \"${TARGET_TEMP_DIR}/xcodebuild.log\"\n\necho \"[*] transforming xcodebuild.log into compile_commands.json...\"\necho \"TARGET_TEMP_DIR: ${TARGET_TEMP_DIR}\"\ncd \"${TARGET_TEMP_DIR}\"\n#transform it into compile_commands.json\necho \"oclint-xcodebuild -e ROADGeneratedAttributes\"\noclint-xcodebuild -e ROADGeneratedAttributes\n\necho \"[*] copy compile_commands.json to the project root...\"\ncp \"${TARGET_TEMP_DIR}/compile_commands.json\" \"${SRCROOT}/compile_commands.json\"\n\necho \"[*] starting analyzing\"\ncd \"${TARGET_TEMP_DIR}\"\noclint-json-compilation-database -e ROADGeneratedAttributes -- -rc=LONG_LINE=500 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 30 -max-priority-3 152 | sed 's/\\(.*\\.\\m\\{1,2\\}:[0-9]*:[0-9]*:\\)/\\1 warning:/'";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1018,6 +1046,20 @@
 			};
 			name = Release;
 		};
+		8353CC34189F82A300135D86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8353CC35189F82A300135D86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1053,6 +1095,15 @@
 			buildConfigurations = (
 				78B8E6D016C3CCC10049E36B /* Debug */,
 				78B8E6D116C3CCC10049E36B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8353CC36189F82A300135D86 /* Build configuration list for PBXAggregateTarget "ROADCore_OCLint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8353CC34189F82A300135D86 /* Debug */,
+				8353CC35189F82A300135D86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
