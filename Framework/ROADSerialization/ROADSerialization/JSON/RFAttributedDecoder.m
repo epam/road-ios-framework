@@ -32,7 +32,6 @@
 
 #import "RFAttributedDecoder.h"
 #import <ROAD/ROADReflection.h>
-#import "RFSerializationAssistant.h"
 #import <ROAD/ROADLogger.h>
 
 #import "RFSerializable.h"
@@ -42,6 +41,7 @@
 #import "RFSerializableDate.h"
 #import "RFSerializableBoolean.h"
 #import "RFBooleanTranslator.h"
+#import "RFSerializationAssistant.h"
 
 @interface RFAttributedDecoder ()
 
@@ -259,7 +259,7 @@
     if (serializableDateAttribute.unixTimestamp) {
         if ([value isKindOfClass:[NSNumber class]]) {
             NSNumber *interval = value;
-            decodedValue = [NSDate dateWithTimeIntervalSince1970:[interval intValue]];
+            decodedValue = [NSDate dateWithTimeIntervalSince1970:[interval intValue] / serializableDateAttribute.unixTimestampMultiplier];
         }
     }
     else {

@@ -61,6 +61,6 @@
     },
     "booleanToTranslateTrueFromNumber" : 10000,
     "string1" : "value1",
-    "unixTimestamp" : "200000",
+    "unixTimestamp" : "200000000",
     "booleanToTranslateFalse" : "false"
 }

@@ -31,14 +31,14 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import <Foundation/Foundation.h>
+#import "RFBasicAttributedCoder.h"
 
-@interface RFAttributedXMLCoder : NSObject
+@interface RFAttributedXMLCoder : RFBasicAttributedCoder <RFDateFormatterPooling>
 
 /**
- Encodes the specified object into a xml string.
- @param rootObject The object to serialize.
- @result The xml string.
+ * Encodes the specified object into a xml string.
+ * @param rootObject The object to serialize.
+ * @result The xml string.
  */
 - (NSString *)encodeRootObject:(id)rootObject;
 

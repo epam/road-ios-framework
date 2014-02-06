@@ -6,7 +6,7 @@
     "string1" : "value1",
     "date1" : "22\/07\/2013 10:07:43 +0300",
     "date2" : "07.22.2013 12:07:01",
-    "unixTimestamp" : 1365609600,
+    "unixTimestamp" : 1365609600000,
     "boolean" : 1,
     "booleanToTranslateTrue": "true",
     "booleanToTranslateFalse": "false",

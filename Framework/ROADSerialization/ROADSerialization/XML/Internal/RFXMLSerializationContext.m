@@ -50,7 +50,7 @@ static NSString const *kCurrentVirtualTag = @"currentVirtualTag";
 
 @implementation RFXMLSerializationContext
 
-- (void)saveContext __attribute__((annotate("oclint:suppress[high npath complexity]")))
+- (void)saveContext
 {
     if (!_stack) _stack = [[NSMutableArray alloc] init];
 

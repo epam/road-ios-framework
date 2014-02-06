@@ -33,17 +33,17 @@
 #import "RFSerializable.h"
 
 /**
- Atttributes for serialization in XML format
-*/
+ * Atttributes for serialization in XML format.
+ */
 
 @interface RFXMLSerializable : RFSerializable
 
 /**
- Define namespace for the tag.
+ * Define namespace for the tag.
  */
 @property (nonatomic, copy) NSString *namespaceId;
 /**
- Indicates that property should be saved in the tag of it's parent (Exception will be raised if impossible)
+ * Indicates that property should be saved in the tag of it's parent (Exception will be raised if impossible).
  */
 @property (nonatomic, assign) BOOL isTagAttribute;
 

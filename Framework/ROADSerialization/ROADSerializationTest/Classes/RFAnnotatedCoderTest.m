@@ -69,6 +69,7 @@
     results = [results filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"length > 0"]];
     
     STAssertNil(error, @"Assertion: SerializationTest.json file was not loaded to check result");
+    
     STAssertEquals([tests count], [results count], @"Assertion: number of components in result json is wrong");
     
     BOOL skippingDate = NO;

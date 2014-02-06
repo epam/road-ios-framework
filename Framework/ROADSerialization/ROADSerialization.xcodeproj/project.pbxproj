@@ -67,6 +67,8 @@
 		83A36B3617982A1600449C0C /* RFSerializableDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A36B2E1798205000449C0C /* RFSerializableDate.m */; };
 		83A36B3817982C1E00449C0C /* RFSerializableDate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83A36B2D1798205000449C0C /* RFSerializableDate.h */; };
 		83AC5FF8185F79C9001FC9C6 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 331843EF17FC656600634BF6 /* libxml2.2.dylib */; };
+		83BE65C218A3C14700085C4C /* RFBasicAttributedCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 83BE65C118A3C14700085C4C /* RFBasicAttributedCoder.m */; };
+		83BE65C318A3CD0500085C4C /* RFSerializableBoolean.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 63D10F0E185EFAB700BD9046 /* RFSerializableBoolean.h */; };
 		83BEEF711744EAB50095BD53 /* DeserialisationTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 83BEEF701744EAB50095BD53 /* DeserialisationTest.json */; };
 		83D0E5F21844DD3D002625E6 /* SerializationTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 83D0E5F11844DD3D002625E6 /* SerializationTest.json */; };
 		83D0E5F51845D8A3002625E6 /* RFJSONCustomSerializationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E5F41845D8A3002625E6 /* RFJSONCustomSerializationHandler.m */; };
@@ -201,6 +203,7 @@
 			dstPath = include/ROAD;
 			dstSubfolderSpec = 16;
 			files = (
+				83BE65C318A3CD0500085C4C /* RFSerializableBoolean.h in CopyFiles */,
 				83522BF31850C8AA006C5CA3 /* RFXMLSerializableCollection.h in CopyFiles */,
 				83D0E649184DCC14002625E6 /* RFXMLSerializable.h in CopyFiles */,
 				83D0E643184DCC0B002625E6 /* RFSerializationCustomHandler.h in CopyFiles */,
@@ -262,6 +265,9 @@
 		835B6C70175628D50072765C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		83A36B2D1798205000449C0C /* RFSerializableDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RFSerializableDate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		83A36B2E1798205000449C0C /* RFSerializableDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFSerializableDate.m; sourceTree = "<group>"; };
+		83BE65BF18A3B7B100085C4C /* RFDateFormatterPooling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RFDateFormatterPooling.h; sourceTree = "<group>"; };
+		83BE65C018A3C14700085C4C /* RFBasicAttributedCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFBasicAttributedCoder.h; sourceTree = "<group>"; };
+		83BE65C118A3C14700085C4C /* RFBasicAttributedCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFBasicAttributedCoder.m; sourceTree = "<group>"; };
 		83BEEF701744EAB50095BD53 /* DeserialisationTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; lineEnding = 0; path = DeserialisationTest.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.javascript; };
 		83D0E5EC1844C8A9002625E6 /* RFJSONSerializationHandling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFJSONSerializationHandling.h; sourceTree = "<group>"; };
 		83D0E5F11844DD3D002625E6 /* SerializationTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SerializationTest.json; sourceTree = "<group>"; };
@@ -587,9 +593,12 @@
 				9F80CD5B15F64EEE0031BA24 /* ROADSerialization.h */,
 				78957284163809A0009D7417 /* Attributes */,
 				786535551639647300E86841 /* Categories */,
-				3337D3CB1803ECD100FE22F4 /* ROADSerialization-Prefix.pch */,
 				3337D3CC1803ECE200FE22F4 /* JSON */,
 				3337D3D11803ECE200FE22F4 /* XML */,
+				83BE65BF18A3B7B100085C4C /* RFDateFormatterPooling.h */,
+				83BE65C018A3C14700085C4C /* RFBasicAttributedCoder.h */,
+				83BE65C118A3C14700085C4C /* RFBasicAttributedCoder.m */,
+				3337D3CB1803ECD100FE22F4 /* ROADSerialization-Prefix.pch */,
 				9F0A8AB715C299340044A782 /* Supporting Files */,
 			);
 			path = ROADSerialization;
@@ -673,9 +682,9 @@
 			buildRules = (
 			);
 			dependencies = (
+				782B6D6116C3D4B70057DF2C /* PBXTargetDependency */,
 				8D60079417D000210095E17D /* PBXTargetDependency */,
 				8D60078217CFFED90095E17D /* PBXTargetDependency */,
-				782B6D6116C3D4B70057DF2C /* PBXTargetDependency */,
 			);
 			name = ROADSerialization;
 			productName = SecondSightSerialization;
@@ -931,6 +940,7 @@
 				83A36B2F1798205000449C0C /* RFSerializableDate.m in Sources */,
 				8D1239BC17CFAED300094213 /* RFSerializationAssistant.m in Sources */,
 				3337D3DD1803ECE200FE22F4 /* RFAttributedXMLDecoder.m in Sources */,
+				83BE65C218A3C14700085C4C /* RFBasicAttributedCoder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
