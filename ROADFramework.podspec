@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
 
   s.author       = { 'EPAM Systems, Inc' => 'SupportROAD@epam.com' }
 
-  s.platform = :ios
+  s.platform 	 = :ios
   s.ios.deployment_target = '5.0'
 
   s.requires_arc = true
