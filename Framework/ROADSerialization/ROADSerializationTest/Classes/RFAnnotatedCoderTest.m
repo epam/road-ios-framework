@@ -35,6 +35,7 @@
 #import "RFSerializationTestObject.h"
 #import "RFAttributedDecoder.h"
 #import "RFAttributedCoder.h"
+#import "RFDateTestClass.h"
 
 @interface RFAnnotatedCoderTest : SenTestCase
 
@@ -112,8 +113,40 @@
     STAssertTrue(restored.booleanToTranslateTrueFromNumber, @"The translation was unsuccessfull.");
     STAssertTrue(!restored.booleanToTranslateFalse, @"The translation from number was unsuccessfull.");
     STAssertTrue(!restored.booleanToTranslateFalseFromNumber, @"The translation from number was unsuccessfull.");
+}
+
+- (void)testDateSerialization {
+    RFDateTestClass *testObject = [RFDateTestClass testObject];
+    NSString *testObjectStandardString = [RFDateTestClass testObjectStringRepresentation];
+    NSDictionary *testObjectStandard = [NSJSONSerialization JSONObjectWithData:[testObjectStandardString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+    STAssertNotNil(testObjectStandard, @"Standard string has invalid format.");
     
-    //STAssertTrue([restored.unixTimestamp isEqualToDate:[NSDate dateWithTimeIntervalSince1970:1365609600]], @"Assertion: NSDate unix timestamp values are restored correctly.");
+    NSString * testString = [RFAttributedCoder encodeRootObject:testObject];
+    NSDictionary *test = [NSJSONSerialization JSONObjectWithData:[testString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+    STAssertNotNil(test, @"Serialized string has invalid format.");
+    
+    STAssertTrue([test[@"unixTimestamp"] isEqualToString:testObjectStandard[@"unixTimestamp"]], @"Unix timestamp serialized incorrectly.");
+    STAssertTrue([test[@"unixTimestampWithMultiplier"] isEqualToString:testObjectStandard[@"unixTimestampWithMultiplier"]], @"Unix timestamp with multiplier serialized incorrectly.");
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = [[RFDateTestClass RF_attributeForProperty:@"dateWithFormat" withAttributeType:[RFSerializableDate class]] format];
+    STAssertTrue([[dateFormatter dateFromString:test[@"dateWithFormat"]] isEqualToDate:[dateFormatter dateFromString:testObjectStandard[@"dateWithFormat"]]], @"dateWithFormat serialized incorrectly");
+    
+    dateFormatter.dateFormat = [[RFDateTestClass RF_attributeForProperty:@"dateWithEncodeDecodeFormat" withAttributeType:[RFSerializableDate class]] encodingFormat];
+    STAssertTrue([[dateFormatter dateFromString:test[@"dateWithEncodeDecodeFormat"]] isEqualToDate:[dateFormatter dateFromString:testObjectStandard[@"dateWithEncodeDecodeFormat"]]], @"dateWithEncodeDecodeFormat serialized incorrectly.");
+    
+    dateFormatter.dateFormat = [[RFDateTestClass RF_attributeForProperty:@"dateWithEncodeFormatPriority" withAttributeType:[RFSerializableDate class]] encodingFormat];
+    STAssertTrue([[dateFormatter dateFromString:test[@"dateWithEncodeFormatPriority"]] isEqualToDate:[dateFormatter dateFromString:testObjectStandard[@"dateWithEncodeFormatPriority"]]], @"dateWithEncodeFormatPriority serialized incorrectly.");
+    
+    dateFormatter.dateFormat = [[RFDateTestClass RF_attributeForProperty:@"dateWithDecodeFormatPriority" withAttributeType:[RFSerializableDate class]] format];
+    STAssertTrue([[dateFormatter dateFromString:test[@"dateWithDecodeFormatPriority"]] isEqualToDate:[dateFormatter dateFromString:testObjectStandard[@"dateWithDecodeFormatPriority"]]], @"dateWithDecodeFormatPriority serialized incorrectly.");
+}
+
+- (void)testDateDeserialization {
+    RFDateTestClass *testObject = [RFDateTestClass testObject];
+    NSString *testDeserizationString = [RFDateTestClass testDeserialisationString];
+    id testDeserizationObject = [RFAttributedDecoder decodeJSONString:testDeserizationString];
+    STAssertTrue([testDeserizationObject isEqual:testObject], @"Deserialization of dates works incorrectly.");
 }
 
 @end

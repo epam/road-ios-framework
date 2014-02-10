@@ -34,7 +34,6 @@
 		33F0EEEC1804AA15001DCCED /* RFAttributedDecoder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3337D3CF1803ECE200FE22F4 /* RFAttributedDecoder.h */; };
 		33F0EEED1804AA15001DCCED /* RFAttributedXMLCoder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3337D3D51803ECE200FE22F4 /* RFAttributedXMLCoder.h */; };
 		33F0EEEE1804AA15001DCCED /* RFAttributedXMLDecoder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3337D3D71803ECE200FE22F4 /* RFAttributedXMLDecoder.h */; };
-		5A1CC60A176F279300A6C154 /* TempAttributes in Resources */ = {isa = PBXBuildFile; fileRef = 78BCFF7F16D24E6800D23908 /* TempAttributes */; };
 		5AD1FC4F1766042200E67BC4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD1FC4E1766042200E67BC4 /* Cocoa.framework */; };
 		63D10F08185EFA7700BD9046 /* RFBooleanTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D10F07185EFA7700BD9046 /* RFBooleanTranslator.m */; };
 		63D10F10185EFAB700BD9046 /* RFSerializableBoolean.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D10F0F185EFAB700BD9046 /* RFSerializableBoolean.m */; };
@@ -73,6 +72,9 @@
 		83BE65C718A507E300085C4C /* RFBasicAttributedCoder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83BE65C018A3C14700085C4C /* RFBasicAttributedCoder.h */; };
 		83BE65C818A5080200085C4C /* RFDateFormatterPooling.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83BE65BF18A3B7B100085C4C /* RFDateFormatterPooling.h */; };
 		83BE65C918A50B1300085C4C /* RFXMLSerializable.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83BE65C418A4FAD500085C4C /* RFXMLSerializable.h */; };
+		83BE65CC18A8B8B800085C4C /* RFDateTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 83BE65CB18A8B8B800085C4C /* RFDateTestClass.m */; };
+		83BE65CE18A8BED600085C4C /* DateTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 83BE65CD18A8BED600085C4C /* DateTest.json */; };
+		83BE65D018A8E6B800085C4C /* DateTestStandard.json in Resources */ = {isa = PBXBuildFile; fileRef = 83BE65CF18A8E6B800085C4C /* DateTestStandard.json */; };
 		83BEEF711744EAB50095BD53 /* DeserialisationTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 83BEEF701744EAB50095BD53 /* DeserialisationTest.json */; };
 		83D0E5F21844DD3D002625E6 /* SerializationTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 83D0E5F11844DD3D002625E6 /* SerializationTest.json */; };
 		83D0E5F51845D8A3002625E6 /* RFJSONCustomSerializationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E5F41845D8A3002625E6 /* RFJSONCustomSerializationHandler.m */; };
@@ -262,7 +264,6 @@
 		7895728516380A33009D7417 /* RFSerializable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RFSerializable.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		7895728616380A33009D7417 /* RFSerializable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFSerializable.m; sourceTree = "<group>"; };
 		7895728F163828E1009D7417 /* RFDerived.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RFDerived.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		78BCFF7F16D24E6800D23908 /* TempAttributes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TempAttributes; sourceTree = "<group>"; };
 		78CBA92916C3D41800DAC9BB /* ROADCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ROADCore.xcodeproj; path = ../ROADCore/ROADCore.xcodeproj; sourceTree = "<group>"; };
 		78DD7329164A6305009B334C /* RFSerializableCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RFSerializableCollection.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		835B6C70175628D50072765C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -273,6 +274,10 @@
 		83BE65C118A3C14700085C4C /* RFBasicAttributedCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFBasicAttributedCoder.m; sourceTree = "<group>"; };
 		83BE65C418A4FAD500085C4C /* RFXMLSerializable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFXMLSerializable.h; sourceTree = "<group>"; };
 		83BE65C518A4FAD500085C4C /* RFXMLSerializable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFXMLSerializable.m; sourceTree = "<group>"; };
+		83BE65CA18A8B8B800085C4C /* RFDateTestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFDateTestClass.h; sourceTree = "<group>"; };
+		83BE65CB18A8B8B800085C4C /* RFDateTestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFDateTestClass.m; sourceTree = "<group>"; };
+		83BE65CD18A8BED600085C4C /* DateTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DateTest.json; sourceTree = "<group>"; };
+		83BE65CF18A8E6B800085C4C /* DateTestStandard.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DateTestStandard.json; sourceTree = "<group>"; };
 		83BEEF701744EAB50095BD53 /* DeserialisationTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; lineEnding = 0; path = DeserialisationTest.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.javascript; };
 		83D0E5EC1844C8A9002625E6 /* RFJSONSerializationHandling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFJSONSerializationHandling.h; sourceTree = "<group>"; };
 		83D0E5F11844DD3D002625E6 /* SerializationTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SerializationTest.json; sourceTree = "<group>"; };
@@ -442,6 +447,8 @@
 				78513E6F1649220C0049549A /* RFAnnotatedCoderTest.m */,
 				C3182CF8183E4C140041F4B7 /* RFAttributedXMLCoderTest.m */,
 				83D0E5F71845DB73002625E6 /* RFCustomJSONSerializationHandlingTest.m */,
+				83BE65CA18A8B8B800085C4C /* RFDateTestClass.h */,
+				83BE65CB18A8B8B800085C4C /* RFDateTestClass.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -449,7 +456,6 @@
 		784161A616480C670089FDE9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				78BCFF7F16D24E6800D23908 /* TempAttributes */,
 				83BEEF701744EAB50095BD53 /* DeserialisationTest.json */,
 				3337D37F1802B5AE00FE22F4 /* DeserialisationTest.xml */,
 				3337D3811802BB1600FE22F4 /* DeserialisationTest2.xml */,
@@ -459,6 +465,8 @@
 				83D0E5F11844DD3D002625E6 /* SerializationTest.json */,
 				83D0E60F18462AE8002625E6 /* DeserializationCustomHandlingTest.json */,
 				83D0E6151846304E002625E6 /* DeserializationCustomPropertyKeyHandlingTest.json */,
+				83BE65CD18A8BED600085C4C /* DateTest.json */,
+				83BE65CF18A8E6B800085C4C /* DateTestStandard.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -823,13 +831,14 @@
 				83D0E6161846304E002625E6 /* DeserializationCustomPropertyKeyHandlingTest.json in Resources */,
 				83D0E61018462AE8002625E6 /* DeserializationCustomHandlingTest.json in Resources */,
 				3337D3831802BB1600FE22F4 /* DeserialisationTest2.xml in Resources */,
+				83BE65CE18A8BED600085C4C /* DateTest.json in Resources */,
 				7841618916480C1E0089FDE9 /* InfoPlist.strings in Resources */,
 				83BEEF711744EAB50095BD53 /* DeserialisationTest.json in Resources */,
 				3337D3801802B5AE00FE22F4 /* DeserialisationTest.xml in Resources */,
 				C33E16021847451700AB4CC6 /* DeserialisationMixedCollectionContainerTest.xml in Resources */,
 				83D0E5F21844DD3D002625E6 /* SerializationTest.json in Resources */,
 				3337D3841802BB1600FE22F4 /* DeserialisationTest3.xml in Resources */,
-				5A1CC60A176F279300A6C154 /* TempAttributes in Resources */,
+				83BE65D018A8E6B800085C4C /* DateTestStandard.json in Resources */,
 				C3182C9D183B95D80041F4B7 /* DeserialisationCollectionContainerTest.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -909,6 +918,7 @@
 				83D0E5FB1845DC33002625E6 /* RFJSONCustomClassHandlerEntity.m in Sources */,
 				784161AC16480CC40089FDE9 /* RFJSONStringHandlingTest.m in Sources */,
 				78513E6D164921BF0049549A /* RFSerializationTestObject.m in Sources */,
+				83BE65CC18A8B8B800085C4C /* RFDateTestClass.m in Sources */,
 				78513E701649220C0049549A /* RFAnnotatedCoderTest.m in Sources */,
 				C33E16051847455F00AB4CC6 /* RFXMLSerializationTestObject2.m in Sources */,
 				83D0E6011845DCAA002625E6 /* RFJSONCustomPropertyHandlerEntity.m in Sources */,

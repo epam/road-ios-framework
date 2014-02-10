@@ -35,24 +35,24 @@
 #define kNLConnectionNameSuffix @"_netLog_srv"
 
 /**
- A connection class browsing for possible network services and initiating background threads to broadcast log messages.
+ * A connection class browsing for possible network services and initiating background threads to broadcast log messages.
  */
 @interface RFConnection : NSObject <NSNetServiceBrowserDelegate, NSPortDelegate>
 
 /**
- The delegate property.
+ * The delegate property.
  */
 @property (weak, nonatomic) id<RFConnectionDelegate> delegate;
 
 /**
- Designated initializer.
- @param aType The connection type.
- @param applicationName The application name.
+ * Designated initializer.
+ * @param aType The connection type.
+ * @param applicationName The application name.
  */
 - (id)initWithType:(NSString *)aType applicationName:(NSString *)applicationName;
 
 /**
- Starts browsing for suitable network services.
+ * Starts browsing for suitable network services.
  */
 - (void)start;
 

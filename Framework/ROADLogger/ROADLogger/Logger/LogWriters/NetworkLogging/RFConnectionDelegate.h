@@ -33,14 +33,14 @@
 @class RFConnection;
 
 /**
- The stream connection delegate protocol.
+ * The stream connection delegate protocol.
  */
 @protocol RFConnectionDelegate <NSObject>
 
 /**
- Invoked on the delegate if the connection has found services (using Bonjour protocol)
- @param connection The connection object sending the message.
- @param services The set of services found.
+ * Invoked on the delegate if the connection has found services (using Bonjour protocol)
+ * @param connection The connection object sending the message.
+ * @param services The set of services found.
  */
 - (void)connection:(RFConnection *)connection didFindServices:(NSSet *)services;
 

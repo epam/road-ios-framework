@@ -14,30 +14,35 @@ It features:
 ...
 RFLogInfo(@"Test message with %@, %i, %i", @"Param 1", "2", YES);
 ```
-already takes and advantage of log leveling and attributes configured in shared instance of logger. Full call will look like: 
+already takes and advantage of log levelling and attributes configured in shared instance of logger. Full call will look like: 
 ```objc
 [[RFServiceProvider logger]  logInfoMessage:@"Simple message"];
 ```
-but before writing this code you should configure logger:
+####Configuration
+Before writing this code you should configure logger. This configuration have to be done before log statement, so good location to place it is `- application:didFinishLaunchingWithOptions:`:
 ```objc
 id <RFLogging> logger = [RFServiceProvider logger];
 [logger addWriter:[RFConsoleLogWriter plainConsoleWriter]];
 ```
 *`RFServiceProvider` used as a logger singleton provider.*  
 
-Convinience macros are defined for all 4 levels:
-`RFLogInfo`, `RFLogDebug`, `RFLogWarning`, `RFLogError`.
+Convenience macros are defined for all 4 levels:
+
+* `RFLogInfo`,
+* `RFLogDebug`,
+* `RFLogWarning`,
+* `RFLogError`.
 
 We can set necessary log level for all log writers:
 ```objc
 [[RFServiceProvider logger] setLogLevel:RFLogLevelDebug];
 ```
-## Mutliple outputs, filters and formatting
+##Multiple outputs, filters and formatting
 
-##### Writers
+#####Writers
 Writers represent output for the message. 3 types of outputs included from the box: console, file and network.
 
-Base writer implementation has a **background message queing**. This minimizes performance impact but should also be taken in account when other logging/tracing technologies are used simultaneously.
+Base writer implementation has a **background message queuing**. This minimizes performance impact but should also be taken in account when other logging/tracing technologies are used simultaneously.
 
 ##### Multiple outputs:
 Logger configured with 3 different writers at one log level. 
@@ -68,7 +73,7 @@ writer.formatter = [RFLogFormatter formatterWithBlock:^NSString *(RFLogMessage *
 }];
 
 logger.writers = @[writer];
-    
+
 RFLogInfo(message2);
 RFLogInfo([writer formattedMessage:[RFLogMessage infoMessage:message2]]);
 RFLogInfo([writer formattedMessage:[RFLogMessage infoMessage:message1]]);
@@ -82,7 +87,7 @@ NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(RFLogMessage *eva
     return [evaluatedObject.type isEqualToString:kRFLogMessageTypeNetworkOnly];
 }];
 RFLogFilter *logFilter = [RFLogFilter filterWithPrediate:predicate];
-    
+
 RFLogMessage *validLogMessage = [RFLogMessage logMessage:@"Simple message" type:kRFLogMessageTypeNetworkOnly level:RFLogLevelWarning userInfo:nil];
 RFLogMessage *invalidLogMessage = [RFLogMessage logMessage:@"Simple message" type:kRFLogMessageTypeFileOnly level:RFLogLevelWarning userInfo:nil];
 

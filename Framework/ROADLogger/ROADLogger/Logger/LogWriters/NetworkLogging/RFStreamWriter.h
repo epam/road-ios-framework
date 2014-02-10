@@ -31,31 +31,31 @@
 // for additional information regarding copyright ownership and licensing
 
 /**
- Streamwriter class that manages the logging and broadcasting of log messages to established connections.
+ * Streamwriter class that manages the logging and broadcasting of log messages to established connections.
  */
 @interface RFStreamWriter : NSObject
 
 /**
- Designated initializer.
- @param services The set of services.
+ * Designated initializer.
+ * @param services The set of services.
  */
 - (id)initWithServices:(NSSet *)services;
 
 /**
- Invoked when a log message's data packed is to be distributed to all connected services for broadcasting.
- @param data NSData object to send.
+ * Invoked when a log message's data packed is to be distributed to all connected services for broadcasting.
+ * @param data NSData object to send.
  */
 - (void)writeData:(NSData *)data;
 
 /**
- Invoked when a service becomes unavailable.
- @param service The service to be removed when it becomes unavailable.
+ * Invoked when a service becomes unavailable.
+ * @param service The service to be removed when it becomes unavailable.
  */
 - (void)removeService:(NSNetService *)service;
 
 /**
- Invoked when a new service becomes available.
- @param service The service to add when it becomes available.
+ * Invoked when a new service becomes available.
+ * @param service The service to add when it becomes available.
  */
 - (void)addService:(NSNetService *)service;
 
