@@ -226,7 +226,7 @@
     NSDate *result = nil;
     
     if (dateAttribute.unixTimestamp) {
-        result = [NSDate dateWithTimeIntervalSince1970:[string intValue]];
+        result = [NSDate dateWithTimeIntervalSince1970:[string intValue] / dateAttribute.unixTimestampMultiplier];
     }
     else {
         

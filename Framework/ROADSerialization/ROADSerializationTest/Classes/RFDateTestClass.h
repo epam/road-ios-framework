@@ -1,6 +1,6 @@
 //
-//  RFLogMessageWrapper.h
-//  ROADLogger
+//  RFDateTestClass.h
+//  ROADSerialization
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,18 +30,32 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-@class RFLogMessage;
+#import "RFSerializableDate.h"
+#import "RFSerializable.h"
 
-/**
- * Message wrapper container class to encapsulate log messages and other relevant pieces of information for network broadcasting.
- */
-@interface RFLogMessageWrapper : NSObject <NSCoding>
+RF_ATTRIBUTE(RFSerializable)
+@interface RFDateTestClass : NSObject
 
-@property (nonatomic, copy) NSString *deviceName;
-@property (nonatomic, copy) NSString *applicationName;
-@property (nonatomic, copy) NSString *uniqueId;
-@property (nonatomic, strong) RFLogMessage *message;
+RF_ATTRIBUTE(RFSerializableDate, unixTimestamp = YES)
+@property (nonatomic, strong) NSDate *unixTimestamp;
 
--(id)initWithMessage:(RFLogMessage *)message deviceName:(NSString *)deviceName applicationName:(NSString *)applicationName uniqueId:(NSString *)uniqueId;
+RF_ATTRIBUTE(RFSerializableDate, unixTimestamp = YES, unixTimestampMultiplier = 1)
+@property (nonatomic, strong) NSDate *unixTimestampWithMultiplier;
+
+RF_ATTRIBUTE(RFSerializableDate, format = @"yyyy/MM/dd HH:mm:ss Z")
+@property (nonatomic, strong) NSDate *dateWithFormat;
+
+RF_ATTRIBUTE(RFSerializableDate, encodingFormat = @"yyyy/MM/dd HH:mm:ss Z", decodingFormat = @"yyyy.MM.dd HH:mm:ss Z")
+@property (nonatomic, strong) NSDate *dateWithEncodeDecodeFormat;
+
+RF_ATTRIBUTE(RFSerializableDate, format = @"yyyy/MM/dd HH:mm:ss Z", decodingFormat = @"yyyy.MM.dd HH:mm:ss Z")
+@property (nonatomic, strong) NSDate *dateWithDecodeFormatPriority;
+
+RF_ATTRIBUTE(RFSerializableDate, encodingFormat = @"yyyy/MM/dd HH:mm:ss Z", format = @"yyyy.MM.dd HH:mm:ss Z")
+@property (nonatomic, strong) NSDate *dateWithEncodeFormatPriority;
+
++ (id)testObject;
++ (NSString *)testObjectStringRepresentation;
++ (NSString *)testDeserialisationString;
 
 @end

@@ -33,6 +33,7 @@
 
 #import "RFAttributedXMLCoder.h"
 #import <ROAD/ROADReflection.h>
+
 #import "RFSerializationAssistant.h"
 #import "RFXMLSerializable.h"
 #import "RFXMLSerializableCollection.h"
@@ -52,21 +53,15 @@ char *RFAttributedXMLCoderTagForClass(Class aClass) {
     return result;
 }
 
+
 @interface RFAttributedXMLCoder () {
-    NSDateFormatter *_dateFormatter;
     xmlDocPtr _xmlDoc;
+    NSArray * _xmlDateFormatters;
 }
 @end
 
-@implementation RFAttributedXMLCoder
 
-- (id)init {
-    
-    if (self = [super init]) {
-        _dateFormatter = [[NSDateFormatter alloc] init];
-    }
-    return self;
-}
+@implementation RFAttributedXMLCoder
 
 - (NSString *)encodeRootObject:(id)rootObject {
     
@@ -100,7 +95,7 @@ char *RFAttributedXMLCoderTagForClass(Class aClass) {
     // Try to serialize as a container or object with defined properties. Assume it's simple value otherwise.
     else if (![self serializeObjectAsContainer:serializedObject toNode:result itemTag:itemTag] && ![self serializeObjectAsAttributed:serializedObject toNode:result]) {
         
-            NSString *encodedString = RFSerializationEncodeObjectForProperty(serializedObject, propertyInfo, _dateFormatter);
+            NSString *encodedString = RFSerializationEncodeObjectForProperty(serializedObject, propertyInfo, self);
             xmlNodeSetContent(result, BAD_CAST [encodedString UTF8String]);
         }
     
@@ -147,7 +142,7 @@ char *RFAttributedXMLCoderTagForClass(Class aClass) {
             id propertyObject = [serializedObject valueForKey:property.propertyName];
             
             if (xmlAttributes.isTagAttribute) {
-                NSString *encodedString = RFSerializationEncodeObjectForProperty(propertyObject, property, _dateFormatter);
+                NSString *encodedString = RFSerializationEncodeObjectForProperty(propertyObject, property, self);
                 
                 if ([encodedString length]) {
                     xmlNewProp(xmlNode, BAD_CAST [RFSerializationKeyForProperty(property) UTF8String], BAD_CAST [encodedString UTF8String]);
@@ -162,4 +157,5 @@ char *RFAttributedXMLCoderTagForClass(Class aClass) {
     
     return result;
 }
+
 @end

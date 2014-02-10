@@ -35,7 +35,7 @@
 @class RFLogWriter;
 
 /**
- Describes the logger service's public interface. All methods, except where specified otherwise, are thread-safe and can be safely use in multithread enviorment.
+ * Describes the logger service's public interface. All methods, except where specified otherwise, are thread-safe and can be safely use in multithread enviorment.
  */
 @protocol RFLogging <NSObject>
 

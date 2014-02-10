@@ -33,7 +33,7 @@
 #import <ROAD/ROADAttribute.h>
 
 /**
- Indicates if a serializable property is a weak-typed collection, such as NSArray, NSDictionary or NSSet. You can indicate with the defaultValue of this attribute the class names of the elements inside the collection, allowing the annotated decoder to restore these.
+ Indicates if a serializable property is a weak-typed collection, such as NSArray, NSDictionary or NSSet. You can indicate with collectionClass property the class names of the elements inside the collection, allowing the annotated decoder to restore these.
 */
 @interface RFSerializableCollection : NSObject
 

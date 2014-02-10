@@ -33,12 +33,12 @@
 #import "RFLogWriter.h"
 
 /**
- The file log writer.
+ * The file log writer.
  */
 @interface RFFileLogWriter : RFLogWriter
 /**
- Returns a filewriter with the specified path.
- @param path The output file path.
+ * Returns a filewriter with the specified path.
+ * @param path The output file path.
  */
 + (RFFileLogWriter *)writerWithPath:(NSString * const)path;
 

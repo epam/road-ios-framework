@@ -32,7 +32,6 @@
 
 #import "RFAttributedDecoder.h"
 #import <ROAD/ROADReflection.h>
-#import "RFSerializationAssistant.h"
 #import <ROAD/ROADLogger.h>
 
 #import "RFSerializable.h"
@@ -42,6 +41,7 @@
 #import "RFSerializableDate.h"
 #import "RFSerializableBoolean.h"
 #import "RFBooleanTranslator.h"
+#import "RFSerializationAssistant.h"
 
 @interface RFAttributedDecoder ()
 
@@ -259,7 +259,7 @@
     if (serializableDateAttribute.unixTimestamp) {
         if ([value isKindOfClass:[NSNumber class]]) {
             NSNumber *interval = value;
-            decodedValue = [NSDate dateWithTimeIntervalSince1970:[interval intValue]];
+            decodedValue = [NSDate dateWithTimeIntervalSince1970:[interval intValue] / serializableDateAttribute.unixTimestampMultiplier];
         }
     }
     else {
@@ -315,6 +315,24 @@
         else {
             nestedJsonObject = [nestedJsonObject valueForKey:key];
         }
+    }
+    
+    // Last check to remove nulls from result
+    if ([nestedJsonObject isKindOfClass:[NSArray class]]) {
+        NSMutableArray *arrayWithoutNulls = [[NSMutableArray alloc] init];
+        for (id obj in nestedJsonObject) {
+            if (obj != [NSNull null]) {
+                [arrayWithoutNulls addObject:obj];
+            }
+        }
+        if ([arrayWithoutNulls count] > 0) {
+            nestedJsonObject = arrayWithoutNulls;
+        }
+        else {
+            nestedJsonObject = nil;
+            RFLogWarning(@"Serialization failed because part ( %@ ) of serialization root ( %@ ) is not founded or equal nil", currentKeyPath, keyPath);
+        }
+        
     }
     
     return nestedJsonObject;

@@ -34,6 +34,9 @@
 #import <Foundation/Foundation.h>
 #import "RFService.h"
 
+/**
+ * Class-manager of services. To attach your service you have to create category on this class and write method declaration and mark it with RFService attribute.
+ */
 @interface RFServiceProvider : NSObject
 
 @end
