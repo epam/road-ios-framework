@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		8353CC5C189F895D00135D86 /* ROADLogger_OCLint */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 8353CC65189F895D00135D86 /* Build configuration list for PBXAggregateTarget "ROADLogger_OCLint" */;
+			buildPhases = (
+				8353CC66189F896F00135D86 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = ROADLogger_OCLint;
+			productName = ROADLogger_OCLint;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		7837BF2816C4E4EA0063A026 /* RFLogMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7837BF2716C4E4EA0063A026 /* RFLogMessage.m */; };
 		7837BF3216C4EA920063A026 /* RFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 7837BF3116C4EA920063A026 /* RFLogger.m */; };
@@ -41,7 +55,6 @@
 		CD4E845E16F7663F00618316 /* RFLogging.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7837BF2516C4E4870063A026 /* RFLogging.h */; };
 		CD4E845F16F7663F00618316 /* RFLogMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7837BF2616C4E4EA0063A026 /* RFLogMessage.h */; };
 		D771947D17CF43630011047F /* ROADGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = D771947C17CF43630011047F /* ROADGeneratedAttribute.m */; };
-		D771948A17CF4DED0011047F /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D757824A17CCB91000BD85DA /* SenTestingKit.framework */; };
 		D771948C17CF4DED0011047F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 789AAE3516C4E3FA00FF7FB0 /* Foundation.framework */; };
 		D771949217CF4DED0011047F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D771949017CF4DED0011047F /* InfoPlist.strings */; };
 		D771949517CF4DED0011047F /* ROADLoggerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D771949417CF4DED0011047F /* ROADLoggerTest.m */; };
@@ -52,6 +65,8 @@
 		D7AF14C717CF910A00A92C31 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF14C617CF910A00A92C31 /* UIKit.framework */; };
 		D7AF14C917CF914200A92C31 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF14C817CF914200A92C31 /* libz.dylib */; };
 		D7AF14CB17CF917800A92C31 /* libROADCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF14CA17CF917800A92C31 /* libROADCore.a */; };
+		EE7FDA89188645A9003B250C /* libUtilities.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE27F98118863DDE006AEED8 /* libUtilities.a */; };
+		EE7FDA9018864EC2003B250C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE7FDA8F18864EC2003B250C /* SenTestingKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +132,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 789AAE3116C4E3FA00FF7FB0;
 			remoteInfo = ROADLogger;
+		};
+		EE27F98018863DDE006AEED8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE27F97C18863DDE006AEED8 /* Utilities.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EE2E040A1886313700CFD5BC;
+			remoteInfo = Utilities;
+		};
+		EE27F98418863DF6006AEED8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE27F97C18863DDE006AEED8 /* Utilities.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = EE2E04091886313700CFD5BC;
+			remoteInfo = Utilities;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -188,7 +217,6 @@
 		78F95AFB16E9F1CF00E58C3B /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		8D6007D817D014A00095E17D /* RFServiceProvider+LoggingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RFServiceProvider+LoggingService.h"; sourceTree = "<group>"; };
 		8D6007D917D014A00095E17D /* RFServiceProvider+LoggingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RFServiceProvider+LoggingService.m"; sourceTree = "<group>"; };
-		D757824A17CCB91000BD85DA /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		D771947C17CF43630011047F /* ROADGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ROADGeneratedAttribute.m; path = ROADGeneratedAttributes/ROADGeneratedAttribute.m; sourceTree = "<group>"; };
 		D771948917CF4DED0011047F /* ROADLoggerTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ROADLoggerTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D771948F17CF4DED0011047F /* ROADLoggerTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ROADLoggerTest-Info.plist"; sourceTree = "<group>"; };
@@ -202,6 +230,8 @@
 		D7AF14C617CF910A00A92C31 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D7AF14C817CF914200A92C31 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		D7AF14CA17CF917800A92C31 /* libROADCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libROADCore.a; path = "../ROADCore/build/Release-iphoneos/libROADCore.a"; sourceTree = "<group>"; };
+		EE27F97C18863DDE006AEED8 /* Utilities.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Utilities.xcodeproj; path = ../Utilities/Utilities.xcodeproj; sourceTree = "<group>"; };
+		EE7FDA8F18864EC2003B250C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,13 +246,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE7FDA89188645A9003B250C /* libUtilities.a in Frameworks */,
 				D7AF14CB17CF917800A92C31 /* libROADCore.a in Frameworks */,
 				D7AF14C917CF914200A92C31 /* libz.dylib in Frameworks */,
 				D7AF14C717CF910A00A92C31 /* UIKit.framework in Frameworks */,
 				D7AF149517CF8E1B00A92C31 /* libROADLogger.a in Frameworks */,
+				EE7FDA9018864EC2003B250C /* SenTestingKit.framework in Frameworks */,
 				D7AF145717CF745B00A92C31 /* libROADObservation.a in Frameworks */,
 				D7AF145517CF745000A92C31 /* libROADServices.a in Frameworks */,
-				D771948A17CF4DED0011047F /* SenTestingKit.framework in Frameworks */,
 				D771948C17CF4DED0011047F /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,12 +336,13 @@
 			children = (
 				D7AF14CA17CF917800A92C31 /* libROADCore.a */,
 				D7AF14C817CF914200A92C31 /* libz.dylib */,
+				EE7FDA8F18864EC2003B250C /* SenTestingKit.framework */,
 				D7AF14C617CF910A00A92C31 /* UIKit.framework */,
 				D7AF136417CF502E00A92C31 /* ROADObservation.xcodeproj */,
 				D7AF135317CF4F1D00A92C31 /* ROADServices.xcodeproj */,
+				EE27F97C18863DDE006AEED8 /* Utilities.xcodeproj */,
 				789AAE3516C4E3FA00FF7FB0 /* Foundation.framework */,
 				78F95AFB16E9F1CF00E58C3B /* CoreFoundation.framework */,
-				D757824A17CCB91000BD85DA /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -403,6 +435,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		EE27F97D18863DDE006AEED8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EE27F98118863DDE006AEED8 /* libUtilities.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -440,6 +480,7 @@
 			);
 			dependencies = (
 				D7AF149417CF8E1300A92C31 /* PBXTargetDependency */,
+				EE27F98518863DF6006AEED8 /* PBXTargetDependency */,
 			);
 			name = ROADLoggerTest;
 			productName = ROADLoggerTest;
@@ -475,11 +516,16 @@
 					ProductGroup = D7AF135417CF4F1D00A92C31 /* Products */;
 					ProjectRef = D7AF135317CF4F1D00A92C31 /* ROADServices.xcodeproj */;
 				},
+				{
+					ProductGroup = EE27F97D18863DDE006AEED8 /* Products */;
+					ProjectRef = EE27F97C18863DDE006AEED8 /* Utilities.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
 				789AAE3116C4E3FA00FF7FB0 /* ROADLogger */,
 				D771948817CF4DED0011047F /* ROADLoggerTest */,
+				8353CC5C189F895D00135D86 /* ROADLogger_OCLint */,
 			);
 		};
 /* End PBXProject section */
@@ -527,6 +573,13 @@
 			remoteRef = D7AF136E17CF502E00A92C31 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		EE27F98118863DDE006AEED8 /* libUtilities.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libUtilities.a;
+			remoteRef = EE27F98018863DDE006AEED8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -541,6 +594,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		8353CC66189F896F00135D86 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "source ~/.bash_profile\n\nhash oclint &> /dev/null\nif [ $? -eq 1 ]; then\necho >&2 \"oclint not found, analyzing stopped\"\nexit 1\nfi\n\ncd \"${TARGET_TEMP_DIR}\"\n\necho \"[*] starting xcodebuild to rebuild the project..\"\n# clean previous output\nif [ -f xcodebuild.log ]; then\nrm xcodebuild.log\nfi\n\ncd \"${SRCROOT}\"/..\n\nxcodebuild clean -workspace ROADFramework.xcworkspace -scheme ROADLogger -configuration Debug\n\n#build xcodebuild.log\nxcodebuild -workspace ROADFramework.xcworkspace -scheme ROADLogger -configuration Debug | tee \"${TARGET_TEMP_DIR}/xcodebuild.log\"\n\necho \"[*] transforming xcodebuild.log into compile_commands.json...\"\necho \"TARGET_TEMP_DIR: ${TARGET_TEMP_DIR}\"\ncd \"${TARGET_TEMP_DIR}\"\n#transform it into compile_commands.json\necho \"oclint-xcodebuild -e ROADGeneratedAttributes\"\noclint-xcodebuild -e ROADGeneratedAttributes\n\necho \"[*] copy compile_commands.json to the project root...\"\ncp \"${TARGET_TEMP_DIR}/compile_commands.json\" \"${SRCROOT}/compile_commands.json\"\n\necho \"[*] starting analyzing\"\ncd \"${TARGET_TEMP_DIR}\"\noclint-json-compilation-database -e ROADGeneratedAttributes -- -rc=LONG_LINE=500 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 30 -max-priority-3 152 | sed 's/\\(.*\\.\\m\\{1,2\\}:[0-9]*:[0-9]*:\\)/\\1 warning:/'";
+		};
 		83C544E2174B7A53000C8BCD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -632,6 +698,11 @@
 			isa = PBXTargetDependency;
 			target = 789AAE3116C4E3FA00FF7FB0 /* ROADLogger */;
 			targetProxy = D7AF149317CF8E1300A92C31 /* PBXContainerItemProxy */;
+		};
+		EE27F98518863DF6006AEED8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Utilities;
+			targetProxy = EE27F98418863DF6006AEED8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -735,20 +806,33 @@
 			};
 			name = Release;
 		};
+		8353CC5D189F895D00135D86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8353CC5E189F895D00135D86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		D771949817CF4DED0011047F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADLoggerTest/ROADLoggerTest-Prefix.pch";
 				INFOPLIST_FILE = "ROADLoggerTest/ROADLoggerTest-Info.plist";
-				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -763,15 +847,14 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADLoggerTest/ROADLoggerTest-Prefix.pch";
 				INFOPLIST_FILE = "ROADLoggerTest/ROADLoggerTest-Info.plist";
-				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -798,6 +881,15 @@
 			buildConfigurations = (
 				789AAE4116C4E3FA00FF7FB0 /* Debug */,
 				789AAE4216C4E3FA00FF7FB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8353CC65189F895D00135D86 /* Build configuration list for PBXAggregateTarget "ROADLogger_OCLint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8353CC5D189F895D00135D86 /* Debug */,
+				8353CC5E189F895D00135D86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

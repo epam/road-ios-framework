@@ -44,8 +44,8 @@
     PreprocessedSourceCode *result = [PreprocessedSourceCode new];
     result.sourceCode = [NSMutableString stringWithString:sourceCode];
     
-    [self processStringParamsInCode:result];
     [self removeComments:result];
+    [self processStringParamsInCode:result];
     [self removeImports:result];
     [self removeIncludes:result];
     [self processArrayBlocksInCode:result];
@@ -64,8 +64,8 @@
     PreprocessedSourceCode *result = [PreprocessedSourceCode new];
     result.sourceCode = [NSMutableString stringWithString:sourceCode];
     
-    [self processStringParamsInCode:result];
     [self removeComments:result];
+    [self processStringParamsInCode:result];
     [self removeIncludes:result];
     [self processArrayBlocksInCode:result];
     [self processCodeBlocksInCode:result];
@@ -118,6 +118,13 @@
 + (void)removeComments:(PreprocessedSourceCode *)sourceCodeInfo {
     [self removeMultiLineComments:sourceCodeInfo];
     [self removeSingleLineComments:sourceCodeInfo];
+    [self removeImplementation:sourceCodeInfo];
+}
+
++ (void)removeImplementation:(PreprocessedSourceCode *)sourceCodeInfo {
+    NSError *error = NULL;
+    NSRegularExpression *result = [NSRegularExpression regularExpressionWithPattern:@"(?:@implementation)(\\s+[^\n]+\n).+(?:@end)" options:NSRegularExpressionDotMatchesLineSeparators error:&error];
+    [result replaceMatchesInString:sourceCodeInfo.sourceCode options:0 range:NSMakeRange(0, [sourceCodeInfo.sourceCode length]) withTemplate:@"@implementation$1\n@end"];
 }
 
 + (void)removeMultiLineComments:(PreprocessedSourceCode *)sourceCodeInfo {
@@ -140,14 +147,33 @@
     
     NSUInteger stringLength = [sourceString length];
     
+    BOOL stringProcessing = NO;
+    BOOL commentProcessing = NO;
+    
     for (NSUInteger charIndex = 0; charIndex < stringLength; charIndex ++) {
         unichar currentChar = [sourceString characterAtIndex:charIndex];
+        
+        if (!commentProcessing) {
+            if (currentChar == '\n' || currentChar == '\r') {
+                stringProcessing = NO;
+            }
+            if (currentChar == '\"'
+                && ((charIndex - 1 == 0)
+                    || (charIndex - 1 > 0 && ([sourceString characterAtIndex:charIndex - 1] != '\\'
+                                              || ((charIndex - 2 != 0) && [sourceString characterAtIndex:charIndex - 2] == '\\'))))) {
+                    stringProcessing = !stringProcessing;
+                }
+            if (stringProcessing) {
+                continue;
+            }
+        }
         
         if (currentChar == '/' && resultBlockStart == -1) {
             NSUInteger nextCharIndex = charIndex + 1;
             
             if (nextCharIndex < stringLength && [sourceString characterAtIndex:nextCharIndex] == '*') {
                 resultBlockStart = charIndex;
+                commentProcessing = YES;
                 charIndex = nextCharIndex;
             }
             
@@ -159,6 +185,7 @@
             
             if (nextCharIndex < stringLength && [sourceString characterAtIndex:nextCharIndex] == '/') {
                 resultBlockEnd = nextCharIndex;
+                commentProcessing = NO;
                 break;
             }
             
@@ -173,9 +200,70 @@
     return NSMakeRange(resultBlockStart, (resultBlockEnd - resultBlockStart) + 1);
 }
 
-+ (void)removeSingleLineComments:(PreprocessedSourceCode *)sourceCodeInfo {   
-    [NSRegularExpression replaceRegex:@"//.*" withTemplate:@"" inString:sourceCodeInfo.sourceCode];
++ (void)removeSingleLineComments:(PreprocessedSourceCode *)sourceCodeInfo {
+    NSMutableString *result = (NSMutableString *)sourceCodeInfo.sourceCode;
+    
+    for (;;) {
+        NSRange commentBlockRange = [self firstSingleLineCommentInString:result];
+        
+        if (commentBlockRange.length == 0) {
+            break;
+        }
+        
+        [result replaceCharactersInRange:commentBlockRange withString:@""];
+    }
 }
+
++ (NSRange)firstSingleLineCommentInString:(NSString *)sourceString {
+    NSInteger resultBlockStart = -1;
+    NSInteger resultBlockEnd = -1;
+    
+    NSUInteger stringLength = [sourceString length];
+    
+    BOOL stringProcessing = NO;
+    BOOL commentProcessing = NO;
+    
+    for (NSUInteger charIndex = 0; charIndex < stringLength; charIndex ++) {
+        unichar currentChar = [sourceString characterAtIndex:charIndex];
+        
+        if (!commentProcessing) {
+            if (currentChar == '\"'
+                && ((charIndex == 0)
+                    || (charIndex > 0 && ([sourceString characterAtIndex:charIndex - 1] != '\\'
+                                              || ((charIndex > 1) && [sourceString characterAtIndex:charIndex - 2] == '\\'))))) {
+                    stringProcessing = !stringProcessing;
+                }
+            if (stringProcessing) {
+                continue;
+            }
+            
+            if (currentChar == '/' && resultBlockStart == -1) {
+                NSUInteger nextCharIndex = charIndex + 1;
+                
+                if (nextCharIndex < stringLength && [sourceString characterAtIndex:nextCharIndex] == '/') {
+                    resultBlockStart = charIndex;
+                    commentProcessing = YES;
+                    charIndex = nextCharIndex;
+                }
+                
+                continue;
+            }
+        }
+        
+        if (resultBlockStart >= 0 && currentChar == '\n') {
+            resultBlockEnd = charIndex - 1;
+            commentProcessing = NO;
+            break;
+        }
+    }
+    
+    if (resultBlockStart == -1) {
+        return NSMakeRange(0, 0);
+    }
+    
+    return NSMakeRange(resultBlockStart, (resultBlockEnd - resultBlockStart) + 1);
+}
+
 
 + (void)removeImports:(PreprocessedSourceCode *)sourceCodeInfo {   
     [NSRegularExpression replaceRegex:@"#import .*" withTemplate:@"" inString:sourceCodeInfo.sourceCode];

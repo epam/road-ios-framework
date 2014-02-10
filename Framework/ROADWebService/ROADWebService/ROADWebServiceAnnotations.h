@@ -43,6 +43,5 @@
 #import "RFWebServiceURLBuilder.h"
 #import "RFWebServiceURLBuilderParameter.h"
 #import "RFMultipartData.h"
-#import "RFLoggerWebServicePath.h"
 
 #endif

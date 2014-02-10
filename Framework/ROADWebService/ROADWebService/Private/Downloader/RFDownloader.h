@@ -70,6 +70,7 @@
 
 - (void)configureRequestForUrl:(NSURL * const)anUrl body:(NSData *)httpBody sharedHeaders:(NSDictionary *)sharedHeaders values:(NSDictionary *)values;
 
+- (void)checkCacheAndStart;
 - (void)start;
 
 - (void)cancel;

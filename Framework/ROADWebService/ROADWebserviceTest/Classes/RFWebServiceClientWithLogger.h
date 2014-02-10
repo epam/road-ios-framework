@@ -36,7 +36,9 @@
 
 RF_ATTRIBUTE(RFWebServiceLogger, loggerType=kRFLogMessageTypeAllLoggers)
 @interface RFWebServiceClientWithLogger : RFWebServiceClient
+
 RF_ATTRIBUTE(RFWebServiceLogger, loggerType=kRFLogMessageTypeNetworkOnly)
 - (void)methodWithLogger;
 - (void)methodWithoutLogger;
+
 @end

@@ -11,6 +11,7 @@
 @implementation RFXMLSerializationTestObject
 
 + (id)sampleObject {
+    
     RFXMLSerializationTestObject *mary = [[RFXMLSerializationTestObject alloc] init];
     mary.name = @"Mary Doe";
     mary.age = 25;
@@ -28,17 +29,18 @@
     john.children = @[mary, chris];
     
     john.string2 = @"value32";
+
     
     return john;
 }
 
-- (BOOL)isEqual:(id)object
-{
+- (BOOL)isEqual:(id)object {
+    
     return [object isMemberOfClass:[self class]] && [self isContentEqual:object];
 }
 
-- (BOOL)isContentEqual:(id)object
-{
+- (BOOL)isContentEqual:(id)object {
+    
     BOOL result = NO;
 
     if ([object isKindOfClass:[self class]]) {
@@ -53,6 +55,11 @@
     }
 
     return result;
+}
+
+- (NSString *)nm {
+
+    return @"http://itunes.apple.com/rss";
 }
 
 @end

@@ -32,6 +32,9 @@
 
 #import <ROAD/ROADAttribute.h>
 
+/**
+ *
+ */
 @interface RFWebServiceClientStatusCodes : NSObject
 
 @property (copy, nonatomic) NSArray* successCodes;

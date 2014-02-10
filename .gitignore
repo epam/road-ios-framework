@@ -4,6 +4,7 @@ xcuserdata
 tools/ROADAttributesCodeGenerator/ROADAttributesCodeGenerator.xcodeproj/project.xcworkspace/contents.xcworkspacedata
 tools/ROADAttributesCodeGenerator/ROADAttributesCodeGenerator.xcodeproj/project.xcworkspace/xcshareddata
 *.xcworkspacedata
+compile_commands.json
 
 Framework/ROADServices/ROADServicesTest/ROADGeneratedAttributes/*
 Framework/ROADFramework.xcworkspace/xcshareddata

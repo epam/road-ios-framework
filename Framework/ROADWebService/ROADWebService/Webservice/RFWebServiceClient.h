@@ -43,11 +43,6 @@ typedef void (^RFWebServiceClientPrepareForSendRequestBlock)(NSMutableURLRequest
 @interface RFWebServiceClient : RFService
 
 /**
- The serialization delegate.
- */
-@property (strong, nonatomic) id<RFSerializationDelegate> serializationDelegate;
-
-/**
  * The Web Service host url.
  */
 @property (copy, nonatomic) NSString *serviceRoot;
@@ -56,6 +51,11 @@ typedef void (^RFWebServiceClientPrepareForSendRequestBlock)(NSMutableURLRequest
  * The shared for client headers.
  */
 @property (strong, atomic) NSMutableDictionary *sharedHeaders;
+
+/**
+ The serialization delegate.
+ */
+@property (strong, nonatomic) id<RFSerializationDelegate> serializationDelegate;
 
 /*
  * Authentication provider which will be used in case of authentication challenge from server

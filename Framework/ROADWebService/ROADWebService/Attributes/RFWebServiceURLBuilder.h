@@ -32,8 +32,14 @@
 
 #import <ROAD/ROADAttribute.h>
 
+/**
+ * Defines custom request URL builder for cases that can not be mapped with existing web service request mechanism.
+ */
 @interface RFWebServiceURLBuilder : NSObject
 
+/**
+ * Defines class for request URL builder.
+ */
 @property (strong, nonatomic) Class builderClass;
 
 @end

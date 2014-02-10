@@ -20,6 +20,9 @@
       location = "group:ROADLogger/ROADLogger.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:Utilities/Utilities.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:../NOTICE">
    </FileRef>
    <FileRef

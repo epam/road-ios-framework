@@ -1,6 +1,6 @@
 //
-//  RFLoggerWebServicePath.m
-//  ROADLogger
+//  RFWebResponse.m
+//  ROADWebService
 //
 //  Copyright (c) 2013 Epam Systems. All rights reserved.
 //
@@ -30,8 +30,18 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "RFLoggerWebServicePath.h"
+#import "RFWebResponse.h"
 
-@implementation RFLoggerWebServicePath
+
+@implementation RFWebResponse
+
+@dynamic eTag;
+@dynamic expirationDate;
+@dynamic requestBodyData;
+@dynamic requestURL;
+@dynamic response;
+@dynamic responseBodyData;
+@dynamic urlHash;
+@dynamic lastModified;
 
 @end
