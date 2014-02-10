@@ -99,6 +99,10 @@
     STAssertTrue([deserialisationTestString length] > 0, @"Deserialisation content is missing");
     
     RFSerializationTestObject *restored = [RFAttributedDecoder decodeJSONString:deserialisationTestString];
+    [self checkRestoredObject:restored];
+}
+
+- (void)checkRestoredObject:(RFSerializationTestObject *)restored {
     STAssertTrue([restored isKindOfClass:[RFSerializationTestObject class]], @"Assertion: the restored object is of the correct class:", NSStringFromClass([restored class]));
     STAssertTrue([restored.string1 isEqualToString:@"value1"] && [restored.child.string1 isEqualToString:@"value5"], @"Assertion: strings are restored to the correct value.");
     STAssertTrue([restored.strings[1] isEqualToString:@"value4"], @"Assertion: stringarray is restored correctly.");
@@ -108,7 +112,7 @@
     STAssertTrue([[restored.child.subObjects[0] string1] isEqualToString:@"value31"], @"Assertion: embedded objects in array are restored properly.");
     STAssertTrue([restored.subDictionary[@"object3"] integer] == 5, @"Assertion: primitive types in embedded objects are restored correctly.");
     STAssertTrue([[restored.child.subObjects[1] number] integerValue] == 3, @"Assertion: NSNumber values are restored correctly.");
-
+    
     STAssertTrue(restored.booleanToTranslateTrue, @"The translation was unsuccessfull.");
     STAssertTrue(restored.booleanToTranslateTrueFromNumber, @"The translation was unsuccessfull.");
     STAssertTrue(!restored.booleanToTranslateFalse, @"The translation from number was unsuccessfull.");
@@ -147,6 +151,22 @@
     NSString *testDeserizationString = [RFDateTestClass testDeserialisationString];
     id testDeserizationObject = [RFAttributedDecoder decodeJSONString:testDeserizationString];
     STAssertTrue([testDeserizationObject isEqual:testObject], @"Deserialization of dates works incorrectly.");
+}
+
+- (void)testJsonWrongDeserializationRoot {
+    NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+    NSString *pathToDeserialisationTestFile = [testBundle pathForResource:@"DeserialisationTest" ofType:@"json"];
+    NSData *deserialisationTestData = [NSData dataWithContentsOfFile:pathToDeserialisationTestFile];
+    id decodedObject = [RFAttributedDecoder decodeJSONData:deserialisationTestData withSerializtionRoot:@"child.subObjects.object" rootClassNamed:@"RFSerializationTestObject"];
+    STAssertNil(decodedObject, @"Wrong deserialization root returned some value.");
+}
+
+- (void)testJsonDeserializationRoot {
+    NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+    NSString *pathToDeserialisationTestFile = [testBundle pathForResource:@"DeserialisationTest" ofType:@"json"];
+    NSData *deserialisationTestData = [NSData dataWithContentsOfFile:pathToDeserialisationTestFile];
+    id decodedObject = [RFAttributedDecoder decodeJSONData:deserialisationTestData withSerializtionRoot:@"child.subObjects.number" rootClassNamed:nil];
+    STAssertNotNil(decodedObject, @"Wrong deserialization root returned some value.");
 }
 
 @end
