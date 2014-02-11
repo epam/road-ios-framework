@@ -35,6 +35,7 @@
 #import "RFSerializationTestObject.h"
 #import "RFAttributedDecoder.h"
 #import "RFAttributedCoder.h"
+#import "RFDateTestClass.h"
 
 @interface RFAnnotatedCoderTest : SenTestCase
 
@@ -69,6 +70,7 @@
     results = [results filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"length > 0"]];
     
     STAssertNil(error, @"Assertion: SerializationTest.json file was not loaded to check result");
+    
     STAssertEquals([tests count], [results count], @"Assertion: number of components in result json is wrong");
     
     BOOL skippingDate = NO;
@@ -97,6 +99,10 @@
     STAssertTrue([deserialisationTestString length] > 0, @"Deserialisation content is missing");
     
     RFSerializationTestObject *restored = [RFAttributedDecoder decodeJSONString:deserialisationTestString];
+    [self checkRestoredObject:restored];
+}
+
+- (void)checkRestoredObject:(RFSerializationTestObject *)restored {
     STAssertTrue([restored isKindOfClass:[RFSerializationTestObject class]], @"Assertion: the restored object is of the correct class:", NSStringFromClass([restored class]));
     STAssertTrue([restored.string1 isEqualToString:@"value1"] && [restored.child.string1 isEqualToString:@"value5"], @"Assertion: strings are restored to the correct value.");
     STAssertTrue([restored.strings[1] isEqualToString:@"value4"], @"Assertion: stringarray is restored correctly.");
@@ -106,13 +112,61 @@
     STAssertTrue([[restored.child.subObjects[0] string1] isEqualToString:@"value31"], @"Assertion: embedded objects in array are restored properly.");
     STAssertTrue([restored.subDictionary[@"object3"] integer] == 5, @"Assertion: primitive types in embedded objects are restored correctly.");
     STAssertTrue([[restored.child.subObjects[1] number] integerValue] == 3, @"Assertion: NSNumber values are restored correctly.");
-
+    
     STAssertTrue(restored.booleanToTranslateTrue, @"The translation was unsuccessfull.");
     STAssertTrue(restored.booleanToTranslateTrueFromNumber, @"The translation was unsuccessfull.");
     STAssertTrue(!restored.booleanToTranslateFalse, @"The translation from number was unsuccessfull.");
     STAssertTrue(!restored.booleanToTranslateFalseFromNumber, @"The translation from number was unsuccessfull.");
+}
+
+- (void)testDateSerialization {
+    RFDateTestClass *testObject = [RFDateTestClass testObject];
+    NSString *testObjectStandardString = [RFDateTestClass testObjectStringRepresentation];
+    NSDictionary *testObjectStandard = [NSJSONSerialization JSONObjectWithData:[testObjectStandardString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+    STAssertNotNil(testObjectStandard, @"Standard string has invalid format.");
     
-    //STAssertTrue([restored.unixTimestamp isEqualToDate:[NSDate dateWithTimeIntervalSince1970:1365609600]], @"Assertion: NSDate unix timestamp values are restored correctly.");
+    NSString * testString = [RFAttributedCoder encodeRootObject:testObject];
+    NSDictionary *test = [NSJSONSerialization JSONObjectWithData:[testString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+    STAssertNotNil(test, @"Serialized string has invalid format.");
+    
+    STAssertTrue([test[@"unixTimestamp"] isEqualToString:testObjectStandard[@"unixTimestamp"]], @"Unix timestamp serialized incorrectly.");
+    STAssertTrue([test[@"unixTimestampWithMultiplier"] isEqualToString:testObjectStandard[@"unixTimestampWithMultiplier"]], @"Unix timestamp with multiplier serialized incorrectly.");
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = [[RFDateTestClass RF_attributeForProperty:@"dateWithFormat" withAttributeType:[RFSerializableDate class]] format];
+    STAssertTrue([[dateFormatter dateFromString:test[@"dateWithFormat"]] isEqualToDate:[dateFormatter dateFromString:testObjectStandard[@"dateWithFormat"]]], @"dateWithFormat serialized incorrectly");
+    
+    dateFormatter.dateFormat = [[RFDateTestClass RF_attributeForProperty:@"dateWithEncodeDecodeFormat" withAttributeType:[RFSerializableDate class]] encodingFormat];
+    STAssertTrue([[dateFormatter dateFromString:test[@"dateWithEncodeDecodeFormat"]] isEqualToDate:[dateFormatter dateFromString:testObjectStandard[@"dateWithEncodeDecodeFormat"]]], @"dateWithEncodeDecodeFormat serialized incorrectly.");
+    
+    dateFormatter.dateFormat = [[RFDateTestClass RF_attributeForProperty:@"dateWithEncodeFormatPriority" withAttributeType:[RFSerializableDate class]] encodingFormat];
+    STAssertTrue([[dateFormatter dateFromString:test[@"dateWithEncodeFormatPriority"]] isEqualToDate:[dateFormatter dateFromString:testObjectStandard[@"dateWithEncodeFormatPriority"]]], @"dateWithEncodeFormatPriority serialized incorrectly.");
+    
+    dateFormatter.dateFormat = [[RFDateTestClass RF_attributeForProperty:@"dateWithDecodeFormatPriority" withAttributeType:[RFSerializableDate class]] format];
+    STAssertTrue([[dateFormatter dateFromString:test[@"dateWithDecodeFormatPriority"]] isEqualToDate:[dateFormatter dateFromString:testObjectStandard[@"dateWithDecodeFormatPriority"]]], @"dateWithDecodeFormatPriority serialized incorrectly.");
+}
+
+- (void)testDateDeserialization {
+    RFDateTestClass *testObject = [RFDateTestClass testObject];
+    NSString *testDeserizationString = [RFDateTestClass testDeserialisationString];
+    id testDeserizationObject = [RFAttributedDecoder decodeJSONString:testDeserizationString];
+    STAssertTrue([testDeserizationObject isEqual:testObject], @"Deserialization of dates works incorrectly.");
+}
+
+- (void)testJsonWrongDeserializationRoot {
+    NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+    NSString *pathToDeserialisationTestFile = [testBundle pathForResource:@"DeserialisationTest" ofType:@"json"];
+    NSData *deserialisationTestData = [NSData dataWithContentsOfFile:pathToDeserialisationTestFile];
+    id decodedObject = [RFAttributedDecoder decodeJSONData:deserialisationTestData withSerializtionRoot:@"child.subObjects.object" rootClassNamed:@"RFSerializationTestObject"];
+    STAssertNil(decodedObject, @"Wrong deserialization root returned some value.");
+}
+
+- (void)testJsonDeserializationRoot {
+    NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+    NSString *pathToDeserialisationTestFile = [testBundle pathForResource:@"DeserialisationTest" ofType:@"json"];
+    NSData *deserialisationTestData = [NSData dataWithContentsOfFile:pathToDeserialisationTestFile];
+    id decodedObject = [RFAttributedDecoder decodeJSONData:deserialisationTestData withSerializtionRoot:@"child.subObjects.number" rootClassNamed:nil];
+    STAssertNotNil(decodedObject, @"Wrong deserialization root returned some value.");
 }
 
 @end

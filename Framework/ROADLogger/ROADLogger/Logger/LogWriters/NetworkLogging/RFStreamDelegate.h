@@ -31,40 +31,40 @@
 // for additional information regarding copyright ownership and licensing
 
 /**
- Represents a single delegate for an output stream to broadcast log messages to. The broadcasting is performed on a background thread to save
- resources for the rest of the application.
+ * Represents a single delegate for an output stream to broadcast log messages to. The broadcasting is performed on a background thread to save
+ * resources for the rest of the application.
  */
 @interface RFStreamDelegate : NSObject <NSStreamDelegate>
 
 /**
- Indicates whether the stream has space available and ready to accept data.
+ * Indicates whether the stream has space available and ready to accept data.
  */
 @property (assign, nonatomic) BOOL hasSpaceAvailable;
 
 /**
- Designated initializer.
- @param aStream The output stream.
+ * Designated initializer.
+ * @param aStream The output stream.
  */
 - (id)initWithOutputStream:(NSOutputStream *)aStream;
 
 /**
- Adds a datapacket to the local buffer and writes to the stream if or when it has space available.
- @param packet The datapacket.
+ * Adds a datapacket to the local buffer and writes to the stream if or when it has space available.
+ * @param packet The datapacket.
  */
 - (void)addData:(NSData *)packet;
 
 /**
- The output stream of the delegate.
+ * The output stream of the delegate.
  */
 - (NSOutputStream *)stream;
 
 /**
- Stops the connection.
+ * Stops the connection.
  */
 - (void)stop;
 
 /**
- Starts the broadcasting.
+ * Starts the broadcasting.
  */
 - (void)start;
 

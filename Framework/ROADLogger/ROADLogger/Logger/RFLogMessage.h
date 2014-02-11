@@ -47,41 +47,41 @@ typedef NS_ENUM(NSInteger, RFLogLevel) {
 };
 
 /**
- The log message encapsulation object.
+ * The log message encapsulation object.
  */
 @interface RFLogMessage : NSObject <NSCoding, NSCopying>
 
 /**
- The actual log message string.
+ * The actual log message string.
  */
 @property (copy, nonatomic) NSString *message;
 
 /**
- The type of the log message, string.
+ * The type of the log message, string.
  */
 @property (copy, nonatomic) NSString *type;
 
 /**
- The date and time the log message was generated.
+ * The date and time the log message was generated.
  */
 @property (strong, nonatomic) NSDate *timeStamp;
 
 /**
- The userinfo dictionary of the log message. Can be used to attach extra information into the log message.
+ * The userinfo dictionary of the log message. Can be used to attach extra information into the log message.
  */
 @property (strong, nonatomic) NSDictionary *userInfo;
 
 /**
- The level of the log - info, debug, warning, or error.
+ * The level of the log - info, debug, warning, or error.
  */
 @property (assign, nonatomic) RFLogLevel level;
 
 /**
- Factory method for creating a log message.
- @param messageText The message text.
- @param type The message type.
- @param level The log level of the message.
- @param userInfo The userInfo dictionary for the log message.
+ * Factory method for creating a log message.
+ * @param messageText The message text.
+ * @param type The message type.
+ * @param level The log level of the message.
+ * @param userInfo The userInfo dictionary for the log message.
  */
 + (RFLogMessage *)logMessage:(NSString * const)messageText type:(NSString * const)type level:(RFLogLevel const)level userInfo:(NSDictionary * const)userInfo;
 

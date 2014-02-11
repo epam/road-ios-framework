@@ -32,12 +32,12 @@
 
 #import "RFLogWriter.h"
 /**
- The console log writer.
+ * The console log writer.
  */
 @interface RFConsoleLogWriter : RFLogWriter
 
 /**
- Returns a console log writer with plain formatter.
+ * Returns a console log writer with plain formatter.
  */
 + (RFLogWriter *)plainConsoleWriter;
 

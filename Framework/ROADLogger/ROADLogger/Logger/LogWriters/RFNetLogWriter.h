@@ -37,14 +37,14 @@
 @class RFNetLogWriter;
 
 /**
- Delegate protocol about available connections.
+ * Delegate protocol about available connections.
  */
 @protocol RFNetLogWriterDelegate <NSObject>
 
 /**
- Informs the delegate that the following possible services has been found to send log messages to.
- @param logWriter The log writer
- @param serviceNames The array of service names.
+ * Informs the delegate that the following possible services has been found to send log messages to.
+ * @param logWriter The log writer
+ * @param serviceNames The array of service names.
  */
 - (void)logWriter:(RFNetLogWriter *)logWriter availableServiceNames:(NSArray *)serviceNames;
 
@@ -52,12 +52,12 @@
 
 
 /**
- A network log writer class to send log messages over the network to dedicated log listener apps.
+ * A network log writer class to send log messages over the network to dedicated log listener apps.
  */
 @interface RFNetLogWriter : RFLogWriter <RFConnectionDelegate>
 
 /**
- The delegate property.
+ * The delegate property.
  */
 @property (weak, nonatomic) id<RFNetLogWriterDelegate> delegate;
 

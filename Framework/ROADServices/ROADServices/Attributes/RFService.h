@@ -32,8 +32,14 @@
 
 #import <ROAD/ROADAttribute.h>
 
+/**
+ * Marks methods as service.
+ */
 @interface RFService : NSObject
 
+/**
+ * Specifies class that will be using as service be service provider. Class will be instantiated with default alloc init combination.
+ */
 @property (nonatomic, assign) Class serviceClass;
 
 @end

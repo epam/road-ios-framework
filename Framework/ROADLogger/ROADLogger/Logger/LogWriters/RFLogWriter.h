@@ -37,12 +37,12 @@
 @class RFLogFormatter;
 
 /**
- Abstract base class of all log writers, contains all the methods and the necessary implementations to make this class and its subclass function as log writers.
+ * Abstract base class of all log writers, contains all the methods and the necessary implementations to make this class and its subclass function as log writers.
  */
 @interface RFLogWriter : NSObject
 
 /**
- The queue to work on. http://stackoverflow.com/questions/12511976/app-crashes-after-xcode-upgrade-to-4-5-assigning-retained-object-to-unsafe-unre
+ * The queue to work on. http://stackoverflow.com/questions/12511976/app-crashes-after-xcode-upgrade-to-4-5-assigning-retained-object-to-unsafe-unre
  */
 #if OS_OBJECT_USE_OBJC
 @property (nonatomic, strong) dispatch_queue_t queue; // this is for Xcode 4.5 with LLVM 4.1 and iOS 6 SDK
@@ -52,71 +52,71 @@
 
 
 /**
- Queue size of log messages.
+ * Queue size of log messages.
  */
 @property (atomic, assign) NSInteger queueSize;
 
 /**
- Queue of messages that will be logged when size of queue reaches size limit.
+ * Queue of messages that will be logged when size of queue reaches size limit.
  */
 @property (nonatomic, strong) NSMutableArray *messageQueue;
 
 /**
- Adds a filter to the filter list of this writer.
- @param aFilter The filter to be added.
+ * Adds a filter to the filter list of this writer.
+ * @param aFilter The filter to be added.
  */
 - (void)addFilter:(RFLogFilter * const)aFilter;
 
 /**
- Removes a filter from the filter list of this writer.
- @param aFilter The filter to be removed.
+ * Removes a filter from the filter list of this writer.
+ * @param aFilter The filter to be removed.
  */
 - (void)removeFilter:(RFLogFilter * const)aFilter;
 
 /**
- Checks a message with list of defined filters.
- @param aMessage The message to be checked.
- @result Whether message has passed the filters.
+ * Checks a message with list of defined filters.
+ * @param aMessage The message to be checked.
+ * @result Whether message has passed the filters.
  */
 - (BOOL)hasMessagePassedFilters:(RFLogMessage *const)aMessage;
 
 /**
- Logs a message to this writer. Method has to be implemented in subclasses.
- @param aMessage The message to be logged.
+ * Logs a message to this writer. Method has to be implemented in subclasses.
+ * @param aMessage The message to be logged.
  */
 - (void)logValidMessage:(RFLogMessage * const)aMessage;
 
 /**
- Enqueues message that passed filters. If queue reaches queueSize limit, it invokes logQueue method.
- @param aMessage The message to be enqueued
+ * Enqueues message that passed filters. If queue reaches queueSize limit, it invokes logQueue method.
+ * @param aMessage The message to be enqueued
  */
 - (void)enqueueValidMessage:(RFLogMessage * const)aMessage;
 
 /**
- Logs all messages in queue and clear queue
+ * Logs all messages in queue and clear queue
  */
 - (void)logQueue;
 
 /**
- Returns the formatted message from the log message object.
- @param aMessage The log message to format.
+ * Returns the formatted message from the log message object.
+ * @param aMessage The log message to format.
  */
 - (NSString *)formattedMessage:(RFLogMessage * const)aMessage;
 
 /**
- The log formatter property for the specific writer. Optional, in its absence, the bare log message will be logged.
+ * The log formatter property for the specific writer. Optional, in its absence, the bare log message will be logged.
  */
 @property (retain, nonatomic) RFLogFormatter *formatter;
 
 /**
- Returns a file writer for the specified path.
- @param path The NSString representation of the file path.
- @result The writer instance.
+ * Returns a file writer for the specified path.
+ * @param path The NSString representation of the file path.
+ * @result The writer instance.
  */
 + (RFLogWriter *)fileWriterWithPath:(NSString * const)path;
 
 /**
- Returns a console log writer with plain formatter.
+ * Returns a console log writer with plain formatter.
  */
 + (RFLogWriter *)plainConsoleWriter;
 

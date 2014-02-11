@@ -36,7 +36,6 @@
 #import <ROAD/ROADLogger.h>
 #import <ROAD/ROADCore.h>
 
-#import "RFSerializationAssistant.h"
 #import "RFSerializable.h"
 #import "RFDerived.h"
 #import "RFSerializableDate.h"
@@ -44,10 +43,10 @@
 #import "RFJSONSerializationHandling.h"
 #import "RFSerializableBoolean.h"
 #import "RFBooleanTranslator.h"
+#import "RFSerializationAssistant.h"
 
 @implementation RFAttributedCoder {
     NSString * _dateFormat;
-    NSMutableDictionary * _dateFormatters;
     id _archive;
     NSString * _currentPath;
 }
@@ -60,7 +59,6 @@
     
     if (self) {
         _archive = [[NSMutableDictionary alloc] init];
-        _dateFormatters = [[NSMutableDictionary alloc] init];
     }
     
     return self;
@@ -151,19 +149,7 @@
     id encodedValue = nil;
     
     if ([value isKindOfClass:[NSDate class]]) {
-        RFSerializableDate *serializableDateAttribute = [propertyInfo.hostClass RF_attributeForProperty:propertyInfo.propertyName withAttributeType:[RFSerializableDate class]];
-        
-        if (serializableDateAttribute.unixTimestamp) {
-            NSDate *date = value;
-            encodedValue = [NSString stringWithFormat:@"%.0f", [date timeIntervalSince1970]];
-        }
-        else {
-            NSString *dateFormat = ([serializableDateAttribute.encodingFormat length] == 0) ? serializableDateAttribute.format : serializableDateAttribute.encodingFormat;
-            NSAssert(dateFormat, @"RFSerializableDate must have either format or encodingFormat specified");
-            
-            NSDateFormatter *dateFormatter = [self dataFormatterWithFormatString:dateFormat];
-            encodedValue = [dateFormatter stringFromDate:value];
-        }
+        encodedValue = RFSerializationEncodeDateForProperty(value, propertyInfo, self);
     }
     else if ([propertyInfo attributeWithType:[RFSerializableBoolean class]]) {
         encodedValue = [RFBooleanTranslator encodeTranslatableValue:value forProperty:propertyInfo];
@@ -221,20 +207,6 @@
     }
     
     return [NSDictionary dictionaryWithDictionary:dict];
-}
-
-
-#pragma mark - Support methods
-
-- (NSDateFormatter *)dataFormatterWithFormatString:(NSString *)formatString {
-    NSDateFormatter *dateFormatter = _dateFormatters[formatString];
-    if (!dateFormatter) {
-        dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.dateFormat = formatString;
-        _dateFormatters[formatString]  = dateFormatter;
-    }
-
-    return dateFormatter;
 }
 
 @end

@@ -70,7 +70,8 @@ NSArray *RFSerializationPropertiesForClass(Class class) {
     return result;
 }
 
-NSString *RFSerializationEncodeDateForProperty(NSDate *object, RFPropertyInfo *propertyInfo, NSDateFormatter* dateFormatter) {
+// NOTE: Used by json and xml serialization
+NSString *RFSerializationEncodeDateForProperty(NSDate *object, RFPropertyInfo *propertyInfo, id<RFDateFormatterPooling> sender) {
 
     NSString *result = nil;
     
@@ -79,26 +80,24 @@ NSString *RFSerializationEncodeDateForProperty(NSDate *object, RFPropertyInfo *p
     
     if (serializableDateAttribute.unixTimestamp) {
         NSDate *date = object;
-        result = [NSString stringWithFormat:@"%.0f", [date timeIntervalSince1970]];
+        result = [NSString stringWithFormat:@"%.0f", [date timeIntervalSince1970] * serializableDateAttribute.unixTimestampMultiplier];
     }
     else {
-        NSString *dateFormat = ([serializableDateAttribute.encodingFormat length] > 0) ? serializableDateAttribute.encodingFormat : serializableDateAttribute.format;
-        RFLogDebug(@"RFSerializableDate must have either format or encodingFormat specified : %@", dateFormat);
-        
-        if (![dateFormatter.dateFormat isEqualToString:dateFormat]) dateFormatter.dateFormat = dateFormat;
-        result = [dateFormat length] ? [dateFormatter stringFromDate:object] : [object description];
+        NSString *dateFormat = ([serializableDateAttribute.encodingFormat length] == 0) ? serializableDateAttribute.format : serializableDateAttribute.encodingFormat;
+        NSDateFormatter *dateFormatter = [sender dataFormatterWithFormatString:dateFormat];
+        result = dateFormatter ? [dateFormatter stringFromDate:object] : [object description];
     }
 
     return result;
 }
 
-NSString *RFSerializationEncodeObjectForProperty(id object, RFPropertyInfo *propertyInfo, NSDateFormatter* dateFormatter) {
+NSString *RFSerializationEncodeObjectForProperty(id object, RFPropertyInfo *propertyInfo, id<RFDateFormatterPooling> sender) {
     
     id result = object;
     BOOL checkStringType = YES;
     
     if ([object isKindOfClass:[NSDate class]]) {
-        result = RFSerializationEncodeDateForProperty(object, propertyInfo, dateFormatter);
+        result = RFSerializationEncodeDateForProperty(object, propertyInfo, sender);
         checkStringType = NO;
     }
     else if ([propertyInfo attributeWithType:[RFSerializableBoolean class]]) {

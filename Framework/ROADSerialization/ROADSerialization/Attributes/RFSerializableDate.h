@@ -33,15 +33,31 @@
 #import <ROAD/ROADAttribute.h>
 
 /**
- Serialization attribute. Can be used either as a class attribute to set date format for all properties of a class. Can be used as individual property attribute to specify format date for this property or to override general format of date for whole class. Default value specify both encoding and decoding format, for specifying format for concrete direction set this format string to decodingFormat or encodingFormat.
+ * Serialization attribute. Can be used either as a class attribute to set date format for all properties of a class. Can be used as individual property attribute to specify format date for this property or to override general format of date for whole class. Default value specify both encoding and decoding format, for specifying format for concrete direction set this format string to decodingFormat or encodingFormat.
  */
 @interface RFSerializableDate : NSObject
 
+/**
+ * Format for both encoding and decoding date. Format of string described here https://developer.apple.com/library/mac/documentation/cocoa/conceptual/DataFormatting/Articles/dfDateFormatting10_4.html
+ */
 @property(nonatomic, strong) NSString *format;
 
+/**
+ * Format for decoding string to NSDate object. Format rules the same as format property. Takes precedences over format.
+ */
 @property(nonatomic, strong) NSString *decodingFormat;
+/**
+ * Format for encoding NSDate object to string. Format rules the same as format property. Takes precedences over format.
+ */
 @property(nonatomic, strong) NSString *encodingFormat;
 
+/**
+ * Marks property as Unix Timestamp. It will be deserialized with [NSDate dateWithTimeIntervalSince1970:]. Set unixTimestampMultiplier for specefying other multipliers.
+ */
 @property(nonatomic, assign) BOOL unixTimestamp;
+/**
+ * If unixTimestamp is YES, then allows to change default multiplier. Default value is 1000 to match difference between seconds indateWithTimeIntervalSince1970: method and milliseconds in unix timestamp.
+ */
+@property (nonatomic, assign) float unixTimestampMultiplier;
 
 @end
