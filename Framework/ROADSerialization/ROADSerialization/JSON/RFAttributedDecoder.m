@@ -122,8 +122,11 @@
 
 - (id)decodeJSONDictionary:(NSDictionary * const)jsonDict forProperty:(RFPropertyInfo * const)aDesc {
     NSString * rootClassName;
-    
-    rootClassName = jsonDict[RFSerializedObjectClassName];
+
+    RFSerializable *serializableAttribute = [aDesc attributeWithType:[RFSerializable class]];
+    if (!serializableAttribute.classNameSerializationDisabled) {
+        rootClassName = jsonDict[RFSerializedObjectClassName];
+    }
 
     if ([rootClassName length] == 0) {
         rootClassName = NSStringFromClass(aDesc.typeClass);
@@ -237,10 +240,10 @@
     else if ([aValue isKindOfClass:[NSDictionary class]]) {
         NSString *decodeClassName = RFSerializationCollectionItemClassNameForProperty(aDesc);
         
-        if (decodeClassName == nil) {
+        RFSerializable *serializableAttribute = [aDesc attributeWithType:[RFSerializable class]];
+        if (decodeClassName == nil && !serializableAttribute.classNameSerializationDisabled) {
             decodeClassName = aValue[RFSerializedObjectClassName];
         }
-        
         if ([decodeClassName length] > 0) {
             value = [self decodeRootObject:aValue withRootClassNamed:decodeClassName];
         }

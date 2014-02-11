@@ -105,7 +105,10 @@
             archive = RFCustomSerialization(rootObject, customHandlerAttribute);
         }
         else {
-            archive[RFSerializedObjectClassName] = NSStringFromClass([rootObject class]);
+            RFSerializable *serializableAttribute = [[rootObject class] RF_attributeForClassWithAttributeType:[RFSerializable class]];
+            if (serializableAttribute && !serializableAttribute.classNameSerializationDisabled) {
+                archive[RFSerializedObjectClassName] = NSStringFromClass([rootObject class]);
+            }
             NSArray *properties = RFSerializationPropertiesForClass([rootObject class]);
 
             @autoreleasepool {

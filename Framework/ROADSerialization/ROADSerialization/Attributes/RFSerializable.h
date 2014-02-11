@@ -41,4 +41,10 @@ extern NSString * const RFSerializedObjectClassName;
 
 @property (nonatomic, strong) NSString *serializationKey;
 
+/**
+ Disables the addition of the RFSerializedObjectClassName data
+ to the generated content.
+ */
+@property (nonatomic, assign) BOOL classNameSerializationDisabled;
+
 @end
