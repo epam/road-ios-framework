@@ -320,6 +320,7 @@
 		5A4AFC47176872640097B1D9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		5AD1FC0C176601C200E67BC4 /* ROADServices.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ROADServices.xcodeproj; path = ../ROADServices/ROADServices.xcodeproj; sourceTree = "<group>"; };
 		5AFB79C5176613C6007F813A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6338326D18AE6258005E1673 /* RFWebServiceCachingModel_cacheIdentifierAdded.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = RFWebServiceCachingModel_cacheIdentifierAdded.xcdatamodel; sourceTree = "<group>"; };
 		783AF1A31650FAF800AD247E /* ROADWebService.temp_caseinsensitive_renameTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ROADWebService.temp_caseinsensitive_renameTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		783AF1A41650FAF800AD247E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		78CBA94916C3D44A00DAC9BB /* ROADCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ROADCore.xcodeproj; path = ../ROADCore/ROADCore.xcodeproj; sourceTree = "<group>"; };
@@ -1382,9 +1383,10 @@
 		83138AF21862FFC700674184 /* RFWebServiceCachingModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				6338326D18AE6258005E1673 /* RFWebServiceCachingModel_cacheIdentifierAdded.xcdatamodel */,
 				83138AF31862FFC700674184 /* RFWebServiceCachingModel.xcdatamodel */,
 			);
-			currentVersion = 83138AF31862FFC700674184 /* RFWebServiceCachingModel.xcdatamodel */;
+			currentVersion = 6338326D18AE6258005E1673 /* RFWebServiceCachingModel_cacheIdentifierAdded.xcdatamodel */;
 			path = RFWebServiceCachingModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -43,5 +43,6 @@
 @dynamic responseBodyData;
 @dynamic urlHash;
 @dynamic lastModified;
+@dynamic cacheIdentifier;
 
 @end
