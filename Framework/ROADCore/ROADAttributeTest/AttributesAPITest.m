@@ -236,6 +236,16 @@
     STAssertTrue(testAttribute != nil, @"please check function");
 }
 
+- (void)test_RF_propertiesForObjectInstance {
+    AnnotatedClass* annotatedClass = [[AnnotatedClass alloc] init];
+    NSArray *properties = [annotatedClass RF_properties];
+    STAssertTrue([properties count] == 2, @"properties must contain values");
+    
+    RFPropertyInfo *property = [annotatedClass RF_propertyNamed:@"prop"];
+    STAssertTrue([property.propertyName isEqualToString:@"prop"], @"please check properties");
+    STAssertTrue([property.attributes count] == 2, @"It's not equals a sum of attributes for property");
+}
+
 - (void)test_RF_propertiesWithAttributeType_withFiltering {
     NSArray *properties = [AnnotatedClass RF_propertiesWithAttributeType:[CustomRFTestAttribute class]];
     STAssertTrue([properties count] == 2, @"properties must contain values");
@@ -249,12 +259,30 @@
     STAssertTrue([properties count] == 0, @"properties must not contain values");
 }
 
+- (void)test_RF_ivarsByObjectInstance {
+    AnnotatedClass* annotatedClass = [[AnnotatedClass alloc] init];
+    NSArray *ivars = [annotatedClass RF_ivars];
+    STAssertTrue([ivars count] == 4, @"ivars must not contain values");
+    
+    RFIvarInfo *ivar = [annotatedClass RF_ivarNamed:@"_someField"];
+    STAssertTrue([ivar.name isEqualToString:@"_someField"], @"please check ivar");
+}
+
+- (void)test_RF_ivarsWithoutAttributeType {
+    NSArray *ivars = [AnnotatedClass RF_ivars];
+    STAssertTrue([ivars count] == 4, @"ivars must not contain values");
+    
+    RFIvarInfo *ivar = [AnnotatedClass RF_ivarNamed:@"_someField"];
+    STAssertTrue([ivar.name isEqualToString:@"_someField"], @"please check ivar");
+}
+
 - (void)test_RF_ivarsWithAttributeType_withFiltering {
     NSArray *ivars = [AnnotatedClass RF_ivarsWithAttributeType:[RFTestAttribute class]];
     STAssertTrue([ivars count] == 1, @"ivars must contain values");
     
     RFIvarInfo *ivar = [ivars lastObject];
-    STAssertTrue([ivar.name isEqualToString:@"_someField"], @"please check function");
+    STAssertTrue([ivar.attributes count] == 1, @"please check number of attributes of ivar");
+    STAssertTrue([ivar.name isEqualToString:@"_someField"], @"please check ivar");
 }
 
 - (void)test_RF_ivarsWithAttributeType_withWrongFiltering {
@@ -267,6 +295,7 @@
     STAssertTrue([methods count] == 2, @"methods must contain values");
     
     RFMethodInfo *method = [methods lastObject];
+    STAssertTrue([method.attributes count] == 2, @"please check number of attributes of function");
     STAssertTrue([method.name isEqualToString:@"viewDidLoad"], @"please check function");
 }
 
