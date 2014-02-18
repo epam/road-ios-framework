@@ -88,4 +88,13 @@ RF_ATTRIBUTE(RFWebServiceCache, maxAge = 300)
 RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
 - (id<RFWebServiceCancellable>)testCacheMaxAgeWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
+
+RF_ATTRIBUTE(RFWebServiceCache, maxAge = 300, cacheIdentifier = @"test.cache.identifier")
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
+- (id<RFWebServiceCancellable>)testCacheIdentifierWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+RF_ATTRIBUTE(RFWebServiceCache, maxAge = 300, cacheIdentifier = @"test.cache.identifier.prefix.%%0%%")
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, relativePath = @"/cache/%%0%%")
+- (id<RFWebServiceCancellable>)testCacheIdentifierWithPrefix:(NSString *)identifierPrefix success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
 @end

@@ -45,5 +45,9 @@
  * Disables caching for marked web request.
  */
 @property BOOL cacheDisabled;
+/**
+ * The identifier for handling individual cache elements.
+ */
+@property (strong, nonatomic) NSString *cacheIdentifier;
 
 @end
