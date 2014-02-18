@@ -1,0 +1,33 @@
+PODS:
+  - ROADFramework (1.2.1):
+    - ROADFramework/ROADCore
+    - ROADFramework/ROADLogger
+    - ROADFramework/ROADObservation
+    - ROADFramework/ROADSerialization
+    - ROADFramework/ROADServices
+    - ROADFramework/ROADWebService
+  - ROADFramework/ROADCore (1.2.1)
+  - ROADFramework/ROADLogger (1.2.1):
+    - ROADFramework/ROADCore
+    - ROADFramework/ROADObservation
+    - ROADFramework/ROADServices
+  - ROADFramework/ROADObservation (1.2.1)
+  - ROADFramework/ROADSerialization (1.2.1):
+    - ROADFramework/ROADCore
+    - ROADFramework/ROADLogger
+    - ROADFramework/ROADServices
+  - ROADFramework/ROADServices (1.2.1):
+    - ROADFramework/ROADCore
+  - ROADFramework/ROADWebService (1.2.1):
+    - ROADFramework/ROADCore
+    - ROADFramework/ROADLogger
+    - ROADFramework/ROADSerialization
+    - ROADFramework/ROADServices
+
+DEPENDENCIES:
+  - ROADFramework (~> 1.2.1)
+
+SPEC CHECKSUMS:
+  ROADFramework: 1617bbd1bec8c20df78a9cb132ea0073003f7c7d
+
+COCOAPODS: 0.29.0
