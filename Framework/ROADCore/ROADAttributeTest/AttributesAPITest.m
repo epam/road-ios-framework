@@ -244,6 +244,7 @@
     RFPropertyInfo *property = [annotatedClass RF_propertyNamed:@"prop"];
     STAssertTrue([property.propertyName isEqualToString:@"prop"], @"please check properties");
     STAssertTrue([property.attributes count] == 2, @"It's not equals a sum of attributes for property");
+    STAssertFalse(property.isPrimitive, @"It's not primitive property");
 }
 
 - (void)test_RF_propertiesWithAttributeType_withFiltering {
@@ -262,7 +263,7 @@
 - (void)test_RF_ivarsByObjectInstance {
     AnnotatedClass* annotatedClass = [[AnnotatedClass alloc] init];
     NSArray *ivars = [annotatedClass RF_ivars];
-    STAssertTrue([ivars count] == 4, @"ivars must not contain values");
+    STAssertTrue([ivars count] == 5, @"ivars must not contain values");
     
     RFIvarInfo *ivar = [annotatedClass RF_ivarNamed:@"_someField"];
     STAssertTrue([ivar.name isEqualToString:@"_someField"], @"please check ivar");
@@ -270,10 +271,15 @@
 
 - (void)test_RF_ivarsWithoutAttributeType {
     NSArray *ivars = [AnnotatedClass RF_ivars];
-    STAssertTrue([ivars count] == 4, @"ivars must not contain values");
+    STAssertTrue([ivars count] == 5, @"ivars must not contain values");
     
     RFIvarInfo *ivar = [AnnotatedClass RF_ivarNamed:@"_someField"];
     STAssertTrue([ivar.name isEqualToString:@"_someField"], @"please check ivar");
+}
+
+- (void)test_RF_ivarsWithTypeDetection {
+    RFIvarInfo *ivar = [AnnotatedClass RF_ivarNamed:@"_testName"];
+    STAssertTrue([ivar.typeName isEqualToString:@"7c[]"], @"please check ivar");
 }
 
 - (void)test_RF_ivarsWithAttributeType_withFiltering {
@@ -288,6 +294,28 @@
 - (void)test_RF_ivarsWithAttributeType_withWrongFiltering {
     NSArray *ivars = [AnnotatedClass RF_ivarsWithAttributeType:[AnnotatedClass class]];
     STAssertTrue([ivars count] == 0, @"ivars must not contain values");
+}
+
+- (void)test_RF_methodsByObjectInstance {
+    AnnotatedClass* annotatedClass = [[AnnotatedClass alloc] init];
+    NSArray *methods = [annotatedClass RF_methods];
+    STAssertTrue([methods count] == 17, @"methods must contain values");
+    
+    RFMethodInfo *method = [annotatedClass RF_instanceMethodNamed:@"viewDidLoad"];
+    STAssertTrue([method.name isEqualToString:@"viewDidLoad"], @"please check function");
+    
+    NSString* selectorForDescriptionMethod = NSStringFromSelector(@selector(description));
+    method = [annotatedClass RF_classMethodNamed:selectorForDescriptionMethod];
+    STAssertTrue([method.name isEqualToString:selectorForDescriptionMethod], @"please check function");
+}
+
+- (void)test_RF_methods {
+    RFMethodInfo *method = [AnnotatedClass RF_instanceMethodNamed:@"viewDidLoad"];
+    STAssertTrue([method.name isEqualToString:@"viewDidLoad"], @"please check function");
+    
+    NSString* selectorForDescriptionMethod = NSStringFromSelector(@selector(description));
+    method = [AnnotatedClass RF_classMethodNamed:selectorForDescriptionMethod];
+    STAssertTrue([method.name isEqualToString:selectorForDescriptionMethod], @"please check function");
 }
 
 - (void)test_RF_methodsWithAttributeType_withFiltering {

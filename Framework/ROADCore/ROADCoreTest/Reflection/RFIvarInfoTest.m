@@ -93,6 +93,17 @@ const static char *testClassName = "testClassName";
     STAssertTrue(result.isPrimitive, @"Ivar isn't primitive");
 }
 
+- (void)testIVarByNotPrimitiveType {
+    const char* ivarName = "ivarNameTestNotPrimitiveType";
+    char *type = @encode(NSString*);
+    class_addIvar(_testClass, ivarName, sizeof(type), log2(sizeof(type)), type);
+    
+    NSString *tempIvar = [NSString stringWithCString:ivarName encoding:NSUTF8StringEncoding];
+    RFIvarInfo *result = [RFIvarInfo RF_ivarNamed:tempIvar ofClass:_testClass];
+    
+    STAssertFalse(result.isPrimitive, @"Ivar is primitive");
+}
+
 - (void)tearDown
 {
     _testClass = nil;

@@ -68,7 +68,6 @@ const static char *testClassName = "testClassName";
     STAssertNotNil(propertyInfo, @"Can't find metadata of property by name");
 }
 
-
 - (void)testPropertyFunctionality {
     objc_property_attribute_t attrs[] = {
         { "T", [@"NSString" UTF8String] },
@@ -104,8 +103,6 @@ const static char *testClassName = "testClassName";
     STAssertTrue(propertyInfo.isWeak, @"It's not equal attribute 'weak' of property");
     STAssertTrue(propertyInfo.isNonatomic, @"It's not equal attribute 'nonatomic' of property");
     STAssertTrue(propertyInfo.isStrong, @"It's not equal attribute 'strong' of property");
-
-    STAssertTrue(propertyInfo.isPrimitive, @"It's not primitive property");
 }
 
 - (void)tearDown {

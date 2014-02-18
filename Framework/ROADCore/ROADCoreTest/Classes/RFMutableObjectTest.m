@@ -34,6 +34,16 @@
 #import "RFMutableObjectTest.h"
 #import "RFMutableObject.h"
 
+
+@interface MutableObjectForTestDynamicProperties : RFMutableObject
+@property (nonatomic, strong) NSString* dynamicProp;
+@end
+
+@implementation MutableObjectForTestDynamicProperties
+@dynamic dynamicProp;
+@end
+
+
 @implementation RFMutableObjectTest
 
 - (void)testMutableObjectProperty {
@@ -44,6 +54,14 @@
     STAssertTrue([result isEqualToString:@"some string"], @"Assertion: the string value is stored property.");
 }
 
+- (void)testMutableObjectDynamicProperty {
+    MutableObjectForTestDynamicProperties *object = [[MutableObjectForTestDynamicProperties alloc] init];
+    [object setValue:@"some string" forKey:@"dynamicProp"];
+    
+    NSString * const result = [object valueForKey:@"dynamicProp"];
+    STAssertTrue([result isEqualToString:@"some string"], @"Assertion: the string value is stored property.");
+}
+
 - (void)testMutableObjectUnusedProperty {
     RFMutableObject *object = [[RFMutableObject alloc] init];
     id const someResult = [object valueForKey:@"myKey"];
@@ -51,3 +69,4 @@
 }
 
 @end
+
