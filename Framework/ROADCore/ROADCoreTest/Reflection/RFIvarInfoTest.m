@@ -33,7 +33,8 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import <objc/runtime.h>
 #import "RFIvarInfo.h"
-
+#import "AnnotatedClass.h"
+#import "NSObject+RFMemberVariableReflection.h"
 
 @interface RFIvarInfoTest : SenTestCase {
     Class _testClass;
@@ -102,6 +103,28 @@ const static char *testClassName = "testClassName";
     RFIvarInfo *result = [RFIvarInfo RF_ivarNamed:tempIvar ofClass:_testClass];
     
     STAssertFalse(result.isPrimitive, @"Ivar is primitive");
+}
+
+- (void)test_RF_ivarsByObjectInstance {
+    AnnotatedClass* annotatedClass = [[AnnotatedClass alloc] init];
+    NSArray *ivars = [annotatedClass RF_ivars];
+    STAssertTrue([ivars count] == 5, @"ivars must not contain values");
+    
+    RFIvarInfo *ivar = [annotatedClass RF_ivarNamed:@"_someField"];
+    STAssertTrue([ivar.name isEqualToString:@"_someField"], @"please check ivar");
+}
+
+- (void)test_RF_ivarsByStaticMethods {
+    NSArray *ivars = [AnnotatedClass RF_ivars];
+    STAssertTrue([ivars count] == 5, @"ivars must not contain values");
+    
+    RFIvarInfo *ivar = [AnnotatedClass RF_ivarNamed:@"_someField"];
+    STAssertTrue([ivar.name isEqualToString:@"_someField"], @"please check ivar");
+}
+
+- (void)test_RF_ivarsWithTypeDetection {
+    RFIvarInfo *ivar = [AnnotatedClass RF_ivarNamed:@"_testName"];
+    STAssertTrue([ivar.typeName isEqualToString:@"7c[]"], @"please check ivar");
 }
 
 - (void)tearDown

@@ -9,6 +9,8 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import <objc/runtime.h>
 #import "RFPropertyInfo.h"
+#import "AnnotatedClass.h"
+#import "NSObject+RFPropertyReflection.h"
 
 @interface RFPropertyInfoTest : SenTestCase {
     Class _testClass;
@@ -103,6 +105,17 @@ const static char *testClassName = "testClassName";
     STAssertTrue(propertyInfo.isWeak, @"It's not equal attribute 'weak' of property");
     STAssertTrue(propertyInfo.isNonatomic, @"It's not equal attribute 'nonatomic' of property");
     STAssertTrue(propertyInfo.isStrong, @"It's not equal attribute 'strong' of property");
+}
+
+- (void)test_RF_propertiesForObjectInstance {
+    AnnotatedClass* annotatedClass = [[AnnotatedClass alloc] init];
+    NSArray *properties = [annotatedClass RF_properties];
+    STAssertTrue([properties count] == 2, @"properties must contain values");
+    
+    RFPropertyInfo *property = [annotatedClass RF_propertyNamed:@"prop"];
+    STAssertTrue([property.propertyName isEqualToString:@"prop"], @"please check properties");
+    STAssertTrue([property.attributes count] == 2, @"It's not equals a sum of attributes for property");
+    STAssertFalse(property.isPrimitive, @"It's not primitive property");
 }
 
 - (void)tearDown {

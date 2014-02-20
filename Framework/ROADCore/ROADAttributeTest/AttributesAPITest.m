@@ -33,7 +33,9 @@
 #import "AttributesAPITest.h"
 #import "AnnotatedClass.h"
 #import "SecondAnnotatedClass.h"
-#import <ROAD/ROADReflection.h>
+#import "RFIvarInfo.h"
+#import "RFMethodInfo.h"
+#import "RFPropertyInfo.h"
 
 @implementation AttributesAPITest
 
@@ -131,6 +133,20 @@
     STAssertTrue(attributesList1 != attributesList2, @"attributesList1 and attributesList2 must not point at the same array");
 }
 
+- (void)test_RF_methodsWithAttributeType_withFiltering {
+    NSArray *methods = [AnnotatedClass RF_methodsWithAttributeType:[CustomRFTestAttribute class]];
+    STAssertTrue([methods count] == 2, @"methods must contain values");
+    
+    RFMethodInfo *method = [methods lastObject];
+    STAssertTrue([method.attributes count] == 2, @"please check number of attributes of function");
+    STAssertTrue([method.name isEqualToString:@"viewDidLoad"], @"please check function");
+}
+
+- (void)test_RF_methodsWithAttributeType_withWrongFiltering {
+    NSArray *methods = [AnnotatedClass RF_methodsWithAttributeType:[AnnotatedClass class]];
+    STAssertTrue([methods count] == 0, @"methods must not contain values");
+}
+
 #pragma mark - 
 
 #pragma mark - Test Attributes generated code (Properties section)
@@ -177,6 +193,19 @@
     STAssertTrue(attributesList2 != nil, @"attributesList2 must contain values");
     
     STAssertTrue(attributesList1 != attributesList2, @"attributesList1 and attributesList2 must not point at the same array");
+}
+
+- (void)test_RF_propertiesWithAttributeType_withFiltering {
+    NSArray *properties = [AnnotatedClass RF_propertiesWithAttributeType:[CustomRFTestAttribute class]];
+    STAssertTrue([properties count] == 2, @"properties must contain values");
+    
+    RFPropertyInfo *property = [properties lastObject];
+    STAssertTrue([property.propertyName isEqualToString:@"prop"], @"please check function");
+}
+
+- (void)test_RF_propertiesWithAttributeType_withWrongFiltering {
+    NSArray *properties = [AnnotatedClass RF_propertiesWithAttributeType:[AnnotatedClass class]];
+    STAssertTrue([properties count] == 0, @"properties must not contain values");
 }
 
 #pragma mark -
@@ -226,62 +255,6 @@
     STAssertTrue(attributesList1 != attributesList2, @"attributesList1 and attributesList2 must not point at the same array");
 }
 
-- (void)test_RF_attributesForClass {
-    NSArray *attributesList = [AnnotatedClass RF_attributesForClass];
-    STAssertTrue(attributesList != nil, @"attributesList must contain values");
-    STAssertTrue([attributesList count] == 3, @"attributesList must contain 2 items");
-    
-    CustomRFTestAttribute *testAttribute = [AnnotatedClass RF_attributeForClassWithAttributeType:[CustomRFTestAttribute class]];
-    
-    STAssertTrue(testAttribute != nil, @"please check function");
-}
-
-- (void)test_RF_propertiesForObjectInstance {
-    AnnotatedClass* annotatedClass = [[AnnotatedClass alloc] init];
-    NSArray *properties = [annotatedClass RF_properties];
-    STAssertTrue([properties count] == 2, @"properties must contain values");
-    
-    RFPropertyInfo *property = [annotatedClass RF_propertyNamed:@"prop"];
-    STAssertTrue([property.propertyName isEqualToString:@"prop"], @"please check properties");
-    STAssertTrue([property.attributes count] == 2, @"It's not equals a sum of attributes for property");
-    STAssertFalse(property.isPrimitive, @"It's not primitive property");
-}
-
-- (void)test_RF_propertiesWithAttributeType_withFiltering {
-    NSArray *properties = [AnnotatedClass RF_propertiesWithAttributeType:[CustomRFTestAttribute class]];
-    STAssertTrue([properties count] == 2, @"properties must contain values");
-
-    RFPropertyInfo *property = [properties lastObject];
-    STAssertTrue([property.propertyName isEqualToString:@"prop"], @"please check function");
-}
-
-- (void)test_RF_propertiesWithAttributeType_withWrongFiltering {
-    NSArray *properties = [AnnotatedClass RF_propertiesWithAttributeType:[AnnotatedClass class]];
-    STAssertTrue([properties count] == 0, @"properties must not contain values");
-}
-
-- (void)test_RF_ivarsByObjectInstance {
-    AnnotatedClass* annotatedClass = [[AnnotatedClass alloc] init];
-    NSArray *ivars = [annotatedClass RF_ivars];
-    STAssertTrue([ivars count] == 5, @"ivars must not contain values");
-    
-    RFIvarInfo *ivar = [annotatedClass RF_ivarNamed:@"_someField"];
-    STAssertTrue([ivar.name isEqualToString:@"_someField"], @"please check ivar");
-}
-
-- (void)test_RF_ivarsWithoutAttributeType {
-    NSArray *ivars = [AnnotatedClass RF_ivars];
-    STAssertTrue([ivars count] == 5, @"ivars must not contain values");
-    
-    RFIvarInfo *ivar = [AnnotatedClass RF_ivarNamed:@"_someField"];
-    STAssertTrue([ivar.name isEqualToString:@"_someField"], @"please check ivar");
-}
-
-- (void)test_RF_ivarsWithTypeDetection {
-    RFIvarInfo *ivar = [AnnotatedClass RF_ivarNamed:@"_testName"];
-    STAssertTrue([ivar.typeName isEqualToString:@"7c[]"], @"please check ivar");
-}
-
 - (void)test_RF_ivarsWithAttributeType_withFiltering {
     NSArray *ivars = [AnnotatedClass RF_ivarsWithAttributeType:[RFTestAttribute class]];
     STAssertTrue([ivars count] == 1, @"ivars must contain values");
@@ -296,40 +269,14 @@
     STAssertTrue([ivars count] == 0, @"ivars must not contain values");
 }
 
-- (void)test_RF_methodsByObjectInstance {
-    AnnotatedClass* annotatedClass = [[AnnotatedClass alloc] init];
-    NSArray *methods = [annotatedClass RF_methods];
-    STAssertTrue([methods count] == 17, @"methods must contain values");
+- (void)test_RF_attributesForClass {
+    NSArray *attributesList = [AnnotatedClass RF_attributesForClass];
+    STAssertTrue(attributesList != nil, @"attributesList must contain values");
+    STAssertTrue([attributesList count] == 3, @"attributesList must contain 2 items");
     
-    RFMethodInfo *method = [annotatedClass RF_instanceMethodNamed:@"viewDidLoad"];
-    STAssertTrue([method.name isEqualToString:@"viewDidLoad"], @"please check function");
+    CustomRFTestAttribute *testAttribute = [AnnotatedClass RF_attributeForClassWithAttributeType:[CustomRFTestAttribute class]];
     
-    NSString* selectorForDescriptionMethod = NSStringFromSelector(@selector(description));
-    method = [annotatedClass RF_classMethodNamed:selectorForDescriptionMethod];
-    STAssertTrue([method.name isEqualToString:selectorForDescriptionMethod], @"please check function");
-}
-
-- (void)test_RF_methods {
-    RFMethodInfo *method = [AnnotatedClass RF_instanceMethodNamed:@"viewDidLoad"];
-    STAssertTrue([method.name isEqualToString:@"viewDidLoad"], @"please check function");
-    
-    NSString* selectorForDescriptionMethod = NSStringFromSelector(@selector(description));
-    method = [AnnotatedClass RF_classMethodNamed:selectorForDescriptionMethod];
-    STAssertTrue([method.name isEqualToString:selectorForDescriptionMethod], @"please check function");
-}
-
-- (void)test_RF_methodsWithAttributeType_withFiltering {
-    NSArray *methods = [AnnotatedClass RF_methodsWithAttributeType:[CustomRFTestAttribute class]];
-    STAssertTrue([methods count] == 2, @"methods must contain values");
-    
-    RFMethodInfo *method = [methods lastObject];
-    STAssertTrue([method.attributes count] == 2, @"please check number of attributes of function");
-    STAssertTrue([method.name isEqualToString:@"viewDidLoad"], @"please check function");
-}
-
-- (void)test_RF_methodsWithAttributeType_withWrongFiltering {
-    NSArray *methods = [AnnotatedClass RF_methodsWithAttributeType:[AnnotatedClass class]];
-    STAssertTrue([methods count] == 0, @"methods must not contain values");
+    STAssertTrue(testAttribute != nil, @"please check function");
 }
 
 - (void)test_RF_attributeForMethod {
