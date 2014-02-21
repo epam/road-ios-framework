@@ -33,7 +33,8 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import <objc/runtime.h>
 #import "RFIvarInfo.h"
-
+#import "AnnotatedClass.h"
+#import "NSObject+RFMemberVariableReflection.h"
 
 @interface RFIvarInfoTest : SenTestCase {
     Class _testClass;
@@ -51,8 +52,7 @@ const static char *testClassName = "testClassName";
     _testClass = objc_allocateClassPair([NSObject class], testClassName, 0);
 }
 
-- (void)testIVarCount
-{
+- (void)testIVarCount {
     NSUInteger inc = 0;
     for (int i = inc; i <= numberOfIVars; i++) {
         const char *cstring = [[NSString stringWithFormat:@"var%d", i] UTF8String];
@@ -62,8 +62,7 @@ const static char *testClassName = "testClassName";
     STAssertTrue(inc == [[RFIvarInfo ivarsOfClass:_testClass] count], @"It's not equals a sum of ivars");
 }
 
-- (void)testIVarByName
-{
+- (void)testIVarByName {
     const char* ivarName = "ivarNameTest";
     char *type = @encode(NSObject);
     class_addIvar(_testClass, ivarName, sizeof(type), log2(sizeof(type)), type);
@@ -71,6 +70,61 @@ const static char *testClassName = "testClassName";
     NSString *tempIvar = [NSString stringWithCString:ivarName encoding:NSUTF8StringEncoding];
     RFIvarInfo *result = [RFIvarInfo RF_ivarNamed:tempIvar ofClass:_testClass];
     STAssertNotNil(result, @"Can't find data by ivar name");
+}
+
+- (void)testIVarTypeName {
+    const char* ivarName = "ivarNameTestTypeName";
+    char *type = @encode(NSString);
+    class_addIvar(_testClass, ivarName, sizeof(type), log2(sizeof(type)), type);
+    
+    NSString *tempIvar = [NSString stringWithCString:ivarName encoding:NSUTF8StringEncoding];
+    RFIvarInfo *result = [RFIvarInfo RF_ivarNamed:tempIvar ofClass:_testClass];
+    
+    STAssertTrue([result.typeName isEqualToString:@"struct NSString=#"], @"It's not equal a type name of ivars");
+}
+
+- (void)testIVarByPrimitiveType {
+    const char* ivarName = "ivarNameTestPrimitiveType";
+    char *type = @encode(NSInteger);
+    class_addIvar(_testClass, ivarName, sizeof(type), log2(sizeof(type)), type);
+    
+    NSString *tempIvar = [NSString stringWithCString:ivarName encoding:NSUTF8StringEncoding];
+    RFIvarInfo *result = [RFIvarInfo RF_ivarNamed:tempIvar ofClass:_testClass];
+    
+    STAssertTrue(result.isPrimitive, @"Ivar isn't primitive");
+}
+
+- (void)testIVarByNotPrimitiveType {
+    const char* ivarName = "ivarNameTestNotPrimitiveType";
+    char *type = @encode(NSString*);
+    class_addIvar(_testClass, ivarName, sizeof(type), log2(sizeof(type)), type);
+    
+    NSString *tempIvar = [NSString stringWithCString:ivarName encoding:NSUTF8StringEncoding];
+    RFIvarInfo *result = [RFIvarInfo RF_ivarNamed:tempIvar ofClass:_testClass];
+    
+    STAssertFalse(result.isPrimitive, @"Ivar is primitive");
+}
+
+- (void)test_RF_ivarsByObjectInstance {
+    AnnotatedClass* annotatedClass = [[AnnotatedClass alloc] init];
+    NSArray *ivars = [annotatedClass RF_ivars];
+    STAssertTrue([ivars count] == 5, @"ivars must not contain values");
+    
+    RFIvarInfo *ivar = [annotatedClass RF_ivarNamed:@"_someField"];
+    STAssertTrue([ivar.name isEqualToString:@"_someField"], @"please check ivar");
+}
+
+- (void)test_RF_ivarsByStaticMethods {
+    NSArray *ivars = [AnnotatedClass RF_ivars];
+    STAssertTrue([ivars count] == 5, @"ivars must not contain values");
+    
+    RFIvarInfo *ivar = [AnnotatedClass RF_ivarNamed:@"_someField"];
+    STAssertTrue([ivar.name isEqualToString:@"_someField"], @"please check ivar");
+}
+
+- (void)test_RF_ivarsWithTypeDetection {
+    RFIvarInfo *ivar = [AnnotatedClass RF_ivarNamed:@"_testName"];
+    STAssertTrue([ivar.typeName isEqualToString:@"7c[]"], @"please check ivar");
 }
 
 - (void)tearDown

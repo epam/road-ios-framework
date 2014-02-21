@@ -34,6 +34,8 @@
 #import <objc/runtime.h>
 #import "RFMethodInfo.h"
 #import "RFTypeDecoder.h"
+#import "AnnotatedClass.h"
+#import "NSObject+RFMethodReflection.h"
 
 @interface RFMethodInfoTest : SenTestCase {
     Class _testClass;
@@ -53,7 +55,6 @@ const static char *testClassName = "testClassName";
 }
 
 - (void)testMethodCount {
-    
     NSUInteger inc = 0;
     for (int i = inc; i <= numberOfMethods; i++) {
         SEL methodSelector = NSSelectorFromString([NSString stringWithFormat:@"method_%d", i]);
@@ -63,8 +64,7 @@ const static char *testClassName = "testClassName";
     STAssertTrue(inc == [[RFMethodInfo methodsOfClass:_testClass] count], @"It's not equals a sum of methods");
 }
 
-- (void)testMethodByName
-{
+- (void)testMethodByName {
     NSString *methodName = @"methodNameTest";
     SEL methodSelector = NSSelectorFromString(methodName);
     class_addMethod(_testClass, methodSelector, nil, "@@");
@@ -73,8 +73,29 @@ const static char *testClassName = "testClassName";
     STAssertNotNil(result, @"Can't find metadata of method by name");
 }
 
-- (void)testArgumentTypeInt {
+- (void)testClassNameProperty {
+    RFMethodInfo *info = [RFMethodInfo classMethodNamed:NSStringFromSelector(@selector(description)) forClass:_testClass];
+    STAssertTrue([info.className isEqualToString:[NSString stringWithUTF8String:testClassName]], @"Class name isn't equal");
+}
+
+- (void)testClassMethod {
+    RFMethodInfo *result = [RFMethodInfo classMethodNamed:NSStringFromSelector(@selector(description)) forClass:_testClass];
+    STAssertNotNil(result, @"Can't find metadata of method by name");
+}
+
+- (void)testReturnType {
+    NSString *methodName = @"methodNameTestWithReturnType";
+    SEL methodSelector = NSSelectorFromString(methodName);
+   
+    class_addMethod(_testClass, methodSelector, nil, "@@");
     
+    RFMethodInfo *methodInfo = [RFMethodInfo instanceMethodNamed:methodName forClass:_testClass];
+    NSString *type = [methodInfo returnType];
+    
+    STAssertTrue([type isEqualToString:@"id"], @"Return type of method isn't equal");
+}
+
+- (void)testArgumentTypeInt {
     NSString *methodName = @"methodNameTestWithArguments";
     SEL methodSelector = NSSelectorFromString(methodName);
     NSString *encodeParam = @"i";
@@ -86,6 +107,28 @@ const static char *testClassName = "testClassName";
     NSString *type = [methodInfo typeOfArgumentAtIndex:0];
 
     STAssertTrue([[RFTypeDecoder nameFromTypeEncoding:encodeParam] isEqualToString:type], @"Resulting constants aren't equal");
+}
+
+- (void)test_RF_methodsByObjectInstance {
+    AnnotatedClass* annotatedClass = [[AnnotatedClass alloc] init];
+    NSArray *methods = [annotatedClass RF_methods];
+    STAssertTrue([methods count] == 17, @"methods must contain values");
+    
+    RFMethodInfo *method = [annotatedClass RF_instanceMethodNamed:@"viewDidLoad"];
+    STAssertTrue([method.name isEqualToString:@"viewDidLoad"], @"please check function");
+    
+    NSString* selectorForDescriptionMethod = NSStringFromSelector(@selector(description));
+    method = [annotatedClass RF_classMethodNamed:selectorForDescriptionMethod];
+    STAssertTrue([method.name isEqualToString:selectorForDescriptionMethod], @"please check function");
+}
+
+- (void)test_RF_methods {
+    RFMethodInfo *method = [AnnotatedClass RF_instanceMethodNamed:@"viewDidLoad"];
+    STAssertTrue([method.name isEqualToString:@"viewDidLoad"], @"please check function");
+    
+    NSString* selectorForDescriptionMethod = NSStringFromSelector(@selector(description));
+    method = [AnnotatedClass RF_classMethodNamed:selectorForDescriptionMethod];
+    STAssertTrue([method.name isEqualToString:selectorForDescriptionMethod], @"please check function");
 }
 
 - (void)tearDown {

@@ -59,6 +59,7 @@ RF_ATTRIBUTE(NSObject)
 @interface AnnotatedClass : NSObject <TestProtocol> {
     RF_ATTRIBUTE(RFTestAttribute)
     NSObject* _someField;
+    char _testName[7];
 }
 
 ///Testing of method with attributes
