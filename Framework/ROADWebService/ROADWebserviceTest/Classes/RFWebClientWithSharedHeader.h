@@ -1,6 +1,6 @@
 //
-//  RFServiceProvider+ESITunesWebClient.h
-//  ITunesSearch
+//  RFWebClientWithSharedHeader.h
+//  ROADWebService
 //
 //  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
@@ -31,20 +31,12 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import <ROAD/ROADServices.h>
+#import "RFWebServiceClient.h"
+#import "RFXMLSerializer.h"
+#import "RFWebServiceSerializer.h"
 
-#import "ESITunesWebClient.h"
-
-
-/**
- * Here we add new service to our service provider - iTunesWebClient.
- * In general case it's good practice to specify return type as id that conforms some protocol.
- * For the sake of simplicity we have strong typing.
- * Service that will be returned we specify in attribure as serviceClass
- */
-@interface RFServiceProvider (ESITunesWebClient)
-
-RF_ATTRIBUTE(RFService, serviceClass = [ESITunesWebClient class])
-+ (ESITunesWebClient *)iTunesWebClient;
+RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{ @"key1" : @"value1"})
+RF_ATTRIBUTE(RFWebServiceSerializer, serializerClass = [RFXMLSerializer class])
+@interface RFWebClientWithSharedHeader : RFWebServiceClient
 
 @end

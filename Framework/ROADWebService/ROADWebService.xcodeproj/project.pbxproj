@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		11FF622818BCE61700053F60 /* RFWebClientWithSharedHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FF622718BCE61700053F60 /* RFWebClientWithSharedHeader.m */; };
 		33F0EF1618051DB1001DCCED /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 33F0EF0D18051D3D001DCCED /* libxml2.2.dylib */; };
 		5A164AA2179D762A003275EC /* RFDownloader.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E5B9D4E51786CFFE00E1901C /* RFDownloader.h */; };
 		5A164AA3179D762A003275EC /* RFLooper.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E5B9D4E71786CFFE00E1901C /* RFLooper.h */; };
@@ -316,11 +317,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		11FF622618BCE61700053F60 /* RFWebClientWithSharedHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFWebClientWithSharedHeader.h; sourceTree = "<group>"; };
+		11FF622718BCE61700053F60 /* RFWebClientWithSharedHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebClientWithSharedHeader.m; sourceTree = "<group>"; };
 		33F0EF0D18051D3D001DCCED /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		5A4AFC47176872640097B1D9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		5AD1FC0C176601C200E67BC4 /* ROADServices.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ROADServices.xcodeproj; path = ../ROADServices/ROADServices.xcodeproj; sourceTree = "<group>"; };
 		5AFB79C5176613C6007F813A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		6338326D18AE6258005E1673 /* RFWebServiceCachingModel_cacheIdentifierAdded.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = RFWebServiceCachingModel_cacheIdentifierAdded.xcdatamodel; sourceTree = "<group>"; };
+		6338326D18AE6258005E1673 /* RFWebServiceCachingModel_cacheIdentifierAdded.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RFWebServiceCachingModel_cacheIdentifierAdded.xcdatamodel; sourceTree = "<group>"; };
 		783AF1A31650FAF800AD247E /* ROADWebService.temp_caseinsensitive_renameTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ROADWebService.temp_caseinsensitive_renameTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		783AF1A41650FAF800AD247E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		78CBA94916C3D44A00DAC9BB /* ROADCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ROADCore.xcodeproj; path = ../ROADCore/ROADCore.xcodeproj; sourceTree = "<group>"; };
@@ -420,7 +423,6 @@
 		CD896C201737E84F00565C9C /* RFWebServiceClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RFWebServiceClient.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		CD896C211737E84F00565C9C /* RFWebServiceClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebServiceClient.m; sourceTree = "<group>"; };
 		CD896C341737E85800565C9C /* RFWebServiceClient+DynamicTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RFWebServiceClient+DynamicTest.h"; sourceTree = "<group>"; };
-		CD896C371737E85800565C9C /* RFWebServiceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFWebServiceTest.h; sourceTree = "<group>"; };
 		CD896C381737E85800565C9C /* RFWebServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebServiceTest.m; sourceTree = "<group>"; };
 		CD896C3E1737E85800565C9C /* ROADWebserviceTest-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ROADWebserviceTest-Info.plist"; sourceTree = "<group>"; };
 		CD896C3F1737E85800565C9C /* ROADWebserviceTest-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ROADWebserviceTest-Prefix.pch"; sourceTree = "<group>"; };
@@ -621,6 +623,8 @@
 				EE3022F3180FD687003B1826 /* RFWebServiceClientWithRoot.m */,
 				83C173571861E9CA00A9538D /* RFDownloadFaker.h */,
 				83C173581861E9CA00A9538D /* RFDownloadFaker.m */,
+				11FF622618BCE61700053F60 /* RFWebClientWithSharedHeader.h */,
+				11FF622718BCE61700053F60 /* RFWebClientWithSharedHeader.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -726,7 +730,6 @@
 				83448CDD17D0D3E3002A0D15 /* ROADGeneratedAttribute.m */,
 				CD896C341737E85800565C9C /* RFWebServiceClient+DynamicTest.h */,
 				83B5D20417D4CDDB0030D8CD /* RFWebServiceClient+DynamicTest.m */,
-				CD896C371737E85800565C9C /* RFWebServiceTest.h */,
 				CD896C381737E85800565C9C /* RFWebServiceTest.m */,
 				8353BCDB185F1F48009704A8 /* RFWebServiceCacheTest.m */,
 				837B002517B3B9A300D77A5D /* RFODataTest.h */,
@@ -1101,6 +1104,7 @@
 				8349D97317B23AF2006BDA5F /* RFODataPredicate.m in Sources */,
 				8349D99117B37E49006BDA5F /* RFODataExpression.m in Sources */,
 				837B001317B3A1AE00D77A5D /* RFODataProperty.m in Sources */,
+				11FF622818BCE61700053F60 /* RFWebClientWithSharedHeader.m in Sources */,
 				837B001B17B3B0F000D77A5D /* RFODataEntity.m in Sources */,
 				837B001F17B3B1AB00D77A5D /* RFODataAbstractEntity.m in Sources */,
 				837B002317B3B63C00D77A5D /* NSSortDescriptor+RFOData.m in Sources */,
