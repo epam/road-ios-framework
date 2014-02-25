@@ -43,6 +43,7 @@
 #import "RFBooleanTranslator.h"
 #import "RFSerializationAssistant.h"
 
+
 @interface RFAttributedDecoder ()
 
 @end
@@ -159,21 +160,24 @@
 }
 
 - (void)decodeProperty:(RFPropertyInfo *)property ofObject:(id)object jsonDict:(NSDictionary * const)jsonDict handlerAttribute:(RFSerializationCustomHandler *)handlerAttribute {
-    
-    NSString *aKey = RFSerializationKeyForProperty(property);
+    id value = jsonDict[RFSerializationKeyForProperty(property)];
+    if (!value) {
+        return;
+    }
+
     NSString *propertyName = [property propertyName];
     id result = nil;
     
     if ([handlerAttribute.key isEqualToString:propertyName]) {
-        result = RFCustomDeserialization(jsonDict[aKey], handlerAttribute);
+        result = RFCustomDeserialization(value, handlerAttribute);
     }
     else {
         RFSerializationCustomHandler *propertyCustomHandlerAttribute = [property attributeWithType:[RFSerializationCustomHandler class]];
         if (propertyCustomHandlerAttribute && propertyCustomHandlerAttribute.key.length == 0) {
-            result = RFCustomDeserialization(jsonDict[aKey], propertyCustomHandlerAttribute);
+            result = RFCustomDeserialization(value, propertyCustomHandlerAttribute);
         }
         else {
-            result = [self decodeValue:jsonDict[aKey] forProperty:property customHandlerAttribute:propertyCustomHandlerAttribute];
+            result = [self decodeValue:value forProperty:property customHandlerAttribute:propertyCustomHandlerAttribute];
         }
     }
     if ([self isValueValid:result forProperty:property]) {
