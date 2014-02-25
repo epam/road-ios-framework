@@ -89,7 +89,7 @@
 }
 
 - (id)encodeRootObject:(id)rootObject {
-    id archive = [[NSMutableDictionary alloc] init];
+    id archive;
     
     if ([rootObject isKindOfClass:[NSArray class]]) {
         archive = [self encodeArray:rootObject customHandlerAttribute:nil];
@@ -103,6 +103,7 @@
             archive = RFCustomSerialization(rootObject, customHandlerAttribute);
         }
         else {
+            archive = [[NSMutableDictionary alloc] init];
             RFSerializable *serializableAttribute = [[rootObject class] RF_attributeForClassWithAttributeType:[RFSerializable class]];
             if (serializableAttribute && !serializableAttribute.classNameSerializationDisabled) {
                 archive[RFSerializedObjectClassName] = NSStringFromClass([rootObject class]);

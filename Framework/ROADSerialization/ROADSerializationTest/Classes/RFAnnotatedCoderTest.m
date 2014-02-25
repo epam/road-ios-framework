@@ -2,7 +2,7 @@
 //  RFAnnotatedCoderTest.m
 //  ROADSerialization
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without 
 // modification, are permitted provided that the following conditions are met:
@@ -167,6 +167,36 @@
     NSData *deserialisationTestData = [NSData dataWithContentsOfFile:pathToDeserialisationTestFile];
     id decodedObject = [RFAttributedDecoder decodeJSONData:deserialisationTestData withSerializtionRoot:@"child.subObjects.number" rootClassNamed:nil];
     STAssertNotNil(decodedObject, @"Wrong deserialization root returned some value.");
+}
+
+- (void)testMappingPredeserializedObject {
+    id predeserializedObject = @[ @{@"string1" : @"value1"} ];
+    NSArray *testArray = [RFAttributedDecoder decodePredeserializedObject:predeserializedObject withRootClassName:@"RFSerializationTestObject"];
+    STAssertNotNil(testArray, @"Mapping predeserialized object failed");
+    STAssertTrue([testArray count] == 1, @"Mapping predeserialized object performed incorrectly. Number of object in array must be one");
+
+    RFSerializationTestObject *testObject = [testArray lastObject];
+    STAssertNotNil(testObject, @"Mapping predeserialized object failed");
+    STAssertTrue([testObject.string1 isEqualToString:@"value1"], @"Mapping predeserialized object performed incorrectly");
+}
+
+- (void)testCreationSerializableDictionaryFromObject {
+    RFSerializationTestObject *testObject = [[RFSerializationTestObject alloc] init];
+    testObject.string1 = @"value1";
+    NSDictionary *testDictionary = [RFAttributedCoder encodeRootObjectToSerializableObject:@{ @"testObject" : testObject }];
+    STAssertNotNil(testDictionary, @"Creating serializable dictionary failed");
+    STAssertTrue([testDictionary[@"testObject"][@"string1"] isEqualToString:@"value1"], @"Creating serializable dictionary performed incorrectly");
+}
+
+- (void)testCreationSerializableArrayFromObject {
+    RFSerializationTestObject *testObject = [[RFSerializationTestObject alloc] init];
+    testObject.string1 = @"value1";
+    NSArray *testArray = [RFAttributedCoder encodeRootObjectToSerializableObject:@[ testObject ]];
+    STAssertNotNil(testArray, @"Creating serializable array failed");
+    STAssertTrue([testArray count] == 1, @"Array must contain only one object. Serialization performed incorrectly");
+    NSDictionary *testDictionary = [testArray lastObject];
+    STAssertNotNil(testDictionary, @"Creating serializable array performed incorrectly");
+    STAssertTrue([testDictionary[@"string1"] isEqualToString:@"value1"], @"Creating serializable dictionary in array performed incorrectly");
 }
 
 @end
