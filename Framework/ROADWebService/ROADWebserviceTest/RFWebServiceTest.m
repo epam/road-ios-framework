@@ -30,8 +30,10 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
+
+#import <SenTestingKit/SenTestingKit.h>
+
 #import <ROAD/ROADLogger.h>
-#import "RFWebServiceTest.h"
 #import "RFWebServiceClientWithRoot.h"
 #import "RFWebServiceClientWithLogger.h"
 #import "RFWebServiceClient+DynamicTest.h"
@@ -42,13 +44,18 @@
 #import "RFDigestAuthenticationProvider.h"
 #import "RFDownloadFaker.h"
 #import "RFDownloader.h"
+#import "RFWebClientWithSharedHeader.h"
+#import "RFWebServiceSerializer.h"
 
-@interface RFWebServiceTest ()
+
+@interface RFWebServiceTest : SenTestCase
 {
     NSCondition * condition;
     BOOL authenticationFinished;
 }
+
 @end
+
 
 @implementation RFWebServiceTest
 
@@ -299,6 +306,16 @@
     
     STAssertTrue(isSuccess, @"Custom serialization of web service request is failed!");
     STAssertTrue([testObject isEqual:customSerializationResult], @"Custom deserialization of web service response is failed!");
+}
+
+- (void)testSharedHeaderAttribute {
+    RFWebClientWithSharedHeader *webClient = [[RFWebClientWithSharedHeader alloc] init];
+    STAssertTrue([webClient.sharedHeaders isEqualToDictionary:@{@"key1" : @"value1"}], @"Shared headers was not configured via attributes");
+}
+
+- (void)testWebClientSerializationDelegateAttribute {
+    RFWebClientWithSharedHeader *webClient = [[RFWebClientWithSharedHeader alloc] init];
+    STAssertTrue([webClient.serializationDelegate isKindOfClass:[RFXMLSerializer class]], @"Serialization delegate was set incorrectly and has wrong type.");
 }
 
 @end

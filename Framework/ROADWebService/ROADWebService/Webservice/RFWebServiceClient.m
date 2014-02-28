@@ -3,7 +3,7 @@
 //  RFWebServiceClient.m
 //  ROADWebService
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -31,35 +31,28 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
+
 #import "RFWebServiceClient.h"
 
 #import "RFAuthenticating.h"
 #import "RFDefaultSerializer.h"
 #import "RFWebService.h"
 #import "RFWebServiceSerializer.h"
+#import "RFWebServiceHeader.h"
+
 
 @implementation RFWebServiceClient
+
+
+#pragma mark - Initialization
 
 - (id)init {
     self = [super init];
  
     if (self) {
-        // Creates custom serializer if it was specified
-        RFWebServiceSerializer *serializerAttribute = [[self class] RF_attributeForClassWithAttributeType:[RFWebServiceSerializer class]];
-        if (serializerAttribute.serializerClass) {
-            _serializationDelegate = [[serializerAttribute.serializerClass alloc] init];
-        }
-        else {
-            _serializationDelegate = [[RFDefaultSerializer alloc] init];
-        }
-        
-        _sharedHeaders = [[NSMutableDictionary alloc] init];
-        
-        RFWebService *webServiceAttribute = [[self class] RF_attributeForClassWithAttributeType:[RFWebService class]];
-        
-        if (webServiceAttribute) {
-            _serviceRoot = webServiceAttribute.serviceRoot;
-        }
+        [self configureServiceRoot];
+        [self configureSerializer];
+        [self configureSharedHeaders];
     }
     
     return self;
@@ -74,6 +67,38 @@
     
     return self;
 }
+
+- (void)configureSerializer {
+    // Creates custom serializer if it was specified
+    RFWebServiceSerializer *serializerAttribute = [[self class] RF_attributeForClassWithAttributeType:[RFWebServiceSerializer class]];
+    if (serializerAttribute.serializerClass) {
+        _serializationDelegate = [[serializerAttribute.serializerClass alloc] init];
+    }
+    else {
+        _serializationDelegate = [[RFDefaultSerializer alloc] init];
+    }
+}
+
+- (void)configureSharedHeaders {
+    RFWebServiceHeader *headerAttribute = [[self class] RF_attributeForClassWithAttributeType:[RFWebServiceHeader class]];
+    if (headerAttribute.headerFields) {
+        _sharedHeaders = [headerAttribute.headerFields mutableCopy];
+    }
+    else {
+        _sharedHeaders = [[NSMutableDictionary alloc] init];
+    }
+}
+
+- (void)configureServiceRoot {
+    RFWebService *webServiceAttribute = [[self class] RF_attributeForClassWithAttributeType:[RFWebService class]];
+
+    if (webServiceAttribute) {
+        _serviceRoot = webServiceAttribute.serviceRoot;
+    }
+}
+
+
+#pragma mark - Authentication provider
 
 - (void)setAuthenticationProvider:(id<RFAuthenticating>)authenticationProvider {
     // Managing authentication provider webServiceClient property
