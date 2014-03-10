@@ -30,6 +30,7 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
+
 #import "ESSearchCell.h"
 
 
@@ -46,15 +47,16 @@
     
     __weak ESSearchCell *weakSelf = self;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        NSURL * imageURL = [NSURL URLWithString:app.artworkURL];
-        NSData * imageData = [NSData dataWithContentsOfURL:imageURL];
-        UIImage * image = [UIImage imageWithData:imageData];
+        NSURL * searchImageURL = [NSURL URLWithString:app.artworkURL];
+        NSData * searchImageData = [NSData dataWithContentsOfURL:searchImageURL];
+        UIImage * appArtwork = [UIImage imageWithData:searchImageData];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf setArtwork:image];
+            [weakSelf setArtwork:appArtwork];
         });
     });
 }
 
+// Will be invoked when image load successfully
 - (void)setArtwork:(UIImage *)artwork {
     [self.artworkImageView setImage:artwork];
 }

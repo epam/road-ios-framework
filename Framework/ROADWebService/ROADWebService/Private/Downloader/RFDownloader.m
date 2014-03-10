@@ -62,6 +62,7 @@
 @property (strong, nonatomic) NSHTTPURLResponse *response;
 @property (assign, nonatomic) NSUInteger expectedContentLenght;
 @property (strong, nonatomic) RFWebServiceCall * callAttribute;
+@property (strong, nonatomic) NSDictionary * values;
 
 - (void)stop;
 
@@ -94,7 +95,10 @@
 
 - (void)configureRequestForUrl:(NSURL * const)anUrl body:(NSData * const)httpBody sharedHeaders:(NSDictionary *)sharedHeaders values:(NSDictionary *)values {
     _request = [self requestForUrl:anUrl withMethod:_callAttribute.method withBody:httpBody values:values];
-    
+
+    // Saving the values for the cache identifier parsing.
+    self.values = [values copy];
+
     // For multipart form data we have to add specific header
     if (_multipartData) {
         NSString *boundary;
@@ -183,8 +187,11 @@
                 if (cacheAttribute.maxAge) {
                     expirationDate = [NSDate dateWithTimeIntervalSinceNow:cacheAttribute.maxAge];
                 }
+                // checking for the cache identifier and parsing
+                NSString *cacheIdentifier = [[RFServiceProvider webServiceCacheManager] parseCacheIdentifier:cacheAttribute.cacheIdentifier withParameters:self.values];
+
                 id<RFWebServiceCachingManaging> cacheManager = [RFServiceProvider webServiceCacheManager];
-                [cacheManager setCacheWithRequest:_request response:response responseBodyData:result expirationDate:expirationDate];
+                [cacheManager setCacheWithRequest:_request response:response responseBodyData:result expirationDate:expirationDate cacheIdentifier:cacheIdentifier];
             }
         }
     }

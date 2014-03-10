@@ -105,6 +105,14 @@ Classes reference available in [cocoadocs.org](http://cocoadocs.org/docsets/ROAD
 ##License
 ROAD is made available under the terms of the [BSD-3](http://opensource.org/licenses/BSD-3-Clause). See the LICENSE file that accompanies this distribution for the full text of the license.
 
+##Contribution
+
+There're three ways you can help us:
+
+* **Raise an issue.** You find something that does not work as expected? You can get us know about it. 
+* **Suggest a Feature.** It's even better if you come up with new feature and write us about it.
+* **Write some code.** We would love to see more pull requests to our framework, just make sure you have latest sources and you're creating pull request to ***dev*** branch. For more information check out [guidelines for contributing](./contributing.md).
+
+
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/epam/road-ios-framework/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-

@@ -37,7 +37,7 @@
 
 
 /**
- * Here we adding new service to our service provider - iTunesWebClient.
+ * Here we add new service to our service provider - iTunesWebClient.
  * In general case it's good practice to specify return type as id that conforms some protocol.
  * For the sake of simplicity we have strong typing.
  * Service that will be returned we specify in attribure as serviceClass

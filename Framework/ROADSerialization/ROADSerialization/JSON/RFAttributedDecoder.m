@@ -2,7 +2,7 @@
 //  RFAnnotatedDecoder.m
 //  ROADSerialization
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without 
 // modification, are permitted provided that the following conditions are met:
@@ -42,6 +42,7 @@
 #import "RFSerializableBoolean.h"
 #import "RFBooleanTranslator.h"
 #import "RFSerializationAssistant.h"
+
 
 @interface RFAttributedDecoder ()
 
@@ -122,8 +123,11 @@
 
 - (id)decodeJSONDictionary:(NSDictionary * const)jsonDict forProperty:(RFPropertyInfo * const)aDesc {
     NSString * rootClassName;
-    
-    rootClassName = jsonDict[RFSerializedObjectClassName];
+
+    RFSerializable *serializableAttribute = [aDesc attributeWithType:[RFSerializable class]];
+    if (!serializableAttribute.classNameSerializationDisabled) {
+        rootClassName = jsonDict[RFSerializedObjectClassName];
+    }
 
     if ([rootClassName length] == 0) {
         rootClassName = NSStringFromClass(aDesc.typeClass);
@@ -156,21 +160,24 @@
 }
 
 - (void)decodeProperty:(RFPropertyInfo *)property ofObject:(id)object jsonDict:(NSDictionary * const)jsonDict handlerAttribute:(RFSerializationCustomHandler *)handlerAttribute {
-    
-    NSString *aKey = RFSerializationKeyForProperty(property);
+    id value = jsonDict[RFSerializationKeyForProperty(property)];
+    if (!value) {
+        return;
+    }
+
     NSString *propertyName = [property propertyName];
     id result = nil;
     
     if ([handlerAttribute.key isEqualToString:propertyName]) {
-        result = RFCustomDeserialization(jsonDict[aKey], handlerAttribute);
+        result = RFCustomDeserialization(value, handlerAttribute);
     }
     else {
         RFSerializationCustomHandler *propertyCustomHandlerAttribute = [property attributeWithType:[RFSerializationCustomHandler class]];
         if (propertyCustomHandlerAttribute && propertyCustomHandlerAttribute.key.length == 0) {
-            result = RFCustomDeserialization(jsonDict[aKey], propertyCustomHandlerAttribute);
+            result = RFCustomDeserialization(value, propertyCustomHandlerAttribute);
         }
         else {
-            result = [self decodeValue:jsonDict[aKey] forProperty:property customHandlerAttribute:propertyCustomHandlerAttribute];
+            result = [self decodeValue:value forProperty:property customHandlerAttribute:propertyCustomHandlerAttribute];
         }
     }
     if ([self isValueValid:result forProperty:property]) {
@@ -237,10 +244,10 @@
     else if ([aValue isKindOfClass:[NSDictionary class]]) {
         NSString *decodeClassName = RFSerializationCollectionItemClassNameForProperty(aDesc);
         
-        if (decodeClassName == nil) {
+        RFSerializable *serializableAttribute = [aDesc attributeWithType:[RFSerializable class]];
+        if (decodeClassName == nil && !serializableAttribute.classNameSerializationDisabled) {
             decodeClassName = aValue[RFSerializedObjectClassName];
         }
-        
         if ([decodeClassName length] > 0) {
             value = [self decodeRootObject:aValue withRootClassNamed:decodeClassName];
         }

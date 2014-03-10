@@ -1,6 +1,6 @@
 //
-//  RFJSONCustomClassPropertyHandlerEntity.h
-//  ROADSerialization
+//  RFWebClientWithSharedHeader.h
+//  ROADWebService
 //
 //  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
@@ -30,18 +30,13 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <Foundation/Foundation.h>
-#import "RFSerializationCustomHandler.h"
-#import "RFJSONCustomSerializationHandler.h"
-#import "RFSerializable.h"
 
-RF_ATTRIBUTE(RFSerializable)
-RF_ATTRIBUTE(RFSerializationCustomHandler, handlerClass = [RFJSONCustomSerializationHandler class], key = @"string1")
-@interface RFJSONCustomClassPropertyHandlerEntity : NSObject
+#import "RFWebServiceClient.h"
+#import "RFXMLSerializer.h"
+#import "RFWebServiceSerializer.h"
 
-@property (strong, nonatomic) NSString *string1;
-
-+ (id)sampleObject;
-+ (id)deserializationTestObject;
+RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{ @"key1" : @"value1"})
+RF_ATTRIBUTE(RFWebServiceSerializer, serializerClass = [RFXMLSerializer class])
+@interface RFWebClientWithSharedHeader : RFWebServiceClient
 
 @end

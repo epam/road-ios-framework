@@ -2,7 +2,7 @@
 //  RFAnnotatedCoder.m
 //  ROADSerialization
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without 
 // modification, are permitted provided that the following conditions are met:
@@ -89,7 +89,7 @@
 }
 
 - (id)encodeRootObject:(id)rootObject {
-    id archive = [[NSMutableDictionary alloc] init];
+    id archive;
     
     if ([rootObject isKindOfClass:[NSArray class]]) {
         archive = [self encodeArray:rootObject customHandlerAttribute:nil];
@@ -103,7 +103,11 @@
             archive = RFCustomSerialization(rootObject, customHandlerAttribute);
         }
         else {
-            archive[RFSerializedObjectClassName] = NSStringFromClass([rootObject class]);
+            archive = [[NSMutableDictionary alloc] init];
+            RFSerializable *serializableAttribute = [[rootObject class] RF_attributeForClassWithAttributeType:[RFSerializable class]];
+            if (serializableAttribute && !serializableAttribute.classNameSerializationDisabled) {
+                archive[RFSerializedObjectClassName] = NSStringFromClass([rootObject class]);
+            }
             NSArray *properties = RFSerializationPropertiesForClass([rootObject class]);
 
             @autoreleasepool {

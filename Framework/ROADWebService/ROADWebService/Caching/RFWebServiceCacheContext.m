@@ -82,14 +82,18 @@ static NSString * const kRFWebServiceCachingStorageName = @"RFWebServiceCache.co
     webServiceCachingPath = [webServiceCachingPath stringByAppendingPathComponent:kRFWebServiceCachingStorageName];
     _storeURL = [NSURL fileURLWithPath:webServiceCachingPath];
     NSString *storeType = NSSQLiteStoreType;
+    NSDictionary *options = @{
+                              NSMigratePersistentStoresAutomaticallyOption : @YES,
+                              NSInferMappingModelAutomaticallyOption : @YES
+                              };
     NSError *error;
-    
+
     if (![_persistentStoreCoordinator addPersistentStoreWithType:storeType configuration:nil
-                                                             URL:_storeURL options:nil error:&error]) {
+                                                             URL:_storeURL options:options error:&error]) {
         error = nil;
         [[NSFileManager defaultManager] removeItemAtURL:_storeURL error:&error];
         if (![_persistentStoreCoordinator addPersistentStoreWithType:storeType configuration:nil
-                                                                 URL:_storeURL options:nil error:&error]) {
+                                                                 URL:_storeURL options:options error:&error]) {
             _persistentStoreCoordinator = nil;
             RFLogError(@"RFWebServiceCachingManager error: persistent storage creating was failed with error: %@", [error localizedDescription]);
         }

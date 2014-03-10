@@ -9,6 +9,8 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import <objc/runtime.h>
 #import "RFPropertyInfo.h"
+#import "AnnotatedClass.h"
+#import "NSObject+RFPropertyReflection.h"
 
 @interface RFPropertyInfoTest : SenTestCase {
     Class _testClass;
@@ -46,25 +48,74 @@ const static char *testClassName = "testClassName";
 
         inc++;
     }
-    STAssertTrue(inc == [[RFPropertyInfo propertiesForClass:_testClass] count], @"It's not equals a sum of properties");
+    STAssertTrue(inc == [[RFPropertyInfo propertiesForClass:_testClass] count], @"It's not equal a sum of properties");
 }
 
-- (void)testPropertyByName {
+- (void)testPropertyByPredicated {
+    objc_property_attribute_t attrs[] = {
+        { "T", [@"NSString" UTF8String] },
+        { "V", "_Property" },
+        { "R", "" },
+    };
+    
+    NSString *propertyName = @"nameForTestPredicate";
+    SEL methodSelector = NSSelectorFromString(propertyName);
+    
+    class_addProperty(_testClass, "nameForTestPredicate", attrs, 3);
+    class_addMethod(_testClass, methodSelector, nil, "@@:");
+    
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"propertyName == %@", propertyName];
+    
+    RFPropertyInfo *propertyInfo = [[RFPropertyInfo propertiesForClass:_testClass withPredicate:predicate] lastObject];
+    STAssertNotNil(propertyInfo, @"Can't find metadata of property by name");
+}
 
-    objc_property_attribute_t type = { "T", [@"NSString" UTF8String] };
-    objc_property_attribute_t ownership = { "R", "" }; // R = readonly
-    objc_property_attribute_t backingivar  = { "V", "_Property" };
-    objc_property_attribute_t attrs[] = { type, ownership, backingivar };
+- (void)testPropertyFunctionality {
+    objc_property_attribute_t attrs[] = {
+        { "T", [@"NSString" UTF8String] },
+        { "G", "getter" },
+        { "S", "setter" },
+        { "V", "_Property" },
+        { "D", "" },
+        { "C", "" },
+        { "R", "" },
+        { "&", "" },
+        { "N", "" },
+        { "W", "" },
+    };
     
     NSString *propertyName = @"name";
     SEL methodSelector = NSSelectorFromString(propertyName);
     
-    class_addProperty(_testClass, "name", attrs, 3);
+    class_addProperty(_testClass, "name", attrs, 10);
     class_addMethod(_testClass, methodSelector, nil, "@@:");
     
     RFPropertyInfo *propertyInfo = [RFPropertyInfo RF_propertyNamed:propertyName forClass:_testClass];
-
     STAssertNotNil(propertyInfo, @"Can't find metadata of property by name");
+
+    STAssertTrue([propertyInfo.typeName isEqualToString:@"NSString"], @"It's not equals a type name of property");
+    STAssertTrue([NSStringFromClass(propertyInfo.typeClass) isEqualToString:@"NSString"], @"It's not equals a type name of property");
+    STAssertTrue([propertyInfo.className isEqualToString:@"testClassName"], @"It's not equals a name of class of property");
+    STAssertTrue([propertyInfo.setterName isEqualToString:@"setter"], @"It's not equals a setter name of property");
+    STAssertTrue([propertyInfo.getterName isEqualToString:@"getter"], @"It's not equals a getter name of property");
+    
+    STAssertTrue(propertyInfo.isReadonly, @"It's not equal attribute 'readonly' of property");
+    STAssertTrue(propertyInfo.isCopied, @"It's not equal attribute 'copy' of property");
+    STAssertTrue(propertyInfo.isDynamic, @"It's not equal attribute 'dynamic' of property");
+    STAssertTrue(propertyInfo.isWeak, @"It's not equal attribute 'weak' of property");
+    STAssertTrue(propertyInfo.isNonatomic, @"It's not equal attribute 'nonatomic' of property");
+    STAssertTrue(propertyInfo.isStrong, @"It's not equal attribute 'strong' of property");
+}
+
+- (void)test_RF_propertiesForObjectInstance {
+    AnnotatedClass* annotatedClass = [[AnnotatedClass alloc] init];
+    NSArray *properties = [annotatedClass RF_properties];
+    STAssertTrue([properties count] == 2, @"properties must contain values");
+    
+    RFPropertyInfo *property = [annotatedClass RF_propertyNamed:@"prop"];
+    STAssertTrue([property.propertyName isEqualToString:@"prop"], @"please check properties");
+    STAssertTrue([property.attributes count] == 2, @"It's not equals a sum of attributes for property");
+    STAssertFalse(property.isPrimitive, @"It's not primitive property");
 }
 
 - (void)tearDown {

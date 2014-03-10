@@ -1,5 +1,5 @@
 //
-//  RFJSONCustomClassPropertyHandlerEntity.h
+//  RFDisabledClassNameSerializationTestObject.h
 //  ROADSerialization
 //
 //  Copyright (c) 2014 Epam Systems. All rights reserved.
@@ -30,18 +30,21 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
+
 #import <Foundation/Foundation.h>
-#import "RFSerializationCustomHandler.h"
-#import "RFJSONCustomSerializationHandler.h"
+
 #import "RFSerializable.h"
 
-RF_ATTRIBUTE(RFSerializable)
-RF_ATTRIBUTE(RFSerializationCustomHandler, handlerClass = [RFJSONCustomSerializationHandler class], key = @"string1")
-@interface RFJSONCustomClassPropertyHandlerEntity : NSObject
 
-@property (strong, nonatomic) NSString *string1;
+RF_ATTRIBUTE(RFSerializable, classNameSerializationDisabled = YES)
+@interface RFDisabledClassNameSerializationTestObject : NSObject
 
-+ (id)sampleObject;
-+ (id)deserializationTestObject;
+RF_ATTRIBUTE(RFSerializable, serializationKey = @"string1")
+@property (nonatomic, strong) NSString *string1;
+
+RF_ATTRIBUTE(RFSerializable, serializationKey = @"string2")
+@property (nonatomic, strong) NSString *string2;
+
++ (RFDisabledClassNameSerializationTestObject *)sampleObject;
 
 @end

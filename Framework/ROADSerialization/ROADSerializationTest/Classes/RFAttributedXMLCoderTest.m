@@ -2,7 +2,7 @@
 //  RFAttributedXMLCoderTest.m
 //  ROADSerialization
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -120,7 +120,7 @@
     NSError *decodeError = nil;
     id result = [decoder decodeData:data withRootObjectClass:[RFSerializationTestObject class] error:&decodeError];
     STAssertNil(decodeError, @"XML Decoding Error: %@", decodeError);
-    STAssertTrue(result, @"Assertion: deserialization is not successful.");
+    STAssertTrue(result != nil, @"Assertion: deserialization is not successful.");
 }
 
 - (void)testSerializationWithCollectionContainer

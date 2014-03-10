@@ -27,8 +27,6 @@
 		78180F0916C3D0A800B4AA31 /* NSArray+RFEmptyArrayChecks.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6F816C3CD320049E36B /* NSArray+RFEmptyArrayChecks.h */; };
 		78180F0A16C3D0A800B4AA31 /* NSDictionary+RFKeyedSubscript.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E70016C3CD320049E36B /* NSDictionary+RFKeyedSubscript.h */; };
 		78180F0B16C3D0A800B4AA31 /* NSMutableDictionary+RFKeyedSubscript.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E70216C3CD320049E36B /* NSMutableDictionary+RFKeyedSubscript.h */; };
-		78180F0C16C3D0BD00B4AA31 /* NSBundle+RFParameterList.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6FA16C3CD320049E36B /* NSBundle+RFParameterList.h */; };
-		78180F0D16C3D0BD00B4AA31 /* NSObject+RFAttachedCollections.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6FC16C3CD320049E36B /* NSObject+RFAttachedCollections.h */; };
 		78180F0F16C3D0BD00B4AA31 /* NSMutableString+RFStringFormatter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E70416C3CD320049E36B /* NSMutableString+RFStringFormatter.h */; };
 		78180F1116C3D0BD00B4AA31 /* RFMutableObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D216C3CCE60049E36B /* RFMutableObject.h */; };
 		78180F1216C3D0BD00B4AA31 /* RFObjectPool.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D416C3CCE60049E36B /* RFObjectPool.h */; };
@@ -59,12 +57,6 @@
 		78B8E70616C3CD320049E36B /* NSArray+RFEmptyArrayChecks.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E6F816C3CD320049E36B /* NSArray+RFEmptyArrayChecks.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78B8E70716C3CD320049E36B /* NSArray+RFEmptyArrayChecks.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6F916C3CD320049E36B /* NSArray+RFEmptyArrayChecks.m */; };
 		78B8E70816C3CD320049E36B /* NSArray+RFEmptyArrayChecks.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6F916C3CD320049E36B /* NSArray+RFEmptyArrayChecks.m */; };
-		78B8E70A16C3CD320049E36B /* NSBundle+RFParameterList.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E6FA16C3CD320049E36B /* NSBundle+RFParameterList.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		78B8E70B16C3CD320049E36B /* NSBundle+RFParameterList.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6FB16C3CD320049E36B /* NSBundle+RFParameterList.m */; };
-		78B8E70C16C3CD320049E36B /* NSBundle+RFParameterList.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6FB16C3CD320049E36B /* NSBundle+RFParameterList.m */; };
-		78B8E70E16C3CD320049E36B /* NSObject+RFAttachedCollections.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E6FC16C3CD320049E36B /* NSObject+RFAttachedCollections.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		78B8E70F16C3CD320049E36B /* NSObject+RFAttachedCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6FD16C3CD320049E36B /* NSObject+RFAttachedCollections.m */; };
-		78B8E71016C3CD320049E36B /* NSObject+RFAttachedCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6FD16C3CD320049E36B /* NSObject+RFAttachedCollections.m */; };
 		78B8E71616C3CD320049E36B /* NSDictionary+RFKeyedSubscript.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B8E70016C3CD320049E36B /* NSDictionary+RFKeyedSubscript.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78B8E71716C3CD320049E36B /* NSDictionary+RFKeyedSubscript.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70116C3CD320049E36B /* NSDictionary+RFKeyedSubscript.m */; };
 		78B8E71816C3CD320049E36B /* NSDictionary+RFKeyedSubscript.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70116C3CD320049E36B /* NSDictionary+RFKeyedSubscript.m */; };
@@ -160,8 +152,6 @@
 				78180F0916C3D0A800B4AA31 /* NSArray+RFEmptyArrayChecks.h in CopyFiles */,
 				78180F0A16C3D0A800B4AA31 /* NSDictionary+RFKeyedSubscript.h in CopyFiles */,
 				78180F0B16C3D0A800B4AA31 /* NSMutableDictionary+RFKeyedSubscript.h in CopyFiles */,
-				78180F0C16C3D0BD00B4AA31 /* NSBundle+RFParameterList.h in CopyFiles */,
-				78180F0D16C3D0BD00B4AA31 /* NSObject+RFAttachedCollections.h in CopyFiles */,
 				78180F0F16C3D0BD00B4AA31 /* NSMutableString+RFStringFormatter.h in CopyFiles */,
 				78180F1116C3D0BD00B4AA31 /* RFMutableObject.h in CopyFiles */,
 				782B6DE116C3E74D0057DF2C /* NSString+RFAccessorUtilities.h in CopyFiles */,
@@ -199,10 +189,6 @@
 		78B8E6ED16C3CD070049E36B /* NSString+RFAccessorUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSString+RFAccessorUtilities.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		78B8E6F816C3CD320049E36B /* NSArray+RFEmptyArrayChecks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSArray+RFEmptyArrayChecks.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		78B8E6F916C3CD320049E36B /* NSArray+RFEmptyArrayChecks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSArray+RFEmptyArrayChecks.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		78B8E6FA16C3CD320049E36B /* NSBundle+RFParameterList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSBundle+RFParameterList.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		78B8E6FB16C3CD320049E36B /* NSBundle+RFParameterList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSBundle+RFParameterList.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		78B8E6FC16C3CD320049E36B /* NSObject+RFAttachedCollections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSObject+RFAttachedCollections.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		78B8E6FD16C3CD320049E36B /* NSObject+RFAttachedCollections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSObject+RFAttachedCollections.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		78B8E70016C3CD320049E36B /* NSDictionary+RFKeyedSubscript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSDictionary+RFKeyedSubscript.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		78B8E70116C3CD320049E36B /* NSDictionary+RFKeyedSubscript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSDictionary+RFKeyedSubscript.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		78B8E70216C3CD320049E36B /* NSMutableDictionary+RFKeyedSubscript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSMutableDictionary+RFKeyedSubscript.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -387,7 +373,6 @@
 				8DFAE16617D5F65D002687B8 /* NSRegularExpression+RFROADExtension.h */,
 				8DFAE16717D5F65D002687B8 /* NSRegularExpression+RFROADExtension.m */,
 				78B8E72316C3CD7F0049E36B /* CollectionCategories */,
-				78B8E72516C3CD9F0049E36B /* BundleCategories */,
 				78B8E72616C3CDAA0049E36B /* TextualCategories */,
 				78B8E72416C3CD900049E36B /* InvocationCategories */,
 			);
@@ -450,17 +435,6 @@
 				8DE3785117C784D000F30026 /* NSInvocation+RFROADExtension.m */,
 			);
 			name = InvocationCategories;
-			sourceTree = "<group>";
-		};
-		78B8E72516C3CD9F0049E36B /* BundleCategories */ = {
-			isa = PBXGroup;
-			children = (
-				78B8E6FA16C3CD320049E36B /* NSBundle+RFParameterList.h */,
-				78B8E6FB16C3CD320049E36B /* NSBundle+RFParameterList.m */,
-				78B8E6FC16C3CD320049E36B /* NSObject+RFAttachedCollections.h */,
-				78B8E6FD16C3CD320049E36B /* NSObject+RFAttachedCollections.m */,
-			);
-			name = BundleCategories;
 			sourceTree = "<group>";
 		};
 		78B8E72616C3CDAA0049E36B /* TextualCategories */ = {
@@ -612,8 +586,6 @@
 				78B8E6E416C3CCE60049E36B /* RFPoolObject.h in Headers */,
 				78B8E6E816C3CCE60049E36B /* RFObject.h in Headers */,
 				78B8E70616C3CD320049E36B /* NSArray+RFEmptyArrayChecks.h in Headers */,
-				78B8E70A16C3CD320049E36B /* NSBundle+RFParameterList.h in Headers */,
-				78B8E70E16C3CD320049E36B /* NSObject+RFAttachedCollections.h in Headers */,
 				78B8E71616C3CD320049E36B /* NSDictionary+RFKeyedSubscript.h in Headers */,
 				78B8E71A16C3CD320049E36B /* NSMutableDictionary+RFKeyedSubscript.h in Headers */,
 				78B8E71E16C3CD320049E36B /* NSMutableString+RFStringFormatter.h in Headers */,
@@ -770,8 +742,6 @@
 				78B8E6E516C3CCE60049E36B /* RFPoolObject.m in Sources */,
 				78B8E6E916C3CCE60049E36B /* RFObject.m in Sources */,
 				78B8E70716C3CD320049E36B /* NSArray+RFEmptyArrayChecks.m in Sources */,
-				78B8E70B16C3CD320049E36B /* NSBundle+RFParameterList.m in Sources */,
-				78B8E70F16C3CD320049E36B /* NSObject+RFAttachedCollections.m in Sources */,
 				78B8E71716C3CD320049E36B /* NSDictionary+RFKeyedSubscript.m in Sources */,
 				78B8E6F016C3CD070049E36B /* NSString+RFAccessorUtilities.m in Sources */,
 				78B8E71B16C3CD320049E36B /* NSMutableDictionary+RFKeyedSubscript.m in Sources */,
@@ -800,8 +770,6 @@
 				78B8E6E616C3CCE60049E36B /* RFPoolObject.m in Sources */,
 				78B8E6EA16C3CCE60049E36B /* RFObject.m in Sources */,
 				78B8E70816C3CD320049E36B /* NSArray+RFEmptyArrayChecks.m in Sources */,
-				78B8E70C16C3CD320049E36B /* NSBundle+RFParameterList.m in Sources */,
-				78B8E71016C3CD320049E36B /* NSObject+RFAttachedCollections.m in Sources */,
 				78B8E71816C3CD320049E36B /* NSDictionary+RFKeyedSubscript.m in Sources */,
 				78B8E71C16C3CD320049E36B /* NSMutableDictionary+RFKeyedSubscript.m in Sources */,
 				782B6DE516C3E8E40057DF2C /* NSString+RFAccessorUtilities.m in Sources */,

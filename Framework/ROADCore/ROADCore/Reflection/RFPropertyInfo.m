@@ -157,7 +157,7 @@
 }
 
 - (NSString *)className {
-    if (_className) {
+    if (!_className) {
         _className = NSStringFromClass(self.hostClass);
     }
     
@@ -173,8 +173,10 @@
 }
 
 - (Class)typeClass {
-    if (!_isAttributeNameFilled) {
-        [self fillAttributeName];
+    if (!_typeClass) {
+        if (!_isAttributeNameFilled) {
+            [self fillAttributeName];
+        }
         _typeClass = NSClassFromString([RFTypeDecoder RF_classNameFromTypeName:_typeName]);
     }
     

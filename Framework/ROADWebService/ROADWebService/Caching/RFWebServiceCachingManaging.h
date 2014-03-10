@@ -37,6 +37,17 @@
 @protocol RFWebServiceCachingManaging <NSObject>
 
 /**
+ * Set one cache entry to the web service cache with an identifier for handling.
+ *
+ * @param request          The request that should be stored in the cache.
+ * @param response         The response of the request.
+ * @param responseBodyData The response data.
+ * @param expirationDate   The timeout time of the cache.
+ * @param cacheIdentifier  The identifier of the cache entry for direct handling.
+ */
+- (void)setCacheWithRequest:(NSURLRequest *)request response:(NSHTTPURLResponse *)response responseBodyData:(NSData *)responseBodyData expirationDate:(NSDate *)expirationDate cacheIdentifier:(NSString *)cacheIdentifier;
+
+/**
  * Set one cache entry to the web service cache.
  * @param request The request that should be stored in the cache.
  * @param response The response of the request.
@@ -44,6 +55,25 @@
  * @param expirationDate The timeout time of the cache.
  */
 - (void)setCacheWithRequest:(NSURLRequest *)request response:(NSHTTPURLResponse *)response responseBodyData:(NSData *)responseBodyData expirationDate:(NSDate *)expirationDate;
+
+/**
+ * Returns an array of cache objects from the cache.
+ *
+ * @param cacheIdentifier The identifier which identifies the cache data entry.
+ *
+ * @return retruns the array of the matching RFWebResponse instances
+ */
+- (NSArray *)cacheWithIdentifier:(NSString *)cacheIdentifier;
+
+/**
+ * Returns an array of cache objects from the cache which have matching cache idenfier prefixes.
+ *
+ * @param cacheIdentifierPrefix The identifier prefix which identifies the cache data entries with
+ * cacheIdentifiers with the matching begining.
+ *
+ * @return returns the array of the matching RFWebResponse instances
+ */
+- (NSArray *)cacheWithIdentifierPrefix:(NSString *)cacheIdentifierPrefix;
 
 /**
  * Returns the cache object from the cache. If no entry has found, returns nil.
@@ -59,8 +89,33 @@
 - (RFWebResponse *)cacheForResponse:(NSHTTPURLResponse *)response request:(NSURLRequest *)request;
 
 /**
+ * Flushes the targeted records from the cache.
+ *
+ * @param cacheIdentifier The identifier which identifies the cache data entry.
+ */
+- (void)flushElementsWithIdentifier:(NSString *)cacheIdentifier;
+
+/**
+ * Flushes the targeted records from the cache. This method aims to target multiple cache
+ * elements in the cache with partially matching cache identifiers.
+ *
+ * @param cacheIdentifierPrefix The identifier prefix which identifies multiple cache data entries.
+ */
+- (void)flushElementsWithIdentifierPrefix:(NSString *)cacheIdentifierPrefix;
+
+/**
  * Clear all record in cache
  */
 - (void)dropCache;
+
+/**
+ * Parses the cache identifier string with the supplied parameters
+ *
+ * @param cacheIdentifier The identifier which identifies the cache data entry.
+ * @param parameterValues The parameter dictionary to parse the cache identifier
+ *
+ * @return The parsed cache identifier string
+ */
+- (NSString *)parseCacheIdentifier:(NSString *)cacheIdentifier withParameters:(NSDictionary *)parameterValues;
 
 @end
