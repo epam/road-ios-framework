@@ -55,7 +55,7 @@
     NSString *jsonSrting = [RFAttributedCoder encodeRootObject:_object];
     NSData *jsonData = [jsonSrting dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *decodedJSON = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
-    STAssertFalse(decodedJSON[RFSerializedObjectClassName], @"The deserialized content contained the \"RFSerializedObjectClassName\" regardless of the annotation. ");
+    STAssertTrue(decodedJSON[RFSerializedObjectClassName] == nil, @"The deserialized content contained the \"RFSerializedObjectClassName\" regardless of the annotation. ");
 }
 
 @end
