@@ -120,7 +120,7 @@
     NSError *decodeError = nil;
     id result = [decoder decodeData:data withRootObjectClass:[RFSerializationTestObject class] error:&decodeError];
     STAssertNil(decodeError, @"XML Decoding Error: %@", decodeError);
-    STAssertTrue(result, @"Assertion: deserialization is not successful.");
+    STAssertTrue(result != nil, @"Assertion: deserialization is not successful.");
 }
 
 - (void)testSerializationWithCollectionContainer
