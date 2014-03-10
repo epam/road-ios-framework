@@ -33,7 +33,6 @@
 #import "RFWebServiceCachingManager.h"
 #import <CoreData/CoreData.h>
 #import <ROAD/ROADCore.h>
-#import <ROAD/ROADLogger.h>
 
 #import "RFWebResponse.h"
 #import "RFWebServiceCacheContext.h"
@@ -105,7 +104,7 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
             NSError *error;
             [managedObjectContext save:&error];
             if (error) {
-                RFLogError(@"RFWebServiceCachingManager error: saving cached response failed with error: %@", [error localizedDescription]);
+                NSLog(@"RFWebServiceCachingManager error: saving cached response failed with error: %@", [error localizedDescription]);
             }
         });
     }
@@ -163,7 +162,7 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
         NSError *error;
         [_cacheContext.context save:&error];
         if (error) {
-            RFLogError(@"Clean of cache was failed with error : %@", error);
+            NSLog(@"Clean of cache was failed with error : %@", error);
         }
     }
 }
@@ -175,7 +174,7 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
         NSError *error;
         [_cacheContext.context save:&error];
         if (error) {
-            RFLogError(@"Clean of cache was failed with error : %@", error);
+            NSLog(@"Clean of cache was failed with error : %@", error);
         }
     }
 }
@@ -184,13 +183,13 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
     NSError *error;
     [_cacheContext.persisitentStoreCoordinator removePersistentStore:[_cacheContext.persisitentStoreCoordinator.persistentStores lastObject] error:&error];
     if (error) {
-        RFLogError(@"Cache failed to be dropped with error : %@", error);
+        NSLog(@"Cache failed to be dropped with error : %@", error);
     }
     else {
         if ([[NSFileManager defaultManager] fileExistsAtPath:[[_cacheContext.storeURL absoluteString] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]) {
             [[NSFileManager defaultManager] removeItemAtURL:_cacheContext.storeURL error:&error];
             if (error) {
-                RFLogError(@"Cache file failed to be dropped with error : %@", error);
+                NSLog(@"Cache file failed to be dropped with error : %@", error);
             }
             else {
                 [_cacheContext bindStore];
@@ -316,7 +315,7 @@ static const NSInteger kRFWebServiceHeaderValueParameterIndex       = 1;
             NSError *error;
             [managedObjectContext save:&error];
             if (error) {
-                RFLogError(@"Clean of cache was failed with error : %@", error);
+                NSLog(@"Clean of cache was failed with error : %@", error);
             }
         }
         else if ([webResponse.requestURL isEqualToString:[request.URL absoluteString]]
@@ -352,7 +351,7 @@ static const NSInteger kRFWebServiceHeaderValueParameterIndex       = 1;
             NSError *error;
             [_cacheContext.context save:&error];
             if (error) {
-                RFLogError(@"Clean of cache was failed with error : %@", error);
+                NSLog(@"Clean of cache was failed with error : %@", error);
             }
         } else {
             [cachedResponse addObject:webResponse];

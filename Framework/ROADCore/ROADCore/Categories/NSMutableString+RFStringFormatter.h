@@ -31,17 +31,15 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import <Foundation/Foundation.h>
-
 /**
- Category enabling to substitude values into an url expression using key-value pairs.
+ * Category enabling to substitude values into an url expression using key-value pairs.
  */
 @interface NSMutableString (RFStringFormatter)
 
 /**
- Fills a specified string with the values specified, substituding the values for the keys in the receiver. The assumption is the keys in the dictionary bracketed by the escapeString on both sides are the values to be replaced, while the corresponding value from the dictionary is to be substituted. If a key is not found in the dictionary its entire string part is removed from the result.
- @param valueDictionary The key-values representing the keys to be replaced by values in the template string.
- @param escapeString The escape string marking the spot of a replacement.
+ * Fills a specified string with the values specified, substituding the values for the keys in the receiver. The assumption is the keys in the dictionary bracketed by the escapeString on both sides are the values to be replaced, while the corresponding value from the dictionary is to be substituted. If a key is not found in the dictionary its entire string part is removed from the result.
+ * @param valueDictionary The key-values representing the keys to be replaced by values in the template string.
+ * @param escapeString The escape string marking the spot of a replacement.
  */
 - (void)RF_formatStringUsingValues:(NSDictionary *)valueDictionary withEscape:(NSString *)escapeString;
 

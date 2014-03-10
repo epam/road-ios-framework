@@ -41,7 +41,6 @@
 #import "RFWebServiceCallParameterEncoder.h"
 #import "RFWebServiceHeader.h"
 #import "RFDownloader.h"
-#import "RFWebServiceLogger.h"
 #import "RFWebServiceURLBuilder.h"
 #import "RFWebServiceSerializationHandler.h"
 #import "RFWebServiceClientStatusCodes.h"

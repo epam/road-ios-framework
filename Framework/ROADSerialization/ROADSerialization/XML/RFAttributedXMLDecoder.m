@@ -29,9 +29,8 @@
 
 
 #import "RFAttributedXMLDecoder.h"
-#import <ROAD/NSRegularExpression+RFROADExtension.h>
+#import <ROAD/NSRegularExpression+RFExtension.h>
 #import <ROAD/ROADReflection.h>
-#import <ROAD/ROADLogger.h>
 #import "RFXMLSerializable.h"
 #import "RFSerializableBoolean.h"
 #import "RFSerializableDate.h"
@@ -303,7 +302,7 @@
         RFPropertyInfo *elementProperty = _context.properties[elementName];
         if (!elementProperty) {
             
-            RFLogWarning(@"RFAttributedXMLDecoder: Skipped missing property '%@'", elementName);
+            NSLog(@"RFAttributedXMLDecoder: Skipped missing property '%@'", elementName);
             _context.elementSkipped = YES;
         }
         result = elementProperty.typeClass;

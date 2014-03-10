@@ -33,13 +33,14 @@
 
 #import "RFConditionalComponentResultTest.h"
 #import "NSArray+RFEmptyArrayChecks.h"
+#import <ROAD/ROADAttribute.h>
 
 @implementation RFConditionalComponentResultTest
 
 - (void)testConditionalLastObjectNotExisting {
     NSArray * const array = @[];
     id lastObject = [array RF_lastElementIfNotEmpty];
-    
+
     STAssertTrue(lastObject == nil, @"Assertion: empty array's last object is nil with this method.");
 }
 

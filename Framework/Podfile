@@ -1,0 +1,15 @@
+platform :ios, '5.0'
+
+workspace 'ROADFramework'
+
+xcodeproj 'ROADCore/ROADCore.xcodeproj'
+
+target :ROADCore do
+    pod 'libObjCAttr'
+    xcodeproj 'ROADCore/ROADCore.xcodeproj'
+end
+
+post_install do |installer|
+  require File.expand_path('ROADConfigurator.rb', './Pods/libObjCAttr/libObjCAttr/Resources/')
+  ROADConfigurator::post_install(installer)
+end

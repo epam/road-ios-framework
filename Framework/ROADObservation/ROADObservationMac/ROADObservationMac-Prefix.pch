@@ -1,7 +1,0 @@
-//
-// Prefix header for all source files of the 'ROADObservationMac' target in the 'ROADObservationMac' project
-//
-
-#ifdef __OBJC__
-    #import <Cocoa/Cocoa.h>
-#endif

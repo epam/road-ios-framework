@@ -37,7 +37,6 @@
 
 @interface RFDownloader : NSObject <RFWebServiceCancellable, NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 
-@property (strong, nonatomic) NSString *loggerType;
 @property (readonly, nonatomic, readonly) NSMutableArray *successCodes;
 @property (strong, nonatomic) id<RFAuthenticating> authenticationProvider;
 @property (strong, nonatomic, readonly) NSMutableURLRequest *request;
