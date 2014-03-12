@@ -32,10 +32,11 @@
 
 
 #import "RFDownloader.h"
-#import "RFLooper.h"
 #import <ROAD/ROADCore.h>
-#import "NSError+RFROADWebService.h"
+#import <ROAD/RFWebServiceLog.h>
 
+#import "RFLooper.h"
+#import "NSError+RFROADWebService.h"
 #import "RFWebServiceCall.h"
 #import "RFWebServiceHeader.h"
 #import "RFWebServiceClientStatusCodes.h"
@@ -100,7 +101,7 @@
         if (!boundary.length) {
             // Some random default boundary
             boundary = @"AaB03x"; //kRFBoundaryDefaultString; // Bug of Travis: const string contain nil
-            NSLog(@"WebService: Boundary is not specified, using default one");
+            RFWSLogVerbose(@"WebService: Boundary is not specified, using default one");
         }
         NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
         [_request addValue:contentType forHTTPHeaderField:@"Content-Type"];
@@ -161,7 +162,7 @@
         _data = [NSMutableData data];
         [_connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
         [_connection start];
-        NSLog(@"URL connection(%p) has started. Method: %@. URL: %@\nHeader fields: %@", _connection, _connection.currentRequest.HTTPMethod, [_connection.currentRequest.URL absoluteString], [_connection.currentRequest allHTTPHeaderFields]);
+        RFWSLogInfo(@"URL connection(%p) has started. Method: %@. URL: %@\nHeader fields: %@", _connection, _connection.currentRequest.HTTPMethod, [_connection.currentRequest.URL absoluteString], [_connection.currentRequest allHTTPHeaderFields]);
         [_looper start];
     }
 }
@@ -248,7 +249,7 @@
 - (void)cancel {
     _requestCancelled = YES;
     [_connection cancel];
-    NSLog(@"URL connection(%p) is canceled. URL: %@", _connection, [_connection.currentRequest.URL absoluteString]);
+    RFWSLogInfo(@"URL connection(%p) is canceled. URL: %@", _connection, [_connection.currentRequest.URL absoluteString]);
     self.data = nil;
     self.downloadError = [NSError RF_sparkWS_cancellError];
     [self stop];
@@ -271,7 +272,7 @@
                 }
             }
             else if (_callAttribute.postParameter != NSNotFound) {
-                NSLog(@"Web service method %@ specifies postParameter, but has NSData of RFFormData variable in parameters and use it instead", method);
+                RFWSLogWarn(@"Web service method %@ specifies postParameter, but has NSData or RFFormData variable in parameters and use it instead", method);
             }
         }
     }

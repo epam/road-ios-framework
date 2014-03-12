@@ -96,6 +96,7 @@
 		83D0E63C184CAB0F002625E6 /* RFWebServiceSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E63B184CAB0F002625E6 /* RFWebServiceSerializer.m */; };
 		83D0E641184DC4B5002625E6 /* RFSerializableTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E63F184DC4B5002625E6 /* RFSerializableTestObject.m */; };
 		83D0E64A184DCC3C002625E6 /* RFDigestAuthenticationProvider.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D719856717C65D5B0017C680 /* RFDigestAuthenticationProvider.h */; };
+		83E0CE1918D1E28B00B25689 /* RFWebServiceLog.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83E0CDE018D07FE100B25689 /* RFWebServiceLog.h */; };
 		83FF041917C7A77700134DDE /* RFODataErrorHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 831EB9EB17C60A65004C9BA5 /* RFODataErrorHandler.h */; };
 		8D94224817E2A4B0005F0AE3 /* RFODataTestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 839992E217D9DB45002DAE8D /* RFODataTestEntity.m */; };
 		8D94224917E2A4B5005F0AE3 /* RFDownloader+FakeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 839992F717DA04D4002DAE8D /* RFDownloader+FakeRequest.m */; };
@@ -213,6 +214,7 @@
 			dstPath = include/ROAD;
 			dstSubfolderSpec = 16;
 			files = (
+				83E0CE1918D1E28B00B25689 /* RFWebServiceLog.h in CopyFiles */,
 				83C173521861E22100A9538D /* RFWebServiceCachingManaging.h in CopyFiles */,
 				83C173531861E22100A9538D /* RFWebServiceCachingManager.h in CopyFiles */,
 				83C173541861E22100A9538D /* RFWebResponse.h in CopyFiles */,
@@ -353,6 +355,7 @@
 		83D0E63B184CAB0F002625E6 /* RFWebServiceSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebServiceSerializer.m; sourceTree = "<group>"; };
 		83D0E63E184DC4B5002625E6 /* RFSerializableTestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFSerializableTestObject.h; sourceTree = "<group>"; };
 		83D0E63F184DC4B5002625E6 /* RFSerializableTestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFSerializableTestObject.m; sourceTree = "<group>"; };
+		83E0CDE018D07FE100B25689 /* RFWebServiceLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFWebServiceLog.h; sourceTree = "<group>"; };
 		BDED127D63214FB8B5A5C352 /* libPods-ROADWebServiceTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ROADWebServiceTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD69624016F0D20F0090B201 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		CD896BFF1737E84F00565C9C /* RFWebServiceCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFWebServiceCall.h; sourceTree = "<group>"; };
@@ -569,6 +572,14 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		83E0CDE718D082C900B25689 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CD896C111737E84F00565C9C /* ROADWebservice-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		83EC6EBF175DCEE700801611 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -583,6 +594,7 @@
 			children = (
 				CD896C121737E84F00565C9C /* ROADWebservice.h */,
 				CD896C131737E84F00565C9C /* ROADWebServiceAnnotations.h */,
+				83E0CDE018D07FE100B25689 /* RFWebServiceLog.h */,
 				E5B9D4B11786CEAA00E1901C /* Private */,
 				8396B3E317A162F4009E7B9B /* AuthenticationProvider */,
 				8349D96117B22EB2006BDA5F /* OData */,
@@ -591,7 +603,7 @@
 				CD896C141737E84F00565C9C /* Webservice */,
 				CD896BFC1737E84F00565C9C /* Attributes */,
 				CD896C0C1737E84F00565C9C /* Resources */,
-				CD896C111737E84F00565C9C /* ROADWebservice-Prefix.pch */,
+				83E0CDE718D082C900B25689 /* Supporting Files */,
 			);
 			path = ROADWebService;
 			sourceTree = "<group>";
@@ -1018,6 +1030,7 @@
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADWebserviceTest/ROADWebserviceTest-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -1052,6 +1065,7 @@
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADWebserviceTest/ROADWebserviceTest-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,

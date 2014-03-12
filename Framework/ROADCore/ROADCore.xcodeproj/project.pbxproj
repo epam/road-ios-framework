@@ -10,6 +10,28 @@
 	<string>46</string>
 	<key>objects</key>
 	<dict>
+		<key>2B58D90A7CDF47C280AC740D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>3CB2D462D6294056BE0E7770</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>3CB2D462D6294056BE0E7770</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>ROADGeneratedAttribute.m</string>
+			<key>path</key>
+			<string>ROADCore/ROADGeneratedAttributes/ROADGeneratedAttribute.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>40A4215F16D743C6836F7D28</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -168,6 +190,7 @@
 				<string>78B8E68F16C3CC3E0049E36B</string>
 				<string>634461C3604B4DB58DF380FC</string>
 				<string>40A4215F16D743C6836F7D28</string>
+				<string>3CB2D462D6294056BE0E7770</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -246,6 +269,7 @@
 				<string>78B8E71B16C3CD320049E36B</string>
 				<string>78B8E71F16C3CD320049E36B</string>
 				<string>54FCFE0077B148F8BD78C6E6</string>
+				<string>2B58D90A7CDF47C280AC740D</string>
 			</array>
 			<key>isa</key>
 			<string>PBXSourcesBuildPhase</string>
@@ -276,6 +300,7 @@
 			<string>16</string>
 			<key>files</key>
 			<array>
+				<string>83E0CDE918D0833900B25689</string>
 				<string>78180F0816C3D0A300B4AA31</string>
 				<string>78180F0916C3D0A800B4AA31</string>
 				<string>78180F0A16C3D0A800B4AA31</string>
@@ -385,6 +410,7 @@
 			<key>children</key>
 			<array>
 				<string>78B8E72216C3CD4A0049E36B</string>
+				<string>83E0CDDF18D0522100B25689</string>
 				<string>78B8E69F16C3CC880049E36B</string>
 				<string>78B8E6A016C3CC880049E36B</string>
 				<string>78B8E69416C3CC3E0049E36B</string>
@@ -1453,6 +1479,26 @@ oclint-json-compilation-database -e ROADGeneratedAttributes -- -rc=LONG_LINE=500
 		<dict>
 			<key>fileRef</key>
 			<string>83AE634517F467BF0053780E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>83E0CDDF18D0522100B25689</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>RFLog.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>83E0CDE918D0833900B25689</key>
+		<dict>
+			<key>fileRef</key>
+			<string>83E0CDDF18D0522100B25689</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>

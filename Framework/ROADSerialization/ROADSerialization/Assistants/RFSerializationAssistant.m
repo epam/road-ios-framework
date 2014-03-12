@@ -32,6 +32,8 @@
 
 #import "RFSerializationAssistant.h"
 #import <ROAD/ROADReflection.h>
+#import <ROAD/RFSerializationLog.h>
+
 #import "RFSerializable.h"
 #import "RFDerived.h"
 #import "RFSerializableCollection.h"
@@ -118,7 +120,7 @@ id RFCustomSerialization(id value, RFSerializationCustomHandler *customHandlerAt
         encodedValue = [customSerializationHandler encodeObject:value];
     }
     else {
-        NSLog(@"Custom handler - %@ - was assigned, but it does not have appropriate encoding method!", NSStringFromClass(customHandlerAttribute.handlerClass));
+        RFSCLogWarn(@"Custom handler - %@ - was assigned, but it does not have appropriate encoding method!", NSStringFromClass(customHandlerAttribute.handlerClass));
     }
     
     return encodedValue;
@@ -131,7 +133,7 @@ id RFCustomDeserialization(id value, RFSerializationCustomHandler *customHandler
         decodedValue = [customSerializationHandler decodeObject:value];
     }
     else {
-        NSLog(@"Custom handler - %@ - was assigned, but it does not have appropriate decoding method!", NSStringFromClass(customHandlerAttribute.handlerClass));
+        RFSCLogWarn(@"Custom handler - %@ - was assigned, but it does not have appropriate decoding method!", NSStringFromClass(customHandlerAttribute.handlerClass));
     }
     
     return decodedValue;

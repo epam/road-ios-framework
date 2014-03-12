@@ -75,6 +75,7 @@
 		83D0E61018462AE8002625E6 /* DeserializationCustomHandlingTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 83D0E60F18462AE8002625E6 /* DeserializationCustomHandlingTest.json */; };
 		83D0E6161846304E002625E6 /* DeserializationCustomPropertyKeyHandlingTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 83D0E6151846304E002625E6 /* DeserializationCustomPropertyKeyHandlingTest.json */; };
 		83D0E643184DCC0B002625E6 /* RFSerializationCustomHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83F122C818449D32000023AF /* RFSerializationCustomHandler.h */; };
+		83E0CE1218D1E24900B25689 /* RFSerializationLog.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83E0CDED18D0940900B25689 /* RFSerializationLog.h */; };
 		83F122CA18449D32000023AF /* RFSerializationCustomHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F122C918449D32000023AF /* RFSerializationCustomHandler.m */; };
 		8D1239BC17CFAED300094213 /* RFSerializationAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1239BB17CFAED300094213 /* RFSerializationAssistant.m */; };
 		8D60078617CFFF7D0095E17D /* ROADGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D60078517CFFF7D0095E17D /* ROADGeneratedAttribute.m */; };
@@ -108,6 +109,7 @@
 			dstPath = include/ROAD;
 			dstSubfolderSpec = 16;
 			files = (
+				83E0CE1218D1E24900B25689 /* RFSerializationLog.h in CopyFiles */,
 				83BE65C918A50B1300085C4C /* RFXMLSerializable.h in CopyFiles */,
 				83BE65C818A5080200085C4C /* RFDateFormatterPooling.h in CopyFiles */,
 				83BE65C718A507E300085C4C /* RFBasicAttributedCoder.h in CopyFiles */,
@@ -198,6 +200,7 @@
 		83D0E6031845DCBF002625E6 /* RFJSONCustomPropertyKeyHandlerEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFJSONCustomPropertyKeyHandlerEntity.m; sourceTree = "<group>"; };
 		83D0E60F18462AE8002625E6 /* DeserializationCustomHandlingTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DeserializationCustomHandlingTest.json; sourceTree = "<group>"; };
 		83D0E6151846304E002625E6 /* DeserializationCustomPropertyKeyHandlingTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DeserializationCustomPropertyKeyHandlingTest.json; sourceTree = "<group>"; };
+		83E0CDED18D0940900B25689 /* RFSerializationLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RFSerializationLog.h; sourceTree = "<group>"; };
 		83F122C818449D32000023AF /* RFSerializationCustomHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFSerializationCustomHandler.h; sourceTree = "<group>"; };
 		83F122C918449D32000023AF /* RFSerializationCustomHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFSerializationCustomHandler.m; sourceTree = "<group>"; };
 		8D1239BA17CFAED300094213 /* RFSerializationAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFSerializationAssistant.h; sourceTree = "<group>"; };
@@ -484,6 +487,7 @@
 			isa = PBXGroup;
 			children = (
 				9F80CD5B15F64EEE0031BA24 /* ROADSerialization.h */,
+				83E0CDED18D0940900B25689 /* RFSerializationLog.h */,
 				8D1239B617CFAE9300094213 /* Assistants */,
 				78957284163809A0009D7417 /* Attributes */,
 				786535551639647300E86841 /* Categories */,

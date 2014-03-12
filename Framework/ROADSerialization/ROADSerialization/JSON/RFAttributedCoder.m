@@ -34,6 +34,7 @@
 #import "RFAttributedCoder.h"
 #import <ROAD/ROADReflection.h>
 #import <ROAD/ROADCore.h>
+#import <ROAD/RFSerializationLog.h>
 
 #import "RFSerializable.h"
 #import "RFDerived.h"
@@ -43,6 +44,7 @@
 #import "RFSerializableBoolean.h"
 #import "RFBooleanTranslator.h"
 #import "RFSerializationAssistant.h"
+
 
 @implementation RFAttributedCoder {
     NSString * _dateFormat;
@@ -77,12 +79,12 @@
 }
 
 + (id)encodeRootObjectToSerializableObject:(id)rootObject {
-    NSLog(@"Coder(%@ %p) started processing object(%@)", self, self, rootObject);
+    RFSCLogInfo(@"Coder(%@ %p) started processing object(%@)", self, self, rootObject);
     
     RFAttributedCoder *coder = [[self alloc] init];
     coder->_archive = [coder encodeRootObject:rootObject];
     
-    NSLog(@"Coder(%@ %p) ended processing", self, self);
+    RFSCLogInfo(@"Coder(%@ %p) ended processing", self, self);
     
     return coder->_archive;
 }
