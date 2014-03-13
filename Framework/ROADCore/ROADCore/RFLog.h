@@ -37,59 +37,55 @@
 
     #ifdef ROAD_LOGGING_NSLOG
 
+        #ifdef ROAD_LOGGING_LEVEL_ERROR
 
-        #define RFLogError(...) NSLog(__VA_ARGS__);
+            #define RFLogError(...) NSLog(__VA_ARGS__)
+            #define RFLogWarn(...)
+            #define RFLogInfo(...)
+            #define RFLogDebug(...)
+            #define RFLogVerbose(...)
 
-        #define RFLogWarn(...) NSLog(__VA_ARGS__);
+        #elif ROAD_LOGGING_LEVEL_WARN
 
-        #define RFLogInfo(...) NSLog(__VA_ARGS__);
+            #define RFLogError(...) NSLog(__VA_ARGS__)
+            #define RFLogWarn(...) NSLog(__VA_ARGS__)
+            #define RFLogInfo(...)
+            #define RFLogDebug(...)
+            #define RFLogVerbose(...)
 
-        #define RFLogDebug(...) NSLog(__VA_ARGS__);
+        #elif ROAD_LOGGING_LEVEL_INFO
 
-        #define RFLogVerbose(...) NSLog(__VA_ARGS__);
+            #define RFLogError(...) NSLog(__VA_ARGS__)
+            #define RFLogWarn(...) NSLog(__VA_ARGS__)
+            #define RFLogInfo(...) NSLog(__VA_ARGS__)
+            #define RFLogDebug(...)
+            #define RFLogVerbose(...)
 
+        #elif ROAD_LOGGING_LEVEL_DEBUG
 
-    #elif ROAD_LOGGING_COCOA_LUMBERJACK
+            #define RFLogError(...) NSLog(__VA_ARGS__)
+            #define RFLogWarn(...) NSLog(__VA_ARGS__)
+            #define RFLogInfo(...) NSLog(__VA_ARGS__)
+            #define RFLogDebug(...) NSLog(__VA_ARGS__)
+            #define RFLogVerbose(...)
 
+        #else
 
-        #define RFLogError(...) DDLogError(__VA_ARGS__);
+            #define RFLogError(...) NSLog(__VA_ARGS__)
+            #define RFLogWarn(...) NSLog(__VA_ARGS__)
+            #define RFLogInfo(...) NSLog(__VA_ARGS__)
+            #define RFLogDebug(...) NSLog(__VA_ARGS__)
+            #define RFLogVerbose(...) NSLog(__VA_ARGS__)
 
-        #define RFLogWarn(...) DDLogWarn(__VA_ARGS__);
-
-        #define RFLogInfo(...) DDLogInfo(__VA_ARGS__);
-
-        #define RFLogDebug(...) DDLogDebug(__VA_ARGS__);
-
-        #define RFLogVerbose(...) DDLogVerbose(__VA_ARGS__);
-
-
-    #elif ROAD_LOGGING_USER_DEFINED
-
-        /**
-         * Framework user must define following macroses in this case:
-         *
-         * - RFLogError(...)
-         * - RFLogWarn(...)
-         * - RFLogInfo(...)
-         * - RFLogDebug(...)
-         * - RFLogVerbose(...)
-         *
-         */
-
+        #endif
 
     #else
 
-
         #define RFLogError(...)
-
         #define RFLogWarn(...)
-
         #define RFLogInfo(...)
-
         #define RFLogDebug(...)
-
         #define RFLogVerbose(...)
-
 
     #endif
 

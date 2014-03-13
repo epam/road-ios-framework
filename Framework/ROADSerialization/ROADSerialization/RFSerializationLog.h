@@ -37,34 +37,21 @@
 
     #ifdef ROAD_LOGGING_SERIALIZATION_DISABLED
 
-
         #define RFSCLogError(...)
-
         #define RFSCLogWarn(...)
-
         #define RFSCLogInfo(...)
-
         #define RFSCLogDebug(...)
-
         #define RFSCLogVerbose(...)
-
 
     #else
 
-
         #import <ROAD/RFLog.h>
 
-
-        #define RFSCLogError(...) RFLogError(__VA_ARGS__);
-
-        #define RFSCLogWarn(...) RFLogWarn(__VA_ARGS__);
-
-        #define RFSCLogInfo(...) RFLogInfo(__VA_ARGS__);
-
-        #define RFSCLogDebug(...) RFLogDebug(__VA_ARGS__);
-
-        #define RFSCLogVerbose(...) RFLogVerbose(__VA_ARGS__);
-
+        #define RFSCLogError(...) RFLogError(__VA_ARGS__)
+        #define RFSCLogWarn(...) RFLogWarn(__VA_ARGS__)
+        #define RFSCLogInfo(...) RFLogInfo(__VA_ARGS__)
+        #define RFSCLogDebug(...) RFLogDebug(__VA_ARGS__)
+        #define RFSCLogVerbose(...) RFLogVerbose(__VA_ARGS__)
 
     #endif
 

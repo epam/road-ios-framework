@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		11500EE718D1FCFF00353CAD /* RFSerializationLog.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83E0CDED18D0940900B25689 /* RFSerializationLog.h */; };
 		331843F017FC656600634BF6 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 331843EF17FC656600634BF6 /* libxml2.2.dylib */; };
 		3337D3801802B5AE00FE22F4 /* DeserialisationTest.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3337D37F1802B5AE00FE22F4 /* DeserialisationTest.xml */; };
 		3337D3831802BB1600FE22F4 /* DeserialisationTest2.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3337D3811802BB1600FE22F4 /* DeserialisationTest2.xml */; };
@@ -75,7 +76,6 @@
 		83D0E61018462AE8002625E6 /* DeserializationCustomHandlingTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 83D0E60F18462AE8002625E6 /* DeserializationCustomHandlingTest.json */; };
 		83D0E6161846304E002625E6 /* DeserializationCustomPropertyKeyHandlingTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 83D0E6151846304E002625E6 /* DeserializationCustomPropertyKeyHandlingTest.json */; };
 		83D0E643184DCC0B002625E6 /* RFSerializationCustomHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83F122C818449D32000023AF /* RFSerializationCustomHandler.h */; };
-		83E0CE1218D1E24900B25689 /* RFSerializationLog.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83E0CDED18D0940900B25689 /* RFSerializationLog.h */; };
 		83F122CA18449D32000023AF /* RFSerializationCustomHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F122C918449D32000023AF /* RFSerializationCustomHandler.m */; };
 		8D1239BC17CFAED300094213 /* RFSerializationAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1239BB17CFAED300094213 /* RFSerializationAssistant.m */; };
 		8D60078617CFFF7D0095E17D /* ROADGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D60078517CFFF7D0095E17D /* ROADGeneratedAttribute.m */; };
@@ -109,7 +109,7 @@
 			dstPath = include/ROAD;
 			dstSubfolderSpec = 16;
 			files = (
-				83E0CE1218D1E24900B25689 /* RFSerializationLog.h in CopyFiles */,
+				11500EE718D1FCFF00353CAD /* RFSerializationLog.h in CopyFiles */,
 				83BE65C918A50B1300085C4C /* RFXMLSerializable.h in CopyFiles */,
 				83BE65C818A5080200085C4C /* RFDateFormatterPooling.h in CopyFiles */,
 				83BE65C718A507E300085C4C /* RFBasicAttributedCoder.h in CopyFiles */,
@@ -574,6 +574,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = RF;
+				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Epam Systems";
 			};

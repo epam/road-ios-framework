@@ -33,8 +33,8 @@
 
 #import "RFDownloader.h"
 #import <ROAD/ROADCore.h>
-#import <ROAD/RFWebServiceLog.h>
 
+#import "RFWebServiceLog.h"
 #import "RFLooper.h"
 #import "NSError+RFROADWebService.h"
 #import "RFWebServiceCall.h"
@@ -59,7 +59,7 @@
 @property (strong, nonatomic) NSError *downloadError;
 @property (strong, nonatomic) NSMutableData *data;
 @property (strong, nonatomic) NSHTTPURLResponse *response;
-@property (assign, nonatomic) NSUInteger expectedContentLenght;
+@property (assign, nonatomic) long long expectedContentLenght;
 @property (strong, nonatomic) RFWebServiceCall * callAttribute;
 @property (strong, nonatomic) NSDictionary * values;
 
@@ -242,7 +242,7 @@
     return [_data length];
 }
 
-- (NSUInteger)expectedContentLenght {
+- (long long)expectedContentLenght {
     return _expectedContentLenght;
 }
 

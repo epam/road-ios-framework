@@ -33,8 +33,8 @@
 #import "RFWebServiceCachingManager.h"
 #import <CoreData/CoreData.h>
 #import <ROAD/ROADCore.h>
-#import <ROAD/RFWebServiceLog.h>
 
+#import "RFWebServiceLog.h"
 #import "RFWebResponse.h"
 #import "RFWebServiceCacheContext.h"
 

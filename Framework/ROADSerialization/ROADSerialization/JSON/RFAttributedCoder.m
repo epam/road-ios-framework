@@ -34,8 +34,8 @@
 #import "RFAttributedCoder.h"
 #import <ROAD/ROADReflection.h>
 #import <ROAD/ROADCore.h>
-#import <ROAD/RFSerializationLog.h>
 
+#import "RFSerializationLog.h"
 #import "RFSerializable.h"
 #import "RFDerived.h"
 #import "RFSerializableDate.h"

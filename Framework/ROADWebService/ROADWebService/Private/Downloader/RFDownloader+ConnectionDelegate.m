@@ -32,8 +32,8 @@
 
 
 #import "RFDownloader+ConnectionDelegate.h"
-#import <ROAD/RFWebServiceLog.h>
 
+#import "RFWebServiceLog.h"
 #import "NSError+RFROADWebService.h"
 #import "RFAuthenticating.h"
 #import "RFWebServiceClient.h"
@@ -48,7 +48,7 @@
 @property (strong, nonatomic) NSError *downloadError;
 @property (strong, nonatomic) NSMutableData *data;
 @property (strong, nonatomic) NSHTTPURLResponse *response;
-@property (assign, nonatomic) NSUInteger expectedContentLenght;
+@property (assign, nonatomic) long long expectedContentLenght;
 
 - (void)stop;
 

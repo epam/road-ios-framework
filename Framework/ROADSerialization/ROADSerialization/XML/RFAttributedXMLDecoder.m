@@ -31,8 +31,8 @@
 #import "RFAttributedXMLDecoder.h"
 #import <ROAD/NSRegularExpression+RFExtension.h>
 #import <ROAD/ROADReflection.h>
-#import <ROAD/RFSerializationLog.h>
 
+#import "RFSerializationLog.h"
 #import "RFXMLSerializable.h"
 #import "RFSerializableBoolean.h"
 #import "RFSerializableDate.h"

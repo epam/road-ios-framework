@@ -34,37 +34,26 @@
 #ifndef ROADWebService_RFWebServiceLog_h
 #define ROADWebService_RFWebServiceLog_h
 
+
     #ifdef ROAD_LOGGING_WEB_SERVICE_DISABLED
 
-
         #define RFWSLogError(...)
-
         #define RFWSLogWarn(...)
-
         #define RFWSLogInfo(...)
-
         #define RFWSLogDebug(...)
-
         #define RFWSLogVerbose(...)
-
 
     #else
 
-
         #import <ROAD/RFLog.h>
 
-
-        #define RFWSLogError(...) RFLogError(__VA_ARGS__);
-
-        #define RFWSLogWarn(...) RFLogWarn(__VA_ARGS__);
-
-        #define RFWSLogInfo(...) RFLogInfo(__VA_ARGS__);
-
-        #define RFWSLogDebug(...) RFLogDebug(__VA_ARGS__);
-
-        #define RFWSLogVerbose(...) RFLogVerbose(__VA_ARGS__);
-
+        #define RFWSLogError(...) RFLogError(__VA_ARGS__)
+        #define RFWSLogWarn(...) RFLogWarn(__VA_ARGS__)
+        #define RFWSLogInfo(...) RFLogInfo(__VA_ARGS__)
+        #define RFWSLogDebug(...) RFLogDebug(__VA_ARGS__)
+        #define RFWSLogVerbose(...) RFLogVerbose(__VA_ARGS__)
 
     #endif
+
 
 #endif
