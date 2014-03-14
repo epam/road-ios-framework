@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "783AF1A21650FAF800AD247E"
-               BuildableName = "ROADWebService.temp_caseinsensitive_renameTest.octest"
+               BuildableName = "ROADWebServiceTest.octest"
                BlueprintName = "ROADWebServiceTest"
                ReferencedContainer = "container:ROADWebService.xcodeproj">
             </BuildableReference>
