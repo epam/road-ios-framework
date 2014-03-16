@@ -30,15 +30,15 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
+
 #import "RFDownloader+FakeRequest.h"
-#import <ROAD/ROADLogger.h>
 
 #import "RFSerializableTestObject.h"
 
 @implementation RFDownloader (FakeRequest)
 
 - (void)fakeStart {
-    RFLogWarning(@"Faking start of downloading at url: %@", self.request.URL);
+    NSLog(@"Faking start of downloading at url: %@", self.request.URL);
     
     SEL downloaderFinishSelector = sel_registerName("cacheAndFinishWithResult:response:error:");
     NSMethodSignature * downloaderFinishMethodSignature = [RFDownloader
@@ -149,9 +149,9 @@
         isOkMultipartData = YES;
     }
     else {
-        RFLogError(@"Number of matches exceed the limit - %d", numberOfMatches);
-        RFLogError(@"result - %@", result);
-        RFLogError(@"%@", self.request.allHTTPHeaderFields);
+        NSLog(@"Number of matches exceed the limit - %d", numberOfMatches);
+        NSLog(@"result - %@", result);
+        NSLog(@"%@", self.request.allHTTPHeaderFields);
     }
     
     return isOkMultipartData;

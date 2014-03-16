@@ -33,7 +33,6 @@
 
 #import "RFAttributedCoder.h"
 #import <ROAD/ROADReflection.h>
-#import <ROAD/ROADLogger.h>
 #import <ROAD/ROADCore.h>
 
 #import "RFSerializable.h"
@@ -78,12 +77,12 @@
 }
 
 + (id)encodeRootObjectToSerializableObject:(id)rootObject {
-    RFLogInfo(@"Coder(%@ %p) started processing object(%@)", self, self, rootObject);
+    NSLog(@"Coder(%@ %p) started processing object(%@)", self, self, rootObject);
     
     RFAttributedCoder *coder = [[self alloc] init];
     coder->_archive = [coder encodeRootObject:rootObject];
     
-    RFLogInfo(@"Coder(%@ %p) ended processing", self, self);
+    NSLog(@"Coder(%@ %p) ended processing", self, self);
     
     return coder->_archive;
 }

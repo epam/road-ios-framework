@@ -32,7 +32,6 @@
 
 
 #import "RFDownloader+ConnectionDelegate.h"
-#import <ROAD/ROADLogger.h>
 #import "NSError+RFROADWebService.h"
 
 #import "RFAuthenticating.h"
@@ -61,13 +60,13 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     self.downloadError = error;
     [self stop];
-    RFLogTypedWarning(self.loggerType, @"URL connection(%p) has failed. URL: %@", connection, [connection.currentRequest.URL absoluteString]);
+    NSLog(@"URL connection(%p) has failed. URL: %@", connection, [connection.currentRequest.URL absoluteString]);
 }
 
 - (void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
     
-    RFLogTypedWarning(self.loggerType, @"URL connection(%p) has received authentication method:%@. URL: %@", connection, challenge.protectionSpace.authenticationMethod, [connection.currentRequest.URL absoluteString]);
-    RFLogTypedInfo(self.loggerType, @"URL connection(%p) has passed authentication challenge to authentication provider %@", connection, self.authenticationProvider);
+    NSLog(@"URL connection(%p) has received authentication method:%@. URL: %@", connection, challenge.protectionSpace.authenticationMethod, [connection.currentRequest.URL absoluteString]);
+    NSLog(@"URL connection(%p) has passed authentication challenge to authentication provider %@", connection, self.authenticationProvider);
 
     if (self.authenticationProvider) {
         
@@ -82,7 +81,7 @@
 #pragma mark - NSURLConnection data delegates
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)aConnection {
-    RFLogTypedDebug(self.loggerType, @"URL connection(%p) has finished. URL: %@. Data was received: %@", aConnection, [aConnection.currentRequest.URL absoluteString], [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding]);
+    NSLog(@"URL connection(%p) has finished. URL: %@. Data was received: %@", aConnection, [aConnection.currentRequest.URL absoluteString], [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding]);
     
     // Checking response with error handler
     RFWebServiceErrorHandler *errorHandlerAttribute = [[self.webServiceClient class] RF_attributeForClassWithAttributeType:[RFWebServiceErrorHandler class]];
@@ -110,7 +109,7 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)aData {
     [self.data appendData:aData];
-    RFLogTypedInfo(self.loggerType, @"URL connection(%p) to URL: %@ received data: %@", connection, [connection.currentRequest.URL absoluteString], [NSString stringWithUTF8String:[self.data bytes]]);
+    NSLog(@"URL connection(%p) to URL: %@ received data: %@", connection, [connection.currentRequest.URL absoluteString], [NSString stringWithUTF8String:[self.data bytes]]);
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)aResponse {
@@ -123,10 +122,10 @@
     
     if ([aResponse isKindOfClass:[NSHTTPURLResponse class]]) {
         NSHTTPURLResponse *response = (NSHTTPURLResponse *)aResponse;
-        RFLogTypedWarning(self.loggerType, @"URL connection(%p) to URL: %@ received response(%p) with status code: %d\nResponse headers: %@", connection, [connection.currentRequest.URL absoluteString], aResponse, [response statusCode], [response allHeaderFields]);
+        NSLog(@"URL connection(%p) to URL: %@ received response(%p) with status code: %d\nResponse headers: %@", connection, [connection.currentRequest.URL absoluteString], aResponse, [response statusCode], [response allHeaderFields]);
     }
     else {
-        RFLogTypedDebug(self.loggerType, @"URL connection(%p) to URL: %@ received response(%p)", connection, [connection.currentRequest.URL absoluteString], aResponse);
+        NSLog(@"URL connection(%p) to URL: %@ received response(%p)", connection, [connection.currentRequest.URL absoluteString], aResponse);
     }
     
     [self.data setLength:0]; // discarding previous downloads in case a redirect or mulitpart has sent a new response
@@ -142,7 +141,7 @@
             NSRange range = [obj rangeValue];
             result = (range.location <= statusCode) && (range.location + range.length) > statusCode;
         } else {
-            RFLogWarning(@"RFDownloader: Incorrect statusCode type: %@", NSStringFromClass([obj class]));
+            NSLog(@"RFDownloader: Incorrect statusCode type: %@", NSStringFromClass([obj class]));
         }
         *stop = result;
     }];

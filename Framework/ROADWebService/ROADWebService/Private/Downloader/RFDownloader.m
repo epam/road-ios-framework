@@ -33,7 +33,6 @@
 
 #import "RFDownloader.h"
 #import "RFLooper.h"
-#import <ROAD/ROADLogger.h>
 #import <ROAD/ROADCore.h>
 #import "NSError+RFROADWebService.h"
 
@@ -43,7 +42,6 @@
 #import "RFAuthenticating.h"
 #import "RFWebServiceSerializationHandler.h"
 #import "RFWebServiceClient.h"
-#import "RFWebServiceLogger.h"
 #import "RFMultipartData.h"
 #import "RFWebServiceCallParameterEncoder.h"
 #import "RFWebServiceSerializer.h"
@@ -78,11 +76,6 @@
         _methodName = methodName;
         _authenticationProvider = authenticaitonProvider;
         _successCodes = [NSMutableArray arrayWithObjects:[NSValue valueWithRange:NSMakeRange(200, 100)], nil];
-        RFWebServiceLogger *loggerTypeAttribute = [[webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceLogger class]];
-        if (!loggerTypeAttribute) {
-            loggerTypeAttribute = [[webServiceClient class] RF_attributeForClassWithAttributeType:[RFWebServiceLogger class]];
-        }
-        _loggerType = loggerTypeAttribute.loggerType;
         _callAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceCall class]];
     }
     
@@ -107,7 +100,7 @@
         if (!boundary.length) {
             // Some random default boundary
             boundary = @"AaB03x"; //kRFBoundaryDefaultString; // Bug of Travis: const string contain nil
-            RFLogWarning(@"WebService: Boundary is not specified, using default one");
+            NSLog(@"WebService: Boundary is not specified, using default one");
         }
         NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
         [_request addValue:contentType forHTTPHeaderField:@"Content-Type"];
@@ -168,7 +161,7 @@
         _data = [NSMutableData data];
         [_connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
         [_connection start];
-        RFLogTypedDebug(self.loggerType, @"URL connection(%p) has started. Method: %@. URL: %@\nHeader fields: %@", _connection, _connection.currentRequest.HTTPMethod, [_connection.currentRequest.URL absoluteString], [_connection.currentRequest allHTTPHeaderFields]);
+        NSLog(@"URL connection(%p) has started. Method: %@. URL: %@\nHeader fields: %@", _connection, _connection.currentRequest.HTTPMethod, [_connection.currentRequest.URL absoluteString], [_connection.currentRequest allHTTPHeaderFields]);
         [_looper start];
     }
 }
@@ -255,7 +248,7 @@
 - (void)cancel {
     _requestCancelled = YES;
     [_connection cancel];
-     RFLogTypedDebug(self.loggerType, @"URL connection(%p) is canceled. URL: %@", _connection, [_connection.currentRequest.URL absoluteString]);
+    NSLog(@"URL connection(%p) is canceled. URL: %@", _connection, [_connection.currentRequest.URL absoluteString]);
     self.data = nil;
     self.downloadError = [NSError RF_sparkWS_cancellError];
     [self stop];
@@ -278,7 +271,7 @@
                 }
             }
             else if (_callAttribute.postParameter != NSNotFound) {
-                RFLogWarning(@"Web service method %@ specifies postParameter, but has NSData of RFFormData variable in parameters and use it instead", method);
+                NSLog(@"Web service method %@ specifies postParameter, but has NSData of RFFormData variable in parameters and use it instead", method);
             }
         }
     }

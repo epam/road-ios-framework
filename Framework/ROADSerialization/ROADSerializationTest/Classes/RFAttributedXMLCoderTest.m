@@ -36,7 +36,7 @@
 #import "RFSerializationTestObject.h"
 #import "RFXMLSerializationTestObject.h"
 #import "RFXMLSerializationTestObject2.h"
-#import <ROAD/ROADLogger.h>
+
 
 @interface RFAttributedXMLCoderTest : SenTestCase {
     RFSerializationTestObject *_object;
@@ -52,9 +52,6 @@
 @implementation RFAttributedXMLCoderTest
 
 - (void)setUp {
-
-    [RFServiceProvider logger].logLevel = RFLogLevelDebug;
-    
     decoder = [[RFAttributedXMLDecoder alloc] init];
     coder = [[RFAttributedXMLCoder alloc] init];
     

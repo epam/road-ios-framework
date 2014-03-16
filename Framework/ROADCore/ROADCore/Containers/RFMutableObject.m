@@ -31,13 +31,15 @@
 // for additional information regarding copyright ownership and licensing
 
 
+#import <objc/runtime.h>
+#import <ROAD/ROADReflection.h>
 #import "RFMutableObject.h"
 #import "NSString+RFAccessorUtilities.h"
-#import <objc/runtime.h>
-#import "ROADReflection.h"
+
 
 const char *RFMutableObjectSetterEncoding = "v@:@";
 const char *RFMutableObjectGetterEncoding = "@@:";
+
 
 @implementation RFMutableObject
 
@@ -65,7 +67,6 @@ const char *RFMutableObjectGetterEncoding = "@@:";
     NSString * const getterName = [NSStringFromSelector(sel) RF_stringByTransformingToGetterAccessor];
     NSString * const setterName = [getterName RF_stringByTransformingToSetterAccessor];
     RFPropertyInfo * const desc = [self RF_propertyNamed:getterName];
-    
     
     if ([desc isDynamic]) {
         SEL getter = sel_registerName([getterName cStringUsingEncoding:NSUTF8StringEncoding]);

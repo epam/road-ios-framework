@@ -7,7 +7,6 @@ Icon
 
 # Thumbnails
 ._*
-
 # Files that might appear on external disk
 .Spotlight-V100
 .Trashes
@@ -38,3 +37,4 @@ compile_commands.json
 
 # ROAD Generated Attributes
 ROADGeneratedAttributes
+binaries

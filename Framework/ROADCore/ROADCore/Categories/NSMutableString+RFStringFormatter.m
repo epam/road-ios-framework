@@ -33,6 +33,7 @@
 
 #import "NSMutableString+RFStringFormatter.h"
 
+
 @implementation NSMutableString (RFStringFormatter)
 
 - (void)RF_formatStringUsingValues:(NSDictionary *const)valueDictionary withEscape:(NSString *const)escapeString {

@@ -31,15 +31,17 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import <Foundation/Foundation.h>
+#ifndef __IPHONE_6_0
+
 
 /**
- Category to extend keyed subscript for fetching elements in a dictionary prior to iOS 6.0.
+ * Category to extend keyed subscript for fetching elements in a dictionary prior to iOS 6.0.
  */
-#ifndef __IPHONE_6_0
 @interface NSDictionary (RFKeyedSubscript)
 
-- (id)RF_objectForKeyedSubscript:(id)key;
+- (id)objectForKeyedSubscript:(id)key;
 
 @end
+
+
 #endif

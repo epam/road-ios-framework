@@ -31,17 +31,20 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "NSDictionary+RFKeyedSubscript.h"
-#import <objc/runtime.h>
-
 #ifndef __IPHONE_6_0
+
+
+#import <objc/runtime.h>
+#import "NSDictionary+RFKeyedSubscript.h"
+
 
 @implementation NSDictionary (RFKeyedSubscript)
 
-- (id)RF_objectForKeyedSubscript:(id)key {
+- (id)objectForKeyedSubscript:(id)key {
     return [self objectForKey:key];
 }
 
 @end
+
 
 #endif

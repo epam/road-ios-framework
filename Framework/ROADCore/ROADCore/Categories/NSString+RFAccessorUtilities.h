@@ -32,19 +32,19 @@
 
 
 /**
- Category to convert back and forth between default setter and getter names.
+ * Category to convert back and forth between default setter and getter names.
  */
 @interface NSString (RFAccessorUtilities)
 
 /**
- Creates a setter accessor name from the given string by attaching a set- prefix and a : postfix to the receiver's content.
- @result The setter name.
+ * Creates a setter accessor name from the given string by attaching a set- prefix and a : postfix to the receiver's content.
+ * @result The setter name.
  */
 - (NSString *)RF_stringByTransformingToSetterAccessor;
 
 /**
- Creates a getter accessor name from the receiver with the assumption it is a setter accessor method's name.
- @result The getter name.
+ * Creates a getter accessor name from the receiver with the assumption it is a setter accessor method's name.
+ * @result The getter name.
  */
 - (NSString *)RF_stringByTransformingToGetterAccessor;
 

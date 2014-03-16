@@ -33,6 +33,7 @@
 
 #import "NSArray+RFEmptyArrayChecks.h"
 
+
 @implementation NSArray (RFEmptyArrayChecks)
 
 - (id)RF_lastElementIfNotEmpty {

@@ -32,7 +32,6 @@
 
 #import "RFAttributedDecoder.h"
 #import <ROAD/ROADReflection.h>
-#import <ROAD/ROADLogger.h>
 
 #import "RFSerializable.h"
 #import "RFDerived.h"
@@ -101,7 +100,7 @@
     if (rootClassName == nil) {
         result = jsonObject;
     } else {
-        RFLogDebug(@"Decoder(%@ %p) started processing object(%@)", self, self, jsonObject);
+        NSLog(@"Decoder(%@ %p) started processing object(%@)", self, self, jsonObject);
 
         id decoder = [[self alloc] init];
         
@@ -115,7 +114,7 @@
         else if ([jsonObject isKindOfClass:[NSDictionary class]]) {
             result = [decoder decodeRootObject:jsonObject withRootClassNamed:rootClassName];
         }
-        RFLogDebug(@"Decoder(%@ %p) ended processing", self, self);
+        NSLog(@"Decoder(%@ %p) ended processing", self, self);
     }
     
     return result;
@@ -316,7 +315,7 @@
             || ([nestedJsonObject isKindOfClass:[NSArray class]] && [nestedJsonObject count] == 1 && nestedJsonObject[0] == [NSNull null])) {
             nestedJsonObject = nil;
             
-            RFLogWarning(@"Serialization failed because part ( %@ ) of serialization root ( %@ ) is not founded or equal nil", currentKeyPath, keyPath);
+            NSLog(@"Serialization failed because part ( %@ ) of serialization root ( %@ ) is not founded or equal nil", currentKeyPath, keyPath);
             break;
         }
         else {
@@ -337,7 +336,7 @@
         }
         else {
             nestedJsonObject = nil;
-            RFLogWarning(@"Serialization failed because part ( %@ ) of serialization root ( %@ ) is not founded or equal nil", currentKeyPath, keyPath);
+            NSLog(@"Serialization failed because part ( %@ ) of serialization root ( %@ ) is not founded or equal nil", currentKeyPath, keyPath);
         }
         
     }
