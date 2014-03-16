@@ -3,12 +3,9 @@ language: objective-c
 env:
     - PROJECT_SCHEME=Simian
     - PROJECT_SCHEME=ROADCore
-    - PROJECT_SCHEME=ROADLogger
     - PROJECT_SCHEME=ROADServices
     - PROJECT_SCHEME=ROADWebService
-    - PROJECT_SCHEME=ROADObservation
     - PROJECT_SCHEME=ROADSerialization
-    - PROJECT_SCHEME=ROADAttributesCodeGenerator
 
 before_script:
     - sudo easy_install cpp-coveralls
@@ -16,12 +13,14 @@ before_script:
     - chmod +x ./script_general.sh
     - chmod +x ./coveralls.rb
     - mkdir -p /Users/travis/Library/Application\ Support/iPhone\ Simulator/6.1/Library/Caches/RFCachingDirecory
+    - export LC_ALL="en_US.UTF-8"
+    - gem install cocoapods
 
 script:
     - if [[ $PROJECT_SCHEME == Simian ]]; then ./script_simian.sh; else ./script_general.sh; fi
 
 after_success:
-    - if [[ $PROJECT_SCHEME != Simian && $PROJECT_SCHEME != ROADAttributesCodeGenerator ]]; then ./coveralls.rb --extension m --exclude-folder ROADGeneratedAttributes --current-scheme $PROJECT_SCHEME; fi
+    - if [[ $PROJECT_SCHEME != Simian ]]; then ./coveralls.rb --extension m --exclude-folder ROADGeneratedAttributes --current-scheme $PROJECT_SCHEME; fi
 
 notifications:
   email:

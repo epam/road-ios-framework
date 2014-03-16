@@ -38,11 +38,9 @@
 #import "RFWebServiceCall.h"
 #import "RFWebServiceClientStatusCodes.h"
 #import "RFWebServiceHeader.h"
-#import "RFWebServiceLogger.h"
 #import "RFWebServiceErrorHandler.h"
 #import "RFWebServiceURLBuilder.h"
 #import "RFWebServiceURLBuilderParameter.h"
 #import "RFMultipartData.h"
-#import "RFLoggerWebServicePath.h"
 
 #endif

@@ -15,10 +15,6 @@
 			<fileset dir=".">
 				<include name="**/*.m"/>
 				<exclude name="tools/**/*.m"/>
- <!--
-				<exclude name="**/*Test.m"/>
-				<exclude name="**/*Tests.m"/>
- -->
 			</fileset>
 		</simian>
 	</target>

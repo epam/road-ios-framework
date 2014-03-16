@@ -30,10 +30,10 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <ROAD/ROADLogger.h>
-#import "RFWebServiceTest.h"
+
+#import <SenTestingKit/SenTestingKit.h>
+
 #import "RFWebServiceClientWithRoot.h"
-#import "RFWebServiceClientWithLogger.h"
 #import "RFWebServiceClient+DynamicTest.h"
 #import "RFAuthenticating.h"
 #import "RFServiceProvider+ConcreteWebServiceClient.h"
@@ -42,13 +42,18 @@
 #import "RFDigestAuthenticationProvider.h"
 #import "RFDownloadFaker.h"
 #import "RFDownloader.h"
+#import "RFWebClientWithSharedHeader.h"
+#import "RFWebServiceSerializer.h"
 
-@interface RFWebServiceTest ()
+
+@interface RFWebServiceTest : SenTestCase
 {
     NSCondition * condition;
     BOOL authenticationFinished;
 }
+
 @end
+
 
 @implementation RFWebServiceTest
 
@@ -264,19 +269,6 @@
     }
 }
 
-- (void)testLoggerAttributeInitializationForDownloader {
-    RFWebServiceClient *webServiceClient = [[RFWebServiceClientWithLogger alloc] init];
-    RFDownloader *downloader = [[RFDownloader alloc] initWithClient:webServiceClient methodName:@"methodWithLogger" authenticationProvider:nil];
-    STAssertEqualObjects(downloader.loggerType, kRFLogMessageTypeNetworkOnly, @"Logger type for web service method was not configured properly. It should be taken from a method attribute.");
-    
-    downloader = [[RFDownloader alloc] initWithClient:webServiceClient methodName:@"methodWithoutLogger" authenticationProvider:nil];
-    STAssertEqualObjects(downloader.loggerType, kRFLogMessageTypeAllLoggers, @"Logger type for web service method was not configured properly. It should be taken from a class attribute.");
-    
-    webServiceClient = [[RFWebServiceClient alloc] init];
-    downloader = [[RFDownloader alloc] initWithClient:webServiceClient methodName:@"notAvailableMethod" authenticationProvider:nil];
-    STAssertNil(downloader.loggerType, kRFLogMessageTypeConsoleOnly, @"Logger type for web service method was not configured properly. It should be nil as neither method nor class have a logger attribute.");
-}
-
 - (void)testCustomSerializer {
     __block BOOL isFinished = NO;
     __block BOOL isSuccess = NO;
@@ -299,6 +291,16 @@
     
     STAssertTrue(isSuccess, @"Custom serialization of web service request is failed!");
     STAssertTrue([testObject isEqual:customSerializationResult], @"Custom deserialization of web service response is failed!");
+}
+
+- (void)testSharedHeaderAttribute {
+    RFWebClientWithSharedHeader *webClient = [[RFWebClientWithSharedHeader alloc] init];
+    STAssertTrue([webClient.sharedHeaders isEqualToDictionary:@{@"key1" : @"value1"}], @"Shared headers was not configured via attributes");
+}
+
+- (void)testWebClientSerializationDelegateAttribute {
+    RFWebClientWithSharedHeader *webClient = [[RFWebClientWithSharedHeader alloc] init];
+    STAssertTrue([webClient.serializationDelegate isKindOfClass:[RFXMLSerializer class]], @"Serialization delegate was set incorrectly and has wrong type.");
 }
 
 @end

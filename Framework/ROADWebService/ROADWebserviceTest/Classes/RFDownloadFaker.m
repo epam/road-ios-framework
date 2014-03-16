@@ -32,15 +32,12 @@
 
 #import "RFDownloadFaker.h"
 #import <objc/runtime.h>
-#import <ROAD/ROADLogger.h>
 
 #import "RFDownloader+FakeRequest.h"
 
 @implementation RFDownloadFaker
 
 + (void)setUp {
-    [[RFServiceProvider logger] addWriter:[RFConsoleLogWriter new]];
-    
     SEL originalSelector = @selector(start);
     SEL overrideSelector = @selector(fakeStart);
     Method originalMethod = class_getInstanceMethod([RFDownloader class], originalSelector);
@@ -50,8 +47,6 @@
 
 // Travis bug cause performing +setUp before each test
 + (void)tearDown {
-    [[RFServiceProvider logger] removeWriter:[[[RFServiceProvider logger] writers] lastObject]];
-    
     SEL originalSelector = @selector(start);
     SEL overrideSelector = @selector(fakeStart);
     Method originalMethod = class_getInstanceMethod([RFDownloader class], originalSelector);

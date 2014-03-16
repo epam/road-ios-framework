@@ -31,7 +31,6 @@
 // for additional information regarding copyright ownership and licensing
 
 #import <SenTestingKit/SenTestingKit.h>
-#import <ROAD/ROADLogger.h>
 
 #import "RFServiceProvider+ConcreteWebServiceClient.h"
 #import "RFDownloader+FakeRequest.h"
@@ -185,7 +184,116 @@
 }
 
 
+- (void)testCacheIdentifierParse {
+
+    // GIVEN
+    NSString * const comparationBaseCacheIdentifier =  @"cache.identifier.parsed.1";
+    NSString * const cacheIdentifier =  @"cache.identifier.parsed.%%0%%";
+    NSDictionary * const parseDictionary = @{@"0": @"1"};
+
+    // WHEN
+    NSString * const parsedCacheIdentifier = [[RFServiceProvider webServiceCacheManager] parseCacheIdentifier:cacheIdentifier withParameters:parseDictionary];
+
+    // THEN
+    STAssertTrue([parsedCacheIdentifier isEqualToString:comparationBaseCacheIdentifier], @"The cache identifiers are not equal");
+}
+
+
+- (void)testCacheIdentifierSet {
+
+    // GIVEN
+    [[RFServiceProvider webServiceCacheManager] dropCache];
+    NSString * const cacheIdentifier = @"test.cache.identifier";
+
+    // WHEN
+    [self performRequestWithIdentifiedCacheWithServiceRoot:@"http://test.cache.identifier/first"];
+    [self performRequestWithIdentifiedCacheWithServiceRoot:@"http://test.cache.identifier/second"];
+
+    // THEN
+    NSArray *response = [[RFServiceProvider webServiceCacheManager] cacheWithIdentifier:cacheIdentifier];
+
+    STAssertTrue([response count] == 1, @"The cache hasn't contained the value with the identifier which has been set.");
+}
+
+- (void)testCacheIdentifierSetPrefixed {
+
+    // GIVEN
+    [[RFServiceProvider webServiceCacheManager] dropCache];
+    NSString * const cacheIdentifierToMatch = @"test.cache.identifier.prefix";
+    NSString * const cacheIdentifierToFail = @"identifier.prefix";
+
+    // WHEN
+    [self performRequestWithParseIdForPrefixedCache:@"1"];
+    [self performRequestWithParseIdForPrefixedCache:@"2"];
+
+    // THEN
+    NSArray *matchedResponses = [[RFServiceProvider webServiceCacheManager] cacheWithIdentifierPrefix:cacheIdentifierToMatch];
+    NSArray *nonMatchingResponses = [[RFServiceProvider webServiceCacheManager] cacheWithIdentifierPrefix:cacheIdentifierToFail];
+
+    STAssertTrue([matchedResponses count] == 2, @"The cache did not retrieve all the elements which ahve been set.");
+    STAssertTrue([nonMatchingResponses count] == 0, @"The cache matched not only for the prefix but to substring also.");
+}
+
+
+- (void)testTargetedCacheInvalidation {
+
+    // GIVEN
+    [[RFServiceProvider webServiceCacheManager] dropCache];
+    NSString * const cacheIdentifierForPrefixed = @"test.cache.identifier.prefix";
+    NSString * const cacheIdentifier = @"test.cache.identifier";
+
+    [self performRequestWithIdentifiedCacheWithServiceRoot:@"http://test.cache.identifier"];
+    [self performRequestWithParseIdForPrefixedCache:@"1"];
+    [self performRequestWithParseIdForPrefixedCache:@"2"];
+
+    // pre check
+    NSArray *removedResponses = [[RFServiceProvider webServiceCacheManager] cacheWithIdentifierPrefix:cacheIdentifierForPrefixed];
+    NSArray *remainingResponse = [[RFServiceProvider webServiceCacheManager] cacheWithIdentifier:cacheIdentifier];
+    STAssertTrue([removedResponses count] == 2, @"The removable cache elemnts for the test have not been created.");
+    STAssertNotNil(remainingResponse, @"The cache element which needs to be kept after flush not been created.");
+
+    // WHEN
+    [[RFServiceProvider webServiceCacheManager] flushElementsWithIdentifierPrefix:cacheIdentifierForPrefixed];
+
+
+    // THEN
+    removedResponses = [[RFServiceProvider webServiceCacheManager] cacheWithIdentifierPrefix:cacheIdentifierForPrefixed];
+    remainingResponse = [[RFServiceProvider webServiceCacheManager] cacheWithIdentifier:cacheIdentifier];
+
+    STAssertTrue([removedResponses count] == 0, @"The targeted cache elements were not flushed.");
+    STAssertTrue([remainingResponse count] == 1, @"The cached element which should have been kept have been also removed.");
+}
+
 #pragma mark - Utility methods
+
+- (void)performRequestWithIdentifiedCacheWithServiceRoot:(NSString *)serviceRoot {
+    __block BOOL isFinished = NO;
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:serviceRoot];
+    [webClient testCacheIdentifierWithSuccess:^(id result) {
+        isFinished = YES;
+    } failure:^(NSError *error) {
+        isFinished = YES;
+    }];
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+    }
+}
+
+- (void)performRequestWithParseIdForPrefixedCache:(NSString *)parseId {
+    __block BOOL isFinished = NO;
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.cache.identifier"];
+
+    isFinished = NO;
+    [webClient testCacheIdentifierWithPrefix:parseId success:^(id result) {
+        isFinished = YES;
+    } failure:^(NSError *error) {
+        isFinished = YES;
+    }];
+
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+    }
+}
 
 - (BOOL)sendTwoConsequentRequestsOnWebServiceClient:(RFConcreteWebServiceClient *)webClient selector:(SEL)selector firstResult:(NSString **)firstResult secondResult:(NSString **)secondResult {
     __block BOOL isFinished = NO;

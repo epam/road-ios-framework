@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0500"
+   LastUpgradeVersion = "0510"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "783AF1A21650FAF800AD247E"
-               BuildableName = "ROADWebService.temp_caseinsensitive_renameTest.octest"
+               BuildableName = "ROADWebServiceTest.octest"
                BlueprintName = "ROADWebServiceTest"
                ReferencedContainer = "container:ROADWebService.xcodeproj">
             </BuildableReference>

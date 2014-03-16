@@ -31,17 +31,17 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import <Foundation/Foundation.h>
-
-/**
- Category to allow keyed subscript support for mutable dictionaries to set elements.
- */
 #ifndef __IPHONE_6_0
 
+
+/**
+ * Category to allow keyed subscript support for mutable dictionaries to set elements.
+ */
 @interface NSMutableDictionary (RFKeyedSubscript)
 
-- (void)RF_setObject:(id)obj forKeyedSubscript:(id<NSCopying>)key;
+- (void)setObject:(id)obj forKeyedSubscript:(id<NSCopying>)key;
 
 @end
+
 
 #endif

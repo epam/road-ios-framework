@@ -2,7 +2,7 @@
 //  RFAnnotatedCoder.m
 //  ROADSerialization
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without 
 // modification, are permitted provided that the following conditions are met:
@@ -33,10 +33,9 @@
 
 #import "RFAttributedCoder.h"
 #import <ROAD/ROADReflection.h>
-#import <ROAD/ROADLogger.h>
 #import <ROAD/ROADCore.h>
 
-#import "RFSerializationAssistant.h"
+#import "RFSerializationLog.h"
 #import "RFSerializable.h"
 #import "RFDerived.h"
 #import "RFSerializableDate.h"
@@ -44,10 +43,11 @@
 #import "RFJSONSerializationHandling.h"
 #import "RFSerializableBoolean.h"
 #import "RFBooleanTranslator.h"
+#import "RFSerializationAssistant.h"
+
 
 @implementation RFAttributedCoder {
     NSString * _dateFormat;
-    NSMutableDictionary * _dateFormatters;
     id _archive;
     NSString * _currentPath;
 }
@@ -60,7 +60,6 @@
     
     if (self) {
         _archive = [[NSMutableDictionary alloc] init];
-        _dateFormatters = [[NSMutableDictionary alloc] init];
     }
     
     return self;
@@ -80,18 +79,18 @@
 }
 
 + (id)encodeRootObjectToSerializableObject:(id)rootObject {
-    RFLogInfo(@"Coder(%@ %p) started processing object(%@)", self, self, rootObject);
+    RFSCLogInfo(@"Coder(%@ %p) started processing object(%@)", self, self, rootObject);
     
     RFAttributedCoder *coder = [[self alloc] init];
     coder->_archive = [coder encodeRootObject:rootObject];
     
-    RFLogInfo(@"Coder(%@ %p) ended processing", self, self);
+    RFSCLogInfo(@"Coder(%@ %p) ended processing", self, self);
     
     return coder->_archive;
 }
 
 - (id)encodeRootObject:(id)rootObject {
-    id archive = [[NSMutableDictionary alloc] init];
+    id archive;
     
     if ([rootObject isKindOfClass:[NSArray class]]) {
         archive = [self encodeArray:rootObject customHandlerAttribute:nil];
@@ -105,7 +104,11 @@
             archive = RFCustomSerialization(rootObject, customHandlerAttribute);
         }
         else {
-            archive[RFSerializedObjectClassName] = NSStringFromClass([rootObject class]);
+            archive = [[NSMutableDictionary alloc] init];
+            RFSerializable *serializableAttribute = [[rootObject class] RF_attributeForClassWithAttributeType:[RFSerializable class]];
+            if (serializableAttribute && !serializableAttribute.classNameSerializationDisabled) {
+                archive[RFSerializedObjectClassName] = NSStringFromClass([rootObject class]);
+            }
             NSArray *properties = RFSerializationPropertiesForClass([rootObject class]);
 
             @autoreleasepool {
@@ -148,19 +151,7 @@
     id encodedValue = nil;
     
     if ([value isKindOfClass:[NSDate class]]) {
-        RFSerializableDate *serializableDateAttribute = [propertyInfo.hostClass RF_attributeForProperty:propertyInfo.propertyName withAttributeType:[RFSerializableDate class]];
-        
-        if (serializableDateAttribute.unixTimestamp) {
-            NSDate *date = value;
-            encodedValue = [NSString stringWithFormat:@"%.0f", [date timeIntervalSince1970]];
-        }
-        else {
-            NSString *dateFormat = ([serializableDateAttribute.encodingFormat length] == 0) ? serializableDateAttribute.format : serializableDateAttribute.encodingFormat;
-            NSAssert(dateFormat, @"RFSerializableDate must have either format or encodingFormat specified");
-            
-            NSDateFormatter *dateFormatter = [self dataFormatterWithFormatString:dateFormat];
-            encodedValue = [dateFormatter stringFromDate:value];
-        }
+        encodedValue = RFSerializationEncodeDateForProperty(value, propertyInfo, self);
     }
     else if ([propertyInfo attributeWithType:[RFSerializableBoolean class]]) {
         encodedValue = [RFBooleanTranslator encodeTranslatableValue:value forProperty:propertyInfo];
@@ -218,20 +209,6 @@
     }
     
     return [NSDictionary dictionaryWithDictionary:dict];
-}
-
-
-#pragma mark - Support methods
-
-- (NSDateFormatter *)dataFormatterWithFormatString:(NSString *)formatString {
-    NSDateFormatter *dateFormatter = _dateFormatters[formatString];
-    if (!dateFormatter) {
-        dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.dateFormat = formatString;
-        _dateFormatters[formatString]  = dateFormatter;
-    }
-
-    return dateFormatter;
 }
 
 @end

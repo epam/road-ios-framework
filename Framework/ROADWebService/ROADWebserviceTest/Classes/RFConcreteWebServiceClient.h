@@ -33,6 +33,7 @@
 #import "RFWebServiceClient.h"
 #import "RFWebServiceErrorHandler.h"
 #import "RFWebServiceHeader.h"
+#import "RFODataErrorHandler.h"
 #import "RFWebServiceCall.h"
 #import "RFWebServiceURLBuilder.h"
 #import "RFODataWebServiceURLBuilder.h"
@@ -47,7 +48,7 @@
 
 RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO, relativePath = @"%%0%%")
 RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{@"Accept" : @"application/json"})
-RF_ATTRIBUTE(RFWebServiceErrorHandler, handlerClass = @"RFODataErrorHandler")
+RF_ATTRIBUTE(RFWebServiceErrorHandler, handlerClass = [RFODataErrorHandler class])
 - (id<RFWebServiceCancellable>)testErrorHandlerRootWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
 RF_ATTRIBUTE(RFWebServiceCall)
@@ -86,5 +87,14 @@ RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
 RF_ATTRIBUTE(RFWebServiceCache, maxAge = 300)
 RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
 - (id<RFWebServiceCancellable>)testCacheMaxAgeWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+
+RF_ATTRIBUTE(RFWebServiceCache, maxAge = 300, cacheIdentifier = @"test.cache.identifier")
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
+- (id<RFWebServiceCancellable>)testCacheIdentifierWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+RF_ATTRIBUTE(RFWebServiceCache, maxAge = 300, cacheIdentifier = @"test.cache.identifier.prefix.%%0%%")
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, relativePath = @"/cache/%%0%%")
+- (id<RFWebServiceCancellable>)testCacheIdentifierWithPrefix:(NSString *)identifierPrefix success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
 @end

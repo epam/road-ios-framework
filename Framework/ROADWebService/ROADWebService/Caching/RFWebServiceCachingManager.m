@@ -33,11 +33,12 @@
 #import "RFWebServiceCachingManager.h"
 #import <CoreData/CoreData.h>
 #import <ROAD/ROADCore.h>
-#import <ROAD/ROADLogger.h>
 
+#import "RFWebServiceLog.h"
 #import "RFWebResponse.h"
 #import "RFWebServiceCacheContext.h"
 
+NSString *const kRFCacheTemplateEscapeString = @"%%";
 
 static NSString * const kRFWebResponseEntityName = @"WebResponse";
 
@@ -64,7 +65,7 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
 
 #pragma mark - RFWebServiceCachingManaging
 
-- (void)setCacheWithRequest:(NSURLRequest *)request response:(NSHTTPURLResponse *)response responseBodyData:(NSData *)responseBodyData expirationDate:(NSDate *)expirationDate {
+- (void)setCacheWithRequest:(NSURLRequest *)request response:(NSHTTPURLResponse *)response responseBodyData:(NSData *)responseBodyData expirationDate:(NSDate *)expirationDate cacheIdentifier:(NSString *)cacheIdentifier {
     if (!expirationDate) {
         expirationDate = [RFWebServiceCachingManager expirationDateFromResponse:response];
     }
@@ -79,6 +80,12 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
             NSManagedObjectContext *managedObjectContext = _cacheContext.context;
 
             // Remove old one if exist
+            if ([cacheIdentifier length]) {
+                NSArray *responsesWithCacheId = [self unsafeFetchResponseForIdentifier:cacheIdentifier prefixed:NO];
+                for (RFWebResponse *cachedResponse in responsesWithCacheId) {
+                    [managedObjectContext deleteObject:cachedResponse];
+                }
+            }
             RFWebResponse *oldCachedResponse = [self unsafeFetchResponseForRequest:request];
             if (oldCachedResponse) {
                 [managedObjectContext deleteObject:oldCachedResponse];
@@ -93,14 +100,19 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
             newWebResponse.expirationDate = expirationDate;
             newWebResponse.eTag = eTag;
             newWebResponse.lastModified = lastModified;
-            
+            newWebResponse.cacheIdentifier = cacheIdentifier;
+
             NSError *error;
             [managedObjectContext save:&error];
             if (error) {
-                RFLogError(@"RFWebServiceCachingManager error: saving cached response failed with error: %@", [error localizedDescription]);
+                RFWSLogError(@"RFWebServiceCachingManager error: saving cached response failed with error: %@", [error localizedDescription]);
             }
         });
     }
+}
+
+- (void)setCacheWithRequest:(NSURLRequest *)request response:(NSHTTPURLResponse *)response responseBodyData:(NSData *)responseBodyData expirationDate:(NSDate *)expirationDate {
+    [self setCacheWithRequest:request response:response responseBodyData:responseBodyData expirationDate:expirationDate cacheIdentifier:@""];
 }
 
 - (RFWebResponse *)cacheWithRequest:(NSMutableURLRequest *)request {
@@ -120,21 +132,65 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
     if ([response statusCode] == 304) {
         cachedResponse = [self fetchResponseForRequest:request];
     }
-    
+
     return cachedResponse;
+}
+
+- (NSArray *)cacheWithIdentifier:(NSString *)cacheIdentifier {
+    __block NSArray *cachedResponse;
+
+    dispatch_sync(_cacheQueue, ^{
+        cachedResponse = [self unsafeFetchResponseForIdentifier:cacheIdentifier prefixed:NO];
+    });
+
+    return cachedResponse;
+}
+
+- (NSArray *)cacheWithIdentifierPrefix:(NSString *)cacheIdentifierPrefix {
+    __block NSArray *cachedResponse;
+
+    dispatch_sync(_cacheQueue, ^{
+        cachedResponse = [self unsafeFetchResponseForIdentifier:cacheIdentifierPrefix prefixed:YES];
+    });
+
+    return cachedResponse;
+}
+
+- (void)flushElementsWithIdentifier:(NSString *)cacheIdentifier {
+    NSArray *cachedResponses = [self cacheWithIdentifier:cacheIdentifier];
+    for (RFWebResponse *cachedResponse in cachedResponses) {
+        [_cacheContext.context deleteObject:cachedResponse];
+        NSError *error;
+        [_cacheContext.context save:&error];
+        if (error) {
+            RFWSLogError(@"Clean of cache was failed with error : %@", error);
+        }
+    }
+}
+
+- (void)flushElementsWithIdentifierPrefix:(NSString *)cacheIdentifierPrefix {
+    NSArray *cachedResponses = [self cacheWithIdentifierPrefix:cacheIdentifierPrefix];
+    for (RFWebResponse *cachedResponse in cachedResponses) {
+        [_cacheContext.context deleteObject:cachedResponse];
+        NSError *error;
+        [_cacheContext.context save:&error];
+        if (error) {
+            RFWSLogError(@"Clean of cache was failed with error : %@", error);
+        }
+    }
 }
 
 - (void)dropCache {
     NSError *error;
     [_cacheContext.persisitentStoreCoordinator removePersistentStore:[_cacheContext.persisitentStoreCoordinator.persistentStores lastObject] error:&error];
     if (error) {
-        RFLogError(@"Cache failed to be dropped with error : %@", error);
+        RFWSLogError(@"Cache failed to be dropped with error : %@", error);
     }
     else {
         if ([[NSFileManager defaultManager] fileExistsAtPath:[[_cacheContext.storeURL absoluteString] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]) {
             [[NSFileManager defaultManager] removeItemAtURL:_cacheContext.storeURL error:&error];
             if (error) {
-                RFLogError(@"Cache file failed to be dropped with error : %@", error);
+                RFWSLogError(@"Cache file failed to be dropped with error : %@", error);
             }
             else {
                 [_cacheContext bindStore];
@@ -143,11 +199,17 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
         else {
             [_cacheContext bindStore];
         }
-        
-        
     }
 }
 
+- (NSString *)parseCacheIdentifier:(NSString *)cacheIdentifier withParameters:(NSDictionary *)parameterValues {
+    NSMutableString *parsingCacheIdentifier = [[NSMutableString alloc] init];
+    if (cacheIdentifier) {
+        [parsingCacheIdentifier appendString:cacheIdentifier];
+    }
+    [parsingCacheIdentifier RF_formatStringUsingValues:parameterValues withEscape:kRFCacheTemplateEscapeString];
+    return [NSString stringWithString:parsingCacheIdentifier];
+}
 
 #pragma mark - Utility methods
 
@@ -254,7 +316,7 @@ static const NSInteger kRFWebServiceHeaderValueParameterIndex       = 1;
             NSError *error;
             [managedObjectContext save:&error];
             if (error) {
-                RFLogError(@"Clean of cache was failed with error : %@", error);
+                RFWSLogError(@"Clean of cache was failed with error : %@", error);
             }
         }
         else if ([webResponse.requestURL isEqualToString:[request.URL absoluteString]]
@@ -267,5 +329,40 @@ static const NSInteger kRFWebServiceHeaderValueParameterIndex       = 1;
     
     return cachedResponse;
 }
+
+- (NSArray *)unsafeFetchResponseForIdentifier:(NSString *)cacheIdentifier prefixed:(BOOL)prefixed {
+
+    NSMutableArray *cachedResponse = [[NSMutableArray alloc] init];
+
+    NSFetchRequest *fetchCachedResponse = [[NSFetchRequest alloc] initWithEntityName:kRFWebResponseEntityName];
+
+    if (prefixed) {
+        fetchCachedResponse.predicate = [NSPredicate predicateWithFormat:@"cacheIdentifier BEGINSWITH[cd] %@", cacheIdentifier];
+    }
+    else {
+        fetchCachedResponse.predicate = [NSPredicate predicateWithFormat:@"cacheIdentifier == %@", cacheIdentifier];
+    }
+
+    NSError *error;
+    NSArray *cachedResponses = [_cacheContext.context executeFetchRequest:fetchCachedResponse error:&error];
+
+    for (RFWebResponse *webResponse in cachedResponses) {
+        if ([webResponse.expirationDate compare:[NSDate date]] == NSOrderedAscending) {
+            [_cacheContext.context deleteObject:webResponse];
+            NSError *error;
+            [_cacheContext.context save:&error];
+            if (error) {
+                RFWSLogError(@"Clean of cache was failed with error : %@", error);
+            }
+        } else {
+            [cachedResponse addObject:webResponse];
+        }
+    }
+
+
+    return [NSArray arrayWithArray:cachedResponse];
+
+}
+
 
 @end

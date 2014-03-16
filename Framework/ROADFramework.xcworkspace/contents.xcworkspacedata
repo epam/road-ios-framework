@@ -2,30 +2,21 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:ROADWebService/ROADWebService.xcodeproj">
+      location = "group:ROADCore/ROADCore.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ROADCore/../ROADServices/ROADServices.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:ROADSerialization/ROADSerialization.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:ROADCore/ROADCore.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:ROADObservation/ROADObservation.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:ROADServices/ROADServices.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:ROADLogger/ROADLogger.xcodeproj">
+      location = "group:ROADWebService/ROADWebService.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Utilities/Utilities.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../NOTICE">
-   </FileRef>
-   <FileRef
-      location = "group:../LICENSE">
+      location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

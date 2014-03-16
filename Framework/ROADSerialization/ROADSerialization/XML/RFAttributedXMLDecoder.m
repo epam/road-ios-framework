@@ -29,9 +29,10 @@
 
 
 #import "RFAttributedXMLDecoder.h"
-#import <ROAD/NSRegularExpression+RFROADExtension.h>
+#import <ROAD/NSRegularExpression+RFExtension.h>
 #import <ROAD/ROADReflection.h>
-#import <ROAD/ROADLogger.h>
+
+#import "RFSerializationLog.h"
 #import "RFXMLSerializable.h"
 #import "RFSerializableBoolean.h"
 #import "RFSerializableDate.h"
@@ -226,7 +227,7 @@
     NSDate *result = nil;
     
     if (dateAttribute.unixTimestamp) {
-        result = [NSDate dateWithTimeIntervalSince1970:[string intValue]];
+        result = [NSDate dateWithTimeIntervalSince1970:[string intValue] / dateAttribute.unixTimestampMultiplier];
     }
     else {
         
@@ -303,7 +304,7 @@
         RFPropertyInfo *elementProperty = _context.properties[elementName];
         if (!elementProperty) {
             
-            RFLogWarning(@"RFAttributedXMLDecoder: Skipped missing property '%@'", elementName);
+            RFSCLogWarn(@"RFAttributedXMLDecoder: Skipped missing property '%@'", elementName);
             _context.elementSkipped = YES;
         }
         result = elementProperty.typeClass;

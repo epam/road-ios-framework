@@ -17,7 +17,7 @@ opts = OptionParser.new
 opts.banner = "Usage: coveralls.rb [options]"
 
 opts.on('-s', '--current-scheme SCHEME', 'Current scheme name') do |v|
-   list_of_schemes = ["ROADWebService", "ROADSerialization", "ROADCore", "ROADServices", "ROADObservation", "ROADLogger"]
+   list_of_schemes = ["ROADWebService", "ROADSerialization", "ROADCore", "ROADServices"]
    list_of_schemes.delete(v)
    excludedFolders.push(*list_of_schemes)
    list_of_schemes.each { |x| coveralls_cmd.concat(" -e #{x}") }

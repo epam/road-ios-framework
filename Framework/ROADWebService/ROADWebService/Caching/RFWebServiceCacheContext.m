@@ -30,9 +30,11 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
+
 #import "RFWebServiceCacheContext.h"
 #import <ROAD/ROADCore.h>
-#import <ROAD/ROADLogger.h>
+
+#import "RFWebServiceLog.h"
 
 
 static NSString * const kRFWebServiceCachingDirectory = @"RFCachingDirecory";
@@ -75,23 +77,27 @@ static NSString * const kRFWebServiceCachingStorageName = @"RFWebServiceCache.co
         NSError *error;
         [[NSFileManager defaultManager] createDirectoryAtPath:webServiceCachingPath withIntermediateDirectories:NO attributes:nil error:&error];
         if (error) {
-            RFLogError(@"Directory for web service cache was not created with error: %@", error);
+            RFWSLogError(@"Directory for web service cache was not created with error: %@", error);
         }
     }
     
     webServiceCachingPath = [webServiceCachingPath stringByAppendingPathComponent:kRFWebServiceCachingStorageName];
     _storeURL = [NSURL fileURLWithPath:webServiceCachingPath];
     NSString *storeType = NSSQLiteStoreType;
+    NSDictionary *options = @{
+                              NSMigratePersistentStoresAutomaticallyOption : @YES,
+                              NSInferMappingModelAutomaticallyOption : @YES
+                              };
     NSError *error;
-    
+
     if (![_persistentStoreCoordinator addPersistentStoreWithType:storeType configuration:nil
-                                                             URL:_storeURL options:nil error:&error]) {
+                                                             URL:_storeURL options:options error:&error]) {
         error = nil;
         [[NSFileManager defaultManager] removeItemAtURL:_storeURL error:&error];
         if (![_persistentStoreCoordinator addPersistentStoreWithType:storeType configuration:nil
-                                                                 URL:_storeURL options:nil error:&error]) {
+                                                                 URL:_storeURL options:options error:&error]) {
             _persistentStoreCoordinator = nil;
-            RFLogError(@"RFWebServiceCachingManager error: persistent storage creating was failed with error: %@", [error localizedDescription]);
+            RFWSLogError(@"RFWebServiceCachingManager error: persistent storage creating was failed with error: %@", [error localizedDescription]);
         }
     }
 }

@@ -6,7 +6,22 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		8353CC38189F885C00135D86 /* ROADWebService_OCLint */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 8353CC43189F885C00135D86 /* Build configuration list for PBXAggregateTarget "ROADWebService_OCLint" */;
+			buildPhases = (
+				8353CC44189F886600135D86 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = ROADWebService_OCLint;
+			productName = ROADWebService_OCLint;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
+		11FF622818BCE61700053F60 /* RFWebClientWithSharedHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FF622718BCE61700053F60 /* RFWebClientWithSharedHeader.m */; };
 		33F0EF1618051DB1001DCCED /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 33F0EF0D18051D3D001DCCED /* libxml2.2.dylib */; };
 		5A164AA2179D762A003275EC /* RFDownloader.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E5B9D4E51786CFFE00E1901C /* RFDownloader.h */; };
 		5A164AA3179D762A003275EC /* RFLooper.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E5B9D4E71786CFFE00E1901C /* RFLooper.h */; };
@@ -14,13 +29,8 @@
 		5A164AAA179D762A003275EC /* RFWebServiceSerializationHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E5B9D4BE1786CF9300E1901C /* RFWebServiceSerializationHandler.h */; };
 		5A164AAB179D762A003275EC /* RFWebServiceBasicURLBuilder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E5B9D4C01786CF9300E1901C /* RFWebServiceBasicURLBuilder.h */; };
 		5A4AFC48176872640097B1D9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A4AFC47176872640097B1D9 /* CoreData.framework */; };
-		5AF652C91767129B004A6BB7 /* libROADSerialization.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EC6ECB175DCEE700801611 /* libROADSerialization.a */; };
-		5AFB79C117661385007F813A /* libROADCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB846C21737EDBC003BE170 /* libROADCore.a */; };
-		5AFB79C217661385007F813A /* libROADServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFB79B517661222007F813A /* libROADServices.a */; };
-		5AFB79C3176613A5007F813A /* libROADLogger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EC6ED8175DCEE700801611 /* libROADLogger.a */; };
 		5AFB79C7176613E6007F813A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFB79C5176613C6007F813A /* Foundation.framework */; };
 		783AF1A51650FAF800AD247E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783AF1A41650FAF800AD247E /* SenTestingKit.framework */; };
-		78CBA94B16C3D44A00DAC9BB /* ROADCore.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 78CBA94916C3D44A00DAC9BB /* ROADCore.xcodeproj */; };
 		830CCCE0184E00ED007E9A69 /* RFXMLSerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83D0E62F184CA289002625E6 /* RFXMLSerializer.h */; };
 		830CCCE1184E00ED007E9A69 /* RFWebService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE3022E7180FD3CE003B1826 /* RFWebService.h */; };
 		830CCCE2184E00ED007E9A69 /* RFWebServiceSerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83D0E63A184CAB0F002625E6 /* RFWebServiceSerializer.h */; };
@@ -32,7 +42,6 @@
 		831EB9E917C600D4004C9BA5 /* RFWebServiceErrorHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 831EB9D917C600AA004C9BA5 /* RFWebServiceErrorHandler.h */; };
 		831EB9ED17C60A65004C9BA5 /* RFODataErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 831EB9EC17C60A65004C9BA5 /* RFODataErrorHandler.m */; };
 		832540EE17A6B02B006AACF4 /* RFAuthenticationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 832540ED17A6B02B006AACF4 /* RFAuthenticationProvider.m */; };
-		83448CCF17D0C98B002A0D15 /* ROADGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 83448CCE17D0C98B002A0D15 /* ROADGeneratedAttribute.m */; };
 		8349D87B17B0E5FE006BDA5F /* RFConcurrentAuthenticationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8349D87A17B0E5FE006BDA5F /* RFConcurrentAuthenticationProvider.m */; };
 		8349D87D17B0EBE9006BDA5F /* RFConcurrentAuthenticationProvider.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8349D87917B0E5FE006BDA5F /* RFConcurrentAuthenticationProvider.h */; };
 		8349D97017B22ED4006BDA5F /* RFODataFetchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8349D96F17B22ED4006BDA5F /* RFODataFetchRequest.m */; };
@@ -68,19 +77,15 @@
 		8396B44F17A2623A009E7B9B /* RFBasicAuthenticationProvider.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8396B3F117A16A90009E7B9B /* RFBasicAuthenticationProvider.h */; };
 		839992B417D74B95002DAE8D /* RFFormData.m in Sources */ = {isa = PBXBuildFile; fileRef = 839992B317D74B95002DAE8D /* RFFormData.m */; };
 		839992B817D7658F002DAE8D /* RFMultipartData.m in Sources */ = {isa = PBXBuildFile; fileRef = 839992B717D7658F002DAE8D /* RFMultipartData.m */; };
+		839A19AF18C61DD6001A727C /* libROADSerialization.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EC6ECB175DCEE700801611 /* libROADSerialization.a */; };
+		839A19B018C61DF8001A727C /* libROADServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFB79B517661222007F813A /* libROADServices.a */; };
 		83AA50E517DDF1F300C73DEF /* RFMultipartData.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 839992B617D7658F002DAE8D /* RFMultipartData.h */; };
 		83AA50E617DDF1FD00C73DEF /* RFFormData.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 839992B217D74B94002DAE8D /* RFFormData.h */; };
 		83AA529317DF05BE00C73DEF /* RFWebServiceURLBuilderParameter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 837B004617B8C86100D77A5D /* RFWebServiceURLBuilderParameter.h */; };
 		83AAEF0F18620E6D006432EE /* RFDownloadFaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C173581861E9CA00A9538D /* RFDownloadFaker.m */; };
 		83AAEF1718620E7E006432EE /* RFConcreteWebServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 835D30FC184DFE0E00EF2310 /* RFConcreteWebServiceClient.m */; };
 		83ACF19B17A8F43E0077DF82 /* RFAuthenticationProvider.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 832540EC17A6B02B006AACF4 /* RFAuthenticationProvider.h */; };
-		83AFDCE0174F532900CC1200 /* RFWebServiceLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AFDCDF174F532900CC1200 /* RFWebServiceLogger.m */; };
-		83AFDCEB174F58FB00CC1200 /* RFWebServiceLogger.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83AFDCDE174F532900CC1200 /* RFWebServiceLogger.h */; };
 		83B1E0C317CB94A70049C112 /* RFWebServiceErrorHandling.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 831EB9EA17C6047D004C9BA5 /* RFWebServiceErrorHandling.h */; };
-		83B97B9E175DCC23006C72BA /* ROADSerialization.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 83B97B9C175DCC22006C72BA /* ROADSerialization.xcodeproj */; };
-		83B97BA1175DCD16006C72BA /* ROADLogger.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 83B97B9F175DCD15006C72BA /* ROADLogger.xcodeproj */; };
-		83BCEB6017FEB4A700B5A7C4 /* RFLoggerWebServicePath.m in Sources */ = {isa = PBXBuildFile; fileRef = 83BCEB5F17FEB4A700B5A7C4 /* RFLoggerWebServicePath.m */; };
-		83BCEB6817FEB4CF00B5A7C4 /* RFLoggerWebServicePath.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83BCEB5E17FEB4A700B5A7C4 /* RFLoggerWebServicePath.h */; };
 		83C1734A18618C6700A9538D /* RFWebResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C1734918618C6700A9538D /* RFWebResponse.m */; };
 		83C173521861E22100A9538D /* RFWebServiceCachingManaging.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8353BC7E185B273D009704A8 /* RFWebServiceCachingManaging.h */; };
 		83C173531861E22100A9538D /* RFWebServiceCachingManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8353BC7B185B26AB009704A8 /* RFWebServiceCachingManager.h */; };
@@ -91,6 +96,7 @@
 		83D0E63C184CAB0F002625E6 /* RFWebServiceSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E63B184CAB0F002625E6 /* RFWebServiceSerializer.m */; };
 		83D0E641184DC4B5002625E6 /* RFSerializableTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E63F184DC4B5002625E6 /* RFSerializableTestObject.m */; };
 		83D0E64A184DCC3C002625E6 /* RFDigestAuthenticationProvider.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D719856717C65D5B0017C680 /* RFDigestAuthenticationProvider.h */; };
+		83E0CE1918D1E28B00B25689 /* RFWebServiceLog.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83E0CDE018D07FE100B25689 /* RFWebServiceLog.h */; };
 		83FF041917C7A77700134DDE /* RFODataErrorHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 831EB9EB17C60A65004C9BA5 /* RFODataErrorHandler.h */; };
 		8D94224817E2A4B0005F0AE3 /* RFODataTestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 839992E217D9DB45002DAE8D /* RFODataTestEntity.m */; };
 		8D94224917E2A4B5005F0AE3 /* RFDownloader+FakeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 839992F717DA04D4002DAE8D /* RFDownloader+FakeRequest.m */; };
@@ -124,19 +130,11 @@
 		E5D6E05C17981FBA0041EBCB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D6E05B17981FBA0041EBCB /* UIKit.framework */; };
 		E5D81148179562510046DED1 /* RFWebServiceClientStatusCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D81147179562510046DED1 /* RFWebServiceClientStatusCodes.m */; };
 		E5D81156179563740046DED1 /* RFWebServiceClientStatusCodes.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E5D81146179562510046DED1 /* RFWebServiceClientStatusCodes.h */; };
-		EE05784B181398D30093B308 /* RFWebServiceClientWithLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EE05784A181398D30093B308 /* RFWebServiceClientWithLogger.m */; };
 		EE3022E9180FD3CE003B1826 /* RFWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3022E8180FD3CE003B1826 /* RFWebService.m */; };
 		EE3022F4180FD687003B1826 /* RFWebServiceClientWithRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3022F3180FD687003B1826 /* RFWebServiceClientWithRoot.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5A4AFC3C176871F40097B1D9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 83B97B9F175DCD15006C72BA /* ROADLogger.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 789AAE3116C4E3FA00FF7FB0;
-			remoteInfo = ROADLogger;
-		};
 		5AF652C517671266004A6BB7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83B97B9C175DCC22006C72BA /* ROADSerialization.xcodeproj */;
@@ -158,26 +156,12 @@
 			remoteGlobalIDString = 7869944D16AEBF3E00B28760;
 			remoteInfo = ROADServices;
 		};
-		5AFB79B617661222007F813A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5AD1FC0C176601C200E67BC4 /* ROADServices.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 786994E416AEC09E00B28760;
-			remoteInfo = ROADServicesMac;
-		};
 		5AFB79B817661222007F813A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5AD1FC0C176601C200E67BC4 /* ROADServices.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 5ACD214F1741179500CC61AC;
 			remoteInfo = ROADServicesTest;
-		};
-		83B1E2D017D0B3630049C112 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 83B97B9F175DCD15006C72BA /* ROADLogger.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D771948917CF4DED0011047F;
-			remoteInfo = ROADLoggerTest;
 		};
 		83EC6ECA175DCEE700801611 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -186,26 +170,12 @@
 			remoteGlobalIDString = 9F0A8AB415C299340044A782;
 			remoteInfo = ROADSerialization;
 		};
-		83EC6ECC175DCEE700801611 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 83B97B9C175DCC22006C72BA /* ROADSerialization.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9FA9F4D415F636C400FDE9E0;
-			remoteInfo = ROADSerializationMac;
-		};
 		83EC6ECE175DCEE700801611 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83B97B9C175DCC22006C72BA /* ROADSerialization.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 7841617D16480C1D0089FDE9;
 			remoteInfo = ROADSerializationTest;
-		};
-		83EC6ED7175DCEE700801611 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 83B97B9F175DCD15006C72BA /* ROADLogger.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 789AAE3216C4E3FA00FF7FB0;
-			remoteInfo = ROADLogger;
 		};
 		8D94224F17E2A4DA005F0AE3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -228,13 +198,6 @@
 			remoteGlobalIDString = 78B8E68E16C3CC3E0049E36B;
 			remoteInfo = ROADCore;
 		};
-		CDB846C31737EDBC003BE170 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 78CBA94916C3D44A00DAC9BB /* ROADCore.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 78B8E6A616C3CCA50049E36B;
-			remoteInfo = ROADCoreMac;
-		};
 		CDB846C51737EDBC003BE170 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78CBA94916C3D44A00DAC9BB /* ROADCore.xcodeproj */;
@@ -251,6 +214,7 @@
 			dstPath = include/ROAD;
 			dstSubfolderSpec = 16;
 			files = (
+				83E0CE1918D1E28B00B25689 /* RFWebServiceLog.h in CopyFiles */,
 				83C173521861E22100A9538D /* RFWebServiceCachingManaging.h in CopyFiles */,
 				83C173531861E22100A9538D /* RFWebServiceCachingManager.h in CopyFiles */,
 				83C173541861E22100A9538D /* RFWebResponse.h in CopyFiles */,
@@ -260,7 +224,6 @@
 				830CCCE1184E00ED007E9A69 /* RFWebService.h in CopyFiles */,
 				830CCCE2184E00ED007E9A69 /* RFWebServiceSerializer.h in CopyFiles */,
 				83D0E64A184DCC3C002625E6 /* RFDigestAuthenticationProvider.h in CopyFiles */,
-				83BCEB6817FEB4CF00B5A7C4 /* RFLoggerWebServicePath.h in CopyFiles */,
 				83AA529317DF05BE00C73DEF /* RFWebServiceURLBuilderParameter.h in CopyFiles */,
 				83AA50E617DDF1FD00C73DEF /* RFFormData.h in CopyFiles */,
 				83AA50E517DDF1F300C73DEF /* RFMultipartData.h in CopyFiles */,
@@ -290,7 +253,6 @@
 				5A164AAB179D762A003275EC /* RFWebServiceBasicURLBuilder.h in CopyFiles */,
 				E5D81156179563740046DED1 /* RFWebServiceClientStatusCodes.h in CopyFiles */,
 				E5B9D4FF1786D83D00E1901C /* NSError+RFROADWebService.h in CopyFiles */,
-				83AFDCEB174F58FB00CC1200 /* RFWebServiceLogger.h in CopyFiles */,
 				CDB8477A1737F318003BE170 /* ROADWebservice.h in CopyFiles */,
 				CDB8477B1737F318003BE170 /* ROADWebServiceAnnotations.h in CopyFiles */,
 				CDB8477D1737F318003BE170 /* RFWebServiceCall.h in CopyFiles */,
@@ -305,11 +267,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		034456745B93428FA73A7009 /* libPods-ROADWebService.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ROADWebService.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		11FF622618BCE61700053F60 /* RFWebClientWithSharedHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFWebClientWithSharedHeader.h; sourceTree = "<group>"; };
+		11FF622718BCE61700053F60 /* RFWebClientWithSharedHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebClientWithSharedHeader.m; sourceTree = "<group>"; };
 		33F0EF0D18051D3D001DCCED /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		5A4AFC47176872640097B1D9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		5AD1FC0C176601C200E67BC4 /* ROADServices.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ROADServices.xcodeproj; path = ../ROADServices/ROADServices.xcodeproj; sourceTree = "<group>"; };
 		5AFB79C5176613C6007F813A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		783AF1A31650FAF800AD247E /* ROADWebService.temp_caseinsensitive_renameTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ROADWebService.temp_caseinsensitive_renameTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6338326D18AE6258005E1673 /* RFWebServiceCachingModel_cacheIdentifierAdded.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RFWebServiceCachingModel_cacheIdentifierAdded.xcdatamodel; sourceTree = "<group>"; };
+		783AF1A31650FAF800AD247E /* ROADWebServiceTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ROADWebServiceTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		783AF1A41650FAF800AD247E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		78CBA94916C3D44A00DAC9BB /* ROADCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ROADCore.xcodeproj; path = ../ROADCore/ROADCore.xcodeproj; sourceTree = "<group>"; };
 		78FB204215BD336B00C2137A /* libROADWebService.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libROADWebService.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -321,7 +287,6 @@
 		831EB9EC17C60A65004C9BA5 /* RFODataErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RFODataErrorHandler.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		832540EC17A6B02B006AACF4 /* RFAuthenticationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFAuthenticationProvider.h; sourceTree = "<group>"; };
 		832540ED17A6B02B006AACF4 /* RFAuthenticationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RFAuthenticationProvider.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		83448CCE17D0C98B002A0D15 /* ROADGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ROADGeneratedAttribute.m; path = ROADGeneratedAttributes/ROADGeneratedAttribute.m; sourceTree = "<group>"; };
 		83448CDD17D0D3E3002A0D15 /* ROADGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ROADGeneratedAttribute.m; path = ROADGeneratedAttributes/ROADGeneratedAttribute.m; sourceTree = "<group>"; };
 		8349D87917B0E5FE006BDA5F /* RFConcurrentAuthenticationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFConcurrentAuthenticationProvider.h; sourceTree = "<group>"; };
 		8349D87A17B0E5FE006BDA5F /* RFConcurrentAuthenticationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFConcurrentAuthenticationProvider.m; sourceTree = "<group>"; };
@@ -378,13 +343,8 @@
 		839992E317D9DB45002DAE8D /* RFServiceProvider+ConcreteWebServiceClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RFServiceProvider+ConcreteWebServiceClient.h"; sourceTree = "<group>"; };
 		839992F617DA04D4002DAE8D /* RFDownloader+FakeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RFDownloader+FakeRequest.h"; sourceTree = "<group>"; };
 		839992F717DA04D4002DAE8D /* RFDownloader+FakeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RFDownloader+FakeRequest.m"; sourceTree = "<group>"; };
-		83AFDCDE174F532900CC1200 /* RFWebServiceLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFWebServiceLogger.h; sourceTree = "<group>"; };
-		83AFDCDF174F532900CC1200 /* RFWebServiceLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebServiceLogger.m; sourceTree = "<group>"; };
 		83B5D20417D4CDDB0030D8CD /* RFWebServiceClient+DynamicTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RFWebServiceClient+DynamicTest.m"; sourceTree = "<group>"; };
 		83B97B9C175DCC22006C72BA /* ROADSerialization.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ROADSerialization.xcodeproj; path = ../ROADSerialization/ROADSerialization.xcodeproj; sourceTree = "<group>"; };
-		83B97B9F175DCD15006C72BA /* ROADLogger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ROADLogger.xcodeproj; path = ../ROADLogger/ROADLogger.xcodeproj; sourceTree = "<group>"; };
-		83BCEB5E17FEB4A700B5A7C4 /* RFLoggerWebServicePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFLoggerWebServicePath.h; sourceTree = "<group>"; };
-		83BCEB5F17FEB4A700B5A7C4 /* RFLoggerWebServicePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFLoggerWebServicePath.m; sourceTree = "<group>"; };
 		83C1734818618C6700A9538D /* RFWebResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFWebResponse.h; path = ROADWebService/Caching/RFWebResponse.h; sourceTree = SOURCE_ROOT; };
 		83C1734918618C6700A9538D /* RFWebResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFWebResponse.m; path = ROADWebService/Caching/RFWebResponse.m; sourceTree = SOURCE_ROOT; };
 		83C173571861E9CA00A9538D /* RFDownloadFaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFDownloadFaker.h; sourceTree = "<group>"; };
@@ -395,6 +355,8 @@
 		83D0E63B184CAB0F002625E6 /* RFWebServiceSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebServiceSerializer.m; sourceTree = "<group>"; };
 		83D0E63E184DC4B5002625E6 /* RFSerializableTestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFSerializableTestObject.h; sourceTree = "<group>"; };
 		83D0E63F184DC4B5002625E6 /* RFSerializableTestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFSerializableTestObject.m; sourceTree = "<group>"; };
+		83E0CDE018D07FE100B25689 /* RFWebServiceLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFWebServiceLog.h; sourceTree = "<group>"; };
+		BDED127D63214FB8B5A5C352 /* libPods-ROADWebServiceTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ROADWebServiceTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD69624016F0D20F0090B201 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		CD896BFF1737E84F00565C9C /* RFWebServiceCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFWebServiceCall.h; sourceTree = "<group>"; };
 		CD896C001737E84F00565C9C /* RFWebServiceCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebServiceCall.m; sourceTree = "<group>"; };
@@ -410,7 +372,6 @@
 		CD896C201737E84F00565C9C /* RFWebServiceClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RFWebServiceClient.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		CD896C211737E84F00565C9C /* RFWebServiceClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebServiceClient.m; sourceTree = "<group>"; };
 		CD896C341737E85800565C9C /* RFWebServiceClient+DynamicTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RFWebServiceClient+DynamicTest.h"; sourceTree = "<group>"; };
-		CD896C371737E85800565C9C /* RFWebServiceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFWebServiceTest.h; sourceTree = "<group>"; };
 		CD896C381737E85800565C9C /* RFWebServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebServiceTest.m; sourceTree = "<group>"; };
 		CD896C3E1737E85800565C9C /* ROADWebserviceTest-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ROADWebserviceTest-Info.plist"; sourceTree = "<group>"; };
 		CD896C3F1737E85800565C9C /* ROADWebserviceTest-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ROADWebserviceTest-Prefix.pch"; sourceTree = "<group>"; };
@@ -436,8 +397,6 @@
 		E5D6E05B17981FBA0041EBCB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E5D81146179562510046DED1 /* RFWebServiceClientStatusCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RFWebServiceClientStatusCodes.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		E5D81147179562510046DED1 /* RFWebServiceClientStatusCodes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebServiceClientStatusCodes.m; sourceTree = "<group>"; };
-		EE057849181398D30093B308 /* RFWebServiceClientWithLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFWebServiceClientWithLogger.h; sourceTree = "<group>"; };
-		EE05784A181398D30093B308 /* RFWebServiceClientWithLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebServiceClientWithLogger.m; sourceTree = "<group>"; };
 		EE3022E7180FD3CE003B1826 /* RFWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFWebService.h; sourceTree = "<group>"; };
 		EE3022E8180FD3CE003B1826 /* RFWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebService.m; sourceTree = "<group>"; };
 		EE3022F2180FD687003B1826 /* RFWebServiceClientWithRoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFWebServiceClientWithRoot.h; sourceTree = "<group>"; };
@@ -453,11 +412,7 @@
 				8D94225117E2A4E3005F0AE3 /* libROADWebService.a in Frameworks */,
 				E5D6E05C17981FBA0041EBCB /* UIKit.framework in Frameworks */,
 				5A4AFC48176872640097B1D9 /* CoreData.framework in Frameworks */,
-				5AFB79C117661385007F813A /* libROADCore.a in Frameworks */,
-				5AF652C91767129B004A6BB7 /* libROADSerialization.a in Frameworks */,
 				5AFB79C7176613E6007F813A /* Foundation.framework in Frameworks */,
-				5AFB79C3176613A5007F813A /* libROADLogger.a in Frameworks */,
-				5AFB79C217661385007F813A /* libROADServices.a in Frameworks */,
 				837E97CF17466A4200EC465F /* libz.dylib in Frameworks */,
 				783AF1A51650FAF800AD247E /* SenTestingKit.framework in Frameworks */,
 				CD69624116F0D2100090B201 /* CFNetwork.framework in Frameworks */,
@@ -468,6 +423,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				839A19B018C61DF8001A727C /* libROADServices.a in Frameworks */,
+				839A19AF18C61DD6001A727C /* libROADSerialization.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,7 +435,6 @@
 			isa = PBXGroup;
 			children = (
 				5AFB79B517661222007F813A /* libROADServices.a */,
-				5AFB79B717661222007F813A /* ROADServices.framework */,
 				5AFB79B917661222007F813A /* ROADServicesTest.octest */,
 			);
 			name = Products;
@@ -498,7 +454,7 @@
 			isa = PBXGroup;
 			children = (
 				78FB204215BD336B00C2137A /* libROADWebService.a */,
-				783AF1A31650FAF800AD247E /* ROADWebService.temp_caseinsensitive_renameTest.octest */,
+				783AF1A31650FAF800AD247E /* ROADWebServiceTest.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -514,10 +470,11 @@
 				5AD1FC0C176601C200E67BC4 /* ROADServices.xcodeproj */,
 				83B97B9C175DCC22006C72BA /* ROADSerialization.xcodeproj */,
 				78CBA94916C3D44A00DAC9BB /* ROADCore.xcodeproj */,
-				83B97B9F175DCD15006C72BA /* ROADLogger.xcodeproj */,
 				CD69624016F0D20F0090B201 /* CFNetwork.framework */,
 				783AF1A41650FAF800AD247E /* SenTestingKit.framework */,
 				CDA9F60C16E9F287000A50CC /* CoreFoundation.framework */,
+				034456745B93428FA73A7009 /* libPods-ROADWebService.a */,
+				BDED127D63214FB8B5A5C352 /* libPods-ROADWebServiceTest.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -605,31 +562,29 @@
 				839992F717DA04D4002DAE8D /* RFDownloader+FakeRequest.m */,
 				83D0E63E184DC4B5002625E6 /* RFSerializableTestObject.h */,
 				83D0E63F184DC4B5002625E6 /* RFSerializableTestObject.m */,
-				EE057849181398D30093B308 /* RFWebServiceClientWithLogger.h */,
-				EE05784A181398D30093B308 /* RFWebServiceClientWithLogger.m */,
 				EE3022F2180FD687003B1826 /* RFWebServiceClientWithRoot.h */,
 				EE3022F3180FD687003B1826 /* RFWebServiceClientWithRoot.m */,
 				83C173571861E9CA00A9538D /* RFDownloadFaker.h */,
 				83C173581861E9CA00A9538D /* RFDownloadFaker.m */,
+				11FF622618BCE61700053F60 /* RFWebClientWithSharedHeader.h */,
+				11FF622718BCE61700053F60 /* RFWebClientWithSharedHeader.m */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		83E0CDE718D082C900B25689 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CD896C111737E84F00565C9C /* ROADWebservice-Prefix.pch */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		83EC6EBF175DCEE700801611 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				83EC6ECB175DCEE700801611 /* libROADSerialization.a */,
-				83EC6ECD175DCEE700801611 /* ROADSerialization.framework */,
 				83EC6ECF175DCEE700801611 /* ROADSerializationTest.octest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		83EC6ED2175DCEE700801611 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				83EC6ED8175DCEE700801611 /* libROADLogger.a */,
-				83B1E2D117D0B3630049C112 /* ROADLoggerTest.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -637,9 +592,9 @@
 		CD896BFB1737E84F00565C9C /* ROADWebService */ = {
 			isa = PBXGroup;
 			children = (
-				83448CCE17D0C98B002A0D15 /* ROADGeneratedAttribute.m */,
 				CD896C121737E84F00565C9C /* ROADWebservice.h */,
 				CD896C131737E84F00565C9C /* ROADWebServiceAnnotations.h */,
+				83E0CDE018D07FE100B25689 /* RFWebServiceLog.h */,
 				E5B9D4B11786CEAA00E1901C /* Private */,
 				8396B3E317A162F4009E7B9B /* AuthenticationProvider */,
 				8349D96117B22EB2006BDA5F /* OData */,
@@ -648,7 +603,7 @@
 				CD896C141737E84F00565C9C /* Webservice */,
 				CD896BFC1737E84F00565C9C /* Attributes */,
 				CD896C0C1737E84F00565C9C /* Resources */,
-				CD896C111737E84F00565C9C /* ROADWebservice-Prefix.pch */,
+				83E0CDE718D082C900B25689 /* Supporting Files */,
 			);
 			path = ROADWebService;
 			sourceTree = "<group>";
@@ -656,16 +611,12 @@
 		CD896BFC1737E84F00565C9C /* Attributes */ = {
 			isa = PBXGroup;
 			children = (
-				83BCEB5E17FEB4A700B5A7C4 /* RFLoggerWebServicePath.h */,
-				83BCEB5F17FEB4A700B5A7C4 /* RFLoggerWebServicePath.m */,
 				831EB9D917C600AA004C9BA5 /* RFWebServiceErrorHandler.h */,
 				831EB9DA17C600AA004C9BA5 /* RFWebServiceErrorHandler.m */,
 				CD896BFF1737E84F00565C9C /* RFWebServiceCall.h */,
 				CD896C001737E84F00565C9C /* RFWebServiceCall.m */,
 				CD896C011737E84F00565C9C /* RFWebServiceHeader.h */,
 				CD896C021737E84F00565C9C /* RFWebServiceHeader.m */,
-				83AFDCDE174F532900CC1200 /* RFWebServiceLogger.h */,
-				83AFDCDF174F532900CC1200 /* RFWebServiceLogger.m */,
 				E5D81146179562510046DED1 /* RFWebServiceClientStatusCodes.h */,
 				E5D81147179562510046DED1 /* RFWebServiceClientStatusCodes.m */,
 				837B004217B3E78900D77A5D /* RFWebServiceURLBuilder.h */,
@@ -718,7 +669,6 @@
 				83448CDD17D0D3E3002A0D15 /* ROADGeneratedAttribute.m */,
 				CD896C341737E85800565C9C /* RFWebServiceClient+DynamicTest.h */,
 				83B5D20417D4CDDB0030D8CD /* RFWebServiceClient+DynamicTest.m */,
-				CD896C371737E85800565C9C /* RFWebServiceTest.h */,
 				CD896C381737E85800565C9C /* RFWebServiceTest.m */,
 				8353BCDB185F1F48009704A8 /* RFWebServiceCacheTest.m */,
 				837B002517B3B9A300D77A5D /* RFODataTest.h */,
@@ -733,8 +683,7 @@
 			isa = PBXGroup;
 			children = (
 				CDB846C21737EDBC003BE170 /* libROADCore.a */,
-				CDB846C41737EDBC003BE170 /* ROAD.framework */,
-				CDB846C61737EDBC003BE170 /* ROAD.octest */,
+				CDB846C61737EDBC003BE170 /* ROADCoreTest.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -791,10 +740,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 783AF1B41650FAF800AD247E /* Build configuration list for PBXNativeTarget "ROADWebServiceTest" */;
 			buildPhases = (
-				83448CDC17D0D393002A0D15 /* ShellScript */,
+				F6DE996EAABA43D1A3474467 /* libObjCAttr - generate attributes */,
 				783AF19E1650FAF800AD247E /* Sources */,
 				783AF19F1650FAF800AD247E /* Frameworks */,
-				783AF1A01650FAF800AD247E /* Resources */,
 				83C544EE174B80A9000C8BCD /* ShellScript */,
 			);
 			buildRules = (
@@ -804,27 +752,24 @@
 			);
 			name = ROADWebServiceTest;
 			productName = SecondSightWebserviceTest;
-			productReference = 783AF1A31650FAF800AD247E /* ROADWebService.temp_caseinsensitive_renameTest.octest */;
+			productReference = 783AF1A31650FAF800AD247E /* ROADWebServiceTest.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 		78FB204115BD336B00C2137A /* ROADWebService */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 78FB204F15BD336B00C2137A /* Build configuration list for PBXNativeTarget "ROADWebService" */;
 			buildPhases = (
-				83B1E28417CF91AD0049C112 /* ShellScript */,
 				78FB203E15BD336B00C2137A /* Sources */,
 				78FB203F15BD336B00C2137A /* Frameworks */,
 				78017ABB15C7F66C00DD1041 /* CopyFiles */,
-				7822DAFE16EE35130008FE53 /* Resources */,
 				5A30F0B3178D55A200DFCB2A /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				5A4AFC3D176871F40097B1D9 /* PBXTargetDependency */,
-				5AF652C617671266004A6BB7 /* PBXTargetDependency */,
 				CD3BFBFA17391902006C4D2F /* PBXTargetDependency */,
 				5AF652C81767126D004A6BB7 /* PBXTargetDependency */,
+				5AF652C617671266004A6BB7 /* PBXTargetDependency */,
 			);
 			name = ROADWebService;
 			productName = SecondSightWebservice;
@@ -857,10 +802,6 @@
 					ProjectRef = 78CBA94916C3D44A00DAC9BB /* ROADCore.xcodeproj */;
 				},
 				{
-					ProductGroup = 83EC6ED2175DCEE700801611 /* Products */;
-					ProjectRef = 83B97B9F175DCD15006C72BA /* ROADLogger.xcodeproj */;
-				},
-				{
 					ProductGroup = 83EC6EBF175DCEE700801611 /* Products */;
 					ProjectRef = 83B97B9C175DCC22006C72BA /* ROADSerialization.xcodeproj */;
 				},
@@ -873,6 +814,7 @@
 			targets = (
 				78FB204115BD336B00C2137A /* ROADWebService */,
 				783AF1A21650FAF800AD247E /* ROADWebServiceTest */,
+				8353CC38189F885C00135D86 /* ROADWebService_OCLint */,
 			);
 		};
 /* End PBXProject section */
@@ -885,25 +827,11 @@
 			remoteRef = 5AFB79B417661222007F813A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		5AFB79B717661222007F813A /* ROADServices.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ROADServices.framework;
-			remoteRef = 5AFB79B617661222007F813A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		5AFB79B917661222007F813A /* ROADServicesTest.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ROADServicesTest.octest;
 			remoteRef = 5AFB79B817661222007F813A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		83B1E2D117D0B3630049C112 /* ROADLoggerTest.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ROADLoggerTest.octest;
-			remoteRef = 83B1E2D017D0B3630049C112 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		83EC6ECB175DCEE700801611 /* libROADSerialization.a */ = {
@@ -913,25 +841,11 @@
 			remoteRef = 83EC6ECA175DCEE700801611 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		83EC6ECD175DCEE700801611 /* ROADSerialization.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ROADSerialization.framework;
-			remoteRef = 83EC6ECC175DCEE700801611 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		83EC6ECF175DCEE700801611 /* ROADSerializationTest.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ROADSerializationTest.octest;
 			remoteRef = 83EC6ECE175DCEE700801611 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		83EC6ED8175DCEE700801611 /* libROADLogger.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libROADLogger.a;
-			remoteRef = 83EC6ED7175DCEE700801611 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		CDB846C21737EDBC003BE170 /* libROADCore.a */ = {
@@ -941,41 +855,14 @@
 			remoteRef = CDB846C11737EDBC003BE170 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		CDB846C41737EDBC003BE170 /* ROAD.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ROAD.framework;
-			remoteRef = CDB846C31737EDBC003BE170 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CDB846C61737EDBC003BE170 /* ROAD.octest */ = {
+		CDB846C61737EDBC003BE170 /* ROADCoreTest.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = ROAD.octest;
+			path = ROADCoreTest.octest;
 			remoteRef = CDB846C51737EDBC003BE170 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
-
-/* Begin PBXResourcesBuildPhase section */
-		7822DAFE16EE35130008FE53 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		783AF1A01650FAF800AD247E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				78CBA94B16C3D44A00DAC9BB /* ROADCore.xcodeproj in Resources */,
-				83B97B9E175DCC23006C72BA /* ROADSerialization.xcodeproj in Resources */,
-				83B97BA1175DCD16006C72BA /* ROADLogger.xcodeproj in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		5A30F0B3178D55A200DFCB2A /* ShellScript */ = {
@@ -991,7 +878,7 @@
 			shellPath = /bin/sh;
 			shellScript = "echo \"Copy resource files to bundle\"\nSRC=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/include/ROAD/\"\n\n\n\nif [ ! -d ${DEST} ]; then\nmkdir ${DEST}\nfi\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"\n\n";
 		};
-		83448CDC17D0D393002A0D15 /* ShellScript */ = {
+		8353CC44189F886600135D86 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1002,20 +889,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../../tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/ROADWebserviceTest/\" -dst=\"${SRCROOT}/ROADWebserviceTest/ROADGeneratedAttributes/\"";
-		};
-		83B1E28417CF91AD0049C112 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"${SRCROOT}/${PRODUCT_NAME}\"\n\"${SRCROOT}/../../tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/ROADWebservice/\" -dst=\"${SRCROOT}/ROADWebservice/ROADGeneratedAttributes/\"";
+			shellScript = "source ~/.bash_profile\n\nhash oclint &> /dev/null\nif [ $? -eq 1 ]; then\necho >&2 \"oclint not found, analyzing stopped\"\nexit 1\nfi\n\ncd \"${TARGET_TEMP_DIR}\"\n\necho \"[*] starting xcodebuild to rebuild the project..\"\n# clean previous output\nif [ -f xcodebuild.log ]; then\nrm xcodebuild.log\nfi\n\ncd \"${SRCROOT}\"/..\n\nxcodebuild clean -workspace ROADFramework.xcworkspace -scheme ROADWebService -configuration Debug\n\n#build xcodebuild.log\nxcodebuild -workspace ROADFramework.xcworkspace -scheme ROADWebService -configuration Debug | tee \"${TARGET_TEMP_DIR}/xcodebuild.log\"\n\necho \"[*] transforming xcodebuild.log into compile_commands.json...\"\necho \"TARGET_TEMP_DIR: ${TARGET_TEMP_DIR}\"\ncd \"${TARGET_TEMP_DIR}\"\n#transform it into compile_commands.json\necho \"oclint-xcodebuild -e ROADGeneratedAttributes\"\noclint-xcodebuild -e ROADGeneratedAttributes\n\necho \"[*] copy compile_commands.json to the project root...\"\ncp \"${TARGET_TEMP_DIR}/compile_commands.json\" \"${SRCROOT}/compile_commands.json\"\n\necho \"[*] starting analyzing\"\ncd \"${TARGET_TEMP_DIR}\"\noclint-json-compilation-database -e ROADGeneratedAttributes -- -rc=LONG_LINE=500 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 30 -max-priority-3 152 | sed 's/\\(.*\\.\\m\\{1,2\\}:[0-9]*:[0-9]*:\\)/\\1 warning:/'";
 		};
 		83C544EE174B80A9000C8BCD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1030,6 +904,20 @@
 			shellPath = /bin/sh;
 			shellScript = "echo \"Copy resource files to bundle\"\nSRC=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/include/ROAD\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\necho \"$DEST\"\necho \"$RESOURCE\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"\n\n\necho \"Copy resource files to bundle\"\nSRC=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\necho \"$DEST\"\necho \"$RESOURCE\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"\n\n\necho \"Copy resource files to archive bundle\"\n\nSRC=\"$BUILD_DIR/../IntermediateBuildFilesPath/UninstalledProducts\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"";
 		};
+		F6DE996EAABA43D1A3474467 /* libObjCAttr - generate attributes */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "libObjCAttr - generate attributes";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1040,7 +928,6 @@
 				8D94224817E2A4B0005F0AE3 /* RFODataTestEntity.m in Sources */,
 				8D94224917E2A4B5005F0AE3 /* RFDownloader+FakeRequest.m in Sources */,
 				8D94224A17E2A4BB005F0AE3 /* ROADGeneratedAttribute.m in Sources */,
-				EE05784B181398D30093B308 /* RFWebServiceClientWithLogger.m in Sources */,
 				83AAEF1718620E7E006432EE /* RFConcreteWebServiceClient.m in Sources */,
 				8D94224B17E2A4BE005F0AE3 /* RFWebServiceClient+DynamicTest.m in Sources */,
 				83AAEF0F18620E6D006432EE /* RFDownloadFaker.m in Sources */,
@@ -1063,7 +950,6 @@
 				8353BCDA185F19C8009704A8 /* RFWebServiceCache.m in Sources */,
 				8353BC8A185B4A5C009704A8 /* RFWebServiceCacheContext.m in Sources */,
 				CD896C301737E84F00565C9C /* RFWebServiceClient.m in Sources */,
-				83AFDCE0174F532900CC1200 /* RFWebServiceLogger.m in Sources */,
 				E5B9D4C41786CF9300E1901C /* RFWebServiceCallParameterEncoder.m in Sources */,
 				E5B9D4C61786CF9300E1901C /* RFWebServiceClient+DynamicMethod.m in Sources */,
 				83138AF41862FFC700674184 /* RFWebServiceCachingModel.xcdatamodeld in Sources */,
@@ -1079,6 +965,7 @@
 				8349D97317B23AF2006BDA5F /* RFODataPredicate.m in Sources */,
 				8349D99117B37E49006BDA5F /* RFODataExpression.m in Sources */,
 				837B001317B3A1AE00D77A5D /* RFODataProperty.m in Sources */,
+				11FF622818BCE61700053F60 /* RFWebClientWithSharedHeader.m in Sources */,
 				837B001B17B3B0F000D77A5D /* RFODataEntity.m in Sources */,
 				837B001F17B3B1AB00D77A5D /* RFODataAbstractEntity.m in Sources */,
 				837B002317B3B63C00D77A5D /* NSSortDescriptor+RFOData.m in Sources */,
@@ -1094,8 +981,6 @@
 				831EB9ED17C60A65004C9BA5 /* RFODataErrorHandler.m in Sources */,
 				D719856817C65D5B0017C680 /* RFDigestAuthenticationProvider.m in Sources */,
 				83D0E631184CA28A002625E6 /* RFXMLSerializer.m in Sources */,
-				83BCEB6017FEB4A700B5A7C4 /* RFLoggerWebServicePath.m in Sources */,
-				83448CCF17D0C98B002A0D15 /* ROADGeneratedAttribute.m in Sources */,
 				8353BCA1185EDE1B009704A8 /* RFServiceProvider+WebServiceCachingManager.m in Sources */,
 				839992B417D74B95002DAE8D /* RFFormData.m in Sources */,
 				83D0E63C184CAB0F002625E6 /* RFWebServiceSerializer.m in Sources */,
@@ -1107,11 +992,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5A4AFC3D176871F40097B1D9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ROADLogger;
-			targetProxy = 5A4AFC3C176871F40097B1D9 /* PBXContainerItemProxy */;
-		};
 		5AF652C617671266004A6BB7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ROADSerialization;
@@ -1150,15 +1030,22 @@
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADWebserviceTest/ROADWebserviceTest-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"${PODS_ROOT}/Headers/libObjCAttr\"",
+				);
 				INFOPLIST_FILE = "ROADWebserviceTest/ROADWebserviceTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
-					"-all_load",
+					"$(inherited)",
 					"-ObjC",
 				);
-				PRODUCT_NAME = ROADWebService.temp_caseinsensitive_renameTest;
+				PODS_ROOT = "${SRCROOT}/../Pods";
+				PRODUCT_NAME = ROADWebServiceTest;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -1178,14 +1065,21 @@
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADWebserviceTest/ROADWebserviceTest-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"${PODS_ROOT}/Headers/libObjCAttr\"",
+				);
 				INFOPLIST_FILE = "ROADWebserviceTest/ROADWebserviceTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
-					"-all_load",
+					"$(inherited)",
 					"-ObjC",
 				);
-				PRODUCT_NAME = ROADWebService.temp_caseinsensitive_renameTest;
+				PODS_ROOT = "${SRCROOT}/../Pods";
+				PRODUCT_NAME = ROADWebServiceTest;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
@@ -1263,12 +1157,11 @@
 					"$(OBJROOT)/usr/local/include/**",
 					"$(BUILT_PRODUCTS_DIR)/../usr/local/include/**",
 					"${BUILT_PRODUCTS_DIR}/**",
+					"\"${PODS_ROOT}/Headers/libObjCAttr\"",
 				);
 				INSTALL_PATH = /usr/local/bin;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
+				PODS_ROOT = "${SRCROOT}/../Pods";
 				PRODUCT_NAME = ROADWebService;
 				PUBLIC_HEADERS_FOLDER_PATH = ../usr/local/include;
 				SKIP_INSTALL = YES;
@@ -1290,16 +1183,29 @@
 					"$(OBJROOT)/usr/local/include/**",
 					"$(BUILT_PRODUCTS_DIR)/../usr/local/include/**",
 					"${BUILT_PRODUCTS_DIR}/**",
+					"\"${PODS_ROOT}/Headers/libObjCAttr\"",
 				);
 				INSTALL_PATH = /usr/local/bin;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
+				PODS_ROOT = "${SRCROOT}/../Pods";
 				PRODUCT_NAME = ROADWebService;
 				PUBLIC_HEADERS_FOLDER_PATH = ../usr/local/include;
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "$(OBJROOT)/usr/local/include/** $(BUILT_PRODUCTS_DIR)/../usr/local/include/**";
+			};
+			name = Release;
+		};
+		8353CC39189F885C00135D86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8353CC3A189F885C00135D86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -1333,15 +1239,25 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		8353CC43189F885C00135D86 /* Build configuration list for PBXAggregateTarget "ROADWebService_OCLint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8353CC39189F885C00135D86 /* Debug */,
+				8353CC3A189F885C00135D86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
 		83138AF21862FFC700674184 /* RFWebServiceCachingModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				6338326D18AE6258005E1673 /* RFWebServiceCachingModel_cacheIdentifierAdded.xcdatamodel */,
 				83138AF31862FFC700674184 /* RFWebServiceCachingModel.xcdatamodel */,
 			);
-			currentVersion = 83138AF31862FFC700674184 /* RFWebServiceCachingModel.xcdatamodel */;
+			currentVersion = 6338326D18AE6258005E1673 /* RFWebServiceCachingModel_cacheIdentifierAdded.xcdatamodel */;
 			path = RFWebServiceCachingModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

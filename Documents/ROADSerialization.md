@@ -4,7 +4,7 @@
 
 #1. JSON
 
-Component takes advantages of properties annotations to define  serialization options with **RFAttribute**s.
+Component takes advantages of properties annotations to define serialization options with **RFAttribute**s.
 
 Encoding and decoding entry points are provided by correspondening classes: 
 
@@ -26,6 +26,9 @@ Where *rootClassName* is a name of any `NSObject` subclass with serialization at
 * `RFSerializable`. Marks class or property serializable. Sets all properties as serializable when annotates class declaration.
 * `RFSerializableCollection`. Marks a collection of serializable items.
 * `RFSerializableDate`. Defines format for serializable NSDate property or for all date properties on the class level.
+* `RFSerializableBoolean`. Defines custom serialization behaviour for boolean values.
+* `RFSerializationCustomHandler`. Defines custom serialization handler class. The handler class has to conform to RFJSONSerializationHandling protocol for JSON serialization.
+
 
 
 ##Sample
@@ -110,7 +113,7 @@ If children of `John` are stored without container tag:
 <person age="54" name="John Doe" city="Boyarka">
   <person age="25" name="Mary Doe" city="Boyarka"/>
   <person age="13" name="Chris Doe" city="Boyarka"/>
-</john>	
+</person>	
 ```	
 `children` property can be annotated that content of it's subtags with 'person' key is associated with the `children` array:
 ```objc
@@ -118,3 +121,5 @@ RF_ATTRIBUTE(RFXMLSerializableCollection, collectionClass = [Person class], item
 @property (copy, nonatomic) NSArray *children;
 ```
 Serialization works in the same way.
+
+[1]:https://developer.apple.com/library/mac/documentation/cocoa/conceptual/DataFormatting/Articles/dfDateFormatting10_4.html

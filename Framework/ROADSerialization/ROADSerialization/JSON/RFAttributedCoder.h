@@ -2,7 +2,7 @@
 //  RFAnnotatedCoder.h
 //  ROADSerialization
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without 
 // modification, are permitted provided that the following conditions are met:
@@ -31,12 +31,12 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import <Foundation/Foundation.h>
+#import "RFBasicAttributedCoder.h"
 
 /**
  JSON serializer. This class is using the RFSerializable and RFDerived attributes to map the memory objects to JSON strings.
  */
-@interface RFAttributedCoder : NSObject
+@interface RFAttributedCoder : RFBasicAttributedCoder <RFDateFormatterPooling>
 
 /**
  Encodes the specified object into a json string.

@@ -32,18 +32,17 @@
 
 
 #import "RFDownloader.h"
-#import "RFLooper.h"
-#import <ROAD/ROADLogger.h>
 #import <ROAD/ROADCore.h>
-#import "NSError+RFROADWebService.h"
 
+#import "RFWebServiceLog.h"
+#import "RFLooper.h"
+#import "NSError+RFROADWebService.h"
 #import "RFWebServiceCall.h"
 #import "RFWebServiceHeader.h"
 #import "RFWebServiceClientStatusCodes.h"
 #import "RFAuthenticating.h"
 #import "RFWebServiceSerializationHandler.h"
 #import "RFWebServiceClient.h"
-#import "RFWebServiceLogger.h"
 #import "RFMultipartData.h"
 #import "RFWebServiceCallParameterEncoder.h"
 #import "RFWebServiceSerializer.h"
@@ -60,8 +59,9 @@
 @property (strong, nonatomic) NSError *downloadError;
 @property (strong, nonatomic) NSMutableData *data;
 @property (strong, nonatomic) NSHTTPURLResponse *response;
-@property (assign, nonatomic) NSUInteger expectedContentLenght;
+@property (assign, nonatomic) long long expectedContentLenght;
 @property (strong, nonatomic) RFWebServiceCall * callAttribute;
+@property (strong, nonatomic) NSDictionary * values;
 
 - (void)stop;
 
@@ -77,11 +77,6 @@
         _methodName = methodName;
         _authenticationProvider = authenticaitonProvider;
         _successCodes = [NSMutableArray arrayWithObjects:[NSValue valueWithRange:NSMakeRange(200, 100)], nil];
-        RFWebServiceLogger *loggerTypeAttribute = [[webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceLogger class]];
-        if (!loggerTypeAttribute) {
-            loggerTypeAttribute = [[webServiceClient class] RF_attributeForClassWithAttributeType:[RFWebServiceLogger class]];
-        }
-        _loggerType = loggerTypeAttribute.loggerType;
         _callAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceCall class]];
     }
     
@@ -94,7 +89,10 @@
 
 - (void)configureRequestForUrl:(NSURL * const)anUrl body:(NSData * const)httpBody sharedHeaders:(NSDictionary *)sharedHeaders values:(NSDictionary *)values {
     _request = [self requestForUrl:anUrl withMethod:_callAttribute.method withBody:httpBody values:values];
-    
+
+    // Saving the values for the cache identifier parsing.
+    self.values = [values copy];
+
     // For multipart form data we have to add specific header
     if (_multipartData) {
         NSString *boundary;
@@ -103,7 +101,7 @@
         if (!boundary.length) {
             // Some random default boundary
             boundary = @"AaB03x"; //kRFBoundaryDefaultString; // Bug of Travis: const string contain nil
-            RFLogWarning(@"WebService: Boundary is not specified, using default one");
+            RFWSLogVerbose(@"WebService: Boundary is not specified, using default one");
         }
         NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
         [_request addValue:contentType forHTTPHeaderField:@"Content-Type"];
@@ -164,7 +162,7 @@
         _data = [NSMutableData data];
         [_connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
         [_connection start];
-        RFLogTypedDebug(self.loggerType, @"URL connection(%p) has started. Method: %@. URL: %@\nHeader fields: %@", _connection, _connection.currentRequest.HTTPMethod, [_connection.currentRequest.URL absoluteString], [_connection.currentRequest allHTTPHeaderFields]);
+        RFWSLogInfo(@"URL connection(%p) has started. Method: %@. URL: %@\nHeader fields: %@", _connection, _connection.currentRequest.HTTPMethod, [_connection.currentRequest.URL absoluteString], [_connection.currentRequest allHTTPHeaderFields]);
         [_looper start];
     }
 }
@@ -183,8 +181,11 @@
                 if (cacheAttribute.maxAge) {
                     expirationDate = [NSDate dateWithTimeIntervalSinceNow:cacheAttribute.maxAge];
                 }
+                // checking for the cache identifier and parsing
+                NSString *cacheIdentifier = [[RFServiceProvider webServiceCacheManager] parseCacheIdentifier:cacheAttribute.cacheIdentifier withParameters:self.values];
+
                 id<RFWebServiceCachingManaging> cacheManager = [RFServiceProvider webServiceCacheManager];
-                [cacheManager setCacheWithRequest:_request response:response responseBodyData:result expirationDate:expirationDate];
+                [cacheManager setCacheWithRequest:_request response:response responseBodyData:result expirationDate:expirationDate cacheIdentifier:cacheIdentifier];
             }
         }
     }
@@ -241,14 +242,14 @@
     return [_data length];
 }
 
-- (NSUInteger)expectedContentLenght {
+- (long long)expectedContentLenght {
     return _expectedContentLenght;
 }
 
 - (void)cancel {
     _requestCancelled = YES;
     [_connection cancel];
-     RFLogTypedDebug(self.loggerType, @"URL connection(%p) is canceled. URL: %@", _connection, [_connection.currentRequest.URL absoluteString]);
+    RFWSLogInfo(@"URL connection(%p) is canceled. URL: %@", _connection, [_connection.currentRequest.URL absoluteString]);
     self.data = nil;
     self.downloadError = [NSError RF_sparkWS_cancellError];
     [self stop];
@@ -271,7 +272,7 @@
                 }
             }
             else if (_callAttribute.postParameter != NSNotFound) {
-                RFLogWarning(@"Web service method %@ specifies postParameter, but has NSData of RFFormData variable in parameters and use it instead", method);
+                RFWSLogWarn(@"Web service method %@ specifies postParameter, but has NSData or RFFormData variable in parameters and use it instead", method);
             }
         }
     }

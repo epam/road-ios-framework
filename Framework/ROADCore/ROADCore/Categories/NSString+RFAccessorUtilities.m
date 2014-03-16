@@ -33,10 +33,12 @@
 
 #import "NSString+RFAccessorUtilities.h"
 
+
 static NSString * const kRFSetterNameFormat = @"set%@:";
 static NSString * const kRFSetterPrefix = @"set";
 static NSString * const kRFBooleanGetterPrefix = @"is";
 static NSString * const kRFCaseTransformationFormat = @"%@%@%@";
+
 
 @implementation NSString (RFAccessorUtilities)
 

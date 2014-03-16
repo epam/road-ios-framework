@@ -35,7 +35,7 @@
 @implementation RFSerializableDate
 
 - (id)init {
-
+    _unixTimestampMultiplier = 1000.0f;
     _unixTimestamp = NO;
     return [super init];
 }

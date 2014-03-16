@@ -8,18 +8,20 @@ Registering a service requires 2 simple steps:
 
 * Add category to `RFServiceProvider` with a getter for the service.
   
-  ```objc
+```objc
 @interface SFServiceProvider (SampleService)
 - (id<SampleServiceInterface>)watchListService;
 @end	
-  ```
-	`SampleServiceInterface` is a placeholder for any abstraction protocol to the service.
+```
+
+`SampleServiceInterface` is a placeholder for any abstraction protocol to the service.
 	
 * Annotate getter with `RFService` **attribute** specifying service class.
-  ```objc
+
+```objc
 RF_ATTRIBUTE(RFService, serviceClass = [SampleService class])
 - (id<SampleServiceInterface>)watchListService;
-  ```
+```
 
 ##Example
 
@@ -43,4 +45,4 @@ id <RFLogging> logger = [RFServiceProvider logger];
 
 **Services** are build on top of **Attributes** to specify service class for each specific case.
 
-`RFService` attribute with single 'serviceClass' property serves for this. `Class` object as a parameter value is passed.
+`RFService` attribute with single `serviceClass` property serves for this. `Class` object as a parameter value is passed.

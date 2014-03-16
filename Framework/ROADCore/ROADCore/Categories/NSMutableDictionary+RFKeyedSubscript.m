@@ -31,16 +31,19 @@
 // for additional information regarding copyright ownership and licensing
 
 
+#ifndef __IPHONE_6_0
+
+
 #import "NSMutableDictionary+RFKeyedSubscript.h"
 
-#ifndef __IPHONE_6_0
 
 @implementation NSMutableDictionary (RFKeyedSubscript)
 
-- (void)RF_setObject:(id)obj forKeyedSubscript:(id<NSCopying>)key {
+- (void)setObject:(id)obj forKeyedSubscript:(id<NSCopying>)key {
     [self setObject:obj forKey:key];
 }
 
 @end
+
 
 #endif

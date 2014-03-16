@@ -4,15 +4,19 @@ EXIT_STATUS=0
 
 # =================     Set environment variables     ===========
 export WORKSPACE="-workspace Framework/ROADFramework.xcworkspace"
-export PROJECT="-project tools/ROADAttributesCodeGenerator/ROADAttributesCodeGenerator.xcodeproj"
-if [[ $PROJECT_SCHEME == ROADAttributesCodeGenerator ]]; then export PATCH_FOR_PROJECT_OR_WORKSPACE=$PROJECT; else export PATCH_FOR_PROJECT_OR_WORKSPACE=$WORKSPACE; fi
+export PATCH_FOR_PROJECT_OR_WORKSPACE=$WORKSPACE
 
 # =================     Install cpp-coveralls    ===========
 sudo easy_install cpp-coveralls > /dev/null
 
+# =================     Install cocoa pods    ===========
+cd Framework
+pod install
+cd ..
+
 # =================     Run build, test and oclint check     ===========
 xctool $PATCH_FOR_PROJECT_OR_WORKSPACE -scheme $PROJECT_SCHEME -reporter pretty -reporter json-compilation-database:compile_commands.json build || EXIT_STATUS=$?
-if [[ $PROJECT_SCHEME != ROADAttributesCodeGenerator ]]; then xctool $WORKSPACE -scheme $PROJECT_SCHEME test -sdk iphonesimulator6.1 || EXIT_STATUS=$?; fi	
+xctool $WORKSPACE -scheme $PROJECT_SCHEME test -sdk iphonesimulator6.1 || EXIT_STATUS=$?
 
 # =================     Download oclint, unzip    ===========
 

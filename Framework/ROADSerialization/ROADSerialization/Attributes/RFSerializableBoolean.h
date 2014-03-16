@@ -32,8 +32,14 @@
 
 #import <ROAD/ROADAttribute.h>
 
+/**
+ * Defines custom serialization behaviour for boolean values.
+ */
 @interface RFSerializableBoolean : NSObject
 
+/**
+ * Dictionary specifies the values that boolean will be mapped on. For exmaple, @{ @"true": @YES, @"false": @NO } specifies string values true/false for boolean.
+ */
 @property (nonatomic, strong) NSDictionary *translationValues;
 
 @end

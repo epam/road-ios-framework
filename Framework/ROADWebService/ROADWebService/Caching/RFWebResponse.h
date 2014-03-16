@@ -44,5 +44,6 @@
 @property (nonatomic, retain) NSData * responseBodyData;
 @property (nonatomic, retain) NSDecimalNumber * urlHash;
 @property (nonatomic, retain) NSString * lastModified;
+@property (nonatomic, retain) NSString * cacheIdentifier;
 
 @end

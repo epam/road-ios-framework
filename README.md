@@ -13,8 +13,6 @@ A set of reusable components taking advantage of extra dimension [Attribute-Orie
 **Services** - implementation of Service Locator pattern, centralized replacement for singletons.  
 **Serialization** - attribute-based JSON and XML parsers for easy DOM (de)serializations.  
 **Web Services** - attribute-based HTTP client API.  
-**Logger** - attribute-based logger.  
-**Observation** - unification of KVO and NSNotifications with block-based callbacks.  
 
 ##Snippet
 Connection to test HTTP server, that returns JSON from headers you send, could look like:
@@ -76,16 +74,16 @@ ROAD initially designed to use **ARC**.
 	pod 'ROADFramework'
 
 	post_install do |installer|
-	  require File.expand_path('ROADConfigurator.rb', './Pods/ROADFramework/Framework/ROADCore/ROADCore/')
-	  ROADConfigurator::post_install(installer)
+	    require File.expand_path('ROADConfigurator.rb', './Pods/libObjCAttr/libObjCAttr/Resources/')
+	    ROADConfigurator::post_install(installer)
 	end
 
 
 **Using components separately**  
 If you'd like to embed only specific components from the framework it can be done with CocoaPods as well.
 
-        pod 'ROADFramework/ROADServices'
-        pod 'ROADFramework/ROADWebService'
+	pod 'ROADFramework/ROADServices'
+	pod 'ROADFramework/ROADWebService'
 
 Detail information on internals of ROAD integration as well as advanced topics like integration with predefined workspace, multiple projects or targets available in [documentation](./Documents/Configuration/Cocoapods.md).        
         
@@ -97,14 +95,16 @@ User documentation for following components available in **Documents** folder:
 * [Services](./Documents/ROADServices.md)
 * [Serialization](./Documents/ROADSerialization.md)
 * [Web Services](./Documents/ROADWebService.md)
-* [Logger](./Documents/ROADLogger.md)
-* [Observation](./Documents/ROADObservation.md)
 
 Classes reference available in [cocoadocs.org](http://cocoadocs.org/docsets/ROADFramework/)
 
 ##License
 ROAD is made available under the terms of the [BSD-3](http://opensource.org/licenses/BSD-3-Clause). See the LICENSE file that accompanies this distribution for the full text of the license.
 
+##Contribution
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/epam/road-ios-framework/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+There're three ways you can help us:
 
+* **Raise an issue.** You find something that does not work as expected? You can get us know about it. 
+* **Suggest a Feature.** It's even better if you come up with new feature and write us about it.
+* **Write some code.** We would love to see more pull requests to our framework, just make sure you have latest sources and you're creating pull request to ***dev*** branch. For more information check out [guidelines for contributing](./contributing.md).

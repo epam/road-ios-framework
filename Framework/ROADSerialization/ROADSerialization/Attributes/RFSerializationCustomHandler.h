@@ -33,7 +33,7 @@
 #import <Foundation/Foundation.h>
 
 /**
- * Defines custom serialization handler class. The handler class has to conform to RFJSONSerializationHandler protocol for JSON serialization.
+ * Defines custom serialization handler class. The handler class has to conform to RFJSONSerializationHandling protocol for JSON serialization.
  */
 @interface RFSerializationCustomHandler : NSObject
 
@@ -42,7 +42,7 @@
  */
 @property (nonatomic, strong) NSString *key;
 /**
- * Defines class that responsible for serialization and deserialization back part of object.
+ * Defines class that responsible for serialization and deserialization back part of object. Must conform RFJSONSerializationHandling.
  */
 @property (nonatomic, strong) Class handlerClass;
 

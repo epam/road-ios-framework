@@ -2,7 +2,7 @@
 //  RFSerializable.h
 //  ROADSerialization
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without 
 // modification, are permitted provided that the following conditions are met:
@@ -35,10 +35,19 @@
 extern NSString * const RFSerializedObjectClassName;
 
 /**
- Serialization attribute. Can be used either as a class attribute to indicate all properties of a class can be serialized. Can be used as individual property attribute to indicate if the given property is to be serialized in the class. For properties, the defaultValue of the attribute can be provided to indicate the serialization key for the property value. If omitted, the property's declared name will be used as key.
+ Serialization attribute. Can be used either as a class attribute to indicate all properties of a class can be serialized. Can be used as individual property attribute to indicate if the given property is to be serialized in the class. For properties, serializationKey of the attribute can be provided to indicate the serialization key for the property value. If omitted, the property's declared name will be used as key.
  */
 @interface RFSerializable : NSObject
 
+/**
+ * Allows to set key for property serialization. If not specified serializator will use property name as serializationKey.
+ */
 @property (nonatomic, strong) NSString *serializationKey;
+
+/**
+ Disables the addition of the RFSerializedObjectClassName data
+ to the generated content.
+ */
+@property (nonatomic, assign) BOOL classNameSerializationDisabled;
 
 @end
