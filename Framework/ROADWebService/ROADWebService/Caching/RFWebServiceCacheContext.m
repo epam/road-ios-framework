@@ -34,6 +34,8 @@
 #import "RFWebServiceCacheContext.h"
 #import <ROAD/ROADCore.h>
 
+#import "RFWebServiceLog.h"
+
 
 static NSString * const kRFWebServiceCachingDirectory = @"RFCachingDirecory";
 static NSString * const kRFWebServiceCachingModelName = @"RFWebServiceCachingModel";
@@ -75,7 +77,7 @@ static NSString * const kRFWebServiceCachingStorageName = @"RFWebServiceCache.co
         NSError *error;
         [[NSFileManager defaultManager] createDirectoryAtPath:webServiceCachingPath withIntermediateDirectories:NO attributes:nil error:&error];
         if (error) {
-            NSLog(@"Directory for web service cache was not created with error: %@", error);
+            RFWSLogError(@"Directory for web service cache was not created with error: %@", error);
         }
     }
     
@@ -95,7 +97,7 @@ static NSString * const kRFWebServiceCachingStorageName = @"RFWebServiceCache.co
         if (![_persistentStoreCoordinator addPersistentStoreWithType:storeType configuration:nil
                                                                  URL:_storeURL options:options error:&error]) {
             _persistentStoreCoordinator = nil;
-            NSLog(@"RFWebServiceCachingManager error: persistent storage creating was failed with error: %@", [error localizedDescription]);
+            RFWSLogError(@"RFWebServiceCachingManager error: persistent storage creating was failed with error: %@", [error localizedDescription]);
         }
     }
 }

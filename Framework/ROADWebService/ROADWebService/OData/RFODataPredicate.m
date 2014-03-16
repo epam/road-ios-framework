@@ -63,7 +63,7 @@ static NSArray * kRFPredicateOperatorTypes;
                                            @"add",
                                            @"sub",
                                            @"mul",
-                                           @"div"
+                                           @"div",
                                            @"mod"];
         });
     }
