@@ -1,9 +1,0 @@
-//
-// Prefix header for all source files of the 'ROADServicesMac' target in the 'ROADServicesMac' project
-//
-
-#ifdef __OBJC__
-    #import <Cocoa/Cocoa.h>
-    #import <ROADReflection/ROADReflection.h>
-    #import <ROADAttribute/ROADAttribute.h>
-#endif
