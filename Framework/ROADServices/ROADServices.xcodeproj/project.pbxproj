@@ -78,9 +78,6 @@
 		7869946216AEBF9A00B28760 /* RFService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFService.h; sourceTree = "<group>"; };
 		7869946316AEBF9A00B28760 /* RFService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFService.m; sourceTree = "<group>"; };
 		7869946A16AEBFC400B28760 /* ROADServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ROADServices.h; sourceTree = "<group>"; };
-		786994ED16AEC09E00B28760 /* ROADServicesMac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ROADServicesMac-Info.plist"; sourceTree = "<group>"; };
-		786994EF16AEC09E00B28760 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		786994F116AEC09E00B28760 /* ROADServicesMac-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ROADServicesMac-Prefix.pch"; sourceTree = "<group>"; };
 		78F95ADD16E9F16600E58C3B /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		839A198318C6087C001A727C /* libROADCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libROADCore.a; path = "../ROADCore/build/Debug-iphoneos/libROADCore.a"; sourceTree = "<group>"; };
 		83AE634817F469560053780E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -151,7 +148,6 @@
 			isa = PBXGroup;
 			children = (
 				7869945216AEBF3E00B28760 /* ROADServices */,
-				786994EB16AEC09E00B28760 /* ROADServicesMac */,
 				5ACD21551741179500CC61AC /* ROADServicesTest */,
 				7869944F16AEBF3E00B28760 /* Frameworks */,
 				7869944E16AEBF3E00B28760 /* Products */,
@@ -215,24 +211,6 @@
 				D7AF13E617CF541500A92C31 /* RFServiceProvider.m */,
 			);
 			path = Service;
-			sourceTree = "<group>";
-		};
-		786994EB16AEC09E00B28760 /* ROADServicesMac */ = {
-			isa = PBXGroup;
-			children = (
-				786994EC16AEC09E00B28760 /* Supporting Files */,
-			);
-			path = ROADServicesMac;
-			sourceTree = "<group>";
-		};
-		786994EC16AEC09E00B28760 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				786994ED16AEC09E00B28760 /* ROADServicesMac-Info.plist */,
-				786994EE16AEC09E00B28760 /* InfoPlist.strings */,
-				786994F116AEC09E00B28760 /* ROADServicesMac-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,14 +358,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				5ACD21591741179500CC61AC /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		786994EE16AEC09E00B28760 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				786994EF16AEC09E00B28760 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

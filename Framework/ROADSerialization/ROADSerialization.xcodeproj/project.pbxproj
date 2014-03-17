@@ -209,9 +209,6 @@
 		8D60079717D004340095E17D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9F0A8AB415C299340044A782 /* libROADSerialization.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libROADSerialization.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F80CD5B15F64EEE0031BA24 /* ROADSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROADSerialization.h; sourceTree = "<group>"; };
-		9FA9F4DD15F636C500FDE9E0 /* ROADSerializationMac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ROADSerializationMac-Info.plist"; sourceTree = "<group>"; };
-		9FA9F4DF15F636C500FDE9E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9FA9F4E115F636C500FDE9E0 /* ROADSerializationMac-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ROADSerializationMac-Prefix.pch"; sourceTree = "<group>"; };
 		C3182C9C183B95D80041F4B7 /* DeserialisationCollectionContainerTest.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DeserialisationCollectionContainerTest.xml; sourceTree = "<group>"; };
 		C3182CF8183E4C140041F4B7 /* RFAttributedXMLCoderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFAttributedXMLCoderTest.m; path = Classes/RFAttributedXMLCoderTest.m; sourceTree = "<group>"; };
 		C33138E618369AE2000675B6 /* RFDerived.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFDerived.m; sourceTree = "<group>"; };
@@ -384,7 +381,6 @@
 			isa = PBXGroup;
 			children = (
 				9F0A8AB615C299340044A782 /* ROADSerialization */,
-				9FA9F4DB15F636C500FDE9E0 /* ROADSerializationMac */,
 				7841618416480C1E0089FDE9 /* ROADSerializationTest */,
 				7846755A15C16C21000E02DA /* Frameworks */,
 				7846755815C16C21000E02DA /* Products */,
@@ -505,24 +501,6 @@
 			isa = PBXGroup;
 			children = (
 				8366A0CC18CF443E00E127FB /* ROADSerialization-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		9FA9F4DB15F636C500FDE9E0 /* ROADSerializationMac */ = {
-			isa = PBXGroup;
-			children = (
-				9FA9F4DC15F636C500FDE9E0 /* Supporting Files */,
-			);
-			path = ROADSerializationMac;
-			sourceTree = "<group>";
-		};
-		9FA9F4DC15F636C500FDE9E0 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				9FA9F4DD15F636C500FDE9E0 /* ROADSerializationMac-Info.plist */,
-				9FA9F4DE15F636C500FDE9E0 /* InfoPlist.strings */,
-				9FA9F4E115F636C500FDE9E0 /* ROADSerializationMac-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -725,14 +703,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				7841618816480C1E0089FDE9 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		9FA9F4DE15F636C500FDE9E0 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9FA9F4DF15F636C500FDE9E0 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
