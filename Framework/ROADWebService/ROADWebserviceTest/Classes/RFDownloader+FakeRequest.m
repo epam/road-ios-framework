@@ -92,7 +92,7 @@
         resultData = [RFDownloader generateDateBasedData];
     }
     else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.cache.same.last.modified"]) {
-        if ([[self.request.allHTTPHeaderFields objectForKey:@"If-Modified-Since"] isEqualToString:@"Sat, 29 Oct 1994 19:43:31 GMT"]) {
+        if ([(self.request.allHTTPHeaderFields)[@"If-Modified-Since"] isEqualToString:@"Sat, 29 Oct 1994 19:43:31 GMT"]) {
             response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:304 HTTPVersion:@"HTTP/1.1" headerFields:nil];
         }
         else {
@@ -101,7 +101,7 @@
         }
     }
     else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.cache.same.etag"]) {
-        if ([[self.request.allHTTPHeaderFields objectForKey:@"If-None-Match"] isEqualToString:@"4a7sd47ads5789a6sd"]) {
+        if ([(self.request.allHTTPHeaderFields)[@"If-None-Match"] isEqualToString:@"4a7sd47ads5789a6sd"]) {
             response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:304 HTTPVersion:@"HTTP/1.1" headerFields:nil];
         }
         else {
@@ -132,7 +132,7 @@
 - (BOOL)checkMultipartData {
     NSString *result = [[NSString alloc] initWithData:self.request.HTTPBody encoding:NSUTF8StringEncoding];
     NSError *error = NULL;
-    NSString *contentType = [self.request.allHTTPHeaderFields objectForKey:@"Content-Type"];
+    NSString *contentType = (self.request.allHTTPHeaderFields)[@"Content-Type"];
     NSRange rangeBoundary = [contentType rangeOfString:@"boundary="];
     NSRange rangeWithoutBoundary = NSMakeRange(0, rangeBoundary.location + rangeBoundary.length);
     NSString *boundary = [contentType stringByReplacingCharactersInRange:rangeWithoutBoundary withString:@""];
@@ -149,7 +149,7 @@
         isOkMultipartData = YES;
     }
     else {
-        NSLog(@"Number of matches exceed the limit - %d", numberOfMatches);
+        NSLog(@"Number of matches exceed the limit - %lu", (unsigned long)numberOfMatches);
         NSLog(@"result - %@", result);
         NSLog(@"%@", self.request.allHTTPHeaderFields);
     }

@@ -51,7 +51,7 @@
     [object setValue:@"some string" forKey:@"myNewKey"];
     
     NSString * const result = [object valueForKey:@"myNewKey"];
-    STAssertTrue([result isEqualToString:@"some string"], @"Assertion: the string value is stored property.");
+    XCTAssertTrue([result isEqualToString:@"some string"], @"Assertion: the string value is stored property.");
 }
 
 - (void)testMutableObjectDynamicProperty {
@@ -59,13 +59,13 @@
     [object setValue:@"some string" forKey:@"dynamicProp"];
     
     NSString * const result = [object valueForKey:@"dynamicProp"];
-    STAssertTrue([result isEqualToString:@"some string"], @"Assertion: the string value is stored property.");
+    XCTAssertTrue([result isEqualToString:@"some string"], @"Assertion: the string value is stored property.");
 }
 
 - (void)testMutableObjectUnusedProperty {
     RFMutableObject *object = [[RFMutableObject alloc] init];
     id const someResult = [object valueForKey:@"myKey"];
-    STAssertTrue(someResult == nil, @"Assertion: unused properties should return nil.");
+    XCTAssertTrue(someResult == nil, @"Assertion: unused properties should return nil.");
 }
 
 @end

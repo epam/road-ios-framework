@@ -286,7 +286,7 @@ static const NSInteger kRFWebServiceHeaderValueParameterIndex       = 1;
 
 + (NSDictionary *)dictionary:(NSDictionary *)dictionary setObject:(id)object forKey:(id<NSCopying>)key {
     NSMutableDictionary *newHeaders = [[NSMutableDictionary alloc] initWithCapacity:[dictionary count] + 1];
-    [newHeaders setObject:object forKey:key];
+    newHeaders[key] = object;
     [newHeaders addEntriesFromDictionary:dictionary];
     return newHeaders;
 }

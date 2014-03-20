@@ -82,7 +82,7 @@
 
 - (id<RFWebServiceCancellable>)dynamicWebServiceCall:(id)firstParameter, ... {
     
-    int parameterCount = [[NSStringFromSelector(_cmd) componentsSeparatedByString:@":"] count] - 1;
+    unsigned long parameterCount = [[NSStringFromSelector(_cmd) componentsSeparatedByString:@":"] count] - 1;
     NSMutableArray *parameterList = [NSMutableArray array];
     
     va_list arguments;

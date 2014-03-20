@@ -61,7 +61,7 @@
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithProperty:[RFODataTestEntity RF_propertyNamed:@"total"] ascending:YES];
     RFODataFetchRequest *fetchRequest = [[RFODataFetchRequest alloc] initWithEntityName:[RFODataTestEntity entityName] predicate:predicate sortDescriptors:@[sortDescriptor]];
     
-    STAssertTrue([[fetchRequest generateQueryString] isEqualToString:@"$orderby=TotalCost asc&$filter=(Name eq Paul) or (TotalCost le 32)"], @"OData fetch request generated incorrect result");
+    XCTAssertTrue([[fetchRequest generateQueryString] isEqualToString:@"$orderby=TotalCost asc&$filter=(Name eq Paul) or (TotalCost le 32)"], @"OData fetch request generated incorrect result");
 }
 
 - (void)testODataRequestClearURL {
@@ -71,11 +71,11 @@
     
     __block RFDownloader *downloader = (RFDownloader *)[_webClient loadDataWithFetchRequest:fetchRequest success:^(id result) {
         NSLog(@"%@", downloader.request.URL);
-        STAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity"], @"URL was built incorrectly");
+        XCTAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity"], @"URL was built incorrectly");
         isFinished = YES;
     } failure:^(NSError *error) {
         NSLog(@"%@", downloader.request.URL);
-        STAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity"], @"URL was built incorrectly");
+        XCTAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity"], @"URL was built incorrectly");
         isFinished = YES;
     }];
     
@@ -96,11 +96,11 @@
     
     __block RFDownloader *downloader = (RFDownloader *)[_webClient loadDataWithFetchRequest:fetchRequest success:^(id result) {
         NSLog(@"%@", downloader.request.URL);
-        STAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity?$orderby=TotalCost%20asc&$filter=(Name%20eq%20Paul)"], @"URL was built incorrectly");
+        XCTAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity?$orderby=TotalCost%20asc&$filter=(Name%20eq%20Paul)"], @"URL was built incorrectly");
         isFinished = YES;
     } failure:^(NSError *error) {
         NSLog(@"%@", downloader.request.URL);
-        STAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity?$orderby=TotalCost%20asc&$filter=(Name%20eq%20Paul)"], @"URL was built incorrectly");
+        XCTAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity?$orderby=TotalCost%20asc&$filter=(Name%20eq%20Paul)"], @"URL was built incorrectly");
         isFinished = YES;
     }];
     
@@ -121,11 +121,11 @@
     
     __block RFDownloader *downloader = (RFDownloader *)[_webClient loadDataWithFetchRequest:fetchRequest someImportantParameter:@"value1" success:^(id result) {
         NSLog(@"%@", downloader.request.URL);
-        STAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity?importantParameter=value1&$orderby=TotalCost%20asc&$filter=(Name%20eq%20Paul)"], @"URL with parameter was built incorrectly");
+        XCTAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity?importantParameter=value1&$orderby=TotalCost%20asc&$filter=(Name%20eq%20Paul)"], @"URL with parameter was built incorrectly");
         isFinished = YES;
     } failure:^(NSError *error) {
         NSLog(@"%@", downloader.request.URL);
-        STAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity?importantParameter=value1&$orderby=TotalCost%20asc&$filter=(Name%20eq%20Paul)"], @"URL with parameter was built incorrectly");
+        XCTAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity?importantParameter=value1&$orderby=TotalCost%20asc&$filter=(Name%20eq%20Paul)"], @"URL with parameter was built incorrectly");
         isFinished = YES;
     }];
     
@@ -147,11 +147,11 @@
     
     __block RFDownloader *downloader = (RFDownloader *)[_webClient loadDataWithFetchRequest:fetchRequest someImportantParameter:@"value1" success:^(id result) {
         NSLog(@"%@", downloader.request.URL);
-        STAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity?importantParameter=value1&$top=3&$skip=2&$filter=Name%20eq%20Paul"], @"URL with pagination was built incorrectly");
+        XCTAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity?importantParameter=value1&$top=3&$skip=2&$filter=Name%20eq%20Paul"], @"URL with pagination was built incorrectly");
         isFinished = YES;
     } failure:^(NSError *error) {
         NSLog(@"%@", downloader.request.URL);
-        STAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity?importantParameter=value1&$top=3&$skip=2&$filter=Name%20eq%20Paul"], @"URL with pagination was built incorrectly");
+        XCTAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity?importantParameter=value1&$top=3&$skip=2&$filter=Name%20eq%20Paul"], @"URL with pagination was built incorrectly");
         isFinished = YES;
     }];
     
@@ -171,11 +171,11 @@
     
     __block RFDownloader *downloader = (RFDownloader *)[_webClient loadDataWithFetchRequest:fetchRequest someImportantParameter:@"value1" success:^(id result) {
         NSLog(@"%@", downloader.request.URL);
-        STAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity?importantParameter=value1&$expand=TestEntity,SomeEntity,AnotheEntity"], @"URL with expand was built incorrectly");
+        XCTAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity?importantParameter=value1&$expand=TestEntity,SomeEntity,AnotheEntity"], @"URL with expand was built incorrectly");
         isFinished = YES;
     } failure:^(NSError *error) {
         NSLog(@"%@", downloader.request.URL);
-        STAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity?importantParameter=value1&$expand=TestEntity,SomeEntity,AnotheEntity"], @"URL with expand was built incorrectly");
+        XCTAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity?importantParameter=value1&$expand=TestEntity,SomeEntity,AnotheEntity"], @"URL with expand was built incorrectly");
         isFinished = YES;
     }];
     
@@ -193,11 +193,11 @@
     
     __block RFDownloader *downloader = (RFDownloader *)[_webClient loadDataWithFetchRequest:fetchRequest someImportantParameter:@"value1" success:^(id result) {
         NSLog(@"%@", downloader.request.URL);
-        STAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity?importantParameter=value1&$expand=TestEntity/SomeEntity/AnotheEntity"], @"URL with multi level expand was built incorrectly");
+        XCTAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity?importantParameter=value1&$expand=TestEntity/SomeEntity/AnotheEntity"], @"URL with multi level expand was built incorrectly");
         isFinished = YES;
     } failure:^(NSError *error) {
         NSLog(@"%@", downloader.request.URL);
-        STAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity?importantParameter=value1&$expand=TestEntity/SomeEntity/AnotheEntity"], @"URL with multi level expand was built incorrectly");
+        XCTAssertTrue([downloader.request.URL.absoluteString isEqualToString:@"http://fakeurl.com/mashups/mashupengine/TestEntity?importantParameter=value1&$expand=TestEntity/SomeEntity/AnotheEntity"], @"URL with multi level expand was built incorrectly");
         isFinished = YES;
     }];
     

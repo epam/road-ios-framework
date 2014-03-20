@@ -53,8 +53,8 @@
     id const object = [pool objectForIdentifier:@"id1"];
     id const nonObject = [pool objectForIdentifier:@"id3"];
     
-    STAssertTrue(object != nil, @"Assertion: registered classes get instantiated property");
-    STAssertTrue(nonObject == nil, @"Assertion: unregistered identifiers are not recognized");
+    XCTAssertTrue(object != nil, @"Assertion: registered classes get instantiated property");
+    XCTAssertTrue(nonObject == nil, @"Assertion: unregistered identifiers are not recognized");
 }
 
 - (void)testReuse {
@@ -62,11 +62,11 @@
     [object repool];
     id const reusedObject = [pool objectForIdentifier:@"id2"];
     
-    STAssertTrue([object isEqual:reusedObject], @"Assertion: repooled objects are available for reusing.");
+    XCTAssertTrue([object isEqual:reusedObject], @"Assertion: repooled objects are available for reusing.");
     
     id const newObject = [pool objectForIdentifier:@"id2"];
     
-    STAssertTrue(![newObject isEqual:reusedObject], @"Assertion: requested objects are removed from the pool.");
+    XCTAssertTrue(![newObject isEqual:reusedObject], @"Assertion: requested objects are removed from the pool.");
 }
 
 @end

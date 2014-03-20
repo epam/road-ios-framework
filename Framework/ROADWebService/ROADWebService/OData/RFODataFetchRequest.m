@@ -94,14 +94,14 @@
 - (void)addTopOptionToQueryString:(NSMutableString *)queryString {
     if (_fetchLimit) {
         [self addAmpersandToQueryStringIfNecessary:queryString];
-        [queryString appendFormat:@"$top=%d", _fetchLimit];
+        [queryString appendFormat:@"$top=%ld", (long)_fetchLimit];
     }
 }
 
 - (void)addSkipOptionToQueryString:(NSMutableString *)queryString {
     if (_fetchOffset) {
         [self addAmpersandToQueryStringIfNecessary:queryString];
-        [queryString appendFormat:@"$skip=%d", _fetchOffset];
+        [queryString appendFormat:@"$skip=%ld", (long)_fetchOffset];
     }
 }
 
@@ -109,7 +109,7 @@
     if ([_sortDescriptors count] > 0) {
         [self addAmpersandToQueryStringIfNecessary:queryString];
         for (int index = 0; index < [_sortDescriptors count]; index++) {
-            NSSortDescriptor *sortDescriptor = [_sortDescriptors objectAtIndex:index];
+            NSSortDescriptor *sortDescriptor = _sortDescriptors[index];
             NSString *direction = sortDescriptor.ascending ? @"asc" : @"desc";
             if (index == 0) {
                 [queryString appendFormat:@"$orderby=%@ %@", sortDescriptor.key, direction];
@@ -132,7 +132,7 @@
     if ([_expandEntities count] > 0) {
         [self addAmpersandToQueryStringIfNecessary:queryString];
         for (int indexOfExpandOption = 0; indexOfExpandOption < [_expandEntities count]; indexOfExpandOption++) {
-            NSArray *expandOption = [_expandEntities objectAtIndex:indexOfExpandOption];
+            NSArray *expandOption = _expandEntities[indexOfExpandOption];
             if (indexOfExpandOption == 0) {
                 [queryString appendString:@"$expand="];
             }

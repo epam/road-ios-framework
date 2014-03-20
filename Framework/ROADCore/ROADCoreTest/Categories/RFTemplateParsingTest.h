@@ -31,8 +31,8 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface RFTemplateParsingTest : SenTestCase
+@interface RFTemplateParsingTest : XCTestCase
 
 @end

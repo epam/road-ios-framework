@@ -260,8 +260,8 @@
     NSData *body = httpBody;
     
     if ([_callAttribute.method isEqualToString:@"POST"]) {
-        if (_callAttribute.postParameter != NSNotFound && !httpBody.length) {
-            id bodyObject = [values objectForKey:[NSString stringWithFormat:@"%d", _callAttribute.postParameter]];
+        if (_callAttribute.postParameter != (int)NSNotFound && !httpBody.length) {
+            id bodyObject = values[[NSString stringWithFormat:@"%d", _callAttribute.postParameter]];
             body = [self dataFromParameter:bodyObject];
         }
         else {
@@ -271,7 +271,7 @@
                     body = [self dataFromParameter:firstParameter];
                 }
             }
-            else if (_callAttribute.postParameter != NSNotFound) {
+            else if (_callAttribute.postParameter != (int)NSNotFound) {
                 RFWSLogWarn(@"Web service method %@ specifies postParameter, but has NSData or RFFormData variable in parameters and use it instead", method);
             }
         }

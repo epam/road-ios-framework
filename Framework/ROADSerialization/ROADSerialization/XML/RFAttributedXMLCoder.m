@@ -73,7 +73,7 @@ char *RFAttributedXMLCoderTagForClass(Class aClass) {
     xmlDocSetRootElement(_xmlDoc, xmlNode);
     xmlDocDumpFormatMemory(_xmlDoc, &xmlBuff, &xmlBufferSize, 1);
 
-    NSString *result = [NSString stringWithUTF8String:(char*)xmlBuff];
+    NSString *result = @((char*)xmlBuff);
     
     xmlFree(xmlBuff);
     xmlFreeDoc(_xmlDoc);
@@ -89,7 +89,7 @@ char *RFAttributedXMLCoderTagForClass(Class aClass) {
 
     // Check if we want CDATA
     if ([class isSubclassOfClass:[NSData class]]) {
-        xmlNodePtr cdataPtr = xmlNewCDataBlock(_xmlDoc, [serializedObject bytes], [serializedObject length]);
+        xmlNodePtr cdataPtr = xmlNewCDataBlock(_xmlDoc, [serializedObject bytes], (int)[serializedObject length]);
         xmlAddChild( result, cdataPtr );
     }
     // Try to serialize as a container or object with defined properties. Assume it's simple value otherwise.

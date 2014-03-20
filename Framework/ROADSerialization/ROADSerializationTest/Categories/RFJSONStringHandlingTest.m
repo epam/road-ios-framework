@@ -40,9 +40,9 @@
     NSString *jsonString = @"{ \"string\" : \"value1\", \"array\" : [ 1, 2, 3], \"dict\" : { \"string\" : \"value2\" }}";
     NSError *error;
     NSDictionary *jsonDict = [NSJSONSerialization RF_JSONObjectWithString:jsonString options:NSJSONReadingAllowFragments error:&error];
-    STAssertTrue([jsonDict[@"string"] isEqualToString:@"value1"], @"Assertion: string is available in the dictionary with the correct value.");
-    STAssertTrue([jsonDict[@"array"] isKindOfClass:[NSArray class]] && [jsonDict[@"array"] count] == 3, @"Assertion: array is present in json with 3 elements.");
-    STAssertTrue([jsonDict[@"dict"] isKindOfClass:[NSDictionary class]] && [jsonDict[@"dict"][@"string"] isEqualToString:@"value2"], @"Assertion: dictionary is present in json with a single pair.");
+    XCTAssertTrue([jsonDict[@"string"] isEqualToString:@"value1"], @"Assertion: string is available in the dictionary with the correct value.");
+    XCTAssertTrue([jsonDict[@"array"] isKindOfClass:[NSArray class]] && [jsonDict[@"array"] count] == 3, @"Assertion: array is present in json with 3 elements.");
+    XCTAssertTrue([jsonDict[@"dict"] isKindOfClass:[NSDictionary class]] && [jsonDict[@"dict"][@"string"] isEqualToString:@"value2"], @"Assertion: dictionary is present in json with a single pair.");
 }
 
 @end

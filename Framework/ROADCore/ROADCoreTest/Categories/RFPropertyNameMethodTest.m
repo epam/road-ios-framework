@@ -55,12 +55,12 @@
 
 - (void)testSetterName {
     NSString * const aSetterName = [getter RF_stringByTransformingToSetterAccessor];
-    STAssertTrue([aSetterName isEqualToString:setter], @"Assertion: setter value is constructed properly. Expected: %@, result: %@", setter, aSetterName);
+    XCTAssertTrue([aSetterName isEqualToString:setter], @"Assertion: setter value is constructed properly. Expected: %@, result: %@", setter, aSetterName);
 }
 
 - (void)testGetterName {
     NSString * const aGetterName = [setter RF_stringByTransformingToGetterAccessor];
-    STAssertTrue([aGetterName isEqualToString:getter], @"Assertion: getter value is constructed properly. Expected: %@, result: %@", getter, aGetterName);
+    XCTAssertTrue([aGetterName isEqualToString:getter], @"Assertion: getter value is constructed properly. Expected: %@, result: %@", getter, aGetterName);
 }
 
 @end

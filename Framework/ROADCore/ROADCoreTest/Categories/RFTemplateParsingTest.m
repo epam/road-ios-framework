@@ -64,11 +64,11 @@
     NSRange rangeOfValue2 = [template rangeOfString:@"value2"];
     NSRange rangeOfValue3 = [template rangeOfString:@"value3"];
     
-    STAssertTrue(rangeOfKey.location == NSNotFound, @"Assertion: no key is in the template.");
-    STAssertTrue(rangeOfEscape.location == NSNotFound, @"Assertion: escape is no longer in the template.");
-    STAssertTrue(rangeOfValue1.location != NSNotFound, @"Assertion: value1 is in the template.");
-    STAssertTrue(rangeOfValue2.location != NSNotFound, @"Assertion: value2 is in the template.");
-    STAssertTrue(rangeOfValue3.location != NSNotFound, @"Assertion: value3 is in the template.");
+    XCTAssertTrue(rangeOfKey.location == NSNotFound, @"Assertion: no key is in the template.");
+    XCTAssertTrue(rangeOfEscape.location == NSNotFound, @"Assertion: escape is no longer in the template.");
+    XCTAssertTrue(rangeOfValue1.location != NSNotFound, @"Assertion: value1 is in the template.");
+    XCTAssertTrue(rangeOfValue2.location != NSNotFound, @"Assertion: value2 is in the template.");
+    XCTAssertTrue(rangeOfValue3.location != NSNotFound, @"Assertion: value3 is in the template.");
 }
 
 @end

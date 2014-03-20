@@ -50,7 +50,7 @@ static NSString * const kRFBoundaryDefaultString = @"AaB03x";
     
     for (id object in parameterList) {
         
-        NSString *key = [NSString stringWithFormat:@"%d", [result count]];
+        NSString *key = [NSString stringWithFormat:@"%lu", (long unsigned)[result count]];
         id encodedObject;
         
         if ([object isKindOfClass:[NSString class]]) {

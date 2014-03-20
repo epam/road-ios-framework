@@ -204,7 +204,7 @@
         [node addObject:value];
     }
     else if ([node isKindOfClass:[NSDictionary class]]) {
-        [node setObject:value forKey:key];
+        node[key] = value;
     }
     else {
         [self setCurrentNodeValueToCustomObject:value forKey:key];

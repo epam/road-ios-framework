@@ -41,20 +41,20 @@
 - (void)testInstanceFakeService
 {
     RFTestService *databaseManager = [RFServiceProvider serviceInstance];
-    STAssertNotNil(databaseManager, @"Service has not been initialised.");
+    XCTAssertNotNil(databaseManager, @"Service has not been initialised.");
 }
 
 - (void)testServiceWithoutAnnotations {
-    STAssertFalse([RFServiceProvider resolveClassMethod:@selector(serviceWithoutAttributes)], @"Service provider respond with undefined result on wrong specified method");
+    XCTAssertFalse([RFServiceProvider resolveClassMethod:@selector(serviceWithoutAttributes)], @"Service provider respond with undefined result on wrong specified method");
 }
 
 - (void)testServiceWithMissingPropertyOfAttribute {
     id service = [RFServiceProvider serviceWithMissingPropertyOfAttribute];
-    STAssertNil(service, @"Service provider respond with undefined result on method with wrong attribute");
+    XCTAssertNil(service, @"Service provider respond with undefined result on method with wrong attribute");
 }
 
 - (void)testServiceWithWrongAnnotations {
-    STAssertFalse([RFServiceProvider resolveClassMethod:@selector(serviceWithWrongAttribute)], @"Service provider respond with undefined result on method with wrong attribute");
+    XCTAssertFalse([RFServiceProvider resolveClassMethod:@selector(serviceWithWrongAttribute)], @"Service provider respond with undefined result on method with wrong attribute");
 }
 
 @end

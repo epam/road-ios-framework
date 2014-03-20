@@ -1,5 +1,5 @@
 //
-//  RFDisabledClassNameSerializationTest.m
+//  RFSerializableStringChecker.h
 //  ROADSerialization
 //
 //  Copyright (c) 2014 Epam Systems. All rights reserved.
@@ -31,31 +31,9 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import <XCTest/XCTest.h>
-#import "RFSerializationTestObject.h"
-#import "RFAttributedDecoder.h"
-#import "RFAttributedCoder.h"
-#import "RFDisabledClassNameSerializationTestObject.h"
+@interface RFSerializableStringChecker : NSObject
 
-@interface RFDisabledClassNameSerializationTest : XCTestCase
-
-@end
-
-@implementation RFDisabledClassNameSerializationTest  {
-    RFDisabledClassNameSerializationTestObject *_object;
-}
-
-- (void)setUp {
-    [super setUp];
-    _object = [RFDisabledClassNameSerializationTestObject sampleObject];
-}
-
-- (void)testDisabledClassNameSerialization {
-    
-    NSString *jsonSrting = [RFAttributedCoder encodeRootObject:_object];
-    NSData *jsonData = [jsonSrting dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *decodedJSON = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
-    XCTAssertTrue(decodedJSON[RFSerializedObjectClassName] == nil, @"The deserialized content contained the \"RFSerializedObjectClassName\" regardless of the annotation. ");
-}
++ (NSString *)serializeAndCheckEqualityOfString:(NSString *)string withString:(NSString *)anotherString;
++ (NSString *)checkDictionary:(NSDictionary *)dictionary withDictionary:(NSDictionary *)anotherDictionary;
 
 @end

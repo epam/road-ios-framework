@@ -42,7 +42,7 @@
         _overrideGlobalSuccessCodes = YES;
         _method = @"GET";
         _prototypeClass = nil;
-        _postParameter = NSNotFound;
+        _postParameter = (int)NSNotFound;
     }
 
     return self;

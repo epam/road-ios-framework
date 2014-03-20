@@ -47,7 +47,7 @@
 	}
     
 	if ([[valueTranslatorAttribute.translationValues allKeys] containsObject:value]) {
-		decodedValue = [valueTranslatorAttribute.translationValues objectForKey:value];
+		decodedValue = (valueTranslatorAttribute.translationValues)[value];
 	}
     
 	return decodedValue;
@@ -66,7 +66,7 @@
     NSArray * const values = [valueTranslatorAttribute.translationValues allValues];
     
     // Comparing for c primitive types
-    if ([propertyInfo.typeName isEqualToString:@"c"] || propertyInfo.typeClass == [NSNumber class]) {
+    if ([propertyInfo.typeName isEqualToString:@"B"] || propertyInfo.typeClass == [NSNumber class]) {
         NSPredicate *filterPredicate = [NSPredicate predicateWithFormat:@" SELF == %@ OR SELF == %i OR SELF == %d ",value, [value boolValue], [value intValue] ];
         NSArray *filteredItems = [values filteredArrayUsingPredicate:filterPredicate];
         encodedValue = [filteredItems lastObject];
