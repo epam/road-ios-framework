@@ -15,7 +15,7 @@ A set of reusable components taking advantage of extra dimension [Attribute-Orie
 **Web Services** - attribute-based HTTP client API.  
 
 ##Snippet
-Connection to test HTTP server, that returns JSON from headers you send, could look like:
+Connection to the test HTTP server, that returns JSON from headers you send, could look as follows:
 
 	RF_ATTRIBUTE(RFWebService, serviceRoot = @"http://headers.jsontest.com/")
 	@interface JsonTestWebClient : RFWebServiceClient
@@ -45,7 +45,7 @@ then we define the model:
 	
 	@end
 
-and making singleton instance of JsonTestWebClient accessible through RFServiceProvider:
+and make singleton instance of JsonTestWebClient accessible through RFServiceProvider:
 
 	@interface RFServiceProvider (JsonTestWebClient)
 	
@@ -64,12 +64,12 @@ Now we can use it:
 
 ##Requirements
 
-ROAD requires **iOS 5.0** and above. Compatibility with **4.3** and older is not tested.
+ROAD requires **iOS 5.0** and above. The compatibility with **4.3** and older is not tested.
 
 ROAD initially designed to use **ARC**. 
 
 ##Jump Start
-[CocoaPods](http://cocoapods.org) the only recommended way of ROAD integration. Besides standard configuration of pod dependencies pod_install hook definition required as shown below. Typical Podfile will looks like following:
+[CocoaPods](http://cocoapods.org) is the only recommended way of ROAD integration. Besides the standard configuration of pod dependencies pod_install hook definition required as shown below. A typical Podfile will look as follows:
 
 	pod 'ROADFramework'
 
@@ -85,26 +85,26 @@ If you'd like to embed only specific components from the framework it can be don
 	pod 'ROADFramework/ROADServices'
 	pod 'ROADFramework/ROADWebService'
 
-Detail information on internals of ROAD integration as well as advanced topics like integration with predefined workspace, multiple projects or targets available in [documentation](./Documents/Configuration/Cocoapods.md).        
+Detailed information on internals of ROAD integration as well as advanced topics like integration with predefined workspace, multiple projects or targets is available in [the documentation](./Documents/Configuration/Cocoapods.md).        
         
 ##Documentation
 
-User documentation for following components available in **Documents** folder:
+User documentation for the following components is available in **Documents** folder:
 
 * [Core](./Documents/ROADCore.md)
 * [Services](./Documents/ROADServices.md)
 * [Serialization](./Documents/ROADSerialization.md)
 * [Web Services](./Documents/ROADWebService.md)
 
-Classes reference available in [cocoadocs.org](http://cocoadocs.org/docsets/ROADFramework/)
+Classes reference is available in [cocoadocs.org](http://cocoadocs.org/docsets/ROADFramework/)
 
 ##License
-ROAD is made available under the terms of the [BSD-3](http://opensource.org/licenses/BSD-3-Clause). See the LICENSE file that accompanies this distribution for the full text of the license.
+ROAD is made available under the terms of the [BSD-3](http://opensource.org/licenses/BSD-3-Clause). Open the LICENSE file that accompanies this distribution in order to see the full text of the license.
 
 ##Contribution
 
 There're three ways you can help us:
 
-* **Raise an issue.** You find something that does not work as expected? You can get us know about it. 
+* **Raise an issue.** You found something that does not work as expected? You can get us know about it. 
 * **Suggest a Feature.** It's even better if you come up with new feature and write us about it.
 * **Write some code.** We would love to see more pull requests to our framework, just make sure you have latest sources and you're creating pull request to ***dev*** branch. For more information check out [guidelines for contributing](./contributing.md).
