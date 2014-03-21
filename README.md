@@ -2,7 +2,7 @@
 [![Platform](https://cocoapod-badges.herokuapp.com/p/ROADFramework/badge.png)](https://github.com/epam/road-ios-framework/)
 [![Version](https://cocoapod-badges.herokuapp.com/v/ROADFramework/badge.png)](https://github.com/epam/road-ios-framework/)
 
-Master: [![Build Status](https://api.travis-ci.org/epam/road-ios-framework.png?branch=master)](https://travis-ci.org/epam/road-ios-framework) [![Coverage Status](https://coveralls.io/repos/epam/road-ios-framework/badge.png?branch=master)](https://coveralls.io/r/epam/road-ios-framework?branch=master) Dev: [![Build Status](https://travis-ci.org/epam/road-ios-framework.png?branch=dev)](https://travis-ci.org/epam/road-ios-framework) [![Coverage Status](https://coveralls.io/repos/epam/road-ios-framework/badge.png?branch=dev)](https://coveralls.io/r/epam/road-ios-framework?branch=dev)
+Master: [![Coverage Status](https://coveralls.io/repos/epam/road-ios-framework/badge.png?branch=master)](https://coveralls.io/r/epam/road-ios-framework?branch=master) Dev: [![Coverage Status](https://coveralls.io/repos/epam/road-ios-framework/badge.png?branch=dev)](https://coveralls.io/r/epam/road-ios-framework?branch=dev)
 #ROAD iOS Framework
 
 A set of reusable components taking advantage of extra dimension [Attribute-Oriented Programming](https://en.wikipedia.org/wiki/Attribute-oriented_programming) adds.
