@@ -108,10 +108,10 @@
 - (void)addOrderByOptionToQueryString:(NSMutableString *)queryString {
     if ([_sortDescriptors count] > 0) {
         [self addAmpersandToQueryStringIfNecessary:queryString];
-        for (int index = 0; index < [_sortDescriptors count]; index++) {
-            NSSortDescriptor *sortDescriptor = _sortDescriptors[index];
+        for (unsigned long idx = 0; idx < [_sortDescriptors count]; idx++) {
+            NSSortDescriptor *sortDescriptor = _sortDescriptors[idx];
             NSString *direction = sortDescriptor.ascending ? @"asc" : @"desc";
-            if (index == 0) {
+            if (idx == 0) {
                 [queryString appendFormat:@"$orderby=%@ %@", sortDescriptor.key, direction];
             }
             else {
@@ -131,7 +131,7 @@
 - (void)addExpandOptionToQueryString:(NSMutableString *)queryString {
     if ([_expandEntities count] > 0) {
         [self addAmpersandToQueryStringIfNecessary:queryString];
-        for (int indexOfExpandOption = 0; indexOfExpandOption < [_expandEntities count]; indexOfExpandOption++) {
+        for (unsigned long indexOfExpandOption = 0; indexOfExpandOption < [_expandEntities count]; indexOfExpandOption++) {
             NSArray *expandOption = _expandEntities[indexOfExpandOption];
             if (indexOfExpandOption == 0) {
                 [queryString appendString:@"$expand="];
@@ -140,7 +140,7 @@
                 [queryString appendString:@","];
             }
 
-            for (int indexOfEntityName = 0; indexOfEntityName < [expandOption count]; indexOfEntityName++) {
+            for (unsigned long indexOfEntityName = 0; indexOfEntityName < [expandOption count]; indexOfEntityName++) {
                 NSString *entityName = expandOption[indexOfEntityName];
                 if (indexOfEntityName == 0) {
                     [queryString appendFormat:@"%@", entityName];

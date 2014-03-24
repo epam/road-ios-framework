@@ -193,9 +193,9 @@
     [self downloaderFinishedWithResult:result response:response error:error];
 }
 
-- (void)downloaderFinishedWithResult:(NSData *)result response:(NSHTTPURLResponse *)response error:(NSError *)error {
+- (void)downloaderFinishedWithResult:(NSData *)result response:(NSHTTPURLResponse *)response error:(NSError *)downloaderError {
     __block id resultData = result;
-    __block NSError *resultError = error;
+    __block NSError *resultError = downloaderError;
     self.response = response;
     
     if (!resultError && !_callAttribute.serializationDisabled) {

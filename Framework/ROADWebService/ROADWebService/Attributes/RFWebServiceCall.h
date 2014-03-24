@@ -67,7 +67,7 @@
 /**
  * Manually disable serialization of response.
  */
-@property BOOL serializationDisabled;
+@property (nonatomic) BOOL serializationDisabled;
 
 /**
  * Works only if method == @"POST". Specifies index of parameter from method, which will be sent in request body. Numeration starts from 0.

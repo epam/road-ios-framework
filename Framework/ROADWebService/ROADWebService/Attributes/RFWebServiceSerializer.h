@@ -40,6 +40,6 @@
 /**
  * Class of serializer that will be responsible for serialization and deserialization of request parameters. Must conform to RFSerializationDelegate protocol.
  */
-@property Class serializerClass;
+@property (nonatomic) Class serializerClass;
 
 @end

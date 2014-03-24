@@ -64,6 +64,7 @@
         pool[key] = objectSet;
     }
     
+    id<RFObjectPoolDelegate> strongDelegate = _delegate;
     if ([objectSet count] > 0) {
         object = [objectSet anyObject];
         [objectSet removeObject:object];
@@ -71,8 +72,8 @@
         if ([object respondsToSelector:@selector(prepareForReuse)]) {
             [object prepareForReuse];
         }
-        if ([_delegate respondsToSelector:@selector(pool:didLendObject:forIdentifier:)]) {
-            [_delegate pool:self didLendObject:object forIdentifier:anIdentifier];
+        if ([strongDelegate respondsToSelector:@selector(pool:didLendObject:forIdentifier:)]) {
+            [strongDelegate pool:self didLendObject:object forIdentifier:anIdentifier];
         }
     }
     else {
@@ -80,8 +81,8 @@
         [object setPoolReuseIdentifier:key];
         [object setPool:self];
         
-        if ([_delegate respondsToSelector:@selector(pool:didInstantiateObject:forIdentifier:)]) {
-            [_delegate pool:self didInstantiateObject:object forIdentifier:anIdentifier];
+        if ([strongDelegate respondsToSelector:@selector(pool:didInstantiateObject:forIdentifier:)]) {
+            [strongDelegate pool:self didInstantiateObject:object forIdentifier:anIdentifier];
         }
     }
     
@@ -97,9 +98,10 @@
         pool[reuseIdentifier] = objectSet;
     }
     
+    id<RFObjectPoolDelegate> strongDelegate = _delegate;
     [objectSet addObject:anObject];
-    if ([_delegate respondsToSelector:@selector(pool:didRepoolObjectForIdentifier:)]) {
-        [_delegate pool:self didRepoolObjectForIdentifier:reuseIdentifier];
+    if ([strongDelegate respondsToSelector:@selector(pool:didRepoolObjectForIdentifier:)]) {
+        [strongDelegate pool:self didRepoolObjectForIdentifier:reuseIdentifier];
     }
 }
 

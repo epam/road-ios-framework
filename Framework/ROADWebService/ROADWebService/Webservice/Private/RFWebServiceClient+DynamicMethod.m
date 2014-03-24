@@ -88,10 +88,10 @@
     va_list arguments;
     va_start(arguments, firstParameter);
     
-    for (int i = 0; i < parameterCount; i++) {
+    for (unsigned long idx = 0; idx < parameterCount; idx++) {
         
         // add the argument to the parameter list
-        id parameter = (i == 0) ? firstParameter : va_arg(arguments, id);
+        id parameter = (idx == 0) ? firstParameter : va_arg(arguments, id);
         
         if (!parameter) {
             parameter = [NSNull null];

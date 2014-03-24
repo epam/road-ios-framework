@@ -41,8 +41,8 @@
     NSURL *url = [super urlFromTemplate:urlTemplate withServiceRoot:serviceRoot values:values];
 
     NSArray *valuesArray = [values allValues];
-    for (int index = 0; index < [values count]; index++) {
-        id value = valuesArray[index];
+    for (unsigned long idx = 0; idx < [values count]; idx++) {
+        id value = valuesArray[idx];
         
         if ([value isKindOfClass:[RFODataFetchRequest class]]) {
             RFODataFetchRequest *fetchRequest = value;

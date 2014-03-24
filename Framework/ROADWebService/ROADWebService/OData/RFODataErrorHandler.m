@@ -43,7 +43,7 @@
     if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         NSRange successCodes = NSMakeRange(200, 100);
-        if (NSLocationInRange(httpResponse.statusCode, successCodes)) {
+        if (NSLocationInRange((unsigned long)httpResponse.statusCode, successCodes)) {
             // No errors. Exiting method
             error = nil;
         }

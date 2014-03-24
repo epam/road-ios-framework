@@ -15,7 +15,6 @@ before_script:
     - mkdir -p /Users/travis/Library/Application\ Support/iPhone\ Simulator/6.1/Library/Caches/RFCachingDirecory
     - export LC_ALL="en_US.UTF-8"
     - gem install cocoapods
-    - ruby curl_setopt($ch, CURLOPT_SSLVERSION,3);
 
 script:
     - if [[ $PROJECT_SCHEME == Simian ]]; then ./script_simian.sh; else ./script_general.sh; fi

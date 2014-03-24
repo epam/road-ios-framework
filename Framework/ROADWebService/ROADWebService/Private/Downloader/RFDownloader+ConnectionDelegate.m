@@ -131,14 +131,14 @@
 }
 
 
-- (BOOL)isOkStatusCode:(NSUInteger)statusCode {
+- (BOOL)isOkStatusCode:(NSInteger)statusCode {
     __block BOOL result = NO;
     [self.successCodes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if ([obj isKindOfClass:[NSNumber class]]) {
-            result = statusCode == [obj unsignedIntegerValue];
+            result = statusCode == [obj integerValue];
         } else if ([obj isKindOfClass:[NSValue class]]) {
             NSRange range = [obj rangeValue];
-            result = (range.location <= statusCode) && (range.location + range.length) > statusCode;
+            result = ((long)range.location <= statusCode) && (long)(range.location + range.length) > statusCode;
         } else {
             RFWSLogWarn(@"RFDownloader: Incorrect statusCode type: %@", NSStringFromClass([obj class]));
         }

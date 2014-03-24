@@ -40,6 +40,10 @@
 
 #include <libxml/parser.h>
 
+
+char *RFAttributedXMLCoderTagForClass(Class aClass);
+
+
 char *RFAttributedXMLCoderTagForClass(Class aClass) {
     char *result = NULL;
     
