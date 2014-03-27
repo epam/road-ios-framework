@@ -22,6 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		11500EE718D1FCFF00353CAD /* RFSerializationLog.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83E0CDED18D0940900B25689 /* RFSerializationLog.h */; };
+		1176413918E46BFD00B1688B /* libUtilities.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1176413818E46BFD00B1688B /* libUtilities.a */; };
 		3337D3801802B5AE00FE22F4 /* DeserialisationTest.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3337D37F1802B5AE00FE22F4 /* DeserialisationTest.xml */; };
 		3337D3831802BB1600FE22F4 /* DeserialisationTest2.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3337D3811802BB1600FE22F4 /* DeserialisationTest2.xml */; };
 		3337D3841802BB1600FE22F4 /* DeserialisationTest3.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3337D3821802BB1600FE22F4 /* DeserialisationTest3.xml */; };
@@ -129,6 +130,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1176413818E46BFD00B1688B /* libUtilities.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUtilities.a; path = "../Utilities/build/Debug-iphoneos/libUtilities.a"; sourceTree = "<group>"; };
 		3337D37F1802B5AE00FE22F4 /* DeserialisationTest.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DeserialisationTest.xml; sourceTree = "<group>"; };
 		3337D3811802BB1600FE22F4 /* DeserialisationTest2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DeserialisationTest2.xml; sourceTree = "<group>"; };
 		3337D3821802BB1600FE22F4 /* DeserialisationTest3.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DeserialisationTest3.xml; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1176413918E46BFD00B1688B /* libUtilities.a in Frameworks */,
 				8369B76418D87EDC002B5C4E /* libxml2.dylib in Frameworks */,
 				8D900EBD17CF9B580018D336 /* libROADSerialization.a in Frameworks */,
 			);
@@ -391,6 +394,7 @@
 		7846755A15C16C21000E02DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1176413818E46BFD00B1688B /* libUtilities.a */,
 				8369B76318D87EDC002B5C4E /* libxml2.dylib */,
 				839A19A318C61B95001A727C /* libROADCore.a */,
 				CDB87E6616EA0BA2003D9081 /* Foundation.framework */,
@@ -597,7 +601,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
+			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}/\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
 		};
 		5A1CC60B176F282A00A6C154 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -747,6 +751,10 @@
 				);
 				INFOPLIST_FILE = "ROADSerializationTest/ROADSerializationTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/ossir/Desktop/open_source/ROAD-iOS-Framework/my-fork/road-ios-framework/Framework/Utilities/build/Debug-iphoneos",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -806,6 +814,10 @@
 				);
 				INFOPLIST_FILE = "ROADSerializationTest/ROADSerializationTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/ossir/Desktop/open_source/ROAD-iOS-Framework/my-fork/road-ios-framework/Framework/Utilities/build/Debug-iphoneos",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

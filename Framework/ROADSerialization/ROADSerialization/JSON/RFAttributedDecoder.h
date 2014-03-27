@@ -1,5 +1,5 @@
 //
-//  RFAnnotatedDecoder.h
+//  RFAttributedDecoder.h
 //  ROADSerialization
 //
 //  Copyright (c) 2014 Epam Systems. All rights reserved.

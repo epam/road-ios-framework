@@ -1,8 +1,8 @@
 //
-//  ROADServicesTest.m
+//  RFServicesTest.m
 //  ROADServicesTest
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -31,12 +31,12 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "RFROADServicesTest.h"
+#import "RFServicesTest.h"
 #import "ROADServices.h"
 #import "RFTestService.h"
 #import "RFServiceProvider+RFTestService.h"
 
-@implementation RFROADServicesTest
+@implementation RFServicesTest
 
 - (void)testInstanceFakeService
 {

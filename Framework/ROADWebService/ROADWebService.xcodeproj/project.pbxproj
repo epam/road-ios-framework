@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		1176413B18E46C0500B1688B /* libUtilities.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1176413A18E46C0500B1688B /* libUtilities.a */; };
 		11FF622818BCE61700053F60 /* RFWebClientWithSharedHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FF622718BCE61700053F60 /* RFWebClientWithSharedHeader.m */; };
 		33F0EF1618051DB1001DCCED /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 33F0EF0D18051D3D001DCCED /* libxml2.2.dylib */; };
 		5A164AA2179D762A003275EC /* RFDownloader.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E5B9D4E51786CFFE00E1901C /* RFDownloader.h */; };
@@ -200,6 +201,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1176413A18E46C0500B1688B /* libUtilities.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUtilities.a; path = "../Utilities/build/Debug-iphoneos/libUtilities.a"; sourceTree = "<group>"; };
 		11FF622618BCE61700053F60 /* RFWebClientWithSharedHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFWebClientWithSharedHeader.h; sourceTree = "<group>"; };
 		11FF622718BCE61700053F60 /* RFWebClientWithSharedHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebClientWithSharedHeader.m; sourceTree = "<group>"; };
 		33F0EF0D18051D3D001DCCED /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
@@ -334,6 +336,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1176413B18E46C0500B1688B /* libUtilities.a in Frameworks */,
 				8369B7A518D9BA2D002B5C4E /* CoreData.framework in Frameworks */,
 				8369B7A318D9B99C002B5C4E /* libROADWebService.a in Frameworks */,
 				33F0EF1618051DB1001DCCED /* libxml2.2.dylib in Frameworks */,
@@ -375,6 +378,7 @@
 		78FB204415BD336B00C2137A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1176413A18E46C0500B1688B /* libUtilities.a */,
 				83A7EDB518D9BE2B00385A40 /* libROADServices.a */,
 				838292D118D9BCBE0018F503 /* libROADSerialization.a */,
 				33F0EF0D18051D3D001DCCED /* libxml2.2.dylib */,
@@ -743,7 +747,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
+			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -851,7 +855,10 @@
 				);
 				INFOPLIST_FILE = "ROADWebserviceTest/ROADWebserviceTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/ossir/Desktop/open_source/ROAD-iOS-Framework/my-fork/road-ios-framework/Framework/Utilities/build/Debug-iphoneos",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -886,7 +893,10 @@
 				);
 				INFOPLIST_FILE = "ROADWebserviceTest/ROADWebserviceTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/ossir/Desktop/open_source/ROAD-iOS-Framework/my-fork/road-ios-framework/Framework/Utilities/build/Debug-iphoneos",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

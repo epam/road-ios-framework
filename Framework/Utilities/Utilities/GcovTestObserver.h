@@ -1,6 +1,6 @@
 //
-//  RFODataWebServiceURLBuilder.h
-//  ROADWebService
+//  GcovTestObserver.h
+//  Utilities
 //
 //  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
@@ -30,8 +30,8 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "RFWebServiceBasicURLBuilder.h"
+#import <XCTest/XCTest.h>
 
-@interface RFODataWebServiceURLBuilder : RFWebServiceBasicURLBuilder
+@interface GcovTestObserver : XCTestObserver
 
 @end

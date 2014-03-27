@@ -21,9 +21,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		1176413218E4623E00B1688B /* libUtilities.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1176413118E4623E00B1688B /* libUtilities.a */; };
 		5ACD21541741179500CC61AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7869945016AEBF3E00B28760 /* Foundation.framework */; };
 		5ACD215A1741179500CC61AC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5ACD21581741179500CC61AC /* InfoPlist.strings */; };
-		5ACD215D1741179500CC61AC /* RFROADServicesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACD215C1741179500CC61AC /* RFROADServicesTest.m */; };
+		5ACD215D1741179500CC61AC /* RFServicesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACD215C1741179500CC61AC /* RFServicesTest.m */; };
 		7869946416AEBF9A00B28760 /* RFService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7869946316AEBF9A00B28760 /* RFService.m */; };
 		7869946B16AEBFE100B28760 /* ROADServices.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 7869946A16AEBFC400B28760 /* ROADServices.h */; };
 		7869946C16AEBFE400B28760 /* RFService.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 7869946216AEBF9A00B28760 /* RFService.h */; };
@@ -62,11 +63,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1176413118E4623E00B1688B /* libUtilities.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUtilities.a; path = "../Utilities/build/Debug-iphoneos/libUtilities.a"; sourceTree = "<group>"; };
 		5ACD214F1741179500CC61AC /* ROADServicesTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ROADServicesTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ACD21571741179500CC61AC /* ROADServicesTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ROADServicesTest-Info.plist"; sourceTree = "<group>"; };
 		5ACD21591741179500CC61AC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5ACD215B1741179500CC61AC /* RFROADServicesTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RFROADServicesTest.h; sourceTree = "<group>"; };
-		5ACD215C1741179500CC61AC /* RFROADServicesTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RFROADServicesTest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		5ACD215B1741179500CC61AC /* RFServicesTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RFServicesTest.h; sourceTree = "<group>"; };
+		5ACD215C1741179500CC61AC /* RFServicesTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RFServicesTest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		5ACD215E1741179500CC61AC /* ROADServicesTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ROADServicesTest-Prefix.pch"; sourceTree = "<group>"; };
 		7869944D16AEBF3E00B28760 /* libROADServices.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libROADServices.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7869945016AEBF3E00B28760 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -89,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1176413218E4623E00B1688B /* libUtilities.a in Frameworks */,
 				5ACD21541741179500CC61AC /* Foundation.framework in Frameworks */,
 				D7AF149817CF8FD100A92C31 /* libROADServices.a in Frameworks */,
 			);
@@ -111,8 +114,8 @@
 				D771947617CF41BC0011047F /* ROADGeneratedAttribute.m */,
 				5ACD21621741187600CC61AC /* TestService */,
 				D7AF141617CF642500A92C31 /* RFServiceProvider+RFTestService.h */,
-				5ACD215B1741179500CC61AC /* RFROADServicesTest.h */,
-				5ACD215C1741179500CC61AC /* RFROADServicesTest.m */,
+				5ACD215B1741179500CC61AC /* RFServicesTest.h */,
+				5ACD215C1741179500CC61AC /* RFServicesTest.m */,
 				5ACD21561741179500CC61AC /* Supporting Files */,
 			);
 			path = ROADServicesTest;
@@ -159,6 +162,7 @@
 		7869944F16AEBF3E00B28760 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1176413118E4623E00B1688B /* libUtilities.a */,
 				839A198318C6087C001A727C /* libROADCore.a */,
 				7869945016AEBF3E00B28760 /* Foundation.framework */,
 				78F95ADD16E9F16600E58C3B /* CoreFoundation.framework */,
@@ -310,7 +314,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
+			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}/\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -319,7 +323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5ACD215D1741179500CC61AC /* RFROADServicesTest.m in Sources */,
+				5ACD215D1741179500CC61AC /* RFServicesTest.m in Sources */,
 				D771947717CF41BC0011047F /* ROADGeneratedAttribute.m in Sources */,
 				D7AF141B17CF64B700A92C31 /* RFTestService.m in Sources */,
 			);
@@ -378,6 +382,10 @@
 				);
 				INFOPLIST_FILE = "ROADServicesTest/ROADServicesTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/ossir/Desktop/open_source/ROAD-iOS-Framework/my-fork/road-ios-framework/Framework/Utilities/build/Debug-iphoneos",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -410,6 +418,10 @@
 				);
 				INFOPLIST_FILE = "ROADServicesTest/ROADServicesTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/ossir/Desktop/open_source/ROAD-iOS-Framework/my-fork/road-ios-framework/Framework/Utilities/build/Debug-iphoneos",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
