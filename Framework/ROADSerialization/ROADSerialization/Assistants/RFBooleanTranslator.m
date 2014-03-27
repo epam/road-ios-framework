@@ -66,7 +66,9 @@
     NSArray * const values = [valueTranslatorAttribute.translationValues allValues];
     
     // Comparing for c primitive types
-    if ([propertyInfo.typeName isEqualToString:@"B"] || propertyInfo.typeClass == [NSNumber class]) {
+    if ([propertyInfo.typeName isEqualToString:@"c"]
+        || [propertyInfo.typeName isEqualToString:@"B"]
+        || propertyInfo.typeClass == [NSNumber class]) {
         NSPredicate *filterPredicate = [NSPredicate predicateWithFormat:@" SELF == %@ OR SELF == %i OR SELF == %d ",value, [value boolValue], [value intValue] ];
         NSArray *filteredItems = [values filteredArrayUsingPredicate:filterPredicate];
         encodedValue = [filteredItems lastObject];

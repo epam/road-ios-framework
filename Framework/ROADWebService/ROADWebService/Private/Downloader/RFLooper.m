@@ -51,9 +51,9 @@
 }
 
 - (void)startLooping {
-    NSDate *loopUntil = [[NSDate alloc] initWithTimeIntervalSinceNow:1];
+    NSDate *loopUntil = [[NSDate alloc] initWithTimeIntervalSinceNow:0.2];
     while (looping && [[NSRunLoop currentRunLoop] runMode: NSDefaultRunLoopMode beforeDate:loopUntil]) {
-        loopUntil = [[NSDate alloc] initWithTimeIntervalSinceNow:1];
+        loopUntil = [[NSDate alloc] initWithTimeIntervalSinceNow:0.2];
     }
 }
 

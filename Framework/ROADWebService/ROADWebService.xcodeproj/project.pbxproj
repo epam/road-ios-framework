@@ -377,8 +377,8 @@
 			children = (
 				83A7EDB518D9BE2B00385A40 /* libROADServices.a */,
 				838292D118D9BCBE0018F503 /* libROADSerialization.a */,
-				8369B7A418D9BA2D002B5C4E /* CoreData.framework */,
 				33F0EF0D18051D3D001DCCED /* libxml2.2.dylib */,
+				8369B7A418D9BA2D002B5C4E /* CoreData.framework */,
 				5AFB79C5176613C6007F813A /* Foundation.framework */,
 				CD69624016F0D20F0090B201 /* CFNetwork.framework */,
 			);
