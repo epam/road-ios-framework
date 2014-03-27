@@ -69,7 +69,7 @@ ROAD requires **iOS 5.0** and above. The compatibility with **4.3** and older is
 ROAD initially designed to use **ARC**. 
 
 ##Jump Start
-[CocoaPods](http://cocoapods.org) is the only recommended way of ROAD integration. Besides the standard configuration of pod dependencies pod_install hook definition required as shown below. A typical Podfile will look as follows:
+[CocoaPods](http://cocoapods.org) is the only recommended way of ROAD integration. Besides the standard configuration of pod dependencies, pod_install hook is required as shown below. A typical Podfile will look as follows:
 
 	pod 'ROADFramework'
 
@@ -103,8 +103,8 @@ ROAD is made available under the terms of the [BSD-3](http://opensource.org/lice
 
 ##Contribution
 
-There're three ways you can help us:
+There are three ways you can help us:
 
-* **Raise an issue.** You found something that does not work as expected? You can get us know about it. 
-* **Suggest a Feature.** It's even better if you come up with new feature and write us about it.
-* **Write some code.** We would love to see more pull requests to our framework, just make sure you have latest sources and you're creating pull request to ***dev*** branch. For more information check out [guidelines for contributing](./contributing.md).
+* **Raise an issue.** You found something that does not work as expected? Let us know about it.
+* **Suggest a feature.** It's even better if you come up with a new feature and write us about it.
+* **Write some code.** We would love to see more pull requests to our framework, just make sure you have the latest sources and you're creating a pull request to ***dev*** branch. For more information, check out [the guidelines for contributing](./contributing.md).
