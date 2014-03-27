@@ -1,8 +1,8 @@
 //
-//  RFAttributedXMLDecoder.h
+//  RFAttributedXMLDecoder.m
 //  ROADSerialization
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -63,7 +63,7 @@
 
 @implementation RFAttributedXMLDecoder
 
-- (id)decodeData:(NSData *)xmlData withRootObjectClass:(Class)rootObjectClass error:(NSError **)error {
+- (id)decodeData:(NSData *)xmlData withRootObjectClass:(Class)rootObjectClass error:(NSError * __autoreleasing *)error {
     
     _result = nil;
     _context = [RFXMLSerializationContext new];
@@ -84,7 +84,10 @@
     return _result;
 }
 
-#pragma marl - Parser Delegate
+
+#pragma mark - Parser Delegate
+
+
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
     
     _parseError = parseError;
@@ -204,7 +207,7 @@
         [node addObject:value];
     }
     else if ([node isKindOfClass:[NSDictionary class]]) {
-        [node setObject:value forKey:key];
+        node[key] = value;
     }
     else {
         [self setCurrentNodeValueToCustomObject:value forKey:key];
@@ -215,8 +218,8 @@
 /**
  Determines if the value is primitive and has the nil or NSNull value to avoid crashes from setting nil or NSNull value to a primitive
  
- @param id the value to be set
- @param RFPropertyInfo the property information where the value should be set
+ @param value the value to be set
+ @param propertyInfo the property information where the value should be set
  @return YES if the value can be safely set
  */
 - (BOOL)isValueValid:(id const)value forProperty:(RFPropertyInfo *)propertyInfo {
@@ -313,7 +316,7 @@
     return result;
 }
 
-- (void)processProperty:(RFPropertyInfo *)property withElementAttributes:(NSDictionary *)attributeDict lazyProperties:(NSMutableDictionary **)lazyProperties itemTags:(NSMutableDictionary **)itemTags {
+- (void)processProperty:(RFPropertyInfo *)property withElementAttributes:(NSDictionary *)attributeDict lazyProperties:(NSMutableDictionary * __autoreleasing *)lazyProperties itemTags:(NSMutableDictionary * __autoreleasing *)itemTags {
 
     RFXMLSerializable *xmlAttributes = [property attributeWithType:[RFXMLSerializable class]];
     NSString *serializationKey = RFSerializationKeyForProperty(property);

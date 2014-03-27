@@ -16,7 +16,7 @@ cd ..
 
 # =================     Run build, test and oclint check     ===========
 xctool $PATCH_FOR_PROJECT_OR_WORKSPACE -scheme $PROJECT_SCHEME -reporter pretty -reporter json-compilation-database:compile_commands.json build || EXIT_STATUS=$?
-xctool $WORKSPACE -scheme $PROJECT_SCHEME test -sdk iphonesimulator6.1 || EXIT_STATUS=$?
+xctool $WORKSPACE -scheme $PROJECT_SCHEME test -sdk iphonesimulator7.0 || EXIT_STATUS=$?
 
 # =================     Download oclint, unzip    ===========
 

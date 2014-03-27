@@ -2,7 +2,7 @@
 //  RFODataWebServiceURLBuilder.m
 //  ROADWebService
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -41,8 +41,8 @@
     NSURL *url = [super urlFromTemplate:urlTemplate withServiceRoot:serviceRoot values:values];
 
     NSArray *valuesArray = [values allValues];
-    for (int index = 0; index < [values count]; index++) {
-        id value = valuesArray[index];
+    for (unsigned long idx = 0; idx < [values count]; idx++) {
+        id value = valuesArray[idx];
         
         if ([value isKindOfClass:[RFODataFetchRequest class]]) {
             RFODataFetchRequest *fetchRequest = value;

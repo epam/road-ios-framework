@@ -1,6 +1,6 @@
 //
-//  RFDisabledClassNameSerializationTest.m
-//  ROADSerialization
+//  RFServicesTest.m
+//  ROADServicesTest
 //
 //  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
@@ -31,31 +31,30 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import <XCTest/XCTest.h>
-#import "RFSerializationTestObject.h"
-#import "RFAttributedDecoder.h"
-#import "RFAttributedCoder.h"
-#import "RFDisabledClassNameSerializationTestObject.h"
+#import "RFServicesTest.h"
+#import "ROADServices.h"
+#import "RFTestService.h"
+#import "RFServiceProvider+RFTestService.h"
 
-@interface RFDisabledClassNameSerializationTest : XCTestCase
+@implementation RFServicesTest
 
-@end
-
-@implementation RFDisabledClassNameSerializationTest  {
-    RFDisabledClassNameSerializationTestObject *_object;
+- (void)testInstanceFakeService
+{
+    RFTestService *databaseManager = [RFServiceProvider serviceInstance];
+    XCTAssertNotNil(databaseManager, @"Service has not been initialised.");
 }
 
-- (void)setUp {
-    [super setUp];
-    _object = [RFDisabledClassNameSerializationTestObject sampleObject];
+- (void)testServiceWithoutAnnotations {
+    XCTAssertFalse([RFServiceProvider resolveClassMethod:@selector(serviceWithoutAttributes)], @"Service provider respond with undefined result on wrong specified method");
 }
 
-- (void)testDisabledClassNameSerialization {
-    
-    NSString *jsonSrting = [RFAttributedCoder encodeRootObject:_object];
-    NSData *jsonData = [jsonSrting dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *decodedJSON = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
-    XCTAssertTrue(decodedJSON[RFSerializedObjectClassName] == nil, @"The deserialized content contained the \"RFSerializedObjectClassName\" regardless of the annotation. ");
+- (void)testServiceWithMissingPropertyOfAttribute {
+    id service = [RFServiceProvider serviceWithMissingPropertyOfAttribute];
+    XCTAssertNil(service, @"Service provider respond with undefined result on method with wrong attribute");
+}
+
+- (void)testServiceWithWrongAnnotations {
+    XCTAssertFalse([RFServiceProvider resolveClassMethod:@selector(serviceWithWrongAttribute)], @"Service provider respond with undefined result on method with wrong attribute");
 }
 
 @end

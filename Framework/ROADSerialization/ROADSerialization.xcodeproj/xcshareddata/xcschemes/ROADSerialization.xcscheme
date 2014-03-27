@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7841617C16480C1D0089FDE9"
-               BuildableName = "ROADSerializationTest.octest"
+               BuildableName = "ROADSerializationTest.xctest"
                BlueprintName = "ROADSerializationTest"
                ReferencedContainer = "container:ROADSerialization.xcodeproj">
             </BuildableReference>

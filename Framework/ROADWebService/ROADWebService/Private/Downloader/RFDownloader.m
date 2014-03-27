@@ -2,7 +2,7 @@
 //  RFDownloader.m
 //  ROADWebService
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -193,9 +193,9 @@
     [self downloaderFinishedWithResult:result response:response error:error];
 }
 
-- (void)downloaderFinishedWithResult:(NSData *)result response:(NSHTTPURLResponse *)response error:(NSError *)error {
+- (void)downloaderFinishedWithResult:(NSData *)result response:(NSHTTPURLResponse *)response error:(NSError *)downloaderError {
     __block id resultData = result;
-    __block NSError *resultError = error;
+    __block NSError *resultError = downloaderError;
     self.response = response;
     
     if (!resultError && !_callAttribute.serializationDisabled) {
@@ -260,8 +260,8 @@
     NSData *body = httpBody;
     
     if ([_callAttribute.method isEqualToString:@"POST"]) {
-        if (_callAttribute.postParameter != NSNotFound && !httpBody.length) {
-            id bodyObject = [values objectForKey:[NSString stringWithFormat:@"%d", _callAttribute.postParameter]];
+        if (_callAttribute.postParameter != (int)NSNotFound && !httpBody.length) {
+            id bodyObject = values[[NSString stringWithFormat:@"%d", _callAttribute.postParameter]];
             body = [self dataFromParameter:bodyObject];
         }
         else {
@@ -271,7 +271,7 @@
                     body = [self dataFromParameter:firstParameter];
                 }
             }
-            else if (_callAttribute.postParameter != NSNotFound) {
+            else if (_callAttribute.postParameter != (int)NSNotFound) {
                 RFWSLogWarn(@"Web service method %@ specifies postParameter, but has NSData or RFFormData variable in parameters and use it instead", method);
             }
         }
