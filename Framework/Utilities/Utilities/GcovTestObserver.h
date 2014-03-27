@@ -1,6 +1,6 @@
 //
-//  RFDisabledClassNameSerializationTest.m
-//  ROADSerialization
+//  GcovTestObserver.h
+//  Utilities
 //
 //  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
@@ -30,32 +30,8 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-
 #import <XCTest/XCTest.h>
-#import "RFSerializationTestObject.h"
-#import "RFAttributedDecoder.h"
-#import "RFAttributedCoder.h"
-#import "RFDisabledClassNameSerializationTestObject.h"
 
-@interface RFDisabledClassNameSerializationTest : XCTestCase
-
-@end
-
-@implementation RFDisabledClassNameSerializationTest  {
-    RFDisabledClassNameSerializationTestObject *_object;
-}
-
-- (void)setUp {
-    [super setUp];
-    _object = [RFDisabledClassNameSerializationTestObject sampleObject];
-}
-
-- (void)testDisabledClassNameSerialization {
-    
-    NSString *jsonSrting = [RFAttributedCoder encodeRootObject:_object];
-    NSData *jsonData = [jsonSrting dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *decodedJSON = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
-    XCTAssertTrue(decodedJSON[RFSerializedObjectClassName] == nil, @"The deserialized content contained the \"RFSerializedObjectClassName\" regardless of the annotation. ");
-}
+@interface GcovTestObserver : XCTestObserver
 
 @end

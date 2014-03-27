@@ -1,5 +1,5 @@
 //
-//  RFAnnotatedDecoder.m
+//  RFAttributedDecoder.m
 //  ROADSerialization
 //
 //  Copyright (c) 2014 Epam Systems. All rights reserved.
@@ -302,8 +302,8 @@
     id nestedJsonObject = jsonObject;
     NSMutableString *currentKeyPath = [[NSMutableString alloc] init];
     
-    for (int index = 0; index < [keys count]; index++) {
-        NSString *key = keys[index];
+    for (unsigned long idx = 0; idx < [keys count]; idx++) {
+        NSString *key = keys[idx];
         if (currentKeyPath.length) {
             [currentKeyPath appendString:@"."];
         }
@@ -348,8 +348,8 @@
 /**
  Determines if the value is primitive and has the nil or NSNull value to avoid crashes from setting nil or NSNull value to a primitive
  
- @param id the value to be set
- @param RFPropertyInfo the property information where the value should be set
+ @param value the value to be set
+ @param propertyInfo the property information where the value should be set
  @return YES if the value can be safely set
  */
 - (BOOL)isValueValid:(id const)value forProperty:(RFPropertyInfo *)propertyInfo {

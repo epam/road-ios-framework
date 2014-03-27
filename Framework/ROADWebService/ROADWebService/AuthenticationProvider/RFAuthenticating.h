@@ -2,7 +2,7 @@
 //  RFAuthenticating.h
 //  ROADWebService
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -92,7 +92,6 @@ typedef void (^RFAuthenticationFailureBlock)(NSError *error);
 /**
  * Method adds to request data that will allow it to pass authentication
  * @param request The request that will be sent to service
- * @param challenge The challenge that was arised and need to be resolved in this method
  */
 - (void)addAuthenticationDataToRequest:(NSMutableURLRequest *)request;
 

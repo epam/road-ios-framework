@@ -2,7 +2,7 @@
 //  RFWebServiceCache.h
 //  ROADWebService
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -40,11 +40,11 @@
 /**
  * Cache expiration time for marked web response.
  */
-@property NSUInteger maxAge;
+@property (nonatomic) NSUInteger maxAge;
 /**
  * Disables caching for marked web request.
  */
-@property BOOL cacheDisabled;
+@property (nonatomic) BOOL cacheDisabled;
 /**
  * The identifier for handling individual cache elements.
  */
