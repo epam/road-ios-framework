@@ -97,4 +97,7 @@ RF_ATTRIBUTE(RFWebServiceCache, maxAge = 300, cacheIdentifier = @"test.cache.ide
 RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, relativePath = @"/cache/%%0%%")
 - (id<RFWebServiceCancellable>)testCacheIdentifierWithPrefix:(NSString *)identifierPrefix success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
+- (id<RFWebServiceCancellable>)testSimpleWebServiceCallWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
 @end
