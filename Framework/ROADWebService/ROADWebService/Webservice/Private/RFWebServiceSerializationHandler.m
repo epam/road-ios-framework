@@ -46,7 +46,7 @@
         serializedData = [serializationObject deserializeData:data serializatinRoot:serializationRoot withDeserializationClass:deserializationClass error:nil];
         
         if (serializedData == nil) {
-            error = [NSError RF_sparkWS_deserializationErrorWithData:data];
+            error = [NSError RFWS_deserializationErrorWithData:data];
         }
     }
     

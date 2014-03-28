@@ -36,13 +36,14 @@ NSString * const kRFWebServiceErrorDomain;
 
 @interface NSError (RFROADWebService)
 /**
- Create deserialization error, and insert the original data into the error userinfo.
- @param data The original data.
+ * Create deserialization error, and insert the original data into the error userinfo.
+ * @param data The original data.
  */
-+(NSError *)RF_sparkWS_deserializationErrorWithData:(NSData*)data;
++ (NSError *)RFWS_deserializationErrorWithData:(NSData*)data;
 
 /**
- Create cancell error for cancelled webservice calls.
+ * Create cancell error for cancelled webservice calls.
  */
-+(NSError*)RF_sparkWS_cancellError;
++ (NSError *)RFWS_cancelError;
+
 @end

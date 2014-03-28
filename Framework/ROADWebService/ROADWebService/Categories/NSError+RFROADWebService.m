@@ -37,12 +37,12 @@ NSString *const kRFWebServiceRecievedDataKey = @"RecievedData";
 
 @implementation NSError (RFROADWebService)
 
-+(NSError *)RF_sparkWS_deserializationErrorWithData:(NSData*)data
++(NSError *)RFWS_deserializationErrorWithData:(NSData*)data
 {
     return [NSError errorWithDomain:kRFWebServiceErrorDomain code:1000 userInfo:@{ NSLocalizedDescriptionKey : @"Error during the deserialization",kRFWebServiceRecievedDataKey : data }];
 }
 
-+(NSError *)RF_sparkWS_cancellError
++(NSError *)RFWS_cancelError
 {
     return [NSError errorWithDomain:kRFWebServiceErrorDomain code:1001 userInfo:@{ NSLocalizedDescriptionKey : @"The request has been cancelled." }];
 }
