@@ -194,27 +194,6 @@
     XCTAssertTrue(requestResult == nil, @"Wrong serialization root does not return null");
 }
 
-- (void)testODataErrorHandling {
-    __block BOOL isFinished = NO;
-    __block NSError *receivedError;
-    
-    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://services.odata.org/V3/(S(plcxuejnllfvrrecpvqbehxz))/OData/OData.svc/Product(1)"];
-    [webClient testErrorHandlerRootWithSuccess:^(id result) {
-        isFinished = YES;
-    } failure:^(NSError *error) {
-        receivedError = error;
-        isFinished = YES;
-    }];
-    
-    while (!isFinished) {
-        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:0.2]];
-    }
-    
-    XCTAssertTrue(receivedError != nil, @"Error've not been generated!");
-    XCTAssertTrue(receivedError.localizedDescription != nil, @"Localized description've not been filled for generated error!");
-    XCTAssertTrue(receivedError.code, @"Code've not been filled for generated error!");
-}
-
 - (void)testMultipartData {
     __block BOOL isFinished = NO;
     __block BOOL isSuccess = NO;
@@ -324,6 +303,27 @@
     }
 
     XCTAssertEqual(successFlag, kSuccessValue, @"Web service cancellation finished with unexpected result!");
+}
+
+- (void)testURLBuilderEncodingParameter {
+    NSString *unprocessed = @"http://online.store.com/storefront/?request=get-document&doi=10.1175%2F1520-0426(2005)014%3C1157:DODADSS%3E2.0.CO%3B2";
+    NSString *processed = [unprocessed stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:processed];
+    RFDownloader *downloader = (RFDownloader *)[webClient testURLEscapingEncodingWithSuccess:nil failure:nil];
+    
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
+    [downloader cancel];
+
+    XCTAssertEqualObjects([downloader.request.URL absoluteString], @"http://online.store.com/storefront/?request=get-document&doi=10.1175/1520-0426(2005)014%3C1157:DODADSS%3E2.0.CO;2", @"URL string escaping via encoding is done incorectly");
+}
+
+- (void)testURLBuilderAllowedCharsetParameter {
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://PERSISTING.for.escaping"];
+    RFDownloader *downloader = (RFDownloader *)[webClient testURLEscapingAllowedCharsetWithSuccess:nil failure:nil];
+
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
+    [downloader cancel];
+    XCTAssertEqualObjects([downloader.request.URL absoluteString], @"%68%74%74%70%3A%2F%2FPERSISTING%2E%66%6F%72%2E%65%73%63%61%70%69%6E%67", @"URL string escaping via charset is done incorrectly!");
 }
 
 @end

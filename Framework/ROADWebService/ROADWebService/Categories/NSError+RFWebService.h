@@ -1,5 +1,5 @@
 //
-//  RFODataTest.h
+//  NSError+RFWebService.h
 //  ROADWebService
 //
 //  Copyright (c) 2014 Epam Systems. All rights reserved.
@@ -30,8 +30,19 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <XCTest/XCTest.h>
 
-@interface RFODataTest : XCTestCase
+NSString * const kRFWebServiceErrorDomain;
+
+@interface NSError (RFWebService)
+/**
+ * Create deserialization error, and insert the original data into the error userinfo.
+ * @param data The original data.
+ */
++ (NSError *)RFWS_deserializationErrorWithData:(NSData*)data;
+
+/**
+ * Create cancell error for cancelled webservice calls.
+ */
++ (NSError *)RFWS_cancelError;
 
 @end

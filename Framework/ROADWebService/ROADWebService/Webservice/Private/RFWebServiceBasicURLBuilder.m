@@ -2,7 +2,7 @@
 //  RFWebServiceBasicURLBuilder.m
 //  ROADWebService
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -30,8 +30,10 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "RFWebServiceBasicURLBuilder.h"
 #import <ROAD/ROADCore.h>
+
+#import "RFWebServiceBasicURLBuilder.h"
+#import "RFWebServiceURLBuilder.h"
 
 NSString * const RFApiCallTemplateEscapeString = @"%%";
 
@@ -42,7 +44,7 @@ NSString * const RFApiCallTemplateEscapeString = @"%%";
 }
 
 
-+ (NSURL *)urlFromTemplate:(NSString * const)urlTemplate withServiceRoot:(NSString* const)serviceRoot values:(NSDictionary * const)values {
++ (NSURL *)urlFromTemplate:(NSString * const)urlTemplate withServiceRoot:(NSString* const)serviceRoot values:(NSDictionary * const)values urlBuilderAttribute:(RFWebServiceURLBuilder *)urlBuilderAttribute {
     NSAssert([serviceRoot length] > 0, @"Assertion: Web service URL is empty");
     
     NSMutableString * const root = [serviceRoot mutableCopy];
@@ -60,10 +62,25 @@ NSString * const RFApiCallTemplateEscapeString = @"%%";
     [regexp replaceMatchesInString:suffix options:0 range:NSMakeRange(0, [suffix length]) withTemplate:@"?"];
     
     NSString *serverURLString = [NSString stringWithFormat:@"%@%@", root, suffix];
-    
-    NSURL *url = [NSURL URLWithString:[serverURLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+
+    NSURL *url = [NSURL URLWithString:[self escapeString:serverURLString withUrlBuilderAttribute:urlBuilderAttribute]];
     
     return url;
+}
+
++ (NSString *)escapeString:(NSString *)string withUrlBuilderAttribute:(RFWebServiceURLBuilder *)urlBuilderAttribute {
+    NSString *escapedURLString;
+    if (urlBuilderAttribute.allowedCharset) {
+        escapedURLString = [string stringByAddingPercentEncodingWithAllowedCharacters:urlBuilderAttribute.allowedCharset];
+    }
+    else if (urlBuilderAttribute.encoding) {
+        escapedURLString = [string stringByAddingPercentEscapesUsingEncoding:urlBuilderAttribute.encoding];
+    }
+    else {
+        escapedURLString = [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    }
+
+    return escapedURLString;
 }
 
 

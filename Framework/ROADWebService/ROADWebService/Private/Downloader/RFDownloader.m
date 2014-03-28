@@ -36,7 +36,7 @@
 
 #import "RFWebServiceLog.h"
 #import "RFLooper.h"
-#import "NSError+RFROADWebService.h"
+#import "NSError+RFWebService.h"
 #import "RFWebServiceCall.h"
 #import "RFWebServiceHeader.h"
 #import "RFWebServiceClientStatusCodes.h"

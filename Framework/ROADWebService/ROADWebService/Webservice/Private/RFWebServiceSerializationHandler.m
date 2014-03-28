@@ -33,7 +33,7 @@
 
 #import "RFWebServiceSerializationHandler.h"
 #import "RFSerializationDelegate.h"
-#import "NSError+RFROADWebService.h"
+#import "NSError+RFWebService.h"
 
 @implementation RFWebServiceSerializationHandler
 
