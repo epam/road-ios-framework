@@ -62,6 +62,7 @@
 @property (assign, nonatomic) long long expectedContentLenght;
 @property (strong, nonatomic) RFWebServiceCall * callAttribute;
 @property (strong, nonatomic) NSDictionary * values;
+@property (assign, atomic, readwrite, getter = isRequestCancelled) BOOL requestCancelled;
 
 - (void)stop;
 
@@ -135,7 +136,7 @@
 }
 
 - (void)checkCacheAndStart {
-    if (_requestCancelled) {
+    if (self.requestCancelled) {
         return;
     }
     
@@ -155,6 +156,10 @@
 }
 
 - (void)start {
+    if (self.requestCancelled) {
+        return;
+    }
+
     _connection = [[NSURLConnection alloc] initWithRequest:_request delegate:self startImmediately:NO];
     
     if (_looper == nil) {
@@ -231,8 +236,10 @@
 
 - (void)stop {
     _connection = nil;
-    [self fillErrorUserInfoAndCleanData];
-    [self cacheAndFinishWithResult:_data response:_response error:_downloadError];
+    if (!self.requestCancelled) { // If request is cancelled already, simply release variables
+        [self fillErrorUserInfoAndCleanData];
+        [self cacheAndFinishWithResult:_data response:_response error:_downloadError];
+    }
     [_looper stop];
     _looper = nil;
     
@@ -247,13 +254,15 @@
 }
 
 - (void)cancel {
-    _requestCancelled = YES;
-    [_connection cancel];
-    RFWSLogInfo(@"URL connection(%p) is canceled. URL: %@", _connection, [_connection.currentRequest.URL absoluteString]);
+    if (_connection) {
+        [_connection cancel];
+        RFWSLogInfo(@"URL connection(%p) is canceled. URL: %@", _connection, [_connection.currentRequest.URL absoluteString]);
+    }
     self.data = nil;
     self.downloadError = [NSError RF_sparkWS_cancellError];
     [self stop];
-   
+    self.requestCancelled = YES;
+
 }
 
 - (NSMutableURLRequest *)requestForUrl:(NSURL * const)anUrl withMethod:(NSString * const)method withBody:(NSData *)httpBody values:(NSDictionary *)values {

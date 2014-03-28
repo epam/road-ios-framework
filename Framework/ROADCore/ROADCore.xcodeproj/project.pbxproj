@@ -664,10 +664,7 @@
 				);
 				INFOPLIST_FILE = "ROADCoreTest/ROADCoreTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/ossir/Desktop/open_source/ROAD-iOS-Framework/my-fork/road-ios-framework/Framework/Utilities/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
@@ -701,10 +698,7 @@
 				);
 				INFOPLIST_FILE = "ROADCoreTest/ROADCoreTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/ossir/Desktop/open_source/ROAD-iOS-Framework/my-fork/road-ios-framework/Framework/Utilities/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (

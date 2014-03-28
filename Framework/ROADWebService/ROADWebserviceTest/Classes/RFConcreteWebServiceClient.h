@@ -2,7 +2,7 @@
 //  RFConcreteWebServiceClient.h
 //  ROADWebService
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -96,5 +96,8 @@ RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
 RF_ATTRIBUTE(RFWebServiceCache, maxAge = 300, cacheIdentifier = @"test.cache.identifier.prefix.%%0%%")
 RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, relativePath = @"/cache/%%0%%")
 - (id<RFWebServiceCancellable>)testCacheIdentifierWithPrefix:(NSString *)identifierPrefix success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
+- (id<RFWebServiceCancellable>)testSimpleWebServiceCallWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
 @end
