@@ -303,4 +303,27 @@
     XCTAssertTrue([webClient.serializationDelegate isKindOfClass:[RFXMLSerializer class]], @"Serialization delegate was set incorrectly and has wrong type.");
 }
 
+- (void)testDownloadingCancellation {
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.simple.call"];
+    __block BOOL isFinished = NO;
+    __block int successFlag = 0;
+    const int kSuccessValue = 1;
+    id<RFWebServiceCancellable> downloadOperation = [webClient testSimpleWebServiceCallWithSuccess:^(id result) {
+        successFlag += 2;
+        isFinished = YES;
+    } failure:^(NSError *error) {
+        successFlag += 1;
+        isFinished = YES;
+    }];
+
+    [(NSObject *)downloadOperation performSelector:@selector(cancel) withObject:nil afterDelay:0.0];
+    [(NSObject *)downloadOperation performSelector:@selector(cancel) withObject:nil afterDelay:0.1];
+
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:2]];
+    }
+
+    XCTAssertEqual(successFlag, kSuccessValue, @"Web service cancellation finished with unexpected result!");
+}
+
 @end

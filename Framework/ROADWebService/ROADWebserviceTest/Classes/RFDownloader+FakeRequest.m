@@ -55,7 +55,8 @@
     if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.multipart.data"]) {
         response = [self checkMultipartData] ? [self successResponse] : [self failureResponse];
     }
-    else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.method.without.blocks"]) {
+    else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.method.without.blocks"]
+             || [[[self.request URL] absoluteString] isEqualToString:@"http://test.simple.call"]) {
         response = [self successResponse];
     }
     else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.serializer"]) {
