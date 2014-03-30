@@ -34,7 +34,7 @@
 #import "RFDownloader+ConnectionDelegate.h"
 
 #import "RFWebServiceLog.h"
-#import "NSError+RFROADWebService.h"
+#import "NSError+RFWebService.h"
 #import "RFAuthenticating.h"
 #import "RFWebServiceClient.h"
 #import "RFWebServiceErrorHandler.h"

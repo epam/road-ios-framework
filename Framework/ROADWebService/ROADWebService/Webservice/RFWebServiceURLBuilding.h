@@ -2,7 +2,7 @@
 //  RFWebServiceURLBuilding.h
 //  ROADWebService
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -30,7 +30,9 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <Foundation/Foundation.h>
+
+@class RFWebServiceURLBuilder;
+
 
 @protocol RFWebServiceURLBuilding <NSObject>
 
@@ -40,7 +42,7 @@
  @param serviceRoot The serviceRoot string.
  @param values The values for the template string keys.
  */
-+ (NSURL *)urlFromTemplate:(NSString * const)urlTemplate withServiceRoot:(NSString* const)serviceRoot values:(NSDictionary * const)values;
++ (NSURL *)urlFromTemplate:(NSString * const)urlTemplate withServiceRoot:(NSString* const)serviceRoot values:(NSDictionary * const)values urlBuilderAttribute:(RFWebServiceURLBuilder *)urlBuilderAttribute;
 
 /**
  The default escape string in the url template string. Override in subclasses if you need a non-default escape marker.

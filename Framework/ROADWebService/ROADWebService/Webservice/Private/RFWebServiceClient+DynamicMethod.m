@@ -178,7 +178,7 @@ prepareForSendRequestBlock:(RFWebServiceClientPrepareForSendRequestBlock)prepare
         
         NSURL *apiUrl = nil;
         if ([urlParserClass conformsToProtocol:@protocol(RFWebServiceURLBuilding)]) {
-            apiUrl = [urlParserClass urlFromTemplate:callAttribute.relativePath withServiceRoot:self.serviceRoot values:values];
+            apiUrl = [urlParserClass urlFromTemplate:callAttribute.relativePath withServiceRoot:self.serviceRoot values:values urlBuilderAttribute:urlParserAttribute];
         }
         
         // Creating request and configuring it with provided parameters

@@ -100,4 +100,12 @@ RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, relativePath = @"/ca
 RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
 - (id<RFWebServiceCancellable>)testSimpleWebServiceCallWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
+RF_ATTRIBUTE(RFWebServiceURLBuilder, encoding = NSUTF8StringEncoding)
+- (id<RFWebServiceCancellable>)testURLEscapingEncodingWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
+RF_ATTRIBUTE(RFWebServiceURLBuilder, allowedCharset = [NSCharacterSet uppercaseLetterCharacterSet])
+- (id<RFWebServiceCancellable>)testURLEscapingAllowedCharsetWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
 @end

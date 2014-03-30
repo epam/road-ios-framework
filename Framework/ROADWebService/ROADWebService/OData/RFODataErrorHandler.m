@@ -33,7 +33,7 @@
 #import "RFODataErrorHandler.h"
 
 #import <ROAD/ROADSerialization.h>
-#import "NSError+RFROADWebService.h"
+#import "NSError+RFWebService.h"
 
 @implementation RFODataErrorHandler
 

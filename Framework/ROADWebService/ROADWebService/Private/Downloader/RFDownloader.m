@@ -36,7 +36,7 @@
 
 #import "RFWebServiceLog.h"
 #import "RFLooper.h"
-#import "NSError+RFROADWebService.h"
+#import "NSError+RFWebService.h"
 #import "RFWebServiceCall.h"
 #import "RFWebServiceHeader.h"
 #import "RFWebServiceClientStatusCodes.h"
@@ -259,7 +259,7 @@
         RFWSLogInfo(@"URL connection(%p) is canceled. URL: %@", _connection, [_connection.currentRequest.URL absoluteString]);
     }
     self.data = nil;
-    self.downloadError = [NSError RF_sparkWS_cancellError];
+    self.downloadError = [NSError RFWS_cancelError];
     [self stop];
     self.requestCancelled = YES;
 

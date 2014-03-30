@@ -30,7 +30,7 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "RFODataTest.h"
+#import <XCTest/XCTest.h>
 
 #import "RFODataTestEntity.h"
 #import "RFODataFetchRequest.h"
@@ -38,6 +38,12 @@
 #import "RFConcreteWebServiceClient.h"
 #import "RFWebServiceCancellable.h"
 #import "RFDownloader.h"
+
+
+@interface RFODataTest : XCTestCase
+
+@end
+
 
 @implementation RFODataTest {
     RFConcreteWebServiceClient * _webClient;
@@ -205,6 +211,27 @@
         [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
         [downloader cancel];
     }
+}
+
+- (void)testODataErrorHandling {
+    __block BOOL isFinished = NO;
+    __block NSError *receivedError;
+
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://services.odata.org/V3/(S(plcxuejnllfvrrecpvqbehxz))/OData/OData.svc/Product(1)"];
+    [webClient testErrorHandlerRootWithSuccess:^(id result) {
+        isFinished = YES;
+    } failure:^(NSError *error) {
+        receivedError = error;
+        isFinished = YES;
+    }];
+
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:0.2]];
+    }
+
+    XCTAssertTrue(receivedError != nil, @"Error've not been generated!");
+    XCTAssertTrue(receivedError.localizedDescription != nil, @"Localized description've not been filled for generated error!");
+    XCTAssertTrue(receivedError.code, @"Code've not been filled for generated error!");
 }
 
 @end

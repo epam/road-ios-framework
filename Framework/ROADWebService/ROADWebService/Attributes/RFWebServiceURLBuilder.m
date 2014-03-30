@@ -2,7 +2,7 @@
 //  RFWebServiceURLBuilder.m
 //  ROADWebService
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -30,8 +30,18 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
+
 #import "RFWebServiceURLBuilder.h"
 
+
 @implementation RFWebServiceURLBuilder
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _encoding = NSUTF8StringEncoding;
+    }
+    return self;
+}
 
 @end

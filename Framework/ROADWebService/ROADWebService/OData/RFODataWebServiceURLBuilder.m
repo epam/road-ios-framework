@@ -37,8 +37,8 @@
 
 @implementation RFODataWebServiceURLBuilder
 
-+ (NSURL *)urlFromTemplate:(NSString *const)urlTemplate withServiceRoot:(NSString *const)serviceRoot values:(NSDictionary *const)values {
-    NSURL *url = [super urlFromTemplate:urlTemplate withServiceRoot:serviceRoot values:values];
++ (NSURL *)urlFromTemplate:(NSString *const)urlTemplate withServiceRoot:(NSString *const)serviceRoot values:(NSDictionary *const)values urlBuilderAttribute:(RFWebServiceURLBuilder *)urlBuilderAttribute {
+    NSURL *url = [super urlFromTemplate:urlTemplate withServiceRoot:serviceRoot values:values urlBuilderAttribute:urlBuilderAttribute];
 
     NSArray *valuesArray = [values allValues];
     for (unsigned long idx = 0; idx < [values count]; idx++) {
