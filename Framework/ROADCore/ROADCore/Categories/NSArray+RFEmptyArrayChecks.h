@@ -2,7 +2,7 @@
 //  NSArray+RFEmptyArrayChecks.h
 //  ROADCore
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without 
 // modification, are permitted provided that the following conditions are met:
@@ -32,27 +32,22 @@
 
 
 /**
- Category to return array elements or nil, in case the specified index does not contain array element (out of range, or the array is empty).
+ * Category to return array elements or nil, in case the specified index does not contain array element (out of range, or the array is empty).
  */
 @interface NSArray (RFEmptyArrayChecks)
 
 /**
- Returns the last object of a non-empty array or nil, if the array was empty.
+ * Returns the elements specified by the index or nil, if the index is out of range for the array.
+ * @param index The index for which the element should be returned.
+ * @result The element at index or nil, if the index was out of range, or the array was empty.
  */
-- (id)RF_lastElementIfNotEmpty;
+- (id)RF_safeObjectAtIndex:(NSUInteger)index;
 
 /**
- Returns the elements specified by the index or nil, if the index is out of range for the array.
- @param index The index for which the element should be returned.
- @result The element at index or nil, if the index was out of range, or the array was empty.
+ * Queries the array for an element what matches the predicate block specified and returns the first if found or nil, if none of the elements passed the test.
+ * @param evaluationBlock The predicate block.
+ * @result The first element passing the test or nil, if none of the elements passed the test.
  */
-- (id)RF_elementAtIndexIfInRange:(NSUInteger)index;
-
-/**
- Queries the array for an element what matches the predicate block specified and returns the first if found or nil, if none of the elements passed the test.
- @param evaluationBlock The predicate block.
- @result The first element passing the test or nil, if none of the elements passed the test.
- */
-- (id)RF_elementWithPredicateBlock:(BOOL (^)(id evaluatedObject))evaluationBlock;
+- (id)RF_objectWithPredicateBlock:(BOOL (^)(id evaluatedObject))evaluationBlock;
 
 @end

@@ -2,7 +2,7 @@
 //  RFServiceProvider.m
 //  ROADServices
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -31,9 +31,10 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "RFServiceProvider.h"
 #import <objc/runtime.h>
 #import <ROAD/ROADReflection.h>
+
+#import "RFServiceProvider.h"
 
 const char *RFServiceMethodEncoding = "@@:";
 
@@ -71,7 +72,7 @@ static NSMutableDictionary *services;
     
     if (theService == nil) {
         RFService * const serviceAttribute = [[self class] RF_attributeForMethod:serviceName withAttributeType:[RFService class]];
-        __unsafe_unretained Class const serviceClass = serviceAttribute.serviceClass;
+        Class const serviceClass = serviceAttribute.serviceClass;
         theService = [[(id)serviceClass alloc] init];
         [self registerService:theService forServiceName:serviceName];
     }

@@ -30,7 +30,9 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
+
 #import "GcovTestObserver.h"
+
 
 @implementation GcovTestObserver
 
@@ -38,8 +40,7 @@
     [[NSUserDefaults standardUserDefaults] setValue:@"XCTestLog,GcovTestObserver" forKey:@"XCTestObserverClass"];
 }
 
-- (void)stopObserving
-{
+- (void)stopObserving  {
     [super stopObserving];
     extern void __gcov_flush(void);
     __gcov_flush();

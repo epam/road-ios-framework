@@ -2,7 +2,7 @@
 //  NSMutableString+RFStringFormatter.m
 //  ROADCore
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without 
 // modification, are permitted provided that the following conditions are met:
@@ -39,20 +39,20 @@
 - (void)RF_formatStringUsingValues:(NSDictionary *const)valueDictionary withEscape:(NSString *const)escapeString {
     @autoreleasepool {
         NSString *pattern = [NSString stringWithFormat:@"%@(.*?)%@", escapeString, escapeString];
-        NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionAllowCommentsAndWhitespace error:nil];
-        NSString *subString;
-        NSString *aValue;
-        NSString * const uniqueString = [[NSProcessInfo processInfo] globallyUniqueString];
+        NSError *error = nil;
+        NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionAllowCommentsAndWhitespace error:&error];
+        NSAssert(!error, @"%@ %@: Error while generating regexp for pattern", self, NSStringFromSelector(_cmd));
         
+        NSString * const uniqueString = [[NSProcessInfo processInfo] globallyUniqueString];
         NSArray *matches = [regexp matchesInString:self options:0 range:NSMakeRange(0, [self length])];
         
         while ([matches count] > 0) {
             NSTextCheckingResult * const aResult = [matches lastObject];
-            subString = [[self substringWithRange:aResult.range] stringByReplacingOccurrencesOfString:escapeString withString:@""];
-            aValue = valueDictionary[subString];
+            NSString *subString = [[self substringWithRange:aResult.range] stringByReplacingOccurrencesOfString:escapeString withString:@""];
+            NSString *value = valueDictionary[subString];
             
-            if ([aValue length] > 0) {
-                [self replaceCharactersInRange:aResult.range withString:aValue];
+            if ([value length] > 0) {
+                [self replaceCharactersInRange:aResult.range withString:value];
             }
             else {
                 [self replaceCharactersInRange:aResult.range withString:uniqueString];

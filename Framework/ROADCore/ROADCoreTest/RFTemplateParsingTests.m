@@ -1,8 +1,8 @@
 //
-//  RFMutableObject.h
+//  RFTemplateParsingTest.m
 //  ROADCore
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without 
 // modification, are permitted provided that the following conditions are met:
@@ -31,18 +31,51 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "RFObject.h"
+#import <XCTest/XCTest.h>
+
+#import "NSMutableString+RFStringFormatter.h"
 
 
-/**
- * A generic container object, prepared to accept all kind of values through KVC's valueForUndefinedKey: and setValue:forUndefinedKey: methods. Also supports dynamic method resolution for properties accessing these values
- * using the property's name as the key. One has to use the @dynamic compiler directive to mark properties inside this class or its subclasses to acquire this functionality.
- */
-@interface RFMutableObject : RFObject
+@interface RFTemplateParsingTests : XCTestCase
 
-/**
- * The dictionary containing the dynamically allocated properties.
- */
-@property (strong, nonatomic) NSMutableDictionary *dynamicPropertyValues;
+@end
+
+
+@implementation RFTemplateParsingTests {
+    NSMutableString *template;
+    NSString *escape;
+    NSDictionary *values;
+}
+
+- (void)setUp {
+    template = [NSMutableString stringWithString:@"someExample:%%key1%% withOtherValue:%%key2%% andThirdValue:%%key3%%"];
+    escape = @"%%";
+    values = @{ @"key1" : @"value1", @"key2" : @"value2", @"key3" : @"value3" };
+    
+    [super setUp];
+}
+
+- (void)tearDown {
+    template = nil;
+    escape = nil;
+    values = nil;
+    
+    [super tearDown];
+}
+
+- (void)testTemplateParsing {
+    [template RF_formatStringUsingValues:values withEscape:escape];
+    NSRange rangeOfKey = [template rangeOfString:@"key"];
+    NSRange rangeOfEscape = [template rangeOfString:escape];
+    NSRange rangeOfValue1 = [template rangeOfString:@"value1"];
+    NSRange rangeOfValue2 = [template rangeOfString:@"value2"];
+    NSRange rangeOfValue3 = [template rangeOfString:@"value3"];
+    
+    XCTAssertTrue(rangeOfKey.location == NSNotFound, @"Assertion: no key is in the template.");
+    XCTAssertTrue(rangeOfEscape.location == NSNotFound, @"Assertion: escape is no longer in the template.");
+    XCTAssertTrue(rangeOfValue1.location != NSNotFound, @"Assertion: value1 is in the template.");
+    XCTAssertTrue(rangeOfValue2.location != NSNotFound, @"Assertion: value2 is in the template.");
+    XCTAssertTrue(rangeOfValue3.location != NSNotFound, @"Assertion: value3 is in the template.");
+}
 
 @end

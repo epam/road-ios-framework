@@ -32,32 +32,38 @@
 
 
 #import "RFObjectPool.h"
-#import "RFPooledObject.h"
+#import "RFObjectPooling.h"
+
 
 @implementation RFObjectPool {
     NSMutableDictionary *pool;
     NSMutableDictionary *map;
 }
 
-- (void)initialize {
-    [super initialize];
-    pool = [[NSMutableDictionary alloc] init];
-    map = [[NSMutableDictionary alloc] init];
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        pool = [[NSMutableDictionary alloc] init];
+        map = [[NSMutableDictionary alloc] init];
+    }
+    return self;
 }
 
-- (void)registerClassNamed:(NSString *)aClassName forIdentifier:(NSString *)reuseIdentifier {
-    __unsafe_unretained const Class aClass = NSClassFromString(aClassName);
+- (void)registerClassNamed:(NSString *)className forIdentifier:(NSString *)reuseIdentifier {
+    __unsafe_unretained const Class aClass = NSClassFromString(className);
     
-    if (aClass != Nil) {
+    if (aClass) {
         NSString *key = _caseSensitive ? reuseIdentifier : [reuseIdentifier lowercaseString];
-        map[key] = NSClassFromString(aClassName);
+        map[key] = NSClassFromString(className);
     }
 }
 
-- (id)objectForIdentifier:(NSString *)anIdentifier {
-    NSString *key = _caseSensitive ? anIdentifier : [anIdentifier lowercaseString];
+- (id)objectForIdentifier:(NSString *)identifier {
+    NSString *key = _caseSensitive ? identifier : [identifier lowercaseString];
     NSMutableSet *objectSet = pool[key];
-    id<RFPooledObject> object = nil;
+    id<RFObjectPooling> object = nil;
     
     if (objectSet == nil) {
         objectSet = [[NSMutableSet alloc] init];
@@ -73,7 +79,7 @@
             [object prepareForReuse];
         }
         if ([strongDelegate respondsToSelector:@selector(pool:didLendObject:forIdentifier:)]) {
-            [strongDelegate pool:self didLendObject:object forIdentifier:anIdentifier];
+            [strongDelegate pool:self didLendObject:object forIdentifier:identifier];
         }
     }
     else {
@@ -82,15 +88,15 @@
         [object setPool:self];
         
         if ([strongDelegate respondsToSelector:@selector(pool:didInstantiateObject:forIdentifier:)]) {
-            [strongDelegate pool:self didInstantiateObject:object forIdentifier:anIdentifier];
+            [strongDelegate pool:self didInstantiateObject:object forIdentifier:identifier];
         }
     }
     
     return object;
 }
 
-- (void)repoolObject:(id<RFPooledObject>)anObject {
-    NSString * const reuseIdentifier = _caseSensitive ? [anObject poolReuseIdentifier] : [[anObject poolReuseIdentifier] lowercaseString];
+- (void)repoolObject:(id<RFObjectPooling>)object {
+    NSString * const reuseIdentifier = _caseSensitive ? [object poolReuseIdentifier] : [[object poolReuseIdentifier] lowercaseString];
     NSMutableSet *objectSet = pool[reuseIdentifier];
     
     if (objectSet == nil) {
@@ -99,7 +105,7 @@
     }
     
     id<RFObjectPoolDelegate> strongDelegate = _delegate;
-    [objectSet addObject:anObject];
+    [objectSet addObject:object];
     if ([strongDelegate respondsToSelector:@selector(pool:didRepoolObjectForIdentifier:)]) {
         [strongDelegate pool:self didRepoolObjectForIdentifier:reuseIdentifier];
     }
