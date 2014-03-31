@@ -2,7 +2,7 @@
 //  RFDownloader.m
 //  ROADWebService
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -36,7 +36,7 @@
 
 #import "RFWebServiceLog.h"
 #import "RFLooper.h"
-#import "NSError+RFROADWebService.h"
+#import "NSError+RFWebService.h"
 #import "RFWebServiceCall.h"
 #import "RFWebServiceHeader.h"
 #import "RFWebServiceClientStatusCodes.h"
@@ -62,6 +62,7 @@
 @property (assign, nonatomic) long long expectedContentLenght;
 @property (strong, nonatomic) RFWebServiceCall * callAttribute;
 @property (strong, nonatomic) NSDictionary * values;
+@property (assign, atomic, readwrite, getter = isRequestCancelled) BOOL requestCancelled;
 
 - (void)stop;
 
@@ -135,7 +136,7 @@
 }
 
 - (void)checkCacheAndStart {
-    if (_requestCancelled) {
+    if (self.requestCancelled) {
         return;
     }
     
@@ -155,6 +156,10 @@
 }
 
 - (void)start {
+    if (self.requestCancelled) {
+        return;
+    }
+
     _connection = [[NSURLConnection alloc] initWithRequest:_request delegate:self startImmediately:NO];
     
     if (_looper == nil) {
@@ -193,9 +198,9 @@
     [self downloaderFinishedWithResult:result response:response error:error];
 }
 
-- (void)downloaderFinishedWithResult:(NSData *)result response:(NSHTTPURLResponse *)response error:(NSError *)error {
+- (void)downloaderFinishedWithResult:(NSData *)result response:(NSHTTPURLResponse *)response error:(NSError *)downloaderError {
     __block id resultData = result;
-    __block NSError *resultError = error;
+    __block NSError *resultError = downloaderError;
     self.response = response;
     
     if (!resultError && !_callAttribute.serializationDisabled) {
@@ -231,8 +236,10 @@
 
 - (void)stop {
     _connection = nil;
-    [self fillErrorUserInfoAndCleanData];
-    [self cacheAndFinishWithResult:_data response:_response error:_downloadError];
+    if (!self.requestCancelled) { // If request is cancelled already, simply release variables
+        [self fillErrorUserInfoAndCleanData];
+        [self cacheAndFinishWithResult:_data response:_response error:_downloadError];
+    }
     [_looper stop];
     _looper = nil;
     
@@ -247,21 +254,23 @@
 }
 
 - (void)cancel {
-    _requestCancelled = YES;
-    [_connection cancel];
-    RFWSLogInfo(@"URL connection(%p) is canceled. URL: %@", _connection, [_connection.currentRequest.URL absoluteString]);
+    if (_connection) {
+        [_connection cancel];
+        RFWSLogInfo(@"URL connection(%p) is canceled. URL: %@", _connection, [_connection.currentRequest.URL absoluteString]);
+    }
     self.data = nil;
-    self.downloadError = [NSError RF_sparkWS_cancellError];
+    self.downloadError = [NSError RFWS_cancelError];
     [self stop];
-   
+    self.requestCancelled = YES;
+
 }
 
 - (NSMutableURLRequest *)requestForUrl:(NSURL * const)anUrl withMethod:(NSString * const)method withBody:(NSData *)httpBody values:(NSDictionary *)values {
     NSData *body = httpBody;
     
     if ([_callAttribute.method isEqualToString:@"POST"]) {
-        if (_callAttribute.postParameter != NSNotFound && !httpBody.length) {
-            id bodyObject = [values objectForKey:[NSString stringWithFormat:@"%d", _callAttribute.postParameter]];
+        if (_callAttribute.postParameter != (int)NSNotFound && !httpBody.length) {
+            id bodyObject = values[[NSString stringWithFormat:@"%d", _callAttribute.postParameter]];
             body = [self dataFromParameter:bodyObject];
         }
         else {
@@ -271,7 +280,7 @@
                     body = [self dataFromParameter:firstParameter];
                 }
             }
-            else if (_callAttribute.postParameter != NSNotFound) {
+            else if (_callAttribute.postParameter != (int)NSNotFound) {
                 RFWSLogWarn(@"Web service method %@ specifies postParameter, but has NSData or RFFormData variable in parameters and use it instead", method);
             }
         }

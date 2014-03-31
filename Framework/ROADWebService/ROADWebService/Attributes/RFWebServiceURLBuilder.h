@@ -2,7 +2,7 @@
 //  RFWebServiceURLBuilder.h
 //  ROADWebService
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -30,7 +30,9 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
+
 #import <ROAD/ROADAttribute.h>
+
 
 /**
  * Defines custom request URL builder for cases that can not be mapped with existing web service request mechanism.
@@ -41,5 +43,15 @@
  * Defines class for request URL builder.
  */
 @property (strong, nonatomic) Class builderClass;
+
+/**
+ * The characters not replaced in the URL components. If defined NSUTF8StringEncoding encoding is used.
+ */
+@property (strong, nonatomic) NSCharacterSet * allowedCharset;
+
+/**
+ * The encoding to use for the URL string. Default value is NSUTF8StringEncoding.
+ */
+@property (assign, nonatomic) NSStringEncoding encoding;
 
 @end

@@ -31,13 +31,13 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "RFSerializationTestObject.h"
 #import "RFAttributedDecoder.h"
 #import "RFAttributedCoder.h"
 #import "RFDisabledClassNameSerializationTestObject.h"
 
-@interface RFDisabledClassNameSerializationTest : SenTestCase
+@interface RFDisabledClassNameSerializationTest : XCTestCase
 
 @end
 
@@ -55,7 +55,7 @@
     NSString *jsonSrting = [RFAttributedCoder encodeRootObject:_object];
     NSData *jsonData = [jsonSrting dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *decodedJSON = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
-    STAssertTrue(decodedJSON[RFSerializedObjectClassName] == nil, @"The deserialized content contained the \"RFSerializedObjectClassName\" regardless of the annotation. ");
+    XCTAssertTrue(decodedJSON[RFSerializedObjectClassName] == nil, @"The deserialized content contained the \"RFSerializedObjectClassName\" regardless of the annotation. ");
 }
 
 @end

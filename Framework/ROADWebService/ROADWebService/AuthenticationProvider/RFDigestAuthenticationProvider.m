@@ -32,7 +32,7 @@
 
 
 #import "RFDigestAuthenticationProvider.h"
-#import "NSError+RFROADWebService.h"
+#import "NSError+RFWebService.h"
 
 @implementation RFDigestAuthenticationProvider
 

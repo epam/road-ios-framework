@@ -31,7 +31,7 @@
 // for additional information regarding copyright ownership and licensing
 
 #import "RFBasicAuthenticationProvider.h"
-#import "NSError+RFROADWebService.h"
+#import "NSError+RFWebService.h"
 
 @implementation RFBasicAuthenticationProvider
 

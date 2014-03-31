@@ -1,8 +1,8 @@
 //
-//  NSError+RFROADWebService.m
-//  ROADWebService
+//  RFSerializableStringChecker.h
+//  ROADSerialization
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -30,21 +30,10 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "NSError+RFROADWebService.h"
 
-NSString * const kRFWebServiceErrorDomain = @"RFWebServiceError";
-NSString *const kRFWebServiceRecievedDataKey = @"RecievedData";
+@interface RFSerializableStringChecker : NSObject
 
-@implementation NSError (RFROADWebService)
-
-+(NSError *)RF_sparkWS_deserializationErrorWithData:(NSData*)data
-{
-    return [NSError errorWithDomain:kRFWebServiceErrorDomain code:1000 userInfo:@{ NSLocalizedDescriptionKey : @"Error during the deserialization",kRFWebServiceRecievedDataKey : data }];
-}
-
-+(NSError *)RF_sparkWS_cancellError
-{
-    return [NSError errorWithDomain:kRFWebServiceErrorDomain code:1001 userInfo:@{ NSLocalizedDescriptionKey : @"The request has been cancelled." }];
-}
++ (NSString *)serializeAndCheckEqualityOfString:(NSString *)string withString:(NSString *)anotherString;
++ (NSString *)checkDictionary:(NSDictionary *)dictionary withDictionary:(NSDictionary *)anotherDictionary;
 
 @end

@@ -1,8 +1,8 @@
 //
-//  RFODataTest.h
-//  ROADWebService
+//  RFServicesTest.m
+//  ROADServicesTest
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -30,8 +30,31 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <SenTestingKit/SenTestingKit.h>
 
-@interface RFODataTest : SenTestCase
+#import "RFServicesTest.h"
+#import "ROADServices.h"
+#import "RFTestService.h"
+#import "RFServiceProvider+RFTestService.h"
+
+@implementation RFServicesTest
+
+- (void)testInstanceFakeService
+{
+    RFTestService *databaseManager = [RFServiceProvider serviceInstance];
+    XCTAssertNotNil(databaseManager, @"Service has not been initialised.");
+}
+
+- (void)testServiceWithoutAnnotations {
+    XCTAssertFalse([RFServiceProvider resolveClassMethod:@selector(serviceWithoutAttributes)], @"Service provider respond with undefined result on wrong specified method");
+}
+
+- (void)testServiceWithMissingPropertyOfAttribute {
+    id service = [RFServiceProvider serviceWithMissingPropertyOfAttribute];
+    XCTAssertNil(service, @"Service provider respond with undefined result on method with wrong attribute");
+}
+
+- (void)testServiceWithWrongAnnotations {
+    XCTAssertFalse([RFServiceProvider resolveClassMethod:@selector(serviceWithWrongAttribute)], @"Service provider respond with undefined result on method with wrong attribute");
+}
 
 @end
