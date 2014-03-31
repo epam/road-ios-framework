@@ -1,5 +1,5 @@
 //
-//  RFPoolTest.m
+//  RFConditionalComponentResultTest.m
 //  ROADCore
 //
 //  Copyright (c) 2014 Epam Systems. All rights reserved.
@@ -31,42 +31,40 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "RFPoolTest.h"
-#import "RFObjectPool.h"
-#import "RFPoolObject.h"
+#import <XCTest/XCTest.h>
+#import <ROAD/ROADAttribute.h>
 
-@implementation RFPoolTest {
-    RFObjectPool *pool;
+#import "NSArray+RFEmptyArrayChecks.h"
+
+
+@interface RFArrayCategoryTests : XCTestCase
+
+@end
+
+
+@implementation RFArrayCategoryTests
+
+- (void)testConditionalObjectAtIndexNotExisting {
+    NSArray * const array = @[];
+    id object = [array RF_safeObjectAtIndex:[array count]];
+    
+    XCTAssertTrue(object == nil, @"Assertion: conditional returns nil for invalid index");
 }
 
-- (void)setUp {
-    pool = [[RFObjectPool alloc] init];
-    [pool registerClassNamed:@"RFPoolObject" forIdentifier:@"id1"];
-    [pool registerClassNamed:@"RFPoolObject" forIdentifier:@"id2"];
+- (void)testConditionalObjectAtIndexExisting {
+    NSArray * const array = @[@"first", @"second"];
+    id object = [array RF_safeObjectAtIndex:0];
+    
+    XCTAssertTrue([object isEqual:array[0]], @"Assertion: objectAtIndex method returns the same as the conditional version.");
 }
 
-- (void)tearDown {
-    pool = nil;
-}
-
-- (void)testObjectPoolAllocation {
-    id const object = [pool objectForIdentifier:@"id1"];
-    id const nonObject = [pool objectForIdentifier:@"id3"];
+- (void)testObjectMatching {
+    NSArray * const array = @[@"first", @"second"];
+    id object = [array RF_objectWithPredicateBlock:^BOOL(NSString *evaluatedObject) {
+        return [evaluatedObject isEqualToString:@"first"];
+    }];
     
-    XCTAssertTrue(object != nil, @"Assertion: registered classes get instantiated property");
-    XCTAssertTrue(nonObject == nil, @"Assertion: unregistered identifiers are not recognized");
-}
-
-- (void)testReuse {
-    id const object = [pool objectForIdentifier:@"id2"];
-    [object repool];
-    id const reusedObject = [pool objectForIdentifier:@"id2"];
-    
-    XCTAssertTrue([object isEqual:reusedObject], @"Assertion: repooled objects are available for reusing.");
-    
-    id const newObject = [pool objectForIdentifier:@"id2"];
-    
-    XCTAssertTrue(![newObject isEqual:reusedObject], @"Assertion: requested objects are removed from the pool.");
+    XCTAssertTrue(object != nil, @"Assertion: matching returns valid result.");
 }
 
 @end

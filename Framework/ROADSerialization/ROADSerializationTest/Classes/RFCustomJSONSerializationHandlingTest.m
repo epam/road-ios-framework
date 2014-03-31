@@ -106,7 +106,7 @@
                                         "  },\n"
                                         "  \"RFSerializedObjectClassName\" : \"RFJSONCustomPropertyKeyHandlerEntity\"\n"
                                         "}";
-    NSString *errorMessage = [RFSerializableStringChecker serializeAndCheckEqualityOfString:encodedString withString:stringForSampleObject];;
+    NSString *errorMessage = [RFSerializableStringChecker serializeAndCheckEqualityOfString:encodedString withString:stringForSampleObject];
     XCTAssertNil(errorMessage, @"%@", errorMessage);
 }
 

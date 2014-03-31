@@ -70,7 +70,7 @@ static NSString * const kRFWebServiceCachingStorageName = @"RFWebServiceCache.co
     }
     
     NSArray *cachingFolderList = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    NSString *webServiceCachingPath = [cachingFolderList RF_lastElementIfNotEmpty];
+    NSString *webServiceCachingPath = [cachingFolderList lastObject];
     
     webServiceCachingPath = [webServiceCachingPath stringByAppendingPathComponent:kRFWebServiceCachingDirectory];
     if (![[NSFileManager defaultManager] fileExistsAtPath:webServiceCachingPath]) {
