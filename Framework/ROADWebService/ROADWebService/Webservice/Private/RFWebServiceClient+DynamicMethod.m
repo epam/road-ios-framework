@@ -2,7 +2,7 @@
 //  RFWebServiceClient+DynamicMethod.m
 //  ROADWebService
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -82,16 +82,16 @@
 
 - (id<RFWebServiceCancellable>)dynamicWebServiceCall:(id)firstParameter, ... {
     
-    int parameterCount = [[NSStringFromSelector(_cmd) componentsSeparatedByString:@":"] count] - 1;
+    unsigned long parameterCount = [[NSStringFromSelector(_cmd) componentsSeparatedByString:@":"] count] - 1;
     NSMutableArray *parameterList = [NSMutableArray array];
     
     va_list arguments;
     va_start(arguments, firstParameter);
     
-    for (int i = 0; i < parameterCount; i++) {
+    for (unsigned long idx = 0; idx < parameterCount; idx++) {
         
         // add the argument to the parameter list
-        id parameter = (i == 0) ? firstParameter : va_arg(arguments, id);
+        id parameter = (idx == 0) ? firstParameter : va_arg(arguments, id);
         
         if (!parameter) {
             parameter = [NSNull null];
@@ -178,7 +178,7 @@ prepareForSendRequestBlock:(RFWebServiceClientPrepareForSendRequestBlock)prepare
         
         NSURL *apiUrl = nil;
         if ([urlParserClass conformsToProtocol:@protocol(RFWebServiceURLBuilding)]) {
-            apiUrl = [urlParserClass urlFromTemplate:callAttribute.relativePath withServiceRoot:self.serviceRoot values:values];
+            apiUrl = [urlParserClass urlFromTemplate:callAttribute.relativePath withServiceRoot:self.serviceRoot values:values urlBuilderAttribute:urlParserAttribute];
         }
         
         // Creating request and configuring it with provided parameters

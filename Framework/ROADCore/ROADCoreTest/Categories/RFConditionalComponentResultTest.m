@@ -2,7 +2,7 @@
 //  RFConditionalComponentResultTest.m
 //  ROADCore
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without 
 // modification, are permitted provided that the following conditions are met:
@@ -41,28 +41,28 @@
     NSArray * const array = @[];
     id lastObject = [array RF_lastElementIfNotEmpty];
 
-    STAssertTrue(lastObject == nil, @"Assertion: empty array's last object is nil with this method.");
+    XCTAssertTrue(lastObject == nil, @"Assertion: empty array's last object is nil with this method.");
 }
 
 - (void)testConditionalLastObjectExisting {
     NSArray * const array = @[@"first", @"second"];
     id lastObject = [array RF_lastElementIfNotEmpty];
     
-    STAssertTrue([lastObject isEqual:[array lastObject]], @"Assertion: lastObject method returns the same as the conditional version.");
+    XCTAssertTrue([lastObject isEqual:[array lastObject]], @"Assertion: lastObject method returns the same as the conditional version.");
 }
 
 - (void)testConditionalObjectAtIndexNotExisting {
     NSArray * const array = @[];
     id object = [array RF_elementAtIndexIfInRange:[array count]];
     
-    STAssertTrue(object == nil, @"Assertion: conditional returns nil for invalid index");
+    XCTAssertTrue(object == nil, @"Assertion: conditional returns nil for invalid index");
 }
 
 - (void)testConditionalObjectAtIndexExisting {
     NSArray * const array = @[@"first", @"second"];
     id object = [array RF_elementAtIndexIfInRange:0];
     
-    STAssertTrue([object isEqual:[array objectAtIndex:0]], @"Assertion: objectAtIndex method returns the same as the conditional version.");
+    XCTAssertTrue([object isEqual:array[0]], @"Assertion: objectAtIndex method returns the same as the conditional version.");
 }
 
 - (void)testObjectMatching {
@@ -71,7 +71,7 @@
         return [evaluatedObject isEqualToString:@"first"];
     }];
     
-    STAssertTrue(object != nil, @"Assertion: matching returns valid result.");
+    XCTAssertTrue(object != nil, @"Assertion: matching returns valid result.");
 }
 
 @end

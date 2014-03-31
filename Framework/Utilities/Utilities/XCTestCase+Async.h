@@ -1,8 +1,8 @@
 //
-//  ROADServicesTest.m
-//  ROADServicesTest
+//  XCTestCase+Async.h
+//  Utilities
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -30,31 +30,10 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
+#import <XCTest/XCTest.h>
 
-#import "RFROADServicesTest.h"
-#import "ROADServices.h"
-#import "RFTestService.h"
-#import "RFServiceProvider+RFTestService.h"
+@interface XCTestCase (Async)
 
-@implementation RFROADServicesTest
-
-- (void)testInstanceFakeService
-{
-    RFTestService *databaseManager = [RFServiceProvider serviceInstance];
-    STAssertNotNil(databaseManager, @"Service has not been initialised.");
-}
-
-- (void)testServiceWithoutAnnotations {
-    STAssertFalse([RFServiceProvider resolveClassMethod:@selector(serviceWithoutAttributes)], @"Service provider respond with undefined result on wrong specified method");
-}
-
-- (void)testServiceWithMissingPropertyOfAttribute {
-    id service = [RFServiceProvider serviceWithMissingPropertyOfAttribute];
-    STAssertNil(service, @"Service provider respond with undefined result on method with wrong attribute");
-}
-
-- (void)testServiceWithWrongAnnotations {
-    STAssertFalse([RFServiceProvider resolveClassMethod:@selector(serviceWithWrongAttribute)], @"Service provider respond with undefined result on method with wrong attribute");
-}
++ (BOOL)waitFor:(BOOL(^)(void))block withTimeout:(NSTimeInterval)timeout;
 
 @end

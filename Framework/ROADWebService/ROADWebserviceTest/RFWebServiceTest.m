@@ -2,7 +2,7 @@
 //  RFWebServiceTest.m
 //  ROADWebService
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -31,7 +31,7 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
 #import "RFWebServiceClientWithRoot.h"
 #import "RFWebServiceClient+DynamicTest.h"
@@ -46,7 +46,7 @@
 #import "RFWebServiceSerializer.h"
 
 
-@interface RFWebServiceTest : SenTestCase
+@interface RFWebServiceTest : XCTestCase
 {
     NSCondition * condition;
     BOOL authenticationFinished;
@@ -68,10 +68,10 @@
 
 - (void)testServiceRootAttribute {
     RFWebServiceClientWithRoot *webServiceClientWithRoot = [[RFWebServiceClientWithRoot alloc] init];
-    STAssertEqualObjects(webServiceClientWithRoot.serviceRoot, @"http://google.com", @"Service root was not initialized by a correct value from an attribute.");
+    XCTAssertEqualObjects(webServiceClientWithRoot.serviceRoot, @"http://google.com", @"Service root was not initialized by a correct value from an attribute.");
 
     webServiceClientWithRoot = [[RFWebServiceClientWithRoot alloc] initWithServiceRoot:@"http://yahoo.com"];
-    STAssertEqualObjects(webServiceClientWithRoot.serviceRoot, @"http://yahoo.com", @"Service root from attribute was not overrided by a init method parameter.");
+    XCTAssertEqualObjects(webServiceClientWithRoot.serviceRoot, @"http://yahoo.com", @"Service root from attribute was not overrided by a init method parameter.");
 }
 
 - (void)testHTTPBasicAuthentication {
@@ -87,9 +87,9 @@
     }];
     
     while (!isFinished) {
-        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
     }
-    STAssertTrue([client.authenticationProvider isSessionOpened], @"Authentication was failed and session was not opened.");
+    XCTAssertTrue([client.authenticationProvider isSessionOpened], @"Authentication was failed and session was not opened.");
 }
 
 - (void)testHTTPBasicAuthenticationInConjunctionWithSSL {
@@ -106,9 +106,9 @@
     }];
     
     while (!isFinished) {
-        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
     }
-    STAssertTrue([client.authenticationProvider isSessionOpened], @"Authentication was failed and session was not opened.");
+    XCTAssertTrue([client.authenticationProvider isSessionOpened], @"Authentication was failed and session was not opened.");
 }
 
 - (void)testHTTPDigestAuthentication {
@@ -125,9 +125,9 @@
     }];
     
     while (!isFinished) {
-        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
     }
-    STAssertTrue([client.authenticationProvider isSessionOpened], @"Authentication was failed and session was not opened.");
+    XCTAssertTrue([client.authenticationProvider isSessionOpened], @"Authentication was failed and session was not opened.");
 }
 
 - (void)testHTTPDigestAuthenticationInConjunctionWithSSL {
@@ -144,18 +144,18 @@
     }];
     
     while (!isFinished) {
-        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
     }
-    STAssertTrue([client.authenticationProvider isSessionOpened], @"Authentication was failed and session was not opened.");
+    XCTAssertTrue([client.authenticationProvider isSessionOpened], @"Authentication was failed and session was not opened.");
 }
 
 - (void)testWebServiceManagement {
     RFConcreteWebServiceClient *client = [RFServiceProvider concreteWebServiceClient];
-    STAssertTrue(client != nil, @"Concrete web service client was not created properly.");
+    XCTAssertTrue(client != nil, @"Concrete web service client was not created properly.");
     
     client.sharedHeaders = [@{@"key1" : @"value1"} mutableCopy];
     RFConcreteWebServiceClient *theSameClient = [RFServiceProvider concreteWebServiceClient];
-    STAssertTrue([theSameClient.sharedHeaders count], @"Shared headers has not been saved.");
+    XCTAssertTrue([theSameClient.sharedHeaders count], @"Shared headers has not been saved.");
 }
 
 - (void)testSerializationRootAttribute {
@@ -171,9 +171,9 @@
     }];
     
     while (!isFinished) {
-        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
     }
-    STAssertTrue([requestResult isKindOfClass:[NSNumber class]], @"Serialization root return wrong object");
+    XCTAssertTrue([requestResult isKindOfClass:[NSNumber class]], @"Serialization root return wrong object");
 }
 
 - (void)testWrongSerializationRootAttribute {
@@ -189,30 +189,9 @@
     }];
     
     while (!isFinished) {
-        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:0.2]];
     }
-    STAssertTrue(requestResult == nil, @"Wrong serialization root does not return null");
-}
-
-- (void)testODataErrorHandling {
-    __block BOOL isFinished = NO;
-    __block NSError *receivedError;
-    
-    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://services.odata.org/V3/(S(plcxuejnllfvrrecpvqbehxz))/OData/OData.svc/Product(1)"];
-    [webClient testErrorHandlerRootWithSuccess:^(id result) {
-        isFinished = YES;
-    } failure:^(NSError *error) {
-        receivedError = error;
-        isFinished = YES;
-    }];
-    
-    while (!isFinished) {
-        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
-    }
-    
-    STAssertTrue(receivedError != nil, @"Error've not been generated!");
-    STAssertTrue(receivedError.localizedDescription != nil, @"Localized description've not been filled for generated error!");
-    STAssertTrue(receivedError.code, @"Code've not been filled for generated error!");
+    XCTAssertTrue(requestResult == nil, @"Wrong serialization root does not return null");
 }
 
 - (void)testMultipartData {
@@ -229,10 +208,10 @@
     }];
     
     while (!isFinished) {
-        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:0.2]];
     }
     
-    STAssertTrue(isSuccess, @"Multipart form data request is failed");
+    XCTAssertTrue(isSuccess, @"Multipart form data request is failed");
 }
 
 - (void)testMultipartDataArray {
@@ -251,10 +230,10 @@
     }];
     
     while (!isFinished) {
-        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:0.2]];
     }
     
-    STAssertTrue(isSuccess, @"Multipart form data request is failed");
+    XCTAssertTrue(isSuccess, @"Multipart form data request is failed");
 }
 
 - (void)testNilsInCompletionBlocks {
@@ -264,7 +243,7 @@
     
     __block BOOL isFinished = NO;
     while (!isFinished) {
-        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:0.2]];
         isFinished = YES;
     }
 }
@@ -286,21 +265,65 @@
     }];
     
     while (!isFinished) {
-        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:0.2]];
     }
     
-    STAssertTrue(isSuccess, @"Custom serialization of web service request is failed!");
-    STAssertTrue([testObject isEqual:customSerializationResult], @"Custom deserialization of web service response is failed!");
+    XCTAssertTrue(isSuccess, @"Custom serialization of web service request is failed!");
+    XCTAssertTrue([testObject isEqual:customSerializationResult], @"Custom deserialization of web service response is failed!");
 }
 
 - (void)testSharedHeaderAttribute {
     RFWebClientWithSharedHeader *webClient = [[RFWebClientWithSharedHeader alloc] init];
-    STAssertTrue([webClient.sharedHeaders isEqualToDictionary:@{@"key1" : @"value1"}], @"Shared headers was not configured via attributes");
+    XCTAssertTrue([webClient.sharedHeaders isEqualToDictionary:@{@"key1" : @"value1"}], @"Shared headers was not configured via attributes");
 }
 
 - (void)testWebClientSerializationDelegateAttribute {
     RFWebClientWithSharedHeader *webClient = [[RFWebClientWithSharedHeader alloc] init];
-    STAssertTrue([webClient.serializationDelegate isKindOfClass:[RFXMLSerializer class]], @"Serialization delegate was set incorrectly and has wrong type.");
+    XCTAssertTrue([webClient.serializationDelegate isKindOfClass:[RFXMLSerializer class]], @"Serialization delegate was set incorrectly and has wrong type.");
+}
+
+- (void)testDownloadingCancellation {
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.simple.call"];
+    __block BOOL isFinished = NO;
+    __block int successFlag = 0;
+    const int kSuccessValue = 1;
+    id<RFWebServiceCancellable> downloadOperation = [webClient testSimpleWebServiceCallWithSuccess:^(id result) {
+        successFlag += 2;
+        isFinished = YES;
+    } failure:^(NSError *error) {
+        successFlag += 1;
+        isFinished = YES;
+    }];
+
+    [(NSObject *)downloadOperation performSelector:@selector(cancel) withObject:nil afterDelay:0.0];
+    [(NSObject *)downloadOperation performSelector:@selector(cancel) withObject:nil afterDelay:0.1];
+
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:2]];
+    }
+
+    XCTAssertEqual(successFlag, kSuccessValue, @"Web service cancellation finished with unexpected result!");
+}
+
+- (void)testURLBuilderEncodingParameter {
+    NSString *unprocessed = @"http://online.store.com/storefront/?request=get-document&doi=10.1175%2F1520-0426(2005)014%3C1157:DODADSS%3E2.0.CO%3B2";
+    NSString *processed = [unprocessed stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:processed];
+    RFDownloader *downloader = (RFDownloader *)[webClient testURLEscapingEncodingWithSuccess:nil failure:nil];
+    
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
+    [downloader cancel];
+
+    XCTAssertEqualObjects([downloader.request.URL absoluteString], @"http://online.store.com/storefront/?request=get-document&doi=10.1175/1520-0426(2005)014%3C1157:DODADSS%3E2.0.CO;2", @"URL string escaping via encoding is done incorectly");
+}
+
+- (void)testURLBuilderAllowedCharsetParameter {
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://PERSISTING.for.escaping"];
+    RFDownloader *downloader = (RFDownloader *)[webClient testURLEscapingAllowedCharsetWithSuccess:nil failure:nil];
+
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
+    [downloader cancel];
+    XCTAssertEqualObjects([downloader.request.URL absoluteString], @"%68%74%74%70%3A%2F%2FPERSISTING%2E%66%6F%72%2E%65%73%63%61%70%69%6E%67", @"URL string escaping via charset is done incorrectly!");
 }
 
 @end

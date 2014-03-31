@@ -1,8 +1,8 @@
 //
-//  ROADServicesTest.h
-//  ROADServicesTest
+//  NSError+RFWebService.m
+//  ROADWebService
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -30,8 +30,23 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <SenTestingKit/SenTestingKit.h>
 
-@interface RFROADServicesTest : SenTestCase
+#import "NSError+RFWebService.h"
+
+
+NSString * const kRFWebServiceErrorDomain = @"RFWebServiceError";
+NSString *const kRFWebServiceRecievedDataKey = @"RecievedData";
+
+@implementation NSError (RFWebService)
+
++(NSError *)RFWS_deserializationErrorWithData:(NSData*)data
+{
+    return [NSError errorWithDomain:kRFWebServiceErrorDomain code:1000 userInfo:@{ NSLocalizedDescriptionKey : @"Error during the deserialization",kRFWebServiceRecievedDataKey : data }];
+}
+
++(NSError *)RFWS_cancelError
+{
+    return [NSError errorWithDomain:kRFWebServiceErrorDomain code:1001 userInfo:@{ NSLocalizedDescriptionKey : @"The request has been cancelled." }];
+}
 
 @end

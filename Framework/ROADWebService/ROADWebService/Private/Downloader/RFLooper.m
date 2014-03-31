@@ -2,7 +2,7 @@
 //  RFLooper.m
 //  ROADWebService
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -51,9 +51,9 @@
 }
 
 - (void)startLooping {
-    NSDate *loopUntil = [[NSDate alloc] initWithTimeIntervalSinceNow:1];
+    NSDate *loopUntil = [[NSDate alloc] initWithTimeIntervalSinceNow:0.2];
     while (looping && [[NSRunLoop currentRunLoop] runMode: NSDefaultRunLoopMode beforeDate:loopUntil]) {
-        loopUntil = [[NSDate alloc] initWithTimeIntervalSinceNow:1];
+        loopUntil = [[NSDate alloc] initWithTimeIntervalSinceNow:0.2];
     }
 }
 

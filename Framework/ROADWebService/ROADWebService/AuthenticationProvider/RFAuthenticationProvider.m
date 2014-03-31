@@ -31,7 +31,7 @@
 // for additional information regarding copyright ownership and licensing
 
 #import "RFAuthenticationProvider.h"
-#import "NSError+RFROADWebService.h"
+#import "NSError+RFWebService.h"
 
 NSString * const kRFAuthorizationKey = @"authorization";
 

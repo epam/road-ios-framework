@@ -2,7 +2,7 @@
 //  RFWebServiceCacheTest.m
 //  ROADWebService
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -30,7 +30,8 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <SenTestingKit/SenTestingKit.h>
+
+#import <XCTest/XCTest.h>
 
 #import "RFServiceProvider+ConcreteWebServiceClient.h"
 #import "RFDownloader+FakeRequest.h"
@@ -38,7 +39,7 @@
 #import "RFDownloadFaker.h"
 
 
-@interface RFWebServiceCacheTest : SenTestCase
+@interface RFWebServiceCacheTest : XCTestCase
 
 @end
 
@@ -68,7 +69,7 @@
     NSString *controlDate;
     [self sendTwoConsequentRequestsOnWebServiceClient:webClient selector:@selector(testCacheNoAttrWithSuccess:failure:) firstResult:&firstDate secondResult:&controlDate];
     
-    STAssertFalse([controlDate isEqualToString:firstDate], @"Response with Pragma:no-cache was cached!");
+    XCTAssertFalse([controlDate isEqualToString:firstDate], @"Response with Pragma:no-cache was cached!");
 }
 
 - (void)testCacheControlNoCaching {
@@ -78,7 +79,7 @@
     NSString *controlDate;
     [self sendTwoConsequentRequestsOnWebServiceClient:webClient selector:@selector(testCacheNoAttrWithSuccess:failure:) firstResult:&firstDate secondResult:&controlDate];
     
-    STAssertFalse([controlDate isEqualToString:firstDate], @"Response with Cache-control:no-cache was cached!");
+    XCTAssertFalse([controlDate isEqualToString:firstDate], @"Response with Cache-control:no-cache was cached!");
 }
 
 - (void)testNoCacheHeaders {
@@ -88,7 +89,7 @@
     NSString *controlDate;
     [self sendTwoConsequentRequestsOnWebServiceClient:webClient selector:@selector(testCacheNoAttrWithSuccess:failure:) firstResult:&firstDate secondResult:&controlDate];
 
-    STAssertFalse([controlDate isEqualToString:firstDate], @"Response without any cache specifying was cached!");
+    XCTAssertFalse([controlDate isEqualToString:firstDate], @"Response without any cache specifying was cached!");
 }
 
 - (void)testExpiresHeader {
@@ -98,7 +99,7 @@
     NSString *controlDate;
     [self sendTwoConsequentRequestsOnWebServiceClient:webClient selector:@selector(testCacheNoAttrWithSuccess:failure:) firstResult:&firstDate secondResult:&controlDate];
     
-    STAssertTrue([controlDate isEqualToString:firstDate], @"Response with expires header was not cached!");
+    XCTAssertTrue([controlDate isEqualToString:firstDate], @"Response with expires header was not cached!");
 }
 
 - (void)testMaxAgeHeader {
@@ -108,7 +109,7 @@
     NSString *controlDate;
     [self sendTwoConsequentRequestsOnWebServiceClient:webClient selector:@selector(testCacheNoAttrWithSuccess:failure:) firstResult:&firstDate secondResult:&controlDate];
     
-    STAssertTrue([controlDate isEqualToString:firstDate], @"Response with max-age header was not cached!");
+    XCTAssertTrue([controlDate isEqualToString:firstDate], @"Response with max-age header was not cached!");
 }
 
 - (void)testDisableCache {
@@ -118,7 +119,7 @@
     NSString *controlDate;
     [self sendTwoConsequentRequestsOnWebServiceClient:webClient selector:@selector(testCacheDisableWithSuccess:failure:) firstResult:&firstDate secondResult:&controlDate];
     
-    STAssertFalse([controlDate isEqualToString:firstDate], @"Response with disableCache attribute was cached!");
+    XCTAssertFalse([controlDate isEqualToString:firstDate], @"Response with disableCache attribute was cached!");
 }
 
 - (void)testMaxAgeAttribute {
@@ -128,7 +129,7 @@
     NSString *controlDate;
     [self sendTwoConsequentRequestsOnWebServiceClient:webClient selector:@selector(testCacheMaxAgeWithSuccess:failure:) firstResult:&firstDate secondResult:&controlDate];
     
-    STAssertTrue([controlDate isEqualToString:firstDate], @"Response with maxAge attribute was not cached!");
+    XCTAssertTrue([controlDate isEqualToString:firstDate], @"Response with maxAge attribute was not cached!");
 }
 
 - (void)testLastModifiedField {
@@ -138,7 +139,7 @@
     NSString *controlDate;
     [self sendTwoConsequentRequestsOnWebServiceClient:webClient selector:@selector(testCacheNoAttrWithSuccess:failure:) firstResult:&firstDate secondResult:&controlDate];
     
-    STAssertFalse([controlDate isEqualToString:firstDate], @"Response with maxAge attribute was not cached!");
+    XCTAssertFalse([controlDate isEqualToString:firstDate], @"Response with maxAge attribute was not cached!");
 }
 
 - (void)testEtagField {
@@ -148,7 +149,7 @@
     NSString *controlDate;
     [self sendTwoConsequentRequestsOnWebServiceClient:webClient selector:@selector(testCacheNoAttrWithSuccess:failure:) firstResult:&firstDate secondResult:&controlDate];
     
-    STAssertFalse([controlDate isEqualToString:firstDate], @"Response with maxAge attribute was not cached!");
+    XCTAssertFalse([controlDate isEqualToString:firstDate], @"Response with maxAge attribute was not cached!");
 }
 
 - (void)testSameLastModifiedField {
@@ -158,7 +159,7 @@
     NSString *controlDate;
     [self sendTwoConsequentRequestsOnWebServiceClient:webClient selector:@selector(testCacheNoAttrWithSuccess:failure:) firstResult:&firstDate secondResult:&controlDate];
     
-    STAssertTrue([controlDate isEqualToString:firstDate], @"Response with maxAge attribute was not cached!");
+    XCTAssertTrue([controlDate isEqualToString:firstDate], @"Response with maxAge attribute was not cached!");
 }
 
 - (void)testSameEtagField {
@@ -168,7 +169,7 @@
     NSString *controlDate;
     [self sendTwoConsequentRequestsOnWebServiceClient:webClient selector:@selector(testCacheNoAttrWithSuccess:failure:) firstResult:&firstDate secondResult:&controlDate];
     
-    STAssertTrue([controlDate isEqualToString:firstDate], @"Response with maxAge attribute was not cached!");
+    XCTAssertTrue([controlDate isEqualToString:firstDate], @"Response with maxAge attribute was not cached!");
 }
 
 - (void)testDropCacheMethod {
@@ -180,7 +181,7 @@
     NSString *controlDate;
     [self sendTwoConsequentRequestsOnWebServiceClient:webClient selector:@selector(testCacheNoAttrWithSuccess:failure:) firstResult:&firstDate secondResult:&controlDate];
     
-    STAssertTrue([controlDate isEqualToString:firstDate], @"Response with max-age header was not cached!");
+    XCTAssertTrue([controlDate isEqualToString:firstDate], @"Response with max-age header was not cached!");
 }
 
 
@@ -195,7 +196,7 @@
     NSString * const parsedCacheIdentifier = [[RFServiceProvider webServiceCacheManager] parseCacheIdentifier:cacheIdentifier withParameters:parseDictionary];
 
     // THEN
-    STAssertTrue([parsedCacheIdentifier isEqualToString:comparationBaseCacheIdentifier], @"The cache identifiers are not equal");
+    XCTAssertTrue([parsedCacheIdentifier isEqualToString:comparationBaseCacheIdentifier], @"The cache identifiers are not equal");
 }
 
 
@@ -212,7 +213,7 @@
     // THEN
     NSArray *response = [[RFServiceProvider webServiceCacheManager] cacheWithIdentifier:cacheIdentifier];
 
-    STAssertTrue([response count] == 1, @"The cache hasn't contained the value with the identifier which has been set.");
+    XCTAssertTrue([response count] == 1, @"The cache hasn't contained the value with the identifier which has been set.");
 }
 
 - (void)testCacheIdentifierSetPrefixed {
@@ -230,8 +231,8 @@
     NSArray *matchedResponses = [[RFServiceProvider webServiceCacheManager] cacheWithIdentifierPrefix:cacheIdentifierToMatch];
     NSArray *nonMatchingResponses = [[RFServiceProvider webServiceCacheManager] cacheWithIdentifierPrefix:cacheIdentifierToFail];
 
-    STAssertTrue([matchedResponses count] == 2, @"The cache did not retrieve all the elements which ahve been set.");
-    STAssertTrue([nonMatchingResponses count] == 0, @"The cache matched not only for the prefix but to substring also.");
+    XCTAssertTrue([matchedResponses count] == 2, @"The cache did not retrieve all the elements which ahve been set.");
+    XCTAssertTrue([nonMatchingResponses count] == 0, @"The cache matched not only for the prefix but to substring also.");
 }
 
 
@@ -249,8 +250,8 @@
     // pre check
     NSArray *removedResponses = [[RFServiceProvider webServiceCacheManager] cacheWithIdentifierPrefix:cacheIdentifierForPrefixed];
     NSArray *remainingResponse = [[RFServiceProvider webServiceCacheManager] cacheWithIdentifier:cacheIdentifier];
-    STAssertTrue([removedResponses count] == 2, @"The removable cache elemnts for the test have not been created.");
-    STAssertNotNil(remainingResponse, @"The cache element which needs to be kept after flush not been created.");
+    XCTAssertTrue([removedResponses count] == 2, @"The removable cache elemnts for the test have not been created.");
+    XCTAssertNotNil(remainingResponse, @"The cache element which needs to be kept after flush not been created.");
 
     // WHEN
     [[RFServiceProvider webServiceCacheManager] flushElementsWithIdentifierPrefix:cacheIdentifierForPrefixed];
@@ -260,8 +261,8 @@
     removedResponses = [[RFServiceProvider webServiceCacheManager] cacheWithIdentifierPrefix:cacheIdentifierForPrefixed];
     remainingResponse = [[RFServiceProvider webServiceCacheManager] cacheWithIdentifier:cacheIdentifier];
 
-    STAssertTrue([removedResponses count] == 0, @"The targeted cache elements were not flushed.");
-    STAssertTrue([remainingResponse count] == 1, @"The cached element which should have been kept have been also removed.");
+    XCTAssertTrue([removedResponses count] == 0, @"The targeted cache elements were not flushed.");
+    XCTAssertTrue([remainingResponse count] == 1, @"The cached element which should have been kept have been also removed.");
 }
 
 #pragma mark - Utility methods
@@ -275,7 +276,7 @@
         isFinished = YES;
     }];
     while (!isFinished) {
-        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
     }
 }
 
@@ -291,7 +292,7 @@
     }];
 
     while (!isFinished) {
-        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
     }
 }
 
@@ -309,10 +310,10 @@
     }];
     
     while (!isFinished) {
-        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:0.2]];
     }
     
-    STAssertNotNil(fResult, @"Web service request with cache failed!");
+    XCTAssertNotNil(fResult, @"Web service request with cache failed!");
     
     __block NSString *sResult;
     isFinished = NO;
@@ -325,10 +326,10 @@
 #pragma clang diagnostic pop
     
     while (!isFinished) {
-        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:0.2]];
     }
     
-    STAssertNotNil(sResult, @"Web service request with cache failed at second call!");
+    XCTAssertNotNil(sResult, @"Web service request with cache failed at second call!");
     
     *firstResult = fResult;
     *secondResult = sResult;

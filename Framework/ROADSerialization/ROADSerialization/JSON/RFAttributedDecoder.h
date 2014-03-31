@@ -1,5 +1,5 @@
 //
-//  RFAnnotatedDecoder.h
+//  RFAttributedDecoder.h
 //  ROADSerialization
 //
 //  Copyright (c) 2014 Epam Systems. All rights reserved.
@@ -46,7 +46,7 @@
 
 /**
  * Decodes a json string using the specified root class name and serialization root. Referenced object types are determined by the json string if it contained this piece of information or from the reflection framework.
- * @param jsonString The json string to decode.
+ * @param jsonData The json data to decode.
  * @param serializationRoot Key path string to top most json object what will be serialized
  * @param rootClassName The root class name to the object whics will be used for decoding.
  */
@@ -67,7 +67,7 @@
 
 /**
  * Links a NSDictinary or NSArray to specified class using attributes. If root class name set to nil method will return object without transformation.
- * @param jsonData The predeserialized data object.
+ * @param jsonObject The predeserialized data object.
  * @param rootClassName The root class name to the object which will be used for mapping.
  */
 + (id)decodePredeserializedObject:(id)jsonObject withRootClassName:(NSString * const)rootClassName;

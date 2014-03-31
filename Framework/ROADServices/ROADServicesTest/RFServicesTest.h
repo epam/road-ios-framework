@@ -1,6 +1,6 @@
 //
-//  SenTestCase+Async.h
-//  Utilities
+//  RFServicesTest.h
+//  ROADServicesTest
 //
 //  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
@@ -30,10 +30,8 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface SenTestCase (Async)
-
-+ (BOOL)waitFor:(BOOL(^)(void))block withTimeout:(NSTimeInterval)timeout;
+@interface RFServicesTest : XCTestCase
 
 @end

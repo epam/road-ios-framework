@@ -1,8 +1,8 @@
 //
-//  RFAttributedXMLCoder.h
+//  RFAttributedXMLCoder.m
 //  ROADSerialization
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -40,6 +40,10 @@
 
 #include <libxml/parser.h>
 
+
+char *RFAttributedXMLCoderTagForClass(Class aClass);
+
+
 char *RFAttributedXMLCoderTagForClass(Class aClass) {
     char *result = NULL;
     
@@ -73,7 +77,7 @@ char *RFAttributedXMLCoderTagForClass(Class aClass) {
     xmlDocSetRootElement(_xmlDoc, xmlNode);
     xmlDocDumpFormatMemory(_xmlDoc, &xmlBuff, &xmlBufferSize, 1);
 
-    NSString *result = [NSString stringWithUTF8String:(char*)xmlBuff];
+    NSString *result = @((char*)xmlBuff);
     
     xmlFree(xmlBuff);
     xmlFreeDoc(_xmlDoc);
@@ -89,7 +93,7 @@ char *RFAttributedXMLCoderTagForClass(Class aClass) {
 
     // Check if we want CDATA
     if ([class isSubclassOfClass:[NSData class]]) {
-        xmlNodePtr cdataPtr = xmlNewCDataBlock(_xmlDoc, [serializedObject bytes], [serializedObject length]);
+        xmlNodePtr cdataPtr = xmlNewCDataBlock(_xmlDoc, [serializedObject bytes], (int)[serializedObject length]);
         xmlAddChild( result, cdataPtr );
     }
     // Try to serialize as a container or object with defined properties. Assume it's simple value otherwise.
