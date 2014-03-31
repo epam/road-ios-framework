@@ -44,6 +44,7 @@
 #import "RFDownloader.h"
 #import "RFWebClientWithSharedHeader.h"
 #import "RFWebServiceSerializer.h"
+#import "NSError+RFWebService.h"
 
 
 @interface RFWebServiceTest : XCTestCase
@@ -324,6 +325,49 @@
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
     [downloader cancel];
     XCTAssertEqualObjects([downloader.request.URL absoluteString], @"%68%74%74%70%3A%2F%2FPERSISTING%2E%66%6F%72%2E%65%73%63%61%70%69%6E%67", @"URL string escaping via charset is done incorrectly!");
+}
+
+- (void)testCancelWithReason {
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.simple.call"];
+    __block BOOL isFinished = NO;
+    __block NSError *cancelWithReasonError;
+    id<RFWebServiceCancellable> downloadOperation = [webClient testSimpleWebServiceCallWithSuccess:^(id result) {
+        isFinished = YES;
+    } failure:^(NSError *error) {
+        cancelWithReasonError = error;
+        isFinished = YES;
+    }];
+    
+    NSObject *reason = [[NSObject alloc] init];
+    [downloadOperation cancelWithReason:reason];
+
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:2]];
+    }
+    
+    XCTAssertEqual([cancelWithReasonError code], kRFWebServiceErrorCodeCancel, @"Web service cancellation finished with unexpected code!");
+    XCTAssertEqual([cancelWithReasonError userInfo][kRFWebServiceCancellationReason], reason, @"Web service cancellation finished with unexpected reason!");
+}
+
+- (void)testCancelWithoutReason {
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.simple.call"];
+    __block BOOL isFinished = NO;
+    __block NSError *cancelError;
+    id<RFWebServiceCancellable> downloadOperation = [webClient testSimpleWebServiceCallWithSuccess:^(id result) {
+        isFinished = YES;
+    } failure:^(NSError *error) {
+        cancelError = error;
+        isFinished = YES;
+    }];
+    
+    [downloadOperation cancel];
+    
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:2]];
+    }
+    
+    XCTAssertEqual([cancelError code], kRFWebServiceErrorCodeCancel, @"Web service cancellation finished with unexpected code!");
+    XCTAssertNil([cancelError userInfo][kRFWebServiceCancellationReason], @"Web service cancellation finished with unexpected reason!");
 }
 
 @end
