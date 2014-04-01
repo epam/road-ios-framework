@@ -1,5 +1,5 @@
 //
-//  RFMutableObjectTest.h
+//  RFPoolTest.m
 //  ROADCore
 //
 //  Copyright (c) 2014 Epam Systems. All rights reserved.
@@ -33,6 +33,47 @@
 
 #import <XCTest/XCTest.h>
 
-@interface RFMutableObjectTest : XCTestCase
+#import "RFObjectPool.h"
+#import "RFPoolObject.h"
+
+
+@interface RFPoolTests : XCTestCase
+
+@end
+
+
+@implementation RFPoolTests {
+    RFObjectPool *pool;
+}
+
+- (void)setUp {
+    pool = [[RFObjectPool alloc] init];
+    [pool registerClassNamed:@"RFPoolObject" forIdentifier:@"id1"];
+    [pool registerClassNamed:@"RFPoolObject" forIdentifier:@"id2"];
+}
+
+- (void)tearDown {
+    pool = nil;
+}
+
+- (void)testObjectPoolAllocation {
+    id const object = [pool objectForIdentifier:@"id1"];
+    id const nonObject = [pool objectForIdentifier:@"id3"];
+    
+    XCTAssertTrue(object != nil, @"Assertion: registered classes get instantiated property");
+    XCTAssertTrue(nonObject == nil, @"Assertion: unregistered identifiers are not recognized");
+}
+
+- (void)testReuse {
+    id const object = [pool objectForIdentifier:@"id2"];
+    [object repool];
+    id const reusedObject = [pool objectForIdentifier:@"id2"];
+    
+    XCTAssertTrue([object isEqual:reusedObject], @"Assertion: repooled objects are available for reusing.");
+    
+    id const newObject = [pool objectForIdentifier:@"id2"];
+    
+    XCTAssertTrue(![newObject isEqual:reusedObject], @"Assertion: requested objects are removed from the pool.");
+}
 
 @end

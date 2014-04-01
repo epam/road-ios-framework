@@ -31,23 +31,59 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "RFMutableObjectTest.h"
-#import "RFMutableObject.h"
+#import <XCTest/XCTest.h>
+
+#import "RFDynamicObject.h"
 
 
-@interface MutableObjectForTestDynamicProperties : RFMutableObject
-@property (nonatomic, strong) NSString* dynamicProp;
+@interface RFDynamicObject ()
+
++ (NSString *)RF_stringByTransformingToSetterAccessor:(NSString *)string;
++ (NSString *)RF_stringByTransformingToGetterAccessor:(NSString *)string;
+
 @end
+
+
+@interface MutableObjectForTestDynamicProperties : RFDynamicObject
+
+@property (nonatomic, strong) NSString* dynamicProp;
+
+@end
+
 
 @implementation MutableObjectForTestDynamicProperties
+
 @dynamic dynamicProp;
+
 @end
 
 
-@implementation RFMutableObjectTest
+@interface RFDynamicObjectTests : XCTestCase
+
+@end
+
+
+@implementation RFDynamicObjectTests {
+    NSString *setter;
+    NSString *getter;
+}
+
+- (void)setUp {
+    [super setUp];
+    
+    setter = @"setValue:";
+    getter = @"value";
+}
+
+- (void)tearDown {
+    setter = nil;
+    getter = nil;
+    
+    [super tearDown];
+}
 
 - (void)testMutableObjectProperty {
-    RFMutableObject *object = [[RFMutableObject alloc] init];
+    RFDynamicObject *object = [[RFDynamicObject alloc] init];
     [object setValue:@"some string" forKey:@"myNewKey"];
     
     NSString * const result = [object valueForKey:@"myNewKey"];
@@ -63,9 +99,19 @@
 }
 
 - (void)testMutableObjectUnusedProperty {
-    RFMutableObject *object = [[RFMutableObject alloc] init];
+    RFDynamicObject *object = [[RFDynamicObject alloc] init];
     id const someResult = [object valueForKey:@"myKey"];
     XCTAssertTrue(someResult == nil, @"Assertion: unused properties should return nil.");
+}
+
+- (void)testSetterName {
+    NSString * const aSetterName = [RFDynamicObject RF_stringByTransformingToSetterAccessor:getter];
+    XCTAssertTrue([aSetterName isEqualToString:setter], @"Assertion: setter value is constructed properly. Expected: %@, result: %@", setter, aSetterName);
+}
+
+- (void)testGetterName {
+    NSString * const aGetterName = [RFDynamicObject RF_stringByTransformingToGetterAccessor:setter];
+    XCTAssertTrue([aGetterName isEqualToString:getter], @"Assertion: getter value is constructed properly. Expected: %@, result: %@", getter, aGetterName);
 }
 
 @end

@@ -187,7 +187,7 @@
 
 + (NSString *)httpDatePlusFiveMinute {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"EEE, dd MMM yyyy HH:mm:ss zzz";;
+    dateFormatter.dateFormat = @"EEE, dd MMM yyyy HH:mm:ss zzz";
     NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
     [dateFormatter setTimeZone:gmt];
     NSString *timeStamp = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:300]];
