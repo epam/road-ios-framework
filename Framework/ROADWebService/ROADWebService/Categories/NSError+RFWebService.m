@@ -34,19 +34,37 @@
 #import "NSError+RFWebService.h"
 
 
-NSString * const kRFWebServiceErrorDomain = @"RFWebServiceError";
-NSString *const kRFWebServiceRecievedDataKey = @"RecievedData";
+NSString * const kRFWebServiceErrorDomain               = @"RFWebServiceError";
+NSString * const kRFWebServiceRecievedDataKey           = @"RFRecievedData";
+NSString * const kRFWebServiceCancellationReason        = @"RFCancellationReason";
+
+const NSInteger kRFWebServiceErrorCodeSerialization     = 1000;
+const NSInteger kRFWebServiceErrorCodeCancel            = 1001;
+
+// Private
+static NSString * const kRFWSDescManualCancel = @"The request has been cancelled.";
+static NSString * const kRFWSDescDeserializationError = @"Error during the deserialization.";
+
 
 @implementation NSError (RFWebService)
 
-+(NSError *)RFWS_deserializationErrorWithData:(NSData*)data
-{
-    return [NSError errorWithDomain:kRFWebServiceErrorDomain code:1000 userInfo:@{ NSLocalizedDescriptionKey : @"Error during the deserialization",kRFWebServiceRecievedDataKey : data }];
++ (NSError *)RFWS_deserializationErrorWithData:(NSData *)data {
+    return [NSError errorWithDomain:kRFWebServiceErrorDomain code:kRFWebServiceErrorCodeSerialization userInfo:@{NSLocalizedDescriptionKey : kRFWSDescDeserializationError, kRFWebServiceRecievedDataKey : data}];
 }
 
-+(NSError *)RFWS_cancelError
-{
-    return [NSError errorWithDomain:kRFWebServiceErrorDomain code:1001 userInfo:@{ NSLocalizedDescriptionKey : @"The request has been cancelled." }];
++ (NSError *)RFWS_cancelError {
+    return [NSError errorWithDomain:kRFWebServiceErrorDomain code:kRFWebServiceErrorCodeCancel userInfo:@{NSLocalizedDescriptionKey : kRFWSDescManualCancel}];
+}
+
++ (NSError *)RFWS_cancelErrorWithReason:(id)reason {
+    NSError *error;
+    if (reason) {
+        error = [NSError errorWithDomain:kRFWebServiceErrorDomain code:kRFWebServiceErrorCodeCancel userInfo:@{NSLocalizedDescriptionKey : kRFWSDescManualCancel, kRFWebServiceCancellationReason: reason}];
+    } else {
+        error = [self RFWS_cancelError];
+    }
+    
+    return error;
 }
 
 @end

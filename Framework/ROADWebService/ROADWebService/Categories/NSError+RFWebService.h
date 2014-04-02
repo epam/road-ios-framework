@@ -31,18 +31,32 @@
 // for additional information regarding copyright ownership and licensing
 
 
-NSString * const kRFWebServiceErrorDomain;
+extern NSString * const kRFWebServiceErrorDomain;
+extern NSString * const kRFWebServiceRecievedDataKey;
+extern NSString * const kRFWebServiceCancellationReason;
+
+extern const NSInteger kRFWebServiceErrorCodeSerialization;
+extern const NSInteger kRFWebServiceErrorCodeCancel;
 
 @interface NSError (RFWebService)
 /**
  * Create deserialization error, and insert the original data into the error userinfo.
  * @param data The original data.
+ * @return The error with deserialization code and received data.
  */
-+ (NSError *)RFWS_deserializationErrorWithData:(NSData*)data;
++ (NSError *)RFWS_deserializationErrorWithData:(NSData *)data;
 
 /**
- * Create cancell error for cancelled webservice calls.
+ * Create cancel error for cancelled web service calls.
+ * @return The error with cancellation code.
  */
 + (NSError *)RFWS_cancelError;
+
+/**
+ * Create cancel error for cancelled web service calls with reason.
+ * @param reason An any reason why web service call will be cancelled. Will be passed to user in userInfo dictionary with kRFWebServiceCancellationReason key.
+ * @return The error with cancellation reason.
+ */
++ (NSError *)RFWS_cancelErrorWithReason:(id)reason;
 
 @end

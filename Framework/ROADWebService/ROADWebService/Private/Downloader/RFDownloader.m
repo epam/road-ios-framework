@@ -253,18 +253,6 @@
     return _expectedContentLenght;
 }
 
-- (void)cancel {
-    if (_connection) {
-        [_connection cancel];
-        RFWSLogInfo(@"URL connection(%p) is canceled. URL: %@", _connection, [_connection.currentRequest.URL absoluteString]);
-    }
-    self.data = nil;
-    self.downloadError = [NSError RFWS_cancelError];
-    [self stop];
-    self.requestCancelled = YES;
-
-}
-
 - (NSMutableURLRequest *)requestForUrl:(NSURL * const)anUrl withMethod:(NSString * const)method withBody:(NSData *)httpBody values:(NSDictionary *)values {
     NSData *body = httpBody;
     
@@ -349,6 +337,24 @@ NSString * const RFAttributeTemplateEscape = @"%%";
     }
     
     return cachedResponse != nil;
+}
+
+
+#pragma mark - RFWebServiceCancellable
+
+- (void)cancel {
+    [self cancelWithReason:nil];
+}
+
+- (void)cancelWithReason:(id)reason {
+    if (_connection) {
+        [_connection cancel];
+        RFWSLogInfo(@"URL connection(%p) is cancelled. URL: %@", _connection, [_connection.currentRequest.URL absoluteString]);
+    }
+    self.data = nil;
+    self.downloadError = [NSError RFWS_cancelErrorWithReason:reason];
+    [self stop];
+    self.requestCancelled = YES;
 }
 
 @end

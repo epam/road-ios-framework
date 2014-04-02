@@ -2,7 +2,7 @@
 //  RFWebServiceCancellable.h
 //  ROADWebService
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -30,7 +30,6 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <Foundation/Foundation.h>
 /**
  * The cancellable protocol. It has to be implemented if one of the call shoulb be cancellable.
  */
@@ -40,5 +39,11 @@
  * Implementers should cancel the tasks.
  */
 - (void)cancel;
+
+/**
+ * Implementers should cancel the tasks and add key to user info dictionary with specified value.
+ * @param reason The reason because web service call will be cancelled.
+ */
+- (void)cancelWithReason:(id)reason;
 
 @end
