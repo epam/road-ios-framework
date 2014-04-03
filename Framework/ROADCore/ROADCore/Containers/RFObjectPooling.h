@@ -1,8 +1,8 @@
 //
-//  RFPoolTest.h
+//  RFObjectPooling.h
 //  ROADCore
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without 
 // modification, are permitted provided that the following conditions are met:
@@ -31,8 +31,33 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import <SenTestingKit/SenTestingKit.h>
+@class RFObjectPool;
 
-@interface RFPoolTest : SenTestCase
+/**
+ * Protocol to implement for pooled object.
+ */
+@protocol RFObjectPooling <NSObject>
+
+/**
+ * The resuse identifier of the object. Managed by the RFObjectPool class.
+ */
+@property (copy, nonatomic) NSString *poolReuseIdentifier;
+
+/**
+ * The object pool the implementing object is bound to. Convenience weak reference used in conjunction with the repool method, to invoke the pool's -repoolObject: method.
+ * If this method can be invoked with a different solution, then using this property is optional. Setting this property is the responsibility of the object pool itself.
+ */
+@property (weak, nonatomic) RFObjectPool *pool;
+
+/**
+ * Invoke this method when you are done with the object and allow the pool to reclaim this instance.
+ */
+- (oneway void)repool;
+
+@optional
+/**
+ * Invoked by the object pool when the object is about to be reused by the pool. Optional method.
+ */
+- (void)prepareForReuse;
 
 @end

@@ -1,8 +1,8 @@
 //
-//  RFTemplateParsingTest.m
+//  RFPoolTest.m
 //  ROADCore
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without 
 // modification, are permitted provided that the following conditions are met:
@@ -31,44 +31,49 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "RFTemplateParsingTest.h"
-#import "NSMutableString+RFStringFormatter.h"
+#import <XCTest/XCTest.h>
 
-@implementation RFTemplateParsingTest {
-    NSMutableString *template;
-    NSString *escape;
-    NSDictionary *values;
+#import "RFObjectPool.h"
+#import "RFPoolObject.h"
+
+
+@interface RFPoolTests : XCTestCase
+
+@end
+
+
+@implementation RFPoolTests {
+    RFObjectPool *pool;
 }
 
 - (void)setUp {
-    template = [NSMutableString stringWithString:@"someExample:%%key1%% withOtherValue:%%key2%% andThirdValue:%%key3%%"];
-    escape = @"%%";
-    values = @{ @"key1" : @"value1", @"key2" : @"value2", @"key3" : @"value3" };
-    
-    [super setUp];
+    pool = [[RFObjectPool alloc] init];
+    [pool registerClassNamed:@"RFPoolObject" forIdentifier:@"id1"];
+    [pool registerClassNamed:@"RFPoolObject" forIdentifier:@"id2"];
 }
 
 - (void)tearDown {
-    template = nil;
-    escape = nil;
-    values = nil;
-    
-    [super tearDown];
+    pool = nil;
 }
 
-- (void)testTemplateParsing {
-    [template RF_formatStringUsingValues:values withEscape:escape];
-    NSRange rangeOfKey = [template rangeOfString:@"key"];
-    NSRange rangeOfEscape = [template rangeOfString:escape];
-    NSRange rangeOfValue1 = [template rangeOfString:@"value1"];
-    NSRange rangeOfValue2 = [template rangeOfString:@"value2"];
-    NSRange rangeOfValue3 = [template rangeOfString:@"value3"];
+- (void)testObjectPoolAllocation {
+    id const object = [pool objectForIdentifier:@"id1"];
+    id const nonObject = [pool objectForIdentifier:@"id3"];
     
-    STAssertTrue(rangeOfKey.location == NSNotFound, @"Assertion: no key is in the template.");
-    STAssertTrue(rangeOfEscape.location == NSNotFound, @"Assertion: escape is no longer in the template.");
-    STAssertTrue(rangeOfValue1.location != NSNotFound, @"Assertion: value1 is in the template.");
-    STAssertTrue(rangeOfValue2.location != NSNotFound, @"Assertion: value2 is in the template.");
-    STAssertTrue(rangeOfValue3.location != NSNotFound, @"Assertion: value3 is in the template.");
+    XCTAssertTrue(object != nil, @"Assertion: registered classes get instantiated property");
+    XCTAssertTrue(nonObject == nil, @"Assertion: unregistered identifiers are not recognized");
+}
+
+- (void)testReuse {
+    id const object = [pool objectForIdentifier:@"id2"];
+    [object repool];
+    id const reusedObject = [pool objectForIdentifier:@"id2"];
+    
+    XCTAssertTrue([object isEqual:reusedObject], @"Assertion: repooled objects are available for reusing.");
+    
+    id const newObject = [pool objectForIdentifier:@"id2"];
+    
+    XCTAssertTrue(![newObject isEqual:reusedObject], @"Assertion: requested objects are removed from the pool.");
 }
 
 @end

@@ -21,39 +21,31 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		54FCFE0077B148F8BD78C6E6 /* ROADGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A4215F16D743C6836F7D28 /* ROADGeneratedAttribute.m */; };
+		1176413D18E4700500B1688B /* libUtilities.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1176413C18E4700500B1688B /* libUtilities.a */; };
+		46AA65574E8B424882F7485B /* ROADGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BC2CF400F040A48EDF4B23 /* ROADGeneratedAttribute.m */; };
 		78180F0816C3D0A300B4AA31 /* ROADCore.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E72216C3CD4A0049E36B /* ROADCore.h */; };
 		78180F0916C3D0A800B4AA31 /* NSArray+RFEmptyArrayChecks.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6F816C3CD320049E36B /* NSArray+RFEmptyArrayChecks.h */; };
 		78180F0A16C3D0A800B4AA31 /* NSDictionary+RFKeyedSubscript.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E70016C3CD320049E36B /* NSDictionary+RFKeyedSubscript.h */; };
 		78180F0B16C3D0A800B4AA31 /* NSMutableDictionary+RFKeyedSubscript.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E70216C3CD320049E36B /* NSMutableDictionary+RFKeyedSubscript.h */; };
 		78180F0F16C3D0BD00B4AA31 /* NSMutableString+RFStringFormatter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E70416C3CD320049E36B /* NSMutableString+RFStringFormatter.h */; };
-		78180F1116C3D0BD00B4AA31 /* RFMutableObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D216C3CCE60049E36B /* RFMutableObject.h */; };
+		78180F1116C3D0BD00B4AA31 /* RFDynamicObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D216C3CCE60049E36B /* RFDynamicObject.h */; };
 		78180F1216C3D0BD00B4AA31 /* RFObjectPool.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D416C3CCE60049E36B /* RFObjectPool.h */; };
-		78180F1316C3D0BD00B4AA31 /* RFPooledObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D616C3CCE60049E36B /* RFPooledObject.h */; };
+		78180F1316C3D0BD00B4AA31 /* RFObjectPooling.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D616C3CCE60049E36B /* RFObjectPooling.h */; };
 		78180F1416C3D0BD00B4AA31 /* RFPoolObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D716C3CCE60049E36B /* RFPoolObject.h */; };
-		78180F1516C3D0BD00B4AA31 /* RFObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D916C3CCE60049E36B /* RFObject.h */; };
-		782B6DE116C3E74D0057DF2C /* NSString+RFAccessorUtilities.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6EC16C3CD070049E36B /* NSString+RFAccessorUtilities.h */; };
-		78B8E6C116C3CCC00049E36B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B8E6C016C3CCC00049E36B /* SenTestingKit.framework */; };
 		78B8E6C416C3CCC00049E36B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B8E69116C3CC3E0049E36B /* Foundation.framework */; };
-		78B8E6DC16C3CCE60049E36B /* RFMutableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D316C3CCE60049E36B /* RFMutableObject.m */; };
+		78B8E6DC16C3CCE60049E36B /* RFDynamicObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D316C3CCE60049E36B /* RFDynamicObject.m */; };
 		78B8E6E016C3CCE60049E36B /* RFObjectPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D516C3CCE60049E36B /* RFObjectPool.m */; };
 		78B8E6E516C3CCE60049E36B /* RFPoolObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D816C3CCE60049E36B /* RFPoolObject.m */; };
-		78B8E6E916C3CCE60049E36B /* RFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6DA16C3CCE60049E36B /* RFObject.m */; };
-		78B8E6F016C3CD070049E36B /* NSString+RFAccessorUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6ED16C3CD070049E36B /* NSString+RFAccessorUtilities.m */; };
 		78B8E70716C3CD320049E36B /* NSArray+RFEmptyArrayChecks.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6F916C3CD320049E36B /* NSArray+RFEmptyArrayChecks.m */; };
 		78B8E71716C3CD320049E36B /* NSDictionary+RFKeyedSubscript.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70116C3CD320049E36B /* NSDictionary+RFKeyedSubscript.m */; };
 		78B8E71B16C3CD320049E36B /* NSMutableDictionary+RFKeyedSubscript.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70316C3CD320049E36B /* NSMutableDictionary+RFKeyedSubscript.m */; };
 		78B8E71F16C3CD320049E36B /* NSMutableString+RFStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70516C3CD320049E36B /* NSMutableString+RFStringFormatter.m */; };
-		83AE634617F467BF0053780E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AE634517F467BF0053780E /* UIKit.framework */; };
-		83AE634717F467E50053780E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AE634517F467BF0053780E /* UIKit.framework */; };
 		83E0CDE918D0833900B25689 /* RFLog.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83E0CDDF18D0522100B25689 /* RFLog.h */; };
+		83F8B65518E9627E0097EBC5 /* RFArrayCategoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F8B65018E9627E0097EBC5 /* RFArrayCategoryTests.m */; };
+		83F8B65618E9627E0097EBC5 /* RFDynamicObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F8B65118E9627E0097EBC5 /* RFDynamicObjectTests.m */; };
+		83F8B65718E9627E0097EBC5 /* RFPoolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F8B65218E9627E0097EBC5 /* RFPoolTests.m */; };
+		83F8B65918E9627E0097EBC5 /* RFTemplateParsingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F8B65418E9627E0097EBC5 /* RFTemplateParsingTests.m */; };
 		8D46587117E2C77600D5620F /* libROADCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B8E68E16C3CC3E0049E36B /* libROADCore.a */; };
-		8D9422ED17E2C59C005F0AE3 /* RFConditionalComponentResultTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9422DF17E2C59C005F0AE3 /* RFConditionalComponentResultTest.m */; };
-		8D9422EE17E2C59C005F0AE3 /* RFPropertyNameMethodTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9422E117E2C59C005F0AE3 /* RFPropertyNameMethodTest.m */; };
-		8D9422EF17E2C59C005F0AE3 /* RFTemplateParsingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9422E317E2C59C005F0AE3 /* RFTemplateParsingTest.m */; };
-		8D9422F017E2C59C005F0AE3 /* RFMutableObjectTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9422E617E2C59C005F0AE3 /* RFMutableObjectTest.m */; };
-		8D9422F117E2C59C005F0AE3 /* RFPoolTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9422E817E2C59C005F0AE3 /* RFPoolTest.m */; };
-		8D9422F217E2C59C005F0AE3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D9422E917E2C59C005F0AE3 /* InfoPlist.strings */; };
 		E29CDC87D457453683D8775B /* libPods-ROADCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8706210A288A45BC9C292B0C /* libPods-ROADCore.a */; };
 /* End PBXBuildFile section */
 
@@ -80,38 +72,30 @@
 				78180F0A16C3D0A800B4AA31 /* NSDictionary+RFKeyedSubscript.h in CopyFiles */,
 				78180F0B16C3D0A800B4AA31 /* NSMutableDictionary+RFKeyedSubscript.h in CopyFiles */,
 				78180F0F16C3D0BD00B4AA31 /* NSMutableString+RFStringFormatter.h in CopyFiles */,
-				78180F1116C3D0BD00B4AA31 /* RFMutableObject.h in CopyFiles */,
-				782B6DE116C3E74D0057DF2C /* NSString+RFAccessorUtilities.h in CopyFiles */,
+				78180F1116C3D0BD00B4AA31 /* RFDynamicObject.h in CopyFiles */,
 				78180F1216C3D0BD00B4AA31 /* RFObjectPool.h in CopyFiles */,
-				78180F1316C3D0BD00B4AA31 /* RFPooledObject.h in CopyFiles */,
+				78180F1316C3D0BD00B4AA31 /* RFObjectPooling.h in CopyFiles */,
 				78180F1416C3D0BD00B4AA31 /* RFPoolObject.h in CopyFiles */,
-				78180F1516C3D0BD00B4AA31 /* RFObject.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3CB2D462D6294056BE0E7770 /* ROADGeneratedAttribute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ROADGeneratedAttribute.m; path = ROADCore/ROADGeneratedAttributes/ROADGeneratedAttribute.m; sourceTree = "<group>"; };
-		40A4215F16D743C6836F7D28 /* ROADGeneratedAttribute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ROADGeneratedAttribute.m; path = ROADCore/ROADGeneratedAttributes/ROADGeneratedAttribute.m; sourceTree = "<group>"; };
-		5AD1FC421766038E00E67BC4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = ../../../../System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		1176413618E4635400B1688B /* libUtilities.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUtilities.a; path = "../Utilities/build/Debug-iphoneos/libUtilities.a"; sourceTree = "<group>"; };
+		1176413C18E4700500B1688B /* libUtilities.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUtilities.a; path = "../Utilities/build/Debug-iphoneos/libUtilities.a"; sourceTree = "<group>"; };
 		634461C3604B4DB58DF380FC /* Pods-ROADCore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ROADCore.xcconfig"; path = "../Pods/Pods-ROADCore.xcconfig"; sourceTree = "<group>"; };
 		78B8E68E16C3CC3E0049E36B /* libROADCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libROADCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		78B8E69116C3CC3E0049E36B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		78B8E69516C3CC3E0049E36B /* ROADCore-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ROADCore-Prefix.pch"; sourceTree = "<group>"; };
-		78B8E6BF16C3CCC00049E36B /* ROADCoreTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ROADCoreTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		78B8E6C016C3CCC00049E36B /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		78B8E6D216C3CCE60049E36B /* RFMutableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RFMutableObject.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		78B8E6D316C3CCE60049E36B /* RFMutableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RFMutableObject.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		78B8E6BF16C3CCC00049E36B /* ROADCoreTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ROADCoreTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		78B8E6D216C3CCE60049E36B /* RFDynamicObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RFDynamicObject.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		78B8E6D316C3CCE60049E36B /* RFDynamicObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RFDynamicObject.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		78B8E6D416C3CCE60049E36B /* RFObjectPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RFObjectPool.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		78B8E6D516C3CCE60049E36B /* RFObjectPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RFObjectPool.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		78B8E6D616C3CCE60049E36B /* RFPooledObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFPooledObject.h; sourceTree = "<group>"; };
+		78B8E6D616C3CCE60049E36B /* RFObjectPooling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFObjectPooling.h; sourceTree = "<group>"; };
 		78B8E6D716C3CCE60049E36B /* RFPoolObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFPoolObject.h; sourceTree = "<group>"; };
 		78B8E6D816C3CCE60049E36B /* RFPoolObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFPoolObject.m; sourceTree = "<group>"; };
-		78B8E6D916C3CCE60049E36B /* RFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RFObject.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		78B8E6DA16C3CCE60049E36B /* RFObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFObject.m; sourceTree = "<group>"; };
-		78B8E6EC16C3CD070049E36B /* NSString+RFAccessorUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSString+RFAccessorUtilities.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		78B8E6ED16C3CD070049E36B /* NSString+RFAccessorUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSString+RFAccessorUtilities.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		78B8E6F816C3CD320049E36B /* NSArray+RFEmptyArrayChecks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSArray+RFEmptyArrayChecks.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		78B8E6F916C3CD320049E36B /* NSArray+RFEmptyArrayChecks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSArray+RFEmptyArrayChecks.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		78B8E70016C3CD320049E36B /* NSDictionary+RFKeyedSubscript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSDictionary+RFKeyedSubscript.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -121,24 +105,13 @@
 		78B8E70416C3CD320049E36B /* NSMutableString+RFStringFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSMutableString+RFStringFormatter.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		78B8E70516C3CD320049E36B /* NSMutableString+RFStringFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSMutableString+RFStringFormatter.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		78B8E72216C3CD4A0049E36B /* ROADCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ROADCore.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		839A198118C5F90A001A727C /* libPods-ROADCore-libObjCAttr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-ROADCore-libObjCAttr.a"; path = "../Pods/build/Debug-iphoneos/libPods-ROADCore-libObjCAttr.a"; sourceTree = "<group>"; };
-		83AE634517F467BF0053780E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		83E0CDDF18D0522100B25689 /* RFLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFLog.h; sourceTree = "<group>"; };
+		83F8B65018E9627E0097EBC5 /* RFArrayCategoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFArrayCategoryTests.m; sourceTree = "<group>"; };
+		83F8B65118E9627E0097EBC5 /* RFDynamicObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFDynamicObjectTests.m; sourceTree = "<group>"; };
+		83F8B65218E9627E0097EBC5 /* RFPoolTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFPoolTests.m; sourceTree = "<group>"; };
+		83F8B65418E9627E0097EBC5 /* RFTemplateParsingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFTemplateParsingTests.m; sourceTree = "<group>"; };
 		8706210A288A45BC9C292B0C /* libPods-ROADCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ROADCore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8D9422DE17E2C59C005F0AE3 /* RFConditionalComponentResultTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFConditionalComponentResultTest.h; sourceTree = "<group>"; };
-		8D9422DF17E2C59C005F0AE3 /* RFConditionalComponentResultTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RFConditionalComponentResultTest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		8D9422E017E2C59C005F0AE3 /* RFPropertyNameMethodTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFPropertyNameMethodTest.h; sourceTree = "<group>"; };
-		8D9422E117E2C59C005F0AE3 /* RFPropertyNameMethodTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RFPropertyNameMethodTest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		8D9422E217E2C59C005F0AE3 /* RFTemplateParsingTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFTemplateParsingTest.h; sourceTree = "<group>"; };
-		8D9422E317E2C59C005F0AE3 /* RFTemplateParsingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RFTemplateParsingTest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		8D9422E517E2C59C005F0AE3 /* RFMutableObjectTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMutableObjectTest.h; sourceTree = "<group>"; };
-		8D9422E617E2C59C005F0AE3 /* RFMutableObjectTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RFMutableObjectTest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		8D9422E717E2C59C005F0AE3 /* RFPoolTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFPoolTest.h; sourceTree = "<group>"; };
-		8D9422E817E2C59C005F0AE3 /* RFPoolTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFPoolTest.m; sourceTree = "<group>"; };
-		8D9422EA17E2C59C005F0AE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		8D9422EB17E2C59C005F0AE3 /* ROADCoreTest-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ROADCoreTest-Info.plist"; sourceTree = "<group>"; };
 		8D9422EC17E2C59C005F0AE3 /* ROADCoreTest-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ROADCoreTest-Prefix.pch"; sourceTree = "<group>"; };
-		CDA9F5AC16E9F098000A50CC /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		E9BC2CF400F040A48EDF4B23 /* ROADGeneratedAttribute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ROADGeneratedAttribute.m; path = ROADCore/ROADGeneratedAttributes/ROADGeneratedAttribute.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,7 +120,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83AE634617F467BF0053780E /* UIKit.framework in Frameworks */,
 				E29CDC87D457453683D8775B /* libPods-ROADCore.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -157,8 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78B8E6C416C3CCC00049E36B /* Foundation.framework in Frameworks */,
-				78B8E6C116C3CCC00049E36B /* SenTestingKit.framework in Frameworks */,
-				83AE634717F467E50053780E /* UIKit.framework in Frameworks */,
+				1176413D18E4700500B1688B /* libUtilities.a in Frameworks */,
 				8D46587117E2C77600D5620F /* libROADCore.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,8 +145,6 @@
 				78B8E69016C3CC3E0049E36B /* Frameworks */,
 				78B8E68F16C3CC3E0049E36B /* Products */,
 				634461C3604B4DB58DF380FC /* Pods-ROADCore.xcconfig */,
-				40A4215F16D743C6836F7D28 /* ROADGeneratedAttribute.m */,
-				3CB2D462D6294056BE0E7770 /* ROADGeneratedAttribute.m */,
 				E9BC2CF400F040A48EDF4B23 /* ROADGeneratedAttribute.m */,
 			);
 			sourceTree = "<group>";
@@ -184,7 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				78B8E68E16C3CC3E0049E36B /* libROADCore.a */,
-				78B8E6BF16C3CCC00049E36B /* ROADCoreTest.octest */,
+				78B8E6BF16C3CCC00049E36B /* ROADCoreTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -192,12 +161,9 @@
 		78B8E69016C3CC3E0049E36B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				839A198118C5F90A001A727C /* libPods-ROADCore-libObjCAttr.a */,
-				83AE634517F467BF0053780E /* UIKit.framework */,
+				1176413C18E4700500B1688B /* libUtilities.a */,
+				1176413618E4635400B1688B /* libUtilities.a */,
 				78B8E69116C3CC3E0049E36B /* Foundation.framework */,
-				5AD1FC421766038E00E67BC4 /* Cocoa.framework */,
-				78B8E6C016C3CCC00049E36B /* SenTestingKit.framework */,
-				CDA9F5AC16E9F098000A50CC /* CoreFoundation.framework */,
 				8706210A288A45BC9C292B0C /* libPods-ROADCore.a */,
 			);
 			name = Frameworks;
@@ -228,7 +194,6 @@
 			children = (
 				78B8E72316C3CD7F0049E36B /* CollectionCategories */,
 				78B8E72616C3CDAA0049E36B /* TextualCategories */,
-				78B8E72416C3CD900049E36B /* InvocationCategories */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -236,15 +201,13 @@
 		78B8E6A016C3CC880049E36B /* Containers */ = {
 			isa = PBXGroup;
 			children = (
-				78B8E6D216C3CCE60049E36B /* RFMutableObject.h */,
-				78B8E6D316C3CCE60049E36B /* RFMutableObject.m */,
+				78B8E6D216C3CCE60049E36B /* RFDynamicObject.h */,
+				78B8E6D316C3CCE60049E36B /* RFDynamicObject.m */,
 				78B8E6D416C3CCE60049E36B /* RFObjectPool.h */,
 				78B8E6D516C3CCE60049E36B /* RFObjectPool.m */,
-				78B8E6D616C3CCE60049E36B /* RFPooledObject.h */,
+				78B8E6D616C3CCE60049E36B /* RFObjectPooling.h */,
 				78B8E6D716C3CCE60049E36B /* RFPoolObject.h */,
 				78B8E6D816C3CCE60049E36B /* RFPoolObject.m */,
-				78B8E6D916C3CCE60049E36B /* RFObject.h */,
-				78B8E6DA16C3CCE60049E36B /* RFObject.m */,
 			);
 			path = Containers;
 			sourceTree = "<group>";
@@ -262,15 +225,6 @@
 			name = CollectionCategories;
 			sourceTree = "<group>";
 		};
-		78B8E72416C3CD900049E36B /* InvocationCategories */ = {
-			isa = PBXGroup;
-			children = (
-				78B8E6EC16C3CD070049E36B /* NSString+RFAccessorUtilities.h */,
-				78B8E6ED16C3CD070049E36B /* NSString+RFAccessorUtilities.m */,
-			);
-			name = InvocationCategories;
-			sourceTree = "<group>";
-		};
 		78B8E72616C3CDAA0049E36B /* TextualCategories */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,40 +234,24 @@
 			name = TextualCategories;
 			sourceTree = "<group>";
 		};
+		83F8B65A18E962940097EBC5 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				8D9422EC17E2C59C005F0AE3 /* ROADCoreTest-Prefix.pch */,
+			);
+			name = "Supporting files";
+			sourceTree = "<group>";
+		};
 		8D9422DC17E2C59C005F0AE3 /* ROADCoreTest */ = {
 			isa = PBXGroup;
 			children = (
-				8D9422DD17E2C59C005F0AE3 /* Categories */,
-				8D9422E417E2C59C005F0AE3 /* Classes */,
-				8D9422E917E2C59C005F0AE3 /* InfoPlist.strings */,
-				8D9422EB17E2C59C005F0AE3 /* ROADCoreTest-Info.plist */,
-				8D9422EC17E2C59C005F0AE3 /* ROADCoreTest-Prefix.pch */,
+				83F8B65018E9627E0097EBC5 /* RFArrayCategoryTests.m */,
+				83F8B65118E9627E0097EBC5 /* RFDynamicObjectTests.m */,
+				83F8B65218E9627E0097EBC5 /* RFPoolTests.m */,
+				83F8B65418E9627E0097EBC5 /* RFTemplateParsingTests.m */,
+				83F8B65A18E962940097EBC5 /* Supporting files */,
 			);
 			path = ROADCoreTest;
-			sourceTree = "<group>";
-		};
-		8D9422DD17E2C59C005F0AE3 /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				8D9422DE17E2C59C005F0AE3 /* RFConditionalComponentResultTest.h */,
-				8D9422DF17E2C59C005F0AE3 /* RFConditionalComponentResultTest.m */,
-				8D9422E017E2C59C005F0AE3 /* RFPropertyNameMethodTest.h */,
-				8D9422E117E2C59C005F0AE3 /* RFPropertyNameMethodTest.m */,
-				8D9422E217E2C59C005F0AE3 /* RFTemplateParsingTest.h */,
-				8D9422E317E2C59C005F0AE3 /* RFTemplateParsingTest.m */,
-			);
-			path = Categories;
-			sourceTree = "<group>";
-		};
-		8D9422E417E2C59C005F0AE3 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				8D9422E517E2C59C005F0AE3 /* RFMutableObjectTest.h */,
-				8D9422E617E2C59C005F0AE3 /* RFMutableObjectTest.m */,
-				8D9422E717E2C59C005F0AE3 /* RFPoolTest.h */,
-				8D9422E817E2C59C005F0AE3 /* RFPoolTest.m */,
-			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,7 +261,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 78B8E69C16C3CC3E0049E36B /* Build configuration list for PBXNativeTarget "ROADCore" */;
 			buildPhases = (
-				482FCEABA1164372ACF79C54 /* libObjCAttr - generate attributes */,
+				733E26514E0544D7A153E7CF /* libObjCAttr - generate attributes */,
 				B03FB7F7E80344F5A21B8D39 /* Check Pods Manifest.lock */,
 				78B8E68C16C3CC3E0049E36B /* CopyFiles */,
 				78B8E68A16C3CC3E0049E36B /* Sources */,
@@ -354,8 +292,8 @@
 			);
 			name = ROADCoreTest;
 			productName = ROADCoreTest;
-			productReference = 78B8E6BF16C3CCC00049E36B /* ROADCoreTest.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 78B8E6BF16C3CCC00049E36B /* ROADCoreTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -392,14 +330,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D9422F217E2C59C005F0AE3 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		482FCEABA1164372ACF79C54 /* libObjCAttr - generate attributes */ = {
+		733E26514E0544D7A153E7CF /* libObjCAttr - generate attributes */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -411,7 +348,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
+			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
 		};
 		8353CC37189F82B800135D86 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -463,16 +400,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78B8E6DC16C3CCE60049E36B /* RFMutableObject.m in Sources */,
+				78B8E6DC16C3CCE60049E36B /* RFDynamicObject.m in Sources */,
 				78B8E6E016C3CCE60049E36B /* RFObjectPool.m in Sources */,
 				78B8E6E516C3CCE60049E36B /* RFPoolObject.m in Sources */,
-				78B8E6E916C3CCE60049E36B /* RFObject.m in Sources */,
 				78B8E70716C3CD320049E36B /* NSArray+RFEmptyArrayChecks.m in Sources */,
 				78B8E71716C3CD320049E36B /* NSDictionary+RFKeyedSubscript.m in Sources */,
-				78B8E6F016C3CD070049E36B /* NSString+RFAccessorUtilities.m in Sources */,
 				78B8E71B16C3CD320049E36B /* NSMutableDictionary+RFKeyedSubscript.m in Sources */,
 				78B8E71F16C3CD320049E36B /* NSMutableString+RFStringFormatter.m in Sources */,
-				54FCFE0077B148F8BD78C6E6 /* ROADGeneratedAttribute.m in Sources */,
+				46AA65574E8B424882F7485B /* ROADGeneratedAttribute.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,11 +415,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D9422ED17E2C59C005F0AE3 /* RFConditionalComponentResultTest.m in Sources */,
-				8D9422EE17E2C59C005F0AE3 /* RFPropertyNameMethodTest.m in Sources */,
-				8D9422EF17E2C59C005F0AE3 /* RFTemplateParsingTest.m in Sources */,
-				8D9422F017E2C59C005F0AE3 /* RFMutableObjectTest.m in Sources */,
-				8D9422F117E2C59C005F0AE3 /* RFPoolTest.m in Sources */,
+				83F8B65518E9627E0097EBC5 /* RFArrayCategoryTests.m in Sources */,
+				83F8B65918E9627E0097EBC5 /* RFTemplateParsingTests.m in Sources */,
+				83F8B65618E9627E0097EBC5 /* RFDynamicObjectTests.m in Sources */,
+				83F8B65718E9627E0097EBC5 /* RFPoolTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,17 +431,6 @@
 			targetProxy = 8D9422DA17E2C58E005F0AE3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		8D9422E917E2C59C005F0AE3 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8D9422EA17E2C59C005F0AE3 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		78B8E69A16C3CC3E0049E36B /* Debug */ = {
@@ -525,6 +448,7 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -554,6 +478,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -567,13 +492,42 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 634461C3604B4DB58DF380FC /* Pods-ROADCore.xcconfig */;
 			buildSettings = {
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = NO;
+				CLANG_WARN_OBJC_RECEIVER_WEAK = NO;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				DSTROOT = /tmp/ROADCore.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADCore/ROADCore-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
 				HEADER_SEARCH_PATHS = "";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = ROADCore;
@@ -585,11 +539,40 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 634461C3604B4DB58DF380FC /* Pods-ROADCore.xcconfig */;
 			buildSettings = {
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = NO;
+				CLANG_WARN_OBJC_RECEIVER_WEAK = NO;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				DSTROOT = /tmp/ROADCore.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADCore/ROADCore-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
 				HEADER_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "$(inherited)";
@@ -605,7 +588,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\"${DEVELOPER_LIBRARY_DIR}/Frameworks\"",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
@@ -613,12 +597,12 @@
 				GCC_PREFIX_HEADER = "ROADCoreTest/ROADCoreTest-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"\"${PODS_ROOT}/Headers/libObjCAttr\"/**",
 				);
-				INFOPLIST_FILE = "ROADCoreTest/ROADCoreTest-Info.plist";
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				ONLY_ACTIVE_ARCH = NO;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -629,7 +613,6 @@
 				PRODUCT_NAME = ROADCoreTest;
 				PUBLIC_HEADERS_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Headers ";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -639,7 +622,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\"${DEVELOPER_LIBRARY_DIR}/Frameworks\"",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
@@ -647,11 +631,11 @@
 				GCC_PREFIX_HEADER = "ROADCoreTest/ROADCoreTest-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"\"${PODS_ROOT}/Headers/libObjCAttr\"/**",
 				);
-				INFOPLIST_FILE = "ROADCoreTest/ROADCoreTest-Info.plist";
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
@@ -663,7 +647,6 @@
 				PRODUCT_NAME = ROADCoreTest;
 				PUBLIC_HEADERS_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Headers ";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};

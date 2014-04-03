@@ -1,5 +1,5 @@
 //
-//  SenTestCase+Async.m
+//  GcovTestObserver.h
 //  Utilities
 //
 //  Copyright (c) 2014 Epam Systems. All rights reserved.
@@ -30,20 +30,10 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import "SenTestCase+Async.h"
 
-@implementation SenTestCase (Async)
+#import <XCTest/XCTest.h>
 
-+ (BOOL)waitFor:(BOOL(^)(void))block withTimeout:(NSTimeInterval)timeout {
-    NSTimeInterval timeoutInSeconds = timeout;
-    NSDate* giveUpDate = [NSDate dateWithTimeIntervalSinceNow:timeoutInSeconds];
-    
-    while (!block() && ([giveUpDate timeIntervalSinceNow] > 0)) {
-        NSDate *stopDate = [NSDate dateWithTimeIntervalSinceNow:1.0];
-        [[NSRunLoop currentRunLoop] runUntilDate:stopDate];
-    }
-    
-    return block();
-}
+
+@interface GcovTestObserver : XCTestObserver
 
 @end

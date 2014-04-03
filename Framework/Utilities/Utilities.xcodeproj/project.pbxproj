@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1176412D18E461E800B1688B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1176412C18E461E800B1688B /* XCTest.framework */; };
+		1176413518E4632B00B1688B /* GcovTestObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 1176413418E4632B00B1688B /* GcovTestObserver.m */; };
 		EE2E040D1886313800CFD5BC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2E040C1886313800CFD5BC /* Foundation.framework */; };
-		EE7FDA8C188645D0003B250C /* SenTestCase+Async.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FDA8B188645D0003B250C /* SenTestCase+Async.m */; };
-		EE7FDA8D188645EC003B250C /* SenTestCase+Async.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE7FDA8A188645D0003B250C /* SenTestCase+Async.h */; };
-		EEC3E8C71886341E00ED05FB /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2E04311886314C00CFD5BC /* SenTestingKit.framework */; };
+		EE7FDA8C188645D0003B250C /* XCTestCase+Async.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FDA8B188645D0003B250C /* XCTestCase+Async.m */; };
+		EE7FDA8D188645EC003B250C /* XCTestCase+Async.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE7FDA8A188645D0003B250C /* XCTestCase+Async.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -20,19 +21,21 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				EE7FDA8D188645EC003B250C /* SenTestCase+Async.h in CopyFiles */,
+				EE7FDA8D188645EC003B250C /* XCTestCase+Async.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1176412C18E461E800B1688B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		1176413318E4632B00B1688B /* GcovTestObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GcovTestObserver.h; path = Utilities/GcovTestObserver.h; sourceTree = "<group>"; };
+		1176413418E4632B00B1688B /* GcovTestObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GcovTestObserver.m; path = Utilities/GcovTestObserver.m; sourceTree = "<group>"; };
 		EE2E040A1886313700CFD5BC /* libUtilities.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libUtilities.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE2E040C1886313800CFD5BC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		EE2E04311886314C00CFD5BC /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		EE2E04331886319500CFD5BC /* Utilities-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Utilities-Prefix.pch"; path = "Utilities/Utilities-Prefix.pch"; sourceTree = "<group>"; };
-		EE7FDA8A188645D0003B250C /* SenTestCase+Async.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SenTestCase+Async.h"; path = "Utilities/SenTestCase+Async.h"; sourceTree = "<group>"; };
-		EE7FDA8B188645D0003B250C /* SenTestCase+Async.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SenTestCase+Async.m"; path = "Utilities/SenTestCase+Async.m"; sourceTree = "<group>"; };
+		EE7FDA8A188645D0003B250C /* XCTestCase+Async.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "XCTestCase+Async.h"; path = "Utilities/XCTestCase+Async.h"; sourceTree = "<group>"; };
+		EE7FDA8B188645D0003B250C /* XCTestCase+Async.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "XCTestCase+Async.m"; path = "Utilities/XCTestCase+Async.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,8 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1176412D18E461E800B1688B /* XCTest.framework in Frameworks */,
 				EE2E040D1886313800CFD5BC /* Foundation.framework in Frameworks */,
-				EEC3E8C71886341E00ED05FB /* SenTestingKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,8 +54,10 @@
 		EE2E03B51886286300CFD5BC = {
 			isa = PBXGroup;
 			children = (
-				EE7FDA8A188645D0003B250C /* SenTestCase+Async.h */,
-				EE7FDA8B188645D0003B250C /* SenTestCase+Async.m */,
+				1176413318E4632B00B1688B /* GcovTestObserver.h */,
+				1176413418E4632B00B1688B /* GcovTestObserver.m */,
+				EE7FDA8A188645D0003B250C /* XCTestCase+Async.h */,
+				EE7FDA8B188645D0003B250C /* XCTestCase+Async.m */,
 				EE2E04331886319500CFD5BC /* Utilities-Prefix.pch */,
 				EE2E040B1886313800CFD5BC /* Frameworks */,
 				EE2E0438188631D500CFD5BC /* Products */,
@@ -62,7 +67,7 @@
 		EE2E040B1886313800CFD5BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EE2E04311886314C00CFD5BC /* SenTestingKit.framework */,
+				1176412C18E461E800B1688B /* XCTest.framework */,
 				EE2E040C1886313800CFD5BC /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -102,6 +107,7 @@
 		EE2E03B61886286300CFD5BC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = EE2E03B91886286300CFD5BC /* Build configuration list for PBXProject "Utilities" */;
@@ -126,7 +132,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE7FDA8C188645D0003B250C /* SenTestCase+Async.m in Sources */,
+				1176413518E4632B00B1688B /* GcovTestObserver.m in Sources */,
+				EE7FDA8C188645D0003B250C /* XCTestCase+Async.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,11 +205,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -240,10 +245,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				VALIDATE_PRODUCT = YES;

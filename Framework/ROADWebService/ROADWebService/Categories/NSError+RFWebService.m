@@ -1,8 +1,8 @@
 //
-//  ROADServicesTest.h
-//  ROADServicesTest
+//  NSError+RFWebService.m
+//  ROADWebService
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -30,8 +30,41 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <SenTestingKit/SenTestingKit.h>
 
-@interface RFROADServicesTest : SenTestCase
+#import "NSError+RFWebService.h"
+
+
+NSString * const kRFWebServiceErrorDomain               = @"RFWebServiceError";
+NSString * const kRFWebServiceRecievedDataKey           = @"RFRecievedData";
+NSString * const kRFWebServiceCancellationReason        = @"RFCancellationReason";
+
+const NSInteger kRFWebServiceErrorCodeSerialization     = 1000;
+const NSInteger kRFWebServiceErrorCodeCancel            = 1001;
+
+// Private
+static NSString * const kRFWSDescManualCancel = @"The request has been cancelled.";
+static NSString * const kRFWSDescDeserializationError = @"Error during the deserialization.";
+
+
+@implementation NSError (RFWebService)
+
++ (NSError *)RFWS_deserializationErrorWithData:(NSData *)data {
+    return [NSError errorWithDomain:kRFWebServiceErrorDomain code:kRFWebServiceErrorCodeSerialization userInfo:@{NSLocalizedDescriptionKey : kRFWSDescDeserializationError, kRFWebServiceRecievedDataKey : data}];
+}
+
++ (NSError *)RFWS_cancelError {
+    return [NSError errorWithDomain:kRFWebServiceErrorDomain code:kRFWebServiceErrorCodeCancel userInfo:@{NSLocalizedDescriptionKey : kRFWSDescManualCancel}];
+}
+
++ (NSError *)RFWS_cancelErrorWithReason:(id)reason {
+    NSError *error;
+    if (reason) {
+        error = [NSError errorWithDomain:kRFWebServiceErrorDomain code:kRFWebServiceErrorCodeCancel userInfo:@{NSLocalizedDescriptionKey : kRFWSDescManualCancel, kRFWebServiceCancellationReason: reason}];
+    } else {
+        error = [self RFWS_cancelError];
+    }
+    
+    return error;
+}
 
 @end

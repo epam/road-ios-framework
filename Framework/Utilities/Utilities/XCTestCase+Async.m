@@ -1,6 +1,6 @@
 //
-//  RFWebServiceBasicURLBuilder.h
-//  ROADWebService
+//  XCTestCase+Async.m
+//  Utilities
 //
 //  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
@@ -31,12 +31,21 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "RFWebServiceURLBuilding.h"
+#import "XCTestCase+Async.h"
 
 
-/**
- Create the URL based on the template url, values and the root url. 
- */
-@interface RFWebServiceBasicURLBuilder : NSObject <RFWebServiceURLBuilding>
+@implementation XCTestCase (Async)
+
++ (BOOL)waitFor:(BOOL(^)(void))block withTimeout:(NSTimeInterval)timeout {
+    NSTimeInterval timeoutInSeconds = timeout;
+    NSDate* giveUpDate = [NSDate dateWithTimeIntervalSinceNow:timeoutInSeconds];
+    
+    while (!block() && ([giveUpDate timeIntervalSinceNow] > 0)) {
+        NSDate *stopDate = [NSDate dateWithTimeIntervalSinceNow:1.0];
+        [[NSRunLoop currentRunLoop] runUntilDate:stopDate];
+    }
+    
+    return block();
+}
 
 @end

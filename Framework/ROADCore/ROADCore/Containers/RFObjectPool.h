@@ -2,7 +2,7 @@
 //  RFObjectPool.h
 //  ROADCore
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without 
 // modification, are permitted provided that the following conditions are met:
@@ -31,76 +31,74 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import <Foundation/Foundation.h>
-#import "RFObject.h"
-
-@protocol RFPooledObject;
+@protocol RFObjectPooling;
 @class RFObjectPool;
 
+
 /**
- Object pool delegate protocol. Contains notification methods to inform its delegate about pooled object management. All methods in this protocol are optional.
+ * Object pool delegate protocol. Contains notification methods to inform its delegate about pooled object management. All methods in this protocol are optional.
  */
 @protocol RFObjectPoolDelegate <NSObject>
 
 @optional
 /**
- Informs the delegate that an object was repooled.
- @param pool The pool sending the message.
- @param anIdentifier The identifier for which the object was repooled.
+ * Informs the delegate that an object was repooled.
+ * @param pool The pool sending the message.
+ * @param anIdentifier The identifier for which the object was repooled.
  */
 - (void)pool:(RFObjectPool *)pool didRepoolObjectForIdentifier:(NSString *)anIdentifier;
 
 /**
- Informs the delegate that a new object was created for an identifier.
- @param pool The pool sending the message.
- @param anObject The newly created object.
- @param anIdentifier The identifier for which the object was created.
+ * Informs the delegate that a new object was created for an identifier.
+ * @param pool The pool sending the message.
+ * @param anObject The newly created object.
+ * @param anIdentifier The identifier for which the object was created.
  */
-- (void)pool:(RFObjectPool *)pool didInstantiateObject:(id<RFPooledObject>)anObject forIdentifier:(NSString *)anIdentifier;
+- (void)pool:(RFObjectPool *)pool didInstantiateObject:(id<RFObjectPooling>)anObject forIdentifier:(NSString *)anIdentifier;
 
 /**
- Informs the delegate that an object was removed from the pool as it was requested.
- @param pool The pool sending the message.
- @param anIdentifier The identifier for which the object was requested.
- @param anObject The newly created object.
-
+ * Informs the delegate that an object was removed from the pool as it was requested.
+ * @param pool The pool sending the message.
+ * @param anIdentifier The identifier for which the object was requested.
+ * @param anObject The newly created object.
  */
-- (void)pool:(RFObjectPool *)pool didLendObject:(id<RFPooledObject>)anObject forIdentifier:(NSString *)anIdentifier;
+- (void)pool:(RFObjectPool *)pool didLendObject:(id<RFObjectPooling>)anObject forIdentifier:(NSString *)anIdentifier;
 
 @end
 
-/**
- Generic object pool solution to provide reusing of objects that are either heavy to create, or are reused frequently.
- */
-@interface RFObjectPool : RFObject
 
 /**
- The pool's delegate.
+ * Generic object pool solution to provide reusing of objects that are either heavy to create, or are reused frequently.
+ */
+@interface RFObjectPool : NSObject
+
+/**
+ * The pool's delegate.
  */
 @property (weak, nonatomic) id<RFObjectPoolDelegate> delegate;
 
 /**
- Indicates if the reuse identifiers are case sensitive or not.
+ * Indicates if the reuse identifiers are case sensitive or not.
  */
 @property (assign, nonatomic, getter = isCaseSensitive) BOOL caseSensitive;
 
 /**
- Puts an object instance of a registered class back into the object pool.
- @param anObject The object to put back into the appropriate object pool.
+ * Puts an object instance of a registered class back into the object pool.
+ * @param object The object to put back into the appropriate object pool.
  */
-- (void)repoolObject:(id<RFPooledObject>)anObject;
+- (void)repoolObject:(id<RFObjectPooling>)object;
 
 /**
- Returns an object for the specified pool reuse identifier. Note, this also removes the object from the pool until it is repooled, therefore you have to make sure to keep it alive via a strong reference.
- @param anIdentifier The unique pool reuse identifier.
+ * Returns an object for the specified pool reuse identifier. Note, this also removes the object from the pool until it is repooled, therefore you have to make sure to keep it alive via a strong reference.
+ * @param identifier The unique pool reuse identifier.
  */
-- (id)objectForIdentifier:(NSString *)anIdentifier;
+- (id)objectForIdentifier:(NSString *)identifier;
 
 /**
- Registers a class to be available for pooling.
- @param aClassName The name of the class to be registered.
- @param reuseIdentifier The identifier associated with the given class. Note: the id has to be unique, overriding the same identifier with this method will raise an exception.
+ * Registers a class to be available for pooling.
+ * @param className The name of the class to be registered.
+ * @param reuseIdentifier The identifier associated with the given class. Note: the id has to be unique, overriding the same identifier with this method will raise an exception.
  */
-- (void)registerClassNamed:(NSString *)aClassName forIdentifier:(NSString *)reuseIdentifier;
+- (void)registerClassNamed:(NSString *)className forIdentifier:(NSString *)reuseIdentifier;
 
 @end

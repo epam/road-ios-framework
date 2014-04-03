@@ -2,7 +2,7 @@
 //  NSArray+RFEmptyArrayChecks.m
 //  ROADCore
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without 
 // modification, are permitted provided that the following conditions are met:
@@ -46,7 +46,7 @@
     return lastObject;
 }
 
-- (id)RF_elementAtIndexIfInRange:(NSUInteger)index {
+- (id)RF_safeObjectAtIndex:(NSUInteger)index {
     id object = nil;
     
     if ([self count] > index) {
@@ -56,13 +56,14 @@
     return object;
 }
 
-- (id)RF_elementWithPredicateBlock:(BOOL (^)(id evaluatedObject))evaluationBlock {
+- (id)RF_objectWithPredicateBlock:(BOOL (^)(id evaluatedObject))evaluationBlock {
     BOOL (^(testingBlock))(id evaludatedObject) = [evaluationBlock copy];
     
-    return [[self filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-        
+    NSArray *filteredArray = [self filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
         return testingBlock(evaluatedObject);
-    }]] RF_lastElementIfNotEmpty];
+    }]];
+    
+    return [filteredArray lastObject];
 }
 
 @end

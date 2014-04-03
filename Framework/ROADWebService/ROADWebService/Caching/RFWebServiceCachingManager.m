@@ -2,7 +2,7 @@
 //  RFWebServiceCachingManager.m
 //  ROADWebService
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -76,8 +76,10 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
     // Either we have expiration date specified or expiration date is not specified but we have field for conditional GET
     if ([expirationDate compare:[NSDate date]] == NSOrderedDescending
         || ((lastModified || eTag) && !expirationDate)) {
+        __weak RFWebServiceCachingManager *weakSelf = self;
         dispatch_sync(_cacheQueue, ^{
-            NSManagedObjectContext *managedObjectContext = _cacheContext.context;
+            RFWebServiceCachingManager *strongSelf = weakSelf;
+            NSManagedObjectContext *managedObjectContext = strongSelf->_cacheContext.context;
 
             // Remove old one if exist
             if ([cacheIdentifier length]) {
@@ -286,7 +288,7 @@ static const NSInteger kRFWebServiceHeaderValueParameterIndex       = 1;
 
 + (NSDictionary *)dictionary:(NSDictionary *)dictionary setObject:(id)object forKey:(id<NSCopying>)key {
     NSMutableDictionary *newHeaders = [[NSMutableDictionary alloc] initWithCapacity:[dictionary count] + 1];
-    [newHeaders setObject:object forKey:key];
+    newHeaders[key] = object;
     [newHeaders addEntriesFromDictionary:dictionary];
     return newHeaders;
 }
@@ -313,9 +315,9 @@ static const NSInteger kRFWebServiceHeaderValueParameterIndex       = 1;
     for (RFWebResponse *webResponse in cachedResponses) {
         if ([webResponse.expirationDate compare:[NSDate date]] == NSOrderedAscending) {
             [managedObjectContext deleteObject:webResponse];
-            NSError *error;
-            [managedObjectContext save:&error];
-            if (error) {
+            NSError *saveError;
+            [managedObjectContext save:&saveError];
+            if (saveError) {
                 RFWSLogError(@"Clean of cache was failed with error : %@", error);
             }
         }
@@ -343,8 +345,8 @@ static const NSInteger kRFWebServiceHeaderValueParameterIndex       = 1;
         fetchCachedResponse.predicate = [NSPredicate predicateWithFormat:@"cacheIdentifier == %@", cacheIdentifier];
     }
 
-    NSError *error;
-    NSArray *cachedResponses = [_cacheContext.context executeFetchRequest:fetchCachedResponse error:&error];
+    NSError *executeError;
+    NSArray *cachedResponses = [_cacheContext.context executeFetchRequest:fetchCachedResponse error:&executeError];
 
     for (RFWebResponse *webResponse in cachedResponses) {
         if ([webResponse.expirationDate compare:[NSDate date]] == NSOrderedAscending) {

@@ -1,6 +1,6 @@
 //
-//  RFWebServiceBasicURLBuilder.h
-//  ROADWebService
+//  GcovTestObserver.m
+//  Utilities
 //
 //  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
@@ -31,12 +31,19 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import "RFWebServiceURLBuilding.h"
+#import "GcovTestObserver.h"
 
 
-/**
- Create the URL based on the template url, values and the root url. 
- */
-@interface RFWebServiceBasicURLBuilder : NSObject <RFWebServiceURLBuilding>
+@implementation GcovTestObserver
+
++ (void)load {
+    [[NSUserDefaults standardUserDefaults] setValue:@"XCTestLog,GcovTestObserver" forKey:@"XCTestObserverClass"];
+}
+
+- (void)stopObserving  {
+    [super stopObserving];
+    extern void __gcov_flush(void);
+    __gcov_flush();
+}
 
 @end

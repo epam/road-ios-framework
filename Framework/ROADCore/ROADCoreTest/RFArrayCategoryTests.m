@@ -1,8 +1,8 @@
 //
-//  RFMutableObjectTest.h
+//  RFConditionalComponentResultTest.m
 //  ROADCore
 //
-//  Copyright (c) 2013 Epam Systems. All rights reserved.
+//  Copyright (c) 2014 Epam Systems. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without 
 // modification, are permitted provided that the following conditions are met:
@@ -31,8 +31,40 @@
 // for additional information regarding copyright ownership and licensing
 
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
+#import <ROAD/ROADAttribute.h>
 
-@interface RFMutableObjectTest : SenTestCase
+#import "NSArray+RFEmptyArrayChecks.h"
+
+
+@interface RFArrayCategoryTests : XCTestCase
+
+@end
+
+
+@implementation RFArrayCategoryTests
+
+- (void)testConditionalObjectAtIndexNotExisting {
+    NSArray * const array = @[];
+    id object = [array RF_safeObjectAtIndex:[array count]];
+    
+    XCTAssertTrue(object == nil, @"Assertion: conditional returns nil for invalid index");
+}
+
+- (void)testConditionalObjectAtIndexExisting {
+    NSArray * const array = @[@"first", @"second"];
+    id object = [array RF_safeObjectAtIndex:0];
+    
+    XCTAssertTrue([object isEqual:array[0]], @"Assertion: objectAtIndex method returns the same as the conditional version.");
+}
+
+- (void)testObjectMatching {
+    NSArray * const array = @[@"first", @"second"];
+    id object = [array RF_objectWithPredicateBlock:^BOOL(NSString *evaluatedObject) {
+        return [evaluatedObject isEqualToString:@"first"];
+    }];
+    
+    XCTAssertTrue(object != nil, @"Assertion: matching returns valid result.");
+}
 
 @end

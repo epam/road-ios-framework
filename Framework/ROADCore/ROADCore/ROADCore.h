@@ -35,12 +35,10 @@
 #define ROADCore_ROADCore_h
 
 #import "NSMutableString+RFStringFormatter.h"
-#import "NSString+RFAccessorUtilities.h"
 #import "NSArray+RFEmptyArrayChecks.h"
-#import "RFMutableObject.h"
-#import "RFPooledObject.h"
+#import "RFDynamicObject.h"
+#import "RFObjectPooling.h"
 #import "RFPoolObject.h"
 #import "RFObjectPool.h"
-#import "RFObject.h"
 
 #endif

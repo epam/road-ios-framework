@@ -30,7 +30,7 @@
 // See the NOTICE file and the LICENSE file distributed with this work
 // for additional information regarding copyright ownership and licensing
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "RFAttributedCoder.h"
 #import "RFAttributedDecoder.h"
 #import "RFJSONCustomSerializationHandler.h"
@@ -38,8 +38,9 @@
 #import "RFJSONCustomClassPropertyHandlerEntity.h"
 #import "RFJSONCustomPropertyHandlerEntity.h"
 #import "RFJSONCustomPropertyKeyHandlerEntity.h"
+#import "RFSerializableStringChecker.h"
 
-@interface RFCustomJSONSerializationHandlingTest : SenTestCase
+@interface RFCustomJSONSerializationHandlingTest : XCTestCase
 
 @end
 
@@ -49,16 +50,16 @@
 - (void)testClassCustomSerializationHandler {
     NSString *encodedObject = [RFAttributedCoder encodeRootObject:[RFJSONCustomClassHandlerEntity sampleObject]];
     NSString *stringForSampleObject = @"\"Success Encoding\"";
-    STAssertTrue([stringForSampleObject isEqualToString:encodedObject], @"JSON custom serialization handling for class failed! Result of encoding is undefined!");
+    XCTAssertTrue([stringForSampleObject isEqualToString:encodedObject], @"JSON custom serialization handling for class failed! Result of encoding is undefined!");
 }
 
 - (void)testClassCustomDeserializationHandler {
     NSError *fileError;
     NSString *jsonString = [[NSString alloc] initWithContentsOfFile:[[NSBundle bundleForClass:[self class]] pathForResource:@"DeserializationCustomHandlingTest" ofType:@"json"] encoding:NSUTF8StringEncoding error:&fileError];
-    STAssertNil(fileError, @"File for deserialization was not loaded properly");
+    XCTAssertNil(fileError, @"File for deserialization was not loaded properly");
     NSString *decodedObject = [RFAttributedDecoder decodeJSONString:jsonString withRootClassNamed:NSStringFromClass([RFJSONCustomClassHandlerEntity class])];
     NSString *stringForSampleObject = @"Success Decoding";
-    STAssertTrue([stringForSampleObject isEqualToString:decodedObject], @"JSON custom deserialization handling for class failed! Result of decoding is undefined!");
+    XCTAssertTrue([stringForSampleObject isEqualToString:decodedObject], @"JSON custom deserialization handling for class failed! Result of decoding is undefined!");
 }
 
 - (void)testClassPropertyCustomSerializationHandler {
@@ -67,16 +68,16 @@
                                         "  \"string1\" : \"Success Encoding\",\n"
                                         "  \"RFSerializedObjectClassName\" : \"RFJSONCustomClassPropertyHandlerEntity\"\n"
                                         "}";
-    STAssertTrue([stringForSampleObject isEqualToString:encodedObject], @"JSON custom serialization handling for class property failed! Result of encoding is undefined!");
+    XCTAssertTrue([stringForSampleObject isEqualToString:encodedObject], @"JSON custom serialization handling for class property failed! Result of encoding is undefined!");
 }
 
 - (void)testClassPropertyCustomDeserializationHandler {
     NSError *fileError;
     NSString *jsonString = [[NSString alloc] initWithContentsOfFile:[[NSBundle bundleForClass:[self class]] pathForResource:@"DeserializationCustomHandlingTest" ofType:@"json"] encoding:NSUTF8StringEncoding error:&fileError];
-    STAssertNil(fileError, @"File for deserialization was not loaded properly");
+    XCTAssertNil(fileError, @"File for deserialization was not loaded properly");
     NSString *decodedObject = [RFAttributedDecoder decodeJSONString:jsonString withRootClassNamed:NSStringFromClass([RFJSONCustomClassPropertyHandlerEntity class])];
     NSString *deserializationTestObject = [RFJSONCustomClassPropertyHandlerEntity deserializationTestObject];
-    STAssertTrue([deserializationTestObject isEqual:decodedObject], @"JSON custom deserialization handling for class property failed! Result of decoding is undefined!");
+    XCTAssertTrue([deserializationTestObject isEqual:decodedObject], @"JSON custom deserialization handling for class property failed! Result of decoding is undefined!");
 }
 
 - (void)testPropertyCustomSerializationHandler {
@@ -85,36 +86,37 @@
                                         "  \"string1\" : \"Success Encoding\",\n"
                                         "  \"RFSerializedObjectClassName\" : \"RFJSONCustomPropertyHandlerEntity\"\n"
                                         "}";
-    STAssertTrue([stringForSampleObject isEqualToString:encodedObject], @"JSON custom serialization handling for property failed! Result of encoding is undefined!");
+    XCTAssertTrue([stringForSampleObject isEqualToString:encodedObject], @"JSON custom serialization handling for property failed! Result of encoding is undefined!");
 }
 
 - (void)testPropertyCustomDeserializationHandler {
     NSError *fileError;
     NSString *jsonString = [[NSString alloc] initWithContentsOfFile:[[NSBundle bundleForClass:[self class]] pathForResource:@"DeserializationCustomHandlingTest" ofType:@"json"] encoding:NSUTF8StringEncoding error:&fileError];
-    STAssertNil(fileError, @"File for deserialization was not loaded properly");
+    XCTAssertNil(fileError, @"File for deserialization was not loaded properly");
     NSString *decodedObject = [RFAttributedDecoder decodeJSONString:jsonString withRootClassNamed:NSStringFromClass([RFJSONCustomPropertyHandlerEntity class])];
     NSString *deserializationTestObject = [RFJSONCustomPropertyHandlerEntity deserializationTestObject];
-    STAssertTrue([deserializationTestObject isEqual:decodedObject], @"JSON custom deserialization handling for property failed! Result of decoding is undefined!");
+    XCTAssertTrue([deserializationTestObject isEqual:decodedObject], @"JSON custom deserialization handling for property failed! Result of decoding is undefined!");
 }
 
 - (void)testPropertyKeyCustomSerializationHandler {
-    NSString *encodedObject = [RFAttributedCoder encodeRootObject:[RFJSONCustomPropertyKeyHandlerEntity sampleObject]];
+    NSString *encodedString = [RFAttributedCoder encodeRootObject:[RFJSONCustomPropertyKeyHandlerEntity sampleObject]];
     NSString *stringForSampleObject = @"{\n"
                                         "  \"subDictionary\" : {\n"
                                         "    \"string1\" : \"Success Encoding\"\n"
                                         "  },\n"
                                         "  \"RFSerializedObjectClassName\" : \"RFJSONCustomPropertyKeyHandlerEntity\"\n"
                                         "}";
-    STAssertTrue([stringForSampleObject isEqualToString:encodedObject], @"JSON custom serialization handling for key in property failed! Result of encoding is undefined!");
+    NSString *errorMessage = [RFSerializableStringChecker serializeAndCheckEqualityOfString:encodedString withString:stringForSampleObject];
+    XCTAssertNil(errorMessage, @"%@", errorMessage);
 }
 
 - (void)testPropertyKeyCustomDeserializationHandler {
     NSError *fileError;
     NSString *jsonString = [[NSString alloc] initWithContentsOfFile:[[NSBundle bundleForClass:[self class]] pathForResource:@"DeserializationCustomPropertyKeyHandlingTest" ofType:@"json"] encoding:NSUTF8StringEncoding error:&fileError];
-    STAssertNil(fileError, @"File for deserialization was not loaded properly");
+    XCTAssertNil(fileError, @"File for deserialization was not loaded properly");
     NSString *decodedObject = [RFAttributedDecoder decodeJSONString:jsonString withRootClassNamed:NSStringFromClass([RFJSONCustomPropertyKeyHandlerEntity class])];
     NSString *deserializationTestObject = [RFJSONCustomPropertyKeyHandlerEntity deserializationTestObject];
-    STAssertTrue([deserializationTestObject isEqual:decodedObject], @"JSON custom deserialization handling for property failed! Result of decoding is undefined!");
+    XCTAssertTrue([deserializationTestObject isEqual:decodedObject], @"JSON custom deserialization handling for property failed! Result of decoding is undefined!");
 }
 
 @end

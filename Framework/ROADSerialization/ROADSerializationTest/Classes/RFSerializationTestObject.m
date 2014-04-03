@@ -81,11 +81,19 @@ static const NSTimeInterval kDateComparisonDelta = 1;
     RFSerializationTestObject *object3 = [[RFSerializationTestObject alloc] init];
     object3.string1 = @"value31";
     object3.string2 = @"value32";
+    object3.booleanToTranslateFalse = NO;
+    object3.booleanToTranslateFalseFromNumber = NO;
+    object3.booleanToTranslateTrue = YES;
+    object3.booleanToTranslateTrueFromNumber = YES;
     object3.integer = 5;
     
     RFSerializationTestObject *object4 = [[RFSerializationTestObject alloc] init];
     object4.string2 = @"value42";
     object4.string1 = @"value41";
+    object4.booleanToTranslateFalse = NO;
+    object4.booleanToTranslateFalseFromNumber = NO;
+    object4.booleanToTranslateTrue = YES;
+    object4.booleanToTranslateTrueFromNumber = YES;
     object4.number = @(3);
     
     RFSerializationTestObject *object = [[RFSerializationTestObject alloc] init];
