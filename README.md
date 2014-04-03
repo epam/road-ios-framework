@@ -1,9 +1,7 @@
 [![License](https://go-shields.herokuapp.com/license-BSD%203-blue.png)](http://opensource.org/licenses/BSD-3-Clause)
 [![Platform](https://cocoapod-badges.herokuapp.com/p/ROADFramework/badge.png)](https://github.com/epam/road-ios-framework/)
 [![Version](https://cocoapod-badges.herokuapp.com/v/ROADFramework/badge.png)](https://github.com/epam/road-ios-framework/)
-
-Master: [![Coverage Status](https://coveralls.io/repos/epam/road-ios-framework/badge.png?branch=master)](https://coveralls.io/r/epam/road-ios-framework?branch=master) Dev: [![Coverage Status](https://coveralls.io/repos/epam/road-ios-framework/badge.png?branch=dev)](https://coveralls.io/r/epam/road-ios-framework?branch=dev)
-#ROAD iOS Framework
+[![Coverage Status](https://coveralls.io/repos/epam/road-ios-framework/badge.png?branch=master)](https://coveralls.io/r/epam/road-ios-framework?branch=master)
 
 A set of reusable components taking advantage of extra dimension [Attribute-Oriented Programming](https://en.wikipedia.org/wiki/Attribute-oriented_programming) adds.
 
