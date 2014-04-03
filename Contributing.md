@@ -6,5 +6,5 @@ We would love to have more contributors like you to extend and evolve the projec
 * If you want to help us implement some feature that already described in Issue Tracker, make sure that no one is assigned on it yet and, please write about it in a comment section.
 * Give your branch some descriptive name.
 * While writing new features or fixing issues, please, follow our [code style guidelines](./Documents/CodingConventions.md). It will help to maintain readability of code for other contributors.
-* All contributions **must** be licensed using [BSD v3 license][http://opensource.org/licenses/BSD-3-Clause].
+* All contributions **must** be licensed using [BSD v3 license](http://opensource.org/licenses/BSD-3-Clause).
 * Create your pull request to *master* branch.
