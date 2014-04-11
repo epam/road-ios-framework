@@ -65,7 +65,7 @@
         [inv getArgument:&arg atIndex:(int)(i + 2)];
         [parameterList addObject:arg];
     }
-    [self dynamicWebServiceCallWithArguments:parameterList forInVocation:inv];
+    [self dynamicWebServiceCallWithArguments:parameterList forInvocation:inv];
 }
 
 /**
