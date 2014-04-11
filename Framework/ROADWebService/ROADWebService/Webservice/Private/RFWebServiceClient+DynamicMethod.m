@@ -89,7 +89,7 @@
  *
  * @return id returns an object instance which conforms to the <RFWebServiceCancellable> protocol
  */
-- (id<RFWebServiceCancellable>)dynamicWebServiceCallWithArguments:(NSMutableArray *)parameterList forInVocation:(NSInvocation *)invocation {
+- (id<RFWebServiceCancellable>)dynamicWebServiceCallWithArguments:(NSMutableArray *)parameterList forInvocation:(NSInvocation *)invocation {
 
     NSAssert([parameterList count] >= 2, @"Method signature must have at least two parameters - completion blocks. Example: - (id)sendRequestWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;");
     // Check whether one or two last parameters are blocks
