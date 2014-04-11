@@ -51,61 +51,51 @@
 
 @implementation RFWebServiceClient (DynamicMethod)
 
-+ (BOOL)resolveInstanceMethod:(SEL)sel {
-    
-    // retrieves the attribute for the selector
-    RFWebServiceCall *attribute = [self RF_attributeForMethod:NSStringFromSelector(sel) withAttributeType:[RFWebServiceCall class]];
-    BOOL result;
-    
-    // if the attribute is found, attempt to add a dynamic implementation
-    if (attribute) {
-        [self addDynamicWebserviceCallForSelector:sel];
-        result = YES;
+/**
+ * Handles the invocation for the web service client instance
+ *
+ * @param inv NSInvocation the invocation which encapsulates the dynamic method
+ */
+- (void)forwardInvocation:(NSInvocation *)inv {
+    NSUInteger n = [[inv methodSignature] numberOfArguments];
+
+    NSMutableArray *parameterList = [[NSMutableArray alloc] init];
+    for (NSUInteger i = 0; i < n-2; i++) {
+        id __unsafe_unretained arg;
+        [inv getArgument:&arg atIndex:(int)(i + 2)];
+        [parameterList addObject:arg];
     }
-    else {
-        result = [super resolveInstanceMethod:sel];
-    }
-    
-    return result;
+    [self dynamicWebServiceCallWithArguments:parameterList forInvocation:inv];
 }
 
-+ (void)addDynamicWebserviceCallForSelector:(const SEL)selector {
-    const char *encoding;
-    IMP implementation;
-    
-    implementation = [self instanceMethodForSelector:@selector(dynamicWebServiceCall:)];
-    encoding = "@@:@";
-    
-    // adding the implementation to the class
-    class_replaceMethod([self class], selector, implementation, encoding);
+/**
+ * Retrieves the method signature for the provided selector
+ *
+ * @param aSelector SEL
+ *
+ * @return NSMethodSignature the methodsignature for the selector
+ */
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
+    NSUInteger numArgs = [[NSStringFromSelector(aSelector) componentsSeparatedByString:@":"] count] - 1;
+    return [NSMethodSignature signatureWithObjCTypes:[[@"@@:@" stringByPaddingToLength:numArgs+3 withString:@"@" startingAtIndex:0] UTF8String]];
 }
 
-- (id<RFWebServiceCancellable>)dynamicWebServiceCall:(id)firstParameter, ... {
-    
-    unsigned long parameterCount = [[NSStringFromSelector(_cmd) componentsSeparatedByString:@":"] count] - 1;
-    NSMutableArray *parameterList = [NSMutableArray array];
-    
-    va_list arguments;
-    va_start(arguments, firstParameter);
-    
-    for (unsigned long idx = 0; idx < parameterCount; idx++) {
-        
-        // add the argument to the parameter list
-        id parameter = (idx == 0) ? firstParameter : va_arg(arguments, id);
-        
-        if (!parameter) {
-            parameter = [NSNull null];
-        }
-        
-        [parameterList addObject:parameter];
-    }
-    va_end(arguments);
+/**
+ * Prepares and checks the parameterlist for the webservice methods 
+ * and executes the instance dynamic method from the invocation
+ *
+ * @param parameterList NSMutableArray teh parameterlist
+ * @param invocation    the incovation for the dynamic method
+ *
+ * @return id returns an object instance which conforms to the <RFWebServiceCancellable> protocol
+ */
+- (id<RFWebServiceCancellable>)dynamicWebServiceCallWithArguments:(NSMutableArray *)parameterList forInvocation:(NSInvocation *)invocation {
 
     NSAssert([parameterList count] >= 2, @"Method signature must have at least two parameters - completion blocks. Example: - (id)sendRequestWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;");
     // Check whether one or two last parameters are blocks
     id lastParameter = [self lastBlockObject:parameterList];
     id parameterBeforeLastParameter = [self lastBlockObject:parameterList];
-    
+
     // Two blocks : success and failure blocks
     id successBlock;
     id failureBlock;
@@ -117,12 +107,12 @@
     else if (lastParameter) {
         successBlock = lastParameter;
     }
-    
+
     // if there are parameters, the last one can be the prepareToLoad block
     id prepareToLoadBlock = [self lastObjectIfBlock:parameterList];
-    
+
     // finally pass the parameters to the dynamic method
-    return [self executeDynamicInstanceMethodForSelector:_cmd parameters:parameterList prepareToLoadBlock:prepareToLoadBlock success:successBlock failure:failureBlock];
+    return [self executeDynamicInstanceMethodForSelector:invocation.selector parameters:parameterList prepareToLoadBlock:prepareToLoadBlock success:successBlock failure:failureBlock];
 }
 
 - (id<RFWebServiceCancellable>)executeDynamicInstanceMethodForSelector:(SEL)selector parameters:(NSArray *)parameterList prepareToLoadBlock:(RFWebServiceClientPrepareForSendRequestBlock)prepareToLoadBlock success:(id)successBlock failure:(id)failureBlock {
