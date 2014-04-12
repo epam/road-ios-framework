@@ -36,7 +36,7 @@
 #import "RFServiceProvider+ESITunesWebClient.h"
 #import "ESLookupCell.h"
 #import "ESArtist.h"
-#import <ROAD/NSError+RFROADWebService.h>
+#import <ROAD/NSError+RFWebService.h>
 
 
 @interface ESLookupViewController ()
@@ -66,6 +66,12 @@
     [self lookupAlbums:nil];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+
+    [self.currentOperation cancel];
+}
+
 - (void)updateArtist:(ESArtist *)artist {
     self.artist = artist;
     self.artistNameLabel.text = self.artist.name;
@@ -84,7 +90,7 @@
         [strongSelf updateArtist:albumsInfo[@"Artist"]]; // And now we get these result with the same keys
         [strongSelf.tableView reloadData];
     } failure:^(NSError *error) {
-        if ([error domain] != kRFWebServiceErrorDomain && weakSelf) { // kRFWebServiceErrorDomain - it's all errors from web service client, including cancel error, in your app check by code to get more precise filtration
+        if ([error code] != kRFWebServiceErrorCodeCancel && weakSelf) { // We want to show to user any error excep cancel error
             [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
         }
     }];

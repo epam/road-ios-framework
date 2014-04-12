@@ -73,10 +73,9 @@
         }
     }
 
-    // Direct interface for mapping dictionary on model class will be exposed soon.
-    // Now we have to use small workaround to use our decoder to map these pieces to model classes.
-    ESArtist *deserializedArtist = artist ? [RFAttributedDecoder decodeJSONData:[NSJSONSerialization dataWithJSONObject:artist options:0 error:error] withRootClassNamed:NSStringFromClass([ESArtist class])] : [[ESArtist alloc] init];
-    NSArray *deserializedAlbums = [RFAttributedDecoder decodeJSONData:[NSJSONSerialization dataWithJSONObject:albums options:0 error:error] withRootClassNamed:NSStringFromClass([ESAlbum class])];
+    // Direct interface for mapping dictionary on model class is exposed for you, let's use it.
+    ESArtist *deserializedArtist = artist ? [RFAttributedDecoder decodePredeserializedObject:artist withRootClassName:NSStringFromClass([ESArtist class])] : [[ESArtist alloc] init];
+    NSArray *deserializedAlbums = [RFAttributedDecoder decodePredeserializedObject:albums withRootClassName:NSStringFromClass([ESAlbum class])];
     
     // Return it as a dictionary with predefined keys.
     return @{@"Artist" : deserializedArtist,

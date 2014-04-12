@@ -35,7 +35,7 @@
 
 #import "RFServiceProvider+ESITunesWebClient.h"
 #import "ESSearchCell.h"
-#import <ROAD/NSError+RFROADWebService.h>
+#import <ROAD/NSError+RFWebService.h>
 
 
 @interface ESSearchViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -62,6 +62,12 @@
     [self searchApps:nil];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+
+    [self.currentOperation cancel];
+}
+
 
 #pragma mark - IBActions
 
@@ -73,7 +79,7 @@
         strongSelf.apps = apps;
         [strongSelf.tableView reloadData];
     } failure:^(NSError *error) {
-        if ([error domain] != kRFWebServiceErrorDomain && weakSelf) { // kRFWebServiceErrorDomain - it's all errors from web service client, including cancel error, in your app check by code to get more precise filtration
+        if ([error code] != kRFWebServiceErrorCodeCancel && weakSelf) { // We want to show to user any error excep cancel error
             [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
         }
     }];
