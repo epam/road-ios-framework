@@ -65,6 +65,29 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>67C946AF022A4AF3A7C485EE</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>libObjCAttr - generate attributes</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator" -src="${SRCROOT}/${TARGET_NAME}" -src="${PODS_ROOT}" -dst="${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/"</string>
+			<key>showEnvVarsInLog</key>
+			<string>1</string>
+		</dict>
 		<key>78180F0816C3D0A300B4AA31</key>
 		<dict>
 			<key>fileRef</key>
@@ -267,7 +290,7 @@
 			<string>78B8E69C16C3CC3E0049E36B</string>
 			<key>buildPhases</key>
 			<array>
-				<string>8557768B395740FEADBE22CB</string>
+				<string>67C946AF022A4AF3A7C485EE</string>
 				<string>B03FB7F7E80344F5A21B8D39</string>
 				<string>78B8E68C16C3CC3E0049E36B</string>
 				<string>78B8E68A16C3CC3E0049E36B</string>
@@ -1489,29 +1512,6 @@ oclint-json-compilation-database -e ROADGeneratedAttributes -- -rc=LONG_LINE=500
 			<string>Supporting files</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
-		</dict>
-		<key>8557768B395740FEADBE22CB</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>libObjCAttr - generate attributes</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator" -src="${SRCROOT}/${TARGET_NAME}" -src="${PODS_ROOT}" -dst="${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/"</string>
-			<key>showEnvVarsInLog</key>
-			<string>1</string>
 		</dict>
 		<key>8706210A288A45BC9C292B0C</key>
 		<dict>
