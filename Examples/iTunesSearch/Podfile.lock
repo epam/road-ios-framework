@@ -1,0 +1,27 @@
+PODS:
+  - libObjCAttr (1.2.2)
+  - ROADFramework (1.3.1):
+    - ROADFramework/ROADCore
+    - ROADFramework/ROADSerialization
+    - ROADFramework/ROADServices
+    - ROADFramework/ROADWebService
+  - ROADFramework/ROADCore (1.3.1):
+    - libObjCAttr (~> 1.2.0)
+  - ROADFramework/ROADSerialization (1.3.1):
+    - ROADFramework/ROADCore
+    - ROADFramework/ROADServices
+  - ROADFramework/ROADServices (1.3.1):
+    - ROADFramework/ROADCore
+  - ROADFramework/ROADWebService (1.3.1):
+    - ROADFramework/ROADCore
+    - ROADFramework/ROADSerialization
+    - ROADFramework/ROADServices
+
+DEPENDENCIES:
+  - ROADFramework (~> 1.3)
+
+SPEC CHECKSUMS:
+  libObjCAttr: 32c76f598ef66fcc18d5da278b603dd942860b10
+  ROADFramework: 3e647db1929668a2aa82f9732697a929a2fe7abf
+
+COCOAPODS: 0.31.1
