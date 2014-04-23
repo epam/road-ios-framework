@@ -87,6 +87,7 @@ RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, method = @"GET", rel
 @property (strong, atomic) NSMutableDictionary *sharedHeaders;
 @property (strong, nonatomic) id<RFSerializationDelegate> serializationDelegate;
 @property (strong, nonatomic) id<RFAuthenticating> authenticationProvider;
+@property (strong, nonatomic) id<RFWebServiceRequestProcessing> requestProcessor;
 	
 - (id)initWithServiceRoot:(NSString *)serviceRoot;
 	
