@@ -36,6 +36,7 @@
 #import "RFXMLSerializer.h"
 #import "RFSerializableTestObject.h"
 #import "RFWebServiceSerializer.h"
+#import "RFRequestTestAttribute.h"
 
 @protocol RFWebServiceCancellable;
 
@@ -67,5 +68,9 @@ RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{@"testKey1" : @"%%0%%"})
 RF_ATTRIBUTE(RFWebServiceCall, method = @"POST", prototypeClass = [RFSerializableTestObject class])
 RF_ATTRIBUTE(RFWebServiceSerializer, serializerClass = [RFXMLSerializer class])
 - (id<RFWebServiceCancellable>)testXMLSerializerWithObject:(RFSerializableTestObject *)headerValue withSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+RF_ATTRIBUTE(RFWebServiceCall, method = @"GET", relativePath = @"/test")
+RF_ATTRIBUTE(RFRequestTestAttribute, testProperty = @"testString")
+- (id<RFWebServiceCancellable>)methodAttributeTestRequest:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
 @end

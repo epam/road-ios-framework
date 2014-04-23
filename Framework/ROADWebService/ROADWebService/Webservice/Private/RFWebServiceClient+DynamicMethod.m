@@ -48,6 +48,7 @@
 #import "RFAuthenticating.h"
 #import "RFWebServiceBasicURLBuilder.h"
 #import "RFWebServiceSerializer.h"
+#import "RFWebServiceRequestProcessing.h"
 
 @implementation RFWebServiceClient (DynamicMethod)
 
@@ -175,6 +176,9 @@ prepareForSendRequestBlock:(RFWebServiceClientPrepareForSendRequestBlock)prepare
         
         // Creating request and configuring it with provided parameters
         [downloader configureRequestForUrl:apiUrl body:httpBody sharedHeaders:self.sharedHeaders values:values];
+        
+        // Pass the request and any attribute on the method to a request processor.
+        [self.requestProcessor processRequest:downloader.request attributesOnMethod:[[self class] RF_attributesForMethod:methodName]];
         
         if (prepareForSendRequestBlock != nil) {
             prepareForSendRequestBlock(downloader.request);
