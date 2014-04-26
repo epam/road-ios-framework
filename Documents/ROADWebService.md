@@ -87,6 +87,7 @@ RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, method = @"GET", rel
 @property (strong, atomic) NSMutableDictionary *sharedHeaders;
 @property (strong, nonatomic) id<RFSerializationDelegate> serializationDelegate;
 @property (strong, nonatomic) id<RFAuthenticating> authenticationProvider;
+@property (strong, nonatomic) id<RFWebServiceRequestProcessing> requestProcessor;
 	
 - (id)initWithServiceRoot:(NSString *)serviceRoot;
 	
@@ -233,6 +234,43 @@ RF_ATTRIBUTE(RFWebServiceURLBuilder, builderClass = [RFODataWebServiceURLBuilder
 - (id<RFWebServiceCancellable>)loadDataWithFetchRequest:(RFODataFetchRequest *)fetchRequest success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 ...
 @end
+```
+
+##Request processing
+Users can modify the NSMutableURLRequest created during the invocation of dynamic methods by supplying an object conforming the RFWebserviceRequestProcessing protocol to the requestProcessor property of the instance. The protocol has only one mandatory method:
+```objc
+- (void)processRequest:(NSMutableURLRequest *)request attributesOnMethod:(NSArray *)attributes;
+```
+This method will be invoked with the generated NSMutableURLRequest and with all the attributes attached to the original stub method. Via this optional callback, one can completely customize the generated request.
+
+See the following code from the related test for more info:
+
+In the dynamic method definition stub file:
+```objc
+RF_ATTRIBUTE(RFWebServiceCall, method = @"GET", relativePath = @"/test")
+RF_ATTRIBUTE(RFRequestTestAttribute, testProperty = @"testString")
+- (id<RFWebServiceCancellable>)methodAttributeTestRequest:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+```
+In the code where the user is invoking the dynamic method:
+```objc
+RFRequestTestProcessor *testRequestProcessor = [[RFRequestTestProcessor alloc] init];
+    RFWebServiceClient *client = [[RFWebServiceClient alloc] initWithServiceRoot:@"https://test.simple.call/"];
+    
+    client.requestProcessor = testRequestProcessor;
+    
+    [client methodAttributeTestRequest:^(id result) {
+        
+        isFinished = YES; /* reveived data ... */
+    } failure:^(NSError *error) {
+        
+        isFinished = YES; /* reveived data ... */
+    }];
+    
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
+    }
+    
+    XCTAssertEqual(testRequestProcessor.passedAttributes.count, 2, @"Attributes are not passed to the request processor.");
 ```
 
 [1]:./ROADLogger.md#predefined-logging-types

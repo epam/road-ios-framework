@@ -34,6 +34,7 @@
 
 @protocol RFSerializationDelegate;
 @protocol RFAuthenticating;
+@protocol RFWebServiceRequestProcessing;
 
 typedef void (^RFWebServiceClientPrepareForSendRequestBlock)(NSMutableURLRequest* serviceRequest);
 
@@ -61,6 +62,11 @@ typedef void (^RFWebServiceClientPrepareForSendRequestBlock)(NSMutableURLRequest
  * Authentication provider which will be used in case of authentication challenge from server
  */
 @property (strong, nonatomic) id<RFAuthenticating> authenticationProvider;
+
+/**
+ *  Request processor which can be used to make additional modification on the request before execution.
+ */
+@property (strong, nonatomic) id<RFWebServiceRequestProcessing> requestProcessor;
 
 /**
  Designated initializer.

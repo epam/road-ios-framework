@@ -45,6 +45,8 @@
 #import "RFWebClientWithSharedHeader.h"
 #import "RFWebServiceSerializer.h"
 #import "NSError+RFWebService.h"
+#import "RFRequestTestProcessor.h"
+#import "RFRequestTestAttribute.h"
 
 
 @interface RFWebServiceTest : XCTestCase
@@ -368,6 +370,40 @@
     
     XCTAssertEqual([cancelError code], kRFWebServiceErrorCodeCancel, @"Web service cancellation finished with unexpected code!");
     XCTAssertNil([cancelError userInfo][kRFWebServiceCancellationReason], @"Web service cancellation finished with unexpected reason!");
+}
+
+- (void)testRequestProcessorDelegate {
+    
+    authenticationFinished = NO;
+    __block BOOL isFinished = NO;
+    
+    RFRequestTestProcessor *testRequestProcessor = [[RFRequestTestProcessor alloc] init];
+    RFWebServiceClient *client = [[RFWebServiceClient alloc] initWithServiceRoot:@"https://test.simple.call/"];
+    
+    client.requestProcessor = testRequestProcessor;
+    
+    [client methodAttributeTestRequest:^(id result) {
+        
+        isFinished = YES; /* reveived data ... */
+    } failure:^(NSError *error) {
+        
+        isFinished = YES; /* reveived data ... */
+    }];
+    
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
+    }
+    
+    XCTAssertEqual(testRequestProcessor.passedAttributes.count, 2, @"Attributes are not passed to the request processor.");
+    
+    BOOL attributeFound = NO;
+    for (NSObject *currentAttribute in testRequestProcessor.passedAttributes) {
+        if ( [currentAttribute isKindOfClass:[RFRequestTestAttribute class]] ) {
+            attributeFound = YES;
+        }
+    }
+    
+    XCTAssertTrue(attributeFound, @"Test attribute not passed to the request processor.");
 }
 
 @end
