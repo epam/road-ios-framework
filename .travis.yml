@@ -7,12 +7,17 @@ env:
     - PROJECT_SCHEME=ROADWebService
     - PROJECT_SCHEME=ROADSerialization
 
+before_install:
+    - brew update
+    - brew install ant
+    - brew upgrade xctool
+
 before_script:
     - sudo easy_install cpp-coveralls
     - chmod +x ./script_simian.sh
     - chmod +x ./script_general.sh
     - chmod +x ./coveralls.rb
-    - mkdir -p /Users/travis/Library/Application\ Support/iPhone\ Simulator/7.0/Library/Caches/RFCachingDirecory
+    - mkdir -p /Users/travis/Library/Application\ Support/iPhone\ Simulator/7.1/Library/Caches/RFCachingDirecory
     - export LC_ALL="en_US.UTF-8"
     - gem install cocoapods
 
@@ -25,5 +30,4 @@ after_success:
 notifications:
   email:
     - Nikita_Leonov@epam.com
-    - Valery_Demin@epam.com
     - Yuru_Taustahuzau@epam.com

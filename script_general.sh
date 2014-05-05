@@ -4,7 +4,6 @@ EXIT_STATUS=0
 
 # =================     Set environment variables     ===========
 export WORKSPACE="-workspace Framework/ROADFramework.xcworkspace"
-export PATCH_FOR_PROJECT_OR_WORKSPACE=$WORKSPACE
 
 # =================     Install cpp-coveralls    ===========
 sudo easy_install cpp-coveralls > /dev/null
@@ -15,21 +14,16 @@ pod install
 cd ..
 
 # =================     Run build, test and oclint check     ===========
-xctool $PATCH_FOR_PROJECT_OR_WORKSPACE -scheme $PROJECT_SCHEME -reporter pretty -reporter json-compilation-database:compile_commands.json build || EXIT_STATUS=$?
-xctool $WORKSPACE -scheme $PROJECT_SCHEME test -sdk iphonesimulator7.0 || EXIT_STATUS=$?
+xctool $WORKSPACE -scheme $PROJECT_SCHEME -reporter pretty -reporter json-compilation-database:compile_commands.json build || EXIT_STATUS=$?
+xctool $WORKSPACE -scheme $PROJECT_SCHEME test -sdk iphonesimulator7.1 -destination "platform=iOS Simulator,OS=7.1,name=iPhone Retina (4-inch)" || EXIT_STATUS=$?
 
 # =================     Download oclint, unzip    ===========
 
-wget https://www.dropbox.com/s/y0dqo9ni6myoevy/oclint-0.9.dev.da383ab.zip > /dev/null
-unzip oclint-0.9.dev.da383ab.zip > /dev/null
-
-# =================     Remove necessary rules from "lib/oclint/rules/" folder of oclint     ===========
-rm $('pwd')/oclint-0.9.dev.da383ab/lib/oclint/rules/libUnusedMethodParameterRule.dylib
-rm $('pwd')/oclint-0.9.dev.da383ab/lib/oclint/rules/libFeatureEnvyRule.dylib
-rm $('pwd')/oclint-0.9.dev.da383ab/lib/oclint/rules/libObjCAssignIvarOutsideAccessorsRule.dylib
+wget https://www.dropbox.com/s/gd890zrni02gkoy/oclint-0.9.dev.90b12ca.zip > /dev/null
+unzip oclint-0.9.dev.90b12ca.zip > /dev/null
 
 # =================     Setup oclint    ===========
-OCLINT_HOME=$('pwd')/oclint-0.9.dev.da383ab
+OCLINT_HOME=$('pwd')/oclint-0.9.dev.90b12ca
 PATH=$OCLINT_HOME/bin:$PATH
 
 # =================     Run oclint    ===========
