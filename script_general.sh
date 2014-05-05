@@ -27,6 +27,6 @@ OCLINT_HOME=$('pwd')/oclint-0.9.dev.90b12ca
 PATH=$OCLINT_HOME/bin:$PATH
 
 # =================     Run oclint    ===========
-oclint-json-compilation-database -- -rc=LONG_LINE=500 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 30 -max-priority-3 152 || EXIT_STATUS=$?
+oclint-json-compilation-database -e ROADGeneratedAttributes -e Pods -- -rc=LONG_LINE=500 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 30 -max-priority-3 152 || EXIT_STATUS=$?
 
 exit $EXIT_STATUS
