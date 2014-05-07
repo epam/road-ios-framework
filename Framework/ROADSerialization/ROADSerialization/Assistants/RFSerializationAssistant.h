@@ -30,10 +30,13 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
+
 #import "RFDateFormatterPooling.h"
 #import "RFSerializationCustomHandler.h"
 
+
 @class RFPropertyInfo;
+
 
 NSString *RFSerializationKeyForProperty(RFPropertyInfo *propertyInfo);
 NSString *RFSerializationCollectionItemClassNameForProperty(RFPropertyInfo *propertyInfo);

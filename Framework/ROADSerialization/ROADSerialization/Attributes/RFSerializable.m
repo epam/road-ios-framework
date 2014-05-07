@@ -33,7 +33,9 @@
 
 #import "RFSerializable.h"
 
+
 NSString * const RFSerializedObjectClassName = @"RFSerializedObjectClassName";
+
 
 @implementation RFSerializable
 

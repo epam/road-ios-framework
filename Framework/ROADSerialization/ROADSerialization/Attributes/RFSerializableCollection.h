@@ -30,7 +30,9 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
+
 #import <ROAD/ROADAttribute.h>
+
 
 /**
  Indicates if a serializable property is a weak-typed collection, such as NSArray, NSDictionary or NSSet. You can indicate with collectionClass property the class names of the elements inside the collection, allowing the annotated decoder to restore these.

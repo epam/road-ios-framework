@@ -34,6 +34,7 @@
 #import "RFSerializationTestObject.h"
 #import "RFAttributedXMLCoder.h"
 
+
 static const NSTimeInterval kDateComparisonDelta = 1;
 
 @implementation RFSerializationTestObject

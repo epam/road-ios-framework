@@ -30,7 +30,12 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
-#import <Foundation/Foundation.h>
+
+#import <ROAD/ROADAttribute.h>
+
+
+typedef id(^RFSerializationValuePreprocessor)(id value);
+
 
 /**
  * Defines custom serialization handler class. The handler class has to conform to RFJSONSerializationHandling protocol for JSON serialization.
@@ -41,9 +46,20 @@
  * Defines path to object that custom serialization handler will receive. It can be property of class, in case it was defined for class, or it can be key in dictionary, in case it was defined for property with NSDictionary type.
  */
 @property (nonatomic, strong) NSString *key;
+
 /**
  * Defines class that responsible for serialization and deserialization back part of object. Must conform RFJSONSerializationHandling.
  */
 @property (nonatomic, strong) Class handlerClass;
+
+/**
+ *  If set, this block will be executed with raw (straight after NSJSONSerialization decoding) value. The block should return value that will be used as output value for final object. Works for properties only.
+ */
+@property (nonatomic, copy) RFSerializationValuePreprocessor decodingPreprocessor;
+
+/**
+ *  If set, this block will be executed with raw (from appropriate property) value. The block should return value that will be used as part of output string. Works for properties only.
+ */
+@property (nonatomic, copy) RFSerializationValuePreprocessor encodingPreprocessor;
 
 @end

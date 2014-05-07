@@ -1,5 +1,5 @@
 //
-//  RFDisabledClassNameSerializationTestObject.m
+//  RFJSONPropertyPreprocessingClass.h
 //  ROADSerialization
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
@@ -31,19 +31,18 @@
 //  for additional information regarding copyright ownership and licensing
 
 
-#import "RFDisabledClassNameSerializationTestObject.h"
+#import "RFSerializable.h"
 
 
-@implementation RFDisabledClassNameSerializationTestObject
+RF_ATTRIBUTE(RFSerializable)
+@interface RFJSONPropertyPreprocessingClass : NSObject
 
-+ (RFDisabledClassNameSerializationTestObject *)sampleObject {
-    
-    RFDisabledClassNameSerializationTestObject *object = [[RFDisabledClassNameSerializationTestObject alloc] init];
-    
-    object.string1 = @"String one";
-    object.string2 = @"String two";
-    return object;
-    
-}
+RF_ATTRIBUTE(RFSerializationCustomHandler, decodingPreprocessor = ^(NSNumber *number) {
+                 return [NSNumber numberWithInt:[number intValue]];
+             },
+             encodingPreprocessor = ^(NSNumber *number) {
+                 return [NSNumber numberWithInt:[number intValue]];
+             })
+@property (nonatomic) NSNumber *number;
 
 @end

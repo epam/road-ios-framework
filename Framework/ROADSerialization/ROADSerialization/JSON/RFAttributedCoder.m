@@ -31,9 +31,9 @@
 //  for additional information regarding copyright ownership and licensing
 
 
-#import "RFAttributedCoder.h"
 #import <ROAD/ROADReflection.h>
 #import <ROAD/ROADCore.h>
+#import "RFAttributedCoder.h"
 
 #import "RFSerializationLog.h"
 #import "RFSerializable.h"
@@ -100,7 +100,7 @@
     }
     else {
         RFSerializationCustomHandler *customHandlerAttribute = [[rootObject class] RF_attributeForClassWithAttributeType:[RFSerializationCustomHandler class]];
-        if (customHandlerAttribute && customHandlerAttribute.key.length == 0) {
+        if (customHandlerAttribute.handlerClass && customHandlerAttribute.key.length == 0) {
             archive = RFCustomSerialization(rootObject, customHandlerAttribute);
         }
         else {
@@ -120,7 +120,7 @@
     return archive;
 }
 
-- (void)fillDictionary:(NSMutableDictionary *)archive withProperties:(NSArray *)properties rootObject:(id)rootObject  customHandlerAttribute:(RFSerializationCustomHandler *)customHandlerAttribute {
+- (void)fillDictionary:(NSMutableDictionary *)archive withProperties:(NSArray *)properties rootObject:(id)rootObject customHandlerAttribute:(RFSerializationCustomHandler *)customHandlerAttribute {
     for (RFPropertyInfo * const aDesc in properties) {
         NSString *propertyName = [aDesc propertyName];
         id value = [rootObject valueForKey:propertyName];
@@ -131,7 +131,7 @@
         }
         else {
             RFSerializationCustomHandler *propertyCustomHandlerAttribute = [aDesc attributeWithType:[RFSerializationCustomHandler class]];
-            if (propertyCustomHandlerAttribute && propertyCustomHandlerAttribute.key.length == 0) {
+            if (propertyCustomHandlerAttribute.handlerClass && propertyCustomHandlerAttribute.key.length == 0) {
                 encodedValue = RFCustomSerialization(value, propertyCustomHandlerAttribute);
             }
             else {
@@ -179,6 +179,9 @@
         encodedValue = [value description];
     }
     else {
+        if (customHandlerAttribute.encodingPreprocessor) {
+            value = customHandlerAttribute.encodingPreprocessor(value);
+        }
         encodedValue = value;
     }
     

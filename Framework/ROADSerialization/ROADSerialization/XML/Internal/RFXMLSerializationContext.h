@@ -33,6 +33,7 @@
 
 @class RFPropertyInfo;
 
+
 @interface RFXMLSerializationContext : NSObject
 
 @property (nonatomic, strong) id currentNode;

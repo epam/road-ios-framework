@@ -30,10 +30,11 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
-#import <Foundation/Foundation.h>
+
 #import "RFSerializationCustomHandler.h"
 #import "RFJSONCustomSerializationHandler.h"
 #import "RFSerializable.h"
+
 
 RF_ATTRIBUTE(RFSerializable)
 RF_ATTRIBUTE(RFSerializationCustomHandler, handlerClass = [RFJSONCustomSerializationHandler class], key = @"string1")

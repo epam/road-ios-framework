@@ -30,12 +30,15 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
+
 #import <ROAD/ROADAttribute.h>
+
 
 extern NSString * const RFSerializedObjectClassName;
 
+
 /**
- Serialization attribute. Can be used either as a class attribute to indicate all properties of a class can be serialized. Can be used as individual property attribute to indicate if the given property is to be serialized in the class. For properties, serializationKey of the attribute can be provided to indicate the serialization key for the property value. If omitted, the property's declared name will be used as key.
+ * Serialization attribute. Can be used either as a class attribute to indicate all properties of a class can be serialized. Can be used as individual property attribute to indicate if the given property is to be serialized in the class. For properties, serializationKey of the attribute can be provided to indicate the serialization key for the property value. If omitted, the property's declared name will be used as key.
  */
 @interface RFSerializable : NSObject
 
@@ -45,8 +48,8 @@ extern NSString * const RFSerializedObjectClassName;
 @property (nonatomic, strong) NSString *serializationKey;
 
 /**
- Disables the addition of the RFSerializedObjectClassName data
- to the generated content.
+ * Disables the addition of the RFSerializedObjectClassName data
+ * to the generated content.
  */
 @property (nonatomic, assign) BOOL classNameSerializationDisabled;
 
