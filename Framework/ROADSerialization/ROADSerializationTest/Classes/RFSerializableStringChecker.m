@@ -31,8 +31,8 @@
 //  for additional information regarding copyright ownership and licensing
 
 
-#import "RFSerializableStringChecker.h"
 #import <XCTest/XCTest.h>
+#import "RFSerializableStringChecker.h"
 
 
 #define CHECK_AND_THROW_ERROR(check, error) if (check) { \

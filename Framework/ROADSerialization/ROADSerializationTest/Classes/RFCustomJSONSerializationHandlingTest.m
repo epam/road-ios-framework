@@ -30,7 +30,9 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
+
 #import <XCTest/XCTest.h>
+
 #import "RFAttributedCoder.h"
 #import "RFAttributedDecoder.h"
 #import "RFJSONCustomSerializationHandler.h"
@@ -39,6 +41,7 @@
 #import "RFJSONCustomPropertyHandlerEntity.h"
 #import "RFJSONCustomPropertyKeyHandlerEntity.h"
 #import "RFSerializableStringChecker.h"
+
 
 @interface RFCustomJSONSerializationHandlingTest : XCTestCase
 

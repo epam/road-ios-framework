@@ -38,10 +38,13 @@
 #import "RFAttributedCoder.h"
 #import "RFDateTestClass.h"
 #import "RFSerializableStringChecker.h"
+#import "RFJSONPropertyPreprocessingClass.h"
+
 
 @interface RFAnnotatedCoderTest : XCTestCase
 
 @end
+
 
 @implementation RFAnnotatedCoderTest {
     RFSerializationTestObject *object;
@@ -180,6 +183,23 @@
     NSDictionary *testDictionary = [testArray lastObject];
     XCTAssertNotNil(testDictionary, @"Creating serializable array performed incorrectly");
     XCTAssertTrue([testDictionary[@"string1"] isEqualToString:@"value1"], @"Creating serializable dictionary in array performed incorrectly");
+}
+
+static const float kFloatPrecision = 0.0000001f;
+
+- (void)testPropertyCustomDecodingPreprocessor {
+    NSString * testString = @"{\"number\" : 325.567}";
+    RFJSONPropertyPreprocessingClass *testObject =  [RFAttributedDecoder decodeJSONString:testString withRootClassNamed:NSStringFromClass([RFJSONPropertyPreprocessingClass class])];
+    XCTAssertTrue([testObject.number floatValue] - 325.0f < kFloatPrecision, @"Property was not preprocessed with assigned block");
+}
+
+- (void)testPropertyCustomEncodingPreprocessor {
+    RFJSONPropertyPreprocessingClass *testObject = [[RFJSONPropertyPreprocessingClass alloc] init];
+    testObject.number = @325.567;
+    NSString *testString = [RFAttributedCoder encodeRootObject:testObject];
+    NSError *error;
+    NSDictionary *testDictionary = [NSJSONSerialization JSONObjectWithData:[testString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
+    XCTAssertTrue([testDictionary[@"number"] floatValue] - 325.0f < kFloatPrecision, @"Property was not preprocessed with assigned block");
 }
 
 @end

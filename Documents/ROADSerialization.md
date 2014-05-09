@@ -48,7 +48,15 @@ RF_ATTRIBUTE(RFSerializableDate, format = @"dd/MM/yyyy HH:mm:ss Z", encodingForm
 @property (strong, nonatomic) NSDate *birthday;
 	
 RF_ATTRIBUTE(RFSerializableCollection, collectionClass = [Car class])
-@property (strong, nonatomic) NSArray *cars;
+@property (copy, nonatomic) NSArray *cars;
+
+RF_ATTRIBUTE(RFSerializationCustomHandler, decodingPreprocessor = ^(NSString *string) {
+                                               return [NSURL URLWithString:string];
+                                           },
+                                           encodingPreprocessor = ^(NSURL *website) {
+                                               return [website absoluteString];
+                                           })
+@property (strong, nonatomic) NSURL *website;
 	
 @end
 ```

@@ -30,12 +30,13 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
+
 #import "RFSerializable.h"
+
 
 /**
  * Atttributes for serialization in XML format.
  */
-
 @interface RFXMLSerializable : RFSerializable
 
 /**

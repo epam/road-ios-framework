@@ -37,9 +37,11 @@
 #import "RFAttributedCoder.h"
 #import "RFDisabledClassNameSerializationTestObject.h"
 
+
 @interface RFDisabledClassNameSerializationTest : XCTestCase
 
 @end
+
 
 @implementation RFDisabledClassNameSerializationTest  {
     RFDisabledClassNameSerializationTestObject *_object;

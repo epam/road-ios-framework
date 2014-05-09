@@ -31,12 +31,12 @@
 //  for additional information regarding copyright ownership and licensing
 
 
-#import <Foundation/Foundation.h>
 #import "RFSerializable.h"
 #import "RFSerializableDate.h"
 #import "RFSerializableBoolean.h"
 #import "RFSerializableCollection.h"
 #import "RFDerived.h"
+
 
 RF_ATTRIBUTE(RFSerializable)
 @interface RFSerializationTestObject : NSObject
@@ -72,8 +72,6 @@ RF_ATTRIBUTE(RFSerializableDate, unixTimestamp = YES)
 @property (strong, nonatomic) NSDate *unixTimestamp;
 
 @property (strong, nonatomic) RFSerializationTestObject *child;
-
-//@property (assign, nonatomic) NSRange range;
 
 RF_ATTRIBUTE(RFSerializableCollection, collectionClass = [RFSerializationTestObject class])
 @property (strong, nonatomic) NSArray *subObjects;

@@ -1,5 +1,5 @@
 //
-//  RFDisabledClassNameSerializationTestObject.m
+//  RFJSONPropertyPreprocessingClass.m
 //  ROADSerialization
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
@@ -31,19 +31,9 @@
 //  for additional information regarding copyright ownership and licensing
 
 
-#import "RFDisabledClassNameSerializationTestObject.h"
+#import "RFJSONPropertyPreprocessingClass.h"
 
 
-@implementation RFDisabledClassNameSerializationTestObject
-
-+ (RFDisabledClassNameSerializationTestObject *)sampleObject {
-    
-    RFDisabledClassNameSerializationTestObject *object = [[RFDisabledClassNameSerializationTestObject alloc] init];
-    
-    object.string1 = @"String one";
-    object.string2 = @"String two";
-    return object;
-    
-}
+@implementation RFJSONPropertyPreprocessingClass
 
 @end

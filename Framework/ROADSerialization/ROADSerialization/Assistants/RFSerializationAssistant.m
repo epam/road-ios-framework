@@ -30,8 +30,9 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
-#import "RFSerializationAssistant.h"
+
 #import <ROAD/ROADReflection.h>
+#import "RFSerializationAssistant.h"
 
 #import "RFSerializationLog.h"
 #import "RFSerializable.h"
@@ -41,6 +42,7 @@
 #import "RFJSONSerializationHandling.h"
 #import "RFSerializableBoolean.h"
 #import "RFBooleanTranslator.h"
+
 
 NSString *RFSerializationKeyForProperty(RFPropertyInfo *propertyInfo) {
     

@@ -30,8 +30,9 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
-#import "RFAttributedDecoder.h"
+
 #import <ROAD/ROADReflection.h>
+#import "RFAttributedDecoder.h"
 
 #import "RFSerializationLog.h"
 #import "RFSerializable.h"
@@ -173,7 +174,7 @@
     }
     else {
         RFSerializationCustomHandler *propertyCustomHandlerAttribute = [property attributeWithType:[RFSerializationCustomHandler class]];
-        if (propertyCustomHandlerAttribute && propertyCustomHandlerAttribute.key.length == 0) {
+        if (propertyCustomHandlerAttribute.handlerClass && propertyCustomHandlerAttribute.key.length == 0) {
             result = RFCustomDeserialization(value, propertyCustomHandlerAttribute);
         }
         else {
@@ -204,6 +205,9 @@
     }
     else if ([aDesc attributeWithType:[RFSerializableBoolean class]]) {
         value = [RFBooleanTranslator decodeTranslatableValue:aValue forProperty:aDesc];
+    }
+    if (customHandlerAttribute.decodingPreprocessor) {
+        value = customHandlerAttribute.decodingPreprocessor(value);
     }
     return value;
 }
