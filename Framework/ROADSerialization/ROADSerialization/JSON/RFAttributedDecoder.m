@@ -268,9 +268,9 @@
     RFSerializableDate *serializableDateAttribute = [propertyInfo attributeWithType:[RFSerializableDate class]];
 
     if (serializableDateAttribute.unixTimestamp) {
-        if ([value isKindOfClass:[NSNumber class]]) {
-            NSNumber *interval = value;
-            decodedValue = [NSDate dateWithTimeIntervalSince1970:[interval intValue] / serializableDateAttribute.unixTimestampMultiplier];
+        SEL doubleValue = sel_registerName("doubleValue");
+        if ([value respondsToSelector:doubleValue]) {
+            decodedValue = [NSDate dateWithTimeIntervalSince1970:[value doubleValue] / serializableDateAttribute.unixTimestampMultiplier];
         }
     }
     else {

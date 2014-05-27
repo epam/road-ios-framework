@@ -83,7 +83,7 @@ NSString *RFSerializationEncodeDateForProperty(NSDate *object, RFPropertyInfo *p
     
     if (serializableDateAttribute.unixTimestamp) {
         NSDate *date = object;
-        result = [NSString stringWithFormat:@"%.0f", [date timeIntervalSince1970] * serializableDateAttribute.unixTimestampMultiplier];
+        result = [NSString stringWithFormat:@"%.0lf", [date timeIntervalSince1970] * serializableDateAttribute.unixTimestampMultiplier];
     }
     else {
         NSString *dateFormat = ([serializableDateAttribute.encodingFormat length] == 0) ? serializableDateAttribute.format : serializableDateAttribute.encodingFormat;
