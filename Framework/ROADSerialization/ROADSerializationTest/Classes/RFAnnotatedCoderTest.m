@@ -202,4 +202,17 @@ static const float kFloatPrecision = 0.0000001f;
     XCTAssertTrue([testDictionary[@"number"] floatValue] - 325.0f < kFloatPrecision, @"Property was not preprocessed with assigned block");
 }
 
+- (void)testSerializationOfBigUnixTimestamps {
+    NSTimeInterval timeInterval = 15000000000;
+
+    RFSerializationTestObject *testObject = [[RFSerializationTestObject alloc] init];
+    testObject.unixTimestamp = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:testObject.unixTimestamp];
+    XCTAssertEqual(components.year, 2445, @"Wrong year after encoding");
+    NSString *string = [RFAttributedCoder encodeRootObject:testObject];
+
+    RFSerializationTestObject *deserializedTestObject = (RFSerializationTestObject *)[RFAttributedDecoder decodeJSONString:string withRootClassNamed:NSStringFromClass([RFSerializationTestObject class])];
+    XCTAssertTrue(fabs([deserializedTestObject.unixTimestamp timeIntervalSince1970] - timeInterval) < 1000, @"Big time intervale was corrupted");
+}
+
 @end
