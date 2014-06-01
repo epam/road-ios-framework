@@ -1,10 +1,13 @@
 PODS:
+  - HTProgressHUD (0.1.1)
   - libObjCAttr (1.2.2)
 
 DEPENDENCIES:
+  - HTProgressHUD (~> 0.1)
   - libObjCAttr
 
 SPEC CHECKSUMS:
-  libObjCAttr: 32c76f598ef66fcc18d5da278b603dd942860b10
+  HTProgressHUD: c23251b6641a82831fa6856e726539a3ab505e42
+  libObjCAttr: 146031035daeab251a428f4c1e64f47ba8d517de
 
-COCOAPODS: 0.31.1
+COCOAPODS: 0.33.1

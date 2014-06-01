@@ -36,55 +36,57 @@
 #import "AttributeTest.h"
 #import "Functions.h"
 
+extern uint64_t dispatch_benchmark(size_t count, void (^block)(void));
 
 @implementation AttributeTest
 
 - (AttributeTestResult *)runTest {
     AttributeTestResult *result = [[AttributeTestResult alloc] init];
 
-    const uint64_t classStartTime = mach_absolute_time();
-    for (Class class in self.classes) {
-        if ([[class RF_attributesForClass] count] != self.params.numberOfClassAttributes) {
-            NSLog(@"Error retrieving attributes - %@", [class RF_attributesForClass]);
-        }
-    }
-    const uint64_t classEndTime = mach_absolute_time();
-    result.retrievingClassAttributes = ElapsedNanoseconds(classStartTime, classEndTime);
-    
-    const uint64_t propertyStartTime = mach_absolute_time();
-    for (Class class in self.classes) {
-        for (RFPropertyInfo *property in [class RF_properties]) {
-            if ([[property attributes] count] != self.params.numberOfPropertyAttributes) {
-                NSLog(@"Error retrieving attributes");
+    size_t numberOfIteration = 1000;
+    uint64_t retrievingClassAttributesTime = dispatch_benchmark(numberOfIteration, ^{
+        for (Class class in self.classes) {
+            if ([[class RF_attributesForClass] count] != self.params.numberOfClassAttributes) {
+                NSLog(@"Error retrieving attributes - %@", [class RF_attributesForClass]);
             }
         }
-    }
-    const uint64_t propertyEndTime = mach_absolute_time();
-    result.retrievingPropertyAttributes = ElapsedNanoseconds(propertyStartTime, propertyEndTime);
+    });
+    result.retrievingClassAttributes = retrievingClassAttributesTime;
     
-    const uint64_t methodStartTime = mach_absolute_time();
-    for (Class class in self.classes) {
-        for (RFMethodInfo *method in [class RF_methods]) {
-            if ([[method attributes] count] != self.params.numberOfMethodAttributes) {
-                NSLog(@"Error retrieving attributes");
+    uint64_t retrievingPropertyAttributesTime = dispatch_benchmark(numberOfIteration, ^{
+        for (Class class in self.classes) {
+            for (RFPropertyInfo *property in [class RF_properties]) {
+                if ([[property attributes] count] != self.params.numberOfPropertyAttributes) {
+                    NSLog(@"Error retrieving attributes");
+                }
             }
         }
-        [class RF_attributesForClass];
-    }
-    const uint64_t methodEndTime = mach_absolute_time();
-    result.retrievingMethodAttributes = ElapsedNanoseconds(methodStartTime, methodEndTime);
+    });
+    result.retrievingPropertyAttributes = retrievingPropertyAttributesTime;
     
-    const uint64_t ivarStartTime = mach_absolute_time();
-    for (Class class in self.classes) {
-        for (RFIvarInfo *ivar in [class RF_ivars]) {
-            if ([[ivar attributes] count] != self.params.numberOfIvarAttributes) {
-                NSLog(@"Error retrieving attributes");
+    uint64_t retrievingMethodAttributesTime = dispatch_benchmark(numberOfIteration, ^{
+        for (Class class in self.classes) {
+            for (RFMethodInfo *method in [class RF_methods]) {
+                if ([[method attributes] count] != self.params.numberOfMethodAttributes) {
+                    NSLog(@"Error retrieving attributes");
+                }
             }
+            [class RF_attributesForClass];
         }
-        [class RF_attributesForClass];
-    }
-    const uint64_t ivarEndTime = mach_absolute_time();
-    result.retrievingIvarAttributes = ElapsedNanoseconds(ivarStartTime, ivarEndTime);
+    });
+    result.retrievingMethodAttributes = retrievingMethodAttributesTime;
+    
+    uint64_t retrievingIvarAttributesTime = dispatch_benchmark(numberOfIteration, ^{
+        for (Class class in self.classes) {
+            for (RFIvarInfo *ivar in [class RF_ivars]) {
+                if ([[ivar attributes] count] != self.params.numberOfIvarAttributes) {
+                    NSLog(@"Error retrieving attributes");
+                }
+            }
+            [class RF_attributesForClass];
+        }
+    });
+    result.retrievingIvarAttributes = retrievingIvarAttributesTime;
 
     return result;
 }

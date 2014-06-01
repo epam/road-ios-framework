@@ -33,9 +33,9 @@
 
 @interface AttributeTestResult : NSObject
 
-@property (nonatomic) double retrievingClassAttributes;
-@property (nonatomic) double retrievingMethodAttributes;
-@property (nonatomic) double retrievingPropertyAttributes;
-@property (nonatomic) double retrievingIvarAttributes;
+@property (nonatomic) uint64_t retrievingClassAttributes;
+@property (nonatomic) uint64_t retrievingMethodAttributes;
+@property (nonatomic) uint64_t retrievingPropertyAttributes;
+@property (nonatomic) uint64_t retrievingIvarAttributes;
 
 @end
