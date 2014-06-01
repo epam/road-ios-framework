@@ -85,7 +85,6 @@ RF_ATTRIBUTE(RFSerializableCollection, collectionClass = [RFSerializationTestObj
 
 @property (nonatomic, copy) NSData *cdata;
 
-
 + (RFSerializationTestObject *)sampleObject;
 
 @end

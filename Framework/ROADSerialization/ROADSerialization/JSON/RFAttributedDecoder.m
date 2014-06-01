@@ -188,6 +188,9 @@
 
 - (id)decodeValue:(id const)aValue forProperty:(RFPropertyInfo * const)aDesc customHandlerAttribute:(RFSerializationCustomHandler *)customHandlerAttribute {
     id value = aValue;
+    if (customHandlerAttribute.decodingPreprocessor) {
+        value = customHandlerAttribute.decodingPreprocessor(value);
+    }
     if ([value isKindOfClass:[NSArray class]]) {
         value = [self decodeArray:value forProperty:aDesc customHandlerAttribute:customHandlerAttribute];
     }
@@ -206,9 +209,7 @@
     else if ([aDesc attributeWithType:[RFSerializableBoolean class]]) {
         value = [RFBooleanTranslator decodeTranslatableValue:aValue forProperty:aDesc];
     }
-    if (customHandlerAttribute.decodingPreprocessor) {
-        value = customHandlerAttribute.decodingPreprocessor(value);
-    }
+
     return value;
 }
 

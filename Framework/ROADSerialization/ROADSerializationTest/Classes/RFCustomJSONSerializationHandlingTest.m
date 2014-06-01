@@ -41,6 +41,7 @@
 #import "RFJSONCustomPropertyHandlerEntity.h"
 #import "RFJSONCustomPropertyKeyHandlerEntity.h"
 #import "RFSerializableStringChecker.h"
+#import "RFJSONPropertyPreprocessingClass.h"
 
 
 @interface RFCustomJSONSerializationHandlingTest : XCTestCase
@@ -120,6 +121,20 @@
     NSString *decodedObject = [RFAttributedDecoder decodeJSONString:jsonString withRootClassNamed:NSStringFromClass([RFJSONCustomPropertyKeyHandlerEntity class])];
     NSString *deserializationTestObject = [RFJSONCustomPropertyKeyHandlerEntity deserializationTestObject];
     XCTAssertTrue([deserializationTestObject isEqual:decodedObject], @"JSON custom deserialization handling for property failed! Result of decoding is undefined!");
+}
+
+- (void)testCustomDateSerialization {
+    NSString *inputString = @"{ \"customDate\" : 90000000 }";
+    RFJSONPropertyPreprocessingClass *testObject = [RFAttributedDecoder decodeJSONString:inputString withRootClassNamed:NSStringFromClass([RFJSONPropertyPreprocessingClass class])];
+    XCTAssertTrue([testObject.customDate isEqualToDate:[NSDate dateWithTimeIntervalSince1970:90000000 - 10000]], @"Interval from custom handling NSDate is not correct");
+
+    NSString *outputString = [RFAttributedCoder encodeRootObject:testObject];
+    NSError *error;
+    NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:[outputString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
+    XCTAssertNil(error, @"Attribute decoder generate not parsable json string");
+    XCTAssertTrue([dictionary isKindOfClass:[NSDictionary class]], @"JSON has wrong type");
+
+    XCTAssertEqualObjects(dictionary[@"customDate"], @90000000, @"Custom date was serialized incorrectly");
 }
 
 @end
