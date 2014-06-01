@@ -149,7 +149,12 @@
 
 - (id)encodeValue:(id)value forProperty:(RFPropertyInfo *)propertyInfo customHandlerAttribute:(RFSerializationCustomHandler *)customHandlerAttribute {
     id encodedValue = nil;
-    
+
+    // Custom preprocessing. Does not replace default handling
+    if (customHandlerAttribute.encodingPreprocessor) {
+        value = customHandlerAttribute.encodingPreprocessor(value);
+    }
+
     if ([value isKindOfClass:[NSDate class]]) {
         encodedValue = RFSerializationEncodeDateForProperty(value, propertyInfo, self);
     }
@@ -179,9 +184,6 @@
         encodedValue = [value description];
     }
     else {
-        if (customHandlerAttribute.encodingPreprocessor) {
-            value = customHandlerAttribute.encodingPreprocessor(value);
-        }
         encodedValue = value;
     }
     

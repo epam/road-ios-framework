@@ -75,11 +75,12 @@ NSArray *RFSerializationPropertiesForClass(Class class) {
 
 // NOTE: Used by json and xml serialization
 NSString *RFSerializationEncodeDateForProperty(NSDate *object, RFPropertyInfo *propertyInfo, id<RFDateFormatterPooling> sender) {
-
     NSString *result = nil;
     
     RFSerializableDate *serializableDateAttribute = [propertyInfo attributeWithType:[RFSerializableDate class]];
-    if (!serializableDateAttribute) serializableDateAttribute = [propertyInfo.hostClass RF_attributeForProperty:propertyInfo.propertyName withAttributeType:[RFSerializableDate class]];
+    if (!serializableDateAttribute) {
+        serializableDateAttribute = [propertyInfo.hostClass RF_attributeForProperty:propertyInfo.propertyName withAttributeType:[RFSerializableDate class]];
+    }
     
     if (serializableDateAttribute.unixTimestamp) {
         NSDate *date = object;

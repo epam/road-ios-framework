@@ -45,4 +45,13 @@ RF_ATTRIBUTE(RFSerializationCustomHandler, decodingPreprocessor = ^(NSNumber *nu
              })
 @property (nonatomic) NSNumber *number;
 
+RF_ATTRIBUTE(RFSerializable)
+RF_ATTRIBUTE(RFSerializationCustomHandler, decodingPreprocessor = ^(NSNumber *unixTimestamp) {
+    return [NSDate dateWithTimeIntervalSince1970:[unixTimestamp doubleValue] - 10000];
+},
+             encodingPreprocessor =  ^(NSDate *date) {
+                 return @([date timeIntervalSince1970] + 10000);
+             })
+@property (nonatomic, strong) NSDate *customDate;
+
 @end
