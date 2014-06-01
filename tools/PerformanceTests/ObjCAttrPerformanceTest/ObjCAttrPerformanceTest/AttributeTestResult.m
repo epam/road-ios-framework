@@ -36,7 +36,7 @@
 @implementation AttributeTestResult
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"Access to attributes:\nClass attributes : %lf\nMethod attributes : %lf\nIvar attributes : %lf\nProperty attributes : %lf", self.retrievingClassAttributes, self.retrievingMethodAttributes, self.retrievingIvarAttributes, self.retrievingPropertyAttributes];
+    return [NSString stringWithFormat:@"Access to attributes:\nClass attributes : %llu\nMethod attributes : %llu\nIvar attributes : %llu\nProperty attributes : %llu", self.retrievingClassAttributes, self.retrievingMethodAttributes, self.retrievingIvarAttributes, self.retrievingPropertyAttributes];
 }
 
 @end
