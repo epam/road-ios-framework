@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = 'ROADFramework'
-  s.version      = '1.3.3'
+  s.version      = '1.3.4'
   s.summary      = 'ROAD iOS Framework'
 
   s.description  = <<-DESC
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.xcconfig = { 'OTHER_LDFLAGS' => '-ObjC' }
 
-  s.source       = { :git => 'https://github.com/epam/road-ios-framework.git', :tag => '1.3.3' }
+  s.source       = { :git => 'https://github.com/epam/road-ios-framework.git', :tag => '1.3.4' }
 
   s.subspec 'ROADCore' do |core|
     core.source_files = 'Framework/ROADCore/ROADCore/**/*.{h,m}'
