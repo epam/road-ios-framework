@@ -72,7 +72,7 @@
 
 - (id)initWithClient:(RFWebServiceClient *)webServiceClient methodName:(NSString *)methodName authenticationProvider:(id<RFAuthenticating>)authenticaitonProvider {
     self = [super init];
-    
+
     if (self) {
         _webServiceClient = webServiceClient;
         _methodName = methodName;
@@ -80,7 +80,7 @@
         _successCodes = [NSMutableArray arrayWithObjects:[NSValue valueWithRange:NSMakeRange(200, 100)], nil];
         _callAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceCall class]];
     }
-    
+
     return self;
 }
 
@@ -107,9 +107,9 @@
         NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
         [_request addValue:contentType forHTTPHeaderField:@"Content-Type"];
     }
-    
+
     RFWebServiceHeader * const headerAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceHeader class]];
-    
+
     // Adding shared headers to request
     NSMutableDictionary *headerFields = [sharedHeaders mutableCopy];
     // Adding headers from attributes
@@ -139,14 +139,14 @@
     if (self.requestCancelled) {
         return;
     }
-    
+
     RFWebServiceCache *cacheAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceCache class]];
     id<RFWebServiceCachingManaging> cacheManager = [RFServiceProvider webServiceCacheManager];
     RFWebResponse *cachedResponse;
     if (!cacheAttribute.cacheDisabled) {
         cachedResponse = [cacheManager cacheWithRequest:_request];
     }
-    
+
     if (cachedResponse) {
         [self downloaderFinishedWithResult:cachedResponse.responseBodyData response:[cachedResponse unarchivedResponse] error:nil];
     }
@@ -161,40 +161,39 @@
     }
 
     _connection = [[NSURLConnection alloc] initWithRequest:_request delegate:self startImmediately:NO];
-    
+
     if (_looper == nil) {
         _looper = [[RFLooper alloc] init];
         _data = [NSMutableData data];
         [_connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
         [_connection start];
-        RFWSLogInfo(@"URL connection(%p) has started. Method: %@. URL: %@\nHeader fields: %@", _connection, _connection.currentRequest.HTTPMethod, [_connection.currentRequest.URL absoluteString], [_connection.currentRequest allHTTPHeaderFields]);
+        RFWSLogInfo(@"URL connection(%p) has started. Method: %@. URL: %@\nHeader fields: %@\nBody: %@", _connection, [_connection.currentRequest HTTPMethod], [_connection.currentRequest.URL absoluteString], [_connection.currentRequest allHTTPHeaderFields], [[NSString alloc] initWithData:[_connection.currentRequest HTTPBody] encoding:NSUTF8StringEncoding]);
         [_looper start];
     }
 }
 
 - (void)cacheAndFinishWithResult:(NSData *)result response:(NSHTTPURLResponse *)response error:(NSError *)error {
     // Check 304 status code in case we have
-    if (!error) {
-        if ([self checkCacheWithResponse:response]) {
-            result = self.data;
-            response = self.response;
-        }
-        else {
-            RFWebServiceCache *cacheAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceCache class]];
-            if (!cacheAttribute.cacheDisabled) {
-                NSDate *expirationDate;
-                if (cacheAttribute.maxAge) {
-                    expirationDate = [NSDate dateWithTimeIntervalSinceNow:cacheAttribute.maxAge];
-                }
-                // checking for the cache identifier and parsing
-                NSString *cacheIdentifier = [[RFServiceProvider webServiceCacheManager] parseCacheIdentifier:cacheAttribute.cacheIdentifier withParameters:self.values];
-
-                id<RFWebServiceCachingManaging> cacheManager = [RFServiceProvider webServiceCacheManager];
-                [cacheManager setCacheWithRequest:_request response:response responseBodyData:result expirationDate:expirationDate cacheIdentifier:cacheIdentifier];
+    if ([self checkCacheWithResponse:response]) {
+        result = self.data;
+        response = self.response;
+        error = nil;
+    }
+    else if (!error) {
+        RFWebServiceCache *cacheAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceCache class]];
+        if (!cacheAttribute.cacheDisabled) {
+            NSDate *expirationDate;
+            if (cacheAttribute.maxAge) {
+                expirationDate = [NSDate dateWithTimeIntervalSinceNow:cacheAttribute.maxAge];
             }
+            // checking for the cache identifier and parsing
+            NSString *cacheIdentifier = [[RFServiceProvider webServiceCacheManager] parseCacheIdentifier:cacheAttribute.cacheIdentifier withParameters:self.values];
+
+            id<RFWebServiceCachingManaging> cacheManager = [RFServiceProvider webServiceCacheManager];
+            [cacheManager setCacheWithRequest:_request response:response responseBodyData:result expirationDate:expirationDate cacheIdentifier:cacheIdentifier];
         }
     }
-    
+
     [self downloaderFinishedWithResult:result response:response error:error];
 }
 
@@ -202,14 +201,14 @@
     __block id resultData = result;
     __block NSError *resultError = downloaderError;
     self.response = response;
-    
+
     if (!resultError && !_callAttribute.serializationDisabled) {
         [RFWebServiceSerializationHandler deserializeData:result withSerializator:[self serializationDelegate] serializatinRoot:_callAttribute.serializationRoot toDeserializationClass:_callAttribute.prototypeClass withCompletitionBlock:^(id serializedData, NSError *error) {
             resultData = serializedData;
             resultError = error;
         }];
     }
-    
+
     // Perform callback block
     self.downloadError = resultError;
     if (!self.downloadError) {
@@ -230,7 +229,7 @@
     else {
         serializationDelegate = self.webServiceClient.serializationDelegate;
     }
-    
+
     return serializationDelegate;
 }
 
@@ -242,7 +241,7 @@
     }
     [_looper stop];
     _looper = nil;
-    
+
 }
 
 - (NSUInteger)receivedData {
@@ -255,7 +254,7 @@
 
 - (NSMutableURLRequest *)requestForUrl:(NSURL * const)anUrl withMethod:(NSString * const)method withBody:(NSData *)httpBody values:(NSDictionary *)values {
     NSData *body = httpBody;
-    
+
     if ([_callAttribute.method isEqualToString:@"POST"]) {
         if (_callAttribute.postParameter != (int)NSNotFound && !httpBody.length) {
             id bodyObject = values[[NSString stringWithFormat:@"%d", _callAttribute.postParameter]];
@@ -273,8 +272,8 @@
             }
         }
     }
-    
-    
+
+
     NSMutableURLRequest * const request = [NSMutableURLRequest requestWithURL:anUrl];
     request.HTTPMethod = method;
     request.HTTPBody = body;
@@ -321,11 +320,11 @@ NSString * const RFAttributeTemplateEscape = @"%%";
 
 - (NSData *)dataFromParameter:(id)parameter {
     NSData *data;
-    
+
     if ([parameter isKindOfClass:[NSString class]]) {
         data = [parameter dataUsingEncoding:NSUTF8StringEncoding];
     }
-    
+
     return data;
 }
 
@@ -335,7 +334,7 @@ NSString * const RFAttributeTemplateEscape = @"%%";
         self.data = [cachedResponse.responseBodyData mutableCopy];
         self.response = [cachedResponse unarchivedResponse];
     }
-    
+
     return cachedResponse != nil;
 }
 
