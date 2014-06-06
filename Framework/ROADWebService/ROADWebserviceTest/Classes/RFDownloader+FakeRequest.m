@@ -38,8 +38,6 @@
 @implementation RFDownloader (FakeRequest)
 
 - (void)fakeStart {
-    NSLog(@"Faking start of downloading at url: %@", self.request.URL);
-    
     SEL downloaderFinishSelector = sel_registerName("cacheAndFinishWithResult:response:error:");
     NSMethodSignature * downloaderFinishMethodSignature = [RFDownloader
                                                            instanceMethodSignatureForSelector:downloaderFinishSelector];
@@ -119,7 +117,8 @@
         [self fakeStart];
         return;
     }
-    
+    NSLog(@"Faking start of downloading at url: %@", self.request.URL);
+
     [downloaderFinishMethodInvocation setArgument:&resultData atIndex:2];
     [downloaderFinishMethodInvocation setArgument:&response atIndex:3];
     [downloaderFinishMethodInvocation setArgument:&error atIndex:4];
