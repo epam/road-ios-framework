@@ -49,5 +49,10 @@
  * The identifier for handling individual cache elements.
  */
 @property (strong, nonatomic) NSString *cacheIdentifier;
+/**
+ * Provides cache data even if it can not be checked because of bad response of web service or no connection to internet.
+ */
+@property (nonatomic) BOOL offlineCache;
+
 
 @end

@@ -39,6 +39,7 @@
     self = [super init];
     if (self) {
         _cacheDisabled = NO;
+        _offlineCache = NO;
     }
     return self;
 }

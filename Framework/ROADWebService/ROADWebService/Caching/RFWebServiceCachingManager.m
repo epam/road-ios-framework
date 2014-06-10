@@ -37,6 +37,7 @@
 #import "RFWebServiceLog.h"
 #import "RFWebResponse.h"
 #import "RFWebServiceCacheContext.h"
+#import "RFWebServiceCache.h"
 
 NSString *const kRFCacheTemplateEscapeString = @"%%";
 
@@ -127,7 +128,17 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
             [RFWebServiceCachingManager addCacheHeadersToRequest:request fromCachedResponse:cachedResponse];
         }
 
-        if (cachedResponse && !cachedResponse.lastModified && !cachedResponse.eTag) {
+        cachedResponse = nil;
+    }
+
+    return cachedResponse;
+}
+
+- (RFWebResponse *)cacheForResponse:(NSHTTPURLResponse *)response request:(NSURLRequest *)request cacheAttribute:(RFWebServiceCache *)cacheAttribute {
+    RFWebResponse *cachedResponse = [self fetchResponseForRequest:request];
+    
+    if (!cacheAttribute.offlineCache && [response statusCode] != 304) {
+        if (cachedResponse) {
             [_cacheContext.context deleteObject:cachedResponse];
             NSError *saveError;
             [_cacheContext.context save:&saveError];
@@ -135,18 +146,7 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
                 RFWSLogError(@"Clean of cache was failed with error : %@", saveError);
             }
         }
-
         cachedResponse = nil;
-    }
-
-    return cachedResponse;
-}
-
-- (RFWebResponse *)cacheForResponse:(NSHTTPURLResponse *)response request:(NSURLRequest *)request {
-    RFWebResponse *cachedResponse;
-
-    if ([response statusCode] == 304) {
-        cachedResponse = [self fetchResponseForRequest:request];
     }
 
     return cachedResponse;

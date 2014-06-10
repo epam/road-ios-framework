@@ -37,6 +37,8 @@
 #import "RFDownloader+FakeRequest.h"
 #import "RFServiceProvider+WebServiceCachingManager.h"
 #import "RFDownloadFaker.h"
+#import "RFWebResponse.h"
+#import "RFWebServiceCacheContext.h"
 
 
 @interface RFWebServiceCacheTest : XCTestCase
@@ -275,6 +277,26 @@
 
     NSString *secondDate;
     [self sendRequestOnWebServiceClient:webClient selector:@selector(testCacheMaxAgeWithSuccess:failure:) result:&secondDate];
+
+    XCTAssertTrue([secondDate isEqualToString:firstDate], @"Response with maxAge attribute was not cached!");
+}
+
+- (void)testOfflineCachingAttributeInOffline {
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.cache.offline.max-age"];
+
+    NSString *firstDate;
+    [self sendRequestOnWebServiceClient:webClient selector:@selector(testCacheOfflineCacheWithSuccess:failure:) result:&firstDate];
+
+    webClient.sharedHeaders = [@{@"no-connection" : @"YES"} mutableCopy];
+
+    RFWebServiceCachingManager *cacheManager = [RFServiceProvider webServiceCacheManager];
+    RFWebResponse *cachedResponse = [[cacheManager cacheWithIdentifier:@"offlineCache"] lastObject];
+    cachedResponse.expirationDate = [NSDate dateWithTimeIntervalSinceNow:-1];
+    RFWebServiceCacheContext *context = [cacheManager valueForKey:@"_cacheContext"];
+    [context.context save:nil];
+
+    NSString *secondDate;
+    [self sendRequestOnWebServiceClient:webClient selector:@selector(testCacheOfflineCacheWithSuccess:failure:) result:&secondDate];
 
     XCTAssertTrue([secondDate isEqualToString:firstDate], @"Response with maxAge attribute was not cached!");
 }
