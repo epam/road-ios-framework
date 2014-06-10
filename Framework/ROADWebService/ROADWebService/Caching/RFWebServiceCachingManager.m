@@ -37,6 +37,7 @@
 #import "RFWebServiceLog.h"
 #import "RFWebResponse.h"
 #import "RFWebServiceCacheContext.h"
+#import "RFWebServiceCache.h"
 
 NSString *const kRFCacheTemplateEscapeString = @"%%";
 
@@ -119,30 +120,33 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
 
 - (RFWebResponse *)cacheWithRequest:(NSMutableURLRequest *)request {
     RFWebResponse *cachedResponse = [self fetchResponseForRequest:request];
-    if ([cachedResponse.expirationDate compare:[NSDate date]] == NSOrderedAscending
-        && !cachedResponse.lastModified && !cachedResponse.eTag) {
-        [_cacheContext.context deleteObject:cachedResponse];
-        NSError *saveError;
-        [_cacheContext.context save:&saveError];
-        if (saveError) {
-            RFWSLogError(@"Clean of cache was failed with error : %@", saveError);
-        }
-    }
+    if (!cachedResponse.expirationDate
+        || [cachedResponse.expirationDate compare:[NSDate date]] == NSOrderedAscending) {
 
-    // If ETag or Last-Modified then we should ask server for updates
-    if (cachedResponse.eTag || cachedResponse.lastModified) {
-        [RFWebServiceCachingManager addCacheHeadersToRequest:request fromCachedResponse:cachedResponse];
+        // If ETag or Last-Modified then we should ask server for updates
+        if (cachedResponse.eTag || cachedResponse.lastModified) {
+            [RFWebServiceCachingManager addCacheHeadersToRequest:request fromCachedResponse:cachedResponse];
+        }
+
         cachedResponse = nil;
     }
 
     return cachedResponse;
 }
 
-- (RFWebResponse *)cacheForResponse:(NSHTTPURLResponse *)response request:(NSURLRequest *)request {
-    RFWebResponse *cachedResponse;
-
-    if ([response statusCode] == 304) {
-        cachedResponse = [self fetchResponseForRequest:request];
+- (RFWebResponse *)cacheForResponse:(NSHTTPURLResponse *)response request:(NSURLRequest *)request cacheAttribute:(RFWebServiceCache *)cacheAttribute {
+    RFWebResponse *cachedResponse = [self fetchResponseForRequest:request];
+    
+    if (!cacheAttribute.offlineCache && [response statusCode] != 304) {
+        if (cachedResponse) {
+            [_cacheContext.context deleteObject:cachedResponse];
+            NSError *saveError;
+            [_cacheContext.context save:&saveError];
+            if (saveError) {
+                RFWSLogError(@"Clean of cache was failed with error : %@", saveError);
+            }
+        }
+        cachedResponse = nil;
     }
 
     return cachedResponse;

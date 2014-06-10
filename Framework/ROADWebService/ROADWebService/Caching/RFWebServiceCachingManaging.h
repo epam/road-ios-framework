@@ -33,6 +33,7 @@
 #import <Foundation/Foundation.h>
 
 @class RFWebResponse;
+@class RFWebServiceCache;
 
 @protocol RFWebServiceCachingManaging <NSObject>
 
@@ -86,7 +87,7 @@
  * @param response The response from the web service.
  * @param request The request to the web service.
  */
-- (RFWebResponse *)cacheForResponse:(NSHTTPURLResponse *)response request:(NSURLRequest *)request;
+- (RFWebResponse *)cacheForResponse:(NSHTTPURLResponse *)response request:(NSURLRequest *)request cacheAttribute:(RFWebServiceCache *)cacheAttribute;
 
 /**
  * Flushes the targeted records from the cache.

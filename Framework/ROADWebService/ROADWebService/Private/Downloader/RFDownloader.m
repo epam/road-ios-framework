@@ -61,6 +61,7 @@
 @property (strong, nonatomic) NSHTTPURLResponse *response;
 @property (assign, nonatomic) long long expectedContentLenght;
 @property (strong, nonatomic) RFWebServiceCall * callAttribute;
+@property (strong, nonatomic) RFWebServiceCache * cacheAttribute;
 @property (strong, nonatomic) NSDictionary * values;
 @property (assign, atomic, readwrite, getter = isRequestCancelled) BOOL requestCancelled;
 
@@ -148,6 +149,7 @@
     }
 
     if (cachedResponse) {
+        RFWSLogDebug(@"ROADWebService: Request to URL \'%@\' has valid cache and it will be returned.\n Cache details: %@", cachedResponse.requestURL, cachedResponse);
         [self downloaderFinishedWithResult:cachedResponse.responseBodyData response:[cachedResponse unarchivedResponse] error:nil];
     }
     else {
@@ -180,14 +182,13 @@
         error = nil;
     }
     else if (!error) {
-        RFWebServiceCache *cacheAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceCache class]];
-        if (!cacheAttribute.cacheDisabled) {
+        if (!self.cacheAttribute.cacheDisabled) {
             NSDate *expirationDate;
-            if (cacheAttribute.maxAge) {
-                expirationDate = [NSDate dateWithTimeIntervalSinceNow:cacheAttribute.maxAge];
+            if (self.cacheAttribute.maxAge) {
+                expirationDate = [NSDate dateWithTimeIntervalSinceNow:self.cacheAttribute.maxAge];
             }
             // checking for the cache identifier and parsing
-            NSString *cacheIdentifier = [[RFServiceProvider webServiceCacheManager] parseCacheIdentifier:cacheAttribute.cacheIdentifier withParameters:self.values];
+            NSString *cacheIdentifier = [[RFServiceProvider webServiceCacheManager] parseCacheIdentifier:self.cacheAttribute.cacheIdentifier withParameters:self.values];
 
             id<RFWebServiceCachingManaging> cacheManager = [RFServiceProvider webServiceCacheManager];
             [cacheManager setCacheWithRequest:_request response:response responseBodyData:result expirationDate:expirationDate cacheIdentifier:cacheIdentifier];
@@ -329,10 +330,11 @@ NSString * const RFAttributeTemplateEscape = @"%%";
 }
 
 - (BOOL)checkCacheWithResponse:(NSHTTPURLResponse *)response {
-    RFWebResponse *cachedResponse = [[RFServiceProvider webServiceCacheManager] cacheForResponse:response request:self.request];
+    RFWebResponse *cachedResponse = [[RFServiceProvider webServiceCacheManager] cacheForResponse:response request:self.request cacheAttribute:self.cacheAttribute];
     if (cachedResponse) {
         self.data = [cachedResponse.responseBodyData mutableCopy];
         self.response = [cachedResponse unarchivedResponse];
+        RFWSLogDebug(@"ROADWebService: Request to URL \'%@\' proved to have valid cache and it will be returned.\n Cache details: %@", cachedResponse.requestURL, cachedResponse);
     }
 
     return cachedResponse != nil;
@@ -354,6 +356,14 @@ NSString * const RFAttributeTemplateEscape = @"%%";
     self.downloadError = [NSError RFWS_cancelErrorWithReason:reason];
     [self stop];
     self.requestCancelled = YES;
+}
+
+- (RFWebServiceCache *)cacheAttribute {
+    if (!_cacheAttribute) {
+        _cacheAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceCache class]];
+    }
+
+    return _cacheAttribute;
 }
 
 @end
