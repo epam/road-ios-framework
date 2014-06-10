@@ -38,4 +38,8 @@
     return [NSKeyedUnarchiver unarchiveObjectWithData:self.response];
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"Request URL: %@,\nExpiration Date: %@,\nETag: %@,\nLast Modified: %@,\nCache Identifier: %@, Response Body: %@", self.requestURL, self.expirationDate, self.eTag, self.lastModified, self.cacheIdentifier, [[NSString alloc] initWithData:self.responseBodyData encoding:NSUTF8StringEncoding]];
+}
+
 @end
