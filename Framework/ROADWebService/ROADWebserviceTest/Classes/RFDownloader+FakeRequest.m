@@ -112,6 +112,15 @@
         response = [self successResponse];
         resultData = [RFDownloader generateDateBasedData];
     }
+    else if ([[[self.request URL] host] isEqualToString:@"test.cache.offline.max-age"]) {
+        if ([[self.request.allHTTPHeaderFields objectForKey:@"no-connection"] isEqualToString:@"YES"]) {
+            response = [self failureResponse];
+        }
+        else {
+            response = [self successResponse];
+            resultData = [RFDownloader generateDateBasedData];
+        }
+    }
     else {
         // Not processed URL
         [self fakeStart];

@@ -265,6 +265,20 @@
     XCTAssertTrue([remainingResponse count] == 1, @"The cached element which should have been kept have been also removed.");
 }
 
+- (void)testMaxAgeAttributeInOffline {
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.cache.offline.max-age"];
+
+    NSString *firstDate;
+    [self sendRequestOnWebServiceClient:webClient selector:@selector(testCacheMaxAgeWithSuccess:failure:) result:&firstDate];
+
+    webClient.sharedHeaders = [@{@"no-connection" : @"YES"} mutableCopy];
+
+    NSString *secondDate;
+    [self sendRequestOnWebServiceClient:webClient selector:@selector(testCacheMaxAgeWithSuccess:failure:) result:&secondDate];
+
+    XCTAssertTrue([secondDate isEqualToString:firstDate], @"Response with maxAge attribute was not cached!");
+}
+
 #pragma mark - Utility methods
 
 - (void)performRequestWithIdentifiedCacheWithServiceRoot:(NSString *)serviceRoot {
@@ -294,6 +308,28 @@
     while (!isFinished) {
         [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
     }
+}
+
+- (BOOL)sendRequestOnWebServiceClient:(RFConcreteWebServiceClient *)webClient selector:(SEL)selector result:(NSString **)result {
+    __block BOOL isFinished = NO;
+    // Strong variable to store response from web service
+    __block NSString *responseString;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    [webClient performSelector:selector withObject:^(NSData *data) {
+        responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        isFinished = YES;
+    } withObject:^(NSError *error) {
+        isFinished = YES;
+    }];
+
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:0.2]];
+    }
+
+    XCTAssertNotNil(responseString, @"Web service request with cache failed!");
+
+    *result = responseString;
 }
 
 - (BOOL)sendTwoConsequentRequestsOnWebServiceClient:(RFConcreteWebServiceClient *)webClient selector:(SEL)selector firstResult:(NSString **)firstResult secondResult:(NSString **)secondResult {

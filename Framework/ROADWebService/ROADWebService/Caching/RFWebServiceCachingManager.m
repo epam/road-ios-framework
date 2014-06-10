@@ -119,19 +119,23 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
 
 - (RFWebResponse *)cacheWithRequest:(NSMutableURLRequest *)request {
     RFWebResponse *cachedResponse = [self fetchResponseForRequest:request];
-    if ([cachedResponse.expirationDate compare:[NSDate date]] == NSOrderedAscending
-        && !cachedResponse.lastModified && !cachedResponse.eTag) {
-        [_cacheContext.context deleteObject:cachedResponse];
-        NSError *saveError;
-        [_cacheContext.context save:&saveError];
-        if (saveError) {
-            RFWSLogError(@"Clean of cache was failed with error : %@", saveError);
-        }
-    }
+    if (!cachedResponse.expirationDate
+        || [cachedResponse.expirationDate compare:[NSDate date]] == NSOrderedAscending) {
 
-    // If ETag or Last-Modified then we should ask server for updates
-    if (cachedResponse.eTag || cachedResponse.lastModified) {
-        [RFWebServiceCachingManager addCacheHeadersToRequest:request fromCachedResponse:cachedResponse];
+        // If ETag or Last-Modified then we should ask server for updates
+        if (cachedResponse.eTag || cachedResponse.lastModified) {
+            [RFWebServiceCachingManager addCacheHeadersToRequest:request fromCachedResponse:cachedResponse];
+        }
+
+        if (cachedResponse && !cachedResponse.lastModified && !cachedResponse.eTag) {
+            [_cacheContext.context deleteObject:cachedResponse];
+            NSError *saveError;
+            [_cacheContext.context save:&saveError];
+            if (saveError) {
+                RFWSLogError(@"Clean of cache was failed with error : %@", saveError);
+            }
+        }
+
         cachedResponse = nil;
     }
 
