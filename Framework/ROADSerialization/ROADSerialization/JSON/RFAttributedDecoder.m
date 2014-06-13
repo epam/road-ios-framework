@@ -78,7 +78,7 @@
 }
 
 + (id)decodeJSONData:(NSData * const)jsonData withSerializtionRoot:(NSString *)serializationRoot rootClassNamed:(NSString * const)rootClassName {
-    id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
+    id const jsonObject = [NSJSONSerialization RF_decodeJSONData:jsonData];
     id partOfJsonObject = jsonObject;
     if (serializationRoot.length) {
         partOfJsonObject  = [self jsonObjectForKeyPath:serializationRoot atJsonObject:jsonObject];
@@ -92,7 +92,7 @@
 }
 
 + (id)decodeJSONData:(NSData * const)jsonData withRootClassNamed:(NSString * const)rootClassName {
-    id const jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
+    id const jsonObject = [NSJSONSerialization RF_decodeJSONData:jsonData];
 
     return [self decodePredeserializedObject:jsonObject withRootClassName:rootClassName];
 }
