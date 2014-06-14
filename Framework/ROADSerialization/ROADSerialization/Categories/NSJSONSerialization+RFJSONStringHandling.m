@@ -32,11 +32,15 @@
 
 
 #import "NSJSONSerialization+RFJSONStringHandling.h"
+#import "RFSerializationLog.h"
 
 
 @implementation NSJSONSerialization (RFJSONStringHandling)
 
 + (id)RF_JSONObjectWithString:(NSString * const)string options:(const NSJSONReadingOptions)options error:(NSError * __autoreleasing *)error {
+    if ([string length] == 0) {
+        return nil;
+    }
     NSData * const jsonData = [string dataUsingEncoding:NSUTF8StringEncoding];
     id result = [self JSONObjectWithData:jsonData options:options error:error];
     return result;
@@ -44,6 +48,19 @@
 
 + (id)RF_JSONObjectWithString:(NSString * const)string {
     return [self RF_JSONObjectWithString:string options:NSJSONReadingAllowFragments error:nil];
+}
+
++ (id)RF_decodeJSONData:(NSData *const)jsonData {
+    if (!jsonData || [jsonData length] == 0) {
+        return nil;
+    }
+
+    NSError *error;
+    id value = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&error];
+    if (error) {
+        RFSCLogError(@"ROADSerialization: Error when trying to deserialize data.\nError details: %@\nData: %@", error, [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]);
+    }
+    return value;
 }
 
 @end

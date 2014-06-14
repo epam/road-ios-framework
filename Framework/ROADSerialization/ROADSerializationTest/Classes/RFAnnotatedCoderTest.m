@@ -215,4 +215,12 @@ static const float kFloatPrecision = 0.0000001f;
     XCTAssertTrue(fabs([deserializedTestObject.unixTimestamp timeIntervalSince1970] - timeInterval) < 1000, @"Big time intervale was corrupted");
 }
 
+- (void)testNilInDecoder {
+    id nil1 = [RFAttributedDecoder decodeJSONData:nil withRootClassNamed:@""];
+    id nil2 = [RFAttributedDecoder decodeJSONString:nil withRootClassNamed:@""];
+
+    XCTAssertNil(nil1, @"RFAttrbutedCoder returned value for nil data");
+    XCTAssertNil(nil2, @"RFAttrbutedCoder returned value for nil data");
+}
+
 @end

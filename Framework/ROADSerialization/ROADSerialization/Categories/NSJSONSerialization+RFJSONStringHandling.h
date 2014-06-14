@@ -32,22 +32,29 @@
 
 
 /**
- Convenience methods to return JSON dictionary from strings.
+ * Convenience methods to return JSON dictionary from strings.
  */
 @interface NSJSONSerialization (RFJSONStringHandling)
 
 /**
- Returns a JSON object from a JSON string with the specified options.
- @param string The JSON string.
- @param options The NSJSONReadingOptions.
- @param error The error of the parsing.
+ * Returns a JSON object from a JSON string with the specified options.
+ * @param string The JSON string.
+ * @param options The NSJSONReadingOptions.
+ * @param error The error of the parsing.
  */
 + (id)RF_JSONObjectWithString:(NSString * const)string options:(const NSJSONReadingOptions)options error:(NSError * __autoreleasing *)error;
 
 /**
- Returns a JSON object from a JSON string with default options. In case of error, it returns nil, but no error information.
- @param string The JSON string.
+ * Returns a JSON object from a JSON string with default options. In case of error, it returns nil, but no error information.
+ * @param string The JSON string.
  */
 + (id)RF_JSONObjectWithString:(NSString * const)string;
+
+/**
+ *  Safe for nil method to deserialize data. Prints error if any.
+ *  @param jsonData JSON data to deserialize.
+ *  @return Deserialized object.
+ */
++ (id)RF_decodeJSONData:(NSData *const)jsonData;
 
 @end
