@@ -278,6 +278,7 @@
     NSMutableURLRequest * const request = [NSMutableURLRequest requestWithURL:anUrl];
     request.HTTPMethod = method;
     request.HTTPBody = body;
+    request.cachePolicy = NSURLRequestReloadIgnoringCacheData;
     return request;
 }
 
