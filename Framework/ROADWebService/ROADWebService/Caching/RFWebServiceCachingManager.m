@@ -137,7 +137,7 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
 - (RFWebResponse *)cacheForResponse:(NSHTTPURLResponse *)response request:(NSURLRequest *)request cacheAttribute:(RFWebServiceCache *)cacheAttribute {
     RFWebResponse *cachedResponse = [self fetchResponseForRequest:request];
     
-    if (!cacheAttribute.offlineCache && [response statusCode] != 304) {
+    if (!(cacheAttribute.offlineCache && !response) && [response statusCode] != 304) {
         if (cachedResponse) {
             [_cacheContext.context deleteObject:cachedResponse];
             NSError *saveError;
