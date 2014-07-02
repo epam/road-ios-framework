@@ -203,6 +203,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0DDEB3A419641D6700F2461E /* RFWebServiceCachingModel_v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RFWebServiceCachingModel_v3.xcdatamodel; sourceTree = "<group>"; };
 		1176413A18E46C0500B1688B /* libUtilities.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUtilities.a; path = "../Utilities/build/Debug-iphoneos/libUtilities.a"; sourceTree = "<group>"; };
 		11FF622618BCE61700053F60 /* RFWebClientWithSharedHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFWebClientWithSharedHeader.h; sourceTree = "<group>"; };
 		11FF622718BCE61700053F60 /* RFWebClientWithSharedHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebClientWithSharedHeader.m; sourceTree = "<group>"; };
@@ -1144,10 +1145,11 @@
 		83138AF21862FFC700674184 /* RFWebServiceCachingModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				0DDEB3A419641D6700F2461E /* RFWebServiceCachingModel_v3.xcdatamodel */,
 				6338326D18AE6258005E1673 /* RFWebServiceCachingModel_cacheIdentifierAdded.xcdatamodel */,
 				83138AF31862FFC700674184 /* RFWebServiceCachingModel.xcdatamodel */,
 			);
-			currentVersion = 6338326D18AE6258005E1673 /* RFWebServiceCachingModel_cacheIdentifierAdded.xcdatamodel */;
+			currentVersion = 0DDEB3A419641D6700F2461E /* RFWebServiceCachingModel_v3.xcdatamodel */;
 			path = RFWebServiceCachingModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

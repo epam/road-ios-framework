@@ -82,31 +82,37 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
             RFWebServiceCachingManager *strongSelf = weakSelf;
             NSManagedObjectContext *managedObjectContext = strongSelf->_cacheContext.context;
 
+            RFWebResponse *rFWebResponse = [self unsafeFetchResponseForRequest:request];
+            if (!rFWebResponse) {
+                rFWebResponse = [NSEntityDescription insertNewObjectForEntityForName:kRFWebResponseEntityName inManagedObjectContext:managedObjectContext];
+                rFWebResponse.urlHash = [[NSDecimalNumber alloc] initWithUnsignedInteger:[[request.URL absoluteString] hash]];
+                rFWebResponse.requestURL = [request.URL absoluteString];
+                rFWebResponse.cacheIdentifier = cacheIdentifier;
+               
+            }
+
+            rFWebResponse.requestBodyData = request.HTTPBody;
+            rFWebResponse.response = [NSKeyedArchiver archivedDataWithRootObject:response];
+            rFWebResponse.responseBodyData = responseBodyData;
+            rFWebResponse.expirationDate = expirationDate;
+            rFWebResponse.eTag = eTag;
+            rFWebResponse.lastModified = lastModified;
+
+            
             // Remove old one if exist
             if ([cacheIdentifier length]) {
                 NSArray *responsesWithCacheId = [self unsafeFetchResponseForIdentifier:cacheIdentifier prefixed:NO];
                 for (RFWebResponse *cachedResponse in responsesWithCacheId) {
-                    [managedObjectContext deleteObject:cachedResponse];
+                    if (cachedResponse.objectID != rFWebResponse.objectID) {
+                        [managedObjectContext deleteObject:cachedResponse];
+                    }
                 }
             }
-            RFWebResponse *oldCachedResponse = [self unsafeFetchResponseForRequest:request];
-            if (oldCachedResponse) {
-                [managedObjectContext deleteObject:oldCachedResponse];
-            }
 
-            RFWebResponse *newWebResponse = [NSEntityDescription insertNewObjectForEntityForName:kRFWebResponseEntityName inManagedObjectContext:managedObjectContext];
-            newWebResponse.urlHash = [[NSDecimalNumber alloc] initWithUnsignedInteger:[[request.URL absoluteString] hash]];
-            newWebResponse.requestURL = [request.URL absoluteString];
-            newWebResponse.requestBodyData = request.HTTPBody;
-            newWebResponse.response = [NSKeyedArchiver archivedDataWithRootObject:response];
-            newWebResponse.responseBodyData = responseBodyData;
-            newWebResponse.expirationDate = expirationDate;
-            newWebResponse.eTag = eTag;
-            newWebResponse.lastModified = lastModified;
-            newWebResponse.cacheIdentifier = cacheIdentifier;
-
+            
             NSError *error;
             [managedObjectContext save:&error];
+            
             if (error) {
                 RFWSLogError(@"RFWebServiceCachingManager error: saving cached response failed with error: %@", [error localizedDescription]);
             }
