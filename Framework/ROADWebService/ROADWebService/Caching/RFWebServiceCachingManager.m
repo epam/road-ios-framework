@@ -82,21 +82,21 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
             RFWebServiceCachingManager *strongSelf = weakSelf;
             NSManagedObjectContext *managedObjectContext = strongSelf->_cacheContext.context;
 
-            RFWebResponse *rFWebResponse = [self unsafeFetchResponseForRequest:request];
-            if (!rFWebResponse) {
-                rFWebResponse = [NSEntityDescription insertNewObjectForEntityForName:kRFWebResponseEntityName inManagedObjectContext:managedObjectContext];
-                rFWebResponse.urlHash = [[NSDecimalNumber alloc] initWithUnsignedInteger:[[request.URL absoluteString] hash]];
-                rFWebResponse.requestURL = [request.URL absoluteString];
-                rFWebResponse.cacheIdentifier = cacheIdentifier;
+            RFWebResponse * webResponse = [self unsafeFetchResponseForRequest:request];
+            if (!webResponse) {
+                webResponse = [NSEntityDescription insertNewObjectForEntityForName:kRFWebResponseEntityName inManagedObjectContext:managedObjectContext];
+                webResponse.urlHash = [[NSDecimalNumber alloc] initWithUnsignedInteger:[[request.URL absoluteString] hash]];
+                webResponse.requestURL = [request.URL absoluteString];
+                webResponse.cacheIdentifier = cacheIdentifier;
                
             }
 
-            rFWebResponse.requestBodyData = request.HTTPBody;
-            rFWebResponse.response = [NSKeyedArchiver archivedDataWithRootObject:response];
-            rFWebResponse.responseBodyData = responseBodyData;
-            rFWebResponse.expirationDate = expirationDate;
-            rFWebResponse.eTag = eTag;
-            rFWebResponse.lastModified = lastModified;
+            webResponse.requestBodyData = request.HTTPBody;
+            webResponse.response = [NSKeyedArchiver archivedDataWithRootObject:response];
+            webResponse.responseBodyData = responseBodyData;
+            webResponse.expirationDate = expirationDate;
+            webResponse.eTag = eTag;
+            webResponse.lastModified = lastModified;
 
             
             // Remove old one if exist
