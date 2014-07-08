@@ -103,7 +103,7 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
             if ([cacheIdentifier length]) {
                 NSArray *responsesWithCacheId = [self unsafeFetchResponseForIdentifier:cacheIdentifier prefixed:NO];
                 for (RFWebResponse *cachedResponse in responsesWithCacheId) {
-                    if (cachedResponse.objectID != rFWebResponse.objectID) {
+                    if (cachedResponse.objectID != webResponse.objectID) {
                         [managedObjectContext deleteObject:cachedResponse];
                     }
                 }
