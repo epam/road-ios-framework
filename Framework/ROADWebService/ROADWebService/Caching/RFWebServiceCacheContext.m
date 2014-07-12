@@ -115,7 +115,7 @@ static NSString * const kRFWebServiceCachingStorageName = @"RFWebServiceCache.co
 
 - (NSManagedObjectContext *)managedObjectContext {
     if (!_managedObjectContext) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+        _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
         [_managedObjectContext setPersistentStoreCoordinator:[self persisitentStoreCoordinator]];
     }
     
