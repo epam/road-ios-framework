@@ -35,15 +35,19 @@
 #define ROADSerialization_ROADSerialization_h
 
 #import "NSJSONSerialization+RFJSONStringHandling.h"
-#import "RFSerializable.h"
-#import "RFDerived.h"
-#import "RFSerializableCollection.h"
-#import "RFSerializableDate.h"
+
 #import "RFAttributedCoder.h"
 #import "RFAttributedDecoder.h"
 #import "RFAttributedXMLCoder.h"
 #import "RFAttributedXMLDecoder.h"
+
+#import "RFSerializableBoolean.h"
+#import "RFSerializableDate.h"
+#import "RFSerializable.h"
+#import "RFDerived.h"
+#import "RFSerializableCollection.h"
 #import "RFXMLSerializable.h"
 #import "RFXMLSerializableCollection.h"
+#import "RFSerializationCustomHandler.h"
 
 #endif

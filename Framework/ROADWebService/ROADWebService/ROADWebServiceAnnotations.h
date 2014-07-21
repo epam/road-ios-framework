@@ -42,5 +42,7 @@
 #import "RFWebServiceURLBuilder.h"
 #import "RFWebServiceURLBuilderParameter.h"
 #import "RFMultipartData.h"
+#import "RFWebServiceSerializer.h"
+#import "RFWebServiceCache.h"
 
 #endif
