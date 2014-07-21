@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="v1.1.2" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="v1.1.2" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="WebResponse" representedClassName="RFWebResponse" syncable="YES">
         <attribute name="cacheIdentifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="eTag" optional="YES" attributeType="String" syncable="YES"/>
@@ -12,6 +12,6 @@
         <attribute name="urlHash" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="WebResponse" positionX="0" positionY="0" width="128" height="180"/>
+        <element name="WebResponse" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
