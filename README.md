@@ -1,4 +1,4 @@
-[![License](https://go-shields.herokuapp.com/license-BSD%203-blue.png)](http://opensource.org/licenses/BSD-3-Clause)
+[![License](https://cocoapod-badges.herokuapp.com/l/ROADFramework/badge.svg)](http://opensource.org/licenses/BSD-3-Clause)
 [![Platform](https://cocoapod-badges.herokuapp.com/p/ROADFramework/badge.png)](https://github.com/epam/road-ios-framework/)
 [![Version](https://cocoapod-badges.herokuapp.com/v/ROADFramework/badge.png)](https://github.com/epam/road-ios-framework/)
 [![Coverage Status](https://coveralls.io/repos/epam/road-ios-framework/badge.png?branch=master)](https://coveralls.io/r/epam/road-ios-framework?branch=master)
