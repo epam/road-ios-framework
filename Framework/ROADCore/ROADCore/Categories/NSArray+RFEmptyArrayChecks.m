@@ -36,16 +36,6 @@
 
 @implementation NSArray (RFEmptyArrayChecks)
 
-- (id)RF_lastElementIfNotEmpty {
-    id lastObject = nil;
-    
-    if ([self count] > 0) {
-        lastObject = [self lastObject];
-    }
-    
-    return lastObject;
-}
-
 - (id)RF_safeObjectAtIndex:(NSUInteger)index {
     id object = nil;
     
@@ -57,10 +47,9 @@
 }
 
 - (id)RF_objectWithPredicateBlock:(BOOL (^)(id evaluatedObject))evaluationBlock {
-    BOOL (^(testingBlock))(id evaludatedObject) = [evaluationBlock copy];
     
     NSArray *filteredArray = [self filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-        return testingBlock(evaluatedObject);
+        return evaluationBlock(evaluatedObject);
     }]];
     
     return [filteredArray lastObject];

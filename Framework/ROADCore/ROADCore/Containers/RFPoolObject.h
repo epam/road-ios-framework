@@ -35,7 +35,7 @@
 
 
 /**
- * Basic implementation of the RFPooledObject procotol. One can either subclass this class or implement the protocol on their own to use it with the object pool.
+ * Basic implementation of the RFObjectPooling procotol. One can either subclass this class or implement the protocol on their own to use it with the object pool.
  */
 @interface RFPoolObject : NSObject <RFObjectPooling>
 
