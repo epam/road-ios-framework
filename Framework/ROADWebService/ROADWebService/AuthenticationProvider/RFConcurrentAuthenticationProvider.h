@@ -30,7 +30,9 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
+
 #import "RFAuthenticationProvider.h"
+
 
 @interface RFConcurrentAuthenticationProvider : RFAuthenticationProvider {
   @protected
@@ -45,5 +47,10 @@
 #else
 @property (nonatomic, assign) dispatch_queue_t queue; // this is for older Xcodes with older SDKs
 #endif
+
+/**
+ * This method must be used instead of -authenticate for reloading. -authenticate method execute it synchroniously in the queue.
+ */
+- (void)concurrentAuthenticate;
 
 @end
