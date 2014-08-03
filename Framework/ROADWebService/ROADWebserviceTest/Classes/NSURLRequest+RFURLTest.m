@@ -1,5 +1,5 @@
 //
-//  RFRequestTestAttribute.m
+//  NSURLRequest+RFURLTest.m
 //  ROADWebService
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
@@ -30,8 +30,14 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
-#import "RFRequestTestAttribute.h"
 
-@implementation RFRequestTestAttribute
+#import "NSURLRequest+RFURLTest.h"
+
+
+@implementation NSURLRequest (RFURLTest)
+
+- (BOOL)isRelatedToTest:(NSString *)test {
+    return [[[self URL] absoluteString] rangeOfString:test].location != NSNotFound;
+}
 
 @end
