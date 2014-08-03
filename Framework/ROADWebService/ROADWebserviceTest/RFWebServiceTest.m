@@ -406,4 +406,24 @@
     XCTAssertTrue(attributeFound, @"Test attribute not passed to the request processor.");
 }
 
+- (void)testPutMethodToHaveBody {
+    RFConcreteWebServiceClient *client = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"https://test.body.existence/"];
+
+    __block BOOL isFinished = NO;
+    __block BOOL isSuccess = NO;
+    [client testPutBodyPresenceWithData:@"Body"
+                                success:^(id result) {
+                                    isSuccess = YES;
+                                    isFinished = YES; /* reveived data ... */
+                                } failure:^(NSError *error) {
+                                    isFinished = YES; /* reveived data ... */
+                                }];
+
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
+    }
+
+    XCTAssertTrue(isSuccess, @"Put methods did not have body.");
+}
+
 @end

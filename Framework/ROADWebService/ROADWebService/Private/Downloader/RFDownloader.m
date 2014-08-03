@@ -256,13 +256,13 @@
 - (NSMutableURLRequest *)requestForUrl:(NSURL * const)anUrl withMethod:(NSString * const)method withBody:(NSData *)httpBody values:(NSDictionary *)values {
     NSData *body = httpBody;
 
-    if ([_callAttribute.method isEqualToString:@"POST"]) {
+    if ([_callAttribute.method isEqualToString:@"POST"] || [_callAttribute.method isEqualToString:@"PUT"]) {
         if (_callAttribute.postParameter != (int)NSNotFound && !httpBody.length) {
             id bodyObject = values[[NSString stringWithFormat:@"%d", _callAttribute.postParameter]];
             body = [self dataFromParameter:bodyObject];
         }
         else {
-            if (!body.length) {
+            if ([body length] == 0) {
                 id firstParameter = values[@"0"];
                 if (firstParameter) { // Checking first parameter of web service call method
                     body = [self dataFromParameter:firstParameter];
@@ -363,7 +363,7 @@ NSString * const RFAttributeTemplateEscape = @"%%";
     if (!_cacheAttribute) {
         _cacheAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceCache class]];
     }
-
+    
     return _cacheAttribute;
 }
 

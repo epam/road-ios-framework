@@ -30,9 +30,11 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
+
 #import "RFODataAbstractEntity.h"
 #import "RFODataEntity.h"
 #import "RFODataProperty.h"
+
 
 RF_ATTRIBUTE(RFODataEntity, entityName = @"TestEntity")
 @interface RFODataTestEntity : RFODataAbstractEntity

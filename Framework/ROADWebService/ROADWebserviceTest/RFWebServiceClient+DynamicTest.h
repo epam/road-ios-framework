@@ -38,7 +38,9 @@
 #import "RFWebServiceSerializer.h"
 #import "RFRequestTestAttribute.h"
 
+
 @protocol RFWebServiceCancellable;
+
 
 @interface RFWebServiceClient (DynamicTest)
 
