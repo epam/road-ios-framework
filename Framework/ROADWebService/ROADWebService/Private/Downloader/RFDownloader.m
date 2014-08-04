@@ -314,7 +314,7 @@ NSString * const RFAttributeTemplateEscape = @"%%";
     NSMutableDictionary* result = [NSMutableDictionary new];
     [serviceHeaderAttribute.headerFields enumerateKeysAndObjectsUsingBlock:^(id key, NSString* obj, BOOL *stop) {
         NSMutableString* value = [obj mutableCopy];
-        [value RF_formatStringUsingValues:values withEscape:RFAttributeTemplateEscape];
+        [value RF_formatUsingValues:values withEscape:RFAttributeTemplateEscape];
         result[key] = [value copy];
     }];
     return result;
