@@ -229,7 +229,7 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
     if (cacheIdentifier) {
         [parsingCacheIdentifier appendString:cacheIdentifier];
     }
-    [parsingCacheIdentifier RF_formatStringUsingValues:parameterValues withEscape:kRFCacheTemplateEscapeString];
+    [parsingCacheIdentifier RF_formatUsingValues:parameterValues withEscape:kRFCacheTemplateEscapeString];
     return [NSString stringWithString:parsingCacheIdentifier];
 }
 
