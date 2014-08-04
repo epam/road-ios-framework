@@ -42,13 +42,11 @@
 
 
 @implementation RFTemplateParsingTests {
-    NSMutableString *template;
     NSString *escape;
     NSDictionary *values;
 }
 
 - (void)setUp {
-    template = [NSMutableString stringWithString:@"someExample:%%key1%% withOtherValue:%%key2%% andThirdValue:%%key3%%"];
     escape = @"%%";
     values = @{ @"key1" : @"value1", @"key2" : @"value2", @"key3" : @"value3" };
     
@@ -56,7 +54,6 @@
 }
 
 - (void)tearDown {
-    template = nil;
     escape = nil;
     values = nil;
     
@@ -64,7 +61,11 @@
 }
 
 - (void)testTemplateParsing {
-    [template RF_formatStringUsingValues:values withEscape:escape];
+    
+    NSMutableString* template = @"someExample:%%key1%% withOtherValue:%%key2%% andThirdValue:%%key3%%".mutableCopy;
+    
+    [template RF_formatUsingValues:values withEscape:escape];
+    
     NSRange rangeOfKey = [template rangeOfString:@"key"];
     NSRange rangeOfEscape = [template rangeOfString:escape];
     NSRange rangeOfValue1 = [template rangeOfString:@"value1"];
@@ -76,6 +77,25 @@
     XCTAssertTrue(rangeOfValue1.location != NSNotFound, @"Assertion: value1 is in the template.");
     XCTAssertTrue(rangeOfValue2.location != NSNotFound, @"Assertion: value2 is in the template.");
     XCTAssertTrue(rangeOfValue3.location != NSNotFound, @"Assertion: value3 is in the template.");
+}
+
+- (void)testURLParsing {
+
+    NSMutableString* urlTemplate = @"http://test.url.com/?key1=%%key1%%&key2=%%key2%%&key3=%%key3%%".mutableCopy;
+    [urlTemplate RF_formatAsURLUsingValues:values withEscape:escape];
+    XCTAssertTrue([urlTemplate isEqualToString:@"http://test.url.com/?key1=value1&key2=value2&key3=value3"]);
+    
+    urlTemplate = @"http://test.url.com/?key1=%%key1%%&key2=%%absentParam%%&key3=%%key3%%&key4=%%absentParam%%".mutableCopy;
+    [urlTemplate RF_formatAsURLUsingValues:values withEscape:escape];
+    XCTAssertTrue([urlTemplate isEqualToString:@"http://test.url.com/?key1=value1&key3=value3"]);
+    
+    urlTemplate = @"http://test.url.com/?key1=%%absentParam%%".mutableCopy;
+    [urlTemplate RF_formatAsURLUsingValues:values withEscape:escape];
+    XCTAssertTrue([urlTemplate isEqualToString:@"http://test.url.com/?"]);
+    
+    urlTemplate = @"http://test.url.com/?key1=%%absentParam%%&key2=%%absentParam%%&key3=%%absentParam%%&key4=%%absentParam%%".mutableCopy;
+    [urlTemplate RF_formatAsURLUsingValues:values withEscape:escape];
+    XCTAssertTrue([urlTemplate isEqualToString:@"http://test.url.com/?"]);
 }
 
 @end
