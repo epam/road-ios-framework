@@ -406,4 +406,28 @@
     XCTAssertTrue(attributeFound, @"Test attribute not passed to the request processor.");
 }
 
+- (void)testSyncCallParameter {
+    __block BOOL isSuccess = NO;
+    __block BOOL isFinished = NO;
+    __block id requestResult = nil;
+
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.sync.call"];
+    [webClient testSyncCallWithSuccess:^(id result) {
+        isSuccess = YES;
+        requestResult = result;
+        isFinished = YES;
+    } failure:^(NSError *error) {
+        isFinished = YES;
+    }];
+
+    BOOL blockCompletedBeforeCallCompletion = isFinished;
+
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
+    }
+
+    XCTAssertTrue(blockCompletedBeforeCallCompletion, @"Web call and blocks should be called synchronously and should complete before we get to this point.");
+    XCTAssertTrue(isSuccess, @"Sync Web call should succeed");
+}
+
 @end
