@@ -162,15 +162,28 @@
         return;
     }
 
-    _connection = [[NSURLConnection alloc] initWithRequest:_request delegate:self startImmediately:NO];
-
     if (_looper == nil) {
         _looper = [[RFLooper alloc] init];
         _data = [NSMutableData data];
-        [_connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-        [_connection start];
-        RFWSLogInfo(@"URL connection(%p) has started. Method: %@. URL: %@\nHeader fields: %@\nBody: %@", _connection, [_connection.currentRequest HTTPMethod], [_connection.currentRequest.URL absoluteString], [_connection.currentRequest allHTTPHeaderFields], [[NSString alloc] initWithData:[_connection.currentRequest HTTPBody] encoding:NSUTF8StringEncoding]);
-        [_looper start];
+
+        RFWebServiceCall *callAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceCall class]];
+        if (!callAttribute.syncCall) {
+            _connection = [[NSURLConnection alloc] initWithRequest:_request delegate:self startImmediately:NO];
+            [_connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+            [_connection start];
+            RFWSLogInfo(@"URL connection(%p) has started. Method: %@. URL: %@\nHeader fields: %@\nBody: %@", _connection, [_connection.currentRequest HTTPMethod], [_connection.currentRequest.URL absoluteString], [_connection.currentRequest allHTTPHeaderFields], [[NSString alloc] initWithData:[_connection.currentRequest HTTPBody] encoding:NSUTF8StringEncoding]);
+            [_looper start];
+        }
+        else {
+            NSError *error;
+            NSHTTPURLResponse *response;
+            [NSURLConnection sendSynchronousRequest:_request
+                                  returningResponse:&response
+                                              error:&error];
+            _downloadError = error;
+            _response = response;
+            [self stop];
+        }
     }
 }
 

@@ -114,5 +114,8 @@ RF_ATTRIBUTE(RFWebServiceURLBuilder, allowedCharset = [NSCharacterSet uppercaseL
 RF_ATTRIBUTE(RFWebServiceCall, relativePath = @"/syncCall", serializationDisabled = YES, syncCall = YES)
 - (id<RFWebServiceCancellable>)testSyncCallWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
+RF_ATTRIBUTE(RFWebServiceCall, relativePath = @"/syncCallMultipartData", serializationDisabled = YES, method = @"POST", syncCall = YES)
+RF_ATTRIBUTE(RFMultipartData, boundary = @"sdfsfsf")
+- (id<RFWebServiceCancellable>)testSyncCallMultipartDataWithAttachment:(RFFormData *)attachment success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
 @end

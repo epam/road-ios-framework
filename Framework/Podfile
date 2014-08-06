@@ -4,9 +4,22 @@ workspace 'ROADFramework'
 
 xcodeproj 'ROADCore/ROADCore.xcodeproj'
 
+link_with 'ROADCore', 'ROADWebService'
+
 target :ROADCore do
     pod 'libObjCAttr'
     xcodeproj 'ROADCore/ROADCore.xcodeproj'
+end
+
+target :ROADWebServiceTest do
+    xcodeproj 'ROADWebService/ROADWebService.xcodeproj'
+	pod 'Kiwi'
+	pod 'Nocilla', :podspec => 'https://raw.github.com/luisobo/Nocilla/master/Nocilla.podspec'
+end
+
+target :ROADWebServiceIntegrationTest do
+    xcodeproj 'ROADWebService/ROADWebService.xcodeproj'
+	pod 'Kiwi'
 end
 
 post_install do |installer|
