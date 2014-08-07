@@ -13,13 +13,7 @@ end
 
 target :ROADWebServiceTest do
     xcodeproj 'ROADWebService/ROADWebService.xcodeproj'
-	pod 'Kiwi'
 	pod 'Nocilla', :podspec => 'https://raw.github.com/luisobo/Nocilla/master/Nocilla.podspec'
-end
-
-target :ROADWebServiceIntegrationTest do
-    xcodeproj 'ROADWebService/ROADWebService.xcodeproj'
-	pod 'Kiwi'
 end
 
 post_install do |installer|
