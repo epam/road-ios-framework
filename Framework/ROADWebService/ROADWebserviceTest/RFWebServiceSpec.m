@@ -90,7 +90,7 @@ describe(@"Web Service", ^{
         });
 
         context(@"init with Service Root", ^{
-            __block NSString *yahooServer = @"http://yahoo.com";
+            static NSString *yahooServer = @"http://yahoo.com";
 
             beforeAll(^{
                 webServiceClientWithRoot = [[RFWebServiceClientWithRoot alloc] initWithServiceRoot:yahooServer];
@@ -111,7 +111,7 @@ describe(@"Web Service", ^{
     });
 
     context(@"Concrete Web Service Client", ^{
-        __block NSString *mockWebServiceUrl = @"http://www.mock.com/webService";
+        static NSString *mockWebServiceUrl = @"http://www.mock.com/webService";
         __block RFConcreteWebServiceClient *webServiceClient;
 
         __block id responseResult;
@@ -136,7 +136,7 @@ describe(@"Web Service", ^{
             __block BOOL success;
 
             context(@"testSyncCall", ^{
-                __block void(^runSyncCall)(void) = ^{
+                void(^runSyncCall)(void) = ^{
                     __block BOOL isFinished = NO;
                     blockFinishedFirst = NO;
                     success = NO;
@@ -172,7 +172,7 @@ describe(@"Web Service", ^{
             });
             
             context(@"testSyncCallMultipartData", ^{
-                __block void(^runSyncCall)(void) = ^{
+                void(^runSyncCall)(void) = ^{
                     __block BOOL isFinished = NO;
                     blockFinishedFirst = NO;
                     success = NO;

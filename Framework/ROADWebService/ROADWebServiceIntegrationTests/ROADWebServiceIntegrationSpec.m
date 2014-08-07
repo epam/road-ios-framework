@@ -68,21 +68,22 @@ describe(@"Web Service Integration", ^{
     context(@"Authentication Web Service", ^{
         __block RFWebServiceClient *dynamicWebServiceClient;
 
-        __block NSString *testServiceHost = @"httpbin.org";
-        __block NSString *testUser = @"user";
-        __block NSString *testPass = @"passwd";
+        NSString *testServiceHost = @"httpbin.org";
+        NSString *testUser = @"user";
+        NSString *testPass = @"passwd";
+
         __block NSString *testService;
         __block RFAuthenticationProvider *testAuthenticationProvider;
 
-        __block NSString *(^testServiceRoot)(NSString*) =
+        NSString *(^testServiceRoot)(NSString*) =
         ^(NSString *protocol){
-            NSString *serviceRoot = [NSString stringWithFormat:@"%@://%@",
+            NSString *serviceRoot = [NSString stringWithFormat:@"%@://%@/",
                                     protocol,
                                     testServiceHost];
             return serviceRoot;
         };
 
-        __block NSString *(^testRequestPath)(void) =
+        NSString *(^testRequestPath)(void) =
         ^(void){
             NSString *requestPath = [NSString stringWithFormat:@"%@/%@/%@",
                                     testService,
@@ -91,7 +92,7 @@ describe(@"Web Service Integration", ^{
             return requestPath;
         };
 
-        __block void(^runAuthenticationRequest)(void) =
+        void(^runAuthenticationRequest)(void) =
         ^(void){
             __block BOOL isFinished = NO;
 

@@ -110,6 +110,8 @@
 		8D94224D17E2A4C6005F0AE3 /* RFODataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 837B002617B3B9A300D77A5D /* RFODataTest.m */; };
 		A039E15030874F7D8FE3FDFC /* ROADGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CBEB5A1A6F4FDB834BE502 /* ROADGeneratedAttribute.m */; };
 		A4D95E718D3D425FBE657F3B /* ROADGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C805DB8152B4AF78B0E5940 /* ROADGeneratedAttribute.m */; };
+		C4A032A619938D3F00211886 /* RFConcreteWebServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 835D30FC184DFE0E00EF2310 /* RFConcreteWebServiceClient.m */; };
+		C4A032A719938D3F00211886 /* RFWebServiceClient+DynamicTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5D20417D4CDDB0030D8CD /* RFWebServiceClient+DynamicTest.m */; };
 		C4A9AD5A1990D1820094B328 /* RFWebServiceSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A9AD591990D1820094B328 /* RFWebServiceSpec.m */; };
 		C4A9AD6C1990DF380094B328 /* ROADWebServiceIntegrationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A9AD6B1990DF380094B328 /* ROADWebServiceIntegrationSpec.m */; };
 		C4A9AD7C199122BC0094B328 /* libROADWebService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78FB204215BD336B00C2137A /* libROADWebService.a */; };
@@ -725,7 +727,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 783AF1B41650FAF800AD247E /* Build configuration list for PBXNativeTarget "ROADWebServiceTest" */;
 			buildPhases = (
-				99F795C2D8EA43A3B00645E4 /* libObjCAttr - generate attributes */,
+				5EEF96CB218045C886DC0C53 /* libObjCAttr - generate attributes */,
 				07FB017433874EEDA1BD7F11 /* Check Pods Manifest.lock */,
 				783AF19E1650FAF800AD247E /* Sources */,
 				783AF19F1650FAF800AD247E /* Frameworks */,
@@ -764,7 +766,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C4A9AD701990DF380094B328 /* Build configuration list for PBXNativeTarget "ROADWebServiceIntegrationTest" */;
 			buildPhases = (
-				46F5A2D039E94B22A0FCE20C /* libObjCAttr - generate attributes */,
+				0526CAC498924F9B81AE30FC /* libObjCAttr - generate attributes */,
 				1146507BE52B41BBA290436A /* Check Pods Manifest.lock */,
 				C4A9AD5B1990DF380094B328 /* Sources */,
 				C4A9AD5C1990DF380094B328 /* Frameworks */,
@@ -813,6 +815,20 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0526CAC498924F9B81AE30FC /* libObjCAttr - generate attributes */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "libObjCAttr - generate attributes";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
+		};
 		07FB017433874EEDA1BD7F11 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -843,20 +859,6 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		46F5A2D039E94B22A0FCE20C /* libObjCAttr - generate attributes */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "libObjCAttr - generate attributes";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
-		};
 		5A30F0B3178D55A200DFCB2A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -869,6 +871,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "echo \"Copy resource files to bundle\"\nSRC=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/include/ROAD/\"\n\n\n\nif [ ! -d ${DEST} ]; then\nmkdir ${DEST}\nfi\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"\n\n";
+		};
+		5EEF96CB218045C886DC0C53 /* libObjCAttr - generate attributes */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "libObjCAttr - generate attributes";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
 		};
 		8353CC44189F886600135D86 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -910,20 +926,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/../Pods/Pods-ROADWebServiceIntegrationTest-resources.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		99F795C2D8EA43A3B00645E4 /* libObjCAttr - generate attributes */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "libObjCAttr - generate attributes";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
 		};
 		C4A9AD80199233630094B328 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1033,6 +1035,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4A032A619938D3F00211886 /* RFConcreteWebServiceClient.m in Sources */,
+				C4A032A719938D3F00211886 /* RFWebServiceClient+DynamicTest.m in Sources */,
 				C4A9AD6C1990DF380094B328 /* ROADWebServiceIntegrationSpec.m in Sources */,
 				A039E15030874F7D8FE3FDFC /* ROADGeneratedAttribute.m in Sources */,
 			);
