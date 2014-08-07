@@ -111,4 +111,13 @@ RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
 RF_ATTRIBUTE(RFWebServiceURLBuilder, allowedCharset = [NSCharacterSet uppercaseLetterCharacterSet])
 - (id<RFWebServiceCancellable>)testURLEscapingAllowedCharsetWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
+- (id<RFWebServiceCancellable>)testDownloadingPrepareBlock:(RFWebServiceClientPrepareForSendRequestBlock)prepareBlock success:(void(^)(NSDictionary *albumsInfo))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, progressBlockParameter = 1)
+- (id<RFWebServiceCancellable>)testDownloadingProgressBlock:(RFWebServiceClientDownloadProgressBlock)progressBlock success:(void(^)(NSDictionary *albumsInfo))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, progressBlockParameter = 1)
+- (id<RFWebServiceCancellable>)testDownloadingPrepareAndProgressBlock:(RFWebServiceClientPrepareForSendRequestBlock)prepareBlock progress:(RFWebServiceClientDownloadProgressBlock)progressBlock success:(void(^)(NSDictionary *albumsInfo))successBlock failure:(void(^)(NSError *error))failureBlock;
+
 @end

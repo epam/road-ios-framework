@@ -54,8 +54,10 @@
     NSURLConnection * _connection;
     RFLooper * _looper;
     NSMutableArray * _successCodes;
+    RFWebServiceClientDownloadProgressBlock _progressBlock;
 }
 
+@property (assign, nonatomic) float downloadProgress;
 @property (strong, nonatomic) NSError *downloadError;
 @property (strong, nonatomic) NSMutableData *data;
 @property (strong, nonatomic) NSHTTPURLResponse *response;
@@ -66,6 +68,7 @@
 @property (assign, atomic, readwrite, getter = isRequestCancelled) BOOL requestCancelled;
 
 - (void)stop;
+- (void)updateDownloadProgress:(float)progress;
 
 @end
 
@@ -73,7 +76,7 @@
 
 - (id)initWithClient:(RFWebServiceClient *)webServiceClient methodName:(NSString *)methodName authenticationProvider:(id<RFAuthenticating>)authenticaitonProvider {
     self = [super init];
-
+    
     if (self) {
         _webServiceClient = webServiceClient;
         _methodName = methodName;
@@ -81,7 +84,7 @@
         _successCodes = [NSMutableArray arrayWithObjects:[NSValue valueWithRange:NSMakeRange(200, 100)], nil];
         _callAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceCall class]];
     }
-
+    
     return self;
 }
 
@@ -91,10 +94,10 @@
 
 - (void)configureRequestForUrl:(NSURL * const)anUrl body:(NSData * const)httpBody sharedHeaders:(NSDictionary *)sharedHeaders values:(NSDictionary *)values {
     _request = [self requestForUrl:anUrl withMethod:_callAttribute.method withBody:httpBody values:values];
-
+    
     // Saving the values for the cache identifier parsing.
     self.values = [values copy];
-
+    
     // For multipart form data we have to add specific header
     if (_multipartData) {
         NSString *boundary;
@@ -108,31 +111,35 @@
         NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
         [_request addValue:contentType forHTTPHeaderField:@"Content-Type"];
     }
-
+    
     RFWebServiceHeader * const headerAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceHeader class]];
-
+    
     // Adding shared headers to request
     NSMutableDictionary *headerFields = [sharedHeaders mutableCopy];
     // Adding headers from attributes
     [headerFields addEntriesFromDictionary:[self dynamicPropertyValuesFromAttribute:headerAttribute withPropertyValues:values]];
     [_request setAllHTTPHeaderFields:headerFields];
-
+    
     if ([self.authenticationProvider respondsToSelector:@selector(addAuthenticationDataToRequest:)]) {
         [self.authenticationProvider addAuthenticationDataToRequest:_request];
     }
-
+    
     if (_callAttribute.overrideGlobalSuccessCodes
         && _callAttribute.successCodes) {
         [self.successCodes removeAllObjects];
         [self.successCodes addObjectsFromArray:_callAttribute.successCodes];
     } else {
         RFWebServiceClientStatusCodes* wsca = [[self.webServiceClient class] RF_attributeForClassWithAttributeType:[RFWebServiceClientStatusCodes class]];
-
+        
         if ([wsca.successCodes count] > 0) {
             [self.successCodes removeAllObjects];
             [self.successCodes addObjectsFromArray:wsca.successCodes];
         }
         [self.successCodes addObjectsFromArray:_callAttribute.successCodes];
+    }
+    
+    if (_callAttribute.progressBlockParameter) {
+        //        _progressBlock = self.values
     }
 }
 
@@ -140,14 +147,14 @@
     if (self.requestCancelled) {
         return;
     }
-
+    
     RFWebServiceCache *cacheAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceCache class]];
     id<RFWebServiceCachingManaging> cacheManager = [RFServiceProvider webServiceCacheManager];
     RFWebResponse *cachedResponse;
     if (!cacheAttribute.cacheDisabled) {
         cachedResponse = [cacheManager cacheWithRequest:_request];
     }
-
+    
     if (cachedResponse) {
         RFWSLogDebug(@"ROADWebService: Request to URL \'%@\' has valid cache and it will be returned.\n Cache details: %@", cachedResponse.requestURL, cachedResponse);
         [self downloaderFinishedWithResult:cachedResponse.responseBodyData response:[cachedResponse unarchivedResponse] error:nil];
@@ -161,9 +168,9 @@
     if (self.requestCancelled) {
         return;
     }
-
+    self.downloadProgress = 0.0;
     _connection = [[NSURLConnection alloc] initWithRequest:_request delegate:self startImmediately:NO];
-
+    
     if (_looper == nil) {
         _looper = [[RFLooper alloc] init];
         _data = [NSMutableData data];
@@ -189,12 +196,12 @@
             }
             // checking for the cache identifier and parsing
             NSString *cacheIdentifier = [[RFServiceProvider webServiceCacheManager] parseCacheIdentifier:self.cacheAttribute.cacheIdentifier withParameters:self.values];
-
+            
             id<RFWebServiceCachingManaging> cacheManager = [RFServiceProvider webServiceCacheManager];
             [cacheManager setCacheWithRequest:_request response:response responseBodyData:result expirationDate:expirationDate cacheIdentifier:cacheIdentifier];
         }
     }
-
+    
     [self downloaderFinishedWithResult:result response:response error:error];
 }
 
@@ -202,17 +209,18 @@
     __block id resultData = result;
     __block NSError *resultError = downloaderError;
     self.response = response;
-
+    
     if (!resultError && !_callAttribute.serializationDisabled) {
         [RFWebServiceSerializationHandler deserializeData:result withSerializator:[self serializationDelegate] serializatinRoot:_callAttribute.serializationRoot toDeserializationClass:_callAttribute.prototypeClass withCompletitionBlock:^(id serializedData, NSError *error) {
             resultData = serializedData;
             resultError = error;
         }];
     }
-
+    
     // Perform callback block
     self.downloadError = resultError;
     if (!self.downloadError) {
+        self.downloadProgress = 1.0;
         self.serializedData = resultData;
         [self performSelector:@selector(performSuccessBlockOnSpecificThread) onThread:[NSThread mainThread] withObject:nil waitUntilDone:YES];
     }
@@ -230,7 +238,7 @@
     else {
         serializationDelegate = self.webServiceClient.serializationDelegate;
     }
-
+    
     return serializationDelegate;
 }
 
@@ -242,7 +250,11 @@
     }
     [_looper stop];
     _looper = nil;
+    
+}
 
+- (void)updateDownloadProgress:(float)progress {
+    self.downloadProgress = progress;
 }
 
 - (NSUInteger)receivedData {
@@ -255,7 +267,7 @@
 
 - (NSMutableURLRequest *)requestForUrl:(NSURL * const)anUrl withMethod:(NSString * const)method withBody:(NSData *)httpBody values:(NSDictionary *)values {
     NSData *body = httpBody;
-
+    
     if ([_callAttribute.method isEqualToString:@"POST"]) {
         if (_callAttribute.postParameter != (int)NSNotFound && !httpBody.length) {
             id bodyObject = values[[NSString stringWithFormat:@"%d", _callAttribute.postParameter]];
@@ -273,8 +285,8 @@
             }
         }
     }
-
-
+    
+    
     NSMutableURLRequest * const request = [NSMutableURLRequest requestWithURL:anUrl];
     request.HTTPMethod = method;
     request.HTTPBody = body;
@@ -300,6 +312,12 @@
     }
 }
 
+-(void)performProgressBlockOnSpecificThread {
+    if (_progressBlock) {
+        _progressBlock(_downloadProgress, self.expectedContentLenght);
+    }
+}
+
 -(void)performFailureBlockOnSpecificThread {
     if (self.failureBlock) {
         self.failureBlock(_downloadError);
@@ -322,11 +340,11 @@ NSString * const RFAttributeTemplateEscape = @"%%";
 
 - (NSData *)dataFromParameter:(id)parameter {
     NSData *data;
-
+    
     if ([parameter isKindOfClass:[NSString class]]) {
         data = [parameter dataUsingEncoding:NSUTF8StringEncoding];
     }
-
+    
     return data;
 }
 
@@ -337,7 +355,7 @@ NSString * const RFAttributeTemplateEscape = @"%%";
         self.response = [cachedResponse unarchivedResponse];
         RFWSLogDebug(@"ROADWebService: Request to URL \'%@\' proved to have valid cache and it will be returned.\n Cache details: %@", cachedResponse.requestURL, cachedResponse);
     }
-
+    
     return cachedResponse != nil;
 }
 
@@ -363,8 +381,16 @@ NSString * const RFAttributeTemplateEscape = @"%%";
     if (!_cacheAttribute) {
         _cacheAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceCache class]];
     }
-
+    
     return _cacheAttribute;
+}
+
+
+#pragma mark - Properties
+
+-(void)setDownloadProgress:(float)downloadProgress {
+    _downloadProgress = downloadProgress;
+    [self performSelector:@selector(performProgressBlockOnSpecificThread) onThread:[NSThread mainThread] withObject:nil waitUntilDone:YES];
 }
 
 @end

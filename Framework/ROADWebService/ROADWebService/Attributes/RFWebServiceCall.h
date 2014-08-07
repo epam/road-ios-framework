@@ -74,4 +74,6 @@
  */
 @property (assign, nonatomic) int postParameter;
 
+@property (assign, nonatomic) int progressBlockParameter;
+
 @end

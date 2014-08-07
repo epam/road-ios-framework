@@ -59,7 +59,7 @@
  */
 - (void)forwardInvocation:(NSInvocation *)inv {
     NSUInteger n = [[inv methodSignature] numberOfArguments];
-
+    
     NSMutableArray *parameterList = [[NSMutableArray alloc] init];
     for (NSUInteger i = 0; i < n - 2; i++) {
         id __unsafe_unretained arg;
@@ -85,22 +85,23 @@
 }
 
 /**
- * Prepares and checks the parameterlist for the webservice methods 
+ * Prepares and checks the parameterlist for the webservice methods
  * and executes the instance dynamic method from the invocation
  *
  * @param parameterList NSMutableArray teh parameterlist
  * @param invocation    the incovation for the dynamic method
  */
 - (void)dynamicWebServiceCallWithArguments:(NSMutableArray *)parameterList forInvocation:(NSInvocation *)invocation {
-
+    
     NSAssert([parameterList count] >= 2, @"Method signature must have at least two parameters - completion blocks. Example: - (id)sendRequestWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;");
     // Check whether one or two last parameters are blocks
     id lastParameter = [self lastBlockObject:parameterList];
     id parameterBeforeLastParameter = [self lastBlockObject:parameterList];
-
+    
     // Two blocks : success and failure blocks
     id successBlock;
     id failureBlock;
+    
     if (parameterBeforeLastParameter) {
         successBlock = parameterBeforeLastParameter;
         failureBlock = lastParameter;
@@ -109,22 +110,30 @@
     else if (lastParameter) {
         successBlock = lastParameter;
     }
-
+    
     // if there are parameters, the last one can be the prepareToLoad block
+    
+    NSString *methodName = NSStringFromSelector(invocation.selector);
+    RFWebServiceCall *callAttribute = [[self class] RF_attributeForMethod:methodName withAttributeType:[RFWebServiceCall class]];
+    id progressBlock;
+    if (callAttribute.progressBlockParameter != (int)NSNotFound) {
+        progressBlock = [self lastObjectIfBlock:parameterList];
+    }
+    
     id prepareToLoadBlock = [self lastObjectIfBlock:parameterList];
-
     // finally pass the parameters to the dynamic method
-    id result = [self executeDynamicInstanceMethodForSelector:invocation.selector parameters:parameterList prepareToLoadBlock:prepareToLoadBlock success:successBlock failure:failureBlock];
+    id result = [self executeDynamicInstanceMethodForSelector:invocation.selector parameters:parameterList prepareToLoadBlock:prepareToLoadBlock progressBlock:progressBlock success:successBlock failure:failureBlock];
     [invocation setReturnValue:&result];
 }
 
-- (id<RFWebServiceCancellable>)executeDynamicInstanceMethodForSelector:(SEL)selector parameters:(NSArray *)parameterList prepareToLoadBlock:(RFWebServiceClientPrepareForSendRequestBlock)prepareToLoadBlock success:(id)successBlock failure:(id)failureBlock {
+- (id<RFWebServiceCancellable>)executeDynamicInstanceMethodForSelector:(SEL)selector parameters:(NSArray *)parameterList prepareToLoadBlock:(RFWebServiceClientPrepareForSendRequestBlock)prepareToLoadBlock progressBlock:(RFWebServiceClientDownloadProgressBlock)progressBlock success:(id)successBlock failure:(id)failureBlock {
     NSString *methodName = NSStringFromSelector(selector);
-
+    
     __block RFDownloader *downloader = [[RFDownloader alloc] initWithClient:self methodName:methodName authenticationProvider:self.authenticationProvider];
     downloader.successBlock = successBlock;
     downloader.failureBlock = failureBlock;
-
+    downloader.progressBlock = progressBlock;
+    
     __block NSData *bodyData;
     __block NSDictionary *parametersDictionary;
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);

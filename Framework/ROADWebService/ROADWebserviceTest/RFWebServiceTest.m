@@ -406,4 +406,63 @@
     XCTAssertTrue(attributeFound, @"Test attribute not passed to the request processor.");
 }
 
+- (void)testDownloadingPrepareAndProgressBlock {
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.simple.call"];
+    __block BOOL isPrepareFinished = NO;
+    __block BOOL isProgressFinished = NO;
+    __block int successFlag = 0;
+    const int kSuccessValue = 3;
+    [webClient testDownloadingPrepareAndProgressBlock:^(NSMutableURLRequest *serviceRequest) {
+        successFlag += 1;
+        isPrepareFinished = YES;
+    } progress:^(float progress, long long expectedContentLenght) {
+        if (progress == 1.0) {
+            successFlag += 2;
+            isProgressFinished = YES;
+        }
+    } success:nil failure:nil];
+    
+    while (!isPrepareFinished || !isProgressFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:0.2]];
+    }
+    
+    XCTAssertEqual(successFlag, kSuccessValue, @"Web service preparing and progress downloading finished with unexpected result!");
+}
+
+- (void)testDownloadingPrepareBlock {
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.simple.call"];
+    __block BOOL isPrepareFinished = NO;
+    __block int successFlag = 0;
+    const int kSuccessValue = 1;
+    [webClient testDownloadingPrepareBlock:^(NSMutableURLRequest *serviceRequest) {
+        successFlag += 1;
+        isPrepareFinished = YES;
+    } success:nil failure:nil];
+    
+    while (!isPrepareFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:0.2]];
+    }
+    
+    XCTAssertEqual(successFlag, kSuccessValue, @"Web service preparing downloading finished with unexpected result!");
+}
+
+- (void)testDownloadingProgressBlock {
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.simple.call"];
+    __block BOOL isProgressFinished = NO;
+    __block int successFlag = 0;
+    const int kSuccessValue = 2;
+    [webClient testDownloadingProgressBlock:^(float progress, long long expectedContentLenght) {
+        if (progress == 1.0) {
+            successFlag += 2;
+            isProgressFinished = YES;
+        }
+    } success:nil failure:nil];
+    
+    while (!isProgressFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:0.2]];
+    }
+    
+    XCTAssertEqual(successFlag, kSuccessValue, @"Web service progress downloading finished with unexpected result!");
+}
+
 @end

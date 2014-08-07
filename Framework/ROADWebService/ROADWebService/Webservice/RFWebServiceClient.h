@@ -37,6 +37,7 @@
 @protocol RFWebServiceRequestProcessing;
 
 typedef void (^RFWebServiceClientPrepareForSendRequestBlock)(NSMutableURLRequest* serviceRequest);
+typedef void (^RFWebServiceClientDownloadProgressBlock)(float progress, long long expectedContentLenght);
 
 /**
  The webservice client class. It can submit a request. It uses dynamic method resolution to implement various methods based on the annotations.

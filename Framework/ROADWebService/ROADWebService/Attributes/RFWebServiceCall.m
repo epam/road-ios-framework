@@ -43,6 +43,7 @@
         _method = @"GET";
         _prototypeClass = nil;
         _postParameter = (int)NSNotFound;
+        _progressBlockParameter = (int)NSNotFound;
     }
 
     return self;

@@ -31,6 +31,7 @@
 //  for additional information regarding copyright ownership and licensing
 
 #import "RFWebServiceCancellable.h"
+#import "RFWebServiceClient.h"
 
 @protocol RFAuthenticating;
 @class RFWebServiceClient;
@@ -60,6 +61,11 @@
  The response failure block.
  */
 @property (copy, nonatomic) void (^failureBlock)(id error);
+/**
+ The response progress block.
+ */
+@property (copy, nonatomic) RFWebServiceClientDownloadProgressBlock progressBlock;
+
 /**
  Indicates that the request has been cancelled.
  */
