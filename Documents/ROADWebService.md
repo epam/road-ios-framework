@@ -194,10 +194,6 @@ Implemented by `RFWebServiceErrorHandler` attribute and applied to request. Erro
 and return `NSError` object on error.
 Example of custom error handling is OData error handler - `RFODataErrorHandler`.
 
-##Direct logging to remote server
-
-Logging is implemented by `RFWebServiceLogger` and extends `RFLogger` with remote logging functionality.
-
 ##Web Service Caching
 
 By default web service client will cache data getting into account standard rules of HTTP protocol caching. Web service client react on following headers:

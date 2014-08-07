@@ -1,5 +1,5 @@
 //
-//  RFMutableObject.m
+//  RFDynamicObject.m
 //  ROADCore
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
@@ -61,8 +61,7 @@ static const char * const RFMutableObjectGetterEncoding = "@@:";
 @implementation RFDynamicObject
 
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         _dynamicPropertyValues = [[NSMutableDictionary alloc] init];
