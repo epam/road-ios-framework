@@ -45,7 +45,6 @@
 		83F8B65518E9627E0097EBC5 /* RFArrayCategoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F8B65018E9627E0097EBC5 /* RFArrayCategoryTests.m */; };
 		83F8B65618E9627E0097EBC5 /* RFDynamicObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F8B65118E9627E0097EBC5 /* RFDynamicObjectTests.m */; };
 		83F8B65718E9627E0097EBC5 /* RFPoolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F8B65218E9627E0097EBC5 /* RFPoolTests.m */; };
-		83F8B65918E9627E0097EBC5 /* RFTemplateParsingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F8B65418E9627E0097EBC5 /* RFTemplateParsingTests.m */; };
 		8D46587117E2C77600D5620F /* libROADCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B8E68E16C3CC3E0049E36B /* libROADCore.a */; };
 		E29CDC87D457453683D8775B /* libPods-ROADCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8706210A288A45BC9C292B0C /* libPods-ROADCore.a */; };
 /* End PBXBuildFile section */
@@ -111,7 +110,6 @@
 		83F8B65018E9627E0097EBC5 /* RFArrayCategoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFArrayCategoryTests.m; sourceTree = "<group>"; };
 		83F8B65118E9627E0097EBC5 /* RFDynamicObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFDynamicObjectTests.m; sourceTree = "<group>"; };
 		83F8B65218E9627E0097EBC5 /* RFPoolTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFPoolTests.m; sourceTree = "<group>"; };
-		83F8B65418E9627E0097EBC5 /* RFTemplateParsingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFTemplateParsingTests.m; sourceTree = "<group>"; };
 		8706210A288A45BC9C292B0C /* libPods-ROADCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ROADCore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D9422EC17E2C59C005F0AE3 /* ROADCoreTest-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ROADCoreTest-Prefix.pch"; sourceTree = "<group>"; };
 		E9BC2CF400F040A48EDF4B23 /* ROADGeneratedAttribute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ROADGeneratedAttribute.m; path = ROADCore/ROADGeneratedAttributes/ROADGeneratedAttribute.m; sourceTree = "<group>"; };
@@ -250,7 +248,6 @@
 				83F8B65018E9627E0097EBC5 /* RFArrayCategoryTests.m */,
 				83F8B65118E9627E0097EBC5 /* RFDynamicObjectTests.m */,
 				83F8B65218E9627E0097EBC5 /* RFPoolTests.m */,
-				83F8B65418E9627E0097EBC5 /* RFTemplateParsingTests.m */,
 				5BA3059B198FC1AB00F02E46 /* RFStringFormatterTests.m */,
 				83F8B65A18E962940097EBC5 /* Supporting files */,
 			);
@@ -419,7 +416,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				83F8B65518E9627E0097EBC5 /* RFArrayCategoryTests.m in Sources */,
-				83F8B65918E9627E0097EBC5 /* RFTemplateParsingTests.m in Sources */,
 				5BA3059C198FC1AB00F02E46 /* RFStringFormatterTests.m in Sources */,
 				83F8B65618E9627E0097EBC5 /* RFDynamicObjectTests.m in Sources */,
 				83F8B65718E9627E0097EBC5 /* RFPoolTests.m in Sources */,

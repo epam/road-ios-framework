@@ -92,29 +92,29 @@ static NSString *mockWebServiceUrl = @"http://www.mock.com/webService";
     stubRequest(@"GET", requestUrl).
     andReturn(200);
 
-    __block BOOL blockFinishedFirst = NO;
-    __block BOOL success = NO;
-    __block BOOL isFinished = NO;
+    __block BOOL blockFinishedFirst1 = NO;
+    __block BOOL success1 = NO;
+    __block BOOL isFinished1 = NO;
 
     RFConcreteWebServiceClient *webServiceClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:mockWebServiceUrl];
     [webServiceClient testSyncCallWithSuccess:^(id result) {
         responseResult = result;
-        isFinished = YES;
-        success = YES;
+        isFinished1 = YES;
+        success1 = YES;
     } failure:^(NSError *error) {
         responseError = error;
-        isFinished = YES;
+        isFinished1 = YES;
     }];
 
-    blockFinishedFirst = isFinished;
+    blockFinishedFirst1 = isFinished1;
 
-    while (!isFinished) {
+    while (!isFinished1) {
         [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:0.2]];
     }
 
-    XCTAssertTrue(blockFinishedFirst, @"Web call and blocks should be called synchronously and should complete before we get to this point.");
+    XCTAssertTrue(blockFinishedFirst1, @"Web call and blocks should be called synchronously and should complete before we get to this point.");
     XCTAssertNil(responseError, @"Sync Webb call should not return an error.");
-    XCTAssertTrue(success, @"Sync Web call should succeed.");
+    XCTAssertTrue(success1, @"Sync Web call should succeed.");
 }
 
 - (void)testSyncCallParameterWithMultipartData {
@@ -123,9 +123,9 @@ static NSString *mockWebServiceUrl = @"http://www.mock.com/webService";
     stubRequest(@"POST", requestUrl).
     andReturn(200);
 
-    __block BOOL blockFinishedFirst = NO;
-    __block BOOL success = NO;
-    __block BOOL isFinished = NO;
+    __block BOOL blockFinishedFirst2 = NO;
+    __block BOOL success2 = NO;
+    __block BOOL isFinished2 = NO;
 
     RFFormData *attachment = [[RFFormData alloc] initWithName:@"image"
                                                          data:[@"Random data 1" dataUsingEncoding:NSUTF8StringEncoding]
@@ -134,22 +134,22 @@ static NSString *mockWebServiceUrl = @"http://www.mock.com/webService";
     [webServiceClient testSyncCallMultipartDataWithAttachment:attachment
                                                       success:^(id result) {
                                                           responseResult = result;
-                                                          isFinished = YES;
-                                                          success = YES;
+                                                          isFinished2 = YES;
+                                                          success2 = YES;
                                                       } failure:^(NSError *error) {
                                                           responseError = error;
-                                                          isFinished = YES;
+                                                          isFinished2 = YES;
                                                       }];
 
-    blockFinishedFirst = isFinished;
+    blockFinishedFirst2 = isFinished2;
 
-    while (!isFinished) {
+    while (!isFinished2) {
         [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:0.2]];
     }
 
-    XCTAssertTrue(blockFinishedFirst, @"Web call and blocks should be called synchronously and should complete before we get to this point.");
+    XCTAssertTrue(blockFinishedFirst2, @"Web call and blocks should be called synchronously and should complete before we get to this point.");
     XCTAssertNil(responseError, @"Sync Webb call should not return an error.");
-    XCTAssertTrue(success, @"Sync Web call should succeed.");
+    XCTAssertTrue(success2, @"Sync Web call should succeed.");
 }
 
 @end
