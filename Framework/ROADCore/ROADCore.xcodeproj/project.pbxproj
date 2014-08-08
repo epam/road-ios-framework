@@ -31,12 +31,9 @@
 		78180F0F16C3D0BD00B4AA31 /* NSMutableString+RFStringFormatter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E70416C3CD320049E36B /* NSMutableString+RFStringFormatter.h */; };
 		78180F1116C3D0BD00B4AA31 /* RFDynamicObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D216C3CCE60049E36B /* RFDynamicObject.h */; };
 		78180F1216C3D0BD00B4AA31 /* RFObjectPool.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D416C3CCE60049E36B /* RFObjectPool.h */; };
-		78180F1316C3D0BD00B4AA31 /* RFObjectPooling.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D616C3CCE60049E36B /* RFObjectPooling.h */; };
-		78180F1416C3D0BD00B4AA31 /* RFPoolObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6D716C3CCE60049E36B /* RFPoolObject.h */; };
 		78B8E6C416C3CCC00049E36B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B8E69116C3CC3E0049E36B /* Foundation.framework */; };
 		78B8E6DC16C3CCE60049E36B /* RFDynamicObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D316C3CCE60049E36B /* RFDynamicObject.m */; };
 		78B8E6E016C3CCE60049E36B /* RFObjectPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D516C3CCE60049E36B /* RFObjectPool.m */; };
-		78B8E6E516C3CCE60049E36B /* RFPoolObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6D816C3CCE60049E36B /* RFPoolObject.m */; };
 		78B8E70716C3CD320049E36B /* NSArray+RFEmptyArrayChecks.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E6F916C3CD320049E36B /* NSArray+RFEmptyArrayChecks.m */; };
 		78B8E71716C3CD320049E36B /* NSDictionary+RFKeyedSubscript.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70116C3CD320049E36B /* NSDictionary+RFKeyedSubscript.m */; };
 		78B8E71B16C3CD320049E36B /* NSMutableDictionary+RFKeyedSubscript.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8E70316C3CD320049E36B /* NSMutableDictionary+RFKeyedSubscript.m */; };
@@ -74,8 +71,6 @@
 				78180F0F16C3D0BD00B4AA31 /* NSMutableString+RFStringFormatter.h in CopyFiles */,
 				78180F1116C3D0BD00B4AA31 /* RFDynamicObject.h in CopyFiles */,
 				78180F1216C3D0BD00B4AA31 /* RFObjectPool.h in CopyFiles */,
-				78180F1316C3D0BD00B4AA31 /* RFObjectPooling.h in CopyFiles */,
-				78180F1416C3D0BD00B4AA31 /* RFPoolObject.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,9 +89,6 @@
 		78B8E6D316C3CCE60049E36B /* RFDynamicObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RFDynamicObject.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		78B8E6D416C3CCE60049E36B /* RFObjectPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RFObjectPool.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		78B8E6D516C3CCE60049E36B /* RFObjectPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RFObjectPool.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		78B8E6D616C3CCE60049E36B /* RFObjectPooling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFObjectPooling.h; sourceTree = "<group>"; };
-		78B8E6D716C3CCE60049E36B /* RFPoolObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFPoolObject.h; sourceTree = "<group>"; };
-		78B8E6D816C3CCE60049E36B /* RFPoolObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFPoolObject.m; sourceTree = "<group>"; };
 		78B8E6F816C3CD320049E36B /* NSArray+RFEmptyArrayChecks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSArray+RFEmptyArrayChecks.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		78B8E6F916C3CD320049E36B /* NSArray+RFEmptyArrayChecks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSArray+RFEmptyArrayChecks.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		78B8E70016C3CD320049E36B /* NSDictionary+RFKeyedSubscript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSDictionary+RFKeyedSubscript.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -205,9 +197,6 @@
 				78B8E6D316C3CCE60049E36B /* RFDynamicObject.m */,
 				78B8E6D416C3CCE60049E36B /* RFObjectPool.h */,
 				78B8E6D516C3CCE60049E36B /* RFObjectPool.m */,
-				78B8E6D616C3CCE60049E36B /* RFObjectPooling.h */,
-				78B8E6D716C3CCE60049E36B /* RFPoolObject.h */,
-				78B8E6D816C3CCE60049E36B /* RFPoolObject.m */,
 			);
 			path = Containers;
 			sourceTree = "<group>";
@@ -402,7 +391,6 @@
 			files = (
 				78B8E6DC16C3CCE60049E36B /* RFDynamicObject.m in Sources */,
 				78B8E6E016C3CCE60049E36B /* RFObjectPool.m in Sources */,
-				78B8E6E516C3CCE60049E36B /* RFPoolObject.m in Sources */,
 				78B8E70716C3CD320049E36B /* NSArray+RFEmptyArrayChecks.m in Sources */,
 				78B8E71716C3CD320049E36B /* NSDictionary+RFKeyedSubscript.m in Sources */,
 				78B8E71B16C3CD320049E36B /* NSMutableDictionary+RFKeyedSubscript.m in Sources */,

@@ -33,6 +33,7 @@
 
 #import "RFAttributedXMLCoder.h"
 #import <ROAD/ROADReflection.h>
+#import <ROAD/ROADCore.h>
 
 #import "RFSerializationAssistant.h"
 #import "RFXMLSerializable.h"
@@ -41,10 +42,10 @@
 #include <libxml/parser.h>
 
 
-char *RFAttributedXMLCoderTagForClass(Class aClass);
+static char *RFAttributedXMLCoderTagForClass(Class aClass);
 
 
-char *RFAttributedXMLCoderTagForClass(Class aClass) {
+static char *RFAttributedXMLCoderTagForClass(Class aClass) {
     char *result = NULL;
     
     if ([aClass isSubclassOfClass:[NSArray class]]) result = "array";
@@ -57,15 +58,30 @@ char *RFAttributedXMLCoderTagForClass(Class aClass) {
     return result;
 }
 
+static NSString* encodeStringProperty(id serializedObject, RFPropertyInfo* propertyInfo, RFObjectPool* dateFormattersPool) {
+    if ([serializedObject isKindOfClass:[NSDate class]]) {
+        return RFSerializationEncodeDateForProperty(serializedObject, propertyInfo, dateFormattersPool);
+    }
+    
+    return RFSerializationEncodeObjectForProperty(serializedObject, propertyInfo);
+}
 
 @interface RFAttributedXMLCoder () {
     xmlDocPtr _xmlDoc;
-    NSArray * _xmlDateFormatters;
+    RFObjectPool* _dateFormattersPool;
 }
 @end
 
 
 @implementation RFAttributedXMLCoder
+
+- (instancetype)init {
+    self = [super init];
+    if ( self ) {
+        _dateFormattersPool = RFCreateDateFormatterPool();
+    }
+    return self;
+}
 
 - (NSString *)encodeRootObject:(id)rootObject {
     
@@ -99,7 +115,7 @@ char *RFAttributedXMLCoderTagForClass(Class aClass) {
     // Try to serialize as a container or object with defined properties. Assume it's simple value otherwise.
     else if (![self serializeObjectAsContainer:serializedObject toNode:result itemTag:itemTag] && ![self serializeObjectAsAttributed:serializedObject toNode:result]) {
         
-            NSString *encodedString = RFSerializationEncodeObjectForProperty(serializedObject, propertyInfo, self);
+            NSString *encodedString = encodeStringProperty(serializedObject, propertyInfo, _dateFormattersPool);
             xmlNodeSetContent(result, BAD_CAST [encodedString UTF8String]);
         }
     
@@ -146,7 +162,7 @@ char *RFAttributedXMLCoderTagForClass(Class aClass) {
             id propertyObject = [serializedObject valueForKey:property.propertyName];
             
             if (xmlAttributes.isTagAttribute) {
-                NSString *encodedString = RFSerializationEncodeObjectForProperty(propertyObject, property, self);
+                NSString *encodedString = encodeStringProperty(propertyObject, property, _dateFormattersPool);
                 
                 if ([encodedString length]) {
                     xmlNewProp(xmlNode, BAD_CAST [RFSerializationKeyForProperty(property) UTF8String], BAD_CAST [encodedString UTF8String]);

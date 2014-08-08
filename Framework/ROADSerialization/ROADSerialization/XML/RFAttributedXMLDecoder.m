@@ -34,6 +34,7 @@
 #import "RFAttributedXMLDecoder.h"
 #import <ROAD/NSRegularExpression+RFExtension.h>
 #import <ROAD/ROADReflection.h>
+#import <ROAD/ROADCore.h>
 
 #import "RFSerializationLog.h"
 #import "RFXMLSerializable.h"
@@ -54,7 +55,7 @@
     Class _rootNodeClass;
     
     NSNumberFormatter *_numberFormatter;
-    NSDateFormatter *_dateFormatter;
+    RFObjectPool* _dateFormattersPool;
     
     void (^completionHandler)(id rootObject, NSError *error);
     id _result;
@@ -65,6 +66,14 @@
 @end
 
 @implementation RFAttributedXMLDecoder
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _dateFormattersPool = RFCreateDateFormatterPool();
+    }
+    return self;
+}
 
 - (id)decodeData:(NSData *)xmlData withRootObjectClass:(Class)rootObjectClass error:(NSError * __autoreleasing *)error {
     
@@ -240,15 +249,7 @@
         NSString *dateFormat = ([dateAttribute.decodingFormat length] == 0) ? dateAttribute.format : dateAttribute.decodingFormat;
         NSAssert(dateFormat, @"RFSerializableDate must have either format or encodingFormat specified");
         
-        if (!_dateFormatter) {
-            _dateFormatter = [[NSDateFormatter alloc] init];
-        }
-        
-        if (![dateFormat isEqualToString:_dateFormatter.dateFormat]) {
-            _dateFormatter.dateFormat = dateFormat;
-        }
-        
-        result = [_dateFormatter dateFromString:string];
+        result = [_dateFormattersPool[dateFormat] dateFromString:string];
     }
     
     return result;
