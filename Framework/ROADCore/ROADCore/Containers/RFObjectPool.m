@@ -37,7 +37,7 @@
 @implementation RFObjectPool {
     NSMutableDictionary *_objectPool;
     __unsafe_unretained Class _class;
-    RFObjectPoolDefaultInitializerBlock _defaultInitializerBlock;
+    RFObjectPoolInitializerBlock _initializerBlock;
 }
 
 - (instancetype)init {
@@ -48,32 +48,32 @@
     return self;
 }
 
-- (instancetype)initWithClass:(Class)class defaultObjectInitializer:(RFObjectPoolDefaultInitializerBlock)initializer {
+- (instancetype)initWithClass:(Class)class defaultObjectInitializer:(RFObjectPoolInitializerBlock)initializerBlock {
     self = [self init];
     if (self) {
         _class = class;
-        _defaultInitializerBlock = initializer;
+        _initializerBlock = initializerBlock;
     }
     return self;
 }
 
-- (id)objectForKey:(id<NSCopying>)key {
-    if ( key == nil ) {
+- (id)objectForReuseIdentifier:(id<NSCopying>)reuseIdentifier {
+    if ( reuseIdentifier == nil ) {
         return nil;
     }
     
-    id object = _objectPool[key];
-    if ( object == nil && _class && _defaultInitializerBlock) {
+    id object = _objectPool[reuseIdentifier];
+    if ( object == nil && _class && _initializerBlock) {
         object = [[_class alloc] init];
-        object = _defaultInitializerBlock( object, key );
-        [_objectPool setObject:object forKey:key];
+        object = _initializerBlock( object, reuseIdentifier );
+        [_objectPool setObject:object forKey:reuseIdentifier];
     }
     return object;
 }
 
-- (void)setObject:(id)object forKey:(id<NSCopying>)key {
+- (void)setObject:(id)object forReuseIdentifier:(id<NSCopying>)reuseIdentifier {
     NSAssert(!((_class != Nil) ^ [object isKindOfClass:_class]), @"Only true if both predicates are the same boolean value, either true or not.");
-    _objectPool[key] = object;
+    _objectPool[reuseIdentifier] = object;
 }
 
 - (void)removeObjectForKey:(id<NSCopying>)key {
@@ -81,11 +81,11 @@
 }
 
 - (id)objectForKeyedSubscript:(id <NSCopying>)key {
-    return [self objectForKey:key];
+    return [self objectForReuseIdentifier:key];
 }
 
 - (void)setObject:(id)object forKeyedSubscript:(id <NSCopying>)key {
-    [self setObject:object forKey:key];
+    [self setObject:object forReuseIdentifier:key];
 }
 
 - (void)purge {

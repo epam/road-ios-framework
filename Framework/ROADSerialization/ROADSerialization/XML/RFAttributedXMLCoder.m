@@ -58,11 +58,10 @@ static char *RFAttributedXMLCoderTagForClass(Class aClass) {
     return result;
 }
 
-static NSString* encodeStringProperty(id serializedObject, RFPropertyInfo* propertyInfo, RFObjectPool* dateFormattersPool) {
+static NSString* RFEncodeProperty(id serializedObject, RFPropertyInfo* propertyInfo, RFObjectPool* dateFormattersPool) {
     if ([serializedObject isKindOfClass:[NSDate class]]) {
         return RFSerializationEncodeDateForProperty(serializedObject, propertyInfo, dateFormattersPool);
     }
-    
     return RFSerializationEncodeObjectForProperty(serializedObject, propertyInfo);
 }
 
@@ -115,7 +114,7 @@ static NSString* encodeStringProperty(id serializedObject, RFPropertyInfo* prope
     // Try to serialize as a container or object with defined properties. Assume it's simple value otherwise.
     else if (![self serializeObjectAsContainer:serializedObject toNode:result itemTag:itemTag] && ![self serializeObjectAsAttributed:serializedObject toNode:result]) {
         
-            NSString *encodedString = encodeStringProperty(serializedObject, propertyInfo, _dateFormattersPool);
+            NSString *encodedString = RFEncodeProperty(serializedObject, propertyInfo, _dateFormattersPool);
             xmlNodeSetContent(result, BAD_CAST [encodedString UTF8String]);
         }
     
@@ -162,7 +161,7 @@ static NSString* encodeStringProperty(id serializedObject, RFPropertyInfo* prope
             id propertyObject = [serializedObject valueForKey:property.propertyName];
             
             if (xmlAttributes.isTagAttribute) {
-                NSString *encodedString = encodeStringProperty(propertyObject, property, _dateFormattersPool);
+                NSString *encodedString = RFEncodeProperty(propertyObject, property, _dateFormattersPool);
                 
                 if ([encodedString length]) {
                     xmlNewProp(xmlNode, BAD_CAST [RFSerializationKeyForProperty(property) UTF8String], BAD_CAST [encodedString UTF8String]);
