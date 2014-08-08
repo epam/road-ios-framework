@@ -74,6 +74,9 @@
  */
 @property (assign, nonatomic) int postParameter;
 
+/**
+ * Any value enabled using downloading progress block.
+ */
 @property (assign, nonatomic) int progressBlockParameter;
 
 @end
