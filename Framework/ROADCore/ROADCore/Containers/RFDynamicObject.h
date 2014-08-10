@@ -1,5 +1,5 @@
 //
-//  RFMutableObject.h
+//  RFDynamicObject.h
 //  ROADCore
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.

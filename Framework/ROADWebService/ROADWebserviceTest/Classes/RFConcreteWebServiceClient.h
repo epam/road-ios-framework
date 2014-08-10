@@ -30,6 +30,7 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
+
 #import "RFWebServiceClient.h"
 #import "RFWebServiceErrorHandler.h"
 #import "RFWebServiceHeader.h"
@@ -41,8 +42,10 @@
 #import "RFMultipartData.h"
 #import "RFWebServiceCache.h"
 
+
 @class RFODataFetchRequest;
 @protocol RFWebServiceCancellable;
+
 
 @interface RFConcreteWebServiceClient : RFWebServiceClient
 
@@ -111,8 +114,14 @@ RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
 RF_ATTRIBUTE(RFWebServiceURLBuilder, allowedCharset = [NSCharacterSet uppercaseLetterCharacterSet])
 - (id<RFWebServiceCancellable>)testURLEscapingAllowedCharsetWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
-RF_ATTRIBUTE(RFWebServiceCall, relativePath = @"/syncCall", serializationDisabled = YES, syncCall = YES)
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, syncCall = YES)
 - (id<RFWebServiceCancellable>)testSyncCallWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, method = @"POST", syncCall = YES)
+RF_ATTRIBUTE(RFMultipartData, boundary = @"sdfsfsf")
+- (id<RFWebServiceCancellable>)testSyncCallMultipartDataWithAttachment:(RFFormData *)attachment success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, method = @"PUT")
+- (id<RFWebServiceCancellable>)testPutBodyPresenceWithData:(NSString *)string success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
 @end

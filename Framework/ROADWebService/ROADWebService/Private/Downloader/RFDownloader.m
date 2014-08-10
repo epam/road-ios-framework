@@ -162,15 +162,28 @@
         return;
     }
 
-    _connection = [[NSURLConnection alloc] initWithRequest:_request delegate:self startImmediately:NO];
-
     if (_looper == nil) {
         _looper = [[RFLooper alloc] init];
         _data = [NSMutableData data];
-        [_connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-        [_connection start];
-        RFWSLogInfo(@"URL connection(%p) has started. Method: %@. URL: %@\nHeader fields: %@\nBody: %@", _connection, [_connection.currentRequest HTTPMethod], [_connection.currentRequest.URL absoluteString], [_connection.currentRequest allHTTPHeaderFields], [[NSString alloc] initWithData:[_connection.currentRequest HTTPBody] encoding:NSUTF8StringEncoding]);
-        [_looper start];
+
+        RFWebServiceCall *callAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceCall class]];
+        if (!callAttribute.syncCall) {
+            _connection = [[NSURLConnection alloc] initWithRequest:_request delegate:self startImmediately:NO];
+            [_connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+            [_connection start];
+            RFWSLogInfo(@"URL connection(%p) has started. Method: %@. URL: %@\nHeader fields: %@\nBody: %@", _connection, [_connection.currentRequest HTTPMethod], [_connection.currentRequest.URL absoluteString], [_connection.currentRequest allHTTPHeaderFields], [[NSString alloc] initWithData:[_connection.currentRequest HTTPBody] encoding:NSUTF8StringEncoding]);
+            [_looper start];
+        }
+        else {
+            NSError *error;
+            NSHTTPURLResponse *response;
+            [NSURLConnection sendSynchronousRequest:_request
+                                  returningResponse:&response
+                                              error:&error];
+            _downloadError = error;
+            _response = response;
+            [self stop];
+        }
     }
 }
 
@@ -256,13 +269,13 @@
 - (NSMutableURLRequest *)requestForUrl:(NSURL * const)anUrl withMethod:(NSString * const)method withBody:(NSData *)httpBody values:(NSDictionary *)values {
     NSData *body = httpBody;
 
-    if ([_callAttribute.method isEqualToString:@"POST"]) {
+    if ([_callAttribute.method isEqualToString:@"POST"] || [_callAttribute.method isEqualToString:@"PUT"]) {
         if (_callAttribute.postParameter != (int)NSNotFound && !httpBody.length) {
             id bodyObject = values[[NSString stringWithFormat:@"%d", _callAttribute.postParameter]];
             body = [self dataFromParameter:bodyObject];
         }
         else {
-            if (!body.length) {
+            if ([body length] == 0) {
                 id firstParameter = values[@"0"];
                 if (firstParameter) { // Checking first parameter of web service call method
                     body = [self dataFromParameter:firstParameter];
@@ -314,7 +327,7 @@ NSString * const RFAttributeTemplateEscape = @"%%";
     NSMutableDictionary* result = [NSMutableDictionary new];
     [serviceHeaderAttribute.headerFields enumerateKeysAndObjectsUsingBlock:^(id key, NSString* obj, BOOL *stop) {
         NSMutableString* value = [obj mutableCopy];
-        [value RF_formatStringUsingValues:values withEscape:RFAttributeTemplateEscape];
+        [value RF_formatUsingValues:values withEscape:RFAttributeTemplateEscape];
         result[key] = [value copy];
     }];
     return result;
@@ -363,7 +376,7 @@ NSString * const RFAttributeTemplateEscape = @"%%";
     if (!_cacheAttribute) {
         _cacheAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceCache class]];
     }
-
+    
     return _cacheAttribute;
 }
 

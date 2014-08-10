@@ -43,7 +43,7 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>39EF97F1385B4BEC890256A2</key>
+		<key>1343A87DB20B493D9F738F67</key>
 		<dict>
 			<key>buildActionMask</key>
 			<string>2147483647</string>
@@ -70,6 +70,26 @@
 		<dict>
 			<key>fileRef</key>
 			<string>E9BC2CF400F040A48EDF4B23</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>5BA3059B198FC1AB00F02E46</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>RFStringFormatterTests.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>5BA3059C198FC1AB00F02E46</key>
+		<dict>
+			<key>fileRef</key>
+			<string>5BA3059B198FC1AB00F02E46</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -290,7 +310,7 @@
 			<string>78B8E69C16C3CC3E0049E36B</string>
 			<key>buildPhases</key>
 			<array>
-				<string>39EF97F1385B4BEC890256A2</string>
+				<string>1343A87DB20B493D9F738F67</string>
 				<string>B03FB7F7E80344F5A21B8D39</string>
 				<string>78B8E68C16C3CC3E0049E36B</string>
 				<string>78B8E68A16C3CC3E0049E36B</string>
@@ -744,7 +764,7 @@
 			<key>files</key>
 			<array>
 				<string>83F8B65518E9627E0097EBC5</string>
-				<string>83F8B65918E9627E0097EBC5</string>
+				<string>5BA3059C198FC1AB00F02E46</string>
 				<string>83F8B65618E9627E0097EBC5</string>
 				<string>83F8B65718E9627E0097EBC5</string>
 			</array>
@@ -1459,19 +1479,6 @@ oclint-json-compilation-database -v -e ROADGeneratedAttributes -e Pods -- -rc=LO
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>83F8B65418E9627E0097EBC5</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>RFTemplateParsingTests.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>83F8B65518E9627E0097EBC5</key>
 		<dict>
 			<key>fileRef</key>
@@ -1490,13 +1497,6 @@ oclint-json-compilation-database -v -e ROADGeneratedAttributes -e Pods -- -rc=LO
 		<dict>
 			<key>fileRef</key>
 			<string>83F8B65218E9627E0097EBC5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>83F8B65918E9627E0097EBC5</key>
-		<dict>
-			<key>fileRef</key>
-			<string>83F8B65418E9627E0097EBC5</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -1562,7 +1562,7 @@ oclint-json-compilation-database -v -e ROADGeneratedAttributes -e Pods -- -rc=LO
 				<string>83F8B65018E9627E0097EBC5</string>
 				<string>83F8B65118E9627E0097EBC5</string>
 				<string>83F8B65218E9627E0097EBC5</string>
-				<string>83F8B65418E9627E0097EBC5</string>
+				<string>5BA3059B198FC1AB00F02E46</string>
 				<string>83F8B65A18E962940097EBC5</string>
 			</array>
 			<key>isa</key>

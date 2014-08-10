@@ -1,5 +1,5 @@
 //
-//  RFConcurrentAuthenticationProvider.h
+//  NSURLRequest+RFURLTest.h
 //  ROADWebService
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
@@ -31,26 +31,8 @@
 //  for additional information regarding copyright ownership and licensing
 
 
-#import "RFAuthenticationProvider.h"
+@interface NSURLRequest (RFURLTest)
 
-
-@interface RFConcurrentAuthenticationProvider : RFAuthenticationProvider {
-  @protected
-    dispatch_queue_t _queue;
-}
-
-/**
- The queue to work on. http://stackoverflow.com/questions/12511976/app-crashes-after-xcode-upgrade-to-4-5-assigning-retained-object-to-unsafe-unre
- */
-#if OS_OBJECT_USE_OBJC
-@property (nonatomic, strong) dispatch_queue_t queue; // this is for Xcode 4.5 with LLVM 4.1 and iOS 6 SDK
-#else
-@property (nonatomic, assign) dispatch_queue_t queue; // this is for older Xcodes with older SDKs
-#endif
-
-/**
- * This method must be used instead of -authenticate for reloading. -authenticate method execute it synchroniously in the queue.
- */
-- (void)concurrentAuthenticate;
+- (BOOL)isRelatedToTest:(NSString *)URL;
 
 @end

@@ -37,10 +37,22 @@
 @interface NSMutableString (RFStringFormatter)
 
 /**
- * Fills a specified string with the values specified, substituding the values for the keys in the receiver. The assumption is the keys in the dictionary bracketed by the escapeString on both sides are the values to be replaced, while the corresponding value from the dictionary is to be substituted. If a key is not found in the dictionary its entire string part is removed from the result.
+ * @deprecated Will be removed in a next major release. Use RF_formatUsingValues:withEscape: or RF_formatAsURLUsingValues:withEscape: instead.
+ */
+- (void)RF_formatStringUsingValues:(NSDictionary *)valueDictionary withEscape:(NSString *)escapeString __attribute__((deprecated));
+
+/**
+ * Fills a specified string with the values specified, substituting the values for the keys in the receiver. The assumption is the keys in the dictionary bracketed by the escapeString on both sides are the values to be replaced, while the corresponding value from the dictionary is to be substituted. If a key is not found in the dictionary its entire string part is removed from the result.
  * @param valueDictionary The key-values representing the keys to be replaced by values in the template string.
  * @param escapeString The escape string marking the spot of a replacement.
  */
-- (void)RF_formatStringUsingValues:(NSDictionary *)valueDictionary withEscape:(NSString *)escapeString;
+- (void)RF_formatUsingValues:(NSDictionary *)valueDictionary withEscape:(NSString *)escapeString;
+
+/**
+ * Fills a specified string representing an URL with the values specified, substituting the values for the keys in the receiver. The assumption is the keys in the dictionary bracketed by the escapeString on both sides are the values to be replaced, while the corresponding value from the dictionary is to be substituted. If a key is not found in the dictionary its entire string part is removed from the result with a corresponding separator.
+ * @param valueDictionary The key-values representing the keys to be replaced by values in the template string.
+ * @param escapeString The escape string marking the spot of a replacement.
+ */
+- (void)RF_formatAsURLUsingValues:(NSDictionary *)valueDictionary withEscape:(NSString *)escapeString;
 
 @end

@@ -34,6 +34,13 @@
 #import "RFDownloader+FakeRequest.h"
 
 #import "RFSerializableTestObject.h"
+#import "NSURLRequest+RFURLTest.h"
+
+
+@interface RFDownloader (Private)
+
+@end
+
 
 @implementation RFDownloader (FakeRequest)
 
@@ -50,47 +57,47 @@
     NSURLResponse *response;
     NSError *error;
     
-    if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.multipart.data"]) {
+    if ([self.request isRelatedToTest:@"test.multipart.data"]) {
         response = [self checkMultipartData] ? [self successResponse] : [self failureResponse];
     }
-    else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.method.without.blocks"]
-             || [[[self.request URL] absoluteString] isEqualToString:@"http://test.simple.call"]) {
+    else if ([self.request isRelatedToTest:@"test.method.without.blocks"]
+             || [self.request isRelatedToTest:@"test.simple.call"]) {
         response = [self successResponse];
     }
-    else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.serializer"]) {
+    else if ([self.request isRelatedToTest:@"test.serializer"]) {
         response = [self checkXMLSerializedRequestData] ? [self successResponse] : [self failureResponse];
         resultData = self.request.HTTPBody;
     }
-    else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.cache.pragma"]) {
+    else if ([self.request isRelatedToTest:@"test.cache.pragma"]) {
         response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{@"Pragma" : @"no-cache"}];
         resultData = [RFDownloader generateDateBasedData];
     }
-    else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.cache.cache-control.no-cache"]
-              || [[[self.request URL] absoluteString] isEqualToString:@"http://test.cache.max-age.attr"]) {
+    else if ([self.request isRelatedToTest:@"test.cache.cache-control.no-cache"]
+              || [self.request isRelatedToTest:@"http://test.cache.max-age.attr"]) {
         response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{@"Cache-Control" : @"must-revalidate, max-age=0, no-cache"}];
         resultData = [RFDownloader generateDateBasedData];
     }
-    else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.cache.no.cache.headers"]) {
+    else if ([self.request isRelatedToTest:@"test.cache.no.cache.headers"]) {
         response = [self successResponse];
         resultData = [RFDownloader generateDateBasedData];
     }
-    else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.expires.header"]) {
+    else if ([self.request isRelatedToTest:@"test.expires.header"]) {
         response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{@"Expires" : [RFDownloader httpDatePlusFiveMinute]}];
         resultData = [RFDownloader generateDateBasedData];
     }
-    else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.max-age.header"]) {
+    else if ([self.request isRelatedToTest:@"test.max-age.header"]) {
         response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{@"Cache-Control" : @"max-age=300"}];
         resultData = [RFDownloader generateDateBasedData];
     }
-    else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.cache.last.modified"]) {
+    else if ([self.request isRelatedToTest:@"test.cache.last.modified"]) {
         response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{@"Last-Modified" : [RFDownloader httpDatePlusFiveMinute]}];
         resultData = [RFDownloader generateDateBasedData];
     }
-    else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.cache.etag"]) {
+    else if ([self.request isRelatedToTest:@"test.cache.etag"]) {
         response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{@"ETag" : [[NSString alloc] initWithData:[RFDownloader generateDateBasedData] encoding:NSUTF8StringEncoding]}];
         resultData = [RFDownloader generateDateBasedData];
     }
-    else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.cache.same.last.modified"]) {
+    else if ([self.request isRelatedToTest:@"test.cache.same.last.modified"]) {
         if ([(self.request.allHTTPHeaderFields)[@"If-Modified-Since"] isEqualToString:@"Sat, 29 Oct 1994 19:43:31 GMT"]) {
             response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:304 HTTPVersion:@"HTTP/1.1" headerFields:nil];
         }
@@ -99,7 +106,7 @@
             resultData = [RFDownloader generateDateBasedData];
         }
     }
-    else if ([[[self.request URL] absoluteString] isEqualToString:@"http://test.cache.same.etag"]) {
+    else if ([self.request isRelatedToTest:@"test.cache.same.etag"]) {
         if ([(self.request.allHTTPHeaderFields)[@"If-None-Match"] isEqualToString:@"4a7sd47ads5789a6sd"]) {
             response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:304 HTTPVersion:@"HTTP/1.1" headerFields:nil];
         }
@@ -108,11 +115,20 @@
             resultData = [RFDownloader generateDateBasedData];
         }
     }
-    else if ([[[self.request URL] host] isEqualToString:@"test.cache.identifier"]) {
+    else if ([self.request isRelatedToTest:@"test.body.existence/"]) {
+        if ([self.request.HTTPBody length] > 0) {
+            response = [self successResponse];
+        }
+        else {
+            response = [self failureResponse];
+            error = [NSError errorWithDomain:@"1" code:1 userInfo:nil];
+        }
+    }
+    else if ([self.request isRelatedToTest:@"test.cache.identifier"]) {
         response = [self successResponse];
         resultData = [RFDownloader generateDateBasedData];
     }
-    else if ([[[self.request URL] host] isEqualToString:@"test.cache.offline.max-age"]) {
+    else if ([self.request isRelatedToTest:@"test.cache.offline.max-age"]) {
         if ([[self.request.allHTTPHeaderFields objectForKey:@"no-connection"] isEqualToString:@"YES"]) {
             response = [self failureResponse];
         }

@@ -34,16 +34,20 @@
 #import "NSMutableString+RFStringFormatter.h"
 
 
+static NSString * const kRFParameterRegexpFormat = @"%@(.*?)%@";
+static NSString * const kRFURLGapRegexpFormat = @"\\w+=&|\\w+=&|&?\\w+=\\s*$";
+
+
 @implementation NSMutableString (RFStringFormatter)
 
-- (void)RF_formatStringUsingValues:(NSDictionary *const)valueDictionary withEscape:(NSString *const)escapeString {
+- (void)RF_formatUsingValues:(NSDictionary *)valueDictionary withEscape:(NSString *)escapeString {
+    
     @autoreleasepool {
-        NSString *pattern = [NSString stringWithFormat:@"%@(.*?)%@", escapeString, escapeString];
+        NSString *pattern = [NSString stringWithFormat:kRFParameterRegexpFormat, escapeString, escapeString];
         NSError *error = nil;
         NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionAllowCommentsAndWhitespace error:&error];
-        NSAssert(!error, @"%@ %@: Error while generating regexp for pattern", self, NSStringFromSelector(_cmd));
+        NSAssert(!error, @"%@ %@: Error while generating parameters regexp for pattern", self, NSStringFromSelector(_cmd));
         
-        NSString * const uniqueString = [[NSProcessInfo processInfo] globallyUniqueString];
         NSArray *matches = [regexp matchesInString:self options:0 range:NSMakeRange(0, [self length])];
         
         while ([matches count] > 0) {
@@ -53,23 +57,35 @@
             
             if ([value length] > 0) {
                 [self replaceCharactersInRange:aResult.range withString:value];
-            }
-            else {
-                [self replaceCharactersInRange:aResult.range withString:uniqueString];
+            } else {
+                [self replaceCharactersInRange:aResult.range withString:@""];
             }
             
             matches = [regexp matchesInString:self options:0 range:NSMakeRange(0, [self length])];
         }
+    }
+}
+
+- (void)RF_formatAsURLUsingValues:(NSDictionary *)valueDictionary withEscape:(NSString *)escapeString {
+    
+    [self RF_formatUsingValues:valueDictionary withEscape:escapeString];
+    
+    @autoreleasepool {
+        NSError* error = nil;
+        NSRegularExpression* regexp = [NSRegularExpression regularExpressionWithPattern:kRFURLGapRegexpFormat options:NSRegularExpressionAllowCommentsAndWhitespace error:&error];
+        NSAssert(!error, @"%@ %@: Error while generating gaps regexp for pattern", self, NSStringFromSelector(_cmd));
         
-        pattern = [NSString stringWithFormat:@"\\w+=%@&|&\\w+=%@|\\w+=%@&", uniqueString, uniqueString, uniqueString];
-        regexp = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionAllowCommentsAndWhitespace error:nil];
-        matches = [regexp matchesInString:self options:0 range:NSMakeRange(0, [self length])];
+        NSArray* matches = [regexp matchesInString:self options:0 range:NSMakeRange(0, [self length])];
         
         while ([matches count] > 0) {
             [self replaceCharactersInRange:[[matches lastObject] range] withString:@""];
             matches = [regexp matchesInString:self options:0 range:NSMakeRange(0, [self length])];
         }
-    }    
+    }
+}
+
+- (void)RF_formatStringUsingValues:(NSDictionary *const)valueDictionary withEscape:(NSString *const)escapeString {
+    [self RF_formatAsURLUsingValues:valueDictionary withEscape:escapeString];
 }
 
 @end

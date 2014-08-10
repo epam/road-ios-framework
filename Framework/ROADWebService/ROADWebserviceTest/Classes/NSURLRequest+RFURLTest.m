@@ -1,6 +1,6 @@
 //
-//  RFTemplateParsingTest.m
-//  ROADCore
+//  NSURLRequest+RFURLTest.m
+//  ROADWebService
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
 //
@@ -31,51 +31,13 @@
 //  for additional information regarding copyright ownership and licensing
 
 
-#import <XCTest/XCTest.h>
-
-#import "NSMutableString+RFStringFormatter.h"
+#import "NSURLRequest+RFURLTest.h"
 
 
-@interface RFTemplateParsingTests : XCTestCase
+@implementation NSURLRequest (RFURLTest)
 
-@end
-
-
-@implementation RFTemplateParsingTests {
-    NSMutableString *template;
-    NSString *escape;
-    NSDictionary *values;
-}
-
-- (void)setUp {
-    template = [NSMutableString stringWithString:@"someExample:%%key1%% withOtherValue:%%key2%% andThirdValue:%%key3%%"];
-    escape = @"%%";
-    values = @{ @"key1" : @"value1", @"key2" : @"value2", @"key3" : @"value3" };
-    
-    [super setUp];
-}
-
-- (void)tearDown {
-    template = nil;
-    escape = nil;
-    values = nil;
-    
-    [super tearDown];
-}
-
-- (void)testTemplateParsing {
-    [template RF_formatStringUsingValues:values withEscape:escape];
-    NSRange rangeOfKey = [template rangeOfString:@"key"];
-    NSRange rangeOfEscape = [template rangeOfString:escape];
-    NSRange rangeOfValue1 = [template rangeOfString:@"value1"];
-    NSRange rangeOfValue2 = [template rangeOfString:@"value2"];
-    NSRange rangeOfValue3 = [template rangeOfString:@"value3"];
-    
-    XCTAssertTrue(rangeOfKey.location == NSNotFound, @"Assertion: no key is in the template.");
-    XCTAssertTrue(rangeOfEscape.location == NSNotFound, @"Assertion: escape is no longer in the template.");
-    XCTAssertTrue(rangeOfValue1.location != NSNotFound, @"Assertion: value1 is in the template.");
-    XCTAssertTrue(rangeOfValue2.location != NSNotFound, @"Assertion: value2 is in the template.");
-    XCTAssertTrue(rangeOfValue3.location != NSNotFound, @"Assertion: value3 is in the template.");
+- (BOOL)isRelatedToTest:(NSString *)test {
+    return [[[self URL] absoluteString] rangeOfString:test].location != NSNotFound;
 }
 
 @end

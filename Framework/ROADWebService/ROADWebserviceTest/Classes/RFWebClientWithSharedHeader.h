@@ -35,6 +35,7 @@
 #import "RFXMLSerializer.h"
 #import "RFWebServiceSerializer.h"
 
+
 RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{ @"key1" : @"value1"})
 RF_ATTRIBUTE(RFWebServiceSerializer, serializerClass = [RFXMLSerializer class])
 @interface RFWebClientWithSharedHeader : RFWebServiceClient

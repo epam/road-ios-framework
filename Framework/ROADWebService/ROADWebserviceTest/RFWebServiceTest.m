@@ -425,9 +425,28 @@
     while (!isFinished) {
         [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
     }
-
+    
     XCTAssertTrue(blockCompletedBeforeCallCompletion, @"Web call and blocks should be called synchronously and should complete before we get to this point.");
     XCTAssertTrue(isSuccess, @"Sync Web call should succeed");
+}
+
+- (void)testPutMethodToHaveBody {
+    RFConcreteWebServiceClient *client = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"https://test.body.existence/"];
+
+    __block BOOL isFinished = NO;
+    __block BOOL isSuccess = NO;
+    [client testPutBodyPresenceWithData:@"Body"
+                                success:^(id result) {
+                                    isSuccess = YES;
+                                    isFinished = YES; /* reveived data ... */
+                                } failure:^(NSError *error) {
+                                    isFinished = YES; /* reveived data ... */
+                                }];
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
+    }
+
+    XCTAssertTrue(isSuccess, @"Put methods did not have body.");
 }
 
 @end

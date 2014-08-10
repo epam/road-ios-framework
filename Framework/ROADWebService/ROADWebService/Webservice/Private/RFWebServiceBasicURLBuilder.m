@@ -49,8 +49,8 @@ NSString * const RFApiCallTemplateEscapeString = @"%%";
     
     NSMutableString * const root = [serviceRoot mutableCopy];
     NSMutableString * const suffix = urlTemplate.length > 0 ? [urlTemplate mutableCopy] : [@"" mutableCopy];
-    [root RF_formatStringUsingValues:values withEscape:[self urlTemplateEscapeString]];
-    [suffix RF_formatStringUsingValues:values withEscape:[self urlTemplateEscapeString]];
+    [root RF_formatAsURLUsingValues:values withEscape:[self urlTemplateEscapeString]];
+    [suffix RF_formatAsURLUsingValues:values withEscape:[self urlTemplateEscapeString]];
     
     NSString *urlParameterStringPattern = [NSString stringWithFormat:@"&.+?=%@.+?%@", RFApiCallTemplateEscapeString, RFApiCallTemplateEscapeString];
     
