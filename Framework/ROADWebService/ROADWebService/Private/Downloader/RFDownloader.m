@@ -73,15 +73,15 @@
 
 @implementation RFDownloader
 
-- (id)initWithClient:(RFWebServiceClient *)webServiceClient methodName:(NSString *)methodName authenticationProvider:(id<RFAuthenticating>)authenticaitonProvider {
+- (id)initWithClient:(RFWebServiceClient *)client attributes:(NSArray *)attributes authenticationProvider:(id<RFAuthenticating>)authenticationProvider {
     self = [super init];
 
     if (self) {
-        _webServiceClient = webServiceClient;
-        _methodName = methodName;
-        _authenticationProvider = authenticaitonProvider;
+        _webServiceClient = client;
+        _attributes = attributes;
+        _authenticationProvider = authenticationProvider;
         _successCodes = [NSMutableArray arrayWithObjects:[NSValue valueWithRange:NSMakeRange(200, 100)], nil];
-        _callAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceCall class]];
+        _callAttribute = [attributes RF_firstObjectWithClass:[RFWebServiceCall class]];
     }
 
     return self;
@@ -100,7 +100,7 @@
     // For multipart form data we have to add specific header
     if (_multipartData) {
         NSString *boundary;
-        RFMultipartData *multipartDataAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFMultipartData class]];
+        RFMultipartData *multipartDataAttribute = [self.attributes RF_firstObjectWithClass:[RFMultipartData class]];
         boundary = multipartDataAttribute.boundary;
         if (!boundary.length) {
             // Some random default boundary
@@ -111,7 +111,7 @@
         [_request addValue:contentType forHTTPHeaderField:@"Content-Type"];
     }
 
-    RFWebServiceHeader * const headerAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceHeader class]];
+    RFWebServiceHeader * const headerAttribute = [self.attributes RF_firstObjectWithClass:[RFWebServiceHeader class]];
 
     // Adding shared headers to request
     NSMutableDictionary *headerFields = [sharedHeaders mutableCopy];
@@ -128,7 +128,7 @@
         [self.successCodes removeAllObjects];
         [self.successCodes addObjectsFromArray:_callAttribute.successCodes];
     } else {
-        RFWebServiceClientStatusCodes* wsca = [[self.webServiceClient class] RF_attributeForClassWithAttributeType:[RFWebServiceClientStatusCodes class]];
+        RFWebServiceClientStatusCodes* wsca = [self.attributes RF_firstObjectWithClass:[RFWebServiceClientStatusCodes class]];
 
         if ([wsca.successCodes count] > 0) {
             [self.successCodes removeAllObjects];
@@ -143,10 +143,9 @@
         return;
     }
 
-    RFWebServiceCache *cacheAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceCache class]];
     id<RFWebServiceCachingManaging> cacheManager = [RFServiceProvider webServiceCacheManager];
     RFWebResponse *cachedResponse;
-    if (!cacheAttribute.cacheDisabled) {
+    if (!self.cacheAttribute.cacheDisabled) {
         cachedResponse = [cacheManager cacheWithRequest:_request];
     }
 
@@ -164,15 +163,27 @@
         return;
     }
 
-    _connection = [[NSURLConnection alloc] initWithRequest:_request delegate:self startImmediately:NO];
-
     if (_looper == nil) {
         _looper = [[RFLooper alloc] init];
         _data = [NSMutableData data];
-        [_connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-        [_connection start];
-        RFWSLogInfo(@"URL connection(%p) has started. Method: %@. URL: %@\nHeader fields: %@\nBody: %@", _connection, [_connection.currentRequest HTTPMethod], [_connection.currentRequest.URL absoluteString], [_connection.currentRequest allHTTPHeaderFields], [[NSString alloc] initWithData:[_connection.currentRequest HTTPBody] encoding:NSUTF8StringEncoding]);
-        [_looper start];
+
+        if (!_callAttribute.syncCall) {
+            _connection = [[NSURLConnection alloc] initWithRequest:_request delegate:self startImmediately:NO];
+            [_connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+            [_connection start];
+            RFWSLogInfo(@"URL connection(%p) has started. Method: %@. URL: %@\nHeader fields: %@\nBody: %@", _connection, [_connection.currentRequest HTTPMethod], [_connection.currentRequest.URL absoluteString], [_connection.currentRequest allHTTPHeaderFields], [[NSString alloc] initWithData:[_connection.currentRequest HTTPBody] encoding:NSUTF8StringEncoding]);
+            [_looper start];
+        }
+        else {
+            NSError *error;
+            NSHTTPURLResponse *response;
+            [NSURLConnection sendSynchronousRequest:_request
+                                  returningResponse:&response
+                                              error:&error];
+            _downloadError = error;
+            _response = response;
+            [self stop];
+        }
     }
 }
 
@@ -224,7 +235,7 @@
 }
 
 - (id<RFSerializationDelegate>)serializationDelegate {
-    RFWebServiceSerializer *serializerAttribute = [[self.webServiceClient class] RF_attributeForMethod:self.methodName withAttributeType:[RFWebServiceSerializer class]];
+    RFWebServiceSerializer *serializerAttribute = [self.attributes RF_firstObjectWithClass:[RFWebServiceSerializer class]];
     id<RFSerializationDelegate> serializationDelegate;
     if (serializerAttribute.serializerClass) {
         serializationDelegate = [[serializerAttribute.serializerClass alloc] init];
@@ -301,13 +312,23 @@
     if (self.successBlock) {
         self.successBlock(_serializedData);
     }
+
+    [self freeCompletionBlocks];
 }
 
 -(void)performFailureBlockOnSpecificThread {
     if (self.failureBlock) {
         self.failureBlock(_downloadError);
     }
+
+    [self freeCompletionBlocks];
 }
+
+- (void)freeCompletionBlocks {
+    self.successBlock = nil;
+    self.failureBlock = nil;
+}
+
 
 #pragma mark - Utitlity
 
@@ -364,7 +385,7 @@ NSString * const RFAttributeTemplateEscape = @"%%";
 
 - (RFWebServiceCache *)cacheAttribute {
     if (!_cacheAttribute) {
-        _cacheAttribute = [[_webServiceClient class] RF_attributeForMethod:_methodName withAttributeType:[RFWebServiceCache class]];
+        _cacheAttribute = [self.attributes RF_firstObjectWithClass:[RFWebServiceCache class]];
     }
     
     return _cacheAttribute;

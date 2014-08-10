@@ -36,6 +36,7 @@
 
 #import "NSMutableString+RFStringFormatter.h"
 #import "NSArray+RFEmptyArrayChecks.h"
+#import "NSArray+RFClassSearch.h"
 #import "RFDynamicObject.h"
 #import "RFObjectPool.h"
 

@@ -77,7 +77,14 @@
 @property (assign, nonatomic) int postParameter;
 
 /**
- * Specifies request timeout. If web service does not respond within timeout, request is considered failed
+ * Forces web service request to perform synchronously with the thread it was created from.
+ * Request is asynchronous by default.
+ */
+@property (assign, nonatomic) BOOL syncCall;
+
+/**
+ * Specifies request timeout. 
+ * If web service does not respond within timeout, request is considered failed.
  */
 @property (assign, nonatomic) NSTimeInterval timeoutInterval;
 
