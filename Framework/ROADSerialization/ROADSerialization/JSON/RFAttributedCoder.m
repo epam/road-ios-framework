@@ -50,6 +50,7 @@
     NSString * _dateFormat;
     id _archive;
     NSString * _currentPath;
+    RFObjectPool* _dateFormattersPool;
 }
 
 
@@ -60,6 +61,7 @@
     
     if (self) {
         _archive = [[NSMutableDictionary alloc] init];
+        _dateFormattersPool = RFCreateDateFormatterPool();
     }
     
     return self;
@@ -156,7 +158,7 @@
     }
 
     if ([value isKindOfClass:[NSDate class]]) {
-        encodedValue = RFSerializationEncodeDateForProperty(value, propertyInfo, self);
+        encodedValue = RFSerializationEncodeDateForProperty(value, propertyInfo, _dateFormattersPool);
     }
     else if ([propertyInfo attributeWithType:[RFSerializableBoolean class]]) {
         encodedValue = [RFBooleanTranslator encodeTranslatableValue:value forProperty:propertyInfo];

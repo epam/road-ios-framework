@@ -34,8 +34,11 @@
 #import <XCTest/XCTest.h>
 
 #import "RFObjectPool.h"
-#import "RFPoolObject.h"
 
+static NSString* timeFormat1 = @"dd/MM/yyyy HH:mm:ss Z";
+static NSString* timeFormat2 = @"MM.dd.yyyy HH:mm";
+
+static NSString* key1 = @"key1";
 
 @interface RFPoolTests : XCTestCase
 
@@ -43,37 +46,61 @@
 
 
 @implementation RFPoolTests {
-    RFObjectPool *pool;
+    RFObjectPool* _dateFormattersPool;
+    RFObjectPool* _dateFormatterStrictPool;
+    RFObjectPool* _genericPool;
 }
 
 - (void)setUp {
-    pool = [[RFObjectPool alloc] init];
-    [pool registerClassNamed:@"RFPoolObject" forIdentifier:@"id1"];
-    [pool registerClassNamed:@"RFPoolObject" forIdentifier:@"id2"];
+    _dateFormattersPool = [[RFObjectPool alloc] initWithClass:NSDateFormatter.class defaultObjectInitializer:^id(id objectCreated, id identifier) {
+        NSAssert([objectCreated isKindOfClass:NSDateFormatter.class], @"Check if the class of the object created is NSDateFormatter");
+        NSAssert([identifier isKindOfClass:NSString.class], @"Check if the identifier is a NSString");
+        
+        NSString* formatString = (NSString*)identifier;
+        NSDateFormatter* formatter = (NSDateFormatter*)objectCreated;
+        formatter.dateFormat = formatString;
+        return formatter;
+    }];
+    
+    _dateFormatterStrictPool = [[RFObjectPool alloc] initWithClass:NSDateFormatter.class defaultObjectInitializer:nil];
+    
+    _genericPool = [[RFObjectPool alloc] init];
 }
 
 - (void)tearDown {
-    pool = nil;
+    _dateFormattersPool = nil;
+    _genericPool = nil;
 }
 
 - (void)testObjectPoolAllocation {
-    id const object = [pool objectForIdentifier:@"id1"];
-    id const nonObject = [pool objectForIdentifier:@"id3"];
     
-    XCTAssertTrue(object != nil, @"Assertion: registered classes get instantiated property");
-    XCTAssertTrue(nonObject == nil, @"Assertion: unregistered identifiers are not recognized");
+    NSDateFormatter* formatter11 = _dateFormattersPool[timeFormat1];
+    XCTAssertTrue(formatter11 != nil, @"Assertion: checking default object creation");
+    
+    NSDateFormatter* formatter12 = _dateFormattersPool[timeFormat1];
+    XCTAssertTrue([formatter11 isEqual:formatter12], @"Assertion: checking objects pooling");
+    
+    NSDateFormatter* formatter21 = _dateFormattersPool[timeFormat2];
+    XCTAssertTrue(formatter21 != nil, @"Assertion: checking default object creation");
+    XCTAssertFalse([formatter11 isEqual:formatter21], @"Assertion: checking objects difference in pool");
+    
+    NSDateFormatter* formatterToBeNil = _dateFormatterStrictPool[timeFormat1];
+    XCTAssertTrue(formatterToBeNil == nil);
+    
+    NSObject* genericObj11 = [[NSObject alloc] init];
+    _genericPool[key1] = genericObj11;
+    NSObject* genericObj12 = _genericPool[key1];
+    XCTAssertTrue([genericObj11 isEqual:genericObj12], @"Assertion: checking objects equality after pooling");
+    
+    [_genericPool purge];
+    XCTAssertTrue(_genericPool[key1] == nil, @"Assertion: no objects in a pool after clearing a memory");
 }
 
-- (void)testReuse {
-    id const object = [pool objectForIdentifier:@"id2"];
-    [object repool];
-    id const reusedObject = [pool objectForIdentifier:@"id2"];
+- (void)testNegativeReaction {
     
-    XCTAssertTrue([object isEqual:reusedObject], @"Assertion: repooled objects are available for reusing.");
-    
-    id const newObject = [pool objectForIdentifier:@"id2"];
-    
-    XCTAssertTrue(![newObject isEqual:reusedObject], @"Assertion: requested objects are removed from the pool.");
+    XCTAssertThrows(_dateFormattersPool[@"test"] = [[NSObject alloc] init], @"Exception: object of a wrong type is trying to be stored in a pool");
+    XCTAssertThrows(_dateFormatterStrictPool[@"test"] = [[NSObject alloc] init], @"Exception: object of a wrong type is trying to be stored in a pool");
+    XCTAssertNoThrow(_genericPool[@"test"] = [[NSDateFormatter alloc] init], @"No exception: it is allowed any object storing in a generic pool");
 }
 
 @end
