@@ -118,7 +118,11 @@
     [invocation setReturnValue:&result];
 }
 
-- (id<RFWebServiceCancellable>)executeDynamicInstanceMethodForSelector:(SEL)selector parameters:(NSArray *)parameterList prepareToLoadBlock:(RFWebServiceClientPrepareForSendRequestBlock)prepareToLoadBlock success:(id)successBlock failure:(id)failureBlock {
+- (id<RFWebServiceCancellable>)executeDynamicInstanceMethodForSelector:(SEL)selector
+                                                            parameters:(NSArray *)parameterList
+                                                    prepareToLoadBlock:(RFWebServiceClientPrepareForSendRequestBlock)prepareToLoadBlock
+                                                               success:(id)successBlock
+                                                               failure:(id)failureBlock {
     NSString *methodName = NSStringFromSelector(selector);
 
     __block RFDownloader *downloader = [[RFDownloader alloc] initWithClient:self methodName:methodName authenticationProvider:self.authenticationProvider];
@@ -127,27 +131,37 @@
 
     __block NSData *bodyData;
     __block NSDictionary *parametersDictionary;
+
+    RFWebServiceSerializer *serializerAttribute = [[self class] RF_attributeForMethod:methodName withAttributeType:[RFWebServiceSerializer class]];
+    id<RFSerializationDelegate> serializationDelegate;
+    if (serializerAttribute.serializerClass) {
+        serializationDelegate = [[serializerAttribute.serializerClass alloc] init];
+    }
+    else {
+        serializationDelegate = self.serializationDelegate;
+    }
+
+    [RFWebServiceCallParameterEncoder encodeParameters:parameterList forClient:self methodName:methodName withSerializator:serializationDelegate callbackBlock:^(NSDictionary *parameters, NSData *postData, BOOL isMultipartData) {
+        parametersDictionary = parameters;
+        bodyData = postData;
+        downloader.multipartData = isMultipartData;
+    }];
+
+    RFWebServiceCall *callAttribute = [[self class] RF_attributeForMethod:methodName withAttributeType:[RFWebServiceCall class]];
+
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
-    dispatch_async(queue, ^{
-        
-        RFWebServiceSerializer *serializerAttribute = [[self class] RF_attributeForMethod:methodName withAttributeType:[RFWebServiceSerializer class]];
-        id<RFSerializationDelegate> serializationDelegate;
-        if (serializerAttribute.serializerClass) {
-            serializationDelegate = [[serializerAttribute.serializerClass alloc] init];
-        }
-        else {
-            serializationDelegate = self.serializationDelegate;
-        }
-        
-        [RFWebServiceCallParameterEncoder encodeParameters:parameterList forClient:self methodName:methodName withSerializator:serializationDelegate callbackBlock:^(NSDictionary *parameters, NSData *postData, BOOL isMultipartData) {
-            parametersDictionary = parameters;
-            bodyData = postData;
-            downloader.multipartData = isMultipartData;
-        }];
-        
-        [self performCall:selector values:parametersDictionary body:bodyData request:downloader processingQueue:queue prepareForSendRequestBlock:prepareToLoadBlock];
-    });
-    
+
+    if (callAttribute.syncCall) {
+        dispatch_sync(queue, ^{
+            [self performCall:selector values:parametersDictionary body:bodyData request:downloader processingQueue:queue prepareForSendRequestBlock:prepareToLoadBlock];
+        });
+    }
+    else {
+        dispatch_async(queue, ^{
+            [self performCall:selector values:parametersDictionary body:bodyData request:downloader processingQueue:queue prepareForSendRequestBlock:prepareToLoadBlock];
+        });
+    }
+
     return downloader;
 }
 
@@ -157,35 +171,34 @@
             request:(RFDownloader *)downloader
     processingQueue:(dispatch_queue_t)processingQueue
 prepareForSendRequestBlock:(RFWebServiceClientPrepareForSendRequestBlock)prepareForSendRequestBlock {
-    dispatch_async(processingQueue, ^{
-        NSString *methodName = NSStringFromSelector(selector);
-        
-        RFWebServiceCall *callAttribute = [[self class] RF_attributeForMethod:methodName withAttributeType:[RFWebServiceCall class]];
-        
-        // Getting url parser from attribute or using default one
-        RFWebServiceURLBuilder *urlParserAttribute = [[self class] RF_attributeForMethod:methodName withAttributeType:[RFWebServiceURLBuilder class]];
-        Class urlParserClass = urlParserAttribute.builderClass;
-        if (urlParserClass == nil) {
-            urlParserClass = [RFWebServiceBasicURLBuilder class];
-        }
-        
-        NSURL *apiUrl = nil;
-        if ([urlParserClass conformsToProtocol:@protocol(RFWebServiceURLBuilding)]) {
-            apiUrl = [urlParserClass urlFromTemplate:callAttribute.relativePath withServiceRoot:self.serviceRoot values:values urlBuilderAttribute:urlParserAttribute];
-        }
-        
-        // Creating request and configuring it with provided parameters
-        [downloader configureRequestForUrl:apiUrl body:httpBody sharedHeaders:self.sharedHeaders values:values];
-        
-        // Pass the request and any attribute on the method to a request processor.
-        [self.requestProcessor processRequest:downloader.request attributesOnMethod:[[self class] RF_attributesForMethod:methodName]];
-        
-        if (prepareForSendRequestBlock != nil) {
-            prepareForSendRequestBlock(downloader.request);
-        }
-        
-        [downloader checkCacheAndStart];
-    });
+
+    NSString *methodName = NSStringFromSelector(selector);
+
+    RFWebServiceCall *callAttribute = [[self class] RF_attributeForMethod:methodName withAttributeType:[RFWebServiceCall class]];
+
+    // Getting url parser from attribute or using default one
+    RFWebServiceURLBuilder *urlParserAttribute = [[self class] RF_attributeForMethod:methodName withAttributeType:[RFWebServiceURLBuilder class]];
+    Class urlParserClass = urlParserAttribute.builderClass;
+    if (urlParserClass == nil) {
+        urlParserClass = [RFWebServiceBasicURLBuilder class];
+    }
+
+    NSURL *apiUrl = nil;
+    if ([urlParserClass conformsToProtocol:@protocol(RFWebServiceURLBuilding)]) {
+        apiUrl = [urlParserClass urlFromTemplate:callAttribute.relativePath withServiceRoot:self.serviceRoot values:values urlBuilderAttribute:urlParserAttribute];
+    }
+
+    // Creating request and configuring it with provided parameters
+    [downloader configureRequestForUrl:apiUrl body:httpBody sharedHeaders:self.sharedHeaders values:values];
+
+    // Pass the request and any attribute on the method to a request processor.
+    [self.requestProcessor processRequest:downloader.request attributesOnMethod:[[self class] RF_attributesForMethod:methodName]];
+
+    if (prepareForSendRequestBlock != nil) {
+        prepareForSendRequestBlock(downloader.request);
+    }
+    
+    [downloader checkCacheAndStart];
 }
 
 - (id)lastObjectIfBlock:(NSMutableArray *)parameterList {

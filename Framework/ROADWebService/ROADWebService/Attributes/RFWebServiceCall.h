@@ -74,4 +74,11 @@
  */
 @property (assign, nonatomic) int postParameter;
 
+/**
+ * Forces web service request to perform synchronously with the thread it was created from.
+ * Rquest is asynchronous by default
+ */
+@property (assign, nonatomic) BOOL syncCall;
+
+
 @end

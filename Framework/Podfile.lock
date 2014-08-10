@@ -1,10 +1,17 @@
 PODS:
   - libObjCAttr (1.3.1)
+  - Nocilla (0.8.1)
 
 DEPENDENCIES:
   - libObjCAttr
+  - Nocilla (from `https://raw.github.com/luisobo/Nocilla/master/Nocilla.podspec`)
+
+EXTERNAL SOURCES:
+  Nocilla:
+    :podspec: https://raw.github.com/luisobo/Nocilla/master/Nocilla.podspec
 
 SPEC CHECKSUMS:
   libObjCAttr: f16b711f32b6595a982c3045e1622d55af85619b
+  Nocilla: 0c8075046df476b1bc6482caa7f6a69db1a9b277
 
 COCOAPODS: 0.33.1

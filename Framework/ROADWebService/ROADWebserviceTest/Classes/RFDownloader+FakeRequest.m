@@ -137,6 +137,10 @@
             resultData = [RFDownloader generateDateBasedData];
         }
     }
+    else if ([[[self.request URL] host] isEqualToString:@"test.sync.call"]) {
+        response = [self successResponse];
+        resultData = [RFDownloader generateDateBasedData];
+    }
     else {
         // Not processed URL
         [self fakeStart];
