@@ -55,16 +55,18 @@
     NSURLConnection * _connection;
     RFLooper * _looper;
     NSMutableArray * _successCodes;
+    RFWebServiceClientDownloadProgressBlock _progressBlock;
 }
 
 @property (strong, nonatomic) NSError *downloadError;
 @property (strong, nonatomic) NSMutableData *data;
 @property (strong, nonatomic) NSHTTPURLResponse *response;
-@property (assign, nonatomic) long long expectedContentLenght;
-@property (strong, nonatomic) RFWebServiceCall * callAttribute;
-@property (strong, nonatomic) RFWebServiceCache * cacheAttribute;
-@property (strong, nonatomic) NSDictionary * values;
+@property (strong, nonatomic) RFWebServiceCall *callAttribute;
+@property (strong, nonatomic) RFWebServiceCache *cacheAttribute;
+@property (strong, nonatomic) NSDictionary *values;
 @property (assign, atomic, readwrite, getter = isRequestCancelled) BOOL requestCancelled;
+@property (copy, nonatomic) RFWebServiceClientDownloadProgressBlock progressBlock;
+@property (assign, nonatomic) long long expectedContentLenght;
 
 - (void)stop;
 
@@ -143,6 +145,9 @@
         return;
     }
 
+    [self prepareDownloadBlock];
+    [self updateDownloadProgress:0.0];
+
     id<RFWebServiceCachingManaging> cacheManager = [RFServiceProvider webServiceCacheManager];
     RFWebResponse *cachedResponse;
     if (!self.cacheAttribute.cacheDisabled) {
@@ -211,6 +216,17 @@
     [self downloaderFinishedWithResult:result response:response error:error];
 }
 
+- (void)stop {
+    _connection = nil;
+    if (!self.requestCancelled) { // If request is cancelled already, simply release variables
+        [self fillErrorUserInfoAndCleanData];
+        [self cacheAndFinishWithResult:_data response:_response error:_downloadError];
+    }
+    [_looper stop];
+    _looper = nil;
+
+}
+
 - (void)downloaderFinishedWithResult:(NSData *)result response:(NSHTTPURLResponse *)response error:(NSError *)downloaderError {
     __block id resultData = result;
     __block NSError *resultError = downloaderError;
@@ -226,6 +242,7 @@
     // Perform callback block
     self.downloadError = resultError;
     if (!self.downloadError) {
+        [self updateDownloadProgress:1.0];
         self.serializedData = resultData;
         [self performSelector:@selector(performSuccessBlockOnSpecificThread) onThread:[NSThread mainThread] withObject:nil waitUntilDone:YES];
     }
@@ -247,23 +264,20 @@
     return serializationDelegate;
 }
 
-- (void)stop {
-    _connection = nil;
-    if (!self.requestCancelled) { // If request is cancelled already, simply release variables
-        [self fillErrorUserInfoAndCleanData];
-        [self cacheAndFinishWithResult:_data response:_response error:_downloadError];
-    }
-    [_looper stop];
-    _looper = nil;
-
+- (void)updateDownloadProgress:(float)progress {
+    _downloadProgress = progress;
+    [self performSelector:@selector(performProgressBlockOnSpecificThread) onThread:[NSThread mainThread] withObject:nil waitUntilDone:YES];
 }
 
 - (NSUInteger)receivedData {
     return [_data length];
 }
 
-- (long long)expectedContentLenght {
-    return _expectedContentLenght;
+- (void)prepareDownloadBlock {
+    if (_callAttribute.progressBlockParameter != (int)NSNotFound) {
+        self.progressBlock = self.values[[NSString stringWithFormat:@"%d", _callAttribute.progressBlockParameter]];
+        NSAssert(self.progressBlock != nil, @"RFWebServiceCall attribute on parameter for progress block is invalid");
+    }
 }
 
 - (NSMutableURLRequest *)requestForUrl:(NSURL * const)anUrl withMethod:(NSString * const)method withBody:(NSData *)httpBody values:(NSDictionary *)values {
@@ -314,6 +328,12 @@
     }
 
     [self freeCompletionBlocks];
+}
+
+-(void)performProgressBlockOnSpecificThread {
+    if (self.progressBlock) {
+        self.progressBlock(_downloadProgress, self.expectedContentLenght);
+    }
 }
 
 -(void)performFailureBlockOnSpecificThread {

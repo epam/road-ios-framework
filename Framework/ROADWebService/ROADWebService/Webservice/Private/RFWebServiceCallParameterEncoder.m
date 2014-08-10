@@ -98,6 +98,9 @@ static NSString * const kRFBoundaryDefaultString = @"AaB03x";
                  || object == [NSNull null]) {
             encodedObject = object;
         }
+        else if ([[object class] isSubclassOfClass:NSClassFromString(@"NSBlock")]) {
+            encodedObject = [object copy];
+        }
         else {
             if ([serializator respondsToSelector:@selector(serializeObject:)]) {
                 encodedObject = [serializator serializeObject:object];

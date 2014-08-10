@@ -32,6 +32,7 @@
 
 
 #import "RFWebServiceCancellable.h"
+#import "RFWebServiceClient.h"
 
 
 @protocol RFAuthenticating;
@@ -58,17 +59,26 @@
  */
 @property (nonatomic, copy, readonly) NSArray *attributes;
 /**
- The serialized data from the request.
+ * The serialized data from the request.
  */
 @property (strong, nonatomic) id serializedData;
 /**
- The response success block.
+ * The response success block.
  */
 @property (copy, nonatomic) void (^successBlock)(id result);
 /**
- The response failure block.
+ * The response failure block.
  */
 @property (copy, nonatomic) void (^failureBlock)(id error);
+/**
+ * Current progress of downloading data from web server
+ */
+@property (assign, nonatomic, readonly) float downloadProgress;
+/**
+ *
+ */
+@property (assign, nonatomic, readonly) long long expectedContentLenght;
+
 /**
  Indicates that the request has been cancelled.
  */
@@ -82,5 +92,7 @@
 - (void)start;
 
 - (void)cancel;
+
+- (void)updateDownloadProgress:(float)progress;
 
 @end

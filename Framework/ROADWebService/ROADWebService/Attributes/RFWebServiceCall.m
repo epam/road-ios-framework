@@ -46,6 +46,7 @@
         _postParameter = (int)NSNotFound;
         _syncCall = NO;
         _timeoutInterval = 60;
+        _progressBlockParameter = (int)NSNotFound;
     }
 
     return self;

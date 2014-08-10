@@ -110,9 +110,10 @@
     [self stop];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)aData {
-    [self.data appendData:aData];
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [self.data appendData:data];
     RFWSLogVerbose(@"URL connection(%p) to URL: %@ received data: %@", connection, [connection.currentRequest.URL absoluteString], [NSString stringWithUTF8String:[self.data bytes]]);
+    [self updateDownloadProgress:(float)[data length] / (float)self.expectedContentLenght];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)aResponse {
