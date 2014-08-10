@@ -32,6 +32,7 @@
 
 
 #import <ROAD/ROADReflection.h>
+#import "ROAD/ROADCore.h"
 #import "RFAttributedDecoder.h"
 
 #import "RFSerializationLog.h"
@@ -52,7 +53,7 @@
 
 @implementation RFAttributedDecoder {
     NSString * _dateFormat;
-    NSMutableDictionary * _dateFormatters;
+    RFObjectPool* _dateFormattersPool;
 }
 
 
@@ -62,12 +63,11 @@
     self = [super init];
     
     if (self) {
-        _dateFormatters = [[NSMutableDictionary alloc] init];
+        _dateFormattersPool = RFCreateDateFormatterPool();
     }
     
     return self;
 }
-
 
 #pragma mark - Decoding
 
@@ -279,7 +279,7 @@
             NSString *dateFormat = ([serializableDateAttribute.decodingFormat length] == 0) ? serializableDateAttribute.format: serializableDateAttribute.decodingFormat;
             NSAssert(dateFormat, @"RFSerializableDate must have either format or encodingFormat specified");
             
-            NSDateFormatter *dateFormatter = [self dateFormatterWithFormatString:dateFormat];
+            NSDateFormatter *dateFormatter = _dateFormattersPool[dateFormat];
             decodedValue = [dateFormatter dateFromString:value];
         }
     }
@@ -289,17 +289,6 @@
 
 
 #pragma mark - Support methods
-
-- (NSDateFormatter *)dateFormatterWithFormatString:(NSString *)formatString {
-    NSDateFormatter *dateFormatter = _dateFormatters[formatString];
-    if (!dateFormatter) {
-        dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.dateFormat = formatString;
-        _dateFormatters[formatString] = dateFormatter;
-    }
-    
-    return dateFormatter;
-}
 
 + (id)jsonObjectForKeyPath:(NSString *)keyPath atJsonObject:(id)jsonObject {
     NSArray *keys = [keyPath componentsSeparatedByString:@"."];
