@@ -33,6 +33,7 @@
 
 #import "RFWebServiceCall.h"
 
+
 @implementation RFWebServiceCall
 
 - (id)init
@@ -43,6 +44,7 @@
         _method = @"GET";
         _prototypeClass = nil;
         _postParameter = (int)NSNotFound;
+        _timeoutInterval = 60;
     }
 
     return self;

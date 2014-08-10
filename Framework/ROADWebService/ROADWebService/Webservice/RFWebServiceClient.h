@@ -30,13 +30,17 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
+
 #import <ROAD/ROADServices.h>
+
 
 @protocol RFSerializationDelegate;
 @protocol RFAuthenticating;
 @protocol RFWebServiceRequestProcessing;
 
+
 typedef void (^RFWebServiceClientPrepareForSendRequestBlock)(NSMutableURLRequest* serviceRequest);
+
 
 /**
  The webservice client class. It can submit a request. It uses dynamic method resolution to implement various methods based on the annotations.

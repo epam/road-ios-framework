@@ -33,7 +33,9 @@
 
 #import "RFWebServiceClient.h"
 
+
 @class RFDownloader;
+
 
 @interface RFWebServiceClient (DynamicMethod)
 

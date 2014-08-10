@@ -31,8 +31,9 @@
 //  for additional information regarding copyright ownership and licensing
 
 
-#import <Foundation/Foundation.h>
 #import "RFSerializationDelegate.h"
+
+
 /**
  The default serializer for web service
  */
