@@ -50,6 +50,7 @@
 #import "RFWebResponse+HTTPResponse.h"
 #import "RFWebServiceCache.h"
 
+
 @interface RFDownloader () {
     NSURLConnection * _connection;
     RFLooper * _looper;
@@ -68,6 +69,7 @@
 - (void)stop;
 
 @end
+
 
 @implementation RFDownloader
 

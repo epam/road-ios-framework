@@ -30,11 +30,13 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
-#import <Foundation/Foundation.h>
+
 @protocol RFSerializationDelegate;
 @class RFWebServiceClient;
 
+
 static NSString * const kRFBoundaryDefaultString;
+
 
 /**
  Parameter encoder to create parameters for the webservice.

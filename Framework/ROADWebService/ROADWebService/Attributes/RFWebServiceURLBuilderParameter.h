@@ -30,7 +30,9 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
+
 #import <ROAD/ROADAttribute.h>
+
 
 /**
  * Classes marked with this attribute will not be serialized or altered when be passed in web service request. You have to implement custom serialization in your URL builder.

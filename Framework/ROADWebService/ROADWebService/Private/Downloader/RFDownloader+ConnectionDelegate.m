@@ -43,6 +43,7 @@
 #import "RFWebServiceCache.h"
 #import "RFWebResponse+HTTPResponse.h"
 
+
 @interface RFDownloader ()
 
 @property (strong, nonatomic) NSError *downloadError;
@@ -53,6 +54,7 @@
 - (void)stop;
 
 @end
+
 
 @implementation RFDownloader (ConnectionDelegate)
 

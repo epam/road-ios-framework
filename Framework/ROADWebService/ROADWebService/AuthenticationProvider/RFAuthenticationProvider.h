@@ -30,12 +30,15 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
+
 #import "RFAuthenticating.h"
+
 
 FOUNDATION_EXPORT NSString *const kRFAuthorizationKey;
 
 extern const int kRFUnauthorizedCode;
 extern const int kRFProxyAuthenticationRequiredCode;
+
 
 /**
  The general provider who support opportunities secure connection SSL 

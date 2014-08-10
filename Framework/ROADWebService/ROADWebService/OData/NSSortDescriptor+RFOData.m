@@ -30,13 +30,15 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
+
 #import "NSSortDescriptor+RFOData.h"
 #import <ROAD/ROADAttribute.h>
 #import <ROAD/ROADSerialization.h>
 #import <ROAD/ROADReflection.h>
-#import "RFODataExpression.h"
 
+#import "RFODataExpression.h"
 #import "RFODataProperty.h"
+
 
 @implementation NSSortDescriptor (RFOData)
 
