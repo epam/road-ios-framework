@@ -38,16 +38,6 @@
                ReferencedContainer = "container:ROADWebService.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C4A9AD5E1990DF380094B328"
-               BuildableName = "ROADWebServiceIntegrationTest.xctest"
-               BlueprintName = "ROADWebServiceIntegrationTest"
-               ReferencedContainer = "container:ROADWebService.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

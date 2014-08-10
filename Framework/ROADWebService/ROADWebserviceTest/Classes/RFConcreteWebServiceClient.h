@@ -77,9 +77,6 @@ RF_ATTRIBUTE(RFMultipartData, boundary = @"sdfsfsf")
 RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, method = @"POST")
 - (id<RFWebServiceCancellable>)testMultipartDataWithAttachments:(NSArray *)attachments success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
-//RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
-//- (id<RFWebServiceCancellable>)testMethodWithoutBlocks;
-
 RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
 - (id<RFWebServiceCancellable>)testCacheNoAttrWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
