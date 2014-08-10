@@ -426,4 +426,87 @@
     XCTAssertTrue(isSuccess, @"Put methods did not have body.");
 }
 
+- (void)testDownloadingPrepareAndProgressBlock {
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.simple.call"];
+    __block BOOL isPrepareFinished = NO;
+    __block int prepareBlockCounter = 0;
+    __block BOOL isProgressFinished = NO;
+    __block int progressBlockCounter = 0;
+    __block BOOL isFinished = NO;
+    [webClient testDownloadingWithProgressBlock:^(float progress, long long expectedContentLenght) {
+        progressBlockCounter++;
+        isProgressFinished = YES;
+    } prepareBlock:^(NSMutableURLRequest *serviceRequest) {
+        prepareBlockCounter++;
+        isPrepareFinished = YES;
+    } success:^(id response) {
+        isFinished = YES;
+    } failure:^(NSError *error) {
+        isFinished = YES;
+    }];
+
+    while (!isPrepareFinished || !isProgressFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:0.2]];
+    }
+    
+    XCTAssertTrue(isProgressFinished, @"Web service progress block was not executed");
+    XCTAssertEqual(progressBlockCounter, 2, @"Web service progress block was unexpected number of times");
+    XCTAssertEqual(prepareBlockCounter, 1, @"Web service prepare block was unexpected number of times");
+    XCTAssertTrue(isPrepareFinished, @"Web service prepare block was not executed");
+}
+
+- (void)testPrepareBlockExecution {
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.simple.call"];
+    __block BOOL isPrepareFinished = NO;
+    __block int prepareBlockCounter = 0;
+    __block BOOL isFinished = NO;
+    [webClient testDownloadingPrepareBlock:^(NSMutableURLRequest *serviceRequest) {
+        prepareBlockCounter++;
+        isPrepareFinished = YES;
+    } success:^(id response) {
+         isFinished = YES;
+     } failure:^(NSError *error) {
+         isFinished = YES;
+     }];
+    
+    while (!isPrepareFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:0.2]];
+    }
+    
+    XCTAssertEqual(prepareBlockCounter, 1, @"Web service prepare block was unexpected number of times");
+    XCTAssertTrue(isPrepareFinished, @"Web service prepare block was not executed");
+}
+
+- (void)testDownloadingProgressBlock {
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.simple.call"];
+    __block BOOL isProgressFinished = NO;
+    __block int progressBlockCounter = 0;
+    __block BOOL isStartProgressNotified = NO;
+    __block BOOL isEndProgressNotified = NO;
+    __block BOOL isFinished = NO;
+    [webClient testDownloadingProgressBlock:^(float progress, long long expectedContentLenght) {
+        progressBlockCounter++;
+        isProgressFinished = YES;
+        if (progress == 0) {
+            isStartProgressNotified = YES;
+        }
+        if (progress == 1.0) {
+            isEndProgressNotified = YES;
+        }
+    } success:^(id response) {
+        isFinished = YES;
+    } failure:^(NSError *error) {
+        isFinished = YES;
+    }];
+    
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:0.2]];
+    }
+    
+    XCTAssertTrue(isProgressFinished, @"Web service progress block was not executed");
+    XCTAssertTrue(isStartProgressNotified, @"Web service progress block notified about start downloading");
+    XCTAssertTrue(isEndProgressNotified, @"Web service progress block notified about finish downloading");
+    XCTAssertEqual(progressBlockCounter, 2, @"Web service progress block was unexpected number of times");
+}
+
 @end

@@ -121,4 +121,13 @@ RF_ATTRIBUTE(RFMultipartData, boundary = @"sdfsfsf")
 RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, method = @"PUT")
 - (id<RFWebServiceCancellable>)testPutBodyPresenceWithData:(NSString *)string success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
+- (id<RFWebServiceCancellable>)testDownloadingPrepareBlock:(RFWebServiceClientPrepareForSendRequestBlock)prepareBlock success:(void(^)(NSDictionary *albumsInfo))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, progressBlockParameter = 0)
+- (id<RFWebServiceCancellable>)testDownloadingProgressBlock:(RFWebServiceClientDownloadProgressBlock)progressBlock success:(void(^)(NSDictionary *albumsInfo))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, progressBlockParameter = 0)
+- (id<RFWebServiceCancellable>)testDownloadingWithProgressBlock:(RFWebServiceClientDownloadProgressBlock)progressBlock prepareBlock:(RFWebServiceClientPrepareForSendRequestBlock)prepareBlock success:(void(^)(NSDictionary *albumsInfo))successBlock failure:(void(^)(NSError *error))failureBlock;
+
 @end

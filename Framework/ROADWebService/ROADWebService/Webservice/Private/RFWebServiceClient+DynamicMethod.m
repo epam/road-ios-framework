@@ -112,20 +112,26 @@
         successBlock = lastParameter;
     }
 
-    // if there are parameters, the last one can be the prepareToLoad block
-    id prepareToLoadBlock = [self lastObjectIfBlock:parameterList];
+    // if there are parameters, and progress block is not the last one.
+    // Then the last one can be the prepareToLoad block
+    NSString *methodName = NSStringFromSelector(invocation.selector);
+    RFWebServiceCall *callAttribute = [[self class] RF_attributeForMethod:methodName withAttributeType:[RFWebServiceCall class]];
+
+    id prepareToLoadBlock;
+    if (callAttribute.progressBlockParameter != (int)[parameterList count] - 1) {
+        prepareToLoadBlock = [self lastObjectIfBlock:parameterList];
+    }
 
     // finally pass the parameters to the dynamic method
-    id result = [self executeDynamicInstanceMethodForSelector:invocation.selector parameters:parameterList prepareToLoadBlock:prepareToLoadBlock success:successBlock failure:failureBlock];
+    id result = [self executeDynamicInstanceMethod:methodName parameters:parameterList prepareToLoadBlock:prepareToLoadBlock success:successBlock failure:failureBlock];
     [invocation setReturnValue:&result];
 }
 
-- (id<RFWebServiceCancellable>)executeDynamicInstanceMethodForSelector:(SEL)selector
+- (id<RFWebServiceCancellable>)executeDynamicInstanceMethod:(NSString *)methodName
                                                             parameters:(NSArray *)parameterList
                                                     prepareToLoadBlock:(RFWebServiceClientPrepareForSendRequestBlock)prepareToLoadBlock
                                                                success:(id)successBlock
                                                                failure:(id)failureBlock {
-    NSString *methodName = NSStringFromSelector(selector);
     NSArray *attributes = [[self class] RF_attributesForMethod:methodName];
 
     __block RFDownloader *downloader = [[RFDownloader alloc] initWithClient:self attributes:attributes authenticationProvider:self.authenticationProvider];
@@ -148,7 +154,6 @@
 }
 
 - (void)prepareRequestParameterForCallWithAttributes:(NSArray *)attributes parameters:(NSArray *)parameterList downloader:(RFDownloader *)downloader prepareForSendRequestBlock:(RFWebServiceClientPrepareForSendRequestBlock)prepareForSendRequestBlock {
-
     __block NSData *bodyData;
     __block NSDictionary *parametersDictionary;
 

@@ -88,4 +88,9 @@
  */
 @property (assign, nonatomic) NSTimeInterval timeoutInterval;
 
+/**
+ * Any value enabled using downloading progress block.
+ */
+@property (assign, nonatomic) int progressBlockParameter;
+
 @end

@@ -40,6 +40,7 @@
 
 
 typedef void (^RFWebServiceClientPrepareForSendRequestBlock)(NSMutableURLRequest* serviceRequest);
+typedef void (^RFWebServiceClientDownloadProgressBlock)(float progress, long long expectedContentLenght);
 
 
 /**
