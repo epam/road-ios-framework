@@ -72,8 +72,13 @@
 @property (nonatomic) BOOL serializationDisabled;
 
 /**
- * Works only if method == @"POST". Specifies index of parameter from method, which will be sent in request body. Numeration starts from 0.
+ * Force to post http body. Specifies index of parameter from method, which will be sent in request body. Numeration starts from 0.
  */
 @property (assign, nonatomic) int postParameter;
+
+/**
+ * Specifies request timeout. If web service does not respond within timeout, request is considered failed
+ */
+@property (assign, nonatomic) NSTimeInterval timeoutInterval;
 
 @end

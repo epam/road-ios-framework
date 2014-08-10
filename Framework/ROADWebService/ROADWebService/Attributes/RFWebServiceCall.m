@@ -44,6 +44,7 @@
         _method = @"GET";
         _prototypeClass = nil;
         _postParameter = (int)NSNotFound;
+        _timeoutInterval = 60;
     }
 
     return self;
