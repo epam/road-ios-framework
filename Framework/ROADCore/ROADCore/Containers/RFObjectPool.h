@@ -31,41 +31,7 @@
 //  for additional information regarding copyright ownership and licensing
 
 
-@protocol RFObjectPooling;
-@class RFObjectPool;
-
-
-/**
- * Object pool delegate protocol. Contains notification methods to inform its delegate about pooled object management. All methods in this protocol are optional.
- */
-@protocol RFObjectPoolDelegate <NSObject>
-
-@optional
-/**
- * Informs the delegate that an object was repooled.
- * @param pool The pool sending the message.
- * @param anIdentifier The identifier for which the object was repooled.
- */
-- (void)pool:(RFObjectPool *)pool didRepoolObjectForIdentifier:(NSString *)anIdentifier;
-
-/**
- * Informs the delegate that a new object was created for an identifier.
- * @param pool The pool sending the message.
- * @param anObject The newly created object.
- * @param anIdentifier The identifier for which the object was created.
- */
-- (void)pool:(RFObjectPool *)pool didInstantiateObject:(id<RFObjectPooling>)anObject forIdentifier:(NSString *)anIdentifier;
-
-/**
- * Informs the delegate that an object was removed from the pool as it was requested.
- * @param pool The pool sending the message.
- * @param anIdentifier The identifier for which the object was requested.
- * @param anObject The newly created object.
- */
-- (void)pool:(RFObjectPool *)pool didLendObject:(id<RFObjectPooling>)anObject forIdentifier:(NSString *)anIdentifier;
-
-@end
-
+typedef id(^RFObjectPoolInitializerBlock)(id objectCreated, id identifier);
 
 /**
  * Generic object pool solution to provide reusing of objects that are either heavy to create, or are reused frequently.
@@ -73,32 +39,50 @@
 @interface RFObjectPool : NSObject
 
 /**
- * The pool's delegate.
+ * Creates pool for storing objects of a particular type. If optional defaultObjectInitializer provided, a default objects can be created and set up automatcally. To create a pool for objects of any class use "init".
+ * @param class       Class of the objects to be stored in a pool.
+ * @param initializerBlock Initializer block for setting up newly created object. Optional.
+ * @return New instance of a RFObjectPool.
  */
-@property (weak, nonatomic) id<RFObjectPoolDelegate> delegate;
+- (instancetype)initWithClass:(Class)class defaultObjectInitializer:(RFObjectPoolInitializerBlock)initializerBlock;
 
 /**
- * Indicates if the reuse identifiers are case sensitive or not.
+ * Searches an object previously stored in a pool for key given.
+ * @param reuseIdentifier Key of the object being searched.
+ * @return Returns object previously stored if exists. Returns nil if object was not found for this key and there is no default object initializer given. If object was not found and default object initializer exists, a new instance of the class given will be created, stored in a poll and returned.
  */
-@property (assign, nonatomic, getter = isCaseSensitive) BOOL caseSensitive;
+- (id)objectForReuseIdentifier:(id<NSCopying>)reuseIdentifier;
 
 /**
- * Puts an object instance of a registered class back into the object pool.
- * @param object The object to put back into the appropriate object pool.
+ * Adds or replaces object in a pool for a key specified.
+ * @param object Object to be stored in a pool.
+ * @param reuseIdentifier    Key for the object to be stored.
  */
-- (void)repoolObject:(id<RFObjectPooling>)object;
+- (void)setObject:(id)object forReuseIdentifier:(id<NSCopying>)reuseIdentifier;
 
 /**
- * Returns an object for the specified pool reuse identifier. Note, this also removes the object from the pool until it is repooled, therefore you have to make sure to keep it alive via a strong reference.
- * @param identifier The unique pool reuse identifier.
+ * Removes object for a key specified.
+ * @param key Key for the object to be removed.
  */
-- (id)objectForIdentifier:(NSString *)identifier;
+- (void)removeObjectForKey:(id<NSCopying>)key;
 
 /**
- * Registers a class to be available for pooling.
- * @param className The name of the class to be registered.
- * @param reuseIdentifier The identifier associated with the given class. Note: the id has to be unique, overriding the same identifier with this method will raise an exception.
+ * Searches an object previously stored in a pool for key given in a modern way.
+ * @param key Key of the object being searched.
+ * @return Returns object previously stored if exists. Returns nil if object was not found for this key and there is no default object initializer given. If object was not found and default object initializer exists, a new instance of the class given will be created, stored in a poll and returned.
  */
-- (void)registerClassNamed:(NSString *)className forIdentifier:(NSString *)reuseIdentifier;
+- (id)objectForKeyedSubscript:(id <NSCopying>)key;
+
+/**
+ * Adds or replaces object in a pool for a key specified.
+ * @param obj Object to be stored in a pool.
+ * @param key Key for the object to be stored.
+ */
+- (void)setObject:(id)obj forKeyedSubscript:(id <NSCopying>)key;
+
+/**
+ * Frees pool memory.
+ */
+- (void)purge;
 
 @end

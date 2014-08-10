@@ -30,6 +30,7 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
+
 #import "RFWebServiceCachingManager.h"
 #import <CoreData/CoreData.h>
 #import <ROAD/ROADCore.h>
@@ -39,11 +40,13 @@
 #import "RFWebServiceCacheContext.h"
 #import "RFWebServiceCache.h"
 
-NSString *const kRFCacheTemplateEscapeString = @"%%";
+
+NSString * const kRFCacheTemplateEscapeString = @"%%";
 
 static NSString * const kRFWebResponseEntityName = @"WebResponse";
 
 const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
+
 
 @implementation RFWebServiceCachingManager {
     dispatch_queue_t _cacheQueue;

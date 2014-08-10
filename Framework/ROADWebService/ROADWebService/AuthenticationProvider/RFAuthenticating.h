@@ -30,12 +30,13 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
-#import <Foundation/Foundation.h>
 
 @class RFWebServiceClient;
 
+
 typedef void (^RFAuthenticationSuccessBlock)(id result);
 typedef void (^RFAuthenticationFailureBlock)(NSError *error);
+
 
 @protocol RFAuthenticating <NSObject>
 

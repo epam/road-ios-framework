@@ -442,6 +442,7 @@
                                 } failure:^(NSError *error) {
                                     isFinished = YES; /* reveived data ... */
                                 }];
+
     while (!isFinished) {
         [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
     }

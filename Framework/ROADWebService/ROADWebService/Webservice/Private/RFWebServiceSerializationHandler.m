@@ -35,6 +35,7 @@
 #import "RFSerializationDelegate.h"
 #import "NSError+RFWebService.h"
 
+
 @implementation RFWebServiceSerializationHandler
 
 + (void)deserializeData:(NSData * const)data withSerializator:(id<RFSerializationDelegate>)serializationObject serializatinRoot:(NSString *)serializationRoot toDeserializationClass:(Class)deserializationClass withCompletitionBlock:(void(^)(id serializedData, NSError *error))callbackBlock

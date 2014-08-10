@@ -30,9 +30,9 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
-#import <Foundation/Foundation.h>
 
 @class RFODataExpression;
+
 
 typedef NS_ENUM(NSUInteger, RFODataPredicateOperatorType) {
     RFNotSpecifiedODataPredicateOperatorType,
@@ -53,6 +53,7 @@ typedef NS_ENUM(NSUInteger, RFODataPredicateOperatorType) {
     RFDivisionODataPredicateOperatorType,
     RFModuloODataPredicateOperatorType,
 };
+
 
 @interface RFODataPredicate : NSObject
 

@@ -30,13 +30,17 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
+
 #import "RFAuthenticationProvider.h"
+
 #import "NSError+RFWebService.h"
+
 
 NSString * const kRFAuthorizationKey = @"authorization";
 
 const int kRFUnauthorizedCode =  401;
 const int kRFProxyAuthenticationRequiredCode =  407;
+
 
 @implementation RFAuthenticationProvider
 

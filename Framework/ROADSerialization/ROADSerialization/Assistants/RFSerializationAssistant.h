@@ -31,11 +31,10 @@
 //  for additional information regarding copyright ownership and licensing
 
 
-#import "RFDateFormatterPooling.h"
 #import "RFSerializationCustomHandler.h"
 
-
 @class RFPropertyInfo;
+@class RFObjectPool;
 
 
 NSString *RFSerializationKeyForProperty(RFPropertyInfo *propertyInfo);
@@ -44,5 +43,6 @@ NSArray *RFSerializationPropertiesForClass(Class class);
 id RFCustomSerialization(id value, RFSerializationCustomHandler *customHandlerAttribute);
 id RFCustomDeserialization(id value, RFSerializationCustomHandler *customHandlerAttribute);
 
-NSString *RFSerializationEncodeDateForProperty(NSDate *object, RFPropertyInfo *propertyInfo, id<RFDateFormatterPooling> sender);
-NSString *RFSerializationEncodeObjectForProperty(id object, RFPropertyInfo *propertyInfo, id<RFDateFormatterPooling> sender);
+RFObjectPool* RFCreateDateFormatterPool(void);
+NSString *RFSerializationEncodeDateForProperty(NSDate *object, RFPropertyInfo *propertyInfo, RFObjectPool* dateFormatterPool);
+NSString *RFSerializationEncodeObjectForProperty(id object, RFPropertyInfo *propertyInfo);

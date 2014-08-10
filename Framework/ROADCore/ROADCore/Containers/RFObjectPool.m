@@ -32,83 +32,64 @@
 
 
 #import "RFObjectPool.h"
-#import "RFObjectPooling.h"
 
 
 @implementation RFObjectPool {
-    NSMutableDictionary *pool;
-    NSMutableDictionary *map;
+    NSMutableDictionary *_objectPool;
+    __unsafe_unretained Class _class;
+    RFObjectPoolInitializerBlock _initializerBlock;
 }
 
-
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
-        pool = [[NSMutableDictionary alloc] init];
-        map = [[NSMutableDictionary alloc] init];
+        _objectPool = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
 
-- (void)registerClassNamed:(NSString *)className forIdentifier:(NSString *)reuseIdentifier {
-    __unsafe_unretained const Class aClass = NSClassFromString(className);
-    
-    if (aClass) {
-        NSString *key = _caseSensitive ? reuseIdentifier : [reuseIdentifier lowercaseString];
-        map[key] = NSClassFromString(className);
+- (instancetype)initWithClass:(Class)class defaultObjectInitializer:(RFObjectPoolInitializerBlock)initializerBlock {
+    self = [self init];
+    if (self) {
+        _class = class;
+        _initializerBlock = initializerBlock;
     }
+    return self;
 }
 
-- (id)objectForIdentifier:(NSString *)identifier {
-    NSString *key = _caseSensitive ? identifier : [identifier lowercaseString];
-    NSMutableSet *objectSet = pool[key];
-    id<RFObjectPooling> object = nil;
-    
-    if (objectSet == nil) {
-        objectSet = [[NSMutableSet alloc] init];
-        pool[key] = objectSet;
+- (id)objectForReuseIdentifier:(id<NSCopying>)reuseIdentifier {
+    if ( reuseIdentifier == nil ) {
+        return nil;
     }
     
-    id<RFObjectPoolDelegate> strongDelegate = _delegate;
-    if ([objectSet count] > 0) {
-        object = [objectSet anyObject];
-        [objectSet removeObject:object];
-        
-        if ([object respondsToSelector:@selector(prepareForReuse)]) {
-            [object prepareForReuse];
-        }
-        if ([strongDelegate respondsToSelector:@selector(pool:didLendObject:forIdentifier:)]) {
-            [strongDelegate pool:self didLendObject:object forIdentifier:identifier];
-        }
+    id object = _objectPool[reuseIdentifier];
+    if ( object == nil && _class && _initializerBlock) {
+        object = [[_class alloc] init];
+        object = _initializerBlock( object, reuseIdentifier );
+        [_objectPool setObject:object forKey:reuseIdentifier];
     }
-    else {
-        object = [[map[key] alloc] init];
-        [object setPoolReuseIdentifier:key];
-        [object setPool:self];
-        
-        if ([strongDelegate respondsToSelector:@selector(pool:didInstantiateObject:forIdentifier:)]) {
-            [strongDelegate pool:self didInstantiateObject:object forIdentifier:identifier];
-        }
-    }
-    
     return object;
 }
 
-- (void)repoolObject:(id<RFObjectPooling>)object {
-    NSString * const reuseIdentifier = _caseSensitive ? [object poolReuseIdentifier] : [[object poolReuseIdentifier] lowercaseString];
-    NSMutableSet *objectSet = pool[reuseIdentifier];
-    
-    if (objectSet == nil) {
-        objectSet = [[NSMutableSet alloc] init];
-        pool[reuseIdentifier] = objectSet;
-    }
-    
-    id<RFObjectPoolDelegate> strongDelegate = _delegate;
-    [objectSet addObject:object];
-    if ([strongDelegate respondsToSelector:@selector(pool:didRepoolObjectForIdentifier:)]) {
-        [strongDelegate pool:self didRepoolObjectForIdentifier:reuseIdentifier];
-    }
+- (void)setObject:(id)object forReuseIdentifier:(id<NSCopying>)reuseIdentifier {
+    NSAssert(!((_class != Nil) ^ [object isKindOfClass:_class]), @"Only true if both predicates are the same boolean value, either true or not.");
+    _objectPool[reuseIdentifier] = object;
+}
+
+- (void)removeObjectForKey:(id<NSCopying>)key {
+    [_objectPool removeObjectForKey:key];
+}
+
+- (id)objectForKeyedSubscript:(id <NSCopying>)key {
+    return [self objectForReuseIdentifier:key];
+}
+
+- (void)setObject:(id)object forKeyedSubscript:(id <NSCopying>)key {
+    [self setObject:object forReuseIdentifier:key];
+}
+
+- (void)purge {
+    [_objectPool removeAllObjects];
 }
 
 @end

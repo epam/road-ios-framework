@@ -30,10 +30,13 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
+
 #import <ROAD/ROADAttribute.h>
 
+
 /**
- *
+ * Attribute allows you to specify status code, which will be threated as success response from web service. 
+ * Supports NSNumber for single code and NSRange(NSValue) for range of code
  */
 @interface RFWebServiceClientStatusCodes : NSObject
 

@@ -30,12 +30,15 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
+
 #import "RFODataPrioritizedPredicate.h"
 #import "RFODataExpression.h"
 #import "NSSortDescriptor+RFOData.h"
 #import "RFWebServiceURLBuilderParameter.h"
 
+
 @class RFODataPredicate;
+
 
 RF_ATTRIBUTE(RFWebServiceURLBuilderParameter)
 @interface RFODataFetchRequest : NSObject

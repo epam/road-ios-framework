@@ -32,6 +32,7 @@
 
 
 #import <ROAD/ROADReflection.h>
+#import <ROAD/ROADCore.h>
 #import "RFSerializationAssistant.h"
 
 #import "RFSerializationLog.h"
@@ -74,7 +75,7 @@ NSArray *RFSerializationPropertiesForClass(Class class) {
 }
 
 // NOTE: Used by json and xml serialization
-NSString *RFSerializationEncodeDateForProperty(NSDate *object, RFPropertyInfo *propertyInfo, id<RFDateFormatterPooling> sender) {
+NSString *RFSerializationEncodeDateForProperty(NSDate *object, RFPropertyInfo *propertyInfo, RFObjectPool* dateFormatterPool) {
     NSString *result = nil;
     
     RFSerializableDate *serializableDateAttribute = [propertyInfo attributeWithType:[RFSerializableDate class]];
@@ -88,28 +89,22 @@ NSString *RFSerializationEncodeDateForProperty(NSDate *object, RFPropertyInfo *p
     }
     else {
         NSString *dateFormat = ([serializableDateAttribute.encodingFormat length] == 0) ? serializableDateAttribute.format : serializableDateAttribute.encodingFormat;
-        NSDateFormatter *dateFormatter = [sender dataFormatterWithFormatString:dateFormat];
+        NSDateFormatter *dateFormatter = dateFormatterPool[dateFormat];
         result = dateFormatter ? [dateFormatter stringFromDate:object] : [object description];
     }
 
     return result;
 }
 
-NSString *RFSerializationEncodeObjectForProperty(id object, RFPropertyInfo *propertyInfo, id<RFDateFormatterPooling> sender) {
+NSString *RFSerializationEncodeObjectForProperty(id object, RFPropertyInfo *propertyInfo) {
     
     id result = object;
-    BOOL checkStringType = YES;
     
-    if ([object isKindOfClass:[NSDate class]]) {
-        result = RFSerializationEncodeDateForProperty(object, propertyInfo, sender);
-        checkStringType = NO;
-    }
-    else if ([propertyInfo attributeWithType:[RFSerializableBoolean class]]) {
+    if ([propertyInfo attributeWithType:[RFSerializableBoolean class]]) {
         result = [RFBooleanTranslator encodeTranslatableValue:object forProperty:propertyInfo];
     }
     
-    if (checkStringType && ![result isKindOfClass:[NSString class]]) {
-        
+    if (![result isKindOfClass:[NSString class]]) {
         result = [object respondsToSelector:@selector(stringValue)] ? [object stringValue] : [object description];
     }
     
@@ -140,4 +135,17 @@ id RFCustomDeserialization(id value, RFSerializationCustomHandler *customHandler
     }
     
     return decodedValue;
+}
+
+RFObjectPool* RFCreateDateFormatterPool() {
+    return
+    [[RFObjectPool alloc] initWithClass:NSDateFormatter.class defaultObjectInitializer:^id(id objectCreated, id identifier) {
+        NSCAssert([objectCreated isKindOfClass:NSDateFormatter.class], @"Check if the class of the object created is NSDateFormatter");
+        NSCAssert([identifier isKindOfClass:NSString.class], @"Check if the identifier is a NSString");
+        
+        NSString* formatString = (NSString*)identifier;
+        NSDateFormatter* formatter = (NSDateFormatter*)objectCreated;
+        formatter.dateFormat = formatString;
+        return formatter;
+    }];
 }

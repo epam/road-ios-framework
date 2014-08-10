@@ -31,9 +31,7 @@
 //  for additional information regarding copyright ownership and licensing
 
 
-#import "RFBasicAttributedCoder.h"
-
-@interface RFAttributedXMLCoder : RFBasicAttributedCoder <RFDateFormatterPooling>
+@interface RFAttributedXMLCoder : NSObject
 
 /**
  * Encodes the specified object into a xml string.

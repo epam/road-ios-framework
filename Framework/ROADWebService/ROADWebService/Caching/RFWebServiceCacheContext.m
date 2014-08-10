@@ -42,6 +42,7 @@ static NSString * const kRFWebServiceCachingModelName = @"RFWebServiceCachingMod
 static NSString * const kRFWebServiceCachingModelExtension = @"momd";
 static NSString * const kRFWebServiceCachingStorageName = @"RFWebServiceCache.coredata";
 
+
 @implementation RFWebServiceCacheContext {
     NSPersistentStoreCoordinator *_persistentStoreCoordinator;
     NSManagedObjectModel *_managedObjectModel;
@@ -51,6 +52,7 @@ static NSString * const kRFWebServiceCachingStorageName = @"RFWebServiceCache.co
 - (NSManagedObjectContext *)context {
     return [self managedObjectContext];
 }
+
 
 #pragma mark - Core Data Utitlity
 
