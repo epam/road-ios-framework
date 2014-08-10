@@ -49,10 +49,16 @@
  */
 @property (assign, nonatomic, getter = isMultipartData) BOOL multipartData;
 
-@property (nonatomic, strong, readonly) RFWebServiceClient *webServiceClient;
-@property (nonatomic, strong, readonly) NSString *methodName;
 /**
- The serialized data from the request,
+ * Web service client responsible for performing request.
+ */
+@property (nonatomic, strong, readonly) RFWebServiceClient *webServiceClient;
+/**
+ * Web service call attributes.
+ */
+@property (nonatomic, copy, readonly) NSArray *attributes;
+/**
+ The serialized data from the request.
  */
 @property (strong, nonatomic) id serializedData;
 /**
@@ -68,7 +74,7 @@
  */
 @property (atomic, assign, readonly, getter = isRequestCancelled) BOOL requestCancelled;
 
-- (id)initWithClient:(RFWebServiceClient *)webServiceClient methodName:(NSString *)methodName authenticationProvider:(id<RFAuthenticating>)authenticaitonProvider;
+- (id)initWithClient:(RFWebServiceClient *)client attributes:(NSArray *)attributes authenticationProvider:(id<RFAuthenticating>)authenticationProvider;
 
 - (void)configureRequestForUrl:(NSURL * const)anUrl body:(NSData *)httpBody sharedHeaders:(NSDictionary *)sharedHeaders values:(NSDictionary *)values;
 

@@ -32,6 +32,8 @@
 
 
 #import "RFWebServiceCallParameterEncoder.h"
+#import <ROAD/ROADCore.h>
+
 #import "RFSerializationDelegate.h"
 #import "RFWebServiceURLBuilderParameter.h"
 #import "RFFormData.h"
@@ -44,7 +46,7 @@ static NSString * const kRFBoundaryDefaultString = @"AaB03x";
 
 @implementation RFWebServiceCallParameterEncoder
 
-+ (void)encodeParameters:(NSArray *)parameterList forClient:(RFWebServiceClient *)webClient methodName:(NSString *)methodName withSerializator:(id<RFSerializationDelegate>)serializator callbackBlock:(void(^)(NSDictionary *parameters, NSData *postData, BOOL isMultipartData))callbackBlock {
++ (void)encodeParameters:(NSArray *)parameterList attributes:(NSArray *)attributes withSerializator:(id<RFSerializationDelegate>)serializator callbackBlock:(void (^)(NSDictionary *, NSData *, BOOL))callbackBlock {
     
     NSMutableDictionary *result = [[NSMutableDictionary alloc] initWithCapacity:[parameterList count]];
     NSMutableData *bodyData;
@@ -75,7 +77,7 @@ static NSString * const kRFBoundaryDefaultString = @"AaB03x";
                 bodyData = [[NSMutableData alloc] init];
             }
             
-            boundary = [self boundaryFromWebServiceClient:webClient withMethodName:methodName];
+            boundary = [self boundaryFromAttributes:attributes];
             isMultipartData = YES;
             [self addAttachment:object toBodyData:bodyData boundary:boundary];
         }
@@ -88,7 +90,7 @@ static NSString * const kRFBoundaryDefaultString = @"AaB03x";
                 bodyData = [[NSMutableData alloc] init];
             }
             
-            boundary = [self boundaryFromWebServiceClient:webClient withMethodName:methodName];
+            boundary = [self boundaryFromAttributes:attributes];
             isMultipartData = YES;
             [self addAttachments:object toBodyData:bodyData boundary:boundary];
         }
@@ -139,8 +141,8 @@ static NSString * const kRFBoundaryDefaultString = @"AaB03x";
     [bodyData appendData:nextAttachment];
 }
 
-+ (NSString *)boundaryFromWebServiceClient:(id)webServiceClient withMethodName:(NSString *)methodName {
-    RFMultipartData *multipartDataAttribute = [[webServiceClient class] RF_attributeForMethod:methodName withAttributeType:[RFMultipartData class]];
++ (NSString *)boundaryFromAttributes:(NSArray *)attributes {
+    RFMultipartData *multipartDataAttribute = [attributes RF_firstObjectWithClass:[RFMultipartData class]];
     NSString *boundary;
     if (!multipartDataAttribute.boundary) {
         // Default boundary

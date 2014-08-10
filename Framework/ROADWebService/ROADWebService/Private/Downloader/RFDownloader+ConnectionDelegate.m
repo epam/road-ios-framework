@@ -32,6 +32,7 @@
 
 
 #import "RFDownloader+ConnectionDelegate.h"
+#import <ROAD/ROADCore.h>
 
 #import "RFWebServiceLog.h"
 #import "NSError+RFWebService.h"
@@ -88,7 +89,7 @@
     // Checking response with error handler
     RFWebServiceErrorHandler *errorHandlerAttribute = [[self.webServiceClient class] RF_attributeForClassWithAttributeType:[RFWebServiceErrorHandler class]];
     if (!errorHandlerAttribute) {
-        errorHandlerAttribute = [[self.webServiceClient class] RF_attributeForMethod:self.methodName withAttributeType:[RFWebServiceErrorHandler class]];
+        errorHandlerAttribute = [self.attributes RF_firstObjectWithClass:[RFWebServiceErrorHandler class]];
     }
     
     if (errorHandlerAttribute.handlerClass) {

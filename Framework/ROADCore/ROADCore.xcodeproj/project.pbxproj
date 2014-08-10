@@ -22,6 +22,8 @@
 
 /* Begin PBXBuildFile section */
 		1176413D18E4700500B1688B /* libUtilities.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1176413C18E4700500B1688B /* libUtilities.a */; };
+		117BD9231997A84E001CA6C5 /* NSArray+RFClassSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 117BD9221997A84E001CA6C5 /* NSArray+RFClassSearch.m */; };
+		117BD9241997B248001CA6C5 /* NSArray+RFClassSearch.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 117BD9211997A84E001CA6C5 /* NSArray+RFClassSearch.h */; };
 		46AA65574E8B424882F7485B /* ROADGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BC2CF400F040A48EDF4B23 /* ROADGeneratedAttribute.m */; };
 		5BA3059C198FC1AB00F02E46 /* RFStringFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA3059B198FC1AB00F02E46 /* RFStringFormatterTests.m */; };
 		78180F0816C3D0A300B4AA31 /* ROADCore.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E72216C3CD4A0049E36B /* ROADCore.h */; };
@@ -63,6 +65,7 @@
 			dstPath = include/ROAD;
 			dstSubfolderSpec = 16;
 			files = (
+				117BD9241997B248001CA6C5 /* NSArray+RFClassSearch.h in CopyFiles */,
 				83E0CDE918D0833900B25689 /* RFLog.h in CopyFiles */,
 				78180F0816C3D0A300B4AA31 /* ROADCore.h in CopyFiles */,
 				78180F0916C3D0A800B4AA31 /* NSArray+RFEmptyArrayChecks.h in CopyFiles */,
@@ -79,6 +82,8 @@
 /* Begin PBXFileReference section */
 		1176413618E4635400B1688B /* libUtilities.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUtilities.a; path = "../Utilities/build/Debug-iphoneos/libUtilities.a"; sourceTree = "<group>"; };
 		1176413C18E4700500B1688B /* libUtilities.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUtilities.a; path = "../Utilities/build/Debug-iphoneos/libUtilities.a"; sourceTree = "<group>"; };
+		117BD9211997A84E001CA6C5 /* NSArray+RFClassSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+RFClassSearch.h"; sourceTree = "<group>"; };
+		117BD9221997A84E001CA6C5 /* NSArray+RFClassSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+RFClassSearch.m"; sourceTree = "<group>"; };
 		5BA3059B198FC1AB00F02E46 /* RFStringFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFStringFormatterTests.m; sourceTree = "<group>"; };
 		634461C3604B4DB58DF380FC /* Pods-ROADCore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ROADCore.xcconfig"; path = "../Pods/Pods-ROADCore.xcconfig"; sourceTree = "<group>"; };
 		78B8E68E16C3CC3E0049E36B /* libROADCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libROADCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,6 +215,8 @@
 				78B8E70116C3CD320049E36B /* NSDictionary+RFKeyedSubscript.m */,
 				78B8E70216C3CD320049E36B /* NSMutableDictionary+RFKeyedSubscript.h */,
 				78B8E70316C3CD320049E36B /* NSMutableDictionary+RFKeyedSubscript.m */,
+				117BD9211997A84E001CA6C5 /* NSArray+RFClassSearch.h */,
+				117BD9221997A84E001CA6C5 /* NSArray+RFClassSearch.m */,
 			);
 			name = CollectionCategories;
 			sourceTree = "<group>";
@@ -390,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78B8E6DC16C3CCE60049E36B /* RFDynamicObject.m in Sources */,
+				117BD9231997A84E001CA6C5 /* NSArray+RFClassSearch.m in Sources */,
 				78B8E6E016C3CCE60049E36B /* RFObjectPool.m in Sources */,
 				78B8E70716C3CD320049E36B /* NSArray+RFEmptyArrayChecks.m in Sources */,
 				78B8E71716C3CD320049E36B /* NSDictionary+RFKeyedSubscript.m in Sources */,

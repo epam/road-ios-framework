@@ -1,6 +1,6 @@
 //
-//  RFWebServiceCallParameterEncoder.h
-//  ROADWebService
+//  NSArray+RFClassSearch.h
+//  ROADCore
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
 //
@@ -31,26 +31,8 @@
 //  for additional information regarding copyright ownership and licensing
 
 
-@protocol RFSerializationDelegate;
-@class RFWebServiceClient;
+@interface NSArray (RFClassSearch)
 
+- (id)RF_firstObjectWithClass:(__unsafe_unretained Class)objectClass;
 
-static NSString * const kRFBoundaryDefaultString;
-
-
-/**
- *Parameter encoder to create parameters for the webservice.
- */
-@interface RFWebServiceCallParameterEncoder : NSObject
-
-/**
- * It will create a parameter dictionary based on the parameter list array. 
- * If it needs to be serialized, the serializator object will be used. 
- * If one object is NSData, it will be sent back as a post data.
- * @param parameterList The list of parameters
- * @param attributes The attributes that determine current web service call
- * @param serializator The serializator object
- * @param callbackBlock The callback block which will be called.
- */
-+ (void)encodeParameters:(NSArray *)parameterList attributes:(NSArray *)attributes withSerializator:(id<RFSerializationDelegate>)serializator callbackBlock:(void(^)(NSDictionary *parameters, NSData *postData, BOOL isMultipartData))callbackBlock;
 @end
