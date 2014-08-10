@@ -283,24 +283,18 @@
 - (NSMutableURLRequest *)requestForUrl:(NSURL * const)anUrl withMethod:(NSString * const)method withBody:(NSData *)httpBody values:(NSDictionary *)values {
     NSData *body = httpBody;
 
-    if ([_callAttribute.method isEqualToString:@"POST"] || [_callAttribute.method isEqualToString:@"PUT"]) {
-        if (_callAttribute.postParameter != (int)NSNotFound && !httpBody.length) {
-            id bodyObject = values[[NSString stringWithFormat:@"%d", _callAttribute.postParameter]];
-            body = [self dataFromParameter:bodyObject];
-        }
-        else {
-            if ([body length] == 0) {
-                id firstParameter = values[@"0"];
-                if (firstParameter) { // Checking first parameter of web service call method
-                    body = [self dataFromParameter:firstParameter];
-                }
-            }
-            else if (_callAttribute.postParameter != (int)NSNotFound) {
-                RFWSLogWarn(@"Web service method %@ specifies postParameter, but has NSData or RFFormData variable in parameters and use it instead", method);
+    if (_callAttribute.postParameter != (int)NSNotFound) {
+        id bodyObject = values[[NSString stringWithFormat:@"%d", _callAttribute.postParameter]];
+        body = [self dataFromParameter:bodyObject];
+    }
+    else if ([_callAttribute.method isEqualToString:@"POST"] || [_callAttribute.method isEqualToString:@"PUT"]) {
+        if ([body length] == 0) {
+            id firstParameter = values[@"0"];
+            if (firstParameter) { // Checking first parameter of web service call method
+                body = [self dataFromParameter:firstParameter];
             }
         }
     }
-
 
     NSMutableURLRequest * const request = [NSMutableURLRequest requestWithURL:anUrl];
     request.HTTPMethod = method;
@@ -369,6 +363,10 @@ NSString * const RFAttributeTemplateEscape = @"%%";
 
     if ([parameter isKindOfClass:[NSString class]]) {
         data = [parameter dataUsingEncoding:NSUTF8StringEncoding];
+    }
+
+    if ([parameter isKindOfClass:[NSData class]]) {
+        data = parameter;
     }
 
     return data;
