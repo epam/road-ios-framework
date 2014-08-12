@@ -255,18 +255,10 @@ RFRequestTestProcessor *testRequestProcessor = [[RFRequestTestProcessor alloc] i
     client.requestProcessor = testRequestProcessor;
     
     [client methodAttributeTestRequest:^(id result) {
-        
-        isFinished = YES; /* reveived data ... */
+        /* succcess logic */
     } failure:^(NSError *error) {
-        
-        isFinished = YES; /* reveived data ... */
+        /* failure logic */
     }];
-    
-    while (!isFinished) {
-        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
-    }
-    
-    XCTAssertEqual(testRequestProcessor.passedAttributes.count, 2, @"Attributes are not passed to the request processor.");
 ```
 
 
