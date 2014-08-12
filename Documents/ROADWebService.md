@@ -244,29 +244,20 @@ See the following code from the related test for more info:
 In the dynamic method definition stub file:
 ```objc
 RF_ATTRIBUTE(RFWebServiceCall, method = @"GET", relativePath = @"/test")
-RF_ATTRIBUTE(RFRequestTestAttribute, testProperty = @"testString")
-- (id<RFWebServiceCancellable>)methodAttributeTestRequest:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+- (id<RFWebServiceCancellable>)processingRequest:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 ```
 In the code where the user is invoking the dynamic method:
 ```objc
 RFRequestTestProcessor *testRequestProcessor = [[RFRequestTestProcessor alloc] init];
-    RFWebServiceClient *client = [[RFWebServiceClient alloc] initWithServiceRoot:@"https://test.simple.call/"];
+    RFWebServiceClient *client = [[RFWebServiceClient alloc] initWithServiceRoot:@"http://httpbin.org/"];
     
     client.requestProcessor = testRequestProcessor;
     
-    [client methodAttributeTestRequest:^(id result) {
-        
-        isFinished = YES; /* reveived data ... */
+    [client processingRequest:^(id result) {
+        /* succcess logic */
     } failure:^(NSError *error) {
-        
-        isFinished = YES; /* reveived data ... */
+        /* failure logic */
     }];
-    
-    while (!isFinished) {
-        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
-    }
-    
-    XCTAssertEqual(testRequestProcessor.passedAttributes.count, 2, @"Attributes are not passed to the request processor.");
 ```
 
 
