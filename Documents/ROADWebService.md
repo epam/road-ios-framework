@@ -269,5 +269,45 @@ RFRequestTestProcessor *testRequestProcessor = [[RFRequestTestProcessor alloc] i
     XCTAssertEqual(testRequestProcessor.passedAttributes.count, 2, @"Attributes are not passed to the request processor.");
 ```
 
+
+##Download Progress Tracking
+
+Users can monitor and, if necessary, display the download process in the UI, using the `RFWebServiceClientDownloadProgressBlock`.
+
+To use `RFWebServiceClientDownloadProgressBlock`, you need to pass it as one of the parameters. Then set the parameter index of the block in the `progressBlockParameter` (`RFWebServiceCall` attribute).
+
+```objc
+@property (assign, nonatomic) int progressBlockParameter;
+
+RF_ATTRIBUTE(RFWebServiceCall, progressBlockParameter = 0)
+- (id<RFWebServiceCancellable>)testDownloadingWithProgressBlock:(void(^)(float progress, long long expectedContentLenght))progressBlock
+                                                        success:(void(^)(NSDictionary *albumsInfo))successBlock 
+                                                        failure:(void(^)(NSError *error))failureBlock;
+```
+
+* `progress` - the download status with the value from 0.0 to 1.0;
+* `expectedContentLenght` - the total size of your data downloads. Return `-1` if the size of query results are not known.
+
+`RFWebServiceClientDownloadProgressBlock` is executed in the main thread and called at least 2 times:
+
+* Once the request to web service is started (with parameters `(0. -1)` );
+* Once the request to web service is finished (with parameters `(1, expectedContentLenght)` );
+* Several times when new portion of data is downloaded.
+
+Note: `RFWebServiceClientDownloadProgressBlock` should be placed before preparation, success and failure block, in order to work properly. 
+
+```objc
+RFWebServiceClient *webClient = [[RFWebServiceClient alloc] init];
+[webClient downloadingWithProgressBlock:^(float progress, long long expectedContentLenght) {
+	/* track your progress here */
+} success:^(id response) {
+     /* succcess logic */
+} failure:^(NSError *error) {
+     /* failure logic */
+}];
+```
+
+
+
 [1]:./ROADLogger.md#predefined-logging-types
 [2]:http://www.odata.org
