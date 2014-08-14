@@ -95,6 +95,32 @@
     XCTAssertTrue([client.authenticationProvider isSessionOpened], @"Authentication was failed and session was not opened.");
 }
 
+- (void)testCancelHTTPBasicAuthentication {
+    authenticationFinished = NO;
+    __block BOOL isFinished = NO;
+    __block NSError *cancelWithReasonError;
+
+    RFWebServiceClient *client = [[RFWebServiceClient alloc] initWithServiceRoot:@"http://httpbin.org/"];
+    client.authenticationProvider = [[RFBasicAuthenticationProvider alloc] initWithUser:@"user" password:@"passwd"];
+
+    id<RFWebServiceCancellable> downloadOperation = [client dynamicTestHttpRequestPath:@"basic-auth/user/passwd" success:^(id result) {
+        isFinished = YES;
+    } failure:^(NSError *error) {
+        cancelWithReasonError = error;
+        isFinished = YES;
+    }];
+
+    NSObject *reason = [[NSObject alloc] init];
+    [downloadOperation cancelWithReason:reason];
+
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
+    }
+
+    XCTAssertEqual([cancelWithReasonError code], kRFWebServiceErrorCodeCancel, @"Web service cancellation finished with unexpected code!");
+    XCTAssertEqual([cancelWithReasonError userInfo][kRFWebServiceCancellationReason], reason, @"Web service cancellation finished with unexpected reason!");
+}
+
 - (void)testHTTPBasicAuthenticationInConjunctionWithSSL {
     authenticationFinished = NO;
     __block BOOL isFinished = NO;

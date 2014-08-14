@@ -45,10 +45,11 @@
     return self;
 }
 
--(void)authenticate {
+-(id<RFWebServiceCancellable>)authenticate {
     dispatch_async(_queue, ^{
         [self concurrentAuthenticate];
     });
+    return nil;
 }
 
 - (void)concurrentAuthenticate {

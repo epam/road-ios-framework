@@ -51,8 +51,9 @@
 
 #pragma mark - RFAuthenticating
 
-- (void)authenticate {
+- (id<RFWebServiceCancellable>)authenticate {
     _credential = [[NSURLCredential alloc] initWithUser:_user password:_password persistence:NSURLCredentialPersistenceForSession];
+    return nil;
 }
 
 - (void)processAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge forConnection:(NSURLConnection *)connection {
@@ -64,7 +65,7 @@
     }
 }
 
-- (void)invalidate {
+- (id<RFWebServiceCancellable>)invalidate {
     
     if (_credential) {
         NSDictionary *credentials = [[NSURLCredentialStorage sharedCredentialStorage] allCredentials];
@@ -85,6 +86,8 @@
         // Set flag - session is closed
         _sessionOpened = NO;
     }
+    
+    return nil;
 }
 
 - (void)checkResponse:(NSHTTPURLResponse *)response forConnection:(NSURLConnection *)connection {
