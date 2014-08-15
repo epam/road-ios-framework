@@ -45,13 +45,15 @@
     return self;
 }
 
--(void)authenticate {
-    dispatch_async(_queue, ^{
-        [self concurrentAuthenticate];
+-(id<RFWebServiceCancellable>)authenticate {
+    __block id<RFWebServiceCancellable> cancellableOperation;
+    dispatch_sync(_queue, ^{
+        cancellableOperation = [self concurrentAuthenticate];
     });
+    return cancellableOperation;
 }
 
-- (void)concurrentAuthenticate {
+- (id<RFWebServiceCancellable>)concurrentAuthenticate {
     @throw [NSException exceptionWithName:@"AbstractMethodInvocationException"
                                    reason:@"Override method in subclasses, invoke this method on concrete subclasses."
                                  userInfo:nil];

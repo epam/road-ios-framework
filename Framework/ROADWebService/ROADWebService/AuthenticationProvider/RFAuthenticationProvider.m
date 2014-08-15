@@ -62,20 +62,20 @@ const int kRFProxyAuthenticationRequiredCode =  407;
 
 #pragma mark - RFAuthenticating
 
-- (void)authenticate {
+- (id<RFWebServiceCancellable>)authenticate {
     @throw [NSException exceptionWithName:@"AbstractMethodInvocationException"
                                    reason:@"Override method in subclasses, invoke this method on concrete subclasses."
                                  userInfo:nil];
 }
 
-- (void)authenticateWithSuccessBlock:(RFAuthenticationSuccessBlock)successBlock failureBlock:(RFAuthenticationFailureBlock)failureBlock {
+- (id<RFWebServiceCancellable>)authenticateWithSuccessBlock:(RFAuthenticationSuccessBlock)successBlock failureBlock:(RFAuthenticationFailureBlock)failureBlock {
     [_successBlocks addObject:successBlock];
     [_failureBlocks addObject:failureBlock];
     
-    [self authenticate];
+    return [self authenticate];
 }
 
-- (void)invalidate {
+- (id<RFWebServiceCancellable>)invalidate {
     @throw [NSException exceptionWithName:@"AbstractMethodInvocationException"
                                    reason:@"Override method in subclasses, invoke this method on concrete subclasses."
                                  userInfo:nil];

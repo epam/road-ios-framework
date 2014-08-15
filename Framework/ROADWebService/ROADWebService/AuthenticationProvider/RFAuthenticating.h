@@ -32,6 +32,7 @@
 
 
 @class RFWebServiceClient;
+@protocol RFWebServiceCancellable;
 
 
 typedef void (^RFAuthenticationSuccessBlock)(id result);
@@ -56,19 +57,22 @@ typedef void (^RFAuthenticationFailureBlock)(NSError *error);
 
 /**
  * Methods have to be implemented to open session, add authorization headers or any other operation, that will result in preliminary authentication (and following requests will be authenticated) or finishing preparations for processAuthenticationChallenge:forConnection: method (and late requests can handle authentication without additional requests/calculations).
+ * @return The cancalable interface which allows to interrupt the operation
  */
-- (void)authenticate;
+- (id<RFWebServiceCancellable>)authenticate;
 /**
  * Methods have to be implemented to open session, add authorization headers or any other operation, that will result in preliminary authentication (and following requests will be authenticated) or finishing preparations for processAuthenticationChallenge:forConnection: method (and late requests can handle authentication without additional requests/calculations).
  * @param successBlock The block will be executed in case of successfully of authentication process
  * @param failureBlock The block will be executed in case of failure of authentication process
+ * @return The cancalable interface which allows to interrupt the operation
  */
-- (void)authenticateWithSuccessBlock:(void(^)(id result))successBlock failureBlock:(void(^)(NSError *error))failureBlock;
+- (id<RFWebServiceCancellable>)authenticateWithSuccessBlock:(void(^)(id result))successBlock failureBlock:(void(^)(NSError *error))failureBlock;
 
 /**
  * Method intended to invalidate current open session. If there is no open sessions now, method does nothing
+ * @return The cancalable interface which allows to interrupt the operation
  */
-- (void)invalidate;
+- (id<RFWebServiceCancellable>)invalidate;
 
 @optional
 /**

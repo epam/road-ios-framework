@@ -50,7 +50,8 @@
 
 /**
  * This method must be used instead of -authenticate for reloading. -authenticate method execute it synchroniously in the queue.
+ * @return The cancalable interface which allows to interrupt the operation
  */
-- (void)concurrentAuthenticate;
+- (id<RFWebServiceCancellable>)concurrentAuthenticate;
 
 @end
