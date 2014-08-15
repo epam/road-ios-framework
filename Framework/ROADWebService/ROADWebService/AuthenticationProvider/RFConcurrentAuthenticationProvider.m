@@ -46,11 +46,11 @@
 }
 
 -(id<RFWebServiceCancellable>)authenticate {
-    __block id<RFWebServiceCancellable> cancallableOperation;
+    __block id<RFWebServiceCancellable> cancellableOperation;
     dispatch_sync(_queue, ^{
-        cancallableOperation = [self concurrentAuthenticate];
+        cancellableOperation = [self concurrentAuthenticate];
     });
-    return cancallableOperation;
+    return cancellableOperation;
 }
 
 - (id<RFWebServiceCancellable>)concurrentAuthenticate {
