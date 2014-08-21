@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="v1.1.2" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13E28" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="WebResponse" representedClassName="RFWebResponse" syncable="YES">
+        <attribute name="cacheIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="implementationPrivate" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="urlHash" attributeType="Decimal" defaultValueString="0.0" indexed="YES" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="WebResponse" positionX="-2054" positionY="851" width="128" height="88"/>
+    </elements>
+</model>

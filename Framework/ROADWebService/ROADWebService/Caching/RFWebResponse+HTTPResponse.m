@@ -37,11 +37,12 @@
 @implementation RFWebResponse (HTTPResponse)
 
 - (NSHTTPURLResponse *)unarchivedResponse {
-    return [NSKeyedUnarchiver unarchiveObjectWithData:self.response];
+    return [NSKeyedUnarchiver unarchiveObjectWithData:self.implementation.response];
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"Request URL: %@,\nExpiration Date: %@,\nETag: %@,\nLast Modified: %@,\nCache Identifier: %@, Response Body: %@", self.requestURL, self.expirationDate, self.eTag, self.lastModified, self.cacheIdentifier, [[NSString alloc] initWithData:self.responseBodyData encoding:NSUTF8StringEncoding]];
+    RFWebResponseImplementation* impl = self.implementation;
+    return [NSString stringWithFormat:@"urlHash:%lu, Request URL: %@,\nExpiration Date: %@,\nETag: %@,\nLast Modified: %@,\nCache Identifier: %@, Response Body: %@", self.urlHash.unsignedLongValue, impl.requestURL, impl.expirationDate, impl.eTag, impl.lastModified, self.cacheIdentifier, [[NSString alloc] initWithData:impl.responseBodyData encoding:NSUTF8StringEncoding]];
 }
 
 @end

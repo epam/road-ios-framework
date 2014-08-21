@@ -33,17 +33,22 @@
 
 #import <CoreData/CoreData.h>
 
+@interface RFWebResponseImplementation : NSObject<NSCoding>
+
+@property (nonatomic) NSString* requestURL;
+@property (nonatomic) NSData * responseBodyData;
+@property (nonatomic) NSDate * expirationDate;
+@property (nonatomic) NSString * eTag;
+@property (nonatomic) NSData * requestBodyData;
+@property (nonatomic) NSData * response;
+@property (nonatomic) NSString * lastModified;
+
+@end
 
 @interface RFWebResponse : NSManagedObject
 
-@property (nonatomic, retain) NSString * eTag;
-@property (nonatomic, retain) NSDate * expirationDate;
-@property (nonatomic, retain) NSData * requestBodyData;
-@property (nonatomic, retain) NSString * requestURL;
-@property (nonatomic, retain) NSData * response;
-@property (nonatomic, retain) NSData * responseBodyData;
-@property (nonatomic, retain) NSDecimalNumber * urlHash;
-@property (nonatomic, retain) NSString * lastModified;
-@property (nonatomic, retain) NSString * cacheIdentifier;
+@property (nonatomic) NSString * cacheIdentifier;
+@property (nonatomic) NSDecimalNumber * urlHash;
+@property (nonatomic, readonly) RFWebResponseImplementation* implementation;
 
 @end

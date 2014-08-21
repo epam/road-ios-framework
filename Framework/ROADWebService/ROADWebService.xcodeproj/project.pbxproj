@@ -218,6 +218,7 @@
 		245D5F8E1907E0CF00A42B94 /* RFRequestTestProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFRequestTestProcessor.m; sourceTree = "<group>"; };
 		33F0EF0D18051D3D001DCCED /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		5AFB79C5176613C6007F813A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5B73B6B81999187200599A9E /* RFWebServiceCachingModel_v4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RFWebServiceCachingModel_v4.xcdatamodel; sourceTree = "<group>"; };
 		6338326D18AE6258005E1673 /* RFWebServiceCachingModel_cacheIdentifierAdded.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RFWebServiceCachingModel_cacheIdentifierAdded.xcdatamodel; sourceTree = "<group>"; };
 		783AF1A31650FAF800AD247E /* ROADWebServiceTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ROADWebServiceTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		78FB204215BD336B00C2137A /* libROADWebService.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libROADWebService.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1156,10 +1157,11 @@
 			isa = XCVersionGroup;
 			children = (
 				0DDEB3A419641D6700F2461E /* RFWebServiceCachingModel_v3.xcdatamodel */,
+				5B73B6B81999187200599A9E /* RFWebServiceCachingModel_v4.xcdatamodel */,
 				6338326D18AE6258005E1673 /* RFWebServiceCachingModel_cacheIdentifierAdded.xcdatamodel */,
 				83138AF31862FFC700674184 /* RFWebServiceCachingModel.xcdatamodel */,
 			);
-			currentVersion = 0DDEB3A419641D6700F2461E /* RFWebServiceCachingModel_v3.xcdatamodel */;
+			currentVersion = 5B73B6B81999187200599A9E /* RFWebServiceCachingModel_v4.xcdatamodel */;
 			path = RFWebServiceCachingModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
