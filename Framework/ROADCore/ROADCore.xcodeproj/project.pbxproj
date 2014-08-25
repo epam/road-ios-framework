@@ -27,7 +27,6 @@
 		46AA65574E8B424882F7485B /* ROADGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BC2CF400F040A48EDF4B23 /* ROADGeneratedAttribute.m */; };
 		5BA3059C198FC1AB00F02E46 /* RFStringFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA3059B198FC1AB00F02E46 /* RFStringFormatterTests.m */; };
 		78180F0816C3D0A300B4AA31 /* ROADCore.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E72216C3CD4A0049E36B /* ROADCore.h */; };
-		78180F0916C3D0A800B4AA31 /* NSArray+RFEmptyArrayChecks.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E6F816C3CD320049E36B /* NSArray+RFEmptyArrayChecks.h */; };
 		78180F0A16C3D0A800B4AA31 /* NSDictionary+RFKeyedSubscript.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E70016C3CD320049E36B /* NSDictionary+RFKeyedSubscript.h */; };
 		78180F0B16C3D0A800B4AA31 /* NSMutableDictionary+RFKeyedSubscript.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E70216C3CD320049E36B /* NSMutableDictionary+RFKeyedSubscript.h */; };
 		78180F0F16C3D0BD00B4AA31 /* NSMutableString+RFStringFormatter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78B8E70416C3CD320049E36B /* NSMutableString+RFStringFormatter.h */; };
@@ -68,7 +67,6 @@
 				117BD9241997B248001CA6C5 /* NSArray+RFClassSearch.h in CopyFiles */,
 				83E0CDE918D0833900B25689 /* RFLog.h in CopyFiles */,
 				78180F0816C3D0A300B4AA31 /* ROADCore.h in CopyFiles */,
-				78180F0916C3D0A800B4AA31 /* NSArray+RFEmptyArrayChecks.h in CopyFiles */,
 				78180F0A16C3D0A800B4AA31 /* NSDictionary+RFKeyedSubscript.h in CopyFiles */,
 				78180F0B16C3D0A800B4AA31 /* NSMutableDictionary+RFKeyedSubscript.h in CopyFiles */,
 				78180F0F16C3D0BD00B4AA31 /* NSMutableString+RFStringFormatter.h in CopyFiles */,
@@ -94,7 +92,6 @@
 		78B8E6D316C3CCE60049E36B /* RFDynamicObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RFDynamicObject.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		78B8E6D416C3CCE60049E36B /* RFObjectPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RFObjectPool.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		78B8E6D516C3CCE60049E36B /* RFObjectPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RFObjectPool.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		78B8E6F816C3CD320049E36B /* NSArray+RFEmptyArrayChecks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSArray+RFEmptyArrayChecks.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		78B8E6F916C3CD320049E36B /* NSArray+RFEmptyArrayChecks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSArray+RFEmptyArrayChecks.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		78B8E70016C3CD320049E36B /* NSDictionary+RFKeyedSubscript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSDictionary+RFKeyedSubscript.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		78B8E70116C3CD320049E36B /* NSDictionary+RFKeyedSubscript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSDictionary+RFKeyedSubscript.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -109,6 +106,7 @@
 		83F8B65218E9627E0097EBC5 /* RFPoolTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFPoolTests.m; sourceTree = "<group>"; };
 		8706210A288A45BC9C292B0C /* libPods-ROADCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ROADCore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D9422EC17E2C59C005F0AE3 /* ROADCoreTest-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ROADCoreTest-Prefix.pch"; sourceTree = "<group>"; };
+		B18EE8C919AB7B1C0071F1DB /* NSArray+RFEmptyArrayChecks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+RFEmptyArrayChecks.h"; sourceTree = "<group>"; };
 		E9BC2CF400F040A48EDF4B23 /* ROADGeneratedAttribute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ROADGeneratedAttribute.m; path = ROADCore/ROADGeneratedAttributes/ROADGeneratedAttribute.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -209,7 +207,7 @@
 		78B8E72316C3CD7F0049E36B /* CollectionCategories */ = {
 			isa = PBXGroup;
 			children = (
-				78B8E6F816C3CD320049E36B /* NSArray+RFEmptyArrayChecks.h */,
+				B18EE8C919AB7B1C0071F1DB /* NSArray+RFEmptyArrayChecks.h */,
 				78B8E6F916C3CD320049E36B /* NSArray+RFEmptyArrayChecks.m */,
 				78B8E70016C3CD320049E36B /* NSDictionary+RFKeyedSubscript.h */,
 				78B8E70116C3CD320049E36B /* NSDictionary+RFKeyedSubscript.m */,
@@ -257,7 +255,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 78B8E69C16C3CC3E0049E36B /* Build configuration list for PBXNativeTarget "ROADCore" */;
 			buildPhases = (
-				C0AF2CE700AF4C9FB8B553A9 /* libObjCAttr - generate attributes */,
+				4B2243E6649B4072A8AC0CFC /* libObjCAttr - generate attributes */,
 				B03FB7F7E80344F5A21B8D39 /* Check Pods Manifest.lock */,
 				78B8E68C16C3CC3E0049E36B /* CopyFiles */,
 				78B8E68A16C3CC3E0049E36B /* Sources */,
@@ -332,6 +330,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4B2243E6649B4072A8AC0CFC /* libObjCAttr - generate attributes */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "libObjCAttr - generate attributes";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
+		};
 		8353CC37189F82B800135D86 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -374,20 +386,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/../Pods/Pods-ROADCore-resources.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		C0AF2CE700AF4C9FB8B553A9 /* libObjCAttr - generate attributes */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "libObjCAttr - generate attributes";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
