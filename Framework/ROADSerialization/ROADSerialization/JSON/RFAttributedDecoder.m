@@ -81,8 +81,8 @@
     id const jsonObject = [NSJSONSerialization RF_decodeJSONData:jsonData];
     id partOfJsonObject = jsonObject;
     if (serializationRoot.length) {
-        partOfJsonObject  = [self jsonObjectForKeyPath:serializationRoot atJsonObject:jsonObject];
-    }
+         partOfJsonObject  = [self jsonObjectForKeyPath:serializationRoot atJsonObject:jsonObject];
+      }
     
     return [self decodePredeserializedObject:partOfJsonObject withRootClassName:rootClassName];
 }
@@ -318,6 +318,11 @@
         }
     }
     
+    // If result not found, return empty collection.
+    if ([nestedJsonObject isKindOfClass:[NSArray class]] && [nestedJsonObject count] == 0){
+        return nestedJsonObject;
+    }
+    
     // Last check to remove nulls from result
     if ([nestedJsonObject isKindOfClass:[NSArray class]]) {
         NSMutableArray *arrayWithoutNulls = [[NSMutableArray alloc] init];
@@ -326,13 +331,15 @@
                 [arrayWithoutNulls addObject:obj];
             }
         }
-        if ([arrayWithoutNulls count] > 0) {
-            nestedJsonObject = arrayWithoutNulls;
-        }
-        else {
-            nestedJsonObject = nil;
-            RFSCLogError(@"Serialization failed because part ( %@ ) of serialization root ( %@ ) is not founded or equal nil", currentKeyPath, keyPath);
-        }
+        
+         if ([arrayWithoutNulls count] > 0) {
+         nestedJsonObject = arrayWithoutNulls;
+         }
+         else {
+         nestedJsonObject = nil;
+         RFSCLogError(@"Serialization failed because part ( %@ ) of serialization root ( %@ ) is not founded or equal nil", currentKeyPath, keyPath);
+         }
+        
         
     }
     

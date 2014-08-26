@@ -32,6 +32,7 @@
 		3337D3DB1803ECE200FE22F4 /* RFXMLSerializationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3337D3D41803ECE200FE22F4 /* RFXMLSerializationContext.m */; };
 		3337D3DC1803ECE200FE22F4 /* RFAttributedXMLCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3337D3D61803ECE200FE22F4 /* RFAttributedXMLCoder.m */; };
 		3337D3DD1803ECE200FE22F4 /* RFAttributedXMLDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3337D3D81803ECE200FE22F4 /* RFAttributedXMLDecoder.m */; };
+		335CA04619AC853500975656 /* DeserialisationTestEmpty.json in Resources */ = {isa = PBXBuildFile; fileRef = 335CA04519AC853500975656 /* DeserialisationTestEmpty.json */; };
 		33F0EEEB1804AA15001DCCED /* RFAttributedCoder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3337D3CD1803ECE200FE22F4 /* RFAttributedCoder.h */; };
 		33F0EEEC1804AA15001DCCED /* RFAttributedDecoder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3337D3CF1803ECE200FE22F4 /* RFAttributedDecoder.h */; };
 		33F0EEED1804AA15001DCCED /* RFAttributedXMLCoder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3337D3D51803ECE200FE22F4 /* RFAttributedXMLCoder.h */; };
@@ -142,6 +143,7 @@
 		3337D3D61803ECE200FE22F4 /* RFAttributedXMLCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFAttributedXMLCoder.m; sourceTree = "<group>"; };
 		3337D3D71803ECE200FE22F4 /* RFAttributedXMLDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFAttributedXMLDecoder.h; sourceTree = "<group>"; };
 		3337D3D81803ECE200FE22F4 /* RFAttributedXMLDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFAttributedXMLDecoder.m; sourceTree = "<group>"; };
+		335CA04519AC853500975656 /* DeserialisationTestEmpty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DeserialisationTestEmpty.json; sourceTree = "<group>"; };
 		633298E918AA234400D0C0CF /* RFDisabledClassNameSerializationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFDisabledClassNameSerializationTest.m; path = Classes/RFDisabledClassNameSerializationTest.m; sourceTree = "<group>"; };
 		633298EA18AA234400D0C0CF /* RFDisabledClassNameSerializationTestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFDisabledClassNameSerializationTestObject.h; sourceTree = "<group>"; };
 		633298EB18AA234400D0C0CF /* RFDisabledClassNameSerializationTestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFDisabledClassNameSerializationTestObject.m; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 				83D0E6151846304E002625E6 /* DeserializationCustomPropertyKeyHandlingTest.json */,
 				83BE65CD18A8BED600085C4C /* DateTest.json */,
 				83BE65CF18A8E6B800085C4C /* DateTestStandard.json */,
+				335CA04519AC853500975656 /* DeserialisationTestEmpty.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 			files = (
 				83D0E6161846304E002625E6 /* DeserializationCustomPropertyKeyHandlingTest.json in Resources */,
 				83D0E61018462AE8002625E6 /* DeserializationCustomHandlingTest.json in Resources */,
+				335CA04619AC853500975656 /* DeserialisationTestEmpty.json in Resources */,
 				3337D3831802BB1600FE22F4 /* DeserialisationTest2.xml in Resources */,
 				83BE65CE18A8BED600085C4C /* DateTest.json in Resources */,
 				7841618916480C1E0089FDE9 /* InfoPlist.strings in Resources */,
