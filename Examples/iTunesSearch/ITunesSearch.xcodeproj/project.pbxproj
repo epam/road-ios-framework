@@ -593,7 +593,7 @@ fi
 			<string>83B94CB818AB5E84007DA1D2</string>
 			<key>buildPhases</key>
 			<array>
-				<string>879F35611794418AB8BA841E</string>
+				<string>C03C402D8E9946F5BDE5D928</string>
 				<string>37A6E3FBCBBF4B8AA7F0D535</string>
 				<string>83B94C8218AB5E84007DA1D2</string>
 				<string>83B94C8318AB5E84007DA1D2</string>
@@ -1216,7 +1216,14 @@ fi
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>879F35611794418AB8BA841E</key>
+		<key>8C11815EE73148F58EEC6B81</key>
+		<dict>
+			<key>fileRef</key>
+			<string>31D5C7299E0A46D7846A1DE0</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>C03C402D8E9946F5BDE5D928</key>
 		<dict>
 			<key>buildActionMask</key>
 			<string>2147483647</string>
@@ -1238,13 +1245,6 @@ fi
 			<string>"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator" -src="${SRCROOT}/${TARGET_NAME}" -src="${PODS_ROOT}" -dst="${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/"</string>
 			<key>showEnvVarsInLog</key>
 			<string>1</string>
-		</dict>
-		<key>8C11815EE73148F58EEC6B81</key>
-		<dict>
-			<key>fileRef</key>
-			<string>31D5C7299E0A46D7846A1DE0</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
 		</dict>
 	</dict>
 	<key>rootObject</key>
