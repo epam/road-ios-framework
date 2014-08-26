@@ -62,16 +62,16 @@
 - (void)forwardInvocation:(NSInvocation *)inv {
     NSUInteger n = [[inv methodSignature] numberOfArguments];
 
-    NSMutableArray *parameterList = [[NSMutableArray alloc] init];
+    self.parameterList = [[NSMutableArray alloc] init];
     for (NSUInteger i = 0; i < n - 2; i++) {
         id __unsafe_unretained arg;
         [inv getArgument:&arg atIndex:(int)(i + 2)];
         if (!arg) {
             arg = [NSNull null];
         }
-        [parameterList addObject:arg];
+        [self.parameterList addObject:arg];
     }
-    [self dynamicWebServiceCallWithArguments:parameterList forInvocation:inv];
+    [self dynamicWebServiceCallWithArguments:self.parameterList forInvocation:inv];
 }
 
 /**
