@@ -58,7 +58,7 @@
 {
     [super viewDidLoad];
 	
-    self.searchTextField.text = @"SEC"; // Initail value
+    self.searchTextField.text = @"SEC"; // Initial value
     [self searchApps:nil];
 }
 
@@ -72,20 +72,22 @@
 #pragma mark - IBActions
 
 - (IBAction)searchApps:(id)sender {
-    if (![[self.searchTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""]) // Check for not empty search text
+    if ([[self.searchTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""]) // Check for not empty search text
     {
-        [self.currentOperation cancel]; // Cancel last running operation if it exists. It force web client to execute failure block, so be sure that you handle it gracefully.
-        __weak ESSearchViewController *weakSelf = self;
-        self.currentOperation = [[RFServiceProvider iTunesWebClient] searchAppsWithName:self.searchTextField.text success:^(NSArray *apps) {// Here we have already processed entities, so we just save it and update UI
-            ESSearchViewController *strongSelf = weakSelf;
-            strongSelf.apps = apps;
-            [strongSelf.tableView reloadData];
-        } failure:^(NSError *error) {
-            if ([error code] != kRFWebServiceErrorCodeCancel && weakSelf) { // We want to show to user any error excep cancel error
-                [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
-            }
-        }];
+        return;
     }
+    [self.currentOperation cancel]; // Cancel last running operation if it exists. It force web client to execute failure block, so be sure that you handle it gracefully.
+    __weak ESSearchViewController *weakSelf = self;
+    self.currentOperation = [[RFServiceProvider iTunesWebClient] searchAppsWithName:self.searchTextField.text success:^(NSArray *apps) {// Here we have already processed entities, so we just save it and update UI
+        ESSearchViewController *strongSelf = weakSelf;
+        strongSelf.apps = apps;
+        [strongSelf.tableView reloadData];
+    } failure:^(NSError *error) {
+        if ([error code] != kRFWebServiceErrorCodeCancel && weakSelf) { // We want to show to user any error excep cancel error
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+        }
+    }];
+    
     [self.searchTextField resignFirstResponder]; // Hide keyboard
 }
 
