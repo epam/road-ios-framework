@@ -49,11 +49,6 @@ typedef void (^RFWebServiceClientDownloadProgressBlock)(float progress, long lon
 @interface RFWebServiceClient : RFService
 
 /**
- *  invocation parameter list
- */
-@property (nonatomic, strong) NSMutableArray *parameterList;
-
-/**
  * The Web Service host url.
  */
 @property (copy, nonatomic) NSString *serviceRoot;

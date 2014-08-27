@@ -60,18 +60,19 @@
  * @param inv NSInvocation the invocation which encapsulates the dynamic method
  */
 - (void)forwardInvocation:(NSInvocation *)inv {
+    [inv retainArguments];
     NSUInteger n = [[inv methodSignature] numberOfArguments];
-
-    self.parameterList = [[NSMutableArray alloc] init];
+    
+    NSMutableArray *parameterList = [[NSMutableArray alloc] init];
     for (NSUInteger i = 0; i < n - 2; i++) {
         id __unsafe_unretained arg;
         [inv getArgument:&arg atIndex:(int)(i + 2)];
         if (!arg) {
             arg = [NSNull null];
         }
-        [self.parameterList addObject:arg];
+        [parameterList addObject:arg];
     }
-    [self dynamicWebServiceCallWithArguments:self.parameterList forInvocation:inv];
+    [self dynamicWebServiceCallWithArguments:parameterList forInvocation:inv];
 }
 
 /**
