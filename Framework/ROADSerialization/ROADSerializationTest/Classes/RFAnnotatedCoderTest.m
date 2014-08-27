@@ -155,6 +155,14 @@
     XCTAssertNotNil(decodedObject, @"Wrong deserialization root returned some value.");
 }
 
+- (void)testJsonEmptyDeserializationRoot {
+    NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+    NSString *pathToDeserialisationTestFile = [testBundle pathForResource:@"DeserialisationTestEmpty" ofType:@"json"];
+    NSData *deserialisationTestData = [NSData dataWithContentsOfFile:pathToDeserialisationTestFile];
+    id decodedObject = [RFAttributedDecoder decodeJSONData:deserialisationTestData withSerializtionRoot:@"emptyResult" rootClassNamed:nil];
+    XCTAssertNotNil(decodedObject, @"Wrong deserialization root returned some value");
+}
+
 - (void)testMappingPredeserializedObject {
     id predeserializedObject = @[ @{@"string1" : @"value1"} ];
     NSArray *testArray = [RFAttributedDecoder decodePredeserializedObject:predeserializedObject withRootClassName:@"RFSerializationTestObject"];

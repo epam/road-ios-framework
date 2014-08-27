@@ -94,6 +94,7 @@
             [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
         }
     }];
+    [self.amgTextField resignFirstResponder]; // Hide keyboard
 }
 
 
