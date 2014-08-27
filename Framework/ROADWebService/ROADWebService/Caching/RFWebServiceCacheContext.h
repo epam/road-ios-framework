@@ -40,6 +40,8 @@
 @property (nonatomic, strong, readonly) NSPersistentStoreCoordinator *persisitentStoreCoordinator;
 @property (nonatomic, strong, readonly) NSURL *storeURL;
 
+- (instancetype)initWithBundle:(NSBundle*)bundle;
+
 /**
  * Add persistent store to persistent store coordinator if it does not have any now.
  */

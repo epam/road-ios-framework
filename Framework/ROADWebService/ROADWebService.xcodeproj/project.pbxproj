@@ -32,6 +32,10 @@
 		5A164AA6179D762A003275EC /* RFWebServiceCallParameterEncoder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E5B9D4B51786CF9300E1901C /* RFWebServiceCallParameterEncoder.h */; };
 		5A164AAA179D762A003275EC /* RFWebServiceSerializationHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E5B9D4BE1786CF9300E1901C /* RFWebServiceSerializationHandler.h */; };
 		5A164AAB179D762A003275EC /* RFWebServiceBasicURLBuilder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E5B9D4C01786CF9300E1901C /* RFWebServiceBasicURLBuilder.h */; };
+		5BC9D58319A6311E006CFFBA /* RFWebServiceCacheMigrationPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC9D58219A6311E006CFFBA /* RFWebServiceCacheMigrationPolicy.m */; };
+		5BC9D58A19A76791006CFFBA /* RFWebServiceCacheMigrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC9D58819A766E2006CFFBA /* RFWebServiceCacheMigrationTest.m */; };
+		5BC9D59019ACA7F2006CFFBA /* RFWebServiceMigrationV3toV4Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5BC9D58F19ACA7F2006CFFBA /* RFWebServiceMigrationV3toV4Model.xcmappingmodel */; };
+		5BC9D59219ACA9EA006CFFBA /* RFWebServiceCache.coredata in Resources */ = {isa = PBXBuildFile; fileRef = 5BC9D58C19A79C78006CFFBA /* RFWebServiceCache.coredata */; };
 		830CCCE0184E00ED007E9A69 /* RFXMLSerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83D0E62F184CA289002625E6 /* RFXMLSerializer.h */; };
 		830CCCE1184E00ED007E9A69 /* RFWebService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE3022E7180FD3CE003B1826 /* RFWebService.h */; };
 		830CCCE2184E00ED007E9A69 /* RFWebServiceSerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83D0E63A184CAB0F002625E6 /* RFWebServiceSerializer.h */; };
@@ -219,6 +223,11 @@
 		33F0EF0D18051D3D001DCCED /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		5AFB79C5176613C6007F813A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5B73B6B81999187200599A9E /* RFWebServiceCachingModel_v4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RFWebServiceCachingModel_v4.xcdatamodel; sourceTree = "<group>"; };
+		5BC9D58119A6311E006CFFBA /* RFWebServiceCacheMigrationPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFWebServiceCacheMigrationPolicy.h; sourceTree = "<group>"; };
+		5BC9D58219A6311E006CFFBA /* RFWebServiceCacheMigrationPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebServiceCacheMigrationPolicy.m; sourceTree = "<group>"; };
+		5BC9D58819A766E2006CFFBA /* RFWebServiceCacheMigrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebServiceCacheMigrationTest.m; sourceTree = "<group>"; };
+		5BC9D58C19A79C78006CFFBA /* RFWebServiceCache.coredata */ = {isa = PBXFileReference; lastKnownFileType = file; path = RFWebServiceCache.coredata; sourceTree = "<group>"; };
+		5BC9D58F19ACA7F2006CFFBA /* RFWebServiceMigrationV3toV4Model.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = RFWebServiceMigrationV3toV4Model.xcmappingmodel; sourceTree = "<group>"; };
 		6338326D18AE6258005E1673 /* RFWebServiceCachingModel_cacheIdentifierAdded.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RFWebServiceCachingModel_cacheIdentifierAdded.xcdatamodel; sourceTree = "<group>"; };
 		783AF1A31650FAF800AD247E /* ROADWebServiceTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ROADWebServiceTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		78FB204215BD336B00C2137A /* libROADWebService.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libROADWebService.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -442,6 +451,9 @@
 				8353BC9F185EDE1B009704A8 /* RFServiceProvider+WebServiceCachingManager.h */,
 				8353BCA0185EDE1B009704A8 /* RFServiceProvider+WebServiceCachingManager.m */,
 				83138AF21862FFC700674184 /* RFWebServiceCachingModel.xcdatamodeld */,
+				5BC9D58F19ACA7F2006CFFBA /* RFWebServiceMigrationV3toV4Model.xcmappingmodel */,
+				5BC9D58119A6311E006CFFBA /* RFWebServiceCacheMigrationPolicy.h */,
+				5BC9D58219A6311E006CFFBA /* RFWebServiceCacheMigrationPolicy.m */,
 			);
 			path = Caching;
 			sourceTree = "<group>";
@@ -590,11 +602,13 @@
 		CD896C311737E85800565C9C /* ROADWebserviceTest */ = {
 			isa = PBXGroup;
 			children = (
+				5BC9D58C19A79C78006CFFBA /* RFWebServiceCache.coredata */,
 				839992DE17D9DB45002DAE8D /* Classes */,
 				83448CDD17D0D3E3002A0D15 /* ROADGeneratedAttribute.m */,
 				C4A032A819939DE500211886 /* RFWebServiceSyncCallTest.m */,
 				CD896C381737E85800565C9C /* RFWebServiceTest.m */,
 				8353BCDB185F1F48009704A8 /* RFWebServiceCacheTest.m */,
+				5BC9D58819A766E2006CFFBA /* RFWebServiceCacheMigrationTest.m */,
 				837B002617B3B9A300D77A5D /* RFODataTest.m */,
 				CD896C3E1737E85800565C9C /* ROADWebserviceTest-Info.plist */,
 				CD896C3F1737E85800565C9C /* ROADWebserviceTest-Prefix.pch */,
@@ -655,6 +669,7 @@
 				D9FA8742524848D2A6208DA8 /* libObjCAttr - generate attributes */,
 				783AF19E1650FAF800AD247E /* Sources */,
 				783AF19F1650FAF800AD247E /* Frameworks */,
+				5BC9D58D19AB272B006CFFBA /* Resources */,
 				83C544EE174B80A9000C8BCD /* ShellScript */,
 			);
 			buildRules = (
@@ -715,6 +730,17 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		5BC9D58D19AB272B006CFFBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BC9D59219ACA9EA006CFFBA /* RFWebServiceCache.coredata in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXShellScriptBuildPhase section */
 		5A30F0B3178D55A200DFCB2A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -753,7 +779,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Copy resource files to bundle\"\nSRC=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/include/ROAD\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\necho \"$DEST\"\necho \"$RESOURCE\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"\n\n\necho \"Copy resource files to bundle\"\nSRC=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\necho \"$DEST\"\necho \"$RESOURCE\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"\n\n\necho \"Copy resource files to archive bundle\"\n\nSRC=\"$BUILD_DIR/../IntermediateBuildFilesPath/UninstalledProducts\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"";
+			shellScript = "echo \"Copy resource files to bundle\"\nSRC=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/include/ROAD\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\necho \"$DEST\"\necho \"$RESOURCE\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"\n\n\necho \"Copy resource files to bundle\"\nSRC=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\necho \"$DEST\"\necho \"$RESOURCE\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"\n\nRESOURCE=\"$SRC/\"*.cdm\nRESOURCEEXIST=(\"$SRC/\"*.cdm)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No cdm files\"\n\n\necho \"Copy resource files to archive bundle\"\n\nSRC=\"$BUILD_DIR/../IntermediateBuildFilesPath/UninstalledProducts\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"";
 		};
 		D9FA8742524848D2A6208DA8 /* libObjCAttr - generate attributes */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -776,6 +802,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BC9D58A19A76791006CFFBA /* RFWebServiceCacheMigrationTest.m in Sources */,
 				8D94224817E2A4B0005F0AE3 /* RFODataTestEntity.m in Sources */,
 				8D94224917E2A4B5005F0AE3 /* RFDownloader+FakeRequest.m in Sources */,
 				1113E476198E415200390C2C /* NSURLRequest+RFURLTest.m in Sources */,
@@ -807,6 +834,7 @@
 				CD896C301737E84F00565C9C /* RFWebServiceClient.m in Sources */,
 				E5B9D4C41786CF9300E1901C /* RFWebServiceCallParameterEncoder.m in Sources */,
 				E5B9D4C61786CF9300E1901C /* RFWebServiceClient+DynamicMethod.m in Sources */,
+				5BC9D59019ACA7F2006CFFBA /* RFWebServiceMigrationV3toV4Model.xcmappingmodel in Sources */,
 				83138AF41862FFC700674184 /* RFWebServiceCachingModel.xcdatamodeld in Sources */,
 				E5B9D4CC1786CF9300E1901C /* RFWebServiceSerializationHandler.m in Sources */,
 				E5B9D4F31786CFFE00E1901C /* RFDownloader+ConnectionDelegate.m in Sources */,
@@ -839,6 +867,7 @@
 				8353BCA1185EDE1B009704A8 /* RFServiceProvider+WebServiceCachingManager.m in Sources */,
 				839992B417D74B95002DAE8D /* RFFormData.m in Sources */,
 				83D0E63C184CAB0F002625E6 /* RFWebServiceSerializer.m in Sources */,
+				5BC9D58319A6311E006CFFBA /* RFWebServiceCacheMigrationPolicy.m in Sources */,
 				8353BC9E185B4D63009704A8 /* RFWebResponse+HTTPResponse.m in Sources */,
 				839992B817D7658F002DAE8D /* RFMultipartData.m in Sources */,
 			);

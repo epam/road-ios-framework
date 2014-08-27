@@ -1,5 +1,5 @@
 //
-//  ROADCore.h
+//  NSArray+RFEmptyArrayChecks.h
 //  ROADCore
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
@@ -31,14 +31,8 @@
 //  for additional information regarding copyright ownership and licensing
 
 
-#ifndef ROADCore_ROADCore_h
-#define ROADCore_ROADCore_h
+#import <CoreData/CoreData.h>
 
-#import "NSMutableString+RFStringFormatter.h"
-#import "NSArray+RFEmptyArrayChecks.h"
-#import "NSArray+RFClassSearch.h"
-#import "NSFileManager+FileOperations.h"
-#import "RFDynamicObject.h"
-#import "RFObjectPool.h"
+@interface RFWebServiceCacheMigrationPolicy : NSEntityMigrationPolicy
 
-#endif
+@end
