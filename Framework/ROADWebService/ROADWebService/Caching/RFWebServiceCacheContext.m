@@ -146,10 +146,9 @@ static NSString * const kRFWebServiceCachingStorageMigrationToName = @"RFWebServ
         return NO;
     }
     
-    [[NSFileManager defaultManager] replaceAtomicallyItemAtURL:sourceStoreURL withURL:persistentStoreMigrationToURL];
-    [[NSFileManager defaultManager] removeItemAtURL:persistentStoreMigrationToURL error:error];
-    
-    return YES;
+    NSURL *resultingURL;
+    NSString *backupName = [[sourceStoreURL lastPathComponent] stringByAppendingString:@".bak"];
+    return [[NSFileManager defaultManager] replaceItemAtURL:sourceStoreURL withItemAtURL:persistentStoreMigrationToURL backupItemName:backupName options:0 resultingItemURL:&resultingURL error:error];
 }
 
 - (void)bindStore {
