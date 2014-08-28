@@ -53,15 +53,7 @@ static NSString * const kRFWebServiceCachingStorageMigrationToName = @"RFWebServ
 - (instancetype)init {
     self = [super init];
     if ( self ) {
-        _bundle = [NSBundle mainBundle];
-    }
-    return self;
-}
-
-- (instancetype)initWithBundle:(NSBundle *)bundle {
-    self = [super init];
-    if ( self ) {
-        _bundle = bundle;
+        _bundle = [NSBundle bundleForClass:self.class];
     }
     return self;
 }

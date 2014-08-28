@@ -87,7 +87,7 @@
 
 - (void)testMigration {
 
-    RFWebServiceCacheContext* context = [[RFWebServiceCacheContext alloc] initWithBundle:[NSBundle bundleForClass:[self class]]];
+    RFWebServiceCacheContext* context = [[RFWebServiceCacheContext alloc] init];
     NSPersistentStoreCoordinator* coordinator = context.persisitentStoreCoordinator;
     
     XCTAssertTrue(coordinator.persistentStores.count == 1, @"Migration was unsuccessful.");
