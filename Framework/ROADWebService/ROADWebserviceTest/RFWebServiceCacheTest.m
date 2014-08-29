@@ -292,10 +292,13 @@
 
     RFWebServiceCachingManager *cacheManager = [RFServiceProvider webServiceCacheManager];
     RFWebResponse *cachedResponse = [[cacheManager cacheWithIdentifier:@"offlineCache"] lastObject];
-    cachedResponse.expirationDate = [NSDate dateWithTimeIntervalSinceNow:-1];
+    cachedResponse.implementation.expirationDate = [NSDate dateWithTimeIntervalSinceNow:-1];
     RFWebServiceCacheContext *context = [cacheManager valueForKey:@"_cacheContext"];
-    [context.context save:nil];
-
+    
+    NSError* err;
+    [context.context save:&err];
+    XCTAssertNil(err, @"Couldn't not save context.");
+    
     NSString *secondDate;
     [self sendRequestOnWebServiceClient:webClient selector:@selector(testCacheOfflineCacheWithSuccess:failure:) result:&secondDate];
 

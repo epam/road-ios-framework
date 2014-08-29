@@ -156,7 +156,7 @@
 
     if (cachedResponse) {
         RFWSLogDebug(@"ROADWebService: Request to URL \'%@\' has valid cache and it will be returned.\n Cache details: %@", cachedResponse.requestURL, cachedResponse);
-        [self downloaderFinishedWithResult:cachedResponse.responseBodyData response:[cachedResponse unarchivedResponse] error:nil];
+        [self downloaderFinishedWithResult:cachedResponse.implementation.responseBodyData response:[cachedResponse unarchivedResponse] error:nil];
     }
     else {
         [self start];
@@ -375,7 +375,7 @@ NSString * const RFAttributeTemplateEscape = @"%%";
 - (BOOL)checkCacheWithResponse:(NSHTTPURLResponse *)response {
     RFWebResponse *cachedResponse = [[RFServiceProvider webServiceCacheManager] cacheForResponse:response request:self.request cacheAttribute:self.cacheAttribute];
     if (cachedResponse) {
-        self.data = [cachedResponse.responseBodyData mutableCopy];
+        self.data = [cachedResponse.implementation.responseBodyData mutableCopy];
         self.response = [cachedResponse unarchivedResponse];
         RFWSLogDebug(@"ROADWebService: Request to URL \'%@\' proved to have valid cache and it will be returned.\n Cache details: %@", cachedResponse.requestURL, cachedResponse);
     }

@@ -1,6 +1,6 @@
 //
-//  RFWebResponse.h
-//  ROADWebService
+//  NSArray+RFEmptyArrayChecks.h
+//  ROADCore
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
 //
@@ -33,22 +33,6 @@
 
 #import <CoreData/CoreData.h>
 
-@interface RFWebResponseImplementation : NSObject<NSCoding>
-
-@property (nonatomic) NSString* requestURL;
-@property (nonatomic) NSData * responseBodyData;
-@property (nonatomic) NSDate * expirationDate;
-@property (nonatomic) NSString * eTag;
-@property (nonatomic) NSData * requestBodyData;
-@property (nonatomic) NSData * response;
-@property (nonatomic) NSString * lastModified;
-
-@end
-
-@interface RFWebResponse : NSManagedObject
-
-@property (nonatomic) NSString * cacheIdentifier;
-@property (nonatomic) NSDecimalNumber * urlHash;
-@property (nonatomic, readonly) RFWebResponseImplementation* implementation;
+@interface RFWebServiceCacheMigrationPolicy : NSEntityMigrationPolicy
 
 @end

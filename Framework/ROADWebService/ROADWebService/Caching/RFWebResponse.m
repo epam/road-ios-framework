@@ -33,17 +33,67 @@
 
 #import "RFWebResponse.h"
 
+static NSString* const RFRequestURLName = @"requestURL";
+static NSString* const RFResponseBodyDataName = @"responseBodyData";
+static NSString* const RFExpirationDateName = @"expirationDate";
+static NSString* const RFETagName = @"eTag";
+static NSString* const RFRequestBodyDataName = @"requestBodyData";
+static NSString* const RFResponseName = @"response";
+static NSString* const RFLastModifiedName = @"lastModified";
+
+
+@implementation RFWebResponseImplementation
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.requestURL forKey:RFRequestURLName];
+    [aCoder encodeObject:self.responseBodyData forKey:RFResponseBodyDataName];
+    [aCoder encodeObject:self.expirationDate forKey:RFExpirationDateName];
+    [aCoder encodeObject:self.eTag forKey:RFETagName];
+    [aCoder encodeObject:self.requestBodyData forKey:RFRequestBodyDataName];
+    [aCoder encodeObject:self.response forKey:RFResponseName];
+    [aCoder encodeObject:self.lastModified forKey:RFLastModifiedName];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if ( self = [super init] ) {
+        _requestURL = [aDecoder decodeObjectForKey:RFRequestURLName];
+        _responseBodyData = [aDecoder decodeObjectForKey:RFResponseBodyDataName];
+        _expirationDate = [aDecoder decodeObjectForKey:RFExpirationDateName];
+        _eTag = [aDecoder decodeObjectForKey:RFETagName];
+        _requestBodyData = [aDecoder decodeObjectForKey:RFRequestBodyDataName];
+        _response = [aDecoder decodeObjectForKey:RFResponseName];
+        _lastModified = [aDecoder decodeObjectForKey:RFLastModifiedName];
+    }
+    return self;
+}
+
+@end
+
+@interface RFWebResponse()
+@property (nonatomic) RFWebResponseImplementation* implementationPrivate;
+@end
 
 @implementation RFWebResponse
 
-@dynamic eTag;
-@dynamic expirationDate;
-@dynamic requestBodyData;
-@dynamic requestURL;
-@dynamic response;
-@dynamic responseBodyData;
-@dynamic urlHash;
-@dynamic lastModified;
 @dynamic cacheIdentifier;
+@dynamic urlHash;
+@dynamic implementationPrivate;
+
+- (id)initWithEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context {
+    self = [super initWithEntity:entity insertIntoManagedObjectContext:context];
+    if (self) {
+        self.implementationPrivate = [[RFWebResponseImplementation alloc] init];
+    }
+    return self;
+}
+
+/**
+ * This pointer ping-pong is needed because CoreData doesn't see any changes in transformable field structure to which the pointer points. So we have to explicitly change the pointer itself to make CoreData take changes into account.
+ */
+- (RFWebResponseImplementation*)implementation {
+    RFWebResponseImplementation* temp = self.implementationPrivate;
+    self.implementationPrivate = temp;
+    return self.implementationPrivate;
+}
 
 @end
