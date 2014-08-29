@@ -89,18 +89,16 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
             if (!webResponse) {
                 webResponse = [NSEntityDescription insertNewObjectForEntityForName:kRFWebResponseEntityName inManagedObjectContext:managedObjectContext];
                 webResponse.urlHash = [[NSDecimalNumber alloc] initWithUnsignedInteger:[[request.URL absoluteString] hash]];
-                webResponse.requestURL = [request.URL absoluteString];
                 webResponse.cacheIdentifier = cacheIdentifier;
-               
+                webResponse.implementation.requestURL = [request.URL absoluteString];
             }
 
-            webResponse.requestBodyData = request.HTTPBody;
-            webResponse.response = [NSKeyedArchiver archivedDataWithRootObject:response];
-            webResponse.responseBodyData = responseBodyData;
-            webResponse.expirationDate = expirationDate;
-            webResponse.eTag = eTag;
-            webResponse.lastModified = lastModified;
-
+            webResponse.implementation.requestBodyData = request.HTTPBody;
+            webResponse.implementation.response = [NSKeyedArchiver archivedDataWithRootObject:response];
+            webResponse.implementation.responseBodyData = responseBodyData;
+            webResponse.implementation.expirationDate = expirationDate;
+            webResponse.implementation.eTag = eTag;
+            webResponse.implementation.lastModified = lastModified;
             
             // Remove old one if exist
             if ([cacheIdentifier length]) {
@@ -129,11 +127,11 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
 
 - (RFWebResponse *)cacheWithRequest:(NSMutableURLRequest *)request {
     RFWebResponse *cachedResponse = [self fetchResponseForRequest:request];
-    if (!cachedResponse.expirationDate
-        || [cachedResponse.expirationDate compare:[NSDate date]] == NSOrderedAscending) {
+    if (!cachedResponse.implementation.expirationDate
+        || [cachedResponse.implementation.expirationDate compare:[NSDate date]] == NSOrderedAscending) {
 
         // If ETag or Last-Modified then we should ask server for updates
-        if (cachedResponse.eTag || cachedResponse.lastModified) {
+        if (cachedResponse.implementation.eTag || cachedResponse.implementation.lastModified) {
             [RFWebServiceCachingManager addCacheHeadersToRequest:request fromCachedResponse:cachedResponse];
         }
 
@@ -300,12 +298,12 @@ static const NSInteger kRFWebServiceHeaderValueParameterIndex       = 1;
 }
 
 + (void)addCacheHeadersToRequest:(NSMutableURLRequest *)request fromCachedResponse:(RFWebResponse *)cachedResponse {
-    if (cachedResponse.eTag) {
-        [((NSMutableURLRequest *)request) setAllHTTPHeaderFields:[RFWebServiceCachingManager dictionary:[request allHTTPHeaderFields] setObject:cachedResponse.eTag forKey:kRFWebServiceHeaderFieldIfNoneMatch]];
+    if (cachedResponse.implementation.eTag) {
+        [((NSMutableURLRequest *)request) setAllHTTPHeaderFields:[RFWebServiceCachingManager dictionary:[request allHTTPHeaderFields] setObject:cachedResponse.implementation.eTag forKey:kRFWebServiceHeaderFieldIfNoneMatch]];
     }
 
-    if (cachedResponse.lastModified) {
-        [((NSMutableURLRequest *)request) setAllHTTPHeaderFields:[RFWebServiceCachingManager dictionary:[request allHTTPHeaderFields] setObject:cachedResponse.lastModified forKey:kRFWebServiceHeaderFieldIfModifiedSince]];
+    if (cachedResponse.implementation.lastModified) {
+        [((NSMutableURLRequest *)request) setAllHTTPHeaderFields:[RFWebServiceCachingManager dictionary:[request allHTTPHeaderFields] setObject:cachedResponse.implementation.lastModified forKey:kRFWebServiceHeaderFieldIfModifiedSince]];
     }
 }
 
@@ -336,9 +334,9 @@ static const NSInteger kRFWebServiceHeaderValueParameterIndex       = 1;
     NSArray *cachedResponses = [managedObjectContext executeFetchRequest:fetchCachedResponse error:&error];
 
     for (RFWebResponse *webResponse in cachedResponses) {
-        if ([webResponse.requestURL isEqualToString:[request.URL absoluteString]]
-            && ((request.HTTPBody.length == 0 && webResponse.requestBodyData.length == 0)
-                || [webResponse.requestBodyData isEqualToData:request.HTTPBody])) {
+        if ([webResponse.implementation.requestURL isEqualToString:[request.URL absoluteString]]
+            && ((request.HTTPBody.length == 0 && webResponse.implementation.requestBodyData.length == 0)
+                || [webResponse.implementation.requestBodyData isEqualToData:request.HTTPBody])) {
                 cachedResponse = webResponse;
                 break;
             }
@@ -364,7 +362,7 @@ static const NSInteger kRFWebServiceHeaderValueParameterIndex       = 1;
     NSArray *cachedResponses = [_cacheContext.context executeFetchRequest:fetchCachedResponse error:&executeError];
 
     for (RFWebResponse *webResponse in cachedResponses) {
-        if ([webResponse.expirationDate compare:[NSDate date]] == NSOrderedAscending) {
+        if ([webResponse.implementation.expirationDate compare:[NSDate date]] == NSOrderedAscending) {
             [_cacheContext.context deleteObject:webResponse];
             NSError *error;
             [_cacheContext.context save:&error];

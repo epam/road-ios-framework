@@ -130,7 +130,8 @@
     }
     else if ([self.request isRelatedToTest:@"test.cache.offline.max-age"]) {
         if ([[self.request.allHTTPHeaderFields objectForKey:@"no-connection"] isEqualToString:@"YES"]) {
-            response = [self failureResponse];
+            response = nil;
+            resultData = nil;
         }
         else {
             response = [self successResponse];
