@@ -33,7 +33,6 @@
 		5A164AAA179D762A003275EC /* RFWebServiceSerializationHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E5B9D4BE1786CF9300E1901C /* RFWebServiceSerializationHandler.h */; };
 		5A164AAB179D762A003275EC /* RFWebServiceBasicURLBuilder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E5B9D4C01786CF9300E1901C /* RFWebServiceBasicURLBuilder.h */; };
 		5BC9D58319A6311E006CFFBA /* RFWebServiceCacheMigrationPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC9D58219A6311E006CFFBA /* RFWebServiceCacheMigrationPolicy.m */; };
-		5BC9D58A19A76791006CFFBA /* RFWebServiceCacheMigrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC9D58819A766E2006CFFBA /* RFWebServiceCacheMigrationTest.m */; };
 		5BC9D59019ACA7F2006CFFBA /* RFWebServiceMigrationV3toV4Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5BC9D58F19ACA7F2006CFFBA /* RFWebServiceMigrationV3toV4Model.xcmappingmodel */; };
 		5BC9D59219ACA9EA006CFFBA /* RFWebServiceCache.coredata in Resources */ = {isa = PBXBuildFile; fileRef = 5BC9D58C19A79C78006CFFBA /* RFWebServiceCache.coredata */; };
 		830CCCE0184E00ED007E9A69 /* RFXMLSerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83D0E62F184CA289002625E6 /* RFXMLSerializer.h */; };
@@ -108,6 +107,7 @@
 		8D94224B17E2A4BE005F0AE3 /* RFWebServiceClient+DynamicTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5D20417D4CDDB0030D8CD /* RFWebServiceClient+DynamicTest.m */; };
 		8D94224C17E2A4C2005F0AE3 /* RFWebServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CD896C381737E85800565C9C /* RFWebServiceTest.m */; };
 		8D94224D17E2A4C6005F0AE3 /* RFODataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 837B002617B3B9A300D77A5D /* RFODataTest.m */; };
+		B143EABB19B0622F00DCD152 /* RFWebServiceCacheMigrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B143EABA19B0622F00DCD152 /* RFWebServiceCacheMigrationTest.m */; };
 		B1AAC4F019B0585F00799322 /* RFWebServiceCacheTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AAC4EC19B0580100799322 /* RFWebServiceCacheTest.m */; };
 		B1AAC4F119B0586200799322 /* RFWebServiceSyncCallTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AAC4ED19B0580100799322 /* RFWebServiceSyncCallTest.m */; };
 		B1AAC4F519B05A5300799322 /* RFSerializableTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E63F184DC4B5002625E6 /* RFSerializableTestObject.m */; };
@@ -246,7 +246,6 @@
 		5B73B6B81999187200599A9E /* RFWebServiceCachingModel_v4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RFWebServiceCachingModel_v4.xcdatamodel; sourceTree = "<group>"; };
 		5BC9D58119A6311E006CFFBA /* RFWebServiceCacheMigrationPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFWebServiceCacheMigrationPolicy.h; sourceTree = "<group>"; };
 		5BC9D58219A6311E006CFFBA /* RFWebServiceCacheMigrationPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebServiceCacheMigrationPolicy.m; sourceTree = "<group>"; };
-		5BC9D58819A766E2006CFFBA /* RFWebServiceCacheMigrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebServiceCacheMigrationTest.m; sourceTree = "<group>"; };
 		5BC9D58C19A79C78006CFFBA /* RFWebServiceCache.coredata */ = {isa = PBXFileReference; lastKnownFileType = file; path = RFWebServiceCache.coredata; sourceTree = "<group>"; };
 		5BC9D58F19ACA7F2006CFFBA /* RFWebServiceMigrationV3toV4Model.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = RFWebServiceMigrationV3toV4Model.xcmappingmodel; sourceTree = "<group>"; };
 		6338326D18AE6258005E1673 /* RFWebServiceCachingModel_cacheIdentifierAdded.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RFWebServiceCachingModel_cacheIdentifierAdded.xcdatamodel; sourceTree = "<group>"; };
@@ -328,6 +327,7 @@
 		83D0E63E184DC4B5002625E6 /* RFSerializableTestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFSerializableTestObject.h; sourceTree = "<group>"; };
 		83D0E63F184DC4B5002625E6 /* RFSerializableTestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFSerializableTestObject.m; sourceTree = "<group>"; };
 		83E0CDE018D07FE100B25689 /* RFWebServiceLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFWebServiceLog.h; sourceTree = "<group>"; };
+		B143EABA19B0622F00DCD152 /* RFWebServiceCacheMigrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebServiceCacheMigrationTest.m; sourceTree = "<group>"; };
 		B1AAC4EC19B0580100799322 /* RFWebServiceCacheTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebServiceCacheTest.m; sourceTree = "<group>"; };
 		B1AAC4ED19B0580100799322 /* RFWebServiceSyncCallTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebServiceSyncCallTest.m; sourceTree = "<group>"; };
 		B1F77CAB19AE094C000E01BA /* ROADWebServiceIntegrationTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ROADWebServiceIntegrationTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -661,6 +661,7 @@
 			isa = PBXGroup;
 			children = (
 				5BC9D58C19A79C78006CFFBA /* RFWebServiceCache.coredata */,
+				B143EABA19B0622F00DCD152 /* RFWebServiceCacheMigrationTest.m */,
 				839992DE17D9DB45002DAE8D /* Classes */,
 				B1AAC4EC19B0580100799322 /* RFWebServiceCacheTest.m */,
 				B1AAC4ED19B0580100799322 /* RFWebServiceSyncCallTest.m */,
@@ -911,7 +912,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BC9D58A19A76791006CFFBA /* RFWebServiceCacheMigrationTest.m in Sources */,
 				8D94224817E2A4B0005F0AE3 /* RFODataTestEntity.m in Sources */,
 				8D94224917E2A4B5005F0AE3 /* RFDownloader+FakeRequest.m in Sources */,
 				B1AAC4F119B0586200799322 /* RFWebServiceSyncCallTest.m in Sources */,
@@ -920,6 +920,7 @@
 				B1AAC4F619B05AB100799322 /* RFWebServiceClientWithRoot.m in Sources */,
 				B1AAC4F519B05A5300799322 /* RFSerializableTestObject.m in Sources */,
 				83AAEF1718620E7E006432EE /* RFConcreteWebServiceClient.m in Sources */,
+				B143EABB19B0622F00DCD152 /* RFWebServiceCacheMigrationTest.m in Sources */,
 				245D5F8C1907DF1A00A42B94 /* RFRequestTestAttribute.m in Sources */,
 				245D5F8F1907E0CF00A42B94 /* RFRequestTestProcessor.m in Sources */,
 				8D94224B17E2A4BE005F0AE3 /* RFWebServiceClient+DynamicTest.m in Sources */,
