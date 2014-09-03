@@ -60,7 +60,7 @@
  * @param inv NSInvocation the invocation which encapsulates the dynamic method
  */
 - (void)forwardInvocation:(NSInvocation *)inv {
-    [inv retainArguments];
+
     NSUInteger n = [[inv methodSignature] numberOfArguments];
     
     NSMutableArray *parameterList = [[NSMutableArray alloc] init];
