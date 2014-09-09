@@ -62,14 +62,19 @@
     __block NSError *responseError;
 
     RFConcreteWebServiceClient *webServiceClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.simple.call"];
-    [webServiceClient testSyncCallWithSuccess:^(id result) {
-        isFinished = YES;
-        success = YES;
-    } failure:^(NSError *error) {
-        responseError = error;
-        isFinished = YES;
-    }];
+    
+    id<RFWebServiceCancellable> __weak res;
+    @autoreleasepool {
+        res = [webServiceClient testSyncCallWithSuccess:^(id result) {
+            isFinished = YES;
+            success = YES;
+        } failure:^(NSError *error) {
+            responseError = error;
+            isFinished = YES;
+        }];
+    }
 
+    XCTAssertNil(res, @"Invocation result has not been released properly. There is possible memory leak here.");
     XCTAssertTrue(isFinished, @"Web call and blocks should be called synchronously and should complete before we get to this point.");
     XCTAssertNil(responseError, @"Sync web call should not return an error.");
     XCTAssertTrue(success, @"Sync Web call should succeed.");
