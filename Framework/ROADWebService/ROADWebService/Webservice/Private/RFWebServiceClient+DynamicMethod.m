@@ -65,12 +65,13 @@
     
     NSMutableArray *parameterList = [[NSMutableArray alloc] init];
     for (NSUInteger i = 0; i < n - 2; i++) {
-        id __unsafe_unretained arg;
+        id __autoreleasing arg;
         [inv getArgument:&arg atIndex:(int)(i + 2)];
         if (!arg) {
-            arg = [NSNull null];
+            [parameterList addObject:[NSNull null]];
+        } else {
+            [parameterList addObject:arg];
         }
-        [parameterList addObject:arg];
     }
     [self dynamicWebServiceCallWithArguments:parameterList forInvocation:inv];
 }
@@ -124,7 +125,7 @@
     }
 
     // finally pass the parameters to the dynamic method
-    id result = [self executeDynamicInstanceMethod:methodName parameters:parameterList prepareToLoadBlock:prepareToLoadBlock success:successBlock failure:failureBlock];
+    id __autoreleasing result = [self executeDynamicInstanceMethod:methodName parameters:parameterList prepareToLoadBlock:prepareToLoadBlock success:successBlock failure:failureBlock];
     [invocation setReturnValue:&result];
 }
 
