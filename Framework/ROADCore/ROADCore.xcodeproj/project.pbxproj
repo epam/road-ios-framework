@@ -85,7 +85,7 @@
 		117BD9211997A84E001CA6C5 /* NSArray+RFClassSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+RFClassSearch.h"; sourceTree = "<group>"; };
 		117BD9221997A84E001CA6C5 /* NSArray+RFClassSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+RFClassSearch.m"; sourceTree = "<group>"; };
 		5BA3059B198FC1AB00F02E46 /* RFStringFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFStringFormatterTests.m; sourceTree = "<group>"; };
-		634461C3604B4DB58DF380FC /* Pods-ROADCore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ROADCore.xcconfig"; path = "../Pods/Pods-ROADCore.xcconfig"; sourceTree = "<group>"; };
+		6423B9B100C8143F133F5AB0 /* Pods-ROADCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ROADCore.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-ROADCore/Pods-ROADCore.debug.xcconfig"; sourceTree = "<group>"; };
 		78B8E68E16C3CC3E0049E36B /* libROADCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libROADCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		78B8E69116C3CC3E0049E36B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		78B8E69516C3CC3E0049E36B /* ROADCore-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ROADCore-Prefix.pch"; sourceTree = "<group>"; };
@@ -109,6 +109,7 @@
 		83F8B65218E9627E0097EBC5 /* RFPoolTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFPoolTests.m; sourceTree = "<group>"; };
 		8706210A288A45BC9C292B0C /* libPods-ROADCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ROADCore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D9422EC17E2C59C005F0AE3 /* ROADCoreTest-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ROADCoreTest-Prefix.pch"; sourceTree = "<group>"; };
+		D228E2154B4C3507D30B19E7 /* Pods-ROADCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ROADCore.release.xcconfig"; path = "../Pods/Target Support Files/Pods-ROADCore/Pods-ROADCore.release.xcconfig"; sourceTree = "<group>"; };
 		E9BC2CF400F040A48EDF4B23 /* ROADGeneratedAttribute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ROADGeneratedAttribute.m; path = ROADCore/ROADGeneratedAttributes/ROADGeneratedAttribute.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,8 +142,8 @@
 				8D9422DC17E2C59C005F0AE3 /* ROADCoreTest */,
 				78B8E69016C3CC3E0049E36B /* Frameworks */,
 				78B8E68F16C3CC3E0049E36B /* Products */,
-				634461C3604B4DB58DF380FC /* Pods-ROADCore.xcconfig */,
 				E9BC2CF400F040A48EDF4B23 /* ROADGeneratedAttribute.m */,
+				F4BAC7478E819A9D4F5C03A9 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -250,6 +251,15 @@
 			path = ROADCoreTest;
 			sourceTree = "<group>";
 		};
+		F4BAC7478E819A9D4F5C03A9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6423B9B100C8143F133F5AB0 /* Pods-ROADCore.debug.xcconfig */,
+				D228E2154B4C3507D30B19E7 /* Pods-ROADCore.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -257,7 +267,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 78B8E69C16C3CC3E0049E36B /* Build configuration list for PBXNativeTarget "ROADCore" */;
 			buildPhases = (
-				1897CBD01C784A7185BFE631 /* libObjCAttr - generate attributes */,
+				95B05871D247DAFB8D03F6C1 /* libObjCAttr - generate attributes */,
 				B03FB7F7E80344F5A21B8D39 /* Check Pods Manifest.lock */,
 				78B8E68C16C3CC3E0049E36B /* CopyFiles */,
 				78B8E68A16C3CC3E0049E36B /* Sources */,
@@ -332,20 +342,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1897CBD01C784A7185BFE631 /* libObjCAttr - generate attributes */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "libObjCAttr - generate attributes";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
-		};
 		8353CC37189F82B800135D86 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -358,6 +354,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "source ~/.bash_profile\n\nhash oclint &> /dev/null\nif [ $? -eq 1 ]; then\necho >&2 \"oclint not found, analyzing stopped\"\nexit 1\nfi\n\ncd \"${TARGET_TEMP_DIR}\"\n\necho \"[*] starting xcodebuild to rebuild the project..\"\n# clean previous output\nif [ -f xcodebuild.log ]; then\nrm xcodebuild.log\nfi\n\ncd \"${SRCROOT}\"/..\n\nxcodebuild clean -workspace ROADFramework.xcworkspace -scheme ROADCore -configuration Debug\n\n#build xcodebuild.log\nxcodebuild -workspace ROADFramework.xcworkspace -scheme ROADCore -configuration Debug | tee \"${TARGET_TEMP_DIR}/xcodebuild.log\"\n\necho \"[*] transforming xcodebuild.log into compile_commands.json...\"\necho \"TARGET_TEMP_DIR: ${TARGET_TEMP_DIR}\"\ncd \"${TARGET_TEMP_DIR}\"\n#transform it into compile_commands.json\necho \"oclint-xcodebuild -e ROADGeneratedAttributes\"\noclint-xcodebuild -e ROADGeneratedAttributes -e Pods\n\necho \"[*] copy compile_commands.json to the project root...\"\ncp \"${TARGET_TEMP_DIR}/compile_commands.json\" \"${SRCROOT}/compile_commands.json\"\n\necho \"[*] starting analyzing\"\ncd \"${TARGET_TEMP_DIR}\"\noclint-json-compilation-database -v -e ROADGeneratedAttributes -e Pods -- -rc=LONG_LINE=500 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 30 -max-priority-3 152 | sed 's/\\(.*\\.\\m\\{1,2\\}:[0-9]*:[0-9]*:\\)/\\1 warning:/'";
+		};
+		95B05871D247DAFB8D03F6C1 /* libObjCAttr - generate attributes */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "libObjCAttr - generate attributes";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
 		};
 		B03FB7F7E80344F5A21B8D39 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -386,7 +396,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Pods-ROADCore-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-ROADCore/Pods-ROADCore-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -486,7 +496,7 @@
 		};
 		78B8E69D16C3CC3E0049E36B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 634461C3604B4DB58DF380FC /* Pods-ROADCore.xcconfig */;
+			baseConfigurationReference = 6423B9B100C8143F133F5AB0 /* Pods-ROADCore.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
@@ -522,7 +532,7 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
-				HEADER_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
@@ -533,7 +543,7 @@
 		};
 		78B8E69E16C3CC3E0049E36B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 634461C3604B4DB58DF380FC /* Pods-ROADCore.xcconfig */;
+			baseConfigurationReference = D228E2154B4C3507D30B19E7 /* Pods-ROADCore.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
@@ -569,7 +579,7 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
-				HEADER_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
