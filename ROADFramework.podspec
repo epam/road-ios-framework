@@ -49,7 +49,7 @@ Pod::Spec.new do |s|
   s.subspec 'ROADWebService' do |web|
     web.source_files = 'Framework/ROADWebService/ROADWebService/**/*.{h,m}'
     web.public_header_files = 'Framework/ROADWebService/ROADWebService/**/*.h'
-    web.resources = 'Framework/ROADWebService/ROADWebService/Caching/*.{xcdatamodeld,xcdatamodel}'
+    web.resources = 'Framework/ROADWebService/ROADWebService/Caching/*.{xcdatamodeld,xcdatamodel,xcmappingmodel}'
     web.dependency 'ROADFramework/ROADCore'
     web.dependency 'ROADFramework/ROADSerialization'
     web.dependency 'ROADFramework/ROADServices'    
