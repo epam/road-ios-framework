@@ -70,6 +70,8 @@
     // Comparing for c primitive types
     if ([propertyInfo.typeName isEqualToString:@"c"]
         || [propertyInfo.typeName isEqualToString:@"B"]
+        || [propertyInfo.typeName isEqualToString:@"char"]
+        || [propertyInfo.typeName isEqualToString:@"bool"]
         || propertyInfo.typeClass == [NSNumber class]) {
         NSPredicate *filterPredicate = [NSPredicate predicateWithFormat:@" SELF == %@ OR SELF == %i OR SELF == %d ",value, [value boolValue], [value intValue] ];
         NSArray *filteredItems = [values filteredArrayUsingPredicate:filterPredicate];
