@@ -10,6 +10,7 @@ env:
 before_install:
     - brew update
     - brew install ant
+    - if brew outdated | grep -qx xctool; then brew upgrade xctool; fi
 
 before_script:
     - sudo easy_install cpp-coveralls
