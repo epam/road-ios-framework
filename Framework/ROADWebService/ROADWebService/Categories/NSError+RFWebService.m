@@ -36,6 +36,7 @@
 
 NSString * const kRFWebServiceErrorDomain               = @"RFWebServiceError";
 NSString * const kRFWebServiceRecievedDataKey           = @"RFRecievedData";
+NSString * const kRFWebServiceSentObjectKey             = @"RFSentObject";
 NSString * const kRFWebServiceCancellationReason        = @"RFCancellationReason";
 
 const NSInteger kRFWebServiceErrorCodeSerialization     = 1000;
@@ -43,10 +44,15 @@ const NSInteger kRFWebServiceErrorCodeCancel            = 1001;
 
 // Private
 static NSString * const kRFWSDescManualCancel = @"The request has been cancelled.";
+static NSString * const kRFWSDescSerializationError = @"Error during the serialization.";
 static NSString * const kRFWSDescDeserializationError = @"Error during the deserialization.";
 
 
 @implementation NSError (RFWebService)
+
++ (NSError *)RFWS_serializationErrorWithObject:(id)object {
+    return [NSError errorWithDomain:kRFWebServiceErrorDomain code:kRFWebServiceErrorCodeSerialization userInfo:@{NSLocalizedDescriptionKey : kRFWSDescSerializationError, kRFWebServiceSentObjectKey : object}];
+}
 
 + (NSError *)RFWS_deserializationErrorWithData:(NSData *)data {
     return [NSError errorWithDomain:kRFWebServiceErrorDomain code:kRFWebServiceErrorCodeSerialization userInfo:@{NSLocalizedDescriptionKey : kRFWSDescDeserializationError, kRFWebServiceRecievedDataKey : data}];

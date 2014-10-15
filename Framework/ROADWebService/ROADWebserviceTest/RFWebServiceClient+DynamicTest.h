@@ -54,6 +54,16 @@ RF_ATTRIBUTE(RFWebServiceCall, method = @"POST", prototypeClass = [RFSerializabl
 RF_ATTRIBUTE(RFWebServiceSerializer, serializerClass = [RFXMLSerializer class])
 - (id<RFWebServiceCancellable>)testXMLSerializerWithObject:(RFSerializableTestObject *)headerValue withSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
+RF_ATTRIBUTE(RFWebServiceCall, method = @"POST", prototypeClass = [RFSerializableTestObject class], bodyEncoding = NSWindowsCP1251StringEncoding) // NSASCIIStringEncoding
+- (id<RFWebServiceCancellable>)testJsonSerializationEncoding:(RFSerializableTestObject *)headerValue withSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+RF_ATTRIBUTE(RFWebServiceCall, method = @"POST", prototypeClass = [RFSerializableTestObject class], bodyEncoding = NSWindowsCP1251StringEncoding)
+RF_ATTRIBUTE(RFWebServiceSerializer, serializerClass = [RFXMLSerializer class])
+- (id<RFWebServiceCancellable>)testXMLSerializationEncoding:(RFSerializableTestObject *)headerValue withSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+RF_ATTRIBUTE(RFWebServiceCall, method = @"GET", relativePath = @"json?%%0%%", prototypeClass = [RFSerializableTestObject class], bodyEncoding = NSWindowsCP1251StringEncoding) // NSASCIIStringEncoding
+- (id<RFWebServiceCancellable>)testGetWithJsonSerializationEncoding:(RFSerializableTestObject *)headerValue withSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
 RF_ATTRIBUTE(RFWebServiceCall, method = @"GET", relativePath = @"/test")
 RF_ATTRIBUTE(RFRequestTestAttribute, testProperty = @"testString")
 - (id<RFWebServiceCancellable>)methodAttributeTestRequest:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;

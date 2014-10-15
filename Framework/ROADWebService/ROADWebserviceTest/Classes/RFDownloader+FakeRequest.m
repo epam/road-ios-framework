@@ -66,7 +66,13 @@
     }
     else if ([self.request isRelatedToTest:@"test.serializer"]) {
         response = [self checkXMLSerializedRequestData] ? [self successResponse] : [self failureResponse];
-        resultData = self.request.HTTPBody;
+        if ([self.request.HTTPMethod isEqual:@"GET"]) {
+            NSString *unescapedString = [[self.request.URL query] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            resultData = [unescapedString dataUsingEncoding:NSWindowsCP1251StringEncoding];
+        }
+        else {
+            resultData = self.request.HTTPBody;
+        }
     }
     else if ([self.request isRelatedToTest:@"test.cache.pragma"]) {
         response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:@{@"Pragma" : @"no-cache"}];

@@ -49,8 +49,6 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
 
 
 @implementation RFWebServiceCachingManager {
-    dispatch_queue_t _cacheQueue;
-
     RFWebServiceCacheContext * _cacheContext;
 }
 
@@ -60,7 +58,6 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
 - (id)init {
     self = [super init];
     if (self) {
-        _cacheQueue = dispatch_queue_create(RFWebServiceCacheQueueName, DISPATCH_QUEUE_SERIAL);
         _cacheContext = [[RFWebServiceCacheContext alloc] init];
     }
     return self;
@@ -80,10 +77,8 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
     // Either we have expiration date specified or expiration date is not specified but we have field for conditional GET
     if ([expirationDate compare:[NSDate date]] == NSOrderedDescending
         || ((lastModified || eTag) && !expirationDate)) {
-        __weak RFWebServiceCachingManager *weakSelf = self;
-        dispatch_sync(_cacheQueue, ^{
-            RFWebServiceCachingManager *strongSelf = weakSelf;
-            NSManagedObjectContext *managedObjectContext = strongSelf->_cacheContext.context;
+        [_cacheContext.context performBlockAndWait:^{
+            NSManagedObjectContext *managedObjectContext = self->_cacheContext.context;
 
             RFWebResponse * webResponse = [self unsafeFetchResponseForRequest:request];
             if (!webResponse) {
@@ -117,7 +112,7 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
             if (error) {
                 RFWSLogError(@"RFWebServiceCachingManager error: saving cached response failed with error: %@", [error localizedDescription]);
             }
-        });
+        }];
     }
 }
 
@@ -146,12 +141,14 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
     
     if (!(cacheAttribute.offlineCache && !response) && [response statusCode] != 304) {
         if (cachedResponse) {
-            [_cacheContext.context deleteObject:cachedResponse];
-            NSError *saveError;
-            [_cacheContext.context save:&saveError];
-            if (saveError) {
-                RFWSLogError(@"Clean of cache was failed with error : %@", saveError);
-            }
+            [_cacheContext.context performBlockAndWait:^{
+                [self->_cacheContext.context deleteObject:cachedResponse];
+                NSError *saveError;
+                [self->_cacheContext.context save:&saveError];
+                if (saveError) {
+                    RFWSLogError(@"Clean of cache was failed with error : %@", saveError);
+                }
+            }];
         }
         cachedResponse = nil;
     }
@@ -162,9 +159,9 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
 - (NSArray *)cacheWithIdentifier:(NSString *)cacheIdentifier {
     __block NSArray *cachedResponse;
 
-    dispatch_sync(_cacheQueue, ^{
+    [_cacheContext.context performBlockAndWait:^{
         cachedResponse = [self unsafeFetchResponseForIdentifier:cacheIdentifier prefixed:NO];
-    });
+    }];
 
     return cachedResponse;
 }
@@ -172,57 +169,66 @@ const char * RFWebServiceCacheQueueName = "RFWebServiceCacheQueue";
 - (NSArray *)cacheWithIdentifierPrefix:(NSString *)cacheIdentifierPrefix {
     __block NSArray *cachedResponse;
 
-    dispatch_sync(_cacheQueue, ^{
+    [_cacheContext.context performBlockAndWait:^{
         cachedResponse = [self unsafeFetchResponseForIdentifier:cacheIdentifierPrefix prefixed:YES];
-    });
+    }];
 
     return cachedResponse;
 }
 
 - (void)flushElementsWithIdentifier:(NSString *)cacheIdentifier {
     NSArray *cachedResponses = [self cacheWithIdentifier:cacheIdentifier];
-    for (RFWebResponse *cachedResponse in cachedResponses) {
-        [_cacheContext.context deleteObject:cachedResponse];
-        NSError *error;
-        [_cacheContext.context save:&error];
-        if (error) {
-            RFWSLogError(@"Clean of cache was failed with error : %@", error);
+
+    [_cacheContext.context performBlockAndWait:^{
+        for (RFWebResponse *cachedResponse in cachedResponses) {
+            [self->_cacheContext.context deleteObject:cachedResponse];
+            NSError *error;
+            [self->_cacheContext.context save:&error];
+            if (error) {
+                RFWSLogError(@"Clean of cache was failed with error : %@", error);
+            }
         }
-    }
+    }];
 }
 
 - (void)flushElementsWithIdentifierPrefix:(NSString *)cacheIdentifierPrefix {
     NSArray *cachedResponses = [self cacheWithIdentifierPrefix:cacheIdentifierPrefix];
-    for (RFWebResponse *cachedResponse in cachedResponses) {
-        [_cacheContext.context deleteObject:cachedResponse];
-        NSError *error;
-        [_cacheContext.context save:&error];
-        if (error) {
-            RFWSLogError(@"Clean of cache was failed with error : %@", error);
+    
+    [_cacheContext.context performBlockAndWait:^{
+        for (RFWebResponse *cachedResponse in cachedResponses) {
+            [self->_cacheContext.context deleteObject:cachedResponse];
+            NSError *error;
+            [self->_cacheContext.context save:&error];
+            if (error) {
+                RFWSLogError(@"Clean of cache was failed with error : %@", error);
+            }
         }
-    }
+    }];
 }
 
 - (void)dropCache {
-    NSError *error;
-    [_cacheContext.persisitentStoreCoordinator removePersistentStore:[_cacheContext.persisitentStoreCoordinator.persistentStores lastObject] error:&error];
-    if (error) {
-        RFWSLogError(@"Cache failed to be dropped with error : %@", error);
-    }
-    else {
-        if ([[NSFileManager defaultManager] fileExistsAtPath:[[_cacheContext.storeURL absoluteString] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]) {
-            [[NSFileManager defaultManager] removeItemAtURL:_cacheContext.storeURL error:&error];
-            if (error) {
-                RFWSLogError(@"Cache file failed to be dropped with error : %@", error);
-            }
-            else {
-                [_cacheContext bindStore];
-            }
+    
+    [_cacheContext.context performBlockAndWait:^{
+        NSError *error;
+        [self->_cacheContext.persisitentStoreCoordinator removePersistentStore:[self->_cacheContext.persisitentStoreCoordinator.persistentStores lastObject] error:&error];
+        if (error) {
+            RFWSLogError(@"Cache failed to be dropped with error : %@", error);
         }
         else {
-            [_cacheContext bindStore];
+            if ([[NSFileManager defaultManager] fileExistsAtPath:[[self->_cacheContext.storeURL absoluteString] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]) {
+                [[NSFileManager defaultManager] removeItemAtURL:self->_cacheContext.storeURL error:&error];
+                if (error) {
+                    RFWSLogError(@"Cache file failed to be dropped with error : %@", error);
+                }
+                else {
+                    [self->_cacheContext bindStore];
+                }
+            }
+            else {
+                [self->_cacheContext bindStore];
+            }
         }
-    }
+    }];
 }
 
 - (NSString *)parseCacheIdentifier:(NSString *)cacheIdentifier withParameters:(NSDictionary *)parameterValues {
@@ -316,22 +322,23 @@ static const NSInteger kRFWebServiceHeaderValueParameterIndex       = 1;
 
 - (RFWebResponse *)fetchResponseForRequest:(NSURLRequest *)request {
     __block RFWebResponse *cachedResponse;
-    dispatch_sync(_cacheQueue, ^{
+    [_cacheContext.context performBlockAndWait:^{
         cachedResponse = [self unsafeFetchResponseForRequest:request];
-    });
+    }];
 
     return cachedResponse;
 }
 
+// This method should be called only with private queue of _cacheContext.context.
 - (RFWebResponse *)unsafeFetchResponseForRequest:(NSURLRequest *)request {
     RFWebResponse *cachedResponse;
 
     NSUInteger requestURLHash = [[request.URL absoluteString] hash];
-    NSManagedObjectContext *managedObjectContext = _cacheContext.context;
+
     NSFetchRequest *fetchCachedResponse = [[NSFetchRequest alloc] initWithEntityName:kRFWebResponseEntityName];
     fetchCachedResponse.predicate = [NSPredicate predicateWithFormat:@"urlHash == %lu", requestURLHash];
     NSError *error;
-    NSArray *cachedResponses = [managedObjectContext executeFetchRequest:fetchCachedResponse error:&error];
+    NSArray *cachedResponses = [_cacheContext.context executeFetchRequest:fetchCachedResponse error:&error];
 
     for (RFWebResponse *webResponse in cachedResponses) {
         if ([webResponse.implementation.requestURL isEqualToString:[request.URL absoluteString]]
@@ -345,6 +352,7 @@ static const NSInteger kRFWebServiceHeaderValueParameterIndex       = 1;
     return cachedResponse;
 }
 
+// This method should be called only with private queue of _cacheContext.context.
 - (NSArray *)unsafeFetchResponseForIdentifier:(NSString *)cacheIdentifier prefixed:(BOOL)prefixed {
 
     NSMutableArray *cachedResponse = [[NSMutableArray alloc] init];

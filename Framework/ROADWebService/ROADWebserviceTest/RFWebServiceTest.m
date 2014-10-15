@@ -142,6 +142,83 @@
     XCTAssertTrue([testObject isEqual:customSerializationResult], @"Custom deserialization of web service response is failed!");
 }
 
+- (void)testJsonSerializationEncoding {
+    __block BOOL isFinished = NO;
+    __block BOOL isSuccess = NO;
+    __block id jsonSerializationResult;
+
+    RFSerializableTestObject *testObject = [RFSerializableTestObject testObject];
+    testObject.name = @"Ваня Кузнецов";
+    testObject.city = @"Нью-Васюки";
+
+    RFWebServiceClient *webClient = [[RFWebServiceClient alloc] initWithServiceRoot:@"http://test.serializer"]; //@"http://127.0.0.1:8080/xml"];
+    [webClient testJsonSerializationEncoding:testObject withSuccess:^(id result) {
+        isSuccess = YES;
+        jsonSerializationResult = result;
+        isFinished = YES;
+    } failure:^(NSError *error) {
+        isFinished = YES;
+    }];
+
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:0.2]];
+    }
+
+    XCTAssertTrue(isSuccess, @"JSON serialization of web service request is failed!");
+    XCTAssertTrue([testObject isEqual:jsonSerializationResult], @"JSON deserialization of web service response is failed!");
+}
+
+- (void)testXMLSerializationEncoding {
+    __block BOOL isFinished = NO;
+    __block BOOL isSuccess = NO;
+    __block id xmlSerializationResult;
+
+    RFSerializableTestObject *testObject1 = [RFSerializableTestObject testObject];
+    testObject1.name = @"Ваня Кузнецов";
+
+    RFWebServiceClient *webClient = [[RFWebServiceClient alloc] initWithServiceRoot:@"http://test.serializer"]; // @"http://127.0.0.1:8080/xml"
+    [webClient testXMLSerializationEncoding:testObject1 withSuccess:^(id result) {
+        isSuccess = YES;
+        xmlSerializationResult = result;
+        isFinished = YES;
+    } failure:^(NSError *error) {
+        isFinished = YES;
+    }];
+
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:0.2]];
+    }
+
+    XCTAssertTrue(isSuccess, @"XML serialization of web service request is failed!");
+    XCTAssertTrue([testObject1 isEqual:xmlSerializationResult], @"XML deserialization of web service response is failed!");
+}
+
+- (void)testGetWithJsonSerializationEncoding {
+    __block BOOL isFinished = NO;
+    __block BOOL isSuccess = NO;
+    __block id jsonSerializationResult1;
+
+    RFSerializableTestObject *testObject2 = [RFSerializableTestObject testObject];
+    testObject2.name = @"Ваня Кузнецов";
+    testObject2.city = @"Нью-Васюки";
+
+    RFWebServiceClient *webClient = [[RFWebServiceClient alloc] initWithServiceRoot:@"http://test.serializer/"]; //@"http://127.0.0.1:8080/xml"];
+    [webClient testGetWithJsonSerializationEncoding:testObject2 withSuccess:^(id result) {
+        isSuccess = YES;
+        jsonSerializationResult1 = result;
+        isFinished = YES;
+    } failure:^(NSError *error) {
+        isFinished = YES;
+    }];
+
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:0.2]];
+    }
+
+    XCTAssertTrue(isSuccess, @"JSON serialization of web service URL is failed!");
+    XCTAssertTrue([testObject2 isEqual:jsonSerializationResult1], @"JSON deserialization of web service response is failed!");
+}
+
 - (void)testDownloadingCancellation {
     RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.simple.call"];
     __block BOOL isFinished = NO;

@@ -52,7 +52,7 @@
     NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
     NSString *pathToSerialisationTestFile = [testBundle pathForResource:@"DateTestStandard" ofType:@"json"];
     NSError *error = nil;
-    NSString *serialisationTestString = [NSString stringWithContentsOfFile:pathToSerialisationTestFile encoding:NSStringEncodingConversionAllowLossy error:&error];
+    NSString *serialisationTestString = [NSString stringWithContentsOfFile:pathToSerialisationTestFile encoding:NSUTF8StringEncoding error:&error];
     return serialisationTestString;
 }
 
@@ -60,7 +60,7 @@
     NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
     NSString *pathToDeserialisationTestFile = [testBundle pathForResource:@"DateTest" ofType:@"json"];
     NSError *error = nil;
-    NSString *deserialisationTestString = [NSString stringWithContentsOfFile:pathToDeserialisationTestFile encoding:NSStringEncodingConversionAllowLossy error:&error];
+    NSString *deserialisationTestString = [NSString stringWithContentsOfFile:pathToDeserialisationTestFile encoding:NSUTF8StringEncoding error:&error];
     return deserialisationTestString;
 }
 

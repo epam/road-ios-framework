@@ -41,6 +41,7 @@
 		633298ED18AA234400D0C0CF /* RFDisabledClassNameSerializationTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 633298EB18AA234400D0C0CF /* RFDisabledClassNameSerializationTestObject.m */; };
 		63D10F08185EFA7700BD9046 /* RFBooleanTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D10F07185EFA7700BD9046 /* RFBooleanTranslator.m */; };
 		63D10F10185EFAB700BD9046 /* RFSerializableBoolean.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D10F0F185EFAB700BD9046 /* RFSerializableBoolean.m */; };
+		704F02BF59245E24C227115E /* libPods-ROADSerializationTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8066B4FEACFB9ED965F72EA /* libPods-ROADSerializationTest.a */; };
 		7841618916480C1E0089FDE9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7841618716480C1E0089FDE9 /* InfoPlist.strings */; };
 		784161AC16480CC40089FDE9 /* RFJSONStringHandlingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 784161AB16480CC40089FDE9 /* RFJSONStringHandlingTest.m */; };
 		78513E6D164921BF0049549A /* RFSerializationTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78513E6C164921BF0049549A /* RFSerializationTestObject.m */; };
@@ -51,6 +52,7 @@
 		7895729616382B06009D7417 /* RFSerializable.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7895728516380A33009D7417 /* RFSerializable.h */; };
 		7895729716382B08009D7417 /* RFDerived.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7895728F163828E1009D7417 /* RFDerived.h */; };
 		78DD732F164A6553009B334C /* RFSerializableCollection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78DD7329164A6305009B334C /* RFSerializableCollection.h */; };
+		812F6FD078503B7375B50D8B /* ROADGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA7167241D5A64F831418A6 /* ROADGeneratedAttribute.m */; };
 		83522BF31850C8AA006C5CA3 /* RFXMLSerializableCollection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C33E15FE18462BA400AB4CC6 /* RFXMLSerializableCollection.h */; };
 		8369B76418D87EDC002B5C4E /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8369B76318D87EDC002B5C4E /* libxml2.dylib */; };
 		8369B76718D88966002B5C4E /* RFSerializableStringChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8369B76618D88966002B5C4E /* RFSerializableStringChecker.m */; };
@@ -87,6 +89,7 @@
 		C33E160018462BA400AB4CC6 /* RFXMLSerializableCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = C33E15FF18462BA400AB4CC6 /* RFXMLSerializableCollection.m */; };
 		C33E16021847451700AB4CC6 /* DeserialisationMixedCollectionContainerTest.xml in Resources */ = {isa = PBXBuildFile; fileRef = C33E16011847451700AB4CC6 /* DeserialisationMixedCollectionContainerTest.xml */; };
 		C33E16051847455F00AB4CC6 /* RFXMLSerializationTestObject2.m in Sources */ = {isa = PBXBuildFile; fileRef = C33E16041847455F00AB4CC6 /* RFXMLSerializationTestObject2.m */; };
+		D1CB158478AE9EA3B9615C1E /* libPods-ROADSerialization.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF25241BC6C30F627774B52 /* libPods-ROADSerialization.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +133,7 @@
 		1176413818E46BFD00B1688B /* libUtilities.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUtilities.a; path = "../Utilities/build/Debug-iphoneos/libUtilities.a"; sourceTree = "<group>"; };
 		11DB4342191945A90015EDC4 /* RFJSONPropertyPreprocessingClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFJSONPropertyPreprocessingClass.h; sourceTree = "<group>"; };
 		11DB4343191945A90015EDC4 /* RFJSONPropertyPreprocessingClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFJSONPropertyPreprocessingClass.m; sourceTree = "<group>"; };
+		1CF434D3C9E2C0BD908D1684 /* Pods-ROADSerializationTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ROADSerializationTest.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-ROADSerializationTest/Pods-ROADSerializationTest.debug.xcconfig"; sourceTree = "<group>"; };
 		3337D37F1802B5AE00FE22F4 /* DeserialisationTest.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DeserialisationTest.xml; sourceTree = "<group>"; };
 		3337D3811802BB1600FE22F4 /* DeserialisationTest2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DeserialisationTest2.xml; sourceTree = "<group>"; };
 		3337D3821802BB1600FE22F4 /* DeserialisationTest3.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DeserialisationTest3.xml; sourceTree = "<group>"; };
@@ -144,6 +148,9 @@
 		3337D3D71803ECE200FE22F4 /* RFAttributedXMLDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFAttributedXMLDecoder.h; sourceTree = "<group>"; };
 		3337D3D81803ECE200FE22F4 /* RFAttributedXMLDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFAttributedXMLDecoder.m; sourceTree = "<group>"; };
 		335CA04519AC853500975656 /* DeserialisationTestEmpty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DeserialisationTestEmpty.json; sourceTree = "<group>"; };
+		3BF25241BC6C30F627774B52 /* libPods-ROADSerialization.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ROADSerialization.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DC10DD8C335D7C1C407ED17 /* Pods-ROADSerialization.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ROADSerialization.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-ROADSerialization/Pods-ROADSerialization.debug.xcconfig"; sourceTree = "<group>"; };
+		5CA7167241D5A64F831418A6 /* ROADGeneratedAttribute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ROADGeneratedAttribute.m; path = ROADSerialization/ROADGeneratedAttributes/ROADGeneratedAttribute.m; sourceTree = "<group>"; };
 		633298E918AA234400D0C0CF /* RFDisabledClassNameSerializationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFDisabledClassNameSerializationTest.m; path = Classes/RFDisabledClassNameSerializationTest.m; sourceTree = "<group>"; };
 		633298EA18AA234400D0C0CF /* RFDisabledClassNameSerializationTestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFDisabledClassNameSerializationTestObject.h; sourceTree = "<group>"; };
 		633298EB18AA234400D0C0CF /* RFDisabledClassNameSerializationTestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFDisabledClassNameSerializationTestObject.m; sourceTree = "<group>"; };
@@ -200,7 +207,8 @@
 		83F122C918449D32000023AF /* RFSerializationCustomHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFSerializationCustomHandler.m; sourceTree = "<group>"; };
 		8D1239BA17CFAED300094213 /* RFSerializationAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFSerializationAssistant.h; sourceTree = "<group>"; };
 		8D1239BB17CFAED300094213 /* RFSerializationAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RFSerializationAssistant.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		8D60078517CFFF7D0095E17D /* ROADGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROADGeneratedAttribute.m; sourceTree = "<group>"; };
+		8D60078517CFFF7D0095E17D /* ROADGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ROADGeneratedAttribute.m; path = ROADGeneratedAttributes/ROADGeneratedAttribute.m; sourceTree = "<group>"; };
+		9C7E92FCF77CC72BC9D7D0F2 /* Pods-ROADSerialization.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ROADSerialization.release.xcconfig"; path = "../Pods/Target Support Files/Pods-ROADSerialization/Pods-ROADSerialization.release.xcconfig"; sourceTree = "<group>"; };
 		9F0A8AB415C299340044A782 /* libROADSerialization.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libROADSerialization.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F80CD5B15F64EEE0031BA24 /* ROADSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROADSerialization.h; sourceTree = "<group>"; };
 		C3182C9C183B95D80041F4B7 /* DeserialisationCollectionContainerTest.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DeserialisationCollectionContainerTest.xml; sourceTree = "<group>"; };
@@ -214,7 +222,9 @@
 		C33E16011847451700AB4CC6 /* DeserialisationMixedCollectionContainerTest.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DeserialisationMixedCollectionContainerTest.xml; sourceTree = "<group>"; };
 		C33E16031847455F00AB4CC6 /* RFXMLSerializationTestObject2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFXMLSerializationTestObject2.h; sourceTree = "<group>"; };
 		C33E16041847455F00AB4CC6 /* RFXMLSerializationTestObject2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFXMLSerializationTestObject2.m; sourceTree = "<group>"; };
+		C8066B4FEACFB9ED965F72EA /* libPods-ROADSerializationTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ROADSerializationTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDB87E6616EA0BA2003D9081 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D8E7D3ECF18EE2C9D6A0E7F5 /* Pods-ROADSerializationTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ROADSerializationTest.release.xcconfig"; path = "../Pods/Target Support Files/Pods-ROADSerializationTest/Pods-ROADSerializationTest.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +235,7 @@
 				1176413918E46BFD00B1688B /* libUtilities.a in Frameworks */,
 				8369B76418D87EDC002B5C4E /* libxml2.dylib in Frameworks */,
 				8D900EBD17CF9B580018D336 /* libROADSerialization.a in Frameworks */,
+				704F02BF59245E24C227115E /* libPods-ROADSerializationTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				839A19A418C61B95001A727C /* libROADCore.a in Frameworks */,
+				D1CB158478AE9EA3B9615C1E /* libPods-ROADSerialization.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +336,7 @@
 		7841618516480C1E0089FDE9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8D60078517CFFF7D0095E17D /* ROADGeneratedAttribute.m */,
 				7841618616480C1E0089FDE9 /* ROADSerializationTest-Info.plist */,
 				7841618716480C1E0089FDE9 /* InfoPlist.strings */,
 				7841618D16480C1E0089FDE9 /* ROADSerializationTest-Prefix.pch */,
@@ -373,10 +386,12 @@
 		7846754C15C16C20000E02DA = {
 			isa = PBXGroup;
 			children = (
+				5CA7167241D5A64F831418A6 /* ROADGeneratedAttribute.m */,
 				9F0A8AB615C299340044A782 /* ROADSerialization */,
 				7841618416480C1E0089FDE9 /* ROADSerializationTest */,
 				7846755A15C16C21000E02DA /* Frameworks */,
 				7846755815C16C21000E02DA /* Products */,
+				8777AE884122F133FF8EA646 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -396,6 +411,8 @@
 				8369B76318D87EDC002B5C4E /* libxml2.dylib */,
 				839A19A318C61B95001A727C /* libROADCore.a */,
 				CDB87E6616EA0BA2003D9081 /* Foundation.framework */,
+				3BF25241BC6C30F627774B52 /* libPods-ROADSerialization.a */,
+				C8066B4FEACFB9ED965F72EA /* libPods-ROADSerializationTest.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -451,6 +468,17 @@
 			name = "JSON Custom Handling";
 			sourceTree = "<group>";
 		};
+		8777AE884122F133FF8EA646 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4DC10DD8C335D7C1C407ED17 /* Pods-ROADSerialization.debug.xcconfig */,
+				9C7E92FCF77CC72BC9D7D0F2 /* Pods-ROADSerialization.release.xcconfig */,
+				1CF434D3C9E2C0BD908D1684 /* Pods-ROADSerializationTest.debug.xcconfig */,
+				D8E7D3ECF18EE2C9D6A0E7F5 /* Pods-ROADSerializationTest.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8D1239B617CFAE9300094213 /* Assistants */ = {
 			isa = PBXGroup;
 			children = (
@@ -465,7 +493,6 @@
 		8D60078417CFFF7D0095E17D /* ROADGeneratedAttributes */ = {
 			isa = PBXGroup;
 			children = (
-				8D60078517CFFF7D0095E17D /* ROADGeneratedAttribute.m */,
 			);
 			path = ROADGeneratedAttributes;
 			sourceTree = "<group>";
@@ -500,11 +527,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7841619616480C1E0089FDE9 /* Build configuration list for PBXNativeTarget "ROADSerializationTest" */;
 			buildPhases = (
-				1642D222CCEC4207A812D6E5 /* libObjCAttr - generate attributes */,
+				BCE66C9BCD166F894417B508 /* libObjCAttr - generate attributes */,
+				65D42D6352D04D451A775207 /* Check Pods Manifest.lock */,
 				7841617816480C1D0089FDE9 /* Sources */,
 				7841617916480C1D0089FDE9 /* Frameworks */,
 				7841617A16480C1D0089FDE9 /* Resources */,
 				5A1CC60B176F282A00A6C154 /* ShellScript */,
+				8559D0FED280D8EA2D5D50C2 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -520,9 +549,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F0A8ABE15C299340044A782 /* Build configuration list for PBXNativeTarget "ROADSerialization" */;
 			buildPhases = (
+				F65035B0DB1B9CD3BA606A61 /* libObjCAttr - generate attributes */,
+				FA06730651A2965AEED29793 /* Check Pods Manifest.lock */,
 				9F0A8AB015C299340044A782 /* Sources */,
 				9F0A8AB115C299340044A782 /* Frameworks */,
 				9F20C58E15C7D003007D6EEF /* CopyFiles */,
+				B1337F82CF2205F54EDA8615 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -541,7 +573,7 @@
 			attributes = {
 				CLASSPREFIX = RF;
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Epam Systems";
 			};
 			buildConfigurationList = 7846755115C16C20000E02DA /* Build configuration list for PBXProject "ROADSerialization" */;
@@ -587,20 +619,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1642D222CCEC4207A812D6E5 /* libObjCAttr - generate attributes */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "libObjCAttr - generate attributes";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}/\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
-		};
 		5A1CC60B176F282A00A6C154 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -614,6 +632,21 @@
 			shellPath = /bin/sh;
 			shellScript = "echo \"Copy resource files to bundle\"\nSRC=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/include/ROAD\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\necho \"$DEST\"\necho \"$RESOURCE\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"\n\n\necho \"Copy resource files to archive bundle\"\n\nSRC=\"$BUILD_DIR/../IntermediateBuildFilesPath/UninstalledProducts\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"";
 		};
+		65D42D6352D04D451A775207 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		8353CC4E189F88E900135D86 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -626,6 +659,79 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "source ~/.bash_profile\n\nhash oclint &> /dev/null\nif [ $? -eq 1 ]; then\necho >&2 \"oclint not found, analyzing stopped\"\nexit 1\nfi\n\ncd \"${TARGET_TEMP_DIR}\"\n\necho \"[*] starting xcodebuild to rebuild the project..\"\n# clean previous output\nif [ -f xcodebuild.log ]; then\nrm xcodebuild.log\nfi\n\ncd \"${SRCROOT}\"/..\n\nxcodebuild clean -workspace ROADFramework.xcworkspace -scheme ROADSerialization -configuration Debug\n\n#build xcodebuild.log\nxcodebuild -workspace ROADFramework.xcworkspace -scheme ROADSerialization -configuration Debug | tee \"${TARGET_TEMP_DIR}/xcodebuild.log\"\n\necho \"[*] transforming xcodebuild.log into compile_commands.json...\"\necho \"TARGET_TEMP_DIR: ${TARGET_TEMP_DIR}\"\ncd \"${TARGET_TEMP_DIR}\"\n#transform it into compile_commands.json\necho \"oclint-xcodebuild -e ROADGeneratedAttributes\"\noclint-xcodebuild -e ROADGeneratedAttributes -e Pods\n\necho \"[*] copy compile_commands.json to the project root...\"\ncp \"${TARGET_TEMP_DIR}/compile_commands.json\" \"${SRCROOT}/compile_commands.json\"\n\necho \"[*] starting analyzing\"\ncd \"${TARGET_TEMP_DIR}\"\noclint-json-compilation-database -v -e ROADGeneratedAttributes -e Pods -- -rc=LONG_LINE=500 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 30 -max-priority-3 152 | sed 's/\\(.*\\.\\m\\{1,2\\}:[0-9]*:[0-9]*:\\)/\\1 warning:/'";
+		};
+		8559D0FED280D8EA2D5D50C2 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-ROADSerializationTest/Pods-ROADSerializationTest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B1337F82CF2205F54EDA8615 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-ROADSerialization/Pods-ROADSerialization-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BCE66C9BCD166F894417B508 /* libObjCAttr - generate attributes */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "libObjCAttr - generate attributes";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
+		};
+		F65035B0DB1B9CD3BA606A61 /* libObjCAttr - generate attributes */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "libObjCAttr - generate attributes";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
+		};
+		FA06730651A2965AEED29793 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -675,6 +781,7 @@
 				83A36B2F1798205000449C0C /* RFSerializableDate.m in Sources */,
 				8D1239BC17CFAED300094213 /* RFSerializationAssistant.m in Sources */,
 				3337D3DD1803ECE200FE22F4 /* RFAttributedXMLDecoder.m in Sources */,
+				812F6FD078503B7375B50D8B /* ROADGeneratedAttribute.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -702,6 +809,7 @@
 /* Begin XCBuildConfiguration section */
 		7841618E16480C1E0089FDE9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1CF434D3C9E2C0BD908D1684 /* Pods-ROADSerializationTest.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
@@ -743,25 +851,24 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/include/libxml2,
-					"\"${PODS_ROOT}/Headers/libObjCAttr\"",
 				);
 				INFOPLIST_FILE = "ROADSerializationTest/ROADSerializationTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 				);
-				PODS_ROOT = "${SRCROOT}/../Pods";
 				PRODUCT_NAME = ROADSerializationTest;
 			};
 			name = Debug;
 		};
 		7841618F16480C1E0089FDE9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8E7D3ECF18EE2C9D6A0E7F5 /* Pods-ROADSerializationTest.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
@@ -803,18 +910,16 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/include/libxml2,
-					"\"${PODS_ROOT}/Headers/libObjCAttr\"",
 				);
 				INFOPLIST_FILE = "ROADSerializationTest/ROADSerializationTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 				);
-				PODS_ROOT = "${SRCROOT}/../Pods";
 				PRODUCT_NAME = ROADSerializationTest;
 			};
 			name = Release;
@@ -829,9 +934,11 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -871,9 +978,11 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -913,7 +1022,9 @@
 		};
 		9F0A8ABC15C299340044A782 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DC10DD8C335D7C1C407ED17 /* Pods-ROADSerialization.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
@@ -947,15 +1058,12 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/include/libxml2,
-					"\"${PODS_ROOT}/Headers/libObjCAttr\"",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 				);
-				PODS_ROOT = "${SRCROOT}/../Pods";
 				PRODUCT_NAME = ROADSerialization;
 				SKIP_INSTALL = YES;
 			};
@@ -963,7 +1071,9 @@
 		};
 		9F0A8ABD15C299340044A782 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C7E92FCF77CC72BC9D7D0F2 /* Pods-ROADSerialization.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
@@ -997,15 +1107,12 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/include/libxml2,
-					"\"${PODS_ROOT}/Headers/libObjCAttr\"",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 				);
-				PODS_ROOT = "${SRCROOT}/../Pods";
 				PRODUCT_NAME = ROADSerialization;
 				SKIP_INSTALL = YES;
 			};

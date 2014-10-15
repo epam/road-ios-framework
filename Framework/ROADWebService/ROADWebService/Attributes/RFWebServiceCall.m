@@ -47,6 +47,7 @@
         _syncCall = NO;
         _timeoutInterval = 60;
         _progressBlockParameter = (int)NSNotFound;
+        _bodyEncoding = NSUTF8StringEncoding;
     }
 
     return self;

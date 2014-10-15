@@ -22,6 +22,9 @@
 
 /* Begin PBXBuildFile section */
 		1176413218E4623E00B1688B /* libUtilities.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1176413118E4623E00B1688B /* libUtilities.a */; };
+		14C2F88DF752E561CF89A88D /* ROADGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F3311BD559E30B9B3949B4 /* ROADGeneratedAttribute.m */; };
+		2ADF89C6FCAF7ED0381EA273 /* libPods-ROADServicesTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9C621101904CA1BA91DFAE /* libPods-ROADServicesTest.a */; };
+		556A84FC6E361DD479E4A8D8 /* libPods-ROADServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57CED8D1341055C9AF9B7243 /* libPods-ROADServices.a */; };
 		5ACD21541741179500CC61AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7869945016AEBF3E00B28760 /* Foundation.framework */; };
 		5ACD215A1741179500CC61AC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5ACD21581741179500CC61AC /* InfoPlist.strings */; };
 		5ACD215D1741179500CC61AC /* RFServicesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACD215C1741179500CC61AC /* RFServicesTest.m */; };
@@ -64,6 +67,11 @@
 
 /* Begin PBXFileReference section */
 		1176413118E4623E00B1688B /* libUtilities.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUtilities.a; path = "../Utilities/build/Debug-iphoneos/libUtilities.a"; sourceTree = "<group>"; };
+		2635AC6294506689C9F49C64 /* Pods-ROADServices.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ROADServices.release.xcconfig"; path = "../Pods/Target Support Files/Pods-ROADServices/Pods-ROADServices.release.xcconfig"; sourceTree = "<group>"; };
+		2A9C621101904CA1BA91DFAE /* libPods-ROADServicesTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ROADServicesTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		44F423830401C2EE306219B6 /* Pods-ROADServicesTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ROADServicesTest.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-ROADServicesTest/Pods-ROADServicesTest.debug.xcconfig"; sourceTree = "<group>"; };
+		57CED8D1341055C9AF9B7243 /* libPods-ROADServices.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ROADServices.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		59C3E4689D87203F75C37CEF /* Pods-ROADServicesTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ROADServicesTest.release.xcconfig"; path = "../Pods/Target Support Files/Pods-ROADServicesTest/Pods-ROADServicesTest.release.xcconfig"; sourceTree = "<group>"; };
 		5ACD214F1741179500CC61AC /* ROADServicesTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ROADServicesTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ACD21571741179500CC61AC /* ROADServicesTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ROADServicesTest-Info.plist"; sourceTree = "<group>"; };
 		5ACD21591741179500CC61AC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -78,6 +86,8 @@
 		7869946A16AEBFC400B28760 /* ROADServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ROADServices.h; sourceTree = "<group>"; };
 		78F95ADD16E9F16600E58C3B /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		839A198318C6087C001A727C /* libROADCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libROADCore.a; path = "../ROADCore/build/Debug-iphoneos/libROADCore.a"; sourceTree = "<group>"; };
+		96F3311BD559E30B9B3949B4 /* ROADGeneratedAttribute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ROADGeneratedAttribute.m; path = ROADServices/ROADGeneratedAttributes/ROADGeneratedAttribute.m; sourceTree = "<group>"; };
+		CAA8E924E4489B540A1F4BB9 /* Pods-ROADServices.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ROADServices.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-ROADServices/Pods-ROADServices.debug.xcconfig"; sourceTree = "<group>"; };
 		D771947617CF41BC0011047F /* ROADGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ROADGeneratedAttribute.m; path = ROADGeneratedAttributes/ROADGeneratedAttribute.m; sourceTree = "<group>"; };
 		D7AF13E617CF541500A92C31 /* RFServiceProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFServiceProvider.m; sourceTree = "<group>"; };
 		D7AF13E717CF541500A92C31 /* RFServiceProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFServiceProvider.h; sourceTree = "<group>"; };
@@ -94,6 +104,7 @@
 				1176413218E4623E00B1688B /* libUtilities.a in Frameworks */,
 				5ACD21541741179500CC61AC /* Foundation.framework in Frameworks */,
 				D7AF149817CF8FD100A92C31 /* libROADServices.a in Frameworks */,
+				2ADF89C6FCAF7ED0381EA273 /* libPods-ROADServicesTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +113,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				839A198418C6087C001A727C /* libROADCore.a in Frameworks */,
+				556A84FC6E361DD479E4A8D8 /* libPods-ROADServices.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,7 +123,6 @@
 		5ACD21551741179500CC61AC /* ROADServicesTest */ = {
 			isa = PBXGroup;
 			children = (
-				D771947617CF41BC0011047F /* ROADGeneratedAttribute.m */,
 				5ACD21621741187600CC61AC /* TestService */,
 				D7AF141617CF642500A92C31 /* RFServiceProvider+RFTestService.h */,
 				5ACD215B1741179500CC61AC /* RFServicesTest.h */,
@@ -124,6 +135,7 @@
 		5ACD21561741179500CC61AC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D771947617CF41BC0011047F /* ROADGeneratedAttribute.m */,
 				5ACD21571741179500CC61AC /* ROADServicesTest-Info.plist */,
 				5ACD21581741179500CC61AC /* InfoPlist.strings */,
 				5ACD215E1741179500CC61AC /* ROADServicesTest-Prefix.pch */,
@@ -143,10 +155,12 @@
 		7869944216AEBF3E00B28760 = {
 			isa = PBXGroup;
 			children = (
+				96F3311BD559E30B9B3949B4 /* ROADGeneratedAttribute.m */,
 				7869945216AEBF3E00B28760 /* ROADServices */,
 				5ACD21551741179500CC61AC /* ROADServicesTest */,
 				7869944F16AEBF3E00B28760 /* Frameworks */,
 				7869944E16AEBF3E00B28760 /* Products */,
+				BB9155A5B62F46617868DB0D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -166,6 +180,8 @@
 				839A198318C6087C001A727C /* libROADCore.a */,
 				7869945016AEBF3E00B28760 /* Foundation.framework */,
 				78F95ADD16E9F16600E58C3B /* CoreFoundation.framework */,
+				57CED8D1341055C9AF9B7243 /* libPods-ROADServices.a */,
+				2A9C621101904CA1BA91DFAE /* libPods-ROADServicesTest.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -207,6 +223,17 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		BB9155A5B62F46617868DB0D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CAA8E924E4489B540A1F4BB9 /* Pods-ROADServices.debug.xcconfig */,
+				2635AC6294506689C9F49C64 /* Pods-ROADServices.release.xcconfig */,
+				44F423830401C2EE306219B6 /* Pods-ROADServicesTest.debug.xcconfig */,
+				59C3E4689D87203F75C37CEF /* Pods-ROADServicesTest.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -214,10 +241,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5ACD215F1741179500CC61AC /* Build configuration list for PBXNativeTarget "ROADServicesTest" */;
 			buildPhases = (
-				E24547B118654D96BA75D035 /* libObjCAttr - generate attributes */,
+				F8D431D79A98CC0EDB0303D5 /* libObjCAttr - generate attributes */,
+				0459C4C60C781924FBE0E631 /* Check Pods Manifest.lock */,
 				5ACD214A1741179500CC61AC /* Sources */,
 				5ACD214B1741179500CC61AC /* Frameworks */,
 				5ACD214C1741179500CC61AC /* Resources */,
+				9A917240020EAB1E1263692F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -233,9 +262,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7869945B16AEBF3E00B28760 /* Build configuration list for PBXNativeTarget "ROADServices" */;
 			buildPhases = (
+				9408B457C0E404804BC88D06 /* libObjCAttr - generate attributes */,
+				66881C4766A8652213B517F3 /* Check Pods Manifest.lock */,
 				7869944916AEBF3E00B28760 /* Sources */,
 				7869944A16AEBF3E00B28760 /* Frameworks */,
 				7869944B16AEBF3E00B28760 /* Copy Files */,
+				8DE5878954531DA8B9CD6403 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -288,6 +320,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0459C4C60C781924FBE0E631 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		66881C4766A8652213B517F3 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		8353CC5B189F894A00135D86 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -302,7 +364,22 @@
 			shellPath = /bin/sh;
 			shellScript = "source ~/.bash_profile\n\nhash oclint &> /dev/null\nif [ $? -eq 1 ]; then\necho >&2 \"oclint not found, analyzing stopped\"\nexit 1\nfi\n\ncd \"${TARGET_TEMP_DIR}\"\n\necho \"[*] starting xcodebuild to rebuild the project..\"\n# clean previous output\nif [ -f xcodebuild.log ]; then\nrm xcodebuild.log\nfi\n\ncd \"${SRCROOT}\"/..\n\nxcodebuild clean -workspace ROADFramework.xcworkspace -scheme ROADServices -configuration Debug\n\n#build xcodebuild.log\nxcodebuild -workspace ROADFramework.xcworkspace -scheme ROADServices -configuration Debug | tee \"${TARGET_TEMP_DIR}/xcodebuild.log\"\n\necho \"[*] transforming xcodebuild.log into compile_commands.json...\"\necho \"TARGET_TEMP_DIR: ${TARGET_TEMP_DIR}\"\ncd \"${TARGET_TEMP_DIR}\"\n#transform it into compile_commands.json\necho \"oclint-xcodebuild -e ROADGeneratedAttributes\"\noclint-xcodebuild -e ROADGeneratedAttributes -e Pods\n\necho \"[*] copy compile_commands.json to the project root...\"\ncp \"${TARGET_TEMP_DIR}/compile_commands.json\" \"${SRCROOT}/compile_commands.json\"\n\necho \"[*] starting analyzing\"\ncd \"${TARGET_TEMP_DIR}\"\noclint-json-compilation-database -v -e ROADGeneratedAttributes -e Pods -- -rc=LONG_LINE=500 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 30 -max-priority-3 152 | sed 's/\\(.*\\.\\m\\{1,2\\}:[0-9]*:[0-9]*:\\)/\\1 warning:/'";
 		};
-		E24547B118654D96BA75D035 /* libObjCAttr - generate attributes */ = {
+		8DE5878954531DA8B9CD6403 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-ROADServices/Pods-ROADServices-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9408B457C0E404804BC88D06 /* libObjCAttr - generate attributes */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -314,7 +391,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}/\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
+			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
+		};
+		9A917240020EAB1E1263692F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-ROADServicesTest/Pods-ROADServicesTest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8D431D79A98CC0EDB0303D5 /* libObjCAttr - generate attributes */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "libObjCAttr - generate attributes";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -335,6 +441,7 @@
 			files = (
 				7869946416AEBF9A00B28760 /* RFService.m in Sources */,
 				D7AF13E817CF541500A92C31 /* RFServiceProvider.m in Sources */,
+				14C2F88DF752E561CF89A88D /* ROADGeneratedAttribute.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +469,7 @@
 /* Begin XCBuildConfiguration section */
 		5ACD21601741179500CC61AC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44F423830401C2EE306219B6 /* Pods-ROADServicesTest.debug.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
@@ -375,26 +483,23 @@
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADServicesTest/ROADServicesTest-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"\"${PODS_ROOT}/Headers/libObjCAttr\"",
-				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "ROADServicesTest/ROADServicesTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 				);
-				PODS_ROOT = "${SRCROOT}/../Pods";
 				PRODUCT_NAME = ROADServicesTest;
 			};
 			name = Debug;
 		};
 		5ACD21611741179500CC61AC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59C3E4689D87203F75C37CEF /* Pods-ROADServicesTest.release.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
@@ -408,19 +513,15 @@
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADServicesTest/ROADServicesTest-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"\"${PODS_ROOT}/Headers/libObjCAttr\"",
-				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "ROADServicesTest/ROADServicesTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 				);
-				PODS_ROOT = "${SRCROOT}/../Pods";
 				PRODUCT_NAME = ROADServicesTest;
 			};
 			name = Release;
@@ -474,6 +575,7 @@
 		};
 		7869945C16AEBF3E00B28760 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAA8E924E4489B540A1F4BB9 /* Pods-ROADServices.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
@@ -511,14 +613,10 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"\"${PODS_ROOT}/Headers/libObjCAttr\"",
-				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PODS_ROOT = "${SRCROOT}/../Pods";
 				PRODUCT_NAME = ROADServices;
 				SKIP_INSTALL = YES;
 			};
@@ -526,6 +624,7 @@
 		};
 		7869945D16AEBF3E00B28760 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2635AC6294506689C9F49C64 /* Pods-ROADServices.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
@@ -563,13 +662,9 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"\"${PODS_ROOT}/Headers/libObjCAttr\"",
-				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PODS_ROOT = "${SRCROOT}/../Pods";
 				PRODUCT_NAME = ROADServices;
 				SKIP_INSTALL = YES;
 			};

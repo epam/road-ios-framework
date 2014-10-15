@@ -61,7 +61,11 @@
 /**
  * The serialized data from the request.
  */
-@property (strong, nonatomic) id serializedData;
+@property (strong, nonatomic) NSData *serializedData;
+/**
+ * The deserialized object from the response.
+ */
+@property (strong, nonatomic) id deserializedObject;
 /**
  * The response success block.
  */

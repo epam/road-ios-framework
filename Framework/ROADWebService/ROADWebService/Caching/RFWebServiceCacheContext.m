@@ -48,33 +48,58 @@ static NSString * const kRFWebServiceCachingStorageMigrationToName = @"RFWebServ
     NSManagedObjectModel *_managedObjectModel;
     NSManagedObjectContext *_managedObjectContext;
     NSBundle *_bundle;
+    
+    dispatch_once_t _contextOnceToken;
+    dispatch_once_t _coordinatorOnceToken;
+    dispatch_once_t _modelOnceToken;
+    
+    dispatch_queue_t _bindQueue;
 }
 
 - (instancetype)init {
     self = [super init];
     if ( self ) {
         _bundle = [NSBundle bundleForClass:self.class];
+        _bindQueue = dispatch_queue_create(NULL, DISPATCH_QUEUE_SERIAL);
     }
     return self;
 }
 
 - (NSManagedObjectContext *)context {
-    return [self managedObjectContext];
+    dispatch_once(&_contextOnceToken, ^{
+        self->_managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        [self->_managedObjectContext setPersistentStoreCoordinator:[self persisitentStoreCoordinator]];
+    });
+    return _managedObjectContext;
 }
 
-#pragma mark - Core Data Utitlity
+- (NSManagedObjectModel *)managedObjectModel {
+    dispatch_once(&_modelOnceToken, ^{
+        NSString *modelPath = [self->_bundle pathForResource:kRFWebServiceCachingModelName ofType:kRFWebServiceCachingModelExtension];
+        NSString *escapedModelPath = [modelPath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSURL *url = [[NSURL alloc] initWithString:escapedModelPath];
+        self->_managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:url];
+    });
+    return _managedObjectModel;
+}
 
 - (NSPersistentStoreCoordinator *)persisitentStoreCoordinator {
-    if (!_persistentStoreCoordinator) {
-        _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-        
+    dispatch_once(&_coordinatorOnceToken, ^{
+        self->_persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
         [self bindStore];
-    }
-    
+    });
     return _persistentStoreCoordinator;
 }
 
-+ (NSString*)webServiceCachingPath {
+- (void)bindStore {
+    dispatch_sync(self->_bindQueue, ^{
+        [self unsafeBindStore];
+    });
+}
+
+#pragma mark - Path utility
+
++ (NSString *)webServiceCachingPath {
     NSArray *cachingFolderList = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *webServiceCachingPath = [cachingFolderList lastObject];
     
@@ -89,19 +114,21 @@ static NSString * const kRFWebServiceCachingStorageMigrationToName = @"RFWebServ
     return webServiceCachingPath;
 }
 
-+ (NSURL*)persistentStoreURL {
++ (NSURL *)persistentStoreURL {
     NSString* persistentStoreFile = [[RFWebServiceCacheContext webServiceCachingPath] stringByAppendingPathComponent:kRFWebServiceCachingStorageName];
     return [NSURL fileURLWithPath:persistentStoreFile];
 }
 
-+ (NSURL*)persistentStoreMigrationToURL {
++ (NSURL *)persistentStoreMigrationToURL {
     NSString* persistentStoreFile = [[RFWebServiceCacheContext webServiceCachingPath] stringByAppendingPathComponent:kRFWebServiceCachingStorageMigrationToName];
     return [NSURL fileURLWithPath:persistentStoreFile];
 }
 
-- (BOOL)migrateToV4FromV3URL:(NSURL *)sourceStoreURL
-            destinationModel:(NSManagedObjectModel*)destinationModel
-                       error:(NSError * __autoreleasing*)error {
+#pragma mark - Thread-unsafe methods
+
+- (BOOL)unsafeMigrateToV4FromV3URL:(NSURL *)sourceStoreURL
+                  destinationModel:(NSManagedObjectModel *)destinationModel
+                             error:(NSError * __autoreleasing *)error {
     
     NSDictionary *sourceMetadata = [NSPersistentStoreCoordinator metadataForPersistentStoreOfType:NSSQLiteStoreType
                                                                                               URL:sourceStoreURL
@@ -117,10 +144,10 @@ static NSString * const kRFWebServiceCachingStorageMigrationToName = @"RFWebServ
         return YES;
     }
 
-    NSURL* persistentStoreMigrationToURL = [RFWebServiceCacheContext persistentStoreMigrationToURL];
+    NSURL *persistentStoreMigrationToURL = [RFWebServiceCacheContext persistentStoreMigrationToURL];
     
     if ([[NSFileManager defaultManager] fileExistsAtPath:persistentStoreMigrationToURL.path] && ![[NSFileManager defaultManager] removeItemAtURL:persistentStoreMigrationToURL error:error]) {
-        RFWSLogError(@"RFWebServiceCachingManager error: persistent storage migration was failed with error: %@", [error localizedDescription]);
+        RFWSLogError(@"RFWebServiceCachingManager error: persistent storage migration was failed with error: %@", [*error localizedDescription]);
     }
     
     NSManagedObjectModel *sourceModel = [NSManagedObjectModel mergedModelFromBundles:@[_bundle]
@@ -142,7 +169,7 @@ static NSString * const kRFWebServiceCachingStorageMigrationToName = @"RFWebServ
                    destinationOptions:nil
                                 error:error]) {
         
-        RFWSLogError(@"RFWebServiceCachingManager error: persistent storage migration was failed with error: %@", [error localizedDescription]);
+        RFWSLogError(@"RFWebServiceCachingManager error: persistent storage migration was failed with error: %@", [*error localizedDescription]);
         return NO;
     }
     
@@ -151,21 +178,22 @@ static NSString * const kRFWebServiceCachingStorageMigrationToName = @"RFWebServ
     return [[NSFileManager defaultManager] replaceItemAtURL:sourceStoreURL withItemAtURL:persistentStoreMigrationToURL backupItemName:backupName options:0 resultingItemURL:&resultingURL error:error];
 }
 
-- (void)bindStore {
-    if ([_persistentStoreCoordinator.persistentStores count] > 0) {
+- (void)unsafeBindStore {
+
+    if ([self->_persistentStoreCoordinator.persistentStores count] > 0) {
         return;
     }
     
-    _storeURL = [RFWebServiceCacheContext persistentStoreURL];
+    self->_storeURL = [RFWebServiceCacheContext persistentStoreURL];
     
     NSError *error;
-    if (![self migrateToV4FromV3URL:_storeURL destinationModel:[self managedObjectModel] error:&error]) {
+    if (![self unsafeMigrateToV4FromV3URL:self->_storeURL destinationModel:[self managedObjectModel] error:&error]) {
         if (error) {
             RFWSLogError(@"RFWebServiceCachingManager error: persistent storage migration was failed with error: %@", [error localizedDescription]);
         }
-
+        
         //drop outdated persistent storage
-        [[NSFileManager defaultManager] removeItemAtURL:_storeURL error:&error];
+        [[NSFileManager defaultManager] removeItemAtURL:self->_storeURL error:&error];
     }
     
     NSString *storeType = NSSQLiteStoreType;
@@ -173,37 +201,18 @@ static NSString * const kRFWebServiceCachingStorageMigrationToName = @"RFWebServ
                               NSMigratePersistentStoresAutomaticallyOption : @YES,
                               NSInferMappingModelAutomaticallyOption : @YES
                               };
-
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:storeType configuration:nil
-                                                             URL:_storeURL options:options error:&error]) {
+    
+    if (![self->_persistentStoreCoordinator addPersistentStoreWithType:storeType configuration:nil
+                                                                   URL:self->_storeURL options:options error:&error]) {
         error = nil;
-        [[NSFileManager defaultManager] removeItemAtURL:_storeURL error:&error];
-        if (![_persistentStoreCoordinator addPersistentStoreWithType:storeType configuration:nil
-                                                                 URL:_storeURL options:options error:&error]) {
-            _persistentStoreCoordinator = nil;
+        [[NSFileManager defaultManager] removeItemAtURL:self->_storeURL error:&error];
+        if (![self->_persistentStoreCoordinator addPersistentStoreWithType:storeType configuration:nil
+                                                                       URL:self->_storeURL options:options error:&error]) {
+            self->_persistentStoreCoordinator = nil;
             RFWSLogError(@"RFWebServiceCachingManager error: persistent storage creating was failed with error: %@", [error localizedDescription]);
         }
     }
-}
-
-- (NSManagedObjectModel *)managedObjectModel {
-    if (!_managedObjectModel) {
-        NSString *modelPath = [_bundle pathForResource:kRFWebServiceCachingModelName ofType:kRFWebServiceCachingModelExtension];
-        NSString *escapedModelPath = [modelPath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        NSURL *url = [[NSURL alloc] initWithString:escapedModelPath];
-        _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:url];
-    }
     
-    return _managedObjectModel;
-}
-
-- (NSManagedObjectContext *)managedObjectContext {
-    if (!_managedObjectContext) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-        [_managedObjectContext setPersistentStoreCoordinator:[self persisitentStoreCoordinator]];
-    }
-    
-    return _managedObjectContext;
 }
 
 @end

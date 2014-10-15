@@ -155,7 +155,7 @@
     }
 
     if (cachedResponse) {
-        RFWSLogDebug(@"ROADWebService: Request to URL \'%@\' has valid cache and it will be returned.\n Cache details: %@", cachedResponse.requestURL, cachedResponse);
+        RFWSLogDebug(@"ROADWebService: Request to URL \'%@\' has valid cache and it will be returned.\n Cache details: %@", cachedResponse.implementation.requestURL, cachedResponse);
         [self downloaderFinishedWithResult:cachedResponse.implementation.responseBodyData response:[cachedResponse unarchivedResponse] error:nil];
     }
     else {
@@ -176,7 +176,7 @@
             _connection = [[NSURLConnection alloc] initWithRequest:_request delegate:self startImmediately:NO];
             [_connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
             [_connection start];
-            RFWSLogInfo(@"URL connection(%p) has started. Method: %@. URL: %@\nHeader fields: %@\nBody: %@", _connection, [_connection.currentRequest HTTPMethod], [_connection.currentRequest.URL absoluteString], [_connection.currentRequest allHTTPHeaderFields], [[NSString alloc] initWithData:[_connection.currentRequest HTTPBody] encoding:NSUTF8StringEncoding]);
+            RFWSLogInfo(@"URL connection(%p) has started. Method: %@. URL: %@\nHeader fields: %@\nBody: %@", _connection, [_connection.currentRequest HTTPMethod], [_connection.currentRequest.URL absoluteString], [_connection.currentRequest allHTTPHeaderFields], [[NSString alloc] initWithData:[_connection.currentRequest HTTPBody] encoding:_callAttribute.bodyEncoding]);
             [_looper start];
         }
         else {
@@ -228,13 +228,13 @@
 }
 
 - (void)downloaderFinishedWithResult:(NSData *)result response:(NSHTTPURLResponse *)response error:(NSError *)downloaderError {
-    __block id resultData = result;
+    __block id resultObject = result;
     __block NSError *resultError = downloaderError;
     self.response = response;
 
     if (!resultError && !_callAttribute.serializationDisabled) {
-        [RFWebServiceSerializationHandler deserializeData:result withSerializator:[self serializationDelegate] serializatinRoot:_callAttribute.serializationRoot toDeserializationClass:_callAttribute.prototypeClass withCompletitionBlock:^(id serializedData, NSError *error) {
-            resultData = serializedData;
+        [RFWebServiceSerializationHandler deserializeData:result withSerializer:[self serializationDelegate] serializationRoot:_callAttribute.serializationRoot withDeserializationClass:_callAttribute.prototypeClass withStringEncoding:_callAttribute.bodyEncoding withCompletitionBlock:^(id deserializedObject, NSError *error) {
+            resultObject = deserializedObject;
             resultError = error;
         }];
     }
@@ -243,7 +243,7 @@
     self.downloadError = resultError;
     if (!self.downloadError) {
         [self updateDownloadProgress:1.0];
-        self.serializedData = resultData;
+        self.deserializedObject = resultObject;
         [self performSelector:@selector(performSuccessBlockOnSpecificThread) onThread:[NSThread mainThread] withObject:nil waitUntilDone:YES];
     }
     else {
@@ -307,7 +307,7 @@
 - (void)fillErrorUserInfoAndCleanData {
     if (self.downloadError && self.data) {
         NSMutableDictionary* userInfo = self.downloadError.userInfo == nil ? [NSMutableDictionary new] : [self.downloadError.userInfo mutableCopy];
-        NSString* result = [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding];
+        NSString* result = [[NSString alloc] initWithData:self.data encoding:_callAttribute.bodyEncoding];
         userInfo[@"result"] = result ? result : self.data;
         self.downloadError = [[NSError alloc] initWithDomain:self.downloadError.domain code:self.downloadError.code userInfo:userInfo];
         self.data = nil;
@@ -318,7 +318,7 @@
 
 -(void)performSuccessBlockOnSpecificThread {
     if (self.successBlock) {
-        self.successBlock(_serializedData);
+        self.successBlock(_deserializedObject);
     }
 
     [self freeCompletionBlocks];
@@ -359,10 +359,10 @@ NSString * const RFAttributeTemplateEscape = @"%%";
 }
 
 - (NSData *)dataFromParameter:(id)parameter {
-    NSData *data;
+    __block NSData *data;
 
     if ([parameter isKindOfClass:[NSString class]]) {
-        data = [parameter dataUsingEncoding:NSUTF8StringEncoding];
+        data = [parameter dataUsingEncoding:[self callAttribute].bodyEncoding];
     }
 
     if ([parameter isKindOfClass:[NSData class]]) {
@@ -377,7 +377,7 @@ NSString * const RFAttributeTemplateEscape = @"%%";
     if (cachedResponse) {
         self.data = [cachedResponse.implementation.responseBodyData mutableCopy];
         self.response = [cachedResponse unarchivedResponse];
-        RFWSLogDebug(@"ROADWebService: Request to URL \'%@\' proved to have valid cache and it will be returned.\n Cache details: %@", cachedResponse.requestURL, cachedResponse);
+        RFWSLogDebug(@"ROADWebService: Request to URL \'%@\' proved to have valid cache and it will be returned.\n Cache details: %@", cachedResponse.implementation.requestURL, cachedResponse);
     }
 
     return cachedResponse != nil;

@@ -5,10 +5,10 @@
       location = "group:ROADCore/ROADCore.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:ROADCore/../ROADServices/ROADServices.xcodeproj">
+      location = "group:ROADSerialization/ROADSerialization.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:ROADSerialization/ROADSerialization.xcodeproj">
+      location = "group:ROADServices/ROADServices.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:ROADWebService/ROADWebService.xcodeproj">

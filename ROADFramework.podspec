@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = 'ROADFramework'
-  s.version      = '1.3.8'
+  s.version      = '1.4.0-beta2'
   s.summary      = 'ROAD iOS Framework'
 
   s.description  = <<-DESC
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.xcconfig = { 'OTHER_LDFLAGS' => '-ObjC' }
 
-  s.source       = { :git => 'https://github.com/epam/road-ios-framework.git', :tag => '1.3.8' }
+  s.source       = { :git => 'https://github.com/epam/road-ios-framework.git', :tag => '1.4.0-beta2' }
 
   s.subspec 'ROADCore' do |core|
     core.source_files = 'Framework/ROADCore/ROADCore/**/*.{h,m}'
@@ -49,7 +49,7 @@ Pod::Spec.new do |s|
   s.subspec 'ROADWebService' do |web|
     web.source_files = 'Framework/ROADWebService/ROADWebService/**/*.{h,m}'
     web.public_header_files = 'Framework/ROADWebService/ROADWebService/**/*.h'
-    web.resources = 'Framework/ROADWebService/ROADWebService/Caching/*.{xcdatamodeld,xcdatamodel}'
+    web.resources = 'Framework/ROADWebService/ROADWebService/Caching/*.{xcdatamodeld,xcdatamodel,xcmappingmodel}'
     web.dependency 'ROADFramework/ROADCore'
     web.dependency 'ROADFramework/ROADSerialization'
     web.dependency 'ROADFramework/ROADServices'    
