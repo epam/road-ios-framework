@@ -386,11 +386,11 @@
 		7846754C15C16C20000E02DA = {
 			isa = PBXGroup;
 			children = (
-				5CA7167241D5A64F831418A6 /* ROADGeneratedAttribute.m */,
 				9F0A8AB615C299340044A782 /* ROADSerialization */,
 				7841618416480C1E0089FDE9 /* ROADSerializationTest */,
 				7846755A15C16C21000E02DA /* Frameworks */,
 				7846755815C16C21000E02DA /* Products */,
+				5CA7167241D5A64F831418A6 /* ROADGeneratedAttribute.m */,
 				8777AE884122F133FF8EA646 /* Pods */,
 			);
 			sourceTree = "<group>";
@@ -527,7 +527,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7841619616480C1E0089FDE9 /* Build configuration list for PBXNativeTarget "ROADSerializationTest" */;
 			buildPhases = (
-				BCE66C9BCD166F894417B508 /* libObjCAttr - generate attributes */,
+				814076F479F677C319E81850 /* libObjCAttr - generate attributes */,
 				65D42D6352D04D451A775207 /* Check Pods Manifest.lock */,
 				7841617816480C1D0089FDE9 /* Sources */,
 				7841617916480C1D0089FDE9 /* Frameworks */,
@@ -549,7 +549,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F0A8ABE15C299340044A782 /* Build configuration list for PBXNativeTarget "ROADSerialization" */;
 			buildPhases = (
-				F65035B0DB1B9CD3BA606A61 /* libObjCAttr - generate attributes */,
+				02E5052B2DAB3711D29ED32E /* libObjCAttr - generate attributes */,
 				FA06730651A2965AEED29793 /* Check Pods Manifest.lock */,
 				9F0A8AB015C299340044A782 /* Sources */,
 				9F0A8AB115C299340044A782 /* Frameworks */,
@@ -619,6 +619,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		02E5052B2DAB3711D29ED32E /* libObjCAttr - generate attributes */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "libObjCAttr - generate attributes";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
+		};
 		5A1CC60B176F282A00A6C154 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -646,6 +660,20 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		814076F479F677C319E81850 /* libObjCAttr - generate attributes */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "libObjCAttr - generate attributes";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
 		};
 		8353CC4E189F88E900135D86 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -689,34 +717,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-ROADSerialization/Pods-ROADSerialization-resources.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		BCE66C9BCD166F894417B508 /* libObjCAttr - generate attributes */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "libObjCAttr - generate attributes";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
-		};
-		F65035B0DB1B9CD3BA606A61 /* libObjCAttr - generate attributes */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "libObjCAttr - generate attributes";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
 		};
 		FA06730651A2965AEED29793 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

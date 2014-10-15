@@ -145,12 +145,12 @@
 		78B8E68516C3CC3E0049E36B = {
 			isa = PBXGroup;
 			children = (
-				D67E0CE8AE354273384E2A25 /* ROADGeneratedAttribute.m */,
 				78B8E69316C3CC3E0049E36B /* ROADCore */,
 				8D9422DC17E2C59C005F0AE3 /* ROADCoreTest */,
 				78B8E69016C3CC3E0049E36B /* Frameworks */,
 				78B8E68F16C3CC3E0049E36B /* Products */,
 				F4BAC7478E819A9D4F5C03A9 /* Pods */,
+				D67E0CE8AE354273384E2A25 /* ROADGeneratedAttribute.m */,
 			);
 			sourceTree = "<group>";
 		};
@@ -278,7 +278,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 78B8E69C16C3CC3E0049E36B /* Build configuration list for PBXNativeTarget "ROADCore" */;
 			buildPhases = (
-				72ACBCE4932EA32568AE7522 /* libObjCAttr - generate attributes */,
+				B35308647EA0EFDF11882B3D /* libObjCAttr - generate attributes */,
 				B03FB7F7E80344F5A21B8D39 /* Check Pods Manifest.lock */,
 				78B8E68C16C3CC3E0049E36B /* CopyFiles */,
 				78B8E68A16C3CC3E0049E36B /* Sources */,
@@ -298,7 +298,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 78B8E6CF16C3CCC10049E36B /* Build configuration list for PBXNativeTarget "ROADCoreTest" */;
 			buildPhases = (
-				F6D8AFD8C485616982638D37 /* libObjCAttr - generate attributes */,
+				90D6E141529C1B1AFDEE677B /* libObjCAttr - generate attributes */,
 				4D7AF48844EF0072BB55250F /* Check Pods Manifest.lock */,
 				78B8E6BA16C3CCC00049E36B /* Sources */,
 				78B8E6BB16C3CCC00049E36B /* Frameworks */,
@@ -371,20 +371,6 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		72ACBCE4932EA32568AE7522 /* libObjCAttr - generate attributes */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "libObjCAttr - generate attributes";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
-		};
 		8353CC37189F82B800135D86 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -397,6 +383,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "source ~/.bash_profile\n\nhash oclint &> /dev/null\nif [ $? -eq 1 ]; then\necho >&2 \"oclint not found, analyzing stopped\"\nexit 1\nfi\n\ncd \"${TARGET_TEMP_DIR}\"\n\necho \"[*] starting xcodebuild to rebuild the project..\"\n# clean previous output\nif [ -f xcodebuild.log ]; then\nrm xcodebuild.log\nfi\n\ncd \"${SRCROOT}\"/..\n\nxcodebuild clean -workspace ROADFramework.xcworkspace -scheme ROADCore -configuration Debug\n\n#build xcodebuild.log\nxcodebuild -workspace ROADFramework.xcworkspace -scheme ROADCore -configuration Debug | tee \"${TARGET_TEMP_DIR}/xcodebuild.log\"\n\necho \"[*] transforming xcodebuild.log into compile_commands.json...\"\necho \"TARGET_TEMP_DIR: ${TARGET_TEMP_DIR}\"\ncd \"${TARGET_TEMP_DIR}\"\n#transform it into compile_commands.json\necho \"oclint-xcodebuild -e ROADGeneratedAttributes\"\noclint-xcodebuild -e ROADGeneratedAttributes -e Pods\n\necho \"[*] copy compile_commands.json to the project root...\"\ncp \"${TARGET_TEMP_DIR}/compile_commands.json\" \"${SRCROOT}/compile_commands.json\"\n\necho \"[*] starting analyzing\"\ncd \"${TARGET_TEMP_DIR}\"\noclint-json-compilation-database -v -e ROADGeneratedAttributes -e Pods -- -rc=LONG_LINE=500 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 30 -max-priority-3 152 | sed 's/\\(.*\\.\\m\\{1,2\\}:[0-9]*:[0-9]*:\\)/\\1 warning:/'";
+		};
+		90D6E141529C1B1AFDEE677B /* libObjCAttr - generate attributes */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "libObjCAttr - generate attributes";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
 		};
 		B03FB7F7E80344F5A21B8D39 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -428,6 +428,20 @@
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-ROADCore/Pods-ROADCore-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B35308647EA0EFDF11882B3D /* libObjCAttr - generate attributes */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "libObjCAttr - generate attributes";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
+		};
 		D27FB88C709FF2645E6390EF /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -442,20 +456,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-ROADCoreTest/Pods-ROADCoreTest-resources.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		F6D8AFD8C485616982638D37 /* libObjCAttr - generate attributes */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "libObjCAttr - generate attributes";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 

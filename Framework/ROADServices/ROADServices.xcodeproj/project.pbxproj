@@ -155,11 +155,11 @@
 		7869944216AEBF3E00B28760 = {
 			isa = PBXGroup;
 			children = (
-				96F3311BD559E30B9B3949B4 /* ROADGeneratedAttribute.m */,
 				7869945216AEBF3E00B28760 /* ROADServices */,
 				5ACD21551741179500CC61AC /* ROADServicesTest */,
 				7869944F16AEBF3E00B28760 /* Frameworks */,
 				7869944E16AEBF3E00B28760 /* Products */,
+				96F3311BD559E30B9B3949B4 /* ROADGeneratedAttribute.m */,
 				BB9155A5B62F46617868DB0D /* Pods */,
 			);
 			sourceTree = "<group>";
@@ -241,7 +241,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5ACD215F1741179500CC61AC /* Build configuration list for PBXNativeTarget "ROADServicesTest" */;
 			buildPhases = (
-				F8D431D79A98CC0EDB0303D5 /* libObjCAttr - generate attributes */,
+				A447655414FAA81C1FA28757 /* libObjCAttr - generate attributes */,
 				0459C4C60C781924FBE0E631 /* Check Pods Manifest.lock */,
 				5ACD214A1741179500CC61AC /* Sources */,
 				5ACD214B1741179500CC61AC /* Frameworks */,
@@ -262,7 +262,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7869945B16AEBF3E00B28760 /* Build configuration list for PBXNativeTarget "ROADServices" */;
 			buildPhases = (
-				9408B457C0E404804BC88D06 /* libObjCAttr - generate attributes */,
+				593710F88D0F0787B062AA2B /* libObjCAttr - generate attributes */,
 				66881C4766A8652213B517F3 /* Check Pods Manifest.lock */,
 				7869944916AEBF3E00B28760 /* Sources */,
 				7869944A16AEBF3E00B28760 /* Frameworks */,
@@ -335,6 +335,20 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		593710F88D0F0787B062AA2B /* libObjCAttr - generate attributes */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "libObjCAttr - generate attributes";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
+		};
 		66881C4766A8652213B517F3 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -379,20 +393,6 @@
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-ROADServices/Pods-ROADServices-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9408B457C0E404804BC88D06 /* libObjCAttr - generate attributes */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "libObjCAttr - generate attributes";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
-		};
 		9A917240020EAB1E1263692F /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -408,7 +408,7 @@
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-ROADServicesTest/Pods-ROADServicesTest-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F8D431D79A98CC0EDB0303D5 /* libObjCAttr - generate attributes */ = {
+		A447655414FAA81C1FA28757 /* libObjCAttr - generate attributes */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
