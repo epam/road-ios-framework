@@ -48,9 +48,10 @@
  @param data The data to deserialize
  @param serializationRoot The key path of json object from which serialization will be started
  @param deserializationClass The deserialization class
+ @param serializationEncoding The charset encoding to be used when deserialise from the series of bytes
  @param error an out parameter, contains the error if any occured during the deserialization
  @return Returns the deserialized data
  */
-- (id)deserializeData:(NSData *)data serializatinRoot:(NSString *)serializationRoot withDeserializationClass:(Class)deserializationClass error:(NSError * __autoreleasing *)error;
+- (id)deserializeData:(NSData *)data serializationRoot:(NSString *)serializationRoot withDeserializationClass:(Class)deserializationClass serializationEncoding:(NSStringEncoding)serializationEncoding error:(NSError * __autoreleasing *)error;
 
 @end

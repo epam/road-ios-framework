@@ -35,18 +35,28 @@
 
 
 /**
- Serialization handler. It will perform the deserialization.
+ Serialization handler. It performs both serialization and deserialization.
  */
 @interface RFWebServiceSerializationHandler : NSObject
 
 /**
- Deserialize data to a class with the given serializator object. 
- @param data The data to serialized
- @param serializationObject The serializator
- @param deserializationClass The class to  deserialize.
- @param callbackBlock The callback block to call.
+ Serialize an Object using the given serializer object to a byte series with specified charset encoding.
+ @param object The object to serialize from
+ @param serializationObject The serializer
+ @param callbackBlock The callback block to call when serialization completes.
  */
-+(void)deserializeData:(NSData * const)data withSerializator:(id<RFSerializationDelegate>)serializationObject serializatinRoot:(NSString *)serializationRoot toDeserializationClass:(Class)deserializationClass withCompletitionBlock:(void(^)(id serializedData, NSError *error))callbackBlock;
++(void)serializeObject:(id)object withSerialzer:(id<RFSerializationDelegate>)serializationObject withCompletitionBlock:(void(^)(NSString *serializedString, NSError *error))callbackBlock;
+
+/**
+ Deserialize data to a class with the given serializator object. 
+ @param data The data to deserialize from
+ @param serializationObject The serializer
+ @param serializationRoot The key path of serialized object (e.g. json or xml object representation) from which serialization will be started
+ @param deserializationClass The class to deserialize to.
+ @param stringEncoding The charset encoding to be used when deserialise from the series of bytes
+ @param callbackBlock The callback block to call when deserialization completes.
+ */
++(void)deserializeData:(NSData * const)data withSerializer:(id<RFSerializationDelegate>)serializationObject serializationRoot:(NSString *)serializationRoot withDeserializationClass:(Class)deserializationClass withStringEncoding:(NSStringEncoding)stringEncoding withCompletitionBlock:(void(^)(id deserializedObject, NSError *error))callbackBlock;
 
 @end
 

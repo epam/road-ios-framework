@@ -93,4 +93,10 @@
  */
 @property (assign, nonatomic) int progressBlockParameter;
 
+/**
+ * Specifies a charset to encode request & response body.
+ * Default value is NSUTF8StringEncoding.
+ */
+@property (assign, nonatomic) NSStringEncoding bodyEncoding;
+
 @end

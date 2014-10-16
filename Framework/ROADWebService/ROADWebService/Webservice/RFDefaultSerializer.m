@@ -37,15 +37,26 @@
 
 @implementation RFDefaultSerializer
 
--(id)deserializeData:(NSData *)data serializatinRoot:(NSString *)serializationRoot withDeserializationClass:(Class)deserializationClass error:(NSError *__autoreleasing *)error
+-(id)deserializeData:(NSData *)data serializationRoot:(NSString *)serializationRoot withDeserializationClass:(Class)deserializationClass serializationEncoding:(NSStringEncoding)serializationEncoding error:(NSError *__autoreleasing *)error
 {
-    id restored = [RFAttributedDecoder decodeJSONData:data withSerializtionRoot:serializationRoot rootClassNamed:NSStringFromClass(deserializationClass)];
+    NSData *sourceData = data;
+    if (!(serializationEncoding == NSUTF8StringEncoding
+        || serializationEncoding == NSUTF16BigEndianStringEncoding
+        || serializationEncoding == NSUTF16LittleEndianStringEncoding
+        || serializationEncoding == NSUTF32BigEndianStringEncoding
+        || serializationEncoding == NSUTF32LittleEndianStringEncoding)) {
+
+        NSString *stringToDecode = [[NSString alloc] initWithData:data encoding:serializationEncoding];
+        sourceData = [stringToDecode dataUsingEncoding:NSUTF8StringEncoding];
+    }
+    
+    id restored = [RFAttributedDecoder decodeJSONData:sourceData withSerializtionRoot:serializationRoot rootClassNamed:NSStringFromClass(deserializationClass)];
     return restored;
 }
 
 -(NSString *)serializeObject:(id)object
 {
-    return [RFAttributedCoder encodeRootObject:object];
+    return[RFAttributedCoder encodeRootObject:object];
 }
 
 @end

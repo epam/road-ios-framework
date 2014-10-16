@@ -36,6 +36,8 @@
 
 #import "RFSerializationDelegate.h"
 #import "RFWebServiceURLBuilderParameter.h"
+#import "RFWebServiceCall.h"
+#import "RFWebServiceSerializationHandler.h"
 #import "RFFormData.h"
 #import "RFMultipartData.h"
 #import "RFWebServiceClient.h"
@@ -46,7 +48,7 @@ static NSString * const kRFBoundaryDefaultString = @"AaB03x";
 
 @implementation RFWebServiceCallParameterEncoder
 
-+ (void)encodeParameters:(NSArray *)parameterList attributes:(NSArray *)attributes withSerializator:(id<RFSerializationDelegate>)serializator callbackBlock:(void (^)(NSDictionary *, NSData *, BOOL))callbackBlock {
++ (void)encodeParameters:(NSArray *)parameterList attributes:(NSArray *)attributes withSerializer:(id<RFSerializationDelegate>)serializer callbackBlock:(void (^)(NSDictionary *, NSData *, BOOL))callbackBlock {
     
     NSMutableDictionary *result = [[NSMutableDictionary alloc] initWithCapacity:[parameterList count]];
     NSMutableData *bodyData;
@@ -56,7 +58,7 @@ static NSString * const kRFBoundaryDefaultString = @"AaB03x";
     for (id object in parameterList) {
         
         NSString *key = [NSString stringWithFormat:@"%lu", (long unsigned)[result count]];
-        id encodedObject;
+        __block id encodedObject;
         
         if ([object isKindOfClass:[NSString class]]) {
             encodedObject = object;
@@ -102,8 +104,12 @@ static NSString * const kRFBoundaryDefaultString = @"AaB03x";
             encodedObject = [object copy];
         }
         else {
-            if ([serializator respondsToSelector:@selector(serializeObject:)]) {
-                encodedObject = [serializator serializeObject:object];
+            if ([serializer respondsToSelector:@selector(serializeObject:)]) {
+                [RFWebServiceSerializationHandler serializeObject:object withSerialzer:serializer withCompletitionBlock:^(NSString *serializedString, NSError *error)
+                 {
+                     // TODO: error handling
+                     encodedObject = serializedString;
+                 }];
             }
             NSAssert(encodedObject != nil, @"Encoded object must be a valid object not nil");
         }

@@ -37,6 +37,7 @@
 #import "RFWebServiceLog.h"
 #import "NSError+RFWebService.h"
 #import "RFAuthenticating.h"
+#import "RFWebServiceCall.h"
 #import "RFWebServiceClient.h"
 #import "RFWebServiceErrorHandler.h"
 #import "RFWebServiceErrorHandling.h"
@@ -84,7 +85,7 @@
 #pragma mark - NSURLConnection data delegates
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)aConnection {
-    RFWSLogInfo(@"URL connection(%p) has finished. URL: %@. Data was received: %@", aConnection, [aConnection.currentRequest.URL absoluteString], [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding]);
+    RFWSLogInfo(@"URL connection(%p) has finished. URL: %@. Data was received: %@", aConnection, [aConnection.currentRequest.URL absoluteString], [[NSString alloc] initWithData:self.data encoding:((RFWebServiceCall*)[self.attributes RF_firstObjectWithClass:[RFWebServiceCall class]]).bodyEncoding]);
     
     // Checking response with error handler
     RFWebServiceErrorHandler *errorHandlerAttribute = [[self.webServiceClient class] RF_attributeForClassWithAttributeType:[RFWebServiceErrorHandler class]];
@@ -112,7 +113,7 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     [self.data appendData:data];
-    RFWSLogVerbose(@"URL connection(%p) to URL: %@ received data: %@", connection, [connection.currentRequest.URL absoluteString], [NSString stringWithUTF8String:[self.data bytes]]);
+    RFWSLogVerbose(@"URL connection(%p) to URL: %@ received data: %@", connection, [connection.currentRequest.URL absoluteString], [[NSString alloc] initWithData:self.data encoding:((RFWebServiceCall*)[self.attributes RF_firstObjectWithClass:[RFWebServiceCall class]]).bodyEncoding]);
     [self updateDownloadProgress:(float)[data length] / (float)self.expectedContentLenght];
 }
 

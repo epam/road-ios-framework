@@ -49,8 +49,8 @@ static NSString * const kRFBoundaryDefaultString;
  * If one object is NSData, it will be sent back as a post data.
  * @param parameterList The list of parameters
  * @param attributes The attributes that determine current web service call
- * @param serializator The serializator object
+ * @param serializer The serializer object
  * @param callbackBlock The callback block which will be called.
  */
-+ (void)encodeParameters:(NSArray *)parameterList attributes:(NSArray *)attributes withSerializator:(id<RFSerializationDelegate>)serializator callbackBlock:(void(^)(NSDictionary *parameters, NSData *postData, BOOL isMultipartData))callbackBlock;
++ (void)encodeParameters:(NSArray *)parameterList attributes:(NSArray *)attributes withSerializer:(id<RFSerializationDelegate>)serializer callbackBlock:(void(^)(NSDictionary *parameters, NSData *postData, BOOL isMultipartData))callbackBlock;
 @end

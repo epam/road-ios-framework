@@ -39,6 +39,14 @@ extern const NSInteger kRFWebServiceErrorCodeSerialization;
 extern const NSInteger kRFWebServiceErrorCodeCancel;
 
 @interface NSError (RFWebService)
+
+/**
+ * Create serialization error, and insert the original object into the error userinfo.
+ * @param object The original data.
+ * @return The error with serialization code and the object to be sent.
+ */
++ (NSError *)RFWS_serializationErrorWithObject:(id)object;
+
 /**
  * Create deserialization error, and insert the original data into the error userinfo.
  * @param data The original data.

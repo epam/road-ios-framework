@@ -80,7 +80,7 @@
     NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
     NSString *pathToDeserialisationTestFile = [testBundle pathForResource:@"DeserialisationTest" ofType:@"json"];
     NSError *error = nil;
-    NSString *deserialisationTestString = [NSString stringWithContentsOfFile:pathToDeserialisationTestFile encoding:NSStringEncodingConversionAllowLossy error:&error];
+    NSString *deserialisationTestString = [NSString stringWithContentsOfFile:pathToDeserialisationTestFile encoding:NSUTF8StringEncoding error:&error];
     XCTAssertTrue(!error, @"Deserialisation content is not available, error: %@", error);
     XCTAssertTrue([deserialisationTestString length] > 0, @"Deserialisation content is missing");
     

@@ -38,20 +38,38 @@
 
 @implementation RFWebServiceSerializationHandler
 
-+ (void)deserializeData:(NSData * const)data withSerializator:(id<RFSerializationDelegate>)serializationObject serializatinRoot:(NSString *)serializationRoot toDeserializationClass:(Class)deserializationClass withCompletitionBlock:(void(^)(id serializedData, NSError *error))callbackBlock
-{
-    id serializedData = data;
++ (void)serializeObject:(id)object withSerialzer:(id<RFSerializationDelegate>)serializationObject withCompletitionBlock:(void (^)(NSString *, NSError *))callbackBlock {
+
+    NSString *serializedString;
     NSError *error;
+
+    if (serializationObject) {
+
+        serializedString = [serializationObject serializeObject:object];
+
+        if ([serializedString length] == 0) {
+            error = [NSError RFWS_serializationErrorWithObject:object];
+        }
+    }
+
+    callbackBlock(serializedString, error);
+}
+
++ (void)deserializeData:(NSData *const)data withSerializer:(id<RFSerializationDelegate>)serializationObject serializationRoot:(NSString *)serializationRoot withDeserializationClass:(Class)deserializationClass withStringEncoding:(NSStringEncoding)stringEncoding withCompletitionBlock:(void (^)(id, NSError *))callbackBlock {
+
+    id deserializedObject = data;
+    NSError *error;
+
     if (serializationObject) {
         
-        serializedData = [serializationObject deserializeData:data serializatinRoot:serializationRoot withDeserializationClass:deserializationClass error:nil];
+        deserializedObject = [serializationObject deserializeData:data serializationRoot:serializationRoot withDeserializationClass:deserializationClass serializationEncoding:stringEncoding error:nil];
         
-        if (serializedData == nil) {
+        if (deserializedObject == nil) {
             error = [NSError RFWS_deserializationErrorWithData:data];
         }
     }
     
-    callbackBlock(serializedData,error);
+    callbackBlock(deserializedObject, error);
 }
 
 @end

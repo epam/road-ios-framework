@@ -168,7 +168,7 @@
         serializationDelegate = self.serializationDelegate;
     }
 
-    [RFWebServiceCallParameterEncoder encodeParameters:parameterList attributes:attributes withSerializator:serializationDelegate callbackBlock:^(NSDictionary *parameters, NSData *postData, BOOL isMultipartData) {
+    [RFWebServiceCallParameterEncoder encodeParameters:parameterList attributes:attributes withSerializer:serializationDelegate callbackBlock:^(NSDictionary *parameters, NSData *postData, BOOL isMultipartData) {
         parametersDictionary = parameters;
         bodyData = postData;
         downloader.multipartData = isMultipartData;

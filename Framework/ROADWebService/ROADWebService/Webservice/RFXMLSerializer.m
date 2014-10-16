@@ -37,13 +37,15 @@
 
 @implementation RFXMLSerializer
 
--(id)deserializeData:(NSData *)data serializatinRoot:(NSString *)serializationRoot withDeserializationClass:(Class)deserializationClass error:(NSError *__autoreleasing *)error {
+-(id)deserializeData:(NSData *)data serializationRoot:(NSString *)serializationRoot withDeserializationClass:(Class)deserializationClass serializationEncoding:(NSStringEncoding)serializationEncoding error:(NSError *__autoreleasing *)error
+{
     RFAttributedXMLDecoder *decoder = [[RFAttributedXMLDecoder alloc] init];
     id restored = [decoder decodeData:data withRootObjectClass:deserializationClass error:error];
     return restored;
 }
 
--(NSString *)serializeObject:(id)object {
+-(NSString *)serializeObject:(id)object
+{
     RFAttributedXMLCoder *coder = [[RFAttributedXMLCoder alloc] init];
     return [coder encodeRootObject:object];
 }

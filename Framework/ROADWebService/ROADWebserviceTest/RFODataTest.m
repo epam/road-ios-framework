@@ -227,7 +227,7 @@
     }];
 
     while (!isFinished) {
-        [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate alloc] initWithTimeIntervalSinceNow:0.2]];
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
     }
 
     XCTAssertTrue(receivedError != nil, @"Error've not been generated!");
