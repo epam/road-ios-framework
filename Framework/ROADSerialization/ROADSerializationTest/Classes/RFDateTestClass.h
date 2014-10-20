@@ -56,6 +56,18 @@ RF_ATTRIBUTE(RFSerializableDate, format = @"yyyy/MM/dd HH:mm:ss Z", decodingForm
 RF_ATTRIBUTE(RFSerializableDate, encodingFormat = @"yyyy/MM/dd HH:mm:ss Z", format = @"yyyy.MM.dd HH:mm:ss Z")
 @property (nonatomic, strong) NSDate *dateWithEncodeFormatPriority;
 
+RF_ATTRIBUTE(RFSerializableDate, format = @"%Y/%m/%d %H:%M:%S %z")
+@property (nonatomic, strong) NSDate *dateWithCFormat;
+
+RF_ATTRIBUTE(RFSerializableDate, encodingFormat = @"%Y/%m/%d %H:%M:%S %z", decodingFormat = @"%Y.%m.%d %H:%M:%S %z")
+@property (nonatomic, strong) NSDate *dateWithCEncodeDecodeFormat;
+
+RF_ATTRIBUTE(RFSerializableDate, format = @"%Y/%m/%d %H:%M:%S %z", decodingFormat = @"%Y.%m.%d %H:%M:%S %z")
+@property (nonatomic, strong) NSDate *dateWithCDecodeFormatPriority;
+
+RF_ATTRIBUTE(RFSerializableDate, encodingFormat = @"%Y/%m/%d %H:%M:%S %z", format = @"%Y.%m.%d %H:%M:%S %z")
+@property (nonatomic, strong) NSDate *dateWithCEncodeFormatPriority;
+
 + (id)testObject;
 + (NSString *)testObjectStringRepresentation;
 + (NSString *)testDeserialisationString;

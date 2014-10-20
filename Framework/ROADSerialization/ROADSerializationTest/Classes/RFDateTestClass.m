@@ -44,7 +44,10 @@
     testObject.dateWithEncodeDecodeFormat = [NSDate dateWithTimeIntervalSince1970:400000];
     testObject.dateWithDecodeFormatPriority = [NSDate dateWithTimeIntervalSince1970:500000];
     testObject.dateWithEncodeFormatPriority = [NSDate dateWithTimeIntervalSince1970:600000];
-    
+    testObject.dateWithCFormat = [NSDate dateWithTimeIntervalSince1970:300000];
+    testObject.dateWithCEncodeDecodeFormat = [NSDate dateWithTimeIntervalSince1970:400000];
+    testObject.dateWithCDecodeFormatPriority = [NSDate dateWithTimeIntervalSince1970:500000];
+    testObject.dateWithCEncodeFormatPriority = [NSDate dateWithTimeIntervalSince1970:600000];
     return testObject;
 }
 
@@ -73,7 +76,12 @@
             && [dateTestObject.dateWithFormat isEqualToDate:self.dateWithFormat]
             && [dateTestObject.dateWithDecodeFormatPriority isEqualToDate:self.dateWithDecodeFormatPriority]
             && [dateTestObject.dateWithEncodeDecodeFormat isEqualToDate:self.dateWithEncodeDecodeFormat]
-            && [dateTestObject.dateWithEncodeFormatPriority isEqualToDate:self.dateWithEncodeFormatPriority]) {
+            && [dateTestObject.dateWithEncodeFormatPriority isEqualToDate:self.dateWithEncodeFormatPriority]
+            && [dateTestObject.dateWithCFormat isEqualToDate:self.dateWithCFormat]
+            && [dateTestObject.dateWithCDecodeFormatPriority isEqualToDate:self.dateWithCDecodeFormatPriority]
+            && [dateTestObject.dateWithCEncodeDecodeFormat isEqualToDate:self.dateWithCEncodeDecodeFormat]
+            && [dateTestObject.dateWithCEncodeFormatPriority isEqualToDate:self.dateWithCEncodeFormatPriority]
+            ) {
             isEqual = YES;
         }
     }

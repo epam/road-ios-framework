@@ -43,7 +43,7 @@
 #import "RFJSONSerializationHandling.h"
 #import "RFSerializableBoolean.h"
 #import "RFBooleanTranslator.h"
-
+#import "NSDate+RFISO8601Formatter.h"
 
 NSString *RFSerializationKeyForProperty(RFPropertyInfo *propertyInfo) {
     
@@ -89,10 +89,14 @@ NSString *RFSerializationEncodeDateForProperty(NSDate *object, RFPropertyInfo *p
     }
     else {
         NSString *dateFormat = ([serializableDateAttribute.encodingFormat length] == 0) ? serializableDateAttribute.format : serializableDateAttribute.encodingFormat;
-        NSDateFormatter *dateFormatter = dateFormatterPool[dateFormat];
-        result = dateFormatter ? [dateFormatter stringFromDate:object] : [object description];
+        if([dateFormat rangeOfString:@"%"].location == NSNotFound){
+            NSDateFormatter *dateFormatter = dateFormatterPool[dateFormat];
+            result = dateFormatter ? [dateFormatter stringFromDate:object] : [object description];
+        }
+        else{
+            result = [object RF_ISO8601StringWithDateFormat:dateFormat];
+        }
     }
-
     return result;
 }
 
