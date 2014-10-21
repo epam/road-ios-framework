@@ -204,7 +204,8 @@
             [existingValue addEntriesFromDictionary:newValue];
             newValue = [existingValue copy];
         }
-        else if ([newValue isKindOfClass:[NSSet class]] && [existingValue isKindOfClass:[NSSet class]]) { newValue = [existingValue setByAddingObjectsFromSet:value];
+        else if ([newValue isKindOfClass:[NSSet class]] && [existingValue isKindOfClass:[NSSet class]]) {
+            newValue = [existingValue setByAddingObjectsFromSet:value];
         }
         else if ([newValue isKindOfClass:[NSString class]] && [existingValue isKindOfClass:[NSString class]]) {
             newValue = [existingValue stringByAppendingString:value];
