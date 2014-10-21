@@ -39,7 +39,7 @@
 #import "RFDateTestClass.h"
 #import "RFSerializableStringChecker.h"
 #import "RFJSONPropertyPreprocessingClass.h"
-
+#import "NSDate+RFISO8601Formatter.h"
 
 @interface RFAnnotatedCoderTest : XCTestCase
 
@@ -48,11 +48,19 @@
 
 @implementation RFAnnotatedCoderTest {
     RFSerializationTestObject *object;
+    NSDictionary *standardStrings;
+    NSDictionary *serializedStrings;
 }
 
 - (void)setUp {
-
+    
     object = [RFSerializationTestObject sampleObject];
+    
+    RFDateTestClass *testObject = [RFDateTestClass testObject];
+    NSString *testObjectStandardString = [RFDateTestClass testObjectStringRepresentation];
+    standardStrings = [NSJSONSerialization JSONObjectWithData:[testObjectStandardString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+    NSString * testString = [RFAttributedCoder encodeRootObject:testObject];
+    serializedStrings = [NSJSONSerialization JSONObjectWithData:[testString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
     
     [super setUp];
 }
@@ -105,31 +113,77 @@
     XCTAssertTrue(!restored.booleanToTranslateFalseFromNumber, @"The translation from number was unsuccessfull.");
 }
 
-- (void)testDateSerialization {
-    RFDateTestClass *testObject = [RFDateTestClass testObject];
-    NSString *testObjectStandardString = [RFDateTestClass testObjectStringRepresentation];
-    NSDictionary *testObjectStandard = [NSJSONSerialization JSONObjectWithData:[testObjectStandardString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
-    XCTAssertNotNil(testObjectStandard, @"Standard string has invalid format.");
-    
-    NSString * testString = [RFAttributedCoder encodeRootObject:testObject];
-    NSDictionary *test = [NSJSONSerialization JSONObjectWithData:[testString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
-    XCTAssertNotNil(test, @"Serialized string has invalid format.");
-    
-    XCTAssertTrue([test[@"unixTimestamp"] isEqualToString:testObjectStandard[@"unixTimestamp"]], @"Unix timestamp serialized incorrectly.");
-    XCTAssertTrue([test[@"unixTimestampWithMultiplier"] isEqualToString:testObjectStandard[@"unixTimestampWithMultiplier"]], @"Unix timestamp with multiplier serialized incorrectly.");
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = [[RFDateTestClass RF_attributeForProperty:@"dateWithFormat" withAttributeType:[RFSerializableDate class]] format];
-    XCTAssertTrue([[dateFormatter dateFromString:test[@"dateWithFormat"]] isEqualToDate:[dateFormatter dateFromString:testObjectStandard[@"dateWithFormat"]]], @"dateWithFormat serialized incorrectly");
-    
-    dateFormatter.dateFormat = [[RFDateTestClass RF_attributeForProperty:@"dateWithEncodeDecodeFormat" withAttributeType:[RFSerializableDate class]] encodingFormat];
-    XCTAssertTrue([[dateFormatter dateFromString:test[@"dateWithEncodeDecodeFormat"]] isEqualToDate:[dateFormatter dateFromString:testObjectStandard[@"dateWithEncodeDecodeFormat"]]], @"dateWithEncodeDecodeFormat serialized incorrectly.");
-    
-    dateFormatter.dateFormat = [[RFDateTestClass RF_attributeForProperty:@"dateWithEncodeFormatPriority" withAttributeType:[RFSerializableDate class]] encodingFormat];
-    XCTAssertTrue([[dateFormatter dateFromString:test[@"dateWithEncodeFormatPriority"]] isEqualToDate:[dateFormatter dateFromString:testObjectStandard[@"dateWithEncodeFormatPriority"]]], @"dateWithEncodeFormatPriority serialized incorrectly.");
-    
-    dateFormatter.dateFormat = [[RFDateTestClass RF_attributeForProperty:@"dateWithDecodeFormatPriority" withAttributeType:[RFSerializableDate class]] format];
-    XCTAssertTrue([[dateFormatter dateFromString:test[@"dateWithDecodeFormatPriority"]] isEqualToDate:[dateFormatter dateFromString:testObjectStandard[@"dateWithDecodeFormatPriority"]]], @"dateWithDecodeFormatPriority serialized incorrectly.");
+- (void)testStandardStrings {
+    XCTAssertNotNil(standardStrings, @"Standard string has invalid format.");
+}
+
+- (void)testSerializedStrings {
+    XCTAssertNotNil(serializedStrings, @"Serialized string has invalid format.");
+}
+
+- (void)testTimestampSerialization {
+    XCTAssertTrue([serializedStrings[@"unixTimestamp"] isEqualToString:standardStrings[@"unixTimestamp"]], @"Unix timestamp serialized incorrectly.");
+}
+
+- (void)testTimestampWithMultiplierSerialization {
+    XCTAssertTrue([serializedStrings[@"unixTimestampWithMultiplier"] isEqualToString:standardStrings[@"unixTimestampWithMultiplier"]], @"Unix timestamp with multiplier serialized incorrectly.");
+}
+
+- (void)testDateWithFormatSerialization {
+    NSString* dateFormat = [[RFDateTestClass RF_attributeForProperty:@"dateWithFormat" withAttributeType:[RFSerializableDate class]] format];
+    BOOL success = [self compareDatesWithDateFormat:dateFormat firstDateString:serializedStrings[@"dateWithFormat"] secondDateString:standardStrings[@"dateWithFormat"]];
+    XCTAssertTrue(success, @"dateWithFormat serialized incorrectly");
+}
+
+- (void)testDateWithEncodeDecodeFormatSerialization {
+    NSString* dateFormat = [[RFDateTestClass RF_attributeForProperty:@"dateWithEncodeDecodeFormat" withAttributeType:[RFSerializableDate class]] encodingFormat];
+    BOOL success = [self compareDatesWithDateFormat:dateFormat firstDateString:serializedStrings[@"dateWithEncodeDecodeFormat"] secondDateString:standardStrings[@"dateWithEncodeDecodeFormat"]];
+    XCTAssertTrue(success, @"dateWithEncodeDecodeFormat serialized incorrectly");
+}
+
+- (void)testDateWithEncodeFormatPrioritySerialization {
+    NSString* dateFormat = [[RFDateTestClass RF_attributeForProperty:@"dateWithEncodeFormatPriority" withAttributeType:[RFSerializableDate class]] encodingFormat];
+    BOOL success = [self compareDatesWithDateFormat:dateFormat firstDateString:serializedStrings[@"dateWithEncodeFormatPriority"] secondDateString:standardStrings[@"dateWithEncodeFormatPriority"]];
+    XCTAssertTrue(success, @"dateWithEncodeFormatPriority serialized incorrectly");
+}
+
+- (void)testDateWithDecodeFormatPrioritySerialization {
+    NSString* dateFormat = [[RFDateTestClass RF_attributeForProperty:@"dateWithDecodeFormatPriority" withAttributeType:[RFSerializableDate class]] format];
+    BOOL success = [self compareDatesWithDateFormat:dateFormat firstDateString:serializedStrings[@"dateWithDecodeFormatPriority"] secondDateString:standardStrings[@"dateWithDecodeFormatPriority"]];
+    XCTAssertTrue(success, @"dateWithDecodeFormatPriority serialized incorrectly.");
+}
+
+- (void)testDateWithCFormatSerialization {
+    NSString* dateFormat = [[RFDateTestClass RF_attributeForProperty:@"dateWithCFormat" withAttributeType:[RFSerializableDate class]] format];
+    BOOL success = [self compareDatesWithDateFormat:dateFormat firstDateString:serializedStrings[@"dateWithCFormat"] secondDateString:standardStrings[@"dateWithCFormat"]];
+    XCTAssertTrue(success, @"dateWithCFormat serialized incorrectly");
+}
+
+- (void)testDateWithCEncodeDecodeFormatDateSerialization {
+    NSString* dateFormat = [[RFDateTestClass RF_attributeForProperty:@"dateWithCEncodeDecodeFormat" withAttributeType:[RFSerializableDate class]] encodingFormat];
+    BOOL success = [self compareDatesWithDateFormat:dateFormat firstDateString:serializedStrings[@"dateWithCEncodeDecodeFormat"] secondDateString:standardStrings[@"dateWithCEncodeDecodeFormat"]];
+    XCTAssertTrue(success, @"dateWithCEncodeDecodeFormat serialized incorrectly.");
+}
+
+- (void)testDateWithCEncodeFormatPrioritySerialization {
+    NSString* dateFormat = [[RFDateTestClass RF_attributeForProperty:@"dateWithCEncodeFormatPriority" withAttributeType:[RFSerializableDate class]] encodingFormat];
+    BOOL success = [self compareDatesWithDateFormat:dateFormat firstDateString:serializedStrings[@"dateWithCEncodeFormatPriority"] secondDateString:standardStrings[@"dateWithCEncodeFormatPriority"]];
+    XCTAssertTrue(success, @"dateWithCEncodeFormatPriority serialized incorrectly.");
+}
+
+- (void)testDateWithCDecodeFormatPrioritySerialization {
+    NSString* dateFormat = [[RFDateTestClass RF_attributeForProperty:@"dateWithCDecodeFormatPriority" withAttributeType:[RFSerializableDate class]] format];
+    BOOL success = [self compareDatesWithDateFormat:dateFormat firstDateString:serializedStrings[@"dateWithCDecodeFormatPriority"] secondDateString:standardStrings[@"dateWithCDecodeFormatPriority"]];
+    XCTAssertTrue(success, @"dateWithCDecodeFormatPriority serialized incorrectly.");
+}
+
+- (BOOL)compareDatesWithDateFormat:(NSString*)dateFormat firstDateString:(NSString*)firstDateString secondDateString:(NSString*)secondDateString {
+    if([dateFormat rangeOfString:@"%"].location == NSNotFound){
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = dateFormat;
+        return [[dateFormatter dateFromString:firstDateString] isEqualToDate:[dateFormatter dateFromString:secondDateString]];
+    }
+    return [[NSDate RF_dateFromISO8601String:firstDateString withDateFormat:dateFormat] isEqualToDate:[NSDate RF_dateFromISO8601String:secondDateString withDateFormat:dateFormat]];
 }
 
 - (void)testDateDeserialization {
@@ -168,7 +222,7 @@
     NSArray *testArray = [RFAttributedDecoder decodePredeserializedObject:predeserializedObject withRootClassName:@"RFSerializationTestObject"];
     XCTAssertNotNil(testArray, @"Mapping predeserialized object failed");
     XCTAssertTrue([testArray count] == 1, @"Mapping predeserialized object performed incorrectly. Number of object in array must be one");
-
+    
     RFSerializationTestObject *testObject = [testArray lastObject];
     XCTAssertNotNil(testObject, @"Mapping predeserialized object failed");
     XCTAssertTrue([testObject.string1 isEqualToString:@"value1"], @"Mapping predeserialized object performed incorrectly");
@@ -212,13 +266,13 @@ static const float kFloatPrecision = 0.0000001f;
 
 - (void)testSerializationOfBigUnixTimestamps {
     NSTimeInterval timeInterval = 15000000000;
-
+    
     RFSerializationTestObject *testObject = [[RFSerializationTestObject alloc] init];
     testObject.unixTimestamp = [NSDate dateWithTimeIntervalSince1970:timeInterval];
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:testObject.unixTimestamp];
     XCTAssertEqual(components.year, 2445, @"Wrong year after encoding");
     NSString *string = [RFAttributedCoder encodeRootObject:testObject];
-
+    
     RFSerializationTestObject *deserializedTestObject = (RFSerializationTestObject *)[RFAttributedDecoder decodeJSONString:string withRootClassNamed:NSStringFromClass([RFSerializationTestObject class])];
     XCTAssertTrue(fabs([deserializedTestObject.unixTimestamp timeIntervalSince1970] - timeInterval) < 1000, @"Big time intervale was corrupted");
 }
@@ -226,7 +280,7 @@ static const float kFloatPrecision = 0.0000001f;
 - (void)testNilInDecoder {
     id nil1 = [RFAttributedDecoder decodeJSONData:nil withRootClassNamed:@""];
     id nil2 = [RFAttributedDecoder decodeJSONString:nil withRootClassNamed:@""];
-
+    
     XCTAssertNil(nil1, @"RFAttrbutedCoder returned value for nil data");
     XCTAssertNil(nil2, @"RFAttrbutedCoder returned value for nil data");
 }

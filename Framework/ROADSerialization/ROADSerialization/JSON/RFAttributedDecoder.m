@@ -44,7 +44,7 @@
 #import "RFSerializableBoolean.h"
 #import "RFBooleanTranslator.h"
 #import "RFSerializationAssistant.h"
-
+#import "NSDate+RFISO8601Formatter.h"
 
 @interface RFAttributedDecoder ()
 
@@ -81,8 +81,8 @@
     id const jsonObject = [NSJSONSerialization RF_decodeJSONData:jsonData];
     id partOfJsonObject = jsonObject;
     if (serializationRoot.length) {
-         partOfJsonObject  = [self jsonObjectForKeyPath:serializationRoot atJsonObject:jsonObject];
-      }
+        partOfJsonObject  = [self jsonObjectForKeyPath:serializationRoot atJsonObject:jsonObject];
+    }
     
     return [self decodePredeserializedObject:partOfJsonObject withRootClassName:rootClassName];
 }
@@ -93,7 +93,7 @@
 
 + (id)decodeJSONData:(NSData * const)jsonData withRootClassNamed:(NSString * const)rootClassName {
     id const jsonObject = [NSJSONSerialization RF_decodeJSONData:jsonData];
-
+    
     return [self decodePredeserializedObject:jsonObject withRootClassName:rootClassName];
 }
 
@@ -103,7 +103,7 @@
         result = jsonObject;
     } else {
         RFSCLogInfo(@"Decoder(%@ %p) started processing object(%@)", self, self, jsonObject);
-
+        
         id decoder = [[self alloc] init];
         
         if ([jsonObject isKindOfClass:[NSArray class]]) {
@@ -124,16 +124,16 @@
 
 - (id)decodeJSONDictionary:(NSDictionary * const)jsonDict forProperty:(RFPropertyInfo * const)aDesc {
     NSString * rootClassName;
-
+    
     RFSerializable *serializableAttribute = [aDesc attributeWithType:[RFSerializable class]];
     if (!serializableAttribute.classNameSerializationDisabled) {
         rootClassName = jsonDict[RFSerializedObjectClassName];
     }
-
+    
     if ([rootClassName length] == 0) {
         rootClassName = NSStringFromClass(aDesc.typeClass);
     }
-
+    
     return [self decodeRootObject:jsonDict withRootClassNamed:rootClassName];
 }
 
@@ -156,7 +156,7 @@
             }
         }
     }
-        
+    
     return rootObject;
 }
 
@@ -165,7 +165,7 @@
     if (!value) {
         return;
     }
-
+    
     NSString *propertyName = [property propertyName];
     id result = nil;
     
@@ -209,7 +209,7 @@
     else if ([aDesc attributeWithType:[RFSerializableBoolean class]]) {
         value = [RFBooleanTranslator decodeTranslatableValue:aValue forProperty:aDesc];
     }
-
+    
     return value;
 }
 
@@ -259,15 +259,15 @@
         else {
             value = [self decodeDictionary:aValue forProperty:nil customHandlerAttribute:customHandlerAttribute];
         }
-    }  
+    }
     return value;
 }
 
 - (id)decodeDateString:(id const)value forProperty:(RFPropertyInfo * const)propertyInfo {
     id decodedValue = nil;
-
+    
     RFSerializableDate *serializableDateAttribute = [propertyInfo attributeWithType:[RFSerializableDate class]];
-
+    
     if (serializableDateAttribute.unixTimestamp) {
         SEL doubleValue = sel_registerName("doubleValue");
         if ([value respondsToSelector:doubleValue]) {
@@ -277,10 +277,15 @@
     else {
         if ([value isKindOfClass:[NSString class]]) {
             NSString *dateFormat = ([serializableDateAttribute.decodingFormat length] == 0) ? serializableDateAttribute.format: serializableDateAttribute.decodingFormat;
-            NSAssert(dateFormat, @"RFSerializableDate must have either format or encodingFormat specified");
-            
-            NSDateFormatter *dateFormatter = _dateFormattersPool[dateFormat];
-            decodedValue = [dateFormatter dateFromString:value];
+            if([dateFormat rangeOfString:@"%"].location == NSNotFound){
+                NSAssert(dateFormat, @"RFSerializableDate must have either format or encodingFormat specified");
+                
+                NSDateFormatter *dateFormatter = _dateFormattersPool[dateFormat];
+                decodedValue = [dateFormatter dateFromString:value];
+            }
+            else {
+                decodedValue = [NSDate RF_dateFromISO8601String:value withDateFormat:dateFormat];
+            }
         }
     }
     
