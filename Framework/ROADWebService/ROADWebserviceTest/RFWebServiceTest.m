@@ -175,6 +175,7 @@
 
     RFSerializableTestObject *testObject1 = [RFSerializableTestObject testObject];
     testObject1.name = @"Ваня Кузнецов";
+    testObject1.city = @"City: Нью-Васюки";
 
     RFWebServiceClient *webClient = [[RFWebServiceClient alloc] initWithServiceRoot:@"http://test.serializer"]; // @"http://127.0.0.1:8080/xml"
     [webClient testXMLSerializationEncoding:testObject1 withSuccess:^(id result) {
