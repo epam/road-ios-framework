@@ -148,7 +148,7 @@ Or you can implement custom authentication based on one of following classes:
 ##Headers customization
 Header fields can be customized by addding `RFWebServiceHeader` to request definition:
 ```objc
-RF_ATTRIBUTE(RFWebServiceHeader, hearderFields = @{@"Accept" : @"application/json"})
+RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{@"Accept" : @"application/json"})
 ```
 
 In case, there's need to have the same headers in every request in one specific web service client. These header fields can be set in `sharedHeaders` propery of your web service client instance.
@@ -227,7 +227,7 @@ RFODataFetchRequest *fetchRequest = [[RFODataFetchRequest alloc] initWithEntityN
 @interface RFConcreteWebServiceClient : RFWebServiceClient
 ...
 RF_ATTRIBUTE(RFWebServiceCall)
-RF_ATTRIBUTE(RFWebServiceHeader, hearderFields = @{@"Accept": @"application/json"})
+RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{@"Accept": @"application/json"})
 RF_ATTRIBUTE(RFWebServiceURLBuilder, builderClass = [RFODataWebServiceURLBuilder class])
 - (id<RFWebServiceCancellable>)loadDataWithFetchRequest:(RFODataFetchRequest *)fetchRequest success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 ...
