@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		B19543DC19E68BDE000BBD5E /* Utilities_Simian */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B19543DF19E68BDE000BBD5E /* Build configuration list for PBXAggregateTarget "Utilities_Simian" */;
+			buildPhases = (
+				B19543E019E68BE1000BBD5E /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Utilities_Simian;
+			productName = Utilities_Simian;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		1176412D18E461E800B1688B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1176412C18E461E800B1688B /* XCTest.framework */; };
 		1176413518E4632B00B1688B /* GcovTestObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 1176413418E4632B00B1688B /* GcovTestObserver.m */; };
@@ -109,6 +123,11 @@
 			attributes = {
 				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0500;
+				TargetAttributes = {
+					B19543DC19E68BDE000BBD5E = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
 			};
 			buildConfigurationList = EE2E03B91886286300CFD5BC /* Build configuration list for PBXProject "Utilities" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -123,9 +142,26 @@
 			projectRoot = "";
 			targets = (
 				EE2E04091886313700CFD5BC /* Utilities */,
+				B19543DC19E68BDE000BBD5E /* Utilities_Simian */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B19543E019E68BE1000BBD5E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"${SRCROOT}\"/..\n\n#  check for .bash_profile exist\nif [ ! -r ~/.bash_profile ]; then\necho \"warning: please create .bash_profile with variable SIMIAN_JAR\"\nexit 1\nfi\n\nsource ~/.bash_profile\n#  check for SIMIAN_JAR variable exist\nif [ ! -f $SIMIAN_JAR ]; then\necho \"warning: please create environment variable SIMIAN_JAR with path to simian/bin/simian<version>.jar\"\nexit 1\nfi\n\n#  run simian  java -jar simian.jar [options] [files]\n#  and open report\njava -jar $SIMIAN_JAR -formatter=plain:Utilities/simian-report.txt -includes=\"**/*.m\" -excludes=\"**/*Test.m\" -excludes=\"Pods/**/*.m\" || EXIT_STATUS=$?\nopen Utilities/simian-report.txt\n\nexit $EXIT_STATUS";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EE2E04061886313700CFD5BC /* Sources */ = {
@@ -140,6 +176,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		B19543DD19E68BDE000BBD5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B19543DE19E68BDE000BBD5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		EE2E03BA1886286300CFD5BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -259,6 +309,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B19543DF19E68BDE000BBD5E /* Build configuration list for PBXAggregateTarget "Utilities_Simian" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B19543DD19E68BDE000BBD5E /* Debug */,
+				B19543DE19E68BDE000BBD5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		EE2E03B91886286300CFD5BC /* Build configuration list for PBXProject "Utilities" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
