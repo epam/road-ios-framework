@@ -2,7 +2,7 @@
 title: ROAD Framework
 email: your-email@domain.com
 description: "ROAD – Rapid Objective-C Applications Development"
-baseurl: ""
+baseurl: "/road-ios-framework"
 url: "https://github.com/epam/road-ios-framework"
 twitter_username: ROADFramework
 github_username:  epam
