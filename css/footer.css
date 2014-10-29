@@ -1,0 +1,38 @@
+footer {
+    margin-top: 11px;
+    padding: 28px 10px;
+    height: 137px;
+    width: 100%;
+    box-sizing: border-box;
+    clear: both;
+    background: url("../img/bgFooter.png") no-repeat center 0;
+    font-family: 'open_sanslight', Arial, Helvetica, sans-serif;
+    font-size: 15px;
+
+}
+footer div.rightColumn{
+    display: table-cell;
+    vertical-align: bottom;
+
+}
+
+footer div.leftColumn {
+    display: table-cell;
+
+}
+
+.leftColumn a:first-child{
+    display: block;
+    margin-bottom: 9px;
+}
+
+.mobile, .tabsMobile{
+    display: none;
+}
+
+
+footer .wrap{
+    display: table;
+    width: 100%;
+}
+

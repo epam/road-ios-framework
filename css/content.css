@@ -1,0 +1,162 @@
+
+.wrap{
+    margin: 0 auto;
+    padding: 0 26px;
+    max-width: 900px;
+    box-sizing: border-box;
+}
+
+.content{
+    padding: 0 26px;
+    min-height: 100%;
+    box-sizing: border-box;
+    font-family: 'open_sanslight', Arial, Helvetica, sans-serif;
+
+}
+
+h2{
+    margin: 0 0 15px 0;
+    max-width: 900px;
+    font-size: 34px;
+    font-weight: 100;
+    color: #cf7022;
+
+}
+.paragraph{
+    font-size: 14px;
+    line-height: 26px;
+    word-spacing: 1px;
+
+}
+
+.tabsComponent{
+    padding-top: 53px;
+
+}
+
+.tabs{
+    display: table;
+    font-size: 0;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+
+}
+.tab div {
+    display: block;
+    text-align: center;
+    font-size: 28px;
+    color: #dadada;
+    padding-top: 31px;
+
+}
+.tab.active{
+    display: table-cell;
+    width: 50%;
+    padding: 0 7px;
+    border-top: 2px solid #cf7022;
+    border-right: 1px solid #dadada;
+    border-left: 1px solid #dadada;
+    border-bottom: none;
+
+
+}
+.tab.active div {
+
+    padding-top: 31px;
+    font-size: 27px;
+    color: #cf7022;
+}
+
+.tab.active p{
+    min-height: 116px;
+    color: #636363;
+
+}
+
+
+.tabs li{
+    display: table-cell;
+    padding: 0 7px;
+    border-bottom: 1px solid #dadada;
+    box-sizing: border-box;
+}
+
+.viewCode{
+    display: none;
+}
+
+.tab p{
+    padding-top: 17px;
+    width: 100%;
+    color: #dadada;
+    font-size: 14px;
+    line-height: 1.8em;
+}
+.tabsContent{
+    padding:  82px 0;
+    border-bottom: 1px solid #bfbfbf ;
+}
+
+.tabsContent li{
+    display: none;
+
+}
+.tabsContent .tabContent.active {
+    display: block;
+}
+
+
+.code{
+    display: block;
+    padding: 26px 36px;
+    width: 100%;
+    min-width: 280px;
+    box-sizing: border-box;
+    font-size: 14px;
+
+}
+
+.activeBlock{
+    display: block;
+}
+
+.attribute{
+    color: #990099;
+}
+code .rfAttibute{
+    color:#237e1c;
+}
+.service{
+    color: #692271;
+}
+
+.text{
+    color:#336600;
+}
+.numbers{
+    color: #339900;
+}
+
+
+.status{
+    color: #003366;
+}
+
+.date{
+    color: #003399;
+}
+
+.space{
+    margin-left: 390px;
+}
+
+.post-content p {
+    font-size: 14px;
+    line-height: 26px;
+    word-spacing: 1px;
+}
+
+.post-content a {
+    color: #87b2ed;
+}

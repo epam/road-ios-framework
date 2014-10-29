@@ -1,0 +1,151 @@
+---
+layout: default
+---
+
+<div class="contentText">
+        <h2>A Framework for App Builders</h2>
+
+        <p class="paragraph">This framework aimed to be your best friend when you work with 
+        web service based back-end. It handles for you all aspects of web service integration. 
+        It features REST web service integration, but will help you with any web service that use 
+        JSON or XML for data transition and even more.</p>
+
+        <p class="inserted paragraph">You can map your web service methods to Objective-C class methods.
+        The result will be returned via blocks in main thread so you can update you views without any problems from there.
+        Both request and response data can be easily mapped with Serialization component to your classes.
+        We use attributes for all mapping so it will be that easy as marking your properties with appropriate attributes.
+        </p>
+
+        <p class="invis inserted paragraph">All this goodies can be easily installed via CocoaPods, 
+        so don't hesitate to try it out right now. We have good documentation and example project for quick start.
+        </p>
+
+    </div>
+
+    <div class="tabsComponent" id="tabs">
+        <ul class="tabs">
+            <li class="tab active" id="tab1">
+                <div>Web Services</div>
+                <span class="toggler icon" id="b1">1</span>
+
+                <section class="description">
+                    <p class="topic">
+                        Web service component helps you to integrate remote web service. 
+                        Most useful functionality is configurable via attributes, 
+                        but if you're missing something just plug in your custom handler.
+                    </p>
+                    <button class ="viewCode" id="code2">View Code Snippet</button>
+                </section>
+
+            </li>
+
+            <li class="tab" id="tab2">
+                <div>Serialization</div>
+                <span class="toggler icon" id="b2">1</span>
+
+                <section class="description">
+                    <p class="topic">
+                        Serialization component handles all transformation between stream and your 
+                        Objective-C classes. Define appropriate attributes for mapping and you good to go.
+                    </p>
+                        <button class ="viewCode" id="code2">View Code Snippet</button>
+                </section>
+            </li>
+        </ul>
+
+        <ul class="tabsContent">
+
+            <li id="contentTab1" class="tabContent active">
+                <code id="contentsCode1" class="code">
+{% highlight objc %}
+RF_ATTRIBUTE(RFWebService, serviceRoot = @"http://headers.jsontest.com/")
+@interface JsonTestWebClient : RFWebServiceClient
+
+RF_ATTRIBUTE(RFWebServiceCall, method = @"GET", prototypeClass = [MyWebServiceResponse class])
+RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{@"Text" : @"A lot of text",
+    @"Number" : [@1434252.234 stringValue],
+    @"Date" : [[NSDate dateWithTimeIntervalSince1970:100000000] description]})
+- (id<RFWebServiceCancellable>)echoWithSuccess:(void(^)(MyWebServiceResponse result))successBlock 
+                                       failure:(void(^)(NSError *error))failureBlock;
+
+@end
+{% endhighlight %}
+
+                </code>
+            </li>
+
+            <li id="contentTab2" class="tabContent">
+                <code id="contentsCode2" class="code">
+
+{% highlight objc %}
+RF_ATTRIBUTE(RFSerializable)
+@interface Person : NSObject
+
+RF_ATTRIBUTE(RFSerializable, serializationKey = @"id")
+@property (nonatomic, copy) NSString *personId;
+RF_ATTRIBUTE(RFSerializable, serializationKey = @"first_name")
+@property (nonatomic, copy) NSString *firstName;
+RF_ATTRIBUTE(RFSerializable, serializationKey = @"last_name")
+@property (nonatomic, copy) NSString *lastName;
+RF_ATTRIBUTE(RFDerived)
+@property (nonatomic, readonly) NSString *name;
+RF_ATTRIBUTE(RFSerializable, serializationKey = @"birthday")
+RF_ATTRIBUTE(RFSerializableDate, format = @"yyyy-MM-dd'T'HH:mm:ss'Z'")
+@property (nonatomic, strong) NSDate *birthday;
+RF_ATTRIBUTE(RFSerializable, serializationKey = @"spouse")
+@property (nonatomic, strong) Person *spouse;
+RF_ATTRIBUTE(RFSerializable, serializationKey = @"children")
+RF_ATTRIBUTE(RFSerializableCollection, collectionClass = [Person class])
+@property (nonatomic, strong) NSArray *children;
+
+@end
+{% endhighlight %}
+                </code>
+            </li>
+        </ul>
+    </div>
+
+    <div class="slider">
+
+
+        <ul class="sliderContent">
+
+            <li class="navContent active clearfix">
+                <blockquote>
+                    "At EPAM we design and build iOS apps both for our clients and for our internal
+                    employees. ROAD iOS Framework helps us deliver native iOS apps that require
+                    integration with web services, which is the majority apps that we build, faster and
+                    produce much more maintainable codebase. Highly recommend!"
+                </blockquote>
+                <div class="nameCompany">
+                    <div class="nameStatus">
+                        <span>Yevgeniy Galper</span>
+
+                        <p>Director, Mobile Competency Center</p>
+                    </div>
+                    <div class="companyLogo">
+                        <a href="http://www.epam.com/"><img src="img/companylogo.png"></a>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+
+        <ul class="sliderNav clearfix">
+            <li class="nav active">1</li>
+        </ul>
+    </div>
+
+
+    <div class="list clearfix">
+        <div>
+
+            <p>This framework rely on libObjCAttr library that brings attribution support to Objective-C. You can check out its <a href="https://github.com/epam/lib-obj-c-attr">github page</a> to see what other benefits you can get from it, suggest some great idea or report an issue.
+            </p>
+        </div>
+
+        <div>
+            <p>You can easily set up ROAD Framework via CocoaPods and use it just after taking a peek at README page of repository, but for some complex scenarios don't forget to look at our <a href="https://github.com/epam/road-ios-framework#documentation">documentation</a>. As open source product it lives via your contribution, so at least live us bug reports or even better, try to resolve some ticket from <a href="https://github.com/epam/road-ios-framework/issues">issue tracker</a>.
+            </p>
+        </div>
+    </div>

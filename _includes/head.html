@@ -1,0 +1,28 @@
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- CSS -->
+
+    <link rel="stylesheet" href="{{ "/css/reset.css" | prepend: site.baseurl }}"/>
+    <link rel="stylesheet" href="{{ "/css/header.css" | prepend: site.baseurl }}"/>
+    <link rel="stylesheet" href="{{ "/css/content.css" | prepend: site.baseurl }}"/>
+    <link rel="stylesheet" href="{{ "/css/slider.css" | prepend: site.baseurl }}"/>
+    <link rel="stylesheet" href="{{ "/css/footer.css" | prepend: site.baseurl }}"/>
+    <link rel="stylesheet" href="/css/pygments.css" />
+
+    <link rel="stylesheet" media="(max-width: 767px)"  href="{{ "/css/mobile.css" | prepend: site.baseurl }}" />
+    <link rel="stylesheet" media="(max-width: 905px)"  href="{{ "/css/tablet.css" | prepend: site.baseurl }}" />
+
+<!-- Javascript -->
+
+    <script type="text/javascript" src="{{ "/js/jquery-1.11.0.js" | prepend: site.baseurl }}"></script>
+
+<!-- Information -->
+
+    <meta name="description" content="{{ site.description }}">
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+</head>

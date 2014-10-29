@@ -1,0 +1,111 @@
+
+.list{
+    max-width: 900px;
+    color: #797979;
+    font-size: 14px;
+    line-height: 1.5em;
+}
+
+.list div:first-child{
+    margin-left: 0;
+}
+.list div{
+    float: left;
+    margin: 0 0 26px 32px;
+    width: 401px;
+}
+
+.list li:last-child{
+    float: none;
+}
+
+.list a {
+	color: #2c9500;
+}
+
+.list div p{
+    margin-bottom: 26px;
+}
+p.active{
+    display: block;
+}
+
+.slider{
+    position: relative;
+    list-style: none;
+    margin-bottom: 50px;
+    padding: 71px 0;
+    border-bottom: 1px solid #bfbfbf;
+}
+
+.sliderNav{
+    text-align: center;
+}
+.nav{
+    font-size: 0;
+    width: 8px;
+    height: 8px;
+
+}
+.nav.active {
+    background: url("../img/sprite.png") no-repeat -9px -35px;
+    cursor: pointer;
+
+}
+.nav {
+    display: inline-block;
+    margin: 0 2px;
+    cursor: pointer;
+    background: url("../img/sprite.png") no-repeat -9px -49px;
+}
+
+.sliderContent {
+    margin-bottom: 38px;
+    text-align:  center;
+    height: 295px;
+}
+
+.navContent.active{
+    display: block;
+}
+.sliderContent li {
+
+    display: none;
+    padding: 0 121px;
+    max-width: 590px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    line-height: 2.1em;
+}
+
+
+.sliderContent blockquote  {
+    margin-bottom: 41px;
+    font-style: italic;
+}
+
+.sliderContent li div span{
+    color: #d96d1d;
+    font-size: 19px;
+
+}
+.sliderContent li div p{
+
+    color: #d96d1d;
+    font-size: 14px;
+    text-align: left;
+    margin-top: -10px;
+
+}
+.nameStatus{
+    display: inline-block;
+    margin-right: 15px;
+    text-align: right;
+}
+
+.companyLogo{
+    display: inline-block;
+
+    text-align: right;
+
+}

@@ -1,7 +1,0 @@
-//
-// Prefix header for all source files of the 'ROADCore' target in the 'ROADCore' project
-//
-
-#ifdef __OBJC__
-    #import <Foundation/Foundation.h>
-#endif

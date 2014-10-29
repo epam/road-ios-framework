@@ -1,0 +1,27 @@
+@media  (max-width: 905px) {
+    .list {
+        padding: 0 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .list div{
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .headerBlock.right{
+        width: 48%;
+    }
+}
+
+@media  (max-width: 832px) {
+    .information{
+        margin-left: 7%;
+
+    }
+
+    nav a{
+        margin-left: 20px;
+
+    }
+}
