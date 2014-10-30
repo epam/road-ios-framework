@@ -41,6 +41,7 @@
 #import "RFFormData.h"
 #import "RFMultipartData.h"
 #import "RFWebServiceCache.h"
+#import "RFAttachmentTestObject.h"
 
 
 @class RFODataFetchRequest;
@@ -48,6 +49,22 @@
 
 
 @interface RFConcreteWebServiceClient : RFWebServiceClient
+
+RF_ATTRIBUTE(RFWebServiceCall)
+RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{@"Accept" : @"application/json"}, returnHeadersInBody = YES)
+- (id<RFWebServiceCancellable>)testHeaderFieldsDictionaryAttachmentWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+RF_ATTRIBUTE(RFWebServiceCall, prototypeClass = [RFAttachmentTestObject class])
+RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{@"Accept" : @"application/json"}, returnHeadersInBody = YES)
+- (id<RFWebServiceCancellable>)testHeaderFieldsObjectAttachmentWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+RF_ATTRIBUTE(RFWebServiceCall)
+RF_ATTRIBUTE(RFWebServiceHeader, returnHeadersInBody = YES)
+- (id<RFWebServiceCancellable>)testHeaderFieldsArrayAttachmentWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
+RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{@"Accept" : @"application/json"}, returnHeadersInBody = YES)
+- (id<RFWebServiceCancellable>)testHeaderFieldsNoBodyAttachmentWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
 RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO, relativePath = @"%%0%%")
 RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{@"Accept" : @"application/json"})

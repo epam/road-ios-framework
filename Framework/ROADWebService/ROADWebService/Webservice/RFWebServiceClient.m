@@ -39,6 +39,9 @@
 #import "RFWebServiceSerializer.h"
 #import "RFWebServiceHeader.h"
 
+NSString * const kRFWebServiceClientArrayKey = @"array";
+NSString * const kRFWebServiceClientHeaderFieldsKey = @"headerFields";
+NSString * const kRFWebServiceClientSetterHeaderFieldsKey = @"setHeaderFields:";
 
 @implementation RFWebServiceClient
 

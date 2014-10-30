@@ -244,10 +244,33 @@
     if (!self.downloadError) {
         [self updateDownloadProgress:1.0];
         self.deserializedObject = resultObject;
+        [self attachHeaderFieldsFromResponse:response];
         [self performSelector:@selector(performSuccessBlockOnSpecificThread) onThread:[NSThread mainThread] withObject:nil waitUntilDone:YES];
     }
     else {
         [self performSelector:@selector(performFailureBlockOnSpecificThread) onThread:[NSThread mainThread] withObject:nil waitUntilDone:YES];
+    }
+}
+
+- (void)attachHeaderFieldsFromResponse:(NSHTTPURLResponse *)response {
+    RFWebServiceHeader * const headerAttribute = [self.attributes RF_firstObjectWithClass:[RFWebServiceHeader class]];
+    if (!headerAttribute.returnHeadersInBody) {
+        return;
+    }
+    NSDictionary* headerFields = [response allHeaderFields];
+    if (!self.deserializedObject) {
+        self.deserializedObject = @{kRFWebServiceClientHeaderFieldsKey:headerFields};
+    }
+    else if ([self.deserializedObject isKindOfClass:[NSDictionary class]]){
+        NSMutableDictionary* dict = [NSMutableDictionary dictionaryWithDictionary:self.deserializedObject];
+        [dict setObject:headerFields forKey:kRFWebServiceClientHeaderFieldsKey];
+        self.deserializedObject = [dict copy];
+    }
+    else if ([self.deserializedObject isKindOfClass:[NSArray class]]) {
+        self.deserializedObject = @{kRFWebServiceClientArrayKey:self.deserializedObject, kRFWebServiceClientHeaderFieldsKey:headerFields};
+    }
+    else if ([self.deserializedObject respondsToSelector:NSSelectorFromString(kRFWebServiceClientSetterHeaderFieldsKey)]) {
+        [self.deserializedObject setValue:headerFields forKey:kRFWebServiceClientHeaderFieldsKey];
     }
 }
 

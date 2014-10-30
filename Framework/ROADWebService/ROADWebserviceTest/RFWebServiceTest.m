@@ -63,6 +63,72 @@
     [RFDownloadFaker tearDown];
 }
 
+- (void)testHeaderFieldsDictionaryAttachment {
+    __block BOOL isFinished = NO;
+    __block BOOL isSuccess = NO;
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.headerfields.dictionary"];
+    [webClient testHeaderFieldsDictionaryAttachmentWithSuccess:^(id result) {
+        isFinished = YES;
+        isSuccess = ([result objectForKey:kRFWebServiceClientHeaderFieldsKey] != nil);
+    } failure:^(NSError *error) {
+        isFinished = YES;
+    }];
+    
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
+    }
+    XCTAssertTrue(isSuccess, @"Header fields for dictionary attachment is failed");
+}
+
+- (void)testHeaderFieldsObjectAttachment {
+    __block BOOL isFinished = NO;
+    __block BOOL isSuccess = NO;
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.headerfields.object"];
+    [webClient testHeaderFieldsObjectAttachmentWithSuccess:^(id result) {
+        isFinished = YES;
+        isSuccess = ([result valueForKey:kRFWebServiceClientHeaderFieldsKey] != nil);
+    } failure:^(NSError *error) {
+        isFinished = YES;
+    }];
+    
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
+    }
+    XCTAssertTrue(isSuccess, @"Header fields object attachment is failed");
+}
+
+- (void)testHeaderFieldsArrayAttachment {
+    __block BOOL isFinished = NO;
+    __block BOOL isSuccess = NO;
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.headerfields.array"];
+    [webClient testHeaderFieldsArrayAttachmentWithSuccess:^(id result) {
+        isFinished = YES;
+        isSuccess = ([result valueForKey:kRFWebServiceClientHeaderFieldsKey] != nil);
+    } failure:^(NSError *error) {
+        isFinished = YES;
+    }];
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
+    }
+    XCTAssertTrue(isSuccess, @"Header fields array attachment is failed");
+}
+
+- (void)testHeaderFieldsNoBodyAttachment {
+    __block BOOL isFinished = NO;
+    __block BOOL isSuccess = NO;
+    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://test.headerfields.nobody"];
+    [webClient testHeaderFieldsNoBodyAttachmentWithSuccess:^(id result) {
+        isFinished = YES;
+        isSuccess = ([result valueForKey:kRFWebServiceClientHeaderFieldsKey] != nil);
+    } failure:^(NSError *error) {
+        isFinished = YES;
+    }];
+    
+    while (!isFinished) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
+    }
+    XCTAssertTrue(isSuccess, @"Header fields no body attachment is failed");
+}
 
 - (void)testMultipartData {
     __block BOOL isFinished = NO;
