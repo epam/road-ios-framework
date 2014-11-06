@@ -23,7 +23,6 @@
 /* Begin PBXBuildFile section */
 		1176413218E4623E00B1688B /* libUtilities.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1176413118E4623E00B1688B /* libUtilities.a */; };
 		14C2F88DF752E561CF89A88D /* ROADGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F3311BD559E30B9B3949B4 /* ROADGeneratedAttribute.m */; };
-		2ADF89C6FCAF7ED0381EA273 /* libPods-ROADServicesTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9C621101904CA1BA91DFAE /* libPods-ROADServicesTest.a */; };
 		556A84FC6E361DD479E4A8D8 /* libPods-ROADServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57CED8D1341055C9AF9B7243 /* libPods-ROADServices.a */; };
 		5ACD21541741179500CC61AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7869945016AEBF3E00B28760 /* Foundation.framework */; };
 		5ACD215A1741179500CC61AC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5ACD21581741179500CC61AC /* InfoPlist.strings */; };
@@ -104,7 +103,6 @@
 				1176413218E4623E00B1688B /* libUtilities.a in Frameworks */,
 				5ACD21541741179500CC61AC /* Foundation.framework in Frameworks */,
 				D7AF149817CF8FD100A92C31 /* libROADServices.a in Frameworks */,
-				2ADF89C6FCAF7ED0381EA273 /* libPods-ROADServicesTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +243,7 @@
 				5ACD214A1741179500CC61AC /* Sources */,
 				5ACD214B1741179500CC61AC /* Frameworks */,
 				5ACD214C1741179500CC61AC /* Resources */,
+				B11E33AE1A0BCAF7003924C2 /* Copy Resources */,
 			);
 			buildRules = (
 			);
@@ -389,6 +388,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
+		};
+		B11E33AE1A0BCAF7003924C2 /* Copy Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"Copy resource files to bundle\"\nSRC=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/include/ROAD\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\necho \"$DEST\"\necho \"$RESOURCE\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"\n\n\necho \"Copy resource files to archive bundle\"\n\nSRC=\"$BUILD_DIR/../IntermediateBuildFilesPath/UninstalledProducts\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 

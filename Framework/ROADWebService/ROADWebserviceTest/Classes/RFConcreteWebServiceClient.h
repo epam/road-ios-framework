@@ -66,7 +66,7 @@ RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
 RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{@"Accept" : @"application/json"}, returnHeadersInBody = YES)
 - (id<RFWebServiceCancellable>)testHeaderFieldsNoBodyAttachmentWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
-RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO, relativePath = @"%%0%%")
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO)
 RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{@"Accept" : @"application/json"})
 RF_ATTRIBUTE(RFWebServiceErrorHandler, handlerClass = [RFODataErrorHandler class])
 - (id<RFWebServiceCancellable>)testErrorHandlerRootWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
