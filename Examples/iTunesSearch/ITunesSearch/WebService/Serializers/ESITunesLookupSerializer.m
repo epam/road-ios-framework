@@ -52,7 +52,7 @@
  * We need to separate artist entity from album entities.
  * Then deserialize them and pass to sender.
  */
-- (id)deserializeData:(NSData *)data serializatinRoot:(NSString *)serializationRoot withDeserializationClass:(Class)deserializationClass error:(NSError *__autoreleasing *)error {
+- (id)deserializeData:(NSData *)data serializationRoot:(NSString *)serializationRoot withDeserializationClass:(__unsafe_unretained Class)deserializationClass serializationEncoding:(NSStringEncoding)serializationEncoding error:(NSError *__autoreleasing *)error {
     // We want to parse data with standard serialization and then map it onto our object
     NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:error];
     NSArray *results = responseDictionary[serializationRoot];
