@@ -34,6 +34,7 @@
 #import "RFDownloader+FakeRequest.h"
 
 #import "RFSerializableTestObject.h"
+#import "RFAttachmentTestObject.h"
 #import "NSURLRequest+RFURLTest.h"
 
 
@@ -143,6 +144,26 @@
             response = [self successResponse];
             resultData = [RFDownloader generateDateBasedData];
         }
+    }
+    else if ([self.request isRelatedToTest:@"test.headerfields.dictionary"]) {
+        response = [self successResponse];
+        resultData = [NSJSONSerialization dataWithJSONObject:@{@"test": @"dictionary"} options:NSJSONWritingPrettyPrinted error:nil];
+        
+    }
+    else if ([self.request isRelatedToTest:@"test.headerfields.object"]) {
+        response = [self successResponse];
+        RFAttachmentTestObject* testObject = [[RFAttachmentTestObject alloc] init];
+        testObject.name = @"header fields attachment";
+        NSString * testString = [RFAttributedCoder encodeRootObject:testObject];
+        resultData = [testString dataUsingEncoding:NSUTF8StringEncoding];
+    }
+    else if ([self.request isRelatedToTest:@"test.headerfields.array"]) {
+        response = [self successResponse];
+        resultData = [NSJSONSerialization dataWithJSONObject:@[@"test", @"array"] options:NSJSONWritingPrettyPrinted error:nil];
+    }
+    else if ([self.request isRelatedToTest:@"test.headerfields.nobody"]) {
+        response = [self successResponse];
+        resultData = nil;
     }
     else {
         // Not processed URL

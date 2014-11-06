@@ -33,6 +33,9 @@
 
 #import <ROAD/ROADServices.h>
 
+extern NSString * const kRFWebServiceClientArrayKey;
+extern NSString * const kRFWebServiceClientHeaderFieldsKey;
+extern NSString * const kRFWebServiceClientSetterHeaderFieldsKey;
 
 @protocol RFSerializationDelegate;
 @protocol RFAuthenticating;

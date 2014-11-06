@@ -1,5 +1,5 @@
 //
-//  RFWebServiceHeader.h
+//  RFAttachmentTestObject.h
 //  ROADWebService
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
@@ -31,19 +31,16 @@
 //  for additional information regarding copyright ownership and licensing
 
 
-#import <ROAD/ROADAttribute.h>
+#import <ROAD/ROADSerialization.h>
 
 
-@interface RFWebServiceHeader : NSObject
+RF_ATTRIBUTE(RFSerializable)
+@interface RFAttachmentTestObject : NSObject
 
-/**
- * Specifies header fields via key/value pairs.
- */
-@property (strong, nonatomic) NSDictionary *headerFields;
+RF_ATTRIBUTE(RFXMLSerializable, isTagAttribute = YES);
+@property (copy, nonatomic) NSString *name;
 
-/**
- * Specifies the need for header fields
- */
-@property (assign, nonatomic) BOOL returnHeadersInBody;
+RF_ATTRIBUTE(RFDerived);
+@property (copy, nonatomic) NSDictionary *headerFields;
 
 @end

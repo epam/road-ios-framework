@@ -109,23 +109,27 @@
 		8D94224C17E2A4C2005F0AE3 /* RFWebServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CD896C381737E85800565C9C /* RFWebServiceTest.m */; };
 		8D94224D17E2A4C6005F0AE3 /* RFODataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 837B002617B3B9A300D77A5D /* RFODataTest.m */; };
 		B143EABB19B0622F00DCD152 /* RFWebServiceCacheMigrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B143EABA19B0622F00DCD152 /* RFWebServiceCacheMigrationTest.m */; };
+		B19F1AE019FA813E0056D3FE /* RFAttachmentTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B19F1ADF19FA813E0056D3FE /* RFAttachmentTestObject.m */; };
 		B1AAC4F019B0585F00799322 /* RFWebServiceCacheTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AAC4EC19B0580100799322 /* RFWebServiceCacheTest.m */; };
 		B1AAC4F119B0586200799322 /* RFWebServiceSyncCallTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AAC4ED19B0580100799322 /* RFWebServiceSyncCallTest.m */; };
 		B1AAC4F519B05A5300799322 /* RFSerializableTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E63F184DC4B5002625E6 /* RFSerializableTestObject.m */; };
 		B1AAC4F619B05AB100799322 /* RFWebServiceClientWithRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3022F3180FD687003B1826 /* RFWebServiceClientWithRoot.m */; };
-		B1AAC4F719B05AFB00799322 /* RFSerializableTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E63F184DC4B5002625E6 /* RFSerializableTestObject.m */; };
-		B1AAC4F819B05B3100799322 /* RFRequestTestAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 245D5F8B1907DF1A00A42B94 /* RFRequestTestAttribute.m */; };
-		B1F77CC419AE0D50000E01BA /* RFWebServiceIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F77CC319AE0D50000E01BA /* RFWebServiceIntegrationTest.m */; };
-		B1F77CCA19AE1097000E01BA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8369B7A418D9BA2D002B5C4E /* CoreData.framework */; };
-		B1F77CCB19AE10A2000E01BA /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 33F0EF0D18051D3D001DCCED /* libxml2.2.dylib */; };
-		B1F77CCE19AE10C8000E01BA /* libROADWebService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78FB204215BD336B00C2137A /* libROADWebService.a */; };
-		B1F77CCF19AE10DF000E01BA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD69624016F0D20F0090B201 /* CFNetwork.framework */; };
-		B1F77CD319AE1911000E01BA /* RFWebServiceClient+DynamicTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5D20417D4CDDB0030D8CD /* RFWebServiceClient+DynamicTest.m */; };
-		B1F77CD419AE1914000E01BA /* RFConcreteWebServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 835D30FC184DFE0E00EF2310 /* RFConcreteWebServiceClient.m */; };
-		B1F77CD519AE1916000E01BA /* RFODataTestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 839992E217D9DB45002DAE8D /* RFODataTestEntity.m */; };
-		B1F77CD619AE191A000E01BA /* RFDownloader+FakeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 839992F717DA04D4002DAE8D /* RFDownloader+FakeRequest.m */; };
-		B1F77CD819AE1922000E01BA /* RFWebServiceClientWithRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3022F3180FD687003B1826 /* RFWebServiceClientWithRoot.m */; };
-		B1F77CDC19AE1935000E01BA /* NSURLRequest+RFURLTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1113E475198E415200390C2C /* NSURLRequest+RFURLTest.m */; };
+		B1D9421D19FFD94800478477 /* RFODataTestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 839992E217D9DB45002DAE8D /* RFODataTestEntity.m */; };
+		B1D9421E19FFD94800478477 /* RFDownloader+FakeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 839992F717DA04D4002DAE8D /* RFDownloader+FakeRequest.m */; };
+		B1D9422019FFD94800478477 /* NSURLRequest+RFURLTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1113E475198E415200390C2C /* NSURLRequest+RFURLTest.m */; };
+		B1D9422119FFD94800478477 /* RFWebServiceClientWithRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3022F3180FD687003B1826 /* RFWebServiceClientWithRoot.m */; };
+		B1D9422219FFD94800478477 /* RFSerializableTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D0E63F184DC4B5002625E6 /* RFSerializableTestObject.m */; };
+		B1D9422319FFD94800478477 /* RFConcreteWebServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 835D30FC184DFE0E00EF2310 /* RFConcreteWebServiceClient.m */; };
+		B1D9422519FFD94800478477 /* RFRequestTestAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 245D5F8B1907DF1A00A42B94 /* RFRequestTestAttribute.m */; };
+		B1D9422619FFD94800478477 /* RFRequestTestProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 245D5F8E1907E0CF00A42B94 /* RFRequestTestProcessor.m */; };
+		B1D9422719FFD94800478477 /* RFWebServiceClient+DynamicTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5D20417D4CDDB0030D8CD /* RFWebServiceClient+DynamicTest.m */; };
+		B1D9422819FFD94800478477 /* RFDownloadFaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C173581861E9CA00A9538D /* RFDownloadFaker.m */; };
+		B1D9422C19FFD94800478477 /* ROADGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBA7A957A17D357357B7C7D /* ROADGeneratedAttribute.m */; };
+		B1D9422E19FFD94800478477 /* libROADWebService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78FB204215BD336B00C2137A /* libROADWebService.a */; };
+		B1D9423019FFD94800478477 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8369B7A418D9BA2D002B5C4E /* CoreData.framework */; };
+		B1D9423119FFD94800478477 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 33F0EF0D18051D3D001DCCED /* libxml2.2.dylib */; };
+		B1D9423219FFD94800478477 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD69624016F0D20F0090B201 /* CFNetwork.framework */; };
+		B1D9423D19FFD97500478477 /* RFWebServiceIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F77CC319AE0D50000E01BA /* RFWebServiceIntegrationTest.m */; };
 		BADFC7EFC89C1AC724735C9F /* ROADGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = E464DD5BF4AE07F628FD5B1D /* ROADGeneratedAttribute.m */; };
 		CD69624116F0D2100090B201 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD69624016F0D20F0090B201 /* CFNetwork.framework */; };
 		CD896C231737E84F00565C9C /* RFWebServiceCall.m in Sources */ = {isa = PBXBuildFile; fileRef = CD896C001737E84F00565C9C /* RFWebServiceCall.m */; };
@@ -163,7 +167,7 @@
 			remoteGlobalIDString = 78FB204115BD336B00C2137A;
 			remoteInfo = ROADWebService;
 		};
-		B1F77CBA19AE094C000E01BA /* PBXContainerItemProxy */ = {
+		B1D9421919FFD94800478477 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78FB203915BD336B00C2137A /* Project object */;
 			proxyType = 1;
@@ -243,6 +247,8 @@
 		245D5F8B1907DF1A00A42B94 /* RFRequestTestAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFRequestTestAttribute.m; sourceTree = "<group>"; };
 		245D5F8D1907E0CF00A42B94 /* RFRequestTestProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFRequestTestProcessor.h; sourceTree = "<group>"; };
 		245D5F8E1907E0CF00A42B94 /* RFRequestTestProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFRequestTestProcessor.m; sourceTree = "<group>"; };
+		28AFE0F7C0932514729D5D6A /* ROADGeneratedAttribute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ROADGeneratedAttribute.m; path = ROADGeneratedAttributes/ROADGeneratedAttribute.m; sourceTree = "<group>"; };
+		2C8BFE9EC30762B2A8A1BAA5 /* Pods-ROADWebServiceIntegrationTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ROADWebServiceIntegrationTest.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-ROADWebServiceIntegrationTest/Pods-ROADWebServiceIntegrationTest.debug.xcconfig"; sourceTree = "<group>"; };
 		33F0EF0D18051D3D001DCCED /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		3FFBBEECCAC6072BD95542E1 /* libPods-ROADWebService.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ROADWebService.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FE247878A5AA72FA635FFE0 /* libPods-ROADWebServiceTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ROADWebServiceTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -332,12 +338,15 @@
 		83D0E63E184DC4B5002625E6 /* RFSerializableTestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFSerializableTestObject.h; sourceTree = "<group>"; };
 		83D0E63F184DC4B5002625E6 /* RFSerializableTestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFSerializableTestObject.m; sourceTree = "<group>"; };
 		83E0CDE018D07FE100B25689 /* RFWebServiceLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFWebServiceLog.h; sourceTree = "<group>"; };
+		94D6C1CEAAB84EAE7A5174A7 /* libPods-ROADWebServiceIntegrationTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ROADWebServiceIntegrationTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CB87B2173873976478518D2 /* Pods-ROADWebServiceTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ROADWebServiceTest.release.xcconfig"; path = "../Pods/Target Support Files/Pods-ROADWebServiceTest/Pods-ROADWebServiceTest.release.xcconfig"; sourceTree = "<group>"; };
 		AFBA7A957A17D357357B7C7D /* ROADGeneratedAttribute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ROADGeneratedAttribute.m; path = ../ROADWebServiceTest/ROADGeneratedAttributes/ROADGeneratedAttribute.m; sourceTree = "<group>"; };
 		B143EABA19B0622F00DCD152 /* RFWebServiceCacheMigrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebServiceCacheMigrationTest.m; sourceTree = "<group>"; };
+		B19F1ADE19FA813E0056D3FE /* RFAttachmentTestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFAttachmentTestObject.h; sourceTree = "<group>"; };
+		B19F1ADF19FA813E0056D3FE /* RFAttachmentTestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFAttachmentTestObject.m; sourceTree = "<group>"; };
 		B1AAC4EC19B0580100799322 /* RFWebServiceCacheTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebServiceCacheTest.m; sourceTree = "<group>"; };
 		B1AAC4ED19B0580100799322 /* RFWebServiceSyncCallTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebServiceSyncCallTest.m; sourceTree = "<group>"; };
-		B1F77CAB19AE094C000E01BA /* ROADWebServiceIntegrationTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ROADWebServiceIntegrationTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1D9423B19FFD94800478477 /* ROADWebserviceIntegrationTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ROADWebserviceIntegrationTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1F77CAC19AE094C000E01BA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		B1F77CB319AE094C000E01BA /* ROADWebServiceIntegrationTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ROADWebServiceIntegrationTest-Info.plist"; sourceTree = "<group>"; };
 		B1F77CB919AE094C000E01BA /* ROADWebServiceIntegrationTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ROADWebServiceIntegrationTest-Prefix.pch"; sourceTree = "<group>"; };
@@ -365,7 +374,8 @@
 		D719856617C65D5B0017C680 /* RFDigestAuthenticationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RFDigestAuthenticationProvider.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D719856717C65D5B0017C680 /* RFDigestAuthenticationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFDigestAuthenticationProvider.h; sourceTree = "<group>"; };
 		E0140458945F3704A98F1C98 /* Pods-ROADWebService.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ROADWebService.release.xcconfig"; path = "../Pods/Target Support Files/Pods-ROADWebService/Pods-ROADWebService.release.xcconfig"; sourceTree = "<group>"; };
-		E464DD5BF4AE07F628FD5B1D /* ROADGeneratedAttribute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ROADGeneratedAttribute.m; path = ROADWebService/ROADGeneratedAttributes/ROADGeneratedAttribute.m; sourceTree = "<group>"; };
+		E083AE41F5561E51B43C08CA /* Pods-ROADWebServiceIntegrationTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ROADWebServiceIntegrationTest.release.xcconfig"; path = "../Pods/Target Support Files/Pods-ROADWebServiceIntegrationTest/Pods-ROADWebServiceIntegrationTest.release.xcconfig"; sourceTree = "<group>"; };
+		E464DD5BF4AE07F628FD5B1D /* ROADGeneratedAttribute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ROADGeneratedAttribute.m; path = ../ROADWebService/ROADGeneratedAttributes/ROADGeneratedAttribute.m; sourceTree = "<group>"; };
 		E5B9D4B51786CF9300E1901C /* RFWebServiceCallParameterEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFWebServiceCallParameterEncoder.h; sourceTree = "<group>"; };
 		E5B9D4B61786CF9300E1901C /* RFWebServiceCallParameterEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFWebServiceCallParameterEncoder.m; sourceTree = "<group>"; };
 		E5B9D4B71786CF9300E1901C /* RFWebServiceClient+DynamicMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RFWebServiceClient+DynamicMethod.h"; sourceTree = "<group>"; };
@@ -414,14 +424,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B1F77CA819AE094C000E01BA /* Frameworks */ = {
+		B1D9422D19FFD94800478477 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1F77CCA19AE1097000E01BA /* CoreData.framework in Frameworks */,
-				B1F77CCE19AE10C8000E01BA /* libROADWebService.a in Frameworks */,
-				B1F77CCB19AE10A2000E01BA /* libxml2.2.dylib in Frameworks */,
-				B1F77CCF19AE10DF000E01BA /* CFNetwork.framework in Frameworks */,
+				B1D9422E19FFD94800478477 /* libROADWebService.a in Frameworks */,
+				B1D9423019FFD94800478477 /* CoreData.framework in Frameworks */,
+				B1D9423119FFD94800478477 /* libxml2.2.dylib in Frameworks */,
+				B1D9423219FFD94800478477 /* CFNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,7 +447,6 @@
 				78FB204415BD336B00C2137A /* Frameworks */,
 				78FB204315BD336B00C2137A /* Products */,
 				884387A63151E52481FFF3D8 /* Pods */,
-				E464DD5BF4AE07F628FD5B1D /* ROADGeneratedAttribute.m */,
 			);
 			sourceTree = "<group>";
 		};
@@ -446,7 +455,7 @@
 			children = (
 				78FB204215BD336B00C2137A /* libROADWebService.a */,
 				783AF1A31650FAF800AD247E /* ROADWebServiceTest.xctest */,
-				B1F77CAB19AE094C000E01BA /* ROADWebServiceIntegrationTest.xctest */,
+				B1D9423B19FFD94800478477 /* ROADWebserviceIntegrationTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -466,6 +475,7 @@
 				D3EA0E745F684B56A6712602 /* libPods.a */,
 				3FFBBEECCAC6072BD95542E1 /* libPods-ROADWebService.a */,
 				4FE247878A5AA72FA635FFE0 /* libPods-ROADWebServiceTest.a */,
+				94D6C1CEAAB84EAE7A5174A7 /* libPods-ROADWebServiceIntegrationTest.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -556,6 +566,8 @@
 				839992E317D9DB45002DAE8D /* RFServiceProvider+ConcreteWebServiceClient.h */,
 				839992F617DA04D4002DAE8D /* RFDownloader+FakeRequest.h */,
 				839992F717DA04D4002DAE8D /* RFDownloader+FakeRequest.m */,
+				B19F1ADE19FA813E0056D3FE /* RFAttachmentTestObject.h */,
+				B19F1ADF19FA813E0056D3FE /* RFAttachmentTestObject.m */,
 				83D0E63E184DC4B5002625E6 /* RFSerializableTestObject.h */,
 				83D0E63F184DC4B5002625E6 /* RFSerializableTestObject.m */,
 				EE3022F2180FD687003B1826 /* RFWebServiceClientWithRoot.h */,
@@ -589,6 +601,8 @@
 				E0140458945F3704A98F1C98 /* Pods-ROADWebService.release.xcconfig */,
 				8192246B6031E34D79F8CA8E /* Pods-ROADWebServiceTest.debug.xcconfig */,
 				9CB87B2173873976478518D2 /* Pods-ROADWebServiceTest.release.xcconfig */,
+				2C8BFE9EC30762B2A8A1BAA5 /* Pods-ROADWebServiceIntegrationTest.debug.xcconfig */,
+				E083AE41F5561E51B43C08CA /* Pods-ROADWebServiceIntegrationTest.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -596,6 +610,7 @@
 		B1F77CB119AE094C000E01BA /* ROADWebServiceIntegrationTest */ = {
 			isa = PBXGroup;
 			children = (
+				28AFE0F7C0932514729D5D6A /* ROADGeneratedAttribute.m */,
 				B1F77CC319AE0D50000E01BA /* RFWebServiceIntegrationTest.m */,
 				B1F77CB219AE094C000E01BA /* Supporting Files */,
 			);
@@ -691,6 +706,7 @@
 		CD896C311737E85800565C9C /* ROADWebserviceTest */ = {
 			isa = PBXGroup;
 			children = (
+				E464DD5BF4AE07F628FD5B1D /* ROADGeneratedAttribute.m */,
 				5BC9D58C19A79C78006CFFBA /* RFWebServiceCache.coredata */,
 				B143EABA19B0622F00DCD152 /* RFWebServiceCacheMigrationTest.m */,
 				839992DE17D9DB45002DAE8D /* Classes */,
@@ -754,11 +770,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 783AF1B41650FAF800AD247E /* Build configuration list for PBXNativeTarget "ROADWebServiceTest" */;
 			buildPhases = (
-				DC9FA8EDC4320677779E422D /* libObjCAttr - generate attributes */,
+				A4F859FB8CEF0C2ABE194F14 /* libObjCAttr - generate attributes */,
 				783AF19E1650FAF800AD247E /* Sources */,
 				783AF19F1650FAF800AD247E /* Frameworks */,
 				5BC9D58D19AB272B006CFFBA /* Resources */,
-				83C544EE174B80A9000C8BCD /* Copy Resources */,
+				D99EAACA89C7BCD46BB70378 /* Copy Resources */,
 			);
 			buildRules = (
 			);
@@ -774,7 +790,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 78FB204F15BD336B00C2137A /* Build configuration list for PBXNativeTarget "ROADWebService" */;
 			buildPhases = (
-				CC97DC8561FFB2FFD6547C4C /* libObjCAttr - generate attributes */,
+				0FA683ECFCA029EEDFE1523C /* libObjCAttr - generate attributes */,
 				7B549E32B1214CD7832306EE /* Check Pods Manifest.lock */,
 				78FB203E15BD336B00C2137A /* Sources */,
 				78FB203F15BD336B00C2137A /* Frameworks */,
@@ -791,23 +807,23 @@
 			productReference = 78FB204215BD336B00C2137A /* libROADWebService.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		B1F77CAA19AE094C000E01BA /* ROADWebServiceIntegrationTest */ = {
+		B1D9421719FFD94800478477 /* ROADWebServiceIntegrationTest */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B1F77CBE19AE094D000E01BA /* Build configuration list for PBXNativeTarget "ROADWebServiceIntegrationTest" */;
+			buildConfigurationList = B1D9423819FFD94800478477 /* Build configuration list for PBXNativeTarget "ROADWebServiceIntegrationTest" */;
 			buildPhases = (
-				B1F77CD219AE16A6000E01BA /* libObjCAttr - generate attributes */,
-				B1F77CA719AE094C000E01BA /* Sources */,
-				B1F77CA819AE094C000E01BA /* Frameworks */,
-				B1F77CC519AE0F36000E01BA /* Copy Resources */,
+				A626F6AAD34759D20A2E8742 /* libObjCAttr - generate attributes */,
+				B1D9421C19FFD94800478477 /* Sources */,
+				B1D9422D19FFD94800478477 /* Frameworks */,
+				B1D9423619FFD94800478477 /* Copy Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B1F77CBB19AE094C000E01BA /* PBXTargetDependency */,
+				B1D9421819FFD94800478477 /* PBXTargetDependency */,
 			);
 			name = ROADWebServiceIntegrationTest;
-			productName = ROADWebServiceIntegrationTest;
-			productReference = B1F77CAB19AE094C000E01BA /* ROADWebServiceIntegrationTest.xctest */;
+			productName = SecondSightWebserviceTest;
+			productReference = B1D9423B19FFD94800478477 /* ROADWebserviceIntegrationTest.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -820,11 +836,6 @@
 				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Epam Systems";
-				TargetAttributes = {
-					B1F77CAA19AE094C000E01BA = {
-						TestTargetID = 78FB204115BD336B00C2137A;
-					};
-				};
 			};
 			buildConfigurationList = 78FB203C15BD336B00C2137A /* Build configuration list for PBXProject "ROADWebService" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -840,7 +851,7 @@
 			targets = (
 				78FB204115BD336B00C2137A /* ROADWebService */,
 				783AF1A21650FAF800AD247E /* ROADWebServiceTest */,
-				B1F77CAA19AE094C000E01BA /* ROADWebServiceIntegrationTest */,
+				B1D9421719FFD94800478477 /* ROADWebServiceIntegrationTest */,
 				8353CC38189F885C00135D86 /* ROADWebService_OCLint */,
 			);
 		};
@@ -858,6 +869,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0FA683ECFCA029EEDFE1523C /* libObjCAttr - generate attributes */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "libObjCAttr - generate attributes";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
+		};
 		5A30F0B3178D55A200DFCB2A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -899,20 +924,6 @@
 			shellPath = /bin/sh;
 			shellScript = "source ~/.bash_profile\n\nhash oclint &> /dev/null\nif [ $? -eq 1 ]; then\necho >&2 \"oclint not found, analyzing stopped\"\nexit 1\nfi\n\ncd \"${TARGET_TEMP_DIR}\"\n\necho \"[*] starting xcodebuild to rebuild the project..\"\n# clean previous output\nif [ -f xcodebuild.log ]; then\nrm xcodebuild.log\nfi\n\ncd \"${SRCROOT}\"/..\n\nxcodebuild clean -workspace ROADFramework.xcworkspace -scheme ROADWebService -configuration Debug\n\n#build xcodebuild.log\nxcodebuild -workspace ROADFramework.xcworkspace -scheme ROADWebService -configuration Debug | tee \"${TARGET_TEMP_DIR}/xcodebuild.log\"\n\necho \"[*] transforming xcodebuild.log into compile_commands.json...\"\necho \"TARGET_TEMP_DIR: ${TARGET_TEMP_DIR}\"\ncd \"${TARGET_TEMP_DIR}\"\n#transform it into compile_commands.json\necho \"oclint-xcodebuild -e ROADGeneratedAttributes\"\noclint-xcodebuild -e ROADGeneratedAttributes -e Pods\n\necho \"[*] copy compile_commands.json to the project root...\"\ncp \"${TARGET_TEMP_DIR}/compile_commands.json\" \"${SRCROOT}/compile_commands.json\"\n\necho \"[*] starting analyzing\"\ncd \"${TARGET_TEMP_DIR}\"\noclint-json-compilation-database -v -e ROADGeneratedAttributes -e Pods -- -rc=LONG_LINE=500 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 30 -max-priority-3 152 | sed 's/\\(.*\\.\\m\\{1,2\\}:[0-9]*:[0-9]*:\\)/\\1 warning:/'";
 		};
-		83C544EE174B80A9000C8BCD /* Copy Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"Copy resource files to bundle\"\nSRC=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/include/ROAD\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\necho \"$DEST\"\necho \"$RESOURCE\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"\n\n\necho \"Copy resource files to bundle\"\nSRC=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\necho \"$DEST\"\necho \"$RESOURCE\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"\n\nRESOURCE=\"$SRC/\"*.cdm\nRESOURCEEXIST=(\"$SRC/\"*.cdm)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No cdm files\"\n\n\necho \"Copy resource files to archive bundle\"\n\nSRC=\"$BUILD_DIR/../IntermediateBuildFilesPath/UninstalledProducts\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"";
-		};
 		851DF8BD1A564A97A66B856A /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -928,7 +939,35 @@
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-ROADWebService/Pods-ROADWebService-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B1F77CC519AE0F36000E01BA /* Copy Resources */ = {
+		A4F859FB8CEF0C2ABE194F14 /* libObjCAttr - generate attributes */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "libObjCAttr - generate attributes";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
+		};
+		A626F6AAD34759D20A2E8742 /* libObjCAttr - generate attributes */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "libObjCAttr - generate attributes";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/ROADWebServiceTest\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
+		};
+		B1D9423619FFD94800478477 /* Copy Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -940,49 +979,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Copy resource files to bundle\"\nSRC=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/include/ROAD\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\necho \"$DEST\"\necho \"$RESOURCE\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"\n\n\necho \"Copy resource files to bundle\"\nSRC=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\necho \"$DEST\"\necho \"$RESOURCE\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"\n\n\necho \"Copy resource files to archive bundle\"\n\nSRC=\"$BUILD_DIR/../IntermediateBuildFilesPath/UninstalledProducts\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"";
+			shellScript = "echo \"Copy resource files to bundle\"\nSRC=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/include/ROAD\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\necho \"$DEST\"\necho \"$RESOURCE\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"\n\n\necho \"Copy resource files to bundle\"\nSRC=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\necho \"$DEST\"\necho \"$RESOURCE\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"\n\nRESOURCE=\"$SRC/\"*.cdm\nRESOURCEEXIST=(\"$SRC/\"*.cdm)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No cdm files\"\n\n\necho \"Copy resource files to archive bundle\"\n\nSRC=\"$BUILD_DIR/../IntermediateBuildFilesPath/UninstalledProducts\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"";
 		};
-		B1F77CD219AE16A6000E01BA /* libObjCAttr - generate attributes */ = {
+		D99EAACA89C7BCD46BB70378 /* Copy Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "libObjCAttr - generate attributes";
+			name = "Copy Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
-		};
-		CC97DC8561FFB2FFD6547C4C /* libObjCAttr - generate attributes */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "libObjCAttr - generate attributes";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
-		};
-		DC9FA8EDC4320677779E422D /* libObjCAttr - generate attributes */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "libObjCAttr - generate attributes";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
+			shellScript = "echo \"Copy resource files to bundle\"\nSRC=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/include/ROAD\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\necho \"$DEST\"\necho \"$RESOURCE\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"\n\n\necho \"Copy resource files to bundle\"\nSRC=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\necho \"$DEST\"\necho \"$RESOURCE\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"\n\nRESOURCE=\"$SRC/\"*.cdm\nRESOURCEEXIST=(\"$SRC/\"*.cdm)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No cdm files\"\n\n\necho \"Copy resource files to archive bundle\"\n\nSRC=\"$BUILD_DIR/../IntermediateBuildFilesPath/UninstalledProducts\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1058,24 +1070,28 @@
 				83D0E63C184CAB0F002625E6 /* RFWebServiceSerializer.m in Sources */,
 				5BC9D58319A6311E006CFFBA /* RFWebServiceCacheMigrationPolicy.m in Sources */,
 				8353BC9E185B4D63009704A8 /* RFWebResponse+HTTPResponse.m in Sources */,
+				B19F1AE019FA813E0056D3FE /* RFAttachmentTestObject.m in Sources */,
 				839992B817D7658F002DAE8D /* RFMultipartData.m in Sources */,
 				BADFC7EFC89C1AC724735C9F /* ROADGeneratedAttribute.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B1F77CA719AE094C000E01BA /* Sources */ = {
+		B1D9421C19FFD94800478477 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1F77CD519AE1916000E01BA /* RFODataTestEntity.m in Sources */,
-				B1F77CD619AE191A000E01BA /* RFDownloader+FakeRequest.m in Sources */,
-				B1AAC4F819B05B3100799322 /* RFRequestTestAttribute.m in Sources */,
-				B1F77CDC19AE1935000E01BA /* NSURLRequest+RFURLTest.m in Sources */,
-				B1F77CD419AE1914000E01BA /* RFConcreteWebServiceClient.m in Sources */,
-				B1F77CD319AE1911000E01BA /* RFWebServiceClient+DynamicTest.m in Sources */,
-				B1F77CD819AE1922000E01BA /* RFWebServiceClientWithRoot.m in Sources */,
-				B1F77CC419AE0D50000E01BA /* RFWebServiceIntegrationTest.m in Sources */,
-				B1AAC4F719B05AFB00799322 /* RFSerializableTestObject.m in Sources */,
+				B1D9421D19FFD94800478477 /* RFODataTestEntity.m in Sources */,
+				B1D9421E19FFD94800478477 /* RFDownloader+FakeRequest.m in Sources */,
+				B1D9422019FFD94800478477 /* NSURLRequest+RFURLTest.m in Sources */,
+				B1D9422119FFD94800478477 /* RFWebServiceClientWithRoot.m in Sources */,
+				B1D9422219FFD94800478477 /* RFSerializableTestObject.m in Sources */,
+				B1D9422319FFD94800478477 /* RFConcreteWebServiceClient.m in Sources */,
+				B1D9423D19FFD97500478477 /* RFWebServiceIntegrationTest.m in Sources */,
+				B1D9422519FFD94800478477 /* RFRequestTestAttribute.m in Sources */,
+				B1D9422619FFD94800478477 /* RFRequestTestProcessor.m in Sources */,
+				B1D9422719FFD94800478477 /* RFWebServiceClient+DynamicTest.m in Sources */,
+				B1D9422819FFD94800478477 /* RFDownloadFaker.m in Sources */,
+				B1D9422C19FFD94800478477 /* ROADGeneratedAttribute.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1087,10 +1103,10 @@
 			target = 78FB204115BD336B00C2137A /* ROADWebService */;
 			targetProxy = 5B07A13F19E4041B00BBE2CF /* PBXContainerItemProxy */;
 		};
-		B1F77CBB19AE094C000E01BA /* PBXTargetDependency */ = {
+		B1D9421819FFD94800478477 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 78FB204115BD336B00C2137A /* ROADWebService */;
-			targetProxy = B1F77CBA19AE094C000E01BA /* PBXContainerItemProxy */;
+			targetProxy = B1D9421919FFD94800478477 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1344,78 +1360,76 @@
 			};
 			name = Release;
 		};
-		B1F77CBC19AE094C000E01BA /* Debug */ = {
+		B1D9423919FFD94800478477 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C8BFE9EC30762B2A8A1BAA5 /* Pods-ROADWebServiceIntegrationTest.debug.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = NO;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				ENABLE_NS_ASSERTIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inhereted)",
 					"$(DEVELOPER_LIBRARY_DIR)",
 					"$(SDKROOT)/Developer/Library/Frameworks",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADWebServiceIntegrationTest/ROADWebServiceIntegrationTest-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"\"${PODS_ROOT}/Headers/libObjCAttr\"",
+					"${PODS_ROOT}/Headers/Public/libObjCAttr",
+					"${PODS_ROOT}/Headers/Public/libObjCAttr/ROAD",
 				);
 				INFOPLIST_FILE = "ROADWebServiceIntegrationTest/ROADWebServiceIntegrationTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 				);
 				PODS_ROOT = "${SRCROOT}/../Pods";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = xctest;
+				PRODUCT_NAME = ROADWebserviceIntegrationTest;
 			};
 			name = Debug;
 		};
-		B1F77CBD19AE094C000E01BA /* Release */ = {
+		B1D9423A19FFD94800478477 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E083AE41F5561E51B43C08CA /* Pods-ROADWebServiceIntegrationTest.release.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = NO;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				ENABLE_NS_ASSERTIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inhereted)",
 					"$(DEVELOPER_LIBRARY_DIR)",
 					"$(SDKROOT)/Developer/Library/Frameworks",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADWebServiceIntegrationTest/ROADWebServiceIntegrationTest-Prefix.pch";
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"\"${PODS_ROOT}/Headers/libObjCAttr\"",
+					"${PODS_ROOT}/Headers/Public/libObjCAttr",
+					"${PODS_ROOT}/Headers/Public/libObjCAttr/ROAD",
 				);
 				INFOPLIST_FILE = "ROADWebServiceIntegrationTest/ROADWebServiceIntegrationTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 				);
 				PODS_ROOT = "${SRCROOT}/../Pods";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = xctest;
+				PRODUCT_NAME = ROADWebserviceIntegrationTest;
 			};
 			name = Release;
 		};
@@ -1458,11 +1472,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B1F77CBE19AE094D000E01BA /* Build configuration list for PBXNativeTarget "ROADWebServiceIntegrationTest" */ = {
+		B1D9423819FFD94800478477 /* Build configuration list for PBXNativeTarget "ROADWebServiceIntegrationTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B1F77CBC19AE094C000E01BA /* Debug */,
-				B1F77CBD19AE094C000E01BA /* Release */,
+				B1D9423919FFD94800478477 /* Debug */,
+				B1D9423A19FFD94800478477 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
