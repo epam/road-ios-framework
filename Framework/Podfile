@@ -15,7 +15,6 @@ end
 
 target :ROADCoreTest do
   xcodeproj 'ROADCore/ROADCore.xcodeproj'
-  pod 'libObjCAttr'
 end
 
 target :ROADServices do
@@ -24,8 +23,7 @@ target :ROADServices do
 end
 
 target :ROADServicesTest do
-  xcodeproj 'ROADServices/ROADServices.xcodeproj'	
-  pod 'libObjCAttr'	
+  xcodeproj 'ROADServices/ROADServices.xcodeproj'		
 end
 
 target :ROADSerialization do
@@ -35,7 +33,6 @@ end
 
 target :ROADSerializationTest do
   xcodeproj 'ROADSerialization/ROADSerialization.xcodeproj'
-  pod 'libObjCAttr'
 end
 
 target :ROADWebService do
@@ -45,7 +42,6 @@ end
 
 target :ROADWebServiceTest do
   xcodeproj 'ROADWebService/ROADWebService.xcodeproj'
-  pod 'libObjCAttr'
 end
 
 target :Utilities do

@@ -54,7 +54,6 @@ static NSString * const kRFURLGapRegexpFormat = @"\\w+=&|\\w+=&|&?\\w+=\\s*$";
             NSTextCheckingResult * const aResult = [matches lastObject];
             NSString *subString = [[self substringWithRange:aResult.range] stringByReplacingOccurrencesOfString:escapeString withString:@""];
             NSString *value = valueDictionary[subString];
-            NSAssert(value, @"Value must not be nil.");
             
             if ([value length] > 0) {
                 [self replaceCharactersInRange:aResult.range withString:value];

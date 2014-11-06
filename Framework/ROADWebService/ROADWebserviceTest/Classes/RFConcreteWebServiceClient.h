@@ -49,7 +49,7 @@
 
 @interface RFConcreteWebServiceClient : RFWebServiceClient
 
-RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO, relativePath = @"%%0%%")
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO)
 RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{@"Accept" : @"application/json"})
 RF_ATTRIBUTE(RFWebServiceErrorHandler, handlerClass = [RFODataErrorHandler class])
 - (id<RFWebServiceCancellable>)testErrorHandlerRootWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;

@@ -41,7 +41,6 @@
 		633298ED18AA234400D0C0CF /* RFDisabledClassNameSerializationTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 633298EB18AA234400D0C0CF /* RFDisabledClassNameSerializationTestObject.m */; };
 		63D10F08185EFA7700BD9046 /* RFBooleanTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D10F07185EFA7700BD9046 /* RFBooleanTranslator.m */; };
 		63D10F10185EFAB700BD9046 /* RFSerializableBoolean.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D10F0F185EFAB700BD9046 /* RFSerializableBoolean.m */; };
-		704F02BF59245E24C227115E /* libPods-ROADSerializationTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8066B4FEACFB9ED965F72EA /* libPods-ROADSerializationTest.a */; };
 		7841618916480C1E0089FDE9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7841618716480C1E0089FDE9 /* InfoPlist.strings */; };
 		784161AC16480CC40089FDE9 /* RFJSONStringHandlingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 784161AB16480CC40089FDE9 /* RFJSONStringHandlingTest.m */; };
 		78513E6D164921BF0049549A /* RFSerializationTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 78513E6C164921BF0049549A /* RFSerializationTestObject.m */; };
@@ -235,7 +234,6 @@
 				1176413918E46BFD00B1688B /* libUtilities.a in Frameworks */,
 				8369B76418D87EDC002B5C4E /* libxml2.dylib in Frameworks */,
 				8D900EBD17CF9B580018D336 /* libROADSerialization.a in Frameworks */,
-				704F02BF59245E24C227115E /* libPods-ROADSerializationTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,13 +525,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7841619616480C1E0089FDE9 /* Build configuration list for PBXNativeTarget "ROADSerializationTest" */;
 			buildPhases = (
-				814076F479F677C319E81850 /* libObjCAttr - generate attributes */,
-				65D42D6352D04D451A775207 /* Check Pods Manifest.lock */,
+				E1BAB1EEE175F44E83D130E0 /* libObjCAttr - generate attributes */,
 				7841617816480C1D0089FDE9 /* Sources */,
 				7841617916480C1D0089FDE9 /* Frameworks */,
 				7841617A16480C1D0089FDE9 /* Resources */,
 				5A1CC60B176F282A00A6C154 /* ShellScript */,
-				8559D0FED280D8EA2D5D50C2 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -549,7 +545,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F0A8ABE15C299340044A782 /* Build configuration list for PBXNativeTarget "ROADSerialization" */;
 			buildPhases = (
-				02E5052B2DAB3711D29ED32E /* libObjCAttr - generate attributes */,
+				37E7620F27A7F333A8F04ADA /* libObjCAttr - generate attributes */,
 				FA06730651A2965AEED29793 /* Check Pods Manifest.lock */,
 				9F0A8AB015C299340044A782 /* Sources */,
 				9F0A8AB115C299340044A782 /* Frameworks */,
@@ -619,7 +615,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		02E5052B2DAB3711D29ED32E /* libObjCAttr - generate attributes */ = {
+		37E7620F27A7F333A8F04ADA /* libObjCAttr - generate attributes */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -646,35 +642,6 @@
 			shellPath = /bin/sh;
 			shellScript = "echo \"Copy resource files to bundle\"\nSRC=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/include/ROAD\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\necho \"$DEST\"\necho \"$RESOURCE\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"\n\n\necho \"Copy resource files to archive bundle\"\n\nSRC=\"$BUILD_DIR/../IntermediateBuildFilesPath/UninstalledProducts\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"";
 		};
-		65D42D6352D04D451A775207 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		814076F479F677C319E81850 /* libObjCAttr - generate attributes */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "libObjCAttr - generate attributes";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
-		};
 		8353CC4E189F88E900135D86 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -687,21 +654,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "source ~/.bash_profile\n\nhash oclint &> /dev/null\nif [ $? -eq 1 ]; then\necho >&2 \"oclint not found, analyzing stopped\"\nexit 1\nfi\n\ncd \"${TARGET_TEMP_DIR}\"\n\necho \"[*] starting xcodebuild to rebuild the project..\"\n# clean previous output\nif [ -f xcodebuild.log ]; then\nrm xcodebuild.log\nfi\n\ncd \"${SRCROOT}\"/..\n\nxcodebuild clean -workspace ROADFramework.xcworkspace -scheme ROADSerialization -configuration Debug\n\n#build xcodebuild.log\nxcodebuild -workspace ROADFramework.xcworkspace -scheme ROADSerialization -configuration Debug | tee \"${TARGET_TEMP_DIR}/xcodebuild.log\"\n\necho \"[*] transforming xcodebuild.log into compile_commands.json...\"\necho \"TARGET_TEMP_DIR: ${TARGET_TEMP_DIR}\"\ncd \"${TARGET_TEMP_DIR}\"\n#transform it into compile_commands.json\necho \"oclint-xcodebuild -e ROADGeneratedAttributes\"\noclint-xcodebuild -e ROADGeneratedAttributes -e Pods\n\necho \"[*] copy compile_commands.json to the project root...\"\ncp \"${TARGET_TEMP_DIR}/compile_commands.json\" \"${SRCROOT}/compile_commands.json\"\n\necho \"[*] starting analyzing\"\ncd \"${TARGET_TEMP_DIR}\"\noclint-json-compilation-database -v -e ROADGeneratedAttributes -e Pods -- -rc=LONG_LINE=500 -rc=LONG_VARIABLE_NAME=50 -max-priority-2 30 -max-priority-3 152 | sed 's/\\(.*\\.\\m\\{1,2\\}:[0-9]*:[0-9]*:\\)/\\1 warning:/'";
-		};
-		8559D0FED280D8EA2D5D50C2 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-ROADSerializationTest/Pods-ROADSerializationTest-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		B1337F82CF2205F54EDA8615 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -717,6 +669,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-ROADSerialization/Pods-ROADSerialization-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		E1BAB1EEE175F44E83D130E0 /* libObjCAttr - generate attributes */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "libObjCAttr - generate attributes";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
 		};
 		FA06730651A2965AEED29793 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -809,7 +775,6 @@
 /* Begin XCBuildConfiguration section */
 		7841618E16480C1E0089FDE9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1CF434D3C9E2C0BD908D1684 /* Pods-ROADSerializationTest.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
@@ -852,6 +817,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/include/libxml2,
+					"${PODS_ROOT}/Headers/Public/libObjCAttr",
 				);
 				INFOPLIST_FILE = "ROADSerializationTest/ROADSerializationTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -862,13 +828,13 @@
 					"$(inherited)",
 					"-ObjC",
 				);
+				PODS_ROOT = "${SRCROOT}/../Pods";
 				PRODUCT_NAME = ROADSerializationTest;
 			};
 			name = Debug;
 		};
 		7841618F16480C1E0089FDE9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D8E7D3ECF18EE2C9D6A0E7F5 /* Pods-ROADSerializationTest.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
@@ -911,6 +877,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/include/libxml2,
+					"${PODS_ROOT}/Headers/Public/libObjCAttr",
 				);
 				INFOPLIST_FILE = "ROADSerializationTest/ROADSerializationTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -920,6 +887,7 @@
 					"$(inherited)",
 					"-ObjC",
 				);
+				PODS_ROOT = "${SRCROOT}/../Pods";
 				PRODUCT_NAME = ROADSerializationTest;
 			};
 			name = Release;

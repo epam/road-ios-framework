@@ -32,7 +32,6 @@
 
 
 #import <XCTest/XCTest.h>
-#import <ROAD/ROADAttribute.h>
 
 #import "NSArray+RFEmptyArrayChecks.h"
 
