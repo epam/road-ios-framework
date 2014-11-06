@@ -241,12 +241,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5ACD215F1741179500CC61AC /* Build configuration list for PBXNativeTarget "ROADServicesTest" */;
 			buildPhases = (
-				A447655414FAA81C1FA28757 /* libObjCAttr - generate attributes */,
-				0459C4C60C781924FBE0E631 /* Check Pods Manifest.lock */,
+				9F80A9610CBF688E99C2E3F3 /* libObjCAttr - generate attributes */,
 				5ACD214A1741179500CC61AC /* Sources */,
 				5ACD214B1741179500CC61AC /* Frameworks */,
 				5ACD214C1741179500CC61AC /* Resources */,
-				9A917240020EAB1E1263692F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -262,7 +260,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7869945B16AEBF3E00B28760 /* Build configuration list for PBXNativeTarget "ROADServices" */;
 			buildPhases = (
-				593710F88D0F0787B062AA2B /* libObjCAttr - generate attributes */,
+				48E1C68A77A691674B8DC182 /* libObjCAttr - generate attributes */,
 				66881C4766A8652213B517F3 /* Check Pods Manifest.lock */,
 				7869944916AEBF3E00B28760 /* Sources */,
 				7869944A16AEBF3E00B28760 /* Frameworks */,
@@ -320,22 +318,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0459C4C60C781924FBE0E631 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		593710F88D0F0787B062AA2B /* libObjCAttr - generate attributes */ = {
+		48E1C68A77A691674B8DC182 /* libObjCAttr - generate attributes */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -393,22 +376,7 @@
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-ROADServices/Pods-ROADServices-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9A917240020EAB1E1263692F /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-ROADServicesTest/Pods-ROADServicesTest-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A447655414FAA81C1FA28757 /* libObjCAttr - generate attributes */ = {
+		9F80A9610CBF688E99C2E3F3 /* libObjCAttr - generate attributes */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -483,7 +451,10 @@
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADServicesTest/ROADServicesTest-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_ROOT}/Headers/Public/libObjCAttr",
+				);
 				INFOPLIST_FILE = "ROADServicesTest/ROADServicesTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
@@ -493,6 +464,7 @@
 					"$(inherited)",
 					"-ObjC",
 				);
+				PODS_ROOT = "${SRCROOT}/../Pods";
 				PRODUCT_NAME = ROADServicesTest;
 			};
 			name = Debug;
@@ -513,7 +485,10 @@
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ROADServicesTest/ROADServicesTest-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_ROOT}/Headers/Public/libObjCAttr",
+				);
 				INFOPLIST_FILE = "ROADServicesTest/ROADServicesTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
@@ -522,6 +497,7 @@
 					"$(inherited)",
 					"-ObjC",
 				);
+				PODS_ROOT = "${SRCROOT}/../Pods";
 				PRODUCT_NAME = ROADServicesTest;
 			};
 			name = Release;

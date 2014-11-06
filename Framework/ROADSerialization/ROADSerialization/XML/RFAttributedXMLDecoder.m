@@ -196,13 +196,20 @@
     id newValue = value;
     
     if (existingValue) {
-        if ([newValue isKindOfClass:[NSArray class]] && [existingValue isKindOfClass:[NSArray class]]) newValue = [existingValue arrayByAddingObjectsFromArray:newValue];
+        if ([newValue isKindOfClass:[NSArray class]] && [existingValue isKindOfClass:[NSArray class]]) {
+            newValue = [existingValue arrayByAddingObjectsFromArray:newValue];
+        }
         else if ([newValue isKindOfClass:[NSDictionary class]] && [existingValue isKindOfClass:[NSDictionary class]]) {
             existingValue = [existingValue mutableCopy];
             [existingValue addEntriesFromDictionary:newValue];
             newValue = [existingValue copy];
         }
-        else if ([newValue isKindOfClass:[NSSet class]] && [existingValue isKindOfClass:[NSSet class]]) newValue = [existingValue setByAddingObjectsFromSet:value];
+        else if ([newValue isKindOfClass:[NSSet class]] && [existingValue isKindOfClass:[NSSet class]]) {
+            newValue = [existingValue setByAddingObjectsFromSet:value];
+        }
+        else if ([newValue isKindOfClass:[NSString class]] && [existingValue isKindOfClass:[NSString class]]) {
+            newValue = [existingValue stringByAppendingString:value];
+        }
     }
     else if (_context.mutable) newValue = [newValue copy];
     

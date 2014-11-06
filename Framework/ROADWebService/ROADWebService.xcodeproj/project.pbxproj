@@ -416,7 +416,6 @@
 				8369B7A518D9BA2D002B5C4E /* CoreData.framework in Frameworks */,
 				33F0EF1618051DB1001DCCED /* libxml2.2.dylib in Frameworks */,
 				CD69624116F0D2100090B201 /* CFNetwork.framework in Frameworks */,
-				93F64350E25BFE255F1D91F0 /* libPods-ROADWebServiceTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1055,7 +1054,7 @@
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "libObjCAttr - generate attributes";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1196,7 +1195,6 @@
 /* Begin XCBuildConfiguration section */
 		783AF1B51650FAF800AD247E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8192246B6031E34D79F8CA8E /* Pods-ROADWebServiceTest.debug.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1216,7 +1214,6 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"${PODS_ROOT}/Headers/Public/libObjCAttr",
-					"${PODS_ROOT}/Headers/Public/libObjCAttr/ROAD",
 				);
 				INFOPLIST_FILE = "ROADWebserviceTest/ROADWebserviceTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1226,13 +1223,13 @@
 					"$(inherited)",
 					"-ObjC",
 				);
+				PODS_ROOT = "${SRCROOT}/../Pods";
 				PRODUCT_NAME = ROADWebServiceTest;
 			};
 			name = Debug;
 		};
 		783AF1B61650FAF800AD247E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9CB87B2173873976478518D2 /* Pods-ROADWebServiceTest.release.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1252,7 +1249,6 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"${PODS_ROOT}/Headers/Public/libObjCAttr",
-					"${PODS_ROOT}/Headers/Public/libObjCAttr/ROAD",
 				);
 				INFOPLIST_FILE = "ROADWebserviceTest/ROADWebserviceTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1261,6 +1257,7 @@
 					"$(inherited)",
 					"-ObjC",
 				);
+				PODS_ROOT = "${SRCROOT}/../Pods";
 				PRODUCT_NAME = ROADWebServiceTest;
 			};
 			name = Release;
