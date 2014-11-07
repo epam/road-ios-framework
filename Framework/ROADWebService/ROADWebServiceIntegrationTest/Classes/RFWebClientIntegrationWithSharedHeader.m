@@ -1,5 +1,5 @@
 //
-//  RFServiceProvider+ConcreteWebServiceClient.h
+//  RFWebClientIntegrationWithSharedHeader.m
 //  ROADWebService
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
@@ -31,13 +31,9 @@
 //  for additional information regarding copyright ownership and licensing
 
 
-#import <ROAD/ROADServices.h>
-#import "RFConcreteWebServiceClient.h"
+#import "RFWebClientIntegrationWithSharedHeader.h"
 
 
-@interface RFServiceProvider (ConcreteWebServiceClient)
-
-RF_ATTRIBUTE(RFService, serviceClass = [RFConcreteWebServiceClient class])
-+ (RFConcreteWebServiceClient *)concreteWebServiceClient;
+@implementation RFWebClientIntegrationWithSharedHeader
 
 @end

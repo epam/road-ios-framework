@@ -34,7 +34,6 @@
 #import <XCTest/XCTest.h>
 
 #import "RFConcreteWebServiceClient.h"
-#import "RFWebServiceClientWithRoot.h"
 #import "RFWebServiceCachingManager.h"
 #import "RFDownloadFaker.h"
 

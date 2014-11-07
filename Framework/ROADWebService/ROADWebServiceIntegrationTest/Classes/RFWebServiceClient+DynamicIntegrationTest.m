@@ -1,5 +1,5 @@
 //
-//  RFWebClientWithSharedHeader.h
+//  RFWebServiceClientTest+DynamicIntegrationTest.m
 //  ROADWebService
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
@@ -31,13 +31,14 @@
 //  for additional information regarding copyright ownership and licensing
 
 
-#import "RFWebServiceClient.h"
-#import "RFXMLSerializer.h"
-#import "RFWebServiceSerializer.h"
+#import "RFWebServiceClient+DynamicIntegrationTest.h"
 
 
-RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{ @"key1" : @"value1"})
-RF_ATTRIBUTE(RFWebServiceSerializer, serializerClass = [RFXMLSerializer class])
-@interface RFWebClientWithSharedHeader : RFWebServiceClient
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wincomplete-implementation"
+
+@implementation RFWebServiceClient (DynamicIntegrationTest)
 
 @end
+
+#pragma clang diagnostic pop

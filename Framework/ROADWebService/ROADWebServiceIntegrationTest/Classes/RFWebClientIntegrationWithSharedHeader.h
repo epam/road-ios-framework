@@ -1,5 +1,5 @@
 //
-//  RFWebServiceClientWithRoot.h
+//  RFWebClientIntegrationWithSharedHeader.h
 //  ROADWebService
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
@@ -32,10 +32,12 @@
 
 
 #import "RFWebServiceClient.h"
-#import "RFWebService.h"
+#import "RFXMLSerializer.h"
+#import "RFWebServiceSerializer.h"
 
 
-RF_ATTRIBUTE(RFWebService, serviceRoot=@"http://google.com")
-@interface RFWebServiceClientWithRoot : RFWebServiceClient
+RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{ @"key1" : @"value1"})
+RF_ATTRIBUTE(RFWebServiceSerializer, serializerClass = [RFXMLSerializer class])
+@interface RFWebClientIntegrationWithSharedHeader : RFWebServiceClient
 
 @end
