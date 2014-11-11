@@ -44,16 +44,6 @@
 
 @interface RFWebServiceClient (DynamicTest)
 
-RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, method = @"GET", relativePath = @"%%0%%")
-RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{@"Accept" : @"application/json"}, returnHeadersInBody = YES)
-- (id<RFWebServiceCancellable>)dynamicTestHttpRequestPathWithHeaderFields:(NSString *)path success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
-
-RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, method = @"GET", relativePath = @"%%0%%")
-- (id<RFWebServiceCancellable>)dynamicTestHttpRequestPath:(NSString *)path success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
-
-RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO, method = @"GET", relativePath = @"%%0%%")
-- (id<RFWebServiceCancellable>)dynamicTestHttpsRequestPath:(NSString *)path success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
-
 RF_ATTRIBUTE(RFWebServiceCall, method = @"POST", prototypeClass = [RFSerializableTestObject class])
 RF_ATTRIBUTE(RFWebServiceSerializer, serializerClass = [RFXMLSerializer class])
 - (id<RFWebServiceCancellable>)testXMLSerializerWithObject:(RFSerializableTestObject *)headerValue withSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;

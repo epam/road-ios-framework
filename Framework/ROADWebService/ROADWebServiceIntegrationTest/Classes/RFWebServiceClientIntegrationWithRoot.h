@@ -1,5 +1,5 @@
 //
-//  RFWebServiceClientWithRoot.m
+//  RFWebServiceClientIntegrationWithRoot.h
 //  ROADWebService
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
@@ -31,14 +31,11 @@
 //  for additional information regarding copyright ownership and licensing
 
 
-#import "RFWebServiceClientWithRoot.h"
+#import "RFWebService.h"
+#import "RFWebServiceClient.h"
 
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wincomplete-implementation"
-
-@implementation RFWebServiceClientWithRoot
+RF_ATTRIBUTE(RFWebService, serviceRoot=@"http://google.com")
+@interface RFWebServiceClientIntegrationWithRoot : RFWebServiceClient
 
 @end
-
-#pragma clang diagnostic pop

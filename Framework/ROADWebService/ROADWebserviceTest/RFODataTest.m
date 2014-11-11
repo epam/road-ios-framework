@@ -35,7 +35,6 @@
 
 #import "RFODataTestEntity.h"
 #import "RFODataFetchRequest.h"
-#import "RFODataTestEntity.h"
 #import "RFConcreteWebServiceClient.h"
 #import "RFWebServiceCancellable.h"
 #import "RFDownloader.h"
