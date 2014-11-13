@@ -1,6 +1,6 @@
 //
-//  RFServicesTest.m
-//  ROADServicesTest
+//  RFRecursivelyTestService.m
+//  ROADServices
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
 //
@@ -30,44 +30,35 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
-
-#import "RFServicesTest.h"
-#import "ROADServices.h"
-#import "RFTestService.h"
+#import "RFRecursivelyTestService.h"
+#import "RFRecursionHelperTestService.h"
 #import "RFServiceProvider+RFTestService.h"
 #import "RFServiceProvider+RFRecursivelyTestService.h"
+#import "RFServiceProvider+RFRecursionHelperTestService.h"
 
-@implementation RFServicesTest
+const NSUInteger maxRecursionsCount = 100;
+static NSUInteger currentRecursionsCount = 0;
+static BOOL byTurnsRecursion = NO;
 
-- (void)testInstanceFakeService
-{
-    RFTestService *databaseManager = [RFServiceProvider serviceInstance];
-    XCTAssertNotNil(databaseManager, @"Service has not been initialised.");
+@implementation RFRecursivelyTestService
+
+- (instancetype)init {
+    self = [super init];
+    if(self && currentRecursionsCount < maxRecursionsCount) {
+        if (byTurnsRecursion) {
+            currentRecursionsCount++;
+            [RFServiceProvider recursivelyServiceInstance];
+        }
+        else {
+            currentRecursionsCount += 2;
+            [RFServiceProvider recursionHelperServiceInstance];
+        }
+    }
+    return self;
 }
 
-- (void)testServiceWithoutAnnotations {
-    XCTAssertFalse([RFServiceProvider resolveClassMethod:@selector(serviceWithoutAttributes)], @"Service provider respond with undefined result on wrong specified method");
-}
-
-- (void)testServiceWithMissingPropertyOfAttribute {
-    id service = [RFServiceProvider serviceWithMissingPropertyOfAttribute];
-    XCTAssertNil(service, @"Service provider respond with undefined result on method with wrong attribute");
-}
-
-- (void)testServiceWithWrongAnnotations {
-    XCTAssertFalse([RFServiceProvider resolveClassMethod:@selector(serviceWithWrongAttribute)], @"Service provider respond with undefined result on method with wrong attribute");
-}
-
-- (void)testSelfRecursivelyService {
-    [RFRecursivelyTestService useByTurnsRecursion:NO];
-    RFRecursivelyTestService *databaseManager = [RFServiceProvider recursivelyServiceInstance];
-    XCTAssertNotNil(databaseManager, @"Recursively service has not been initialised.");
-}
-
-- (void)testInTurnRecursivelyService {
-    [RFRecursivelyTestService useByTurnsRecursion:YES];
-    RFRecursivelyTestService *databaseManager = [RFServiceProvider recursivelyServiceInstance];
-    XCTAssertNotNil(databaseManager, @"In turn recursively service has not been initialised.");
++ (void)useByTurnsRecursion:(BOOL)state {
+    byTurnsRecursion = state;
 }
 
 @end

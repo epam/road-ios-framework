@@ -1,6 +1,6 @@
 //
-//  RFServicesTest.m
-//  ROADServicesTest
+//  RFServiceProvider+RFRecursivelyTestService.h
+//  ROADServices
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
 //
@@ -30,44 +30,16 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
+#import "RFServiceProvider.h"
+#import "RFRecursivelyTestService.h"
+#import "RFService.h"
 
-#import "RFServicesTest.h"
-#import "ROADServices.h"
-#import "RFTestService.h"
-#import "RFServiceProvider+RFTestService.h"
-#import "RFServiceProvider+RFRecursivelyTestService.h"
+@interface RFServiceProvider (RFRecursivelyTestService)
 
-@implementation RFServicesTest
-
-- (void)testInstanceFakeService
-{
-    RFTestService *databaseManager = [RFServiceProvider serviceInstance];
-    XCTAssertNotNil(databaseManager, @"Service has not been initialised.");
-}
-
-- (void)testServiceWithoutAnnotations {
-    XCTAssertFalse([RFServiceProvider resolveClassMethod:@selector(serviceWithoutAttributes)], @"Service provider respond with undefined result on wrong specified method");
-}
-
-- (void)testServiceWithMissingPropertyOfAttribute {
-    id service = [RFServiceProvider serviceWithMissingPropertyOfAttribute];
-    XCTAssertNil(service, @"Service provider respond with undefined result on method with wrong attribute");
-}
-
-- (void)testServiceWithWrongAnnotations {
-    XCTAssertFalse([RFServiceProvider resolveClassMethod:@selector(serviceWithWrongAttribute)], @"Service provider respond with undefined result on method with wrong attribute");
-}
-
-- (void)testSelfRecursivelyService {
-    [RFRecursivelyTestService useByTurnsRecursion:NO];
-    RFRecursivelyTestService *databaseManager = [RFServiceProvider recursivelyServiceInstance];
-    XCTAssertNotNil(databaseManager, @"Recursively service has not been initialised.");
-}
-
-- (void)testInTurnRecursivelyService {
-    [RFRecursivelyTestService useByTurnsRecursion:YES];
-    RFRecursivelyTestService *databaseManager = [RFServiceProvider recursivelyServiceInstance];
-    XCTAssertNotNil(databaseManager, @"In turn recursively service has not been initialised.");
-}
+/**
+ The method to return the service instance. The attribute indicates this method returns a service, and which class to use in case the service is not yet initialized.
+ */
+RF_ATTRIBUTE(RFService, serviceClass = [RFRecursivelyTestService class])
++ (RFRecursivelyTestService *)recursivelyServiceInstance;
 
 @end
