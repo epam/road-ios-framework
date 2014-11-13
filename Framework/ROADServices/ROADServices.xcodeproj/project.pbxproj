@@ -31,6 +31,8 @@
 		7869946B16AEBFE100B28760 /* ROADServices.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 7869946A16AEBFC400B28760 /* ROADServices.h */; };
 		7869946C16AEBFE400B28760 /* RFService.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 7869946216AEBF9A00B28760 /* RFService.h */; };
 		839A198418C6087C001A727C /* libROADCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 839A198318C6087C001A727C /* libROADCore.a */; };
+		B18B08491A139D520048C883 /* RFRecursivelyTestService.m in Sources */ = {isa = PBXBuildFile; fileRef = B18B08481A139D510048C883 /* RFRecursivelyTestService.m */; };
+		B18B084F1A1490D20048C883 /* RFRecursionHelperTestService.m in Sources */ = {isa = PBXBuildFile; fileRef = B18B084E1A1490CD0048C883 /* RFRecursionHelperTestService.m */; };
 		D771947717CF41BC0011047F /* ROADGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = D771947617CF41BC0011047F /* ROADGeneratedAttribute.m */; };
 		D7AF13E817CF541500A92C31 /* RFServiceProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AF13E617CF541500A92C31 /* RFServiceProvider.m */; };
 		D7AF13EB17CF558B00A92C31 /* RFServiceProvider.h in Copy Files */ = {isa = PBXBuildFile; fileRef = D7AF13E717CF541500A92C31 /* RFServiceProvider.h */; };
@@ -86,6 +88,12 @@
 		78F95ADD16E9F16600E58C3B /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		839A198318C6087C001A727C /* libROADCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libROADCore.a; path = "../ROADCore/build/Debug-iphoneos/libROADCore.a"; sourceTree = "<group>"; };
 		96F3311BD559E30B9B3949B4 /* ROADGeneratedAttribute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ROADGeneratedAttribute.m; path = ROADServices/ROADGeneratedAttributes/ROADGeneratedAttribute.m; sourceTree = "<group>"; };
+		B18B08471A139D510048C883 /* RFRecursivelyTestService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFRecursivelyTestService.h; sourceTree = "<group>"; };
+		B18B08481A139D510048C883 /* RFRecursivelyTestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFRecursivelyTestService.m; sourceTree = "<group>"; };
+		B18B084C1A139F460048C883 /* RFServiceProvider+RFRecursivelyTestService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RFServiceProvider+RFRecursivelyTestService.h"; sourceTree = "<group>"; };
+		B18B084D1A1490CD0048C883 /* RFRecursionHelperTestService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RFRecursionHelperTestService.h; sourceTree = "<group>"; };
+		B18B084E1A1490CD0048C883 /* RFRecursionHelperTestService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RFRecursionHelperTestService.m; sourceTree = "<group>"; };
+		B18B08501A1491410048C883 /* RFServiceProvider+RFRecursionHelperTestService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RFServiceProvider+RFRecursionHelperTestService.h"; sourceTree = "<group>"; };
 		CAA8E924E4489B540A1F4BB9 /* Pods-ROADServices.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ROADServices.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-ROADServices/Pods-ROADServices.debug.xcconfig"; sourceTree = "<group>"; };
 		D771947617CF41BC0011047F /* ROADGeneratedAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ROADGeneratedAttribute.m; path = ROADGeneratedAttributes/ROADGeneratedAttribute.m; sourceTree = "<group>"; };
 		D7AF13E617CF541500A92C31 /* RFServiceProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFServiceProvider.m; sourceTree = "<group>"; };
@@ -123,6 +131,8 @@
 			children = (
 				5ACD21621741187600CC61AC /* TestService */,
 				D7AF141617CF642500A92C31 /* RFServiceProvider+RFTestService.h */,
+				B18B084C1A139F460048C883 /* RFServiceProvider+RFRecursivelyTestService.h */,
+				B18B08501A1491410048C883 /* RFServiceProvider+RFRecursionHelperTestService.h */,
 				5ACD215B1741179500CC61AC /* RFServicesTest.h */,
 				5ACD215C1741179500CC61AC /* RFServicesTest.m */,
 				5ACD21561741179500CC61AC /* Supporting Files */,
@@ -146,6 +156,10 @@
 			children = (
 				D7AF141917CF64B700A92C31 /* RFTestService.h */,
 				D7AF141A17CF64B700A92C31 /* RFTestService.m */,
+				B18B08471A139D510048C883 /* RFRecursivelyTestService.h */,
+				B18B08481A139D510048C883 /* RFRecursivelyTestService.m */,
+				B18B084D1A1490CD0048C883 /* RFRecursionHelperTestService.h */,
+				B18B084E1A1490CD0048C883 /* RFRecursionHelperTestService.m */,
 			);
 			name = TestService;
 			sourceTree = "<group>";
@@ -413,6 +427,8 @@
 				5ACD215D1741179500CC61AC /* RFServicesTest.m in Sources */,
 				D771947717CF41BC0011047F /* ROADGeneratedAttribute.m in Sources */,
 				D7AF141B17CF64B700A92C31 /* RFTestService.m in Sources */,
+				B18B08491A139D520048C883 /* RFRecursivelyTestService.m in Sources */,
+				B18B084F1A1490D20048C883 /* RFRecursionHelperTestService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
