@@ -36,7 +36,9 @@
 
 #import "RFServiceProvider.h"
 
+
 const char *RFServiceMethodEncoding = "@@:";
+
 
 @implementation RFServiceProvider
 
@@ -53,7 +55,7 @@ static NSMutableDictionary *services;
         // Framework's calls must not be checked on service attriutes
         if (![selectorName hasPrefix:@"RF_"]) {
             RFService *serviceAttribute = [RFServiceProvider RF_attributeForMethod:selectorName withAttributeType:[RFService class]];
-            
+
             if (serviceAttribute != nil) {
                 result = YES;
                 IMP const implementation = [self methodForSelector:@selector(fetchService)];
@@ -62,23 +64,24 @@ static NSMutableDictionary *services;
             }
         }
     }
-    
+
     return result;
 }
 
 + (id)fetchService {
     NSString * const serviceName = NSStringFromSelector(_cmd);
     __block id theService;
-    dispatch_sync([self RF_sharedQueue], ^{
+    dispatch_sync([self sharedQueue], ^{
         theService = services[serviceName];
-
-        if (theService == nil) {
-            RFService * const serviceAttribute = [[self class] RF_attributeForMethod:serviceName withAttributeType:[RFService class]];
-            Class const serviceClass = serviceAttribute.serviceClass;
-            theService = [[(id)serviceClass alloc] init];
-            [self registerService:theService forServiceName:serviceName];
-        }
     });
+
+    if (theService == nil) {
+        RFService * const serviceAttribute = [[self class] RF_attributeForMethod:serviceName withAttributeType:[RFService class]];
+        Class const serviceClass = serviceAttribute.serviceClass;
+        theService = [[(id)serviceClass alloc] init];
+        [self registerService:theService forServiceName:serviceName];
+    }
+
     return theService;
 }
 
@@ -86,23 +89,25 @@ static NSMutableDictionary *services;
 #pragma mark - Service registration
 
 + (void)registerService:(const id)aServiceInstance forServiceName:(NSString * const)serviceName {
-    
-    if (aServiceInstance != nil) {
-        if (!services) {
-            services = [[NSMutableDictionary alloc] init];
+
+    dispatch_sync([self sharedQueue], ^{
+        if (aServiceInstance != nil) {
+            if (!services) {
+                services = [[NSMutableDictionary alloc] init];
+            }
+
+            services[serviceName] = aServiceInstance;
         }
-        
-        services[serviceName] = aServiceInstance;
-    }
+    });
 }
 
-+ (dispatch_queue_t)RF_sharedQueue {
++ (dispatch_queue_t)sharedQueue {
     static dispatch_once_t onceToken;
     static dispatch_queue_t sharedQueue = nil;
     dispatch_once(&onceToken, ^{
         sharedQueue = dispatch_queue_create(NULL, DISPATCH_QUEUE_SERIAL);
     });
-    
+
     return sharedQueue;
 }
 

@@ -544,7 +544,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F0A8ABE15C299340044A782 /* Build configuration list for PBXNativeTarget "ROADSerialization" */;
 			buildPhases = (
-				37E7620F27A7F333A8F04ADA /* libObjCAttr - generate attributes */,
+				1385C6630AB82DD67794DCCB /* libObjCAttr - generate attributes */,
 				FA06730651A2965AEED29793 /* Check Pods Manifest.lock */,
 				9F0A8AB015C299340044A782 /* Sources */,
 				9F0A8AB115C299340044A782 /* Frameworks */,
@@ -614,7 +614,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		37E7620F27A7F333A8F04ADA /* libObjCAttr - generate attributes */ = {
+		1385C6630AB82DD67794DCCB /* libObjCAttr - generate attributes */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (

@@ -40,8 +40,8 @@
 
 - (void)testInstanceFakeService
 {
-    RFTestService *databaseManager = [RFServiceProvider serviceInstance];
-    XCTAssertNotNil(databaseManager, @"Service has not been initialised.");
+    RFTestService *someService = [RFServiceProvider someService];
+    XCTAssertNotNil(someService, @"Service has not been initialised");
 }
 
 - (void)testServiceWithoutAnnotations {
@@ -55,6 +55,11 @@
 
 - (void)testServiceWithWrongAnnotations {
     XCTAssertFalse([RFServiceProvider resolveClassMethod:@selector(serviceWithWrongAttribute)], @"Service provider respond with undefined result on method with wrong attribute");
+}
+
+- (void)testNestedServiceAllocation {
+    RFTestService *nestedService = [RFServiceProvider nestedService];
+    XCTAssertNotNil(nestedService, @"Race condition with nested test service occured");
 }
 
 @end

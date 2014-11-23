@@ -22,6 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		1176413218E4623E00B1688B /* libUtilities.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1176413118E4623E00B1688B /* libUtilities.a */; };
+		1182671E1A22532F00F4D70B /* RFNestedTestService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1182671D1A22532F00F4D70B /* RFNestedTestService.m */; };
 		14C2F88DF752E561CF89A88D /* ROADGeneratedAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F3311BD559E30B9B3949B4 /* ROADGeneratedAttribute.m */; };
 		556A84FC6E361DD479E4A8D8 /* libPods-ROADServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57CED8D1341055C9AF9B7243 /* libPods-ROADServices.a */; };
 		5ACD21541741179500CC61AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7869945016AEBF3E00B28760 /* Foundation.framework */; };
@@ -66,6 +67,8 @@
 
 /* Begin PBXFileReference section */
 		1176413118E4623E00B1688B /* libUtilities.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUtilities.a; path = "../Utilities/build/Debug-iphoneos/libUtilities.a"; sourceTree = "<group>"; };
+		1182671C1A22532F00F4D70B /* RFNestedTestService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFNestedTestService.h; sourceTree = "<group>"; };
+		1182671D1A22532F00F4D70B /* RFNestedTestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFNestedTestService.m; sourceTree = "<group>"; };
 		2635AC6294506689C9F49C64 /* Pods-ROADServices.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ROADServices.release.xcconfig"; path = "../Pods/Target Support Files/Pods-ROADServices/Pods-ROADServices.release.xcconfig"; sourceTree = "<group>"; };
 		2A9C621101904CA1BA91DFAE /* libPods-ROADServicesTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ROADServicesTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44F423830401C2EE306219B6 /* Pods-ROADServicesTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ROADServicesTest.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-ROADServicesTest/Pods-ROADServicesTest.debug.xcconfig"; sourceTree = "<group>"; };
@@ -146,6 +149,8 @@
 			children = (
 				D7AF141917CF64B700A92C31 /* RFTestService.h */,
 				D7AF141A17CF64B700A92C31 /* RFTestService.m */,
+				1182671C1A22532F00F4D70B /* RFNestedTestService.h */,
+				1182671D1A22532F00F4D70B /* RFNestedTestService.m */,
 			);
 			name = TestService;
 			sourceTree = "<group>";
@@ -259,7 +264,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7869945B16AEBF3E00B28760 /* Build configuration list for PBXNativeTarget "ROADServices" */;
 			buildPhases = (
-				48E1C68A77A691674B8DC182 /* libObjCAttr - generate attributes */,
+				FC03D0E536FE0D15249D10B9 /* libObjCAttr - generate attributes */,
 				66881C4766A8652213B517F3 /* Check Pods Manifest.lock */,
 				7869944916AEBF3E00B28760 /* Sources */,
 				7869944A16AEBF3E00B28760 /* Frameworks */,
@@ -317,20 +322,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		48E1C68A77A691674B8DC182 /* libObjCAttr - generate attributes */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "libObjCAttr - generate attributes";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
-		};
 		66881C4766A8652213B517F3 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -403,6 +394,20 @@
 			shellPath = /bin/sh;
 			shellScript = "echo \"Copy resource files to bundle\"\nSRC=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/include/ROAD\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\necho \"$DEST\"\necho \"$RESOURCE\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"\n\n\necho \"Copy resource files to archive bundle\"\n\nSRC=\"$BUILD_DIR/../IntermediateBuildFilesPath/UninstalledProducts\"\nDEST=\"$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME/$FULL_PRODUCT_NAME\"\n\nRESOURCE=\"$SRC/\"*.plist\nRESOURCEEXIST=(\"$SRC/\"*.plist)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No plist files\"\n\nRESOURCE=\"$SRC/\"*.momd\nRESOURCEEXIST=(\"$SRC/\"*.momd)\n[ -e ${RESOURCEEXIST[0]} ] && cp -R -v $RESOURCE \"$DEST\" || echo \"No momd files\"";
 		};
+		FC03D0E536FE0D15249D10B9 /* libObjCAttr - generate attributes */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "libObjCAttr - generate attributes";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -410,6 +415,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1182671E1A22532F00F4D70B /* RFNestedTestService.m in Sources */,
 				5ACD215D1741179500CC61AC /* RFServicesTest.m in Sources */,
 				D771947717CF41BC0011047F /* ROADGeneratedAttribute.m in Sources */,
 				D7AF141B17CF64B700A92C31 /* RFTestService.m in Sources */,
@@ -450,7 +456,6 @@
 /* Begin XCBuildConfiguration section */
 		5ACD21601741179500CC61AC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 44F423830401C2EE306219B6 /* Pods-ROADServicesTest.debug.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
@@ -484,7 +489,6 @@
 		};
 		5ACD21611741179500CC61AC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59C3E4689D87203F75C37CEF /* Pods-ROADServicesTest.release.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;

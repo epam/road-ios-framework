@@ -273,7 +273,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 78B8E69C16C3CC3E0049E36B /* Build configuration list for PBXNativeTarget "ROADCore" */;
 			buildPhases = (
-				B563911D529444F8C3AF4EB3 /* libObjCAttr - generate attributes */,
+				FE26AE4320C0883F9ACF1A6A /* libObjCAttr - generate attributes */,
 				B03FB7F7E80344F5A21B8D39 /* Check Pods Manifest.lock */,
 				78B8E68C16C3CC3E0049E36B /* CopyFiles */,
 				78B8E68A16C3CC3E0049E36B /* Sources */,
@@ -391,7 +391,7 @@
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-ROADCore/Pods-ROADCore-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B563911D529444F8C3AF4EB3 /* libObjCAttr - generate attributes */ = {
+		FE26AE4320C0883F9ACF1A6A /* libObjCAttr - generate attributes */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
