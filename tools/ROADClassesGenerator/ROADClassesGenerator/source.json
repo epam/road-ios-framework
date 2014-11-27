@@ -1,0 +1,12 @@
+{
+    "wrapper":
+    {
+        "property" : "value",
+        "array" : ["123", "abc"],
+        "includedObject" : {"arrr":[1,2,3]},
+        "class2" : {"includedObject" : {},"class3":{}},
+        "class3":{},
+        "foos" : [{}, {}],
+        "newYearDate":"2014-12-31-11:59"
+    }
+}
