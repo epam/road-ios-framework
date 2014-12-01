@@ -109,7 +109,7 @@
     NSMutableString* headerBody = [NSMutableString string];
     [headerBody appendString:@"//"];
     [headerBody appendFormat:@"\n// %@", className];
-    [headerBody appendString:@"\n\n// Generated file"];
+    [headerBody appendString:@"\n//\n// Generated file"];
     [headerBody appendString:@"\n"];
     [headerBody appendString:@"\n"];
     return headerBody;

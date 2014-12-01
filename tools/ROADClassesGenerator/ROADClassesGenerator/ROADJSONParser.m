@@ -38,19 +38,12 @@
 + (ROADClassModel*)parseJSONFromFilePath:(NSString*)path error:(NSError**)error {
     NSData *jsonData = [NSData dataWithContentsOfFile:path options:NSDataReadingMappedIfSafe error:error];
     NSDictionary* jsonDictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:error];
-    return [ROADJSONParser parseJsonObject:jsonDictionary];
-}
-
-+ (ROADClassModel*)parseJsonObject:(NSDictionary*)jsonDictionary {
-    ROADClassModel* classModel;
-    for (NSString* rootClass in jsonDictionary) {
-        classModel = [ROADJSONParser parseJsonObject:[jsonDictionary objectForKey:rootClass] withName:rootClass];
-    }
-    return classModel;
+    return [ROADJSONParser parseJsonObject:jsonDictionary withName:@"Result"];
 }
 
 + (ROADClassModel*)parseJsonObject:(NSDictionary*)jsonDictionary withName:(NSString*)name {
-    ROADClassModel* classModel = [[ROADClassModel alloc] initWithName:name];
+    ROADClassModel* classModel = [[ROADClassModel alloc] initWithName:[ROADJSONParser forClassName:name]];
+    if([jsonDictionary isKindOfClass:[NSDictionary class]]){
         for (NSString* key in jsonDictionary) {
             ROADPropertyModel* propertyModel = [[ROADPropertyModel alloc] init];
             id jsonObject = [jsonDictionary valueForKey:key];
@@ -74,6 +67,7 @@
             }
             [classModel addProperty:propertyModel];
         }
+    }
     [ROADClassModel registerModel:classModel];
     return classModel;
 }
@@ -105,8 +99,9 @@
 + (ROADPropertyModel*)propertyModelArrayWithObject:(id)propertyObject withPropertyName:(NSString*)propertyName {
     ROADPropertyModel* propertyModel = [[ROADPropertyModel alloc] init];
     propertyModel.propertyClassName = NSStringFromClass([NSArray class]);
-    propertyModel.propertyType = [ROADJSONParser parseObjectClass:propertyObject];
-    propertyModel.propertyName = [ROADJSONParser forArrayPropertyName:propertyName];
+    id objectInArray = [propertyObject firstObject];
+    propertyModel.propertyType = [ROADJSONParser parseObjectClass:objectInArray withName:propertyName];
+    propertyModel.propertyName = propertyName;
     return propertyModel;
 }
 
@@ -122,8 +117,25 @@
     return propertyModel;
 }
 
-+ (id)parseObjectClass:(id)object {
-    return [NSString class];
++ (id)parseObjectClass:(id)object withName:(NSString*)objectClassName{
+    if ([object isKindOfClass:[NSString class]]) {
+        return [NSString class];
+    }
+    else if ([object isKindOfClass:[NSNumber class]]) {
+        return [NSNumber class];
+    }
+    else if ([object isKindOfClass:[NSArray class]]) {
+        return [NSArray class];
+    }
+//    else if ([object isKindOfClass:[NSDictionary class]])
+    {
+        ROADClassModel* propertyClassModel = [ROADClassModel registeredModelWithName:[ROADJSONParser forArrayPropertyName:objectClassName]];
+        if (!propertyClassModel) {
+            propertyClassModel = [self parseJsonObject:object withName:[ROADJSONParser forArrayPropertyName:objectClassName]];
+        }
+        
+        return propertyClassModel.name;
+    }
 }
 
 + (NSString*)forDatePropertyName:(NSString*)name {
@@ -147,6 +159,7 @@
 }
 
 + (NSString*)forClassName:(NSString*)name {
-    return [NSString stringWithFormat:@"%@%@",[[name substringToIndex:1] uppercaseString],[name substringFromIndex:1] ];
+    return [NSString stringWithFormat:@"%@%@",[[name substringToIndex:1] uppercaseString],[name substringFromIndex:1]];
 }
+
 @end

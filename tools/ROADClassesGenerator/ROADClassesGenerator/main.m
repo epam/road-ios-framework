@@ -44,9 +44,12 @@ int main(int argc, const char * argv[]) {
             outputDirectoryPath = [jsonPath stringByDeletingLastPathComponent];
         }
         NSError* error = nil;
-        ROADClassModel* classModel = [ROADJSONParser parseJSONFromFilePath:jsonPath error:&error];
+        [ROADJSONParser parseJSONFromFilePath:jsonPath error:&error];
         if (!error) {
-            [ROADClassGenerator generateClassFromClassModel:classModel error:&error outputDirectoryPath:outputDirectoryPath];
+            NSDictionary* models = [ROADClassModel models];
+            for (NSString* modelName in models){
+                [ROADClassGenerator generateClassFromClassModel:[models objectForKey:modelName] error:&error outputDirectoryPath:outputDirectoryPath];
+            }
             if (!error) {
                 NSLog(@"Classes generation complete!");
             }
