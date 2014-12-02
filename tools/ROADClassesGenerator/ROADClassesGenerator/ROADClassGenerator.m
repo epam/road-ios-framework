@@ -90,6 +90,10 @@
     }
     else if ([propertyModel.propertyClassName isEqualToString:NSStringFromClass([NSArray class])]) {
         propertyBody = [ROADClassGenerator propertyArrayWithName:propertyModel.propertyName withArraElementClassName:propertyModel.propertyType];
+        if ([propertyModel.propertyType isKindOfClass:[NSString class]]) {
+            *importLine = [ROADClassGenerator importLineWithImportedClassName:propertyModel.propertyType];
+        }
+
     }
     else if ([propertyModel.propertyClassName isEqualToString:NSStringFromClass([NSDate class])]) {
         propertyBody = [ROADClassGenerator propertyDateWithName:propertyModel.propertyName];
