@@ -36,6 +36,6 @@
 
 @interface ROADClassGenerator : NSObject
 
-+ (void)generateClassFromClassModel:(ROADClassModel*)classModel error:(NSError**)error outputDirectoryPath:(NSString*)outputDirectoryPath;
++ (void)generateClassFromClassModel:(ROADClassModel *)classModel error:(NSError **)error outputDirectoryPath:(NSString *)outputDirectoryPath;
 
 @end

@@ -35,24 +35,24 @@
 
 @implementation ROADClassGenerator
 
-+ (void)generateClassFromClassModel:(ROADClassModel*)classModel error:(NSError**)error outputDirectoryPath:(NSString*)outputDirectoryPath{
-    NSArray* properties = [classModel properties];
-    NSMutableString* body = [NSMutableString string];
-    NSString* headerBody = [ROADClassGenerator headerWithClassName:[classModel.name stringByAppendingPathExtension:@"h"]];
-    NSString* importBody = [ROADClassGenerator importLineInitWithClassName:classModel.name];
-    NSString* propertiesBody = [ROADClassGenerator propertiesBodyInitInterfaceWithClassName:classModel.name];
++ (void)generateClassFromClassModel:(ROADClassModel *)classModel error:(NSError **)error outputDirectoryPath:(NSString *)outputDirectoryPath{
+    NSArray *properties = [classModel properties];
+    NSMutableString *body = [NSMutableString string];
+    NSString *headerBody = [ROADClassGenerator headerWithClassName:[classModel.name stringByAppendingPathExtension:@"h"]];
+    NSString *importBody = [ROADClassGenerator importLineInitWithClassName:classModel.name];
+    NSString *propertiesBody = [ROADClassGenerator propertiesBodyInitInterfaceWithClassName:classModel.name];
 
-    for (ROADPropertyModel* propertyModel in properties) {
-        NSString* importLine;
-        NSString* propertyBody = [ROADClassGenerator addProperty:propertyModel importLine:&importLine outputDirectoryPath:outputDirectoryPath];
-        propertiesBody = [NSString stringWithFormat:@"%@\n%@\n",propertiesBody, propertyBody];
+    for (ROADPropertyModel *propertyModel in properties) {
+        NSString *importLine;
+        NSString *propertyBody = [ROADClassGenerator addProperty:propertyModel importLine:&importLine outputDirectoryPath:outputDirectoryPath];
+        propertiesBody = [NSString stringWithFormat:@"%@\n%@\n", propertiesBody, propertyBody];
         if (importLine.length > 0) {
-            importBody = [NSString stringWithFormat:@"%@\n%@",importBody, importLine];
+            importBody = [NSString stringWithFormat:@"%@\n%@", importBody, importLine];
         }
     }
     
     // generate .h file
-    NSString* filePath = [[outputDirectoryPath stringByAppendingPathComponent:classModel.name] stringByAppendingPathExtension:@"h"];
+    NSString *filePath = [[outputDirectoryPath stringByAppendingPathComponent:classModel.name] stringByAppendingPathExtension:@"h"];
     [body appendString:headerBody];
     [body appendFormat:@"\n%@", importBody];
     [body appendFormat:@"\n%@", propertiesBody];
@@ -71,16 +71,16 @@
     [ROADClassGenerator saveClassNamed:classModel.name withContent:body error:error outputFilePath:filePath];
 }
 
-+ (void)saveClassNamed:(NSString*)name withContent:(NSString*)content error:(NSError**)error outputFilePath:(NSString*)outputFilePath{
-    NSFileManager* fileManager = [NSFileManager defaultManager];
++ (void)saveClassNamed:(NSString *)name withContent:(NSString *)content error:(NSError **)error outputFilePath:(NSString *)outputFilePath{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
     if([fileManager fileExistsAtPath:outputFilePath]){
         [fileManager removeItemAtPath:outputFilePath error:error];
     }
     [fileManager createFileAtPath:outputFilePath contents:(NSData*)content attributes:nil];
 }
 
-+ (NSString*)addProperty:(ROADPropertyModel*)propertyModel importLine:(NSString**)importLine outputDirectoryPath:(NSString*)outputDirectoryPath {
-    NSString* propertyBody = @"";
++ (NSString *)addProperty:(ROADPropertyModel *)propertyModel importLine:(NSString **)importLine outputDirectoryPath:(NSString *)outputDirectoryPath {
+    NSString *propertyBody = @"";
     
     if ([propertyModel.propertyClassName isEqualToString:NSStringFromClass([NSString class])]) {
         propertyBody = [ROADClassGenerator propertyStringWithName:propertyModel.propertyName];
@@ -105,8 +105,8 @@
 
 #pragma mark --
 
-+ (NSString*)headerWithClassName:(NSString*)className {
-    NSMutableString* headerBody = [NSMutableString string];
++ (NSString *)headerWithClassName:(NSString *)className {
+    NSMutableString *headerBody = [NSMutableString string];
     [headerBody appendString:@"//"];
     [headerBody appendFormat:@"\n// %@", className];
     [headerBody appendString:@"\n//\n// Generated file"];
@@ -115,54 +115,54 @@
     return headerBody;
 }
 
-+ (NSString*)importLineInitWithClassName:(NSString*)className {
++ (NSString *)importLineInitWithClassName:(NSString *)className {
     return @"#import <ROAD/ROADSerialization.h>";
 }
 
-+ (NSString*)importLineWithImportedClassName:(NSString*)className {
++ (NSString *)importLineWithImportedClassName:(NSString *)className {
     return [NSString stringWithFormat:@"#import \"%@.h\"", className];
 }
 
-+ (NSString*)propertiesBodyInitInterfaceWithClassName:(NSString*)className {
++ (NSString *)propertiesBodyInitInterfaceWithClassName:(NSString *)className {
     return [NSString stringWithFormat:@"\n@interface %@ : %@\n", className, NSStringFromClass([NSObject class])];
 }
 
-+ (NSString*)propertiesBodyInitImplementationWithClassName:(NSString*)className {
++ (NSString *)propertiesBodyInitImplementationWithClassName:(NSString *)className {
     return [NSString stringWithFormat:@"\n@implementation %@ \n\n@end", className];
 }
 
-+ (NSString*)propertyStringWithName:(NSString*)propertyName {
-    NSMutableString* propertyBody = [NSMutableString string];
++ (NSString *)propertyStringWithName:(NSString *)propertyName {
+    NSMutableString *propertyBody = [NSMutableString string];
     [propertyBody appendFormat:@"RF_ATTRIBUTE(RFSerializable, serializationKey = @\"%@\");", propertyName];
     [propertyBody appendFormat:@"\n@property (nonatomic) %@ *%@;",NSStringFromClass([NSString class]), propertyName];
     return propertyBody;
 }
 
-+ (NSString*)propertyNumberWithName:(NSString*)propertyName {
-    NSMutableString* propertyBody = [NSMutableString string];
++ (NSString *)propertyNumberWithName:(NSString *)propertyName {
+    NSMutableString *propertyBody = [NSMutableString string];
     [propertyBody appendFormat:@"RF_ATTRIBUTE(RFSerializable, serializationKey = @\"%@\");", propertyName];
     [propertyBody appendFormat:@"\n@property (nonatomic) %@ *%@;",NSStringFromClass([NSNumber class]), propertyName];
     return propertyBody;
 }
 
-+ (NSString*)propertyDateWithName:(NSString*)propertyName {
-    NSMutableString* propertyBody = [NSMutableString string];
++ (NSString *)propertyDateWithName:(NSString *)propertyName {
+    NSMutableString *propertyBody = [NSMutableString string];
     [propertyBody appendString:@"RF_ATTRIBUTE(RFSerializable)"];
     [propertyBody appendFormat:@"\nRF_ATTRIBUTE(RFSerializableDate, format = @\"yyyy/MM/dd HH:mm:ss Z\")"];
     [propertyBody appendFormat:@"\n@property (nonatomic) %@ *%@;", NSStringFromClass([NSDate class]), propertyName];
     return propertyBody;
 }
 
-+ (NSString*)propertyArrayWithName:(NSString*)propertyName withArraElementClassName:(NSString*)className{
-    NSMutableString* propertyBody = [NSMutableString string];
++ (NSString *)propertyArrayWithName:(NSString *)propertyName withArraElementClassName:(NSString *)className{
+    NSMutableString *propertyBody = [NSMutableString string];
     [propertyBody appendFormat:@"RF_ATTRIBUTE(RFSerializable, serializationKey = @\"%@\");", propertyName];
     [propertyBody appendFormat:@"\nRF_ATTRIBUTE(RFSerializableCollection, collectionClass = [%@ class]);", className];
     [propertyBody appendFormat:@"\n@property (nonatomic) %@ *%@;",NSStringFromClass([NSArray class]), propertyName];
     return propertyBody;
 }
 
-+ (NSString*)propertyWithName:(NSString*)propertyName withPropertyClassName:(NSString*)className {
-    NSMutableString* propertyBody = [NSMutableString string];
++ (NSString *)propertyWithName:(NSString *)propertyName withPropertyClassName:(NSString *)className {
+    NSMutableString *propertyBody = [NSMutableString string];
     [propertyBody appendFormat:@"RF_ATTRIBUTE(RFSerializable, serializationKey = @\"%@\");", propertyName];
     [propertyBody appendFormat:@"\n@property (nonatomic) %@ *%@;", className, propertyName];
     return propertyBody;

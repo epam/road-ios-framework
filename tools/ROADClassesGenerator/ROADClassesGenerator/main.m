@@ -38,27 +38,30 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        NSString* jsonPath = [[NSUserDefaults standardUserDefaults] valueForKey:@"source"];
-        NSString* outputDirectoryPath = [[NSUserDefaults standardUserDefaults] valueForKey:@"output"];
+        NSString *jsonPath = [[NSUserDefaults standardUserDefaults] valueForKey:@"source"];
+        NSString *outputDirectoryPath = [[NSUserDefaults standardUserDefaults] valueForKey:@"output"];
         if (outputDirectoryPath.length == 0) {
             outputDirectoryPath = [jsonPath stringByDeletingLastPathComponent];
         }
-        NSError* error = nil;
+        NSError *error = nil;
+        
         [ROADJSONParser parseJSONFromFilePath:jsonPath error:&error];
         if (!error) {
-            NSDictionary* models = [ROADClassModel models];
-            for (NSString* modelName in models){
-                [ROADClassGenerator generateClassFromClassModel:[models objectForKey:modelName] error:&error outputDirectoryPath:outputDirectoryPath];
-            }
-            if (!error) {
-                NSLog(@"Classes generation complete!");
-            }
-            else {
-                NSLog(@"error class generation!");
-            }
+            NSDictionary *models = [ROADClassModel models];
+            [models enumerateKeysAndObjectsUsingBlock:^(NSString *key, ROADClassModel *obj, BOOL *stop) {
+                NSError *error = nil;
+                [ROADClassGenerator generateClassFromClassModel:obj error:&error outputDirectoryPath:outputDirectoryPath];
+                if (!error) {
+                    NSLog(@"Class %@ generation complete!", key);
+                }
+                else {
+                    NSLog(@"Error %@ class generation!", key);
+                }
+            }];
+            NSLog(@"Classes generation complete!");
         }
         else {
-            NSLog(@"error json parsing!");
+            NSLog(@"Error json parsing!");
         }
     }
     return 0;

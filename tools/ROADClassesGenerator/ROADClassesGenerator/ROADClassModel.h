@@ -36,13 +36,13 @@
 
 @interface ROADClassModel : NSObject
 
-+ (BOOL)registerModel:(ROADClassModel*)model;
-+ (ROADClassModel*)registeredModelWithName:(NSString*)modelName;
-+ (NSMutableDictionary*)models;
++ (BOOL)registerModel:(ROADClassModel *)model;
++ (ROADClassModel *)registeredModelWithName:(NSString *)modelName;
++ (NSMutableDictionary *)models;
 
-- (id)initWithName:(NSString*)name;
-- (void)addProperty:(ROADPropertyModel*)property;
-- (NSArray*)properties;
-- (NSString*)name;
+- (id)initWithName:(NSString *)name;
+- (void)addProperty:(ROADPropertyModel *)property;
+- (NSArray *)properties;
+- (NSString *)name;
 
 @end

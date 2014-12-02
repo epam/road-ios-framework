@@ -36,6 +36,6 @@
 
 @interface ROADJSONParser : NSObject
 
-+ (ROADClassModel*)parseJSONFromFilePath:(NSString*)path error:(NSError**)error;
++ (ROADClassModel *)parseJSONFromFilePath:(NSString *)path error:(NSError **)error;
 
 @end

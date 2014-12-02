@@ -33,31 +33,31 @@
 
 #import "ROADClassModel.h"
 
-static NSMutableDictionary* _models;
+static NSMutableDictionary *models;
 
 @implementation ROADClassModel {
-    NSMutableArray* _properties;
-    NSString* _name;
+    NSMutableArray *_properties;
+    NSString *_name;
 }
 
-+ (NSMutableDictionary*)models {
-    if (_models == nil) {
-        _models = [[NSMutableDictionary alloc] init];
++ (NSMutableDictionary *)models {
+    if (models == nil) {
+        models = [[NSMutableDictionary alloc] init];
     }
-    return _models;
+    return models;
 }
 
-+ (BOOL)registerModel:(ROADClassModel*)model {
-    [[ROADClassModel models] setObject:model forKey:model->_name];
++ (BOOL)registerModel:(ROADClassModel *)model {
+    [[ROADClassModel models] setObject:model forKey:[model name]];
     return YES;
 }
 
-+ (ROADClassModel*)registeredModelWithName:(NSString*)modelName {
++ (ROADClassModel *)registeredModelWithName:(NSString *)modelName {
     return [[ROADClassModel models] valueForKey:modelName];
 }
 
 
-- (id)initWithName:(NSString*)name {
+- (id)initWithName:(NSString *)name {
     self = [super init];
     if (self) {
         _name = name;
@@ -77,4 +77,5 @@ static NSMutableDictionary* _models;
 - (NSString*)name {
     return _name;
 }
+
 @end
