@@ -83,7 +83,7 @@
 + (ROADPropertyModel *)propertyModelDateWithObject:(id)propertyObject withPropertyName:(NSString *)propertyName {
     ROADPropertyModel *propertyModel = [[ROADPropertyModel alloc] init];
     propertyModel.propertyClassName = NSStringFromClass([NSDate class]);
-    propertyModel.propertyType = [NSDate class];
+    propertyModel.propertyClass = [NSDate class];
     propertyModel.propertyName = [ROADJSONParser forDatePropertyName:propertyName];
     return propertyModel;
 }
@@ -91,7 +91,7 @@
 + (ROADPropertyModel *)propertyModelStringWithObject:(id)propertyObject withPropertyName:(NSString *)propertyName {
     ROADPropertyModel *propertyModel = [[ROADPropertyModel alloc] init];
     propertyModel.propertyClassName = NSStringFromClass([NSString class]);
-    propertyModel.propertyType = [NSString class];
+    propertyModel.propertyClass = [NSString class];
     propertyModel.propertyName = [ROADJSONParser forStringPropertyName:propertyName];
     return propertyModel;
 }
@@ -99,7 +99,7 @@
 + (ROADPropertyModel *)propertyModelNumberWithObject:(id)propertyObject withPropertyName:(NSString *)propertyName {
     ROADPropertyModel *propertyModel = [[ROADPropertyModel alloc] init];
     propertyModel.propertyClassName = NSStringFromClass([NSNumber class]);
-    propertyModel.propertyType = [NSNumber class];
+    propertyModel.propertyClass = [NSNumber class];
     propertyModel.propertyName = [ROADJSONParser forNumberPropertyName:propertyName];
     return propertyModel;
 }
@@ -108,7 +108,7 @@
     ROADPropertyModel *propertyModel = [[ROADPropertyModel alloc] init];
     propertyModel.propertyClassName = NSStringFromClass([NSArray class]);
     id objectInArray = [propertyObject firstObject];
-    propertyModel.propertyType = [ROADJSONParser parseObjectClass:objectInArray withName:propertyName];
+    propertyModel.propertyClass = [ROADJSONParser parseObjectClass:objectInArray withName:propertyName];
     propertyModel.propertyName = propertyName;
     return propertyModel;
 }
@@ -120,7 +120,7 @@
         propertyClassModel = [self parseJsonObject:propertyObject withName:propertyName];
     }
     propertyModel.propertyClassName = [ROADJSONParser forClassName:propertyName];
-    propertyModel.propertyType = propertyClassModel;
+    propertyModel.propertyClass = propertyClassModel;
     propertyModel.propertyName = [ROADJSONParser forCustomPropertyName:propertyName];
     return propertyModel;
 }

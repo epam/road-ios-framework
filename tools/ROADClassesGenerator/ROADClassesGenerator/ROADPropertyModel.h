@@ -37,7 +37,6 @@
 
 @property (nonatomic, strong) NSString *propertyName;
 @property (nonatomic, strong) NSString *propertyClassName;
-@property (nonatomic) id propertyType;
-
+@property (nonatomic) id propertyClass;
 
 @end

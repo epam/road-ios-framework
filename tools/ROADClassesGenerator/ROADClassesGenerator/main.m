@@ -40,6 +40,10 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         NSString *jsonPath = [[NSUserDefaults standardUserDefaults] valueForKey:@"source"];
         NSString *outputDirectoryPath = [[NSUserDefaults standardUserDefaults] valueForKey:@"output"];
+        NSString *prefix = [[NSUserDefaults standardUserDefaults] valueForKey:@"prefix"];
+        if (prefix == nil) {
+            prefix = @"";
+        }
         if (outputDirectoryPath.length == 0) {
             outputDirectoryPath = [jsonPath stringByDeletingLastPathComponent];
         }
@@ -50,7 +54,7 @@ int main(int argc, const char * argv[]) {
             NSDictionary *models = [ROADClassModel models];
             [models enumerateKeysAndObjectsUsingBlock:^(NSString *key, ROADClassModel *obj, BOOL *stop) {
                 NSError *error = nil;
-                [ROADClassGenerator generateClassFromClassModel:obj error:&error outputDirectoryPath:outputDirectoryPath];
+                [ROADClassGenerator generateClassFromClassModel:obj error:&error prefix:prefix outputDirectoryPath:outputDirectoryPath];
                 if (!error) {
                     NSLog(@"Class %@ generation complete!", key);
                 }

@@ -56,7 +56,6 @@ static NSMutableDictionary *models;
     return [[ROADClassModel models] valueForKey:modelName];
 }
 
-
 - (id)initWithName:(NSString *)name {
     self = [super init];
     if (self) {
@@ -75,7 +74,7 @@ static NSMutableDictionary *models;
 }
 
 - (NSString*)name {
-    return _name;
+    return (_prefix.length > 0) ? [NSString stringWithFormat:@"%@%@", _prefix, _name] : _name;
 }
 
 @end

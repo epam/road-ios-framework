@@ -36,6 +36,8 @@
 
 @interface ROADClassModel : NSObject
 
+@property (nonatomic, strong) NSString *prefix;
+
 + (BOOL)registerModel:(ROADClassModel *)model;
 + (ROADClassModel *)registeredModelWithName:(NSString *)modelName;
 + (NSMutableDictionary *)models;

@@ -35,16 +35,18 @@
 
 @implementation ROADClassGenerator
 
-+ (void)generateClassFromClassModel:(ROADClassModel *)classModel error:(NSError **)error outputDirectoryPath:(NSString *)outputDirectoryPath{
++ (void)generateClassFromClassModel:(ROADClassModel *)classModel error:(NSError **)error prefix:(NSString *)prefix outputDirectoryPath:(NSString *)outputDirectoryPath{
     NSArray *properties = [classModel properties];
     NSMutableString *body = [NSMutableString string];
-    NSString *headerBody = [ROADClassGenerator headerWithClassName:[classModel.name stringByAppendingPathExtension:@"h"]];
-    NSString *importBody = [ROADClassGenerator importLineInitWithClassName:classModel.name];
-    NSString *propertiesBody = [ROADClassGenerator propertiesBodyInitInterfaceWithClassName:classModel.name];
+    [classModel setPrefix:prefix];
+    NSString* className = classModel.name;
+    NSString *headerBody = [ROADClassGenerator headerWithClassName:[className stringByAppendingPathExtension:@"h"]];
+    NSString *importBody = [ROADClassGenerator importLineInitWithClassName:className];
+    NSString *propertiesBody = [ROADClassGenerator propertiesBodyInitInterfaceWithClassName:className];
 
     for (ROADPropertyModel *propertyModel in properties) {
         NSString *importLine;
-        NSString *propertyBody = [ROADClassGenerator addProperty:propertyModel importLine:&importLine outputDirectoryPath:outputDirectoryPath];
+        NSString *propertyBody = [ROADClassGenerator addProperty:propertyModel importLine:&importLine prefix:prefix outputDirectoryPath:outputDirectoryPath];
         propertiesBody = [NSString stringWithFormat:@"%@\n%@\n", propertiesBody, propertyBody];
         if (importLine.length > 0) {
             importBody = [NSString stringWithFormat:@"%@\n%@", importBody, importLine];
@@ -52,23 +54,23 @@
     }
     
     // generate .h file
-    NSString *filePath = [[outputDirectoryPath stringByAppendingPathComponent:classModel.name] stringByAppendingPathExtension:@"h"];
+    NSString *filePath = [[outputDirectoryPath stringByAppendingPathComponent:className] stringByAppendingPathExtension:@"h"];
     [body appendString:headerBody];
     [body appendFormat:@"\n%@", importBody];
     [body appendFormat:@"\n%@", propertiesBody];
     [body appendString:@"\n@end"];
-    [ROADClassGenerator saveClassNamed:classModel.name withContent:body error:error outputFilePath:filePath];
+    [ROADClassGenerator saveClassNamed:className withContent:body error:error outputFilePath:filePath];
     
     // generate .m file
     body = [NSMutableString string];
-    headerBody = [ROADClassGenerator headerWithClassName:[classModel.name stringByAppendingPathExtension:@"m"]];
-    importBody = [ROADClassGenerator importLineWithImportedClassName:classModel.name];
-    propertiesBody = [ROADClassGenerator propertiesBodyInitImplementationWithClassName:classModel.name];
+    headerBody = [ROADClassGenerator headerWithClassName:[className stringByAppendingPathExtension:@"m"]];
+    importBody = [ROADClassGenerator importLineWithImportedClassName:className];
+    propertiesBody = [ROADClassGenerator propertiesBodyInitImplementationWithClassName:className];
     [body appendString:headerBody];
     [body appendFormat:@"\n%@", importBody];
     [body appendFormat:@"\n%@", propertiesBody];
-    filePath = [[outputDirectoryPath stringByAppendingPathComponent:classModel.name] stringByAppendingPathExtension:@"m"];
-    [ROADClassGenerator saveClassNamed:classModel.name withContent:body error:error outputFilePath:filePath];
+    filePath = [[outputDirectoryPath stringByAppendingPathComponent:className] stringByAppendingPathExtension:@"m"];
+    [ROADClassGenerator saveClassNamed:className withContent:body error:error outputFilePath:filePath];
 }
 
 + (void)saveClassNamed:(NSString *)name withContent:(NSString *)content error:(NSError **)error outputFilePath:(NSString *)outputFilePath{
@@ -79,7 +81,7 @@
     [fileManager createFileAtPath:outputFilePath contents:(NSData*)content attributes:nil];
 }
 
-+ (NSString *)addProperty:(ROADPropertyModel *)propertyModel importLine:(NSString **)importLine outputDirectoryPath:(NSString *)outputDirectoryPath {
++ (NSString *)addProperty:(ROADPropertyModel *)propertyModel importLine:(NSString **)importLine prefix:(NSString *)prefix outputDirectoryPath:(NSString *)outputDirectoryPath {
     NSString *propertyBody = @"";
     
     if ([propertyModel.propertyClassName isEqualToString:NSStringFromClass([NSString class])]) {
@@ -89,9 +91,11 @@
         propertyBody = [ROADClassGenerator propertyNumberWithName:propertyModel.propertyName];
     }
     else if ([propertyModel.propertyClassName isEqualToString:NSStringFromClass([NSArray class])]) {
-        propertyBody = [ROADClassGenerator propertyArrayWithName:propertyModel.propertyName withArraElementClassName:propertyModel.propertyType];
-        if ([propertyModel.propertyType isKindOfClass:[NSString class]]) {
-            *importLine = [ROADClassGenerator importLineWithImportedClassName:propertyModel.propertyType];
+        NSString *className = [NSString stringWithFormat:@"%@%@", prefix, propertyModel.propertyClass];
+        propertyBody = [ROADClassGenerator propertyArrayWithName:propertyModel.propertyName withArraElementClassName:className];
+        BOOL isCustomClass = [propertyModel.propertyClass isKindOfClass:[NSString class]];
+        if (isCustomClass) {
+            *importLine = [ROADClassGenerator importLineWithImportedClassName:className];
         }
 
     }
@@ -99,7 +103,7 @@
         propertyBody = [ROADClassGenerator propertyDateWithName:propertyModel.propertyName];
     }
     else {
-        [ROADClassGenerator generateClassFromClassModel:propertyModel.propertyType error:nil outputDirectoryPath:outputDirectoryPath];
+        [ROADClassGenerator generateClassFromClassModel:propertyModel.propertyClass error:nil prefix:prefix outputDirectoryPath:outputDirectoryPath];
         propertyBody = [ROADClassGenerator propertyWithName:propertyModel.propertyName withPropertyClassName:propertyModel.propertyClassName];
         *importLine = [ROADClassGenerator importLineWithImportedClassName:propertyModel.propertyClassName];
     }
