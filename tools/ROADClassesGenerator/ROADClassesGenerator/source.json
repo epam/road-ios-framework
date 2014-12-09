@@ -1,0 +1,101 @@
+{
+    "statusCode":200,
+    "body":{
+        "correlationID":"4d88664d-1e49-4d03-800e-f86a279833d2",
+        "tpaExtensions":{
+            "additionalCheckInInfos":[
+                                      {
+                                      "flightRPH":"1",
+                                      "flightControlSystem":"RES"
+                                      }
+                                      ]
+        },
+        "success":{
+            
+        },
+        "airCheckInInfo":{
+            "flightInfos":[
+                           {
+                           "departureInformation":{
+                           "locationCode":"WAW",
+                           "dateOfDeparture":"2015-01-21T13:55:00.000Z",
+                           "otherCheckInInformation":"CheckInAvailableLater"
+                           },
+                           "carrierInfos":[
+                                           {
+                                           "flightNumber":"0363",
+                                           "code":"EI"
+                                           }
+                                           ],
+                           "arrivalInformation":{
+                           "locationCode":"DUB"
+                           },
+                           "rph":"1"
+                           }
+                           ],
+            "passengerFlightInfos":[
+                                    {
+                                    "flightRPH":"1",
+                                    "bookingInfo":{
+                                    "bookingReferenceIDs":[
+                                                           {
+                                                           "id":"2B4M2S",
+                                                           "type":"14"
+                                                           }
+                                                           ]
+                                    },
+                                    "specialPurposeCode":"NCI",
+                                    "passengerRPH":"1"
+                                    }
+                                    ],
+            "passengerInfos":[
+                              {
+                              "ticketingInfos":[
+                                                {
+                                                "couponInfos":[
+                                                               {
+                                                               "documentNumberCheckDigit":"1",
+                                                               "couponNumber":1,
+                                                               "flightRPHs":[
+                                                                             "1"
+                                                                             ]
+                                                               }
+                                                               ],
+                                                "formAndSerialNumber":"2476538541",
+                                                "airlineAccountingCode":"053"
+                                                }
+                                                ],
+                              "passengerRPH":"1",
+                              "rph":"1"
+                              }
+                              ]
+        },
+        "version":2013
+    },
+    "text":"",
+    "errors":[
+    
+    ],
+    "isSuccessful":true,
+    "statusReason":"OK",
+    "responseHeaders":{
+        "X-Frame-Options":"DENY",
+        "Transfer-Encoding":"chunked",
+        "Date":"Wed, 26 Nov 2014 09:27:02 GMT",
+        "X-XSS-Protection":"1; mode=block",
+        "Expires":"0",
+        "Content-Type":"application\/json;charset=UTF-8",
+        "Server":"Apache-Coyote\/1.1",
+        "X-Content-Type-Options":"nosniff",
+        "Cache-Control":"no-cache, no-store, max-age=0, must-revalidate",
+        "Pragma":"no-cache"
+    },
+    "warnings":[
+    
+    ],
+    "responseTime":137,
+    "totalTime":137,
+    "info":[
+    
+    ]
+}
