@@ -41,12 +41,33 @@ int main(int argc, const char * argv[]) {
         NSString *jsonPath = [[NSUserDefaults standardUserDefaults] valueForKey:@"source"];
         NSString *outputDirectoryPath = [[NSUserDefaults standardUserDefaults] valueForKey:@"output"];
         NSString *prefix = [[NSUserDefaults standardUserDefaults] valueForKey:@"prefix"];
+        
+        if (jsonPath == nil) {
+            NSLog(@"File not exist at path: %@", jsonPath);
+            return 0;
+        }
+        
         if (prefix == nil) {
             prefix = @"";
         }
+        
         if (outputDirectoryPath.length == 0) {
             outputDirectoryPath = [jsonPath stringByDeletingLastPathComponent];
         }
+        else {
+            BOOL isDir;
+            BOOL dirExists = [[NSFileManager defaultManager] fileExistsAtPath:outputDirectoryPath isDirectory:&isDir];
+            if (!dirExists) {
+                NSLog(@"Output directory not exist at path %@", outputDirectoryPath);
+            }
+            else if (!isDir) {
+                NSLog(@"Output directory is not a directory at path %@", outputDirectoryPath);
+            }
+            if (!isDir || !dirExists) {
+                return 0;
+            }
+        }
+        
         NSError *error = nil;
         
         [ROADJSONParser parseJSONFromFilePath:jsonPath error:&error];
