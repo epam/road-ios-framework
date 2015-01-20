@@ -35,59 +35,99 @@
 #import "ROADJSONParser.h"
 #import "ROADClassModel.h"
 #import "ROADClassGenerator.h"
+#import "RFArgumentResolver.h"
+#import "RFConsole.h"
+
+void PrintUsage();
+void NotifyAboutStartProcessing(RFArgumentResolver *cmdLineArguments);
+void NotifyAboutFinishProcessing(RFArgumentResolver *cmdLineArguments);
+BOOL isValidParameters(RFArgumentResolver *cmdLineArguments);
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        NSString *jsonPath = [[NSUserDefaults standardUserDefaults] valueForKey:@"source"];
-        NSString *outputDirectoryPath = [[NSUserDefaults standardUserDefaults] valueForKey:@"output"];
-        NSString *prefix = [[NSUserDefaults standardUserDefaults] valueForKey:@"prefix"];
         
-        if (jsonPath == nil) {
-            NSLog(@"File not exist at path: %@", jsonPath);
-            return 0;
+        RFArgumentResolver *cmdLineArguments = [[RFArgumentResolver alloc] initWithArgv:argv argvCount:argc];
+        
+        if (!isValidParameters(cmdLineArguments)) {
+            PrintUsage();
+            return 1;
         }
         
-        if (prefix == nil) {
-            prefix = @"";
-        }
-        
-        if (outputDirectoryPath.length == 0) {
-            outputDirectoryPath = [jsonPath stringByDeletingLastPathComponent];
-        }
-        else {
-            BOOL isDir;
-            BOOL dirExists = [[NSFileManager defaultManager] fileExistsAtPath:outputDirectoryPath isDirectory:&isDir];
-            if (!dirExists) {
-                NSLog(@"Output directory not exist at path %@", outputDirectoryPath);
-            }
-            else if (!isDir) {
-                NSLog(@"Output directory is not a directory at path %@", outputDirectoryPath);
-            }
-            if (!isDir || !dirExists) {
-                return 0;
-            }
-        }
-        
+        NotifyAboutStartProcessing(cmdLineArguments);
         NSError *error = nil;
         
-        [ROADJSONParser parseJSONFromFilePath:jsonPath error:&error];
+        [ROADJSONParser parseJSONFromFilePath:cmdLineArguments.sourcePath error:&error];
         if (!error) {
             NSDictionary *models = [ROADClassModel models];
             [models enumerateKeysAndObjectsUsingBlock:^(NSString *key, ROADClassModel *obj, BOOL *stop) {
                 NSError *error = nil;
-                [ROADClassGenerator generateClassFromClassModel:obj error:&error prefix:prefix outputDirectoryPath:outputDirectoryPath];
+                [ROADClassGenerator generateClassFromClassModel:obj error:&error prefix:cmdLineArguments.prefix outputDirectoryPath:cmdLineArguments.outputDirectoryPath];
                 if (!error) {
-                    NSLog(@"Class %@ generation complete!", key);
+                    [RFConsole writeLine:[NSString stringWithFormat:@"Class %@ generation complete!", key]];
                 }
                 else {
-                    NSLog(@"Error %@ class generation!", key);
+                    [RFConsole writeLine:[NSString stringWithFormat:@"ERROR: for %@ class generation!", key]];
                 }
             }];
-            NSLog(@"Classes generation complete!");
+            NotifyAboutFinishProcessing(cmdLineArguments);
         }
         else {
-            NSLog(@"Error json parsing!");
+            [RFConsole writeLine:@"ERROR: json parsing"];
         }
     }
     return 0;
+}
+
+BOOL isValidParameters(RFArgumentResolver *cmdLineArguments) {
+    if (cmdLineArguments.sourcePath.length == 0) {
+        [RFConsole writeLine:@"ERROR: Path to source file was not specified"];
+        return NO;
+    }
+    BOOL isDir;
+    BOOL dirExists = [[NSFileManager defaultManager] fileExistsAtPath:cmdLineArguments.sourcePath isDirectory:&isDir];
+    if (!dirExists) {
+        [RFConsole writeLine:[NSString stringWithFormat:@"ERROR: Source json file not exist at path %@", cmdLineArguments.sourcePath]];
+        return NO;
+    }
+    
+    dirExists = [[NSFileManager defaultManager] fileExistsAtPath:cmdLineArguments.outputDirectoryPath isDirectory:&isDir];
+    if (!dirExists) {
+        [RFConsole writeLine:[NSString stringWithFormat:@"ERROR: Output directory not exist at path %@", cmdLineArguments.outputDirectoryPath]];
+    }
+    else if (!isDir) {
+        [RFConsole writeLine:[NSString stringWithFormat:@"ERROR: Output directory is not a directory at path %@", cmdLineArguments.outputDirectoryPath]];
+    }
+    
+    if (!isDir || !dirExists) {
+        return NO;
+    }
+    
+    return YES;
+}
+
+void PrintUsage() {
+    [RFConsole writeLine:@"Classes generator."];
+    [RFConsole writeLine:@"ROAD Framework tool"];
+    [RFConsole writeLine:@"Copyright (c) 2014 EPAM. All rights reserved."];
+    [RFConsole writeLine:@""];
+    [RFConsole writeLine:@"Usage:"];
+    [RFConsole writeLine:@""];
+    [RFConsole writeLine:@"ROADClassesGenerator –src=path to json file –out=path for generated code"];
+    [RFConsole writeLine:@"Optional parameters: -prefix=prefix for generated classes names"];
+    [RFConsole writeLine:@""];
+}
+
+void NotifyAboutStartProcessing(RFArgumentResolver *cmdLineArguments) {
+    [RFConsole writeLine:@"Start source code processing"];
+    [RFConsole writeLine:[NSString stringWithFormat:@"Source json path:%@", cmdLineArguments.sourcePath]];
+    [RFConsole writeLine:[NSString stringWithFormat:@"Directory for generated code:%@", cmdLineArguments.outputDirectoryPath]];
+    if (cmdLineArguments.prefix.length > 0) {
+        [RFConsole writeLine:[NSString stringWithFormat:@"Prefix for generated classes names:%@", cmdLineArguments.prefix]];
+    }
+    [RFConsole writeLine:@""];
+}
+
+void NotifyAboutFinishProcessing(RFArgumentResolver *cmdLineArguments) {
+    [RFConsole writeLine:@"Done"];
+    [RFConsole writeLine:@""];
 }
