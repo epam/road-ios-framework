@@ -20,4 +20,4 @@ Optional arguments:
 If the parameter **output** not specified, the generated file is stored in the directory in which the json file specified parameter **source**.
 The resulting models are ready to use attributed classes for [lib-Obj-Attr] (https://github.com/epam/lib-obj-c-attr).
 
-**Important:** arguments can't contain whitespace, unless you escape them or place double quotes around value. (Legit: `-src=My\ Project` or `-src="My Project"`)
+**Important:** arguments can't contain whitespace, unless you escape them or place double quotes around value. (Legit: `-source My\ Project` or `-source "My Project"`)
