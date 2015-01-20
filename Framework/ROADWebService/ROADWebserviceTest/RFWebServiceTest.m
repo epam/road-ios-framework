@@ -34,7 +34,7 @@
 #import <XCTest/XCTest.h>
 
 #import "RFWebServiceClient+DynamicTest.h"
-#import "RFServiceProvider+ConcreteWebServiceClient.h"
+#import "RFConcreteWebServiceClient.h"
 #import "RFSerializableTestObject.h"
 #import "RFDownloadFaker.h"
 #import "RFDownloader.h"

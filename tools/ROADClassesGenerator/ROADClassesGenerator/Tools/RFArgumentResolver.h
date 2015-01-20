@@ -1,6 +1,6 @@
 //
-//  RFServiceProvider+ConcreteWebServiceClient.h
-//  ROADWebService
+//  RFArgumentResolver.h
+//  ROADAttributesCodeGenerator
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
 //
@@ -31,13 +31,12 @@
 //  for additional information regarding copyright ownership and licensing
 
 
-#import <ROAD/ROADServices.h>
-#import "RFConcreteWebServiceClient.h"
+@interface RFArgumentResolver : NSObject
 
+@property (nonatomic, readonly) NSString *sourcePath;
+@property (nonatomic, readonly) NSString *outputDirectoryPath;
+@property (nonatomic, readonly) NSString *prefix;
 
-@interface RFServiceProvider (ConcreteWebServiceClient)
-
-RF_ATTRIBUTE(RFService, serviceClass = [RFConcreteWebServiceClient class])
-+ (RFConcreteWebServiceClient *)concreteWebServiceClient;
+- (id)initWithArgv:(const char **)argv argvCount:(const int)argc;
 
 @end

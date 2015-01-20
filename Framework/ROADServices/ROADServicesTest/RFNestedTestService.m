@@ -1,5 +1,5 @@
 //
-//  RFServiceProvider+RFTestService.h
+//  RFNestedTestService.m
 //  ROADServices
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
@@ -31,30 +31,26 @@
 //  for additional information regarding copyright ownership and licensing
 
 
-#import "RFServiceProvider.h"
-#import "RFTestService.h"
-#import "RFService.h"
 #import "RFNestedTestService.h"
 
+#import "RFServiceProvider+RFTestService.h"
 
-@interface RFServiceProvider (RFTestService)
 
-/**
- The method to return the service instance. The attribute indicates this method returns a service, and which class to use in case the service is not yet initialized.
- */
-RF_ATTRIBUTE(RFService, serviceClass = [RFTestService class])
-+ (RFTestService *)someService;
+@interface RFNestedTestService ()
 
-RF_ATTRIBUTE(RFService, serviceClass = [RFNestedTestService class])
-+ (RFTestService *)nestedService;
+@property (nonatomic, strong) RFTestService *internalService;
 
-+ (id)serviceWithoutAttributes;
+@end
 
-RF_ATTRIBUTE(RFService)
-+ (id)serviceWithMissingPropertyOfAttribute;
 
-RF_ATTRIBUTE(NSObject)
-+ (id)serviceWithWrongAttribute;
+@implementation RFNestedTestService
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _internalService = [RFServiceProvider someService];
+    }
+    return self;
+}
 
 @end

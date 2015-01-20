@@ -1,6 +1,6 @@
 //
-//  RFServiceProvider+RFTestService.h
-//  ROADServices
+//  ROADClassModel.h
+//  ROADClassesGenerator
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
 //
@@ -29,32 +29,22 @@
 //
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
+//
 
+#import <Foundation/Foundation.h>
+#import "ROADPropertyModel.h"
 
-#import "RFServiceProvider.h"
-#import "RFTestService.h"
-#import "RFService.h"
-#import "RFNestedTestService.h"
+@interface ROADClassModel : NSObject
 
+@property (nonatomic, strong) NSString *prefix;
 
-@interface RFServiceProvider (RFTestService)
++ (BOOL)registerModel:(ROADClassModel *)model;
++ (ROADClassModel *)registeredModelWithName:(NSString *)modelName;
++ (NSMutableDictionary *)models;
 
-/**
- The method to return the service instance. The attribute indicates this method returns a service, and which class to use in case the service is not yet initialized.
- */
-RF_ATTRIBUTE(RFService, serviceClass = [RFTestService class])
-+ (RFTestService *)someService;
-
-RF_ATTRIBUTE(RFService, serviceClass = [RFNestedTestService class])
-+ (RFTestService *)nestedService;
-
-+ (id)serviceWithoutAttributes;
-
-RF_ATTRIBUTE(RFService)
-+ (id)serviceWithMissingPropertyOfAttribute;
-
-RF_ATTRIBUTE(NSObject)
-+ (id)serviceWithWrongAttribute;
-
+- (id)initWithName:(NSString *)name;
+- (void)addProperty:(ROADPropertyModel *)property;
+- (NSArray *)properties;
+- (NSString *)name;
 
 @end

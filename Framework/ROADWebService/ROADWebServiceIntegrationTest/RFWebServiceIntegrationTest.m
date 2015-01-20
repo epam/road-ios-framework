@@ -33,14 +33,13 @@
 
 #import <XCTest/XCTest.h>
 
-#import "RFWebServiceClientWithRoot.h"
-#import "RFWebServiceClient+DynamicTest.h"
-#import "RFServiceProvider+ConcreteWebServiceClient.h"
+#import "RFWebServiceClientIntegrationWithRoot.h"
+#import "RFWebServiceClient+DynamicIntegrationTest.h"
+#import "RFServiceProvider+ConcreteWebServiceIntegrationClient.h"
 #import "RFBasicAuthenticationProvider.h"
 #import "RFDigestAuthenticationProvider.h"
-#import "RFDownloadFaker.h"
 #import "RFDownloader.h"
-#import "RFWebClientWithSharedHeader.h"
+#import "RFWebClientIntegrationWithSharedHeader.h"
 #import "NSError+RFWebService.h"
 
 
@@ -62,10 +61,10 @@
 }
 
 - (void)testServiceRootAttribute {
-    RFWebServiceClientWithRoot *webServiceClientWithRoot = [[RFWebServiceClientWithRoot alloc] init];
+    RFWebServiceClientIntegrationWithRoot *webServiceClientWithRoot = [[RFWebServiceClientIntegrationWithRoot alloc] init];
     XCTAssertEqualObjects(webServiceClientWithRoot.serviceRoot, @"http://google.com", @"Service root was not initialized by a correct value from an attribute.");
     
-    webServiceClientWithRoot = [[RFWebServiceClientWithRoot alloc] initWithServiceRoot:@"http://yahoo.com"];
+    webServiceClientWithRoot = [[RFWebServiceClientIntegrationWithRoot alloc] initWithServiceRoot:@"http://yahoo.com"];
     XCTAssertEqualObjects(webServiceClientWithRoot.serviceRoot, @"http://yahoo.com", @"Service root from attribute was not overrided by a init method parameter.");
 }
 
@@ -145,11 +144,11 @@
 }
 
 - (void)testWebServiceManagement {
-    RFConcreteWebServiceClient *client = [RFServiceProvider concreteWebServiceClient];
+    RFConcreteWebServiceIntegrationClient *client = [RFServiceProvider concreteWebServiceClient];
     XCTAssertTrue(client != nil, @"Concrete web service client was not created properly.");
     
     client.sharedHeaders = [@{@"key1" : @"value1"} mutableCopy];
-    RFConcreteWebServiceClient *theSameClient = [RFServiceProvider concreteWebServiceClient];
+    RFConcreteWebServiceIntegrationClient *theSameClient = [RFServiceProvider concreteWebServiceClient];
     XCTAssertTrue([theSameClient.sharedHeaders count], @"Shared headers has not been saved.");
 }
 
@@ -157,7 +156,7 @@
     __block BOOL isFinished = NO;
     __block id requestResult = nil;
     
-    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://api.openweathermap.org/data/2.5/weather?q=London,uk"];
+    RFConcreteWebServiceIntegrationClient *webClient = [[RFConcreteWebServiceIntegrationClient alloc] initWithServiceRoot:@"http://api.openweathermap.org/data/2.5/weather?q=London,uk"];
     [webClient testSerializationRootWithSuccess:^(id result) {
         requestResult = result;
         isFinished = YES;
@@ -175,7 +174,7 @@
     __block BOOL isFinished = NO;
     __block id requestResult = nil;
     
-    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://api.openweathermap.org/data/2.5/weather?q=London,uk"];
+    RFConcreteWebServiceIntegrationClient *webClient = [[RFConcreteWebServiceIntegrationClient alloc] initWithServiceRoot:@"http://api.openweathermap.org/data/2.5/weather?q=London,uk"];
     [webClient testWrongSerializationRootWithSuccess:^(id result) {
         requestResult = result;
         isFinished = YES;
@@ -190,19 +189,19 @@
 }
 
 - (void)testSharedHeaderAttribute {
-    RFWebClientWithSharedHeader *webClient = [[RFWebClientWithSharedHeader alloc] init];
+    RFWebClientIntegrationWithSharedHeader *webClient = [[RFWebClientIntegrationWithSharedHeader alloc] init];
     XCTAssertTrue([webClient.sharedHeaders isEqualToDictionary:@{@"key1" : @"value1"}], @"Shared headers was not configured via attributes");
 }
 
 - (void)testWebClientSerializationDelegateAttribute {
-    RFWebClientWithSharedHeader *webClient = [[RFWebClientWithSharedHeader alloc] init];
+    RFWebClientIntegrationWithSharedHeader *webClient = [[RFWebClientIntegrationWithSharedHeader alloc] init];
     XCTAssertTrue([webClient.serializationDelegate isKindOfClass:[RFXMLSerializer class]], @"Serialization delegate was set incorrectly and has wrong type.");
 }
 
 - (void)testURLBuilderEncodingParameter {
     NSString *unprocessed = @"http://online.store.com/storefront/?request=get-document&doi=10.1175%2F1520-0426(2005)014%3C1157:DODADSS%3E2.0.CO%3B2";
     NSString *processed = [unprocessed stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:processed];
+    RFConcreteWebServiceIntegrationClient *webClient = [[RFConcreteWebServiceIntegrationClient alloc] initWithServiceRoot:processed];
     RFDownloader *downloader = (RFDownloader *)[webClient testURLEscapingEncodingWithSuccess:nil failure:nil];
     
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
@@ -212,7 +211,7 @@
 }
 
 - (void)testURLBuilderAllowedCharsetParameter {
-    RFConcreteWebServiceClient *webClient = [[RFConcreteWebServiceClient alloc] initWithServiceRoot:@"http://PERSISTING.for.escaping"];
+    RFConcreteWebServiceIntegrationClient *webClient = [[RFConcreteWebServiceIntegrationClient alloc] initWithServiceRoot:@"http://PERSISTING.for.escaping"];
     RFDownloader *downloader = (RFDownloader *)[webClient testURLEscapingAllowedCharsetWithSuccess:nil failure:nil];
     
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];

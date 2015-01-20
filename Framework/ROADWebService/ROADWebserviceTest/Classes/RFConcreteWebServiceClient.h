@@ -31,17 +31,17 @@
 //  for additional information regarding copyright ownership and licensing
 
 
+#import "RFAttachmentTestObject.h"
+#import "RFFormData.h"
+#import "RFMultipartData.h"
+#import "RFODataErrorHandler.h"
+#import "RFODataWebServiceURLBuilder.h"
+#import "RFWebServiceCache.h"
+#import "RFWebServiceCall.h"
 #import "RFWebServiceClient.h"
 #import "RFWebServiceErrorHandler.h"
 #import "RFWebServiceHeader.h"
-#import "RFODataErrorHandler.h"
-#import "RFWebServiceCall.h"
 #import "RFWebServiceURLBuilder.h"
-#import "RFODataWebServiceURLBuilder.h"
-#import "RFFormData.h"
-#import "RFMultipartData.h"
-#import "RFWebServiceCache.h"
-#import "RFAttachmentTestObject.h"
 
 
 @class RFODataFetchRequest;
@@ -49,6 +49,11 @@
 
 
 @interface RFConcreteWebServiceClient : RFWebServiceClient
+
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO)
+RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{@"Accept" : @"application/json"})
+RF_ATTRIBUTE(RFWebServiceErrorHandler, handlerClass = [RFODataErrorHandler class])
+- (id<RFWebServiceCancellable>)testErrorHandlerRootWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
 RF_ATTRIBUTE(RFWebServiceCall)
 RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{@"Accept" : @"application/json"}, returnHeadersInBody = YES)
@@ -66,11 +71,6 @@ RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
 RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{@"Accept" : @"application/json"}, returnHeadersInBody = YES)
 - (id<RFWebServiceCancellable>)testHeaderFieldsNoBodyAttachmentWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
-RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO)
-RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{@"Accept" : @"application/json"})
-RF_ATTRIBUTE(RFWebServiceErrorHandler, handlerClass = [RFODataErrorHandler class])
-- (id<RFWebServiceCancellable>)testErrorHandlerRootWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
-
 RF_ATTRIBUTE(RFWebServiceCall)
 RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{@"Accept": @"application/json"})
 RF_ATTRIBUTE(RFWebServiceURLBuilder, builderClass = [RFODataWebServiceURLBuilder class])
@@ -80,12 +80,6 @@ RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO, relativePath = @"?imp
 RF_ATTRIBUTE(RFWebServiceURLBuilder, builderClass = [RFODataWebServiceURLBuilder class])
 RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{@"Accept" : @"application/json"})
 - (id<RFWebServiceCancellable>)loadDataWithFetchRequest:(RFODataFetchRequest *)fetchRequest someImportantParameter:(NSString *)importantParameter success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
-
-RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO, serializationRoot = @"coord.lon", successCodes = @[[NSValue valueWithRange:NSMakeRange(200, 300)]])
-- (id<RFWebServiceCancellable>)testSerializationRootWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
-
-RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO, serializationRoot = @"coord.lon.localizedMessage.locale", successCodes = @[[NSValue valueWithRange:NSMakeRange(200, 300)]])
-- (id<RFWebServiceCancellable>)testWrongSerializationRootWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
 RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, method = @"POST")
 RF_ATTRIBUTE(RFMultipartData, boundary = @"sdfsfsf")
@@ -119,14 +113,6 @@ RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, relativePath = @"/ca
 
 RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
 - (id<RFWebServiceCancellable>)testSimpleWebServiceCallWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
-
-RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
-RF_ATTRIBUTE(RFWebServiceURLBuilder, encoding = NSUTF8StringEncoding)
-- (id<RFWebServiceCancellable>)testURLEscapingEncodingWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
-
-RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
-RF_ATTRIBUTE(RFWebServiceURLBuilder, allowedCharset = [NSCharacterSet uppercaseLetterCharacterSet])
-- (id<RFWebServiceCancellable>)testURLEscapingAllowedCharsetWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
 RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, syncCall = YES)
 - (id<RFWebServiceCancellable>)testSyncCallWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;

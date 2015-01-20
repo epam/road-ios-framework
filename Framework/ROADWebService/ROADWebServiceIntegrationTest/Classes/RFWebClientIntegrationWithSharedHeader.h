@@ -1,6 +1,6 @@
 //
-//  RFServiceProvider+RFTestService.h
-//  ROADServices
+//  RFWebClientIntegrationWithSharedHeader.h
+//  ROADWebService
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
 //
@@ -31,30 +31,13 @@
 //  for additional information regarding copyright ownership and licensing
 
 
-#import "RFServiceProvider.h"
-#import "RFTestService.h"
-#import "RFService.h"
-#import "RFNestedTestService.h"
+#import "RFWebServiceClient.h"
+#import "RFXMLSerializer.h"
+#import "RFWebServiceSerializer.h"
 
 
-@interface RFServiceProvider (RFTestService)
-
-/**
- The method to return the service instance. The attribute indicates this method returns a service, and which class to use in case the service is not yet initialized.
- */
-RF_ATTRIBUTE(RFService, serviceClass = [RFTestService class])
-+ (RFTestService *)someService;
-
-RF_ATTRIBUTE(RFService, serviceClass = [RFNestedTestService class])
-+ (RFTestService *)nestedService;
-
-+ (id)serviceWithoutAttributes;
-
-RF_ATTRIBUTE(RFService)
-+ (id)serviceWithMissingPropertyOfAttribute;
-
-RF_ATTRIBUTE(NSObject)
-+ (id)serviceWithWrongAttribute;
-
+RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{ @"key1" : @"value1"})
+RF_ATTRIBUTE(RFWebServiceSerializer, serializerClass = [RFXMLSerializer class])
+@interface RFWebClientIntegrationWithSharedHeader : RFWebServiceClient
 
 @end

@@ -1,6 +1,6 @@
 //
-//  RFServiceProvider+RFTestService.h
-//  ROADServices
+//  RFServiceProvider+ConcreteWebServiceIntegrationClient.h
+//  ROADWebService
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
 //
@@ -31,30 +31,13 @@
 //  for additional information regarding copyright ownership and licensing
 
 
-#import "RFServiceProvider.h"
-#import "RFTestService.h"
-#import "RFService.h"
-#import "RFNestedTestService.h"
+#import <ROAD/ROADServices.h>
+#import "RFConcreteWebServiceIntegrationClient.h"
 
 
-@interface RFServiceProvider (RFTestService)
+@interface RFServiceProvider (ConcreteWebServiceIntegrationClient)
 
-/**
- The method to return the service instance. The attribute indicates this method returns a service, and which class to use in case the service is not yet initialized.
- */
-RF_ATTRIBUTE(RFService, serviceClass = [RFTestService class])
-+ (RFTestService *)someService;
-
-RF_ATTRIBUTE(RFService, serviceClass = [RFNestedTestService class])
-+ (RFTestService *)nestedService;
-
-+ (id)serviceWithoutAttributes;
-
-RF_ATTRIBUTE(RFService)
-+ (id)serviceWithMissingPropertyOfAttribute;
-
-RF_ATTRIBUTE(NSObject)
-+ (id)serviceWithWrongAttribute;
-
+RF_ATTRIBUTE(RFService, serviceClass = [RFConcreteWebServiceIntegrationClient class])
++ (RFConcreteWebServiceIntegrationClient *)concreteWebServiceClient;
 
 @end

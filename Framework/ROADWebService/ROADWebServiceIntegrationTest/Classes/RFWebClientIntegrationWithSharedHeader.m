@@ -1,5 +1,5 @@
 //
-//  RFWebClientWithSharedHeader.m
+//  RFWebClientIntegrationWithSharedHeader.m
 //  ROADWebService
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
@@ -31,9 +31,9 @@
 //  for additional information regarding copyright ownership and licensing
 
 
-#import "RFWebClientWithSharedHeader.h"
+#import "RFWebClientIntegrationWithSharedHeader.h"
 
 
-@implementation RFWebClientWithSharedHeader
+@implementation RFWebClientIntegrationWithSharedHeader
 
 @end

@@ -1,6 +1,6 @@
 //
-//  RFServiceProvider+RFTestService.h
-//  ROADServices
+//  RFWebServiceClientTest+DynamicIntegrationTest.h
+//  ROADWebService
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
 //
@@ -31,30 +31,21 @@
 //  for additional information regarding copyright ownership and licensing
 
 
-#import "RFServiceProvider.h"
-#import "RFTestService.h"
-#import "RFService.h"
-#import "RFNestedTestService.h"
+#import "RFWebServiceClient.h"
+
+#import "RFWebServiceSerializer.h"
+#import "RFXMLSerializer.h"
 
 
-@interface RFServiceProvider (RFTestService)
+@protocol RFWebServiceCancellable;
 
-/**
- The method to return the service instance. The attribute indicates this method returns a service, and which class to use in case the service is not yet initialized.
- */
-RF_ATTRIBUTE(RFService, serviceClass = [RFTestService class])
-+ (RFTestService *)someService;
 
-RF_ATTRIBUTE(RFService, serviceClass = [RFNestedTestService class])
-+ (RFTestService *)nestedService;
+@interface RFWebServiceClient (DynamicIntegrationTest)
 
-+ (id)serviceWithoutAttributes;
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES, method = @"GET", relativePath = @"%%0%%")
+- (id<RFWebServiceCancellable>)dynamicTestHttpRequestPath:(NSString *)path success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
-RF_ATTRIBUTE(RFService)
-+ (id)serviceWithMissingPropertyOfAttribute;
-
-RF_ATTRIBUTE(NSObject)
-+ (id)serviceWithWrongAttribute;
-
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO, method = @"GET", relativePath = @"%%0%%")
+- (id<RFWebServiceCancellable>)dynamicTestHttpsRequestPath:(NSString *)path success:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
 @end

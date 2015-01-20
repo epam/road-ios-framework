@@ -1,6 +1,6 @@
 //
-//  RFWebServiceClientWithRoot.m
-//  ROADWebService
+//  ROADPropertyModel.m
+//  ROADClassesGenerator
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
 //
@@ -29,16 +29,10 @@
 //
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
+//
 
+#import "ROADPropertyModel.h"
 
-#import "RFWebServiceClientWithRoot.h"
-
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wincomplete-implementation"
-
-@implementation RFWebServiceClientWithRoot
+@implementation ROADPropertyModel
 
 @end
-
-#pragma clang diagnostic pop

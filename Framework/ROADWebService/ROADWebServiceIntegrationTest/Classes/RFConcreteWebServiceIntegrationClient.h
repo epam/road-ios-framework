@@ -1,5 +1,5 @@
 //
-//  RFWebClientWithSharedHeader.h
+//  RFConcreteWebServiceIntegrationClient.h
 //  ROADWebService
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
@@ -31,13 +31,35 @@
 //  for additional information regarding copyright ownership and licensing
 
 
+#import "RFFormData.h"
+#import "RFMultipartData.h"
+#import "RFODataErrorHandler.h"
+#import "RFODataWebServiceURLBuilder.h"
+#import "RFWebServiceCache.h"
+#import "RFWebServiceCall.h"
 #import "RFWebServiceClient.h"
-#import "RFXMLSerializer.h"
-#import "RFWebServiceSerializer.h"
+#import "RFWebServiceErrorHandler.h"
+#import "RFWebServiceHeader.h"
+#import "RFWebServiceURLBuilder.h"
+
+@class RFODataFetchRequest;
+@protocol RFWebServiceCancellable;
 
 
-RF_ATTRIBUTE(RFWebServiceHeader, headerFields = @{ @"key1" : @"value1"})
-RF_ATTRIBUTE(RFWebServiceSerializer, serializerClass = [RFXMLSerializer class])
-@interface RFWebClientWithSharedHeader : RFWebServiceClient
+@interface RFConcreteWebServiceIntegrationClient : RFWebServiceClient
+
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO, serializationRoot = @"coord.lon", successCodes = @[[NSValue valueWithRange:NSMakeRange(200, 300)]])
+- (id<RFWebServiceCancellable>)testSerializationRootWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = NO, serializationRoot = @"coord.lon.localizedMessage.locale", successCodes = @[[NSValue valueWithRange:NSMakeRange(200, 300)]])
+- (id<RFWebServiceCancellable>)testWrongSerializationRootWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
+RF_ATTRIBUTE(RFWebServiceURLBuilder, encoding = NSUTF8StringEncoding)
+- (id<RFWebServiceCancellable>)testURLEscapingEncodingWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
+
+RF_ATTRIBUTE(RFWebServiceCall, serializationDisabled = YES)
+RF_ATTRIBUTE(RFWebServiceURLBuilder, allowedCharset = [NSCharacterSet uppercaseLetterCharacterSet])
+- (id<RFWebServiceCancellable>)testURLEscapingAllowedCharsetWithSuccess:(void(^)(id result))successBlock failure:(void(^)(NSError *error))failureBlock;
 
 @end

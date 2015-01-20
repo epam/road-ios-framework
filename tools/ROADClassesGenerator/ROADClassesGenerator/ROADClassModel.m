@@ -1,6 +1,6 @@
 //
-//  RFServiceProvider+RFTestService.h
-//  ROADServices
+//  ROADClassModel.m
+//  ROADClassesGenerator
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
 //
@@ -29,32 +29,52 @@
 //
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
+//
 
+#import "ROADClassModel.h"
 
-#import "RFServiceProvider.h"
-#import "RFTestService.h"
-#import "RFService.h"
-#import "RFNestedTestService.h"
+static NSMutableDictionary *models;
 
+@implementation ROADClassModel {
+    NSMutableArray *_properties;
+    NSString *_name;
+}
 
-@interface RFServiceProvider (RFTestService)
++ (NSMutableDictionary *)models {
+    if (models == nil) {
+        models = [[NSMutableDictionary alloc] init];
+    }
+    return models;
+}
 
-/**
- The method to return the service instance. The attribute indicates this method returns a service, and which class to use in case the service is not yet initialized.
- */
-RF_ATTRIBUTE(RFService, serviceClass = [RFTestService class])
-+ (RFTestService *)someService;
++ (BOOL)registerModel:(ROADClassModel *)model {
+    [[ROADClassModel models] setObject:model forKey:[model name]];
+    return YES;
+}
 
-RF_ATTRIBUTE(RFService, serviceClass = [RFNestedTestService class])
-+ (RFTestService *)nestedService;
++ (ROADClassModel *)registeredModelWithName:(NSString *)modelName {
+    return [[ROADClassModel models] valueForKey:modelName];
+}
 
-+ (id)serviceWithoutAttributes;
+- (id)initWithName:(NSString *)name {
+    self = [super init];
+    if (self) {
+        _name = name;
+        _properties = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
 
-RF_ATTRIBUTE(RFService)
-+ (id)serviceWithMissingPropertyOfAttribute;
+- (void)addProperty:(ROADPropertyModel *)property {
+    [_properties addObject:property];
+}
 
-RF_ATTRIBUTE(NSObject)
-+ (id)serviceWithWrongAttribute;
+- (NSArray*)properties {
+    return [_properties copy];
+}
 
+- (NSString*)name {
+    return (_prefix.length > 0) ? [NSString stringWithFormat:@"%@%@", _prefix, _name] : _name;
+}
 
 @end

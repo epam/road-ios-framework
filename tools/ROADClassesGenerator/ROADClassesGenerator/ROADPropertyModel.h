@@ -1,6 +1,6 @@
 //
-//  RFWebServiceClientWithRoot.h
-//  ROADWebService
+//  ROADPropertyModel.h
+//  ROADClassesGenerator
 //
 //  Copyright (c) 2014 EPAM Systems, Inc. All rights reserved.
 //
@@ -29,13 +29,14 @@
 //
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
+//
 
+#import <Foundation/Foundation.h>
 
-#import "RFWebServiceClient.h"
-#import "RFWebService.h"
+@interface ROADPropertyModel : NSObject
 
-
-RF_ATTRIBUTE(RFWebService, serviceRoot=@"http://google.com")
-@interface RFWebServiceClientWithRoot : RFWebServiceClient
+@property (nonatomic, strong) NSString *propertyName;
+@property (nonatomic, strong) NSString *propertyClassName;
+@property (nonatomic) id propertyClass;
 
 @end
