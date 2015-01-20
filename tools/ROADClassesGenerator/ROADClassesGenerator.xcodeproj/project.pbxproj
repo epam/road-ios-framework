@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B1C5EBE31A6E465E00415161 /* RFArgumentResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C5EBE01A6E45EA00415161 /* RFArgumentResolver.m */; };
+		B1C5EBE41A6E466000415161 /* RFConsole.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C5EBE21A6E45EA00415161 /* RFConsole.m */; };
+		B1C5EBE61A6E4EE400415161 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C5EBE51A6E4EE400415161 /* Foundation.framework */; };
 		B1D3878B1A232F220005EE9C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D3878A1A232F220005EE9C /* main.m */; };
 		B1D387931A232F630005EE9C /* ROADJSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D387921A232F630005EE9C /* ROADJSONParser.m */; };
 		B1D387961A232F770005EE9C /* ROADClassGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D387951A232F770005EE9C /* ROADClassGenerator.m */; };
@@ -27,6 +30,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B1C5EBDF1A6E45EA00415161 /* RFArgumentResolver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RFArgumentResolver.h; sourceTree = "<group>"; };
+		B1C5EBE01A6E45EA00415161 /* RFArgumentResolver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RFArgumentResolver.m; sourceTree = "<group>"; };
+		B1C5EBE11A6E45EA00415161 /* RFConsole.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RFConsole.h; sourceTree = "<group>"; };
+		B1C5EBE21A6E45EA00415161 /* RFConsole.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RFConsole.m; sourceTree = "<group>"; };
+		B1C5EBE51A6E4EE400415161 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B1C5EBE71A6E4F5400415161 /* ROADClassesGenerator-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ROADClassesGenerator-Prefix.pch"; path = "ROADClassesGenerator/ROADClassesGenerator-Prefix.pch"; sourceTree = "<group>"; };
 		B1D387871A232F210005EE9C /* ROADClassesGenerator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ROADClassesGenerator; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D3878A1A232F220005EE9C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B1D387911A232F630005EE9C /* ROADJSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROADJSONParser.h; sourceTree = "<group>"; };
@@ -37,7 +46,6 @@
 		B1D387981A232FF30005EE9C /* ROADClassModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROADClassModel.m; sourceTree = "<group>"; };
 		B1D3879A1A2333620005EE9C /* ROADPropertyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROADPropertyModel.h; sourceTree = "<group>"; };
 		B1D3879B1A2333620005EE9C /* ROADPropertyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROADPropertyModel.m; sourceTree = "<group>"; };
-		B1D3879D1A234BB70005EE9C /* source.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = source.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,15 +53,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1C5EBE61A6E4EE400415161 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B1C5EBDE1A6E45EA00415161 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				B1C5EBDF1A6E45EA00415161 /* RFArgumentResolver.h */,
+				B1C5EBE01A6E45EA00415161 /* RFArgumentResolver.m */,
+				B1C5EBE11A6E45EA00415161 /* RFConsole.h */,
+				B1C5EBE21A6E45EA00415161 /* RFConsole.m */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 		B1D3877E1A232F210005EE9C = {
 			isa = PBXGroup;
 			children = (
+				B1C5EBE71A6E4F5400415161 /* ROADClassesGenerator-Prefix.pch */,
+				B1C5EBE51A6E4EE400415161 /* Foundation.framework */,
 				B1D387891A232F210005EE9C /* ROADClassesGenerator */,
 				B1D387881A232F210005EE9C /* Products */,
 			);
@@ -70,6 +92,7 @@
 		B1D387891A232F210005EE9C /* ROADClassesGenerator */ = {
 			isa = PBXGroup;
 			children = (
+				B1C5EBDE1A6E45EA00415161 /* Tools */,
 				B1D3878A1A232F220005EE9C /* main.m */,
 				B1D387911A232F630005EE9C /* ROADJSONParser.h */,
 				B1D387921A232F630005EE9C /* ROADJSONParser.m */,
@@ -79,7 +102,6 @@
 				B1D387981A232FF30005EE9C /* ROADClassModel.m */,
 				B1D3879A1A2333620005EE9C /* ROADPropertyModel.h */,
 				B1D3879B1A2333620005EE9C /* ROADPropertyModel.m */,
-				B1D3879D1A234BB70005EE9C /* source.json */,
 			);
 			path = ROADClassesGenerator;
 			sourceTree = "<group>";
@@ -140,8 +162,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1C5EBE41A6E466000415161 /* RFConsole.m in Sources */,
 				B1D387991A232FF30005EE9C /* ROADClassModel.m in Sources */,
 				B1D387961A232F770005EE9C /* ROADClassGenerator.m in Sources */,
+				B1C5EBE31A6E465E00415161 /* RFArgumentResolver.m in Sources */,
 				B1D387931A232F630005EE9C /* ROADJSONParser.m in Sources */,
 				B1D3879C1A2333620005EE9C /* ROADPropertyModel.m in Sources */,
 				B1D3878B1A232F220005EE9C /* main.m in Sources */,
@@ -228,6 +252,7 @@
 		B1D3878F1A232F220005EE9C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_PREFIX_HEADER = "ROADClassesGenerator/ROADClassesGenerator-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -235,6 +260,7 @@
 		B1D387901A232F220005EE9C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_PREFIX_HEADER = "ROADClassesGenerator/ROADClassesGenerator-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -258,6 +284,7 @@
 				B1D387901A232F220005EE9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

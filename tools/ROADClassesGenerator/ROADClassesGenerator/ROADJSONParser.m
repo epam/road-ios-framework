@@ -70,6 +70,9 @@
             else if ([jsonObject isKindOfClass:[NSArray class]]) {
                 propertyModel = [ROADJSONParser propertyModelArrayWithObject:jsonObject withPropertyName:key];
             }
+            else if ([jsonObject isKindOfClass:[NSNull class]]) {
+                propertyModel = [ROADJSONParser propertyModelNullWithObject:jsonObject withPropertyName:key];
+            }
             else if ([jsonObject isKindOfClass:[NSDictionary class]]) {
                 propertyModel = [ROADJSONParser propertyModelCustomWithObject:jsonObject withPropertyName:key];
             }
@@ -113,6 +116,14 @@
     return propertyModel;
 }
 
++ (ROADPropertyModel *)propertyModelNullWithObject:(id)propertyObject withPropertyName:(NSString *)propertyName {
+    ROADPropertyModel *propertyModel = [[ROADPropertyModel alloc] init];
+    propertyModel.propertyClassName = @"id";
+    propertyModel.propertyClass = [NSNull class];
+    propertyModel.propertyName = [ROADJSONParser forNullPropertyName:propertyName];
+    return propertyModel;
+}
+
 + (ROADPropertyModel *)propertyModelCustomWithObject:(id)propertyObject withPropertyName:(NSString *)propertyName {
     ROADPropertyModel *propertyModel = [[ROADPropertyModel alloc] init];
     ROADClassModel *propertyClassModel = [ROADClassModel registeredModelWithName:propertyName];
@@ -134,6 +145,9 @@
     }
     else if ([object isKindOfClass:[NSArray class]]) {
         return [NSArray class];
+    }
+    else if ([object isKindOfClass:[NSNull class]]) {
+        return [NSNull class];
     }
     ROADClassModel *propertyClassModel = [ROADClassModel registeredModelWithName:[ROADJSONParser forArrayPropertyName:objectClassName]];
     if (!propertyClassModel) {
@@ -160,6 +174,10 @@
 }
 
 + (NSString *)forCustomPropertyName:(NSString *)name {
+    return name;
+}
+
++ (NSString *)forNullPropertyName:(NSString *)name {
     return name;
 }
 

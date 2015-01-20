@@ -102,10 +102,14 @@
     else if ([propertyModel.propertyClassName isEqualToString:NSStringFromClass([NSDate class])]) {
         propertyBody = [ROADClassGenerator propertyDateWithName:propertyModel.propertyName];
     }
+    else if ([propertyModel.propertyClassName isEqualToString:@"id"]) {
+        propertyBody = [ROADClassGenerator propertyIdWithName:propertyModel.propertyName withPropertyClassName:propertyModel.propertyClassName];
+    }
     else {
         [ROADClassGenerator generateClassFromClassModel:propertyModel.propertyClass error:nil prefix:prefix outputDirectoryPath:outputDirectoryPath];
-        propertyBody = [ROADClassGenerator propertyWithName:propertyModel.propertyName withPropertyClassName:propertyModel.propertyClassName];
-        *importLine = [ROADClassGenerator importLineWithImportedClassName:propertyModel.propertyClassName];
+        NSString *className = [NSString stringWithFormat:@"%@%@", prefix, propertyModel.propertyClassName];
+        propertyBody = [ROADClassGenerator propertyWithName:propertyModel.propertyName withPropertyClassName:className];
+        *importLine = [ROADClassGenerator importLineWithImportedClassName:className];
     }
     return propertyBody;
 }
@@ -166,6 +170,13 @@
     [propertyBody appendFormat:@"RF_ATTRIBUTE(RFSerializable, serializationKey = @\"%@\");", propertyName];
     [propertyBody appendFormat:@"\nRF_ATTRIBUTE(RFSerializableCollection, collectionClass = [%@ class]);", className];
     [propertyBody appendFormat:@"\n@property (nonatomic) %@ *%@;",NSStringFromClass([NSArray class]), propertyName];
+    return propertyBody;
+}
+
++ (NSString *)propertyIdWithName:(NSString *)propertyName withPropertyClassName:(NSString *)className {
+    NSMutableString *propertyBody = [NSMutableString string];
+    [propertyBody appendFormat:@"RF_ATTRIBUTE(RFSerializable, serializationKey = @\"%@\");", propertyName];
+    [propertyBody appendFormat:@"\n@property (nonatomic) %@ %@;", className, propertyName];
     return propertyBody;
 }
 
