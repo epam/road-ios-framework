@@ -30,6 +30,8 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
+#import <Foundation/Foundation.h>
+
 
 /**
  * Category to return array elements or nil, in case the specified index does not contain array element (out of range, or the array is empty).

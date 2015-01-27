@@ -30,6 +30,8 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
+#import <Foundation/Foundation.h>
+
 
 /**
  * The cancellable protocol. It has to be implemented if one of the call shoulb be cancellable.
