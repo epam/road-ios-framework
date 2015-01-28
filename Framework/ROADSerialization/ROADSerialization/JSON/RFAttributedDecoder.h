@@ -30,7 +30,9 @@
 //  See the NOTICE file and the LICENSE file distributed with this work
 //  for additional information regarding copyright ownership and licensing
 
+
 #import <Foundation/Foundation.h>
+
 
 /**
  * JSON deserializer. This class is using the RFSerializable and RFDerived attributes to map the JSON string to memory objects.
