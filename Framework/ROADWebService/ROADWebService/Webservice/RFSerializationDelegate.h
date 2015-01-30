@@ -31,6 +31,9 @@
 //  for additional information regarding copyright ownership and licensing
 
 
+#import <Foundation/Foundation.h>
+
+
 /**
  * The serialization delegate for the webservice call.
  */

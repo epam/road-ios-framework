@@ -7,6 +7,9 @@
 //
 
 
+#import <Foundation/Foundation.h>
+
+
 @protocol RFWebServiceRequestProcessing <NSObject>
 
 /**

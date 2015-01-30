@@ -31,6 +31,7 @@
 //  for additional information regarding copyright ownership and licensing
 
 
+#import <Foundation/Foundation.h>
 #import "RFODataPrioritizedPredicate.h"
 #import "RFODataExpression.h"
 #import "NSSortDescriptor+RFOData.h"

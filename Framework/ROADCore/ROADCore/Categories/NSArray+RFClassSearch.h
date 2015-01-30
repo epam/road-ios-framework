@@ -31,6 +31,9 @@
 //  for additional information regarding copyright ownership and licensing
 
 
+#import <Foundation/Foundation.h>
+
+
 @interface NSArray (RFClassSearch)
 
 - (id)RF_firstObjectWithClass:(__unsafe_unretained Class)objectClass;

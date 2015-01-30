@@ -31,7 +31,9 @@
 //  for additional information regarding copyright ownership and licensing
 
 
+#import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+
 
 @interface RFWebResponseImplementation : NSObject<NSCoding>
 

@@ -31,6 +31,9 @@
 //  for additional information regarding copyright ownership and licensing
 
 
+#import <Foundation/Foundation.h>
+
+
 @interface RFFormData : NSObject
 
 @property (nonatomic, strong) NSString *name;

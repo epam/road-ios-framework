@@ -32,7 +32,7 @@
 
 
 #ifndef __IPHONE_6_0
-
+#import <Foundation/Foundation.h>
 
 /**
  * Category to allow keyed subscript support for mutable dictionaries to set elements.
