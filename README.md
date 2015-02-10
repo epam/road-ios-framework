@@ -106,4 +106,4 @@ There are three ways you can help us:
 
 * **Raise an issue.** You found something that does not work as expected? Let us know about it.
 * **Suggest a feature.** It's even better if you come up with a new feature and write us about it.
-* **Write some code.** We would love to see more pull requests to our framework, just make sure you have the latest sources. For more information, check out [the guidelines for contributing](./contributing.md).
+* **Write some code.** We would love to see more pull requests to our framework, just make sure you have the latest sources. For more information, check out [the guidelines for contributing](./Contributing.md).
