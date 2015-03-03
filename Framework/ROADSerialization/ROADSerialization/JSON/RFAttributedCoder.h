@@ -31,6 +31,8 @@
 //  for additional information regarding copyright ownership and licensing
 
 
+#import <Foundation/Foundation.h>
+
 
 /**
  JSON serializer. This class is using the RFSerializable and RFDerived attributes to map the memory objects to JSON strings.

@@ -31,6 +31,8 @@
 //  for additional information regarding copyright ownership and licensing
 
 
+#import <Foundation/Foundation.h>
+
 extern NSString * const kRFWebServiceErrorDomain;
 extern NSString * const kRFWebServiceRecievedDataKey;
 extern NSString * const kRFWebServiceCancellationReason;

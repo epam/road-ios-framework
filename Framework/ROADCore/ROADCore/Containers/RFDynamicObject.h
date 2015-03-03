@@ -31,6 +31,9 @@
 //  for additional information regarding copyright ownership and licensing
 
 
+#import <Foundation/Foundation.h>
+
+
 /**
  * A generic container object, prepared to accept all kind of values through KVC's valueForUndefinedKey: and setValue:forUndefinedKey: methods. Also supports dynamic method resolution for properties accessing these values
  * using the property's name as the key. One has to use the @dynamic compiler directive to mark properties inside this class or its subclasses to acquire this functionality.

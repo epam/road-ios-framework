@@ -31,6 +31,8 @@
 //  for additional information regarding copyright ownership and licensing
 
 
+#import <Foundation/Foundation.h>
+
 @class RFODataExpression;
 
 

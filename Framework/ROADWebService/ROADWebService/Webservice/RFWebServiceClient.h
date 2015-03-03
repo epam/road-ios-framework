@@ -31,6 +31,7 @@
 //  for additional information regarding copyright ownership and licensing
 
 
+#import <Foundation/Foundation.h>
 #import <ROAD/ROADServices.h>
 
 extern NSString * const kRFWebServiceClientArrayKey;

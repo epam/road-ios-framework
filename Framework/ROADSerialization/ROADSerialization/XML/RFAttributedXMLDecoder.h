@@ -31,6 +31,9 @@
 //  for additional information regarding copyright ownership and licensing
 
 
+#import <Foundation/Foundation.h>
+
+
 @interface RFAttributedXMLDecoder : NSObject
 
 - (id)decodeData:(NSData *)xmlData withRootObjectClass:(Class)rootObjectClass error:(NSError * __autoreleasing *)error;
