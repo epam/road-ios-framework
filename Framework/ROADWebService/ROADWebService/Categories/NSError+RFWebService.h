@@ -33,12 +33,14 @@
 
 #import <Foundation/Foundation.h>
 
+
 extern NSString * const kRFWebServiceErrorDomain;
 extern NSString * const kRFWebServiceRecievedDataKey;
 extern NSString * const kRFWebServiceCancellationReason;
 
 extern const NSInteger kRFWebServiceErrorCodeSerialization;
 extern const NSInteger kRFWebServiceErrorCodeCancel;
+
 
 @interface NSError (RFWebService)
 

@@ -33,6 +33,7 @@
 
 #import <CoreData/CoreData.h>
 
+
 @interface RFWebServiceCacheMigrationPolicy : NSEntityMigrationPolicy
 
 @end

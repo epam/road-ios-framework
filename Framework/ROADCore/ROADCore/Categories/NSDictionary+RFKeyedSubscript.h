@@ -32,7 +32,9 @@
 
 
 #ifndef __IPHONE_6_0
+
 #import <Foundation/Foundation.h>
+
 
 /**
  * Category to extend keyed subscript for fetching elements in a dictionary prior to iOS 6.0.

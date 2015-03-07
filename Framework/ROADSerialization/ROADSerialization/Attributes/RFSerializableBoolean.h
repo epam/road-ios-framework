@@ -32,7 +32,6 @@
 
 
 #import <Foundation/Foundation.h>
-#import <ROAD/ROADAttribute.h>
 
 
 /**

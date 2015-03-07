@@ -264,7 +264,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7869945B16AEBF3E00B28760 /* Build configuration list for PBXNativeTarget "ROADServices" */;
 			buildPhases = (
-				9EC91481B64CF1309EB9B5EF /* libObjCAttr - generate attributes */,
+				9657650DD14FBBF769445AD2 /* libObjCAttr - generate attributes */,
 				66881C4766A8652213B517F3 /* Check Pods Manifest.lock */,
 				7869944916AEBF3E00B28760 /* Sources */,
 				7869944A16AEBF3E00B28760 /* Frameworks */,
@@ -366,7 +366,7 @@
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-ROADServices/Pods-ROADServices-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9EC91481B64CF1309EB9B5EF /* libObjCAttr - generate attributes */ = {
+		9657650DD14FBBF769445AD2 /* libObjCAttr - generate attributes */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (

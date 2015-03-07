@@ -35,6 +35,7 @@
 #import <ROAD/ROADReflection.h>
 
 #import "RFServiceProvider.h"
+#import "RFService.h"
 
 
 const char *RFServiceMethodEncoding = "@@:";

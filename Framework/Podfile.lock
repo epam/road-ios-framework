@@ -1,10 +1,10 @@
 PODS:
-  - libObjCAttr (1.3.4)
+  - libObjCAttr (1.3.5)
 
 DEPENDENCIES:
   - libObjCAttr
 
 SPEC CHECKSUMS:
-  libObjCAttr: 0ecc666cc0e580353574c9d4019d1ac0d555fd89
+  libObjCAttr: 0e59ac9cbcdb65239741c23c074d0cd4b337595d
 
-COCOAPODS: 0.35.0.rc1
+COCOAPODS: 0.36.0.beta.2

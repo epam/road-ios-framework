@@ -557,7 +557,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F0A8ABE15C299340044A782 /* Build configuration list for PBXNativeTarget "ROADSerialization" */;
 			buildPhases = (
-				7FD464970B08415D214CE1A2 /* libObjCAttr - generate attributes */,
+				CB24DFC224C38902572BDEAF /* libObjCAttr - generate attributes */,
 				FA06730651A2965AEED29793 /* Check Pods Manifest.lock */,
 				9F0A8AB015C299340044A782 /* Sources */,
 				9F0A8AB115C299340044A782 /* Frameworks */,
@@ -628,20 +628,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7FD464970B08415D214CE1A2 /* libObjCAttr - generate attributes */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "libObjCAttr - generate attributes";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
-		};
 		8353CC4E189F88E900135D86 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -669,6 +655,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-ROADSerialization/Pods-ROADSerialization-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		CB24DFC224C38902572BDEAF /* libObjCAttr - generate attributes */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "libObjCAttr - generate attributes";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/libObjCAttr/tools/binaries/ROADAttributesCodeGenerator\" -src=\"${SRCROOT}/${TARGET_NAME}\" -src=\"${PODS_ROOT}\" -dst=\"${SRCROOT}/${TARGET_NAME}/ROADGeneratedAttributes/\"";
 		};
 		E1BAB1EEE175F44E83D130E0 /* libObjCAttr - generate attributes */ = {
 			isa = PBXShellScriptBuildPhase;

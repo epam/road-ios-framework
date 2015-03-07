@@ -798,7 +798,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 78FB204F15BD336B00C2137A /* Build configuration list for PBXNativeTarget "ROADWebService" */;
 			buildPhases = (
-				90D299ACE21DC68AF22C5B85 /* libObjCAttr - generate attributes */,
+				9C8DEB80D249A65B684608A0 /* libObjCAttr - generate attributes */,
 				7B549E32B1214CD7832306EE /* Check Pods Manifest.lock */,
 				78FB203E15BD336B00C2137A /* Sources */,
 				78FB203F15BD336B00C2137A /* Frameworks */,
@@ -933,7 +933,7 @@
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-ROADWebService/Pods-ROADWebService-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		90D299ACE21DC68AF22C5B85 /* libObjCAttr - generate attributes */ = {
+		9C8DEB80D249A65B684608A0 /* libObjCAttr - generate attributes */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
