@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<object xmlns:nm="http://itunes.apple.com/rss" xmlns:nm2="http://itunes.apple.com" nm2:city="Boyarka" nm:age="54">
+    <item>
+        <nm:tag>Text1</nm:tag>
+        <tagWithoutPrefix>Text2</tagWithoutPrefix>
+    </item>
+    <name>John Doe</name>
+</object>

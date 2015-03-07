@@ -37,12 +37,13 @@
 #import "RFSerializationTestObject.h"
 #import "RFXMLSerializationTestObject.h"
 #import "RFXMLSerializationTestObject2.h"
-
+#import "RFXMLSerializationTestObject3.h"
 
 @interface RFAttributedXMLCoderTest : XCTestCase {
     RFSerializationTestObject *_object;
     RFXMLSerializationTestObject *_object2;
     RFXMLSerializationTestObject2 *_object3;
+    RFXMLSerializationTestObject3 *_object4;
     
     RFAttributedXMLDecoder *decoder;
     RFAttributedXMLCoder *coder;
@@ -59,7 +60,8 @@
     _object = [RFSerializationTestObject sampleObject];
     _object2 = [RFXMLSerializationTestObject sampleObject];
     _object3 = [RFXMLSerializationTestObject2 sampleObject];
-   
+    _object4 = [RFXMLSerializationTestObject3 sampleObject];
+    
     [super setUp];
 }
 
@@ -93,12 +95,12 @@
 {
     NSString *string = [coder encodeRootObject:_object];
     NSError *decodeError = nil;
-
+    
     RFSerializationTestObject *recreatedObject = [decoder decodeData:[string dataUsingEncoding:NSUTF8StringEncoding] withRootObjectClass:[RFSerializationTestObject class]error:&decodeError];
     XCTAssertNil(decodeError, @"XML Decoding Error: %@", decodeError);
     
     string = [coder encodeRootObject:recreatedObject];
-
+    
     XCTAssertTrue([string length] > 0, @"Assertion: double serialization of test object is not successful.");
     XCTAssertTrue(![_object isEqual:recreatedObject], @"Assertion: object is equal to initial after serialization and deserialization.");
     
@@ -114,7 +116,7 @@
     NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
     NSURL *fileURL = [testBundle URLForResource:@"DeserialisationTest" withExtension:@"xml"];
     NSData *data = [NSData dataWithContentsOfURL:fileURL];
-
+    
     NSError *decodeError = nil;
     id result = [decoder decodeData:data withRootObjectClass:[RFSerializationTestObject class] error:&decodeError];
     XCTAssertNil(decodeError, @"XML Decoding Error: %@", decodeError);
@@ -148,9 +150,9 @@
     NSError *decodeError = nil;
     RFXMLSerializationTestObject *result = [decoder decodeData:data withRootObjectClass:[RFXMLSerializationTestObject class] error:&decodeError];
     XCTAssertNil(decodeError, @"XML Decoding Error: %@", decodeError);
-
+    
     result.string2 = _object2.string2;
-
+    
     XCTAssertTrue([result isEqual:_object2], @"Assertion: deserialization is not successful.");
 }
 
@@ -177,4 +179,18 @@
     XCTAssertTrue([recreatedResult isEqual:_object3], @"Assertion: deserialization is not successful.");
 }
 
+- (void) testSerializationWithPrefix
+{
+    NSError *decodeError = nil;
+    NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+    NSURL *fileURL = [testBundle URLForResource:@"DeserializationTest4" withExtension:@"xml"];
+    NSData *data = [NSData dataWithContentsOfURL:fileURL];
+    
+    NSString *result = [coder encodeRootObject:_object4];
+    XCTAssertTrue([result length] > 0, @"Assertion: serialization is not successful.");
+    
+    id recreatedObjects = [decoder decodeData:data withRootObjectClass:[RFXMLSerializationTestObject3 class] error:&decodeError];
+    XCTAssertNil(decodeError, @"XML Decoding Error: %@", decodeError);
+    XCTAssertTrue([_object4 isEqual:recreatedObjects], @"Assertion: serialization is not successful.");
+}
 @end

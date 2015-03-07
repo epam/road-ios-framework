@@ -43,7 +43,7 @@
 
 
 static char *RFAttributedXMLCoderTagForClass(Class aClass);
-
+static NSString *xmlns = @"xmlns";
 
 static char *RFAttributedXMLCoderTagForClass(Class aClass) {
     char *result = NULL;
@@ -65,6 +65,28 @@ static NSString* RFEncodeProperty(id serializedObject, RFPropertyInfo* propertyI
     return RFSerializationEncodeObjectForProperty(serializedObject, propertyInfo);
 }
 
+static BOOL isTagWithPrefix(NSString *key) {
+    return (key && ([key rangeOfString:@":"].location != NSNotFound));
+}
+
+static BOOL isDefineNamespace(NSString *key) {
+    return (key && [key hasPrefix:[NSString stringWithFormat:@"%@:", xmlns]]);
+}
+
+static NSInteger sortedProperties(id oneProperty, id secondProperty, void *context)
+{
+    NSInteger result = NSOrderedSame;
+    RFXMLSerializable *oneXmlAttributes = [oneProperty attributeWithType:[RFXMLSerializable class]];
+    RFXMLSerializable *secondXmlAttributes = [secondProperty attributeWithType:[RFXMLSerializable class]];
+    
+    if (oneXmlAttributes.isTagAttribute && isDefineNamespace(RFSerializationKeyForProperty((RFPropertyInfo *)oneProperty)))
+        result = NSOrderedAscending;
+    else if (secondXmlAttributes.isTagAttribute && isDefineNamespace(RFSerializationKeyForProperty((RFPropertyInfo *)secondProperty)))
+        result = NSOrderedDescending;
+    
+    return result;
+}
+
 @interface RFAttributedXMLCoder () {
     xmlDocPtr _xmlDoc;
     RFObjectPool* _dateFormattersPool;
@@ -84,12 +106,11 @@ static NSString* RFEncodeProperty(id serializedObject, RFPropertyInfo* propertyI
 
 - (NSString *)encodeRootObject:(id)rootObject {
     
-    xmlNodePtr xmlNode = [self serializeObject:rootObject toXMLNode:NULL precreatedNode:NULL propertyInfo:nil serializationName:nil itemTag:nil];
     _xmlDoc = xmlNewDoc(BAD_CAST "1.0");
+    [self serializeObject:rootObject toXMLNode:NULL precreatedNode:NULL propertyInfo:nil serializationName:nil itemTag:nil];
     xmlChar *xmlBuff = NULL;
     int xmlBufferSize = 0;
 
-    xmlDocSetRootElement(_xmlDoc, xmlNode);
     xmlDocDumpFormatMemory(_xmlDoc, &xmlBuff, &xmlBufferSize, 1);
 
     NSString *result = @((char*)xmlBuff);
@@ -104,8 +125,15 @@ static NSString* RFEncodeProperty(id serializedObject, RFPropertyInfo* propertyI
 - (xmlNodePtr)serializeObject:(id)serializedObject toXMLNode:(xmlNodePtr)parentNode precreatedNode:(xmlNodePtr)precreatedNode propertyInfo:(RFPropertyInfo*)propertyInfo serializationName:(NSString *)serializationName itemTag:(NSString *)itemTag {
 
     Class class = [serializedObject class];
-    xmlNodePtr result = precreatedNode ? precreatedNode : [self createXMLNodeWithName:(serializationName ? serializationName : RFSerializationKeyForProperty(propertyInfo)) parent:parentNode objectClass:class];
-
+    NSString *key = RFSerializationKeyForProperty(propertyInfo);
+    
+    xmlNodePtr result = precreatedNode ? precreatedNode : [self createXMLNodeWithName:(serializationName ? serializationName : key) parent:parentNode objectClass:class];
+    
+    // Set here then to search by namespaces on the xml document
+    if (!xmlDocGetRootElement(_xmlDoc)) {
+        xmlDocSetRootElement(_xmlDoc, result);
+    }
+    
     // Check if we want CDATA
     if ([class isSubclassOfClass:[NSData class]]) {
         xmlNodePtr cdataPtr = xmlNewCDataBlock(_xmlDoc, [serializedObject bytes], (int)[serializedObject length]);
@@ -117,6 +145,16 @@ static NSString* RFEncodeProperty(id serializedObject, RFPropertyInfo* propertyI
             NSString *encodedString = RFEncodeProperty(serializedObject, propertyInfo, _dateFormattersPool);
             xmlNodeSetContent(result, BAD_CAST [encodedString UTF8String]);
         }
+    
+    //  Check prefix among namespaces, that declared before
+    if (isTagWithPrefix(key)) {
+        NSArray *components = [key componentsSeparatedByString:@":"];
+        NSParameterAssert([components count] == 2);
+        xmlNsPtr xmlNs = xmlSearchNs(_xmlDoc, result, BAD_CAST [components[0] UTF8String]);
+        NSParameterAssert(xmlNs);
+        xmlSetNs(result, xmlNs);
+        xmlNodeSetName(result, BAD_CAST [components[1] UTF8String]);
+    }
     
     return result;
 }
@@ -155,6 +193,9 @@ static NSString* RFEncodeProperty(id serializedObject, RFPropertyInfo* propertyI
     BOOL result = ([properties count] > 0);
     
     if (result) {
+        // Define namespaces before
+        properties = [properties sortedArrayUsingFunction:sortedProperties context:nil];
+        
         for (RFPropertyInfo *property in properties) {
 
             RFXMLSerializable *xmlAttributes = [property attributeWithType:[RFXMLSerializable class]];
@@ -162,9 +203,20 @@ static NSString* RFEncodeProperty(id serializedObject, RFPropertyInfo* propertyI
             
             if (xmlAttributes.isTagAttribute) {
                 NSString *encodedString = RFEncodeProperty(propertyObject, property, _dateFormattersPool);
-                
                 if ([encodedString length]) {
-                    xmlNewProp(xmlNode, BAD_CAST [RFSerializationKeyForProperty(property) UTF8String], BAD_CAST [encodedString UTF8String]);
+                    NSString *key = RFSerializationKeyForProperty(property);
+                    
+                    if (isDefineNamespace(key))
+                        xmlNewNs(xmlNode, BAD_CAST [encodedString UTF8String], BAD_CAST [[key stringByReplacingOccurrencesOfString:@"xmlns:" withString:@"" ] UTF8String]);
+                    else if (isTagWithPrefix(key)){
+                        NSArray *components = [key componentsSeparatedByString:@":"];
+                        NSParameterAssert([components count] == 2);
+                        xmlNsPtr xmlNs = xmlSearchNs(_xmlDoc, xmlNode, BAD_CAST [components[0] UTF8String]);
+                        NSParameterAssert(xmlNs);
+                        xmlSetNsProp(xmlNode, xmlNs, BAD_CAST [components[1] UTF8String], BAD_CAST [encodedString UTF8String]);
+                    }
+                    else
+                        xmlNewProp(xmlNode, BAD_CAST [key UTF8String], BAD_CAST [encodedString UTF8String]);
                 }
             }
             else {
