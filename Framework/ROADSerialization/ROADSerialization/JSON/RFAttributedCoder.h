@@ -35,29 +35,47 @@
 
 
 /**
- JSON serializer. This class is using the RFSerializable and RFDerived attributes to map the memory objects to JSON strings.
+ * JSON serializer. This class is using the RFSerializable and RFDerived attributes to map the memory objects to JSON strings.
  */
 @interface RFAttributedCoder : NSObject
 
 /**
- Encodes the specified object into a json string.
- @param rootObject The object to serialize.
- @result The json string.
+ * Encodes the specified object into a json string.
+ * @param rootObject The object to serialize.
+ * @result The json string.
  */
-+ (NSString*)encodeRootObject:(id)rootObject;
++ (NSString *)encodeRootObject:(id)rootObject;
 
 /**
- Encodes the specified object into a json string data.
- @param rootObject The object to serialize.
- @result The json string data.
+ * Encodes the specified object into a json string.
+ * @param rootObject The object to serialize.
+ * @param options JSON writing options.
+ * @param error The error if you want to catch it.
+ * @result The json string.
  */
-+ (NSData *)encodedDataOfRootObject:(id)rootObject;
++ (NSString *)encodeRootObject:(id)rootObject options:(NSJSONWritingOptions)options error:(NSError * __autoreleasing *)error;
 
 /**
- Encodes the specified object into a json dictionary.
- @param rootObject The object to serialize.
- @result The json dictionary.
+ * Encodes the specified object into a json dictionary.
+ * @param rootObject The object to serialize.
+ * @result The json dictionary.
  */
 + (id)encodeRootObjectToSerializableObject:(id)rootObject;
+
+/**
+ * Encodes the specified object into a json string. Designated initializer.
+ * @param rootObject The object to serialize.
+ * @param options JSON writing options.
+ * @param error The error if you want to catch it.
+ * @result The json string.
+ */
++ (NSData *)encodedDataOfRootObject:(id)rootObject options:(NSJSONWritingOptions)options error:(NSError * __autoreleasing *)error;
+
+/**
+ * Encodes the specified object into a json string data.
+ * @param rootObject The object to serialize.
+ * @result The json string data.
+ */
++ (NSData *)encodedDataOfRootObject:(id)rootObject;
 
 @end

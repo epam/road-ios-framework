@@ -70,14 +70,30 @@
 
 #pragma mark - Encoding
 
-+ (id)encodeRootObject:(id)rootObject {
-    NSData *data = [self encodedDataOfRootObject:rootObject];    
++ (NSData *)encodedDataOfRootObject:(id)rootObject {
+    return [self encodedDataOfRootObject:rootObject options:NSJSONWritingPrettyPrinted | NSJSONReadingAllowFragments error:nil];
+}
+
++ (NSData *)encodedDataOfRootObject:(id)rootObject options:(NSJSONWritingOptions)options error:(NSError * __autoreleasing *)error {
+    id serializableObject = [self encodeRootObjectToSerializableObject:rootObject];
+    NSError *internalError = nil;
+    id result = [NSJSONSerialization dataWithJSONObject:serializableObject options:options error:&internalError];
+    if (internalError) {
+        *error = internalError;
+        RFSCLogError(@"ROADSerialization: Error when encoding object %@ :\n%@", rootObject, error);
+    }
+
+    return result;
+}
+
++ (id)encodeRootObject:(id)rootObject options:(NSJSONWritingOptions)options error:(NSError *__autoreleasing *)error {
+    NSData *data = [self encodedDataOfRootObject:rootObject options:options error:error];
     return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 
-+ (NSData *)encodedDataOfRootObject:(id)rootObject {
-    id result = [self encodeRootObjectToSerializableObject:rootObject];
-    return [NSJSONSerialization dataWithJSONObject:result options:NSJSONWritingPrettyPrinted | NSJSONReadingAllowFragments error:nil];
++ (id)encodeRootObject:(id)rootObject {
+    NSData *data = [self encodedDataOfRootObject:rootObject];    
+    return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 
 + (id)encodeRootObjectToSerializableObject:(id)rootObject {

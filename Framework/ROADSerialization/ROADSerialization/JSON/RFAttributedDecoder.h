@@ -51,7 +51,8 @@
  * @param serializationRoot Key path string to top most json object what will be serialized
  * @param rootClassName The root class name to the object whics will be used for decoding.
  */
-+ (id)decodeJSONData:(NSData * const)jsonData withSerializtionRoot:(NSString *)serializationRoot rootClassNamed:(NSString * const)rootClassName;
++ (id)decodeJSONData:(NSData * const)jsonData withSerializationRoot:(NSString *)serializationRoot rootClassNamed:(NSString * const)rootClassName;
+
 /**
  * Decodes a json string using the specified root class name. Referenced object types are determined by the json string if it contained this piece of information or from the reflection framework.
  * @param jsonString The json string to decode.
@@ -60,7 +61,7 @@
 + (id)decodeJSONString:(NSString *const)jsonString withRootClassNamed:(NSString * const)rootClassName;
 
 /**
- * Decodes a json data using the specified root class name. Referenced object types are determined by the json string if it contained this piece of information or from the reflection framework.
+ * Decodes a json data using the specified root class name. Referenced object types are determined by the json string if it contains this piece of information or from the reflection framework.
  * @param jsonData The json data object to decode.
  * @param rootClassName The root class name to the object which will be used for decoding.
  */
@@ -72,5 +73,60 @@
  * @param rootClassName The root class name to the object which will be used for mapping.
  */
 + (id)decodePredeserializedObject:(id)jsonObject withRootClassName:(NSString * const)rootClassName;
+
+/**
+ * Decodes a json string using the specified root class name and serialization root. Referenced object types are determined by the json string if it contains this piece of information or from the reflection framework.
+ * @param jsonData The json data to decode.
+ * @param serializationRoot Key path string to top most json object what will be serialized.
+ * @param rootClass The root class to the object which will be used for decoding.
+ * @param options The json reading options.
+ * @param error Error if you want to catch it.
+ */
++ (id)decodeJSONData:(NSData * const)jsonData withSerializationRoot:(NSString *)serializationRoot rootClass:(Class)rootClass options:(NSJSONReadingOptions)options error:(NSError * __autoreleasing *)error;
+
+/**
+ * Decodes a json string using the specified root class name and serialization root. Referenced object types are determined by the json string if it contains this piece of information or from the reflection framework.
+ * @param jsonData The json data to decode.
+ * @param serializationRoot Key path string to top most json object what will be serialized.
+ * @param rootClass The root class to the object which will be used for decoding.
+ */
++ (id)decodeJSONData:(NSData * const)jsonData withSerializationRoot:(NSString *)serializationRoot rootClass:(Class)rootClass;
+
+/**
+ * Links a NSDictinary or NSArray to specified class using attributes. If root class name set to nil method will return object without transformation.
+ * @param jsonObject The predeserialized data object.
+ * @param rootClass The root class to the object which will be used for mapping.
+ */
++ (id)decodePredeserializedObject:(id)jsonObject withRootClass:(Class)rootClass;
+
+/**
+ * Decodes a json data using the specified root class. Referenced object types are determined by the json string if it contains this piece of information or from the reflection framework.
+ * @param jsonData The json data object to decode.
+ * @param rootClass The root class to the object which will be used for decoding.
+ */
++ (id)decodeJSONData:(NSData * const)jsonData withRootClass:(Class)rootClass;
+
+/**
+ * Decodes a json string using the specified root class. Referenced object types are determined by the json string if it contains this piece of information or from the reflection framework.
+ * @param jsonString The json string to decode.
+ * @param rootClass The root class to the object which will be used for decoding.
+ */
++ (id)decodeJSONString:(NSString *const)jsonString withRootClass:(Class)rootClass;
+
+/**
+ * Decodes a json string using the specified root class. Referenced object types are determined by the json string if it contains this piece of information or from the reflection framework.
+ * @param jsonString The json string to decode.
+ * @param rootClass The root class to the object which will be used for decoding.
+ * @param error Error if you want to catch it.
+ */
++ (id)decodeJSONString:(NSString *const)jsonString withRootClass:(Class)rootClass error:(NSError * __autoreleasing *)error;
+
+/**
+ * Decodes a json string using the specified root class. Referenced object types are determined by the json string if it contains this piece of information or from the reflection framework.
+ * @param jsonString The json string to decode.
+ * @param rootClass The root class to the object which will be used for decoding.
+ * @param options The json reading options.
+ */
++ (id)decodeJSONString:(NSString *const)jsonString withRootClass:(Class)rootClass options:(NSJSONReadingOptions)options;
 
 @end

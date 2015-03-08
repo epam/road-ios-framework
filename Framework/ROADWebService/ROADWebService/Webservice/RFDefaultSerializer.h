@@ -39,5 +39,4 @@
  */
 @interface RFDefaultSerializer : NSObject <RFSerializationDelegate>
 
-
 @end

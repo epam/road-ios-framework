@@ -50,14 +50,15 @@
     return [self RF_JSONObjectWithString:string options:NSJSONReadingAllowFragments error:nil];
 }
 
-+ (id)RF_decodeJSONData:(NSData *const)jsonData {
++ (id)RF_decodeJSONData:(NSData *const)jsonData options:(NSJSONReadingOptions)options error:(NSError * __autoreleasing *)error {
     if (!jsonData || [jsonData length] == 0) {
         return nil;
     }
 
-    NSError *error;
-    id value = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&error];
+    NSError *internalError = nil;
+    id value = [NSJSONSerialization JSONObjectWithData:jsonData options:options error:&internalError];
     if (error) {
+        *error = internalError;
         RFSCLogError(@"ROADSerialization: Error when trying to deserialize data.\nError details: %@\nData: %@", error, [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]);
     }
     return value;

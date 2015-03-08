@@ -58,6 +58,6 @@
  *  @param jsonData JSON data to deserialize.
  *  @return Deserialized object.
  */
-+ (id)RF_decodeJSONData:(NSData *const)jsonData;
++ (id)RF_decodeJSONData:(NSData *const)jsonData options:(NSJSONReadingOptions)options error:(NSError * __autoreleasing *)error;
 
 @end

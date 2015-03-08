@@ -37,8 +37,7 @@
 
 @implementation RFDefaultSerializer
 
--(id)deserializeData:(NSData *)data serializationRoot:(NSString *)serializationRoot withDeserializationClass:(Class)deserializationClass serializationEncoding:(NSStringEncoding)serializationEncoding error:(NSError *__autoreleasing *)error
-{
+- (id)deserializeData:(NSData *)data serializationRoot:(NSString *)serializationRoot withDeserializationClass:(Class)deserializationClass serializationEncoding:(NSStringEncoding)serializationEncoding error:(NSError * __autoreleasing *)error {
     NSData *sourceData = data;
     if (!(serializationEncoding == NSUTF8StringEncoding
         || serializationEncoding == NSUTF16BigEndianStringEncoding
@@ -50,12 +49,11 @@
         sourceData = [stringToDecode dataUsingEncoding:NSUTF8StringEncoding];
     }
     
-    id restored = [RFAttributedDecoder decodeJSONData:sourceData withSerializtionRoot:serializationRoot rootClassNamed:NSStringFromClass(deserializationClass)];
+    id restored = [RFAttributedDecoder decodeJSONData:sourceData withSerializationRoot:serializationRoot rootClass:deserializationClass];
     return restored;
 }
 
--(NSString *)serializeObject:(id)object
-{
+- (NSString *)serializeObject:(id)object {
     return[RFAttributedCoder encodeRootObject:object];
 }
 

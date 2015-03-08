@@ -143,7 +143,7 @@
     NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
     NSString *pathToDeserialisationTestFile = [testBundle pathForResource:@"DeserialisationTest" ofType:@"json"];
     NSData *deserialisationTestData = [NSData dataWithContentsOfFile:pathToDeserialisationTestFile];
-    id decodedObject = [RFAttributedDecoder decodeJSONData:deserialisationTestData withSerializtionRoot:@"child.subObjects.object" rootClassNamed:@"RFSerializationTestObject"];
+    id decodedObject = [RFAttributedDecoder decodeJSONData:deserialisationTestData withSerializationRoot:@"child.subObjects.object" rootClassNamed:@"RFSerializationTestObject"];
     XCTAssertNil(decodedObject, @"Wrong deserialization root returned some value.");
 }
 
@@ -151,7 +151,7 @@
     NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
     NSString *pathToDeserialisationTestFile = [testBundle pathForResource:@"DeserialisationTest" ofType:@"json"];
     NSData *deserialisationTestData = [NSData dataWithContentsOfFile:pathToDeserialisationTestFile];
-    id decodedObject = [RFAttributedDecoder decodeJSONData:deserialisationTestData withSerializtionRoot:@"child.subObjects.number" rootClassNamed:nil];
+    id decodedObject = [RFAttributedDecoder decodeJSONData:deserialisationTestData withSerializationRoot:@"child.subObjects.number" rootClassNamed:nil];
     XCTAssertNotNil(decodedObject, @"Wrong deserialization root returned some value.");
 }
 
@@ -159,7 +159,7 @@
     NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
     NSString *pathToDeserialisationTestFile = [testBundle pathForResource:@"DeserialisationTestEmpty" ofType:@"json"];
     NSData *deserialisationTestData = [NSData dataWithContentsOfFile:pathToDeserialisationTestFile];
-    id decodedObject = [RFAttributedDecoder decodeJSONData:deserialisationTestData withSerializtionRoot:@"emptyResult" rootClassNamed:nil];
+    id decodedObject = [RFAttributedDecoder decodeJSONData:deserialisationTestData withSerializationRoot:@"emptyResult" rootClassNamed:nil];
     XCTAssertNotNil(decodedObject, @"Wrong deserialization root returned some value");
 }
 
@@ -196,8 +196,14 @@
 static const float kFloatPrecision = 0.0000001f;
 
 - (void)testPropertyCustomDecodingPreprocessor {
-    NSString * testString = @"{\"number\" : 325.567}";
+    NSString *testString = @"{\"number\" : 325.567}";
     RFJSONPropertyPreprocessingClass *testObject =  [RFAttributedDecoder decodeJSONString:testString withRootClassNamed:NSStringFromClass([RFJSONPropertyPreprocessingClass class])];
+    XCTAssertTrue([testObject.number floatValue] - 325.0f < kFloatPrecision, @"Property was not preprocessed with assigned block");
+}
+
+- (void)testRootClassConvinientInitializer {
+    NSString *testString = @"{\"number\" : 325.567}";
+    RFJSONPropertyPreprocessingClass *testObject =  [RFAttributedDecoder decodeJSONString:testString withRootClass:[RFJSONPropertyPreprocessingClass class]];
     XCTAssertTrue([testObject.number floatValue] - 325.0f < kFloatPrecision, @"Property was not preprocessed with assigned block");
 }
 
@@ -220,7 +226,7 @@ static const float kFloatPrecision = 0.0000001f;
     NSString *string = [RFAttributedCoder encodeRootObject:testObject];
 
     RFSerializationTestObject *deserializedTestObject = (RFSerializationTestObject *)[RFAttributedDecoder decodeJSONString:string withRootClassNamed:NSStringFromClass([RFSerializationTestObject class])];
-    XCTAssertTrue(fabs([deserializedTestObject.unixTimestamp timeIntervalSince1970] - timeInterval) < 1000, @"Big time intervale was corrupted");
+    XCTAssertTrue(fabs([deserializedTestObject.unixTimestamp timeIntervalSince1970] - timeInterval) < 1000, @"Big time interval was corrupted");
 }
 
 - (void)testNilInDecoder {
@@ -229,6 +235,22 @@ static const float kFloatPrecision = 0.0000001f;
 
     XCTAssertNil(nil1, @"RFAttrbutedCoder returned value for nil data");
     XCTAssertNil(nil2, @"RFAttrbutedCoder returned value for nil data");
+}
+
+- (void)testNilInDecoderWithRootClass {
+    id nil1 = [RFAttributedDecoder decodeJSONData:nil withRootClass:nil];
+    id nil2 = [RFAttributedDecoder decodeJSONString:nil withRootClass:nil];
+
+    XCTAssertNil(nil1, @"RFAttrbutedCoder returned value for nil data");
+    XCTAssertNil(nil2, @"RFAttrbutedCoder returned value for nil data");
+}
+
+- (void)testErrorInDecodedString {
+    NSError *error;
+    id result = [RFAttributedDecoder decodeJSONString:@"*" withRootClass:[NSObject class] error:&error];
+
+    XCTAssertNotNil(error, @"RFAttrbutedCoder did not return error of serializtion");
+    XCTAssertNil(result, @"RFAttrbutedCoder returned value for errored data");
 }
 
 @end
