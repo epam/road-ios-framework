@@ -411,9 +411,8 @@ static BOOL isDefineNamespace(NSString *key) {
  */
 - (void)checkPrefix:(NSString *)serializationKey {
     if (serializationKey && !isDefineNamespace(serializationKey) && isTagWithPrefix(serializationKey)) {
-        NSArray *components = [serializationKey componentsSeparatedByString:@":"];
-        NSParameterAssert([components count] == 2);
-        NSParameterAssert([_declaredNamespaces containsObject:components[0]]);
+        NSParameterAssert([[serializationKey componentsSeparatedByString:@":"] count] == 2);
+        NSParameterAssert([_declaredNamespaces containsObject:[serializationKey componentsSeparatedByString:@":"][0]]);
     }
 }
 
