@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.description  = <<-DESC
                    ROAD Framework is a collection of libraries, tools and guidelines to handle common routines like web services integration, serialization and others. As result ROAD accelerates development, streamline support and maintenance, enforce best practices as well as remove technology entropy and fragmentation. Framework architecture allows to use libraries in application independently as well as all together to benefit from capabilities of each other.
                    DESC
-  s.homepage     = 'https://github.com/epam/road-ios-framework'
+  s.homepage     = 'http://epam.github.io/road-ios-framework'
   s.social_media_url = 'https://twitter.com/ROADFramework'
   s.license      = 'BSD-3'
 
