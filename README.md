@@ -76,6 +76,13 @@ ROAD initially designed to use **ARC**.
 	    require File.expand_path('ROADConfigurator.rb', './Pods/libObjCAttr/libObjCAttr/Resources/')
 	    ROADConfigurator::post_install(installer)
 	end
+	
+**Note:**
+If you want to get rid of warning from Xcodeproj gem, copy-paste and run in terminal next command before running `pod install`:
+
+```shell
+export COCOAPODS_DISABLE_DETERMINISTIC_UUIDS=YES
+```
 
 
 **Using components separately**  
