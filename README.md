@@ -6,14 +6,14 @@
 
 A set of reusable components taking advantage of extra dimension [Attribute-Oriented Programming](https://en.wikipedia.org/wiki/Attribute-oriented_programming) adds.
 
-##Components
+## Components
 
 **Core** - support for attributes, reflection and helper-extensions on Foundation classes.  
 **Services** - implementation of Service Locator pattern, centralized replacement for singletons.  
 **Serialization** - attribute-based JSON and XML parsers for easy DOM (de)serializations.  
 **Web Services** - attribute-based HTTP client API.  
 
-##Snippet
+## Snippet
 Connection to the test HTTP server, that returns JSON from headers you send, could look as follows:
 
 	RF_ATTRIBUTE(RFWebService, serviceRoot = @"http://headers.jsontest.com/")
@@ -61,13 +61,13 @@ Now we can use it:
 	    NSLog(@"Something terrible happened! Here are details : %@", error);
 	}];
 
-##Requirements
+## Requirements
 
 ROAD requires **iOS 5.0** and above. The compatibility with **4.3** and older is not tested.
 
 ROAD initially designed to use **ARC**. 
 
-##Jump Start
+## Jump Start
 [CocoaPods](http://cocoapods.org) is the only recommended way of ROAD integration. Besides the standard configuration of pod dependencies, pod_install hook is required as shown below. A typical Podfile will look as follows:
 
 	pod 'ROADFramework'
@@ -93,7 +93,7 @@ If you'd like to embed only specific components from the framework it can be don
 
 Detailed information on internals of ROAD integration as well as advanced topics like integration with predefined workspace, multiple projects or targets is available in [the documentation](./Documents/Configuration/Cocoapods.md).        
         
-##Documentation
+## Documentation
 
 User documentation for the following components is available in **Documents** folder:
 
@@ -104,10 +104,10 @@ User documentation for the following components is available in **Documents** fo
 
 Classes reference is available in [cocoadocs.org](http://cocoadocs.org/docsets/ROADFramework/)
 
-##License
+## License
 ROAD is made available under the terms of the [BSD-3](http://opensource.org/licenses/BSD-3-Clause). Open the LICENSE file that accompanies this distribution in order to see the full text of the license.
 
-##Contribution
+## Contribution
 
 There are three ways you can help us:
 
